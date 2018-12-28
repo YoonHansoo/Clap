@@ -1,6 +1,8 @@
 package com.clap.vo.support;
 
-public class MessageVO {
+import java.io.Serializable;
+
+public class MessageVO implements Serializable{
 	
 	private String msg_no;
 	private String msg_send_date;

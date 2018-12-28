@@ -1,6 +1,8 @@
 package com.clap.vo.music;
 
-public class MusicLikeVO {
+import java.io.Serializable;
+
+public class MusicLikeVO implements Serializable{
 	
 	private String mem_id;
 	private String mus_no;

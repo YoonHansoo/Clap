@@ -1,6 +1,8 @@
 package com.clap.vo.support;
 
-public class EventBoardVO {
+import java.io.Serializable;
+
+public class EventBoardVO implements Serializable{
 	
 	private String event_no;
 	private String event_title;

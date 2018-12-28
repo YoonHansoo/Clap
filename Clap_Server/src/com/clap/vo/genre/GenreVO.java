@@ -1,6 +1,8 @@
 package com.clap.vo.genre;
 
-public class GenreVO {
+import java.io.Serializable;
+
+public class GenreVO implements Serializable{
 	
 	private String gen_no;
 	private String gen_name;

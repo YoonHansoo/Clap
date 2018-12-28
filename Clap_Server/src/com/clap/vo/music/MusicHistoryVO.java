@@ -1,6 +1,8 @@
 package com.clap.vo.music;
 
-public class MusicHistoryVO {
+import java.io.Serializable;
+
+public class MusicHistoryVO implements Serializable{
 	
 	private String histo_no;
 	private String histo_indate;

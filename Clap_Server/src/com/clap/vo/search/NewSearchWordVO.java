@@ -1,6 +1,8 @@
 package com.clap.vo.search;
 
-public class NewSearchWordVO {
+import java.io.Serializable;
+
+public class NewSearchWordVO implements Serializable{
 	
 	private String new_word_no;
 	private String new_word_date;

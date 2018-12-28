@@ -1,6 +1,8 @@
 package com.clap.vo.music;
 
-public class MusicReviewVO {
+import java.io.Serializable;
+
+public class MusicReviewVO implements Serializable{
 	
 	private String mus_re_no;
 	private String mus_re_content;

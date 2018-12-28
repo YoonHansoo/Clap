@@ -1,6 +1,8 @@
 package com.clap.vo.singer;
 
-public class SingerVO {
+import java.io.Serializable;
+
+public class SingerVO implements Serializable{
 	
 	private String sing_no;
 	private String sing_name;

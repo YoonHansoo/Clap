@@ -1,6 +1,8 @@
 package com.clap.vo.ticket;
 
-public class TicketVO {
+import java.io.Serializable;
+
+public class TicketVO implements Serializable{
 	
 	private String ticket_no;
 	private String ticket_price;

@@ -1,6 +1,8 @@
 package com.clap.vo.member;
 
-public class MemberVO {
+import java.io.Serializable;
+
+public class MemberVO implements Serializable{
 	
 	private String mem_id;
 	private String mem_pw;

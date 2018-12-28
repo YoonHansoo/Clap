@@ -1,6 +1,8 @@
 package com.clap.vo.support;
 
-public class QnaVO {
+import java.io.Serializable;
+
+public class QnaVO implements Serializable{
 	
 	private String qna_no;
 	private String qna_indate;

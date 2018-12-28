@@ -1,6 +1,8 @@
 package com.clap.vo.search;
 
-public class BestSearchWordVO {
+import java.io.Serializable;
+
+public class BestSearchWordVO implements Serializable{
 	
 	private String best_word_no;
 	private String best_word_date;

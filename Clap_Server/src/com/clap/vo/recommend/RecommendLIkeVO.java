@@ -1,6 +1,8 @@
 package com.clap.vo.recommend;
 
-public class RecommendLIkeVO {
+import java.io.Serializable;
+
+public class RecommendLIkeVO implements Serializable{
 	
 	private String mem_id;
 	private String rcm_alb_no;

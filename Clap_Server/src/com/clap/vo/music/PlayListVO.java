@@ -1,6 +1,8 @@
 package com.clap.vo.music;
 
-public class PlayListVO {
+import java.io.Serializable;
+
+public class PlayListVO implements Serializable{
 	
 	private String play_no;
 	private String play_indate;

@@ -1,6 +1,8 @@
 package com.clap.vo.recommend;
 
-public class RecommendAlbumVO {
+import java.io.Serializable;
+
+public class RecommendAlbumVO implements Serializable{
 	
 	private String rcm_alb_no;
 	private String rcm_alb_name;

@@ -1,6 +1,8 @@
 package com.clap.vo.music;
 
-public class MusicVO {
+import java.io.Serializable;
+
+public class MusicVO implements Serializable{
 	
 	private String mus_no;
 	private String mus_title;

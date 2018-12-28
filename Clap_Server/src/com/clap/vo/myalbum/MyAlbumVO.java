@@ -1,6 +1,8 @@
 package com.clap.vo.myalbum;
 
-public class MyAlbumVO {
+import java.io.Serializable;
+
+public class MyAlbumVO implements Serializable{
 	
 	private String myalb_no;
 	private String myalb_name;

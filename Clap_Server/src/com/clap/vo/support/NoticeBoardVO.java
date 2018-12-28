@@ -1,6 +1,8 @@
 package com.clap.vo.support;
 
-public class NoticeBoardVO {
+import java.io.Serializable;
+
+public class NoticeBoardVO implements Serializable{
 	
 	private String notice_no;
 	private String notice_indate;
