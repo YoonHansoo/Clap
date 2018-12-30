@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:controller="com.clap.main.LoginSessionController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:controller="com.clap.main.MusicMainAdminController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox>
          <children>
@@ -35,7 +35,7 @@
                      </fill>
                   </FontAwesomeIcon>
                   <JFXButton layoutX="903.0" layoutY="94.0" text="회원가입" />
-                  <JFXButton layoutX="828.0" layoutY="94.0" text="로그인" />
+                  <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" text="로그인" />
                   <JFXTextField layoutX="239.0" layoutY="91.0" prefColumnCount="50">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
@@ -112,7 +112,7 @@
                            <items>
                               <MenuItem mnemonicParsing="false" text="회원 관리" />
                               <MenuItem mnemonicParsing="false" text="블랙리스트 관리" />
-                              <MenuItem mnemonicParsing="false" onAction="#singerManage" text="가수 관리" />
+                              <MenuItem fx:id="item_SigerManage" mnemonicParsing="false" onAction="#singerManage" text="가수 관리" />
                               <MenuItem mnemonicParsing="false" text="앨범 관리" />
                               <MenuItem mnemonicParsing="false" text="곡 관리" />
                               <MenuItem mnemonicParsing="false" text="장르 관리" />
