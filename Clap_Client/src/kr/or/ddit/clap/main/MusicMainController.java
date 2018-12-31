@@ -20,7 +20,7 @@ import javafx.stage.StageStyle;
 public class MusicMainController implements Initializable{
 	
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
-//	static Stage joinDialog = new Stage(StageStyle.DECORATED);
+	static Stage joinDialog = new Stage(StageStyle.DECORATED);
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -37,6 +37,18 @@ public class MusicMainController implements Initializable{
 		
 		loginDialog.setScene(scene);
 		loginDialog.show();
+	}
+	
+	public void join() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("Join.fxml"));
+		Scene scene = new Scene(root);
+		joinDialog.setTitle("모여서 각잡고 코딩 - clap");
+		if(joinDialog.getModality() == null) {
+			joinDialog.initModality(Modality.APPLICATION_MODAL);			
+		}
+		
+		joinDialog.setScene(scene);
+		joinDialog.show();
 	}
 
 }
