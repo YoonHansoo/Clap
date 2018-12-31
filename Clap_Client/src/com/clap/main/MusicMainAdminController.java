@@ -16,6 +16,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.layout.AnchorPane;
 
 public class MusicMainAdminController implements Initializable {
 
@@ -23,6 +24,10 @@ public class MusicMainAdminController implements Initializable {
 private MenuItem item_SigerManage;
 	
 	@FXML JFXButton btn_login;
+
+	@FXML AnchorPane header;
+
+
 	
 	
 	@Override
