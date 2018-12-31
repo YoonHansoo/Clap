@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <VBox style="-fx-background-color: #ffffff;">
+         <children>
+            <AnchorPane prefHeight="160.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <FontAwesomeIcon fx:id="logo_Main" iconName="APPLE" layoutX="102.0" layoutY="110.0" onMouseClicked="#logo_Main" size="2cm">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0" startX="0.6333333333333333" startY="0.1523809523809524">
+                           <stops>
+                              <Stop color="#555b3d" />
+                              <Stop color="RED" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </FontAwesomeIcon>
+                  <JFXButton layoutX="920.0" layoutY="83.0" text="회원가입" />
+                  <JFXButton fx:id="btn_login" layoutX="849.0" layoutY="83.0" text="로그인" />
+                  <JFXTextField alignment="CENTER" layoutX="222.0" layoutY="80.0" prefColumnCount="53">
+                     <focusColor>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                           <stops>
+                              <Stop color="#e40377" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </focusColor>
+                     <unFocusColor>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="BLACK" />
+                              <Stop color="RED" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </unFocusColor>
+                  </JFXTextField>
+                  <JFXButton layoutX="77.0" layoutY="7.0" ripplerFill="BLACK" text="이용권 구매" textFill="#b2b2b2">
+                     <font>
+                        <Font name="YDIYGO350" size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <MenuBar cache="true" layoutX="217.0" layoutY="115.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="29.0" style="-fx-background-color: #ffffff;">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="차트">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="TOP50" />
+                              <MenuItem mnemonicParsing="false" text="장르별" />
+                              <MenuItem mnemonicParsing="false" text="시대별" />
+                              <MenuItem mnemonicParsing="false" text="뮤직비디오" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="최신음악">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="곡" />
+                              <MenuItem mnemonicParsing="false" text="앨범" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="장르음악">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="가요" />
+                              <MenuItem mnemonicParsing="false" text="POP" />
+                              <MenuItem mnemonicParsing="false" text="OST" />
+                              <MenuItem mnemonicParsing="false" text="그 외 장르" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="음악보기">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="가수" />
+                              <MenuItem mnemonicParsing="false" text="앨범" />
+                              <MenuItem mnemonicParsing="false" text="곡" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="추천">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="추천" />
+                              <MenuItem mnemonicParsing="false" text="인기" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="공지사항">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="공지사항" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="문의사항">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="문의사항" />
+                              <MenuItem mnemonicParsing="false" text="1:1ChatBot" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="이벤트">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="Event" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="관리자페이지">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="회원 관리" />
+                              <MenuItem mnemonicParsing="false" text="블랙리스트 관리" />
+                              <MenuItem fx:id="item_SigerManage" mnemonicParsing="false" onAction="#singerManage" text="가수 관리" />
+                              <MenuItem mnemonicParsing="false" text="앨범 관리" />
+                              <MenuItem mnemonicParsing="false" text="곡 관리" />
+                              <MenuItem mnemonicParsing="false" text="장르 관리" />
+                              <MenuItem mnemonicParsing="false" text="추천 관리" />
+                              <MenuItem mnemonicParsing="false" text="Event 관리" />
+                              <MenuItem mnemonicParsing="false" text="이용권 관리" />
+                              <MenuItem mnemonicParsing="false" text="매출 관리" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <Line endX="1005.0" layoutY="159.0">
+                     <stroke>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop color="RED" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </stroke>
+                  </Line>
+               </children>
+            </AnchorPane>
+            <AnchorPane minHeight="448.0" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="62.0" layoutY="15.0" text="고객센터">
+                     <font>
+                        <Font name="YDIYGO350" size="30.0" />
+                     </font>
+                  </Label>
+                  <Line endX="900.0" layoutX="53.0" layoutY="60.0" stroke="#6b6b6b" />
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" graphicTextGap="12.0" layoutX="53.0" layoutY="62.0" ripplerFill="#c30404" style="-fx-background-color: #afcd38;" text="문의사항" textFill="WHITE" AnchorPane.topAnchor="62.0">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                     <font>
+                        <Font name="YDIYGO350" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" graphicTextGap="12.0" layoutX="133.0" layoutY="62.0" ripplerFill="#c30404" style="-fx-background-color: #bfbfbf;" text="1:1ChatBot" textFill="WHITE">
+                     <padding>
+                        <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                     </padding>
+                  </JFXButton>
+                  <GridPane alignment="CENTER" layoutX="131.0" layoutY="160.0" prefHeight="356.0" prefWidth="745.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="170.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="592.0" minWidth="10.0" prefWidth="575.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="31.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="151.0" minHeight="10.0" prefHeight="34.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="136.0" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="문의유형" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <ComboBox prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="연락처" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="ddit206" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="이메일" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="제목" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="내용" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextArea maxWidth="469.0" minWidth="264.0" prefColumnCount="35" prefHeight="131.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                           <GridPane.margin>
+                              <Insets bottom="15.0" />
+                           </GridPane.margin>
+                        </JFXTextArea>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="첨부파일" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="YDIYGO350" size="17.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <JFXButton text="파일선택" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" />
+         </children>
+      </VBox>
+   </content>
+</ScrollPane>
