@@ -29,7 +29,7 @@ public class ClientMain extends Application {
 		LoginSession.session.setMem_pw("4321");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");
-		LoginSession.session.setMem_auth("f");
+		LoginSession.session.setMem_auth("t");
 		
 		
 		
@@ -40,6 +40,7 @@ public class ClientMain extends Application {
 			ScrollPane root = loader.load();
 			
 			Scene scene = new Scene(root);
+		//	scene.getStylesheets().add(getClass().getResource("MainClient.css").toString());
 			primaryStage.setTitle("Clap:음악, 그리고 설레임");
 			primaryStage.setScene(scene);
 			primaryStage.show();

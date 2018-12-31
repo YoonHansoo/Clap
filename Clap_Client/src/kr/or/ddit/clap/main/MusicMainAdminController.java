@@ -41,9 +41,9 @@ public class MusicMainAdminController implements Initializable {
 	}
 	
 	@FXML
-	public void singerManage(ActionEvent event) {
+	public void singerManage(ActionEvent event) { //가수관리를 클릭 했을 때.
 		try {
-			Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml"));
+			Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(singerManage);
 			
