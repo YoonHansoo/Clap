@@ -22,8 +22,7 @@ import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 
 public class MusicMainAdminController implements Initializable {
 
-	@FXML
-private MenuItem item_SigerManage;
+	@FXML private MenuItem item_SigerManage;
 	
 	@FXML JFXButton btn_login;
 
