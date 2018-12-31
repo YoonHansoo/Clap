@@ -21,7 +21,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #ffffff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <content>
       <VBox style="-fx-background-color: #ffffff;">
          <children>
@@ -155,6 +155,9 @@
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>
+                     <font>
+                        <Font name="YDIYGO350" size="13.0" />
+                     </font>
                   </JFXButton>
                   <JFXButton alignment="CENTER" contentDisplay="CENTER" graphicTextGap="12.0" layoutX="133.0" layoutY="62.0" ripplerFill="#c30404" style="-fx-background-color: #bfbfbf;" text="1:1ChatBot" textFill="WHITE">
                      <padding>
