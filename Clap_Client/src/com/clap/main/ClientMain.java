@@ -18,6 +18,7 @@ import javafx.stage.Stage;
  */
 
 
+
 public class ClientMain extends Application {
 
 	@Override
@@ -29,7 +30,7 @@ public class ClientMain extends Application {
 		LoginSession.session.setMem_pw("4321");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");
-		LoginSession.session.setMem_auth("t");
+		LoginSession.session.setMem_auth("f");
 		
 		
 		
@@ -48,11 +49,12 @@ public class ClientMain extends Application {
 		//로그인은 안했거나/ 일반 사용자일 경우
 		else {
 			System.out.println("일반사용자 로그인 또는 비회원");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(".fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 			ScrollPane root = loader.load();
 			
 			Scene scene = new Scene(root);
 			primaryStage.setTitle("Clap:음악, 그리고 설레임");
+			primaryStage.setScene(scene);
 			primaryStage.show();
 		}
 		
