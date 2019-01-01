@@ -20,6 +20,8 @@ public class ChartMenuController implements Initializable{
 	@FXML Tab tab_period;
 	@FXML Tab tab_musicvideo;
 
+	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
