@@ -12,7 +12,7 @@ public class ServerMain {
 //			IBoardService bsi = new BoardServiceImpl();
 			ISingerService ssi = SingerServiceImpl.getInstance();
 			
-			Registry reg = LocateRegistry.createRegistry(8888);
+			Registry reg = LocateRegistry.createRegistry(7777);
 			
 			reg.rebind("singer", ssi);
 			  System.out.println("clap server  is running...");

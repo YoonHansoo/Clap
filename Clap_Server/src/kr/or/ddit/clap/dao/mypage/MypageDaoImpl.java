@@ -2,6 +2,7 @@ package kr.or.ddit.clap.dao.mypage;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +11,9 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+import kr.or.ddit.clap.vo.member.MemberVO;
 
-public class MypageDaoImpl {
+public class MypageDaoImpl implements IMypageDao{
 
 	private SqlMapClient smc;
 	private static MypageDaoImpl dao; // Singleton 패턴
@@ -36,8 +37,8 @@ public class MypageDaoImpl {
 		return dao;
 	}
 
-	public List<MusicHistoryVO> selectListAll() {
-		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
+	public List<MemberVO> selectListAll() {
+		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
 
 			list = smc.queryForList("mypage.selectListAll");
