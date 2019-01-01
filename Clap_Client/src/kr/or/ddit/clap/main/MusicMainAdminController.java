@@ -94,7 +94,7 @@ public class MusicMainAdminController implements Initializable {
 	}
 	
 	@FXML
-	public void genrePageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+	public void genrePageChange(ActionEvent event) { //차트메뉴에서 장르별차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
@@ -108,7 +108,7 @@ public class MusicMainAdminController implements Initializable {
 	}
 	
 	@FXML
-	public void periodPageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+	public void periodPageChange(ActionEvent event) { //차트메뉴에서 시대별차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
@@ -122,7 +122,7 @@ public class MusicMainAdminController implements Initializable {
 	}
 	
 	@FXML
-	public void musicvideoPageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+	public void musicvideoPageChange(ActionEvent event) { //차트메뉴에서 뮤직비디오차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
