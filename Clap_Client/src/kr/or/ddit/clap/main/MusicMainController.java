@@ -21,7 +21,12 @@ public class MusicMainController implements Initializable{
 	
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
-
+	
+	/**
+	 * 현지
+	 */
+	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -49,6 +54,15 @@ public class MusicMainController implements Initializable{
 		
 		joinDialog.setScene(scene);
 		joinDialog.show();
+	}
+	
+	public void mypage() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+		Scene scene = new Scene(root);
+		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
+		
+		mypageDialog.setScene(scene);
+		mypageDialog.show();
 	}
 
 }

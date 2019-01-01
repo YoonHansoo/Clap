@@ -26,9 +26,9 @@
                         <Image url="@music_main/image.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="115.0" layoutY="56.0" text="Label" />
+                  <Label fx:id="userid" layoutX="115.0" layoutY="56.0" text="Label" />
                   <Label layoutX="146.0" layoutY="56.0" text="님" />
-                  <JFXButton layoutX="105.0" layoutY="82.0" text="프로필 수정 &gt;" />
+                  <JFXButton onAction="#btn_profch" layoutX="105.0" layoutY="82.0" text="프로필 수정 &gt;" />
                   <Text layoutX="22.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필">
                      <font>
                         <Font name="YDIYGO350" size="24.0" />
