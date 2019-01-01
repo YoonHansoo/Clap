@@ -59,7 +59,7 @@
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="TOP50" />
+                              <MenuItem mnemonicParsing="false" text="TOP50" onAction="#top50PageChange"/>
                               <MenuItem mnemonicParsing="false" text="장르별" />
                               <MenuItem mnemonicParsing="false" text="시대별" />
                               <MenuItem mnemonicParsing="false" text="뮤직비디오" />
