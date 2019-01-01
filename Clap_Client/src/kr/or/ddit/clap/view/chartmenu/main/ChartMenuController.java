@@ -24,24 +24,9 @@ public class ChartMenuController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		SingleSelectionModel<Tab> selectionModel = tabPane_main.getSelectionModel();
+		selectionModel.select(menuCount);
 		
-		switch (menuCount) {
 		
-			case 0:
-				selectionModel.select(0);
-				break;
-			case 1:
-				selectionModel.select(1);
-				break;
-			case 2:
-				selectionModel.select(2);
-				break;
-			case 3:
-				selectionModel.select(3);
-				break;
-			default:
-				break;
-		}
 		
 	}
 	
