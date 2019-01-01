@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class SingerVO extends RecursiveTreeObject<SingerVO> implements Serializable{
@@ -18,15 +19,26 @@ public class SingerVO extends RecursiveTreeObject<SingerVO> implements Serializa
 	private String sing_image;
 	private String sing_debut_era;
 	private String sing_intro;
-	private ImageView sing_imgview;
+	private ImageView imgView;
 	
-	public ImageView getSing_imgview() {
-		return sing_imgview;
+	public ImageView getImgView() {
+		this.imgView = new ImageView();
+		Image img = new Image("http://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/080/247/268/80247268_8_600x600.JPG");
+		imgView.setImage(img);
+		imgView.setFitWidth(120);
+		imgView.setFitHeight(50);
+		System.out.println("imgView생성");
+		return imgView;
 	}
-	public void setSing_imgview(ImageView sing_imgview) {
-		this.sing_imgview = sing_imgview;
-		
+
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
 	}
+
+	public SingerVO() {
+		super();
+	}
+	
 	public String getSing_no() {
 		return sing_no;
 	}
@@ -70,13 +82,13 @@ public class SingerVO extends RecursiveTreeObject<SingerVO> implements Serializa
 		this.sing_act_era = sing_act_era;
 	}
 	public String getSing_image() {
+		
 		return sing_image;
 	}
 	public void setSing_image(String sing_image) {
+		
 		this.sing_image = sing_image;
-		this.sing_imgview = new ImageView(sing_image);
-		sing_imgview.setFitWidth(50);
-		sing_imgview.setFitHeight(50);
+	
 	}
 	public String getSing_debut_era() {
 		return sing_debut_era;

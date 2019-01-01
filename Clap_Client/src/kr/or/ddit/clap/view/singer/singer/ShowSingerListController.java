@@ -7,6 +7,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -23,7 +24,6 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.vo.singer.SingerVO;
-import com.jfoenix.controls.JFXComboBox;
 
 public class ShowSingerListController implements Initializable {
 
@@ -59,9 +59,12 @@ public class ShowSingerListController implements Initializable {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		
+		
+
 
 		col_singerImg
-				.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getSing_imgview()));
+				.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 
 		col_singerName
 				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
@@ -81,6 +84,8 @@ public class ShowSingerListController implements Initializable {
 		col_singerNo.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getValue().getSing_no()));
 
+		
+		
 		try {
 			singerList = FXCollections.observableArrayList(iss.selectListAll());
 		} catch (RemoteException e) {
@@ -91,7 +96,7 @@ public class ShowSingerListController implements Initializable {
 		TreeItem<SingerVO> root = new RecursiveTreeItem<>(singerList, RecursiveTreeObject::getChildren);
 		tbl_singer.setRoot(root);
 		tbl_singer.setShowRoot(false);
-		System.out.println(singerList.get(1).getSing_image());
+		System.out.println("ok...");
 	}
 
 }
