@@ -7,5 +7,7 @@
 	<classpathentry kind="lib" path="lib/ibatis-2.3.4.726.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="lib/fontawesomefx-8.1.jar"/>
+	<classpathentry kind="lib" path="lib/jfoenix.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

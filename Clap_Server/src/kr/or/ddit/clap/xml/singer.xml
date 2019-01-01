@@ -6,9 +6,8 @@
 <sqlMap namespace="singer">
 	
 	 
-	 <!-- select 연습 -->
-	 <select id="getSingerAll" resultClass="memVO">
-	 		select * from singer
+	 <select id="selectListAll" resultClass="singerVO">
+	 		select sing_no,sing_name,sing_act_type, sing_act_era,sing_debut_era,sing_debut_mus,sing_image  from singer 
 	 </select>
 	   
 	  
