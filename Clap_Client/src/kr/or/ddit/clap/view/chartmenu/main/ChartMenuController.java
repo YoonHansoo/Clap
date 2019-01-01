@@ -14,6 +14,12 @@ import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * 
+ * @author 진민규
+ *
+ */
+
 public class ChartMenuController implements Initializable{
 	
 	public static int menuCount = 0;
@@ -23,7 +29,6 @@ public class ChartMenuController implements Initializable{
 	@FXML Tab tab_genre;
 	@FXML Tab tab_period;
 	@FXML Tab tab_musicvideo;
-
 	@FXML AnchorPane anchorPane_top50;
 
 	
@@ -32,6 +37,7 @@ public class ChartMenuController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		tabPane_main.getSelectionModel().select(menuCount);
+		
 		try {
 			switch(menuCount) {
 				case 0:
