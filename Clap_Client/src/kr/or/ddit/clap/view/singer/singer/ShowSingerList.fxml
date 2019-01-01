@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerListController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerListController">
    <children>
-      <VBox layoutX="40.0" layoutY="24.0" prefHeight="697.0" prefWidth="242.0" style="-fx-border-color: #FFFF8D; -fx-background-color: #B2B2B2;">
+      <VBox layoutX="40.0" layoutY="53.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #FFFF8D; -fx-background-color: #B2B2B2;">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="200.0" prefWidth="191.0">
                <children>
-                  <ImageView fitHeight="162.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="122.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                     <!--    <Image url="@../../Downloads/people.png" /> -->
+                     </image>
+                  </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="15.0" prefWidth="48.0" text="관리자" textFill="WHITE">
@@ -90,10 +102,29 @@
             </Label>
          </children>
       </VBox>
-      <Label layoutX="334.0" layoutY="79.0" prefHeight="42.0" prefWidth="221.0" text="Label" textFill="WHITE">
+      <Label layoutX="252.0" layoutY="44.0" prefHeight="42.0" prefWidth="221.0" text="가수 관리" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
+      <Pagination fx:id="p_paging" layoutX="252.0" layoutY="86.0" prefHeight="633.0" prefWidth="717.0" style="-fx-background-color: #B2B2B2;" />
+      <Line endX="614.0" layoutX="353.0" layoutY="80.0" startX="-100.0" stroke="#ffff8d" />
+      <JFXTreeTableView fx:id="tbl_singer" layoutX="253.0" layoutY="86.0" prefHeight="543.0" prefWidth="715.0">
+         <columns>
+            <TreeTableColumn fx:id="col_singerImg" prefWidth="163.6666259765625" text="Image" />
+            <TreeTableColumn fx:id="col_singerName" prefWidth="140.33331298828125" text="이름" />
+            <TreeTableColumn fx:id="col_singerActType" prefWidth="88.66668701171875" text="활동 유형" />
+            <TreeTableColumn fx:id="col_singerEra" prefWidth="81.0" text="활동 연대" />
+            <TreeTableColumn fx:id="col_singerDebutEra" prefWidth="83.33331298828125" text="데뷔 년도" />
+            <TreeTableColumn fx:id="col_singerDebutMus" minWidth="0.0" prefWidth="192.0" text="데뷔 곡" />
+            <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
+         </columns></JFXTreeTableView>
+      <JFXComboBox fx:id="combo_search" layoutX="683.0" layoutY="635.0" promptText="가수 명" />
+      <JFXTextField fx:id="text_search" focusColor="#ffff8d" layoutX="758.0" layoutY="634.0" unFocusColor="#ffff8d" />
+      <JFXButton fx:id="btn_search" layoutX="881.0" layoutY="629.0" prefHeight="42.0" prefWidth="61.0" text=" ">
+         <graphic>
+            <FontAwesomeIcon iconName="SEARCH" />
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

@@ -2,8 +2,12 @@ package kr.or.ddit.clap.vo.singer;
 
 import java.io.Serializable;
 
-public class SingerVO implements Serializable{
-	
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.image.ImageView;
+
+public class SingerVO extends RecursiveTreeObject<SingerVO> implements Serializable{
+						//JFXTreeTableView를 사용하기 위해 상속받아야함
 	private String sing_no;
 	private String sing_name;
 	private String sing_nation;
@@ -14,7 +18,15 @@ public class SingerVO implements Serializable{
 	private String sing_image;
 	private String sing_debut_era;
 	private String sing_intro;
+	private ImageView sing_imgview;
 	
+	public ImageView getSing_imgview() {
+		return sing_imgview;
+	}
+	public void setSing_imgview(ImageView sing_imgview) {
+		this.sing_imgview = sing_imgview;
+		
+	}
 	public String getSing_no() {
 		return sing_no;
 	}
@@ -62,6 +74,9 @@ public class SingerVO implements Serializable{
 	}
 	public void setSing_image(String sing_image) {
 		this.sing_image = sing_image;
+		this.sing_imgview = new ImageView(sing_image);
+		sing_imgview.setFitWidth(50);
+		sing_imgview.setFitHeight(50);
 	}
 	public String getSing_debut_era() {
 		return sing_debut_era;
