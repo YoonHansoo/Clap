@@ -16,24 +16,24 @@
                   <Font name="YDIYGO350" size="32.0" />
                </font>
             </Label>
-            <JFXTabPane prefWidth="1024.0" side="RIGHT" tabMinWidth="252.0">
+            <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" side="RIGHT" tabMinWidth="252.0">
                <tabs>
-                  <Tab text="TOP50">
+                  <Tab fx:id="tab_top50" text="TOP50">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                     </content>
                   </Tab>
-                  <Tab text="장르별 차트">
+                  <Tab fx:id="tab_genre" text="장르별 차트">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="시대별 차트">
+                  <Tab fx:id="tab_period" text="시대별 차트">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
                   </Tab>
-                  <Tab text="뮤직비디오 차트">
+                  <Tab fx:id="tab_musicvideo" text="뮤직비디오 차트">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                      </content>
