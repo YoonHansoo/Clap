@@ -16,7 +16,7 @@
                   <Font name="YDIYGO350" size="32.0" />
                </font>
             </Label>
-            <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" side="RIGHT" tabMinWidth="252.0">
+            <JFXTabPane fx:id="tabPane_main" tabClosingPolicy="UNAVAILABLE" prefWidth="1024.0" tabMinWidth="252.0">
                <tabs>
                   <Tab fx:id="tab_top50" text="TOP50">
                     <content>

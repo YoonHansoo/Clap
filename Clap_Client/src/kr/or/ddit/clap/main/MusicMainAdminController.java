@@ -84,8 +84,8 @@ public class MusicMainAdminController implements Initializable {
 	@FXML
 	public void top50PageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
 		try {
-			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			ChartMenuController.menuCount = 0;
+			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(top50Page);
 			
@@ -98,8 +98,8 @@ public class MusicMainAdminController implements Initializable {
 	@FXML
 	public void genrePageChange(ActionEvent event) { //차트메뉴에서 장르별차트 클릭 했을때 페이지 전환 이벤트
 		try {
-			Parent genrePage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			ChartMenuController.menuCount = 1;
+			Parent genrePage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(genrePage);
 			
@@ -112,8 +112,8 @@ public class MusicMainAdminController implements Initializable {
 	@FXML
 	public void periodPageChange(ActionEvent event) { //차트메뉴에서 시대별차트 클릭 했을때 페이지 전환 이벤트
 		try {
-			Parent periodPage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			ChartMenuController.menuCount = 2;
+			Parent periodPage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(periodPage);
 			
@@ -126,8 +126,8 @@ public class MusicMainAdminController implements Initializable {
 	@FXML
 	public void musicvideoPageChange(ActionEvent event) { //차트메뉴에서 뮤직비디오차트 클릭 했을때 페이지 전환 이벤트
 		try {
-			Parent musicvideoPage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			ChartMenuController.menuCount = 3;
+			Parent musicvideoPage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll( musicvideoPage);
 			
