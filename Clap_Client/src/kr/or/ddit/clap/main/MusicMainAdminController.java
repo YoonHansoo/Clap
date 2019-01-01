@@ -93,4 +93,46 @@ public class MusicMainAdminController implements Initializable {
 		
 	}
 	
+	@FXML
+	public void genrePageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+		try {
+			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(top50Page);
+			
+		//System.out.println(item_SigerManage.getText());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@FXML
+	public void periodPageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+		try {
+			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(top50Page);
+			
+		//System.out.println(item_SigerManage.getText());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@FXML
+	public void musicvideoPageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+		try {
+			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(top50Page);
+			
+		//System.out.println(item_SigerManage.getText());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 }
