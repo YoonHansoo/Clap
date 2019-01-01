@@ -16,6 +16,8 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.AnchorPane;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
@@ -83,6 +85,7 @@ public class MusicMainAdminController implements Initializable {
 	public void top50PageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent top50Page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			ChartMenuController.menuCount = 0;
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(top50Page);
 			
@@ -96,6 +99,7 @@ public class MusicMainAdminController implements Initializable {
 	public void genrePageChange(ActionEvent event) { //차트메뉴에서 장르별차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent genrePage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			ChartMenuController.menuCount = 1;
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(genrePage);
 			
@@ -109,6 +113,7 @@ public class MusicMainAdminController implements Initializable {
 	public void periodPageChange(ActionEvent event) { //차트메뉴에서 시대별차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent periodPage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			ChartMenuController.menuCount = 2;
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(periodPage);
 			
@@ -122,6 +127,7 @@ public class MusicMainAdminController implements Initializable {
 	public void musicvideoPageChange(ActionEvent event) { //차트메뉴에서 뮤직비디오차트 클릭 했을때 페이지 전환 이벤트
 		try {
 			Parent musicvideoPage = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			ChartMenuController.menuCount = 3;
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll( musicvideoPage);
 			
