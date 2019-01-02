@@ -6,12 +6,12 @@
 <sqlMap namespace="musichistory">
 	
 	 
-	 <select id="selectListAll" resultClass="musichistoryVO">
+	 <select id="selectList" resultClass="musichistoryVO">
 	 		select mus_no ,count(mus_no)
 			  from music_history
-			  where histo_indate like '19/01/01'
-			  group by mus_no
-			  order by mus_no
+			 where histo_indate = to_char(sysdate,'YYYYMMDD')
+			 group by mus_no
+			 order by count(mus_no) desc
 	 </select>
 	   
 	  

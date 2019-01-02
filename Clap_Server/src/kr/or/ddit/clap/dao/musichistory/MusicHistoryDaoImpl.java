@@ -46,17 +46,22 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return dao;
 	}
 
-	public List<MusicHistoryVO> selectListAll() {
+	public List<MusicHistoryVO> selectList() {
 		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
 		try {
 
-			list = smc.queryForList("singer.selectListAll");
+			list = smc.queryForList("musichistory.selectList");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
 		return list;
+	}
+	
+	public static void main(String[] args) {
+		List<MusicHistoryVO> list = new MusicHistoryDaoImpl().selectList();
+		System.out.println(list.get(0).getMus_no());
 	}
 
 }

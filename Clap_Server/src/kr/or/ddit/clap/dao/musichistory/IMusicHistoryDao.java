@@ -9,5 +9,5 @@ import kr.or.ddit.clap.vo.music.MusicHistoryVO;
  *
  */
 public interface IMusicHistoryDao {
-	public List<MusicHistoryVO> selectListAll();
+	public List<MusicHistoryVO> selectList();
 }
