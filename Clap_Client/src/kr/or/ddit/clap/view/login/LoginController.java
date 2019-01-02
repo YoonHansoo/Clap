@@ -39,7 +39,24 @@ public class LoginController implements Initializable{
 		
 		String decryptedPw = ""; // 복호화시킨 pw
 		decryptedPw = aes.decrypt(encryptedPw);
-				
+	
+		// 아이디 확인
+		
+		// 아이디가 존재하지 않을 때
+		if(false) {
+			System.out.println("존재하지 않는 ID입니다.");
+		}
+		
+		// 비밀번호 확인
+		
+		// 비밀번호가 일치하지 않을 때
+		if(false) {
+			System.out.println("비밀번호를 정확히 입력해주세요.");
+			// 3회 이상 실패하면 captcha.
+		}
+		
+		
+		
 		System.out.println(txt_id.getText());
 		System.out.println(encryptedPw);
 		System.out.println(decryptedPw);
