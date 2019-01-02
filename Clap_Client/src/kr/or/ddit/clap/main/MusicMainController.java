@@ -45,7 +45,7 @@ public class MusicMainController implements Initializable{
 	}
 	
 	public void join() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("Join.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
 		Scene scene = new Scene(root);
 		joinDialog.setTitle("모여서 각잡고 코딩 - clap");
 		if(joinDialog.getModality() == null) {

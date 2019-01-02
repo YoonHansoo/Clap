@@ -1,4 +1,4 @@
-package kr.or.ddit.clap.main;
+package kr.or.ddit.clap.view.join;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;

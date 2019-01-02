@@ -11,7 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import kr.or.ddit.clap.main.AES256Util;
+import kr.or.ddit.clap.view.join.AES256Util;
 
 /**
  * 로그인창 컨트롤러.
