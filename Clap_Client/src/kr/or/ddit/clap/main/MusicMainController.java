@@ -29,7 +29,7 @@ public class MusicMainController implements Initializable{
 	public static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
-	@FXML AnchorPane mainMenu;
+	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	
 	
@@ -54,12 +54,14 @@ public class MusicMainController implements Initializable{
 		
 		loginDialog.setScene(scene);
 		loginDialog.show();
+		System.out.println(menu.getId());
 	}
 	
 	public void login_PageLoad() {
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/login/Member.fxml"));
 //			menu.getChildren().remove(2); // remove하는데 왜 NullPointerException이 뜨지
+//											 다른 컨트롤러에서 호출하면 menu는 null
 //			menu.getChildren().add(2, page);
 		} catch (IOException e) {
 			e.printStackTrace();
