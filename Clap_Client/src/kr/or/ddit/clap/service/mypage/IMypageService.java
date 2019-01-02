@@ -7,6 +7,6 @@ import java.util.List;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 public interface IMypageService  extends Remote {
-	public List<MemberVO> selectList() throws RemoteException;
+	public MemberVO select(MemberVO vo) throws RemoteException;
 
 }

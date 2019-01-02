@@ -33,10 +33,6 @@ public class MusicMainController implements Initializable{
 	@FXML AnchorPane contents;
 	
 	
-	/**
-	 * 현지
-	 */
-	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -70,7 +66,7 @@ public class MusicMainController implements Initializable{
 	}
 
 	@FXML
-	public void mypage(ActionEvent event) {
+	public void mypage() {
 		try {
 			Parent mypage = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
 			contents.getChildren().removeAll();
