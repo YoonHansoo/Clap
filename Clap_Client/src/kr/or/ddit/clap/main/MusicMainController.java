@@ -33,7 +33,7 @@ public class MusicMainController implements Initializable{
 	}
 	
 	public void login() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
 		Scene scene = new Scene(root);
 		loginDialog.setTitle("모여서 각잡고 코딩 - clap");
 		if(loginDialog.getModality() == null) {
