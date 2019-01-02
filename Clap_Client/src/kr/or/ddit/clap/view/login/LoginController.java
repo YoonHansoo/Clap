@@ -51,7 +51,7 @@ public class LoginController implements Initializable{
 		}
 	}
 	
-	public void login() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException, RemoteException {
+	public void login() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException{
 		AES256Util aes = new AES256Util();
 		
 		String encryptedPw = ""; // 암호화된 pw
@@ -61,7 +61,13 @@ public class LoginController implements Initializable{
 		decryptedPw = aes.decrypt(encryptedPw);
 	
 		// 아이디 확인
-		MemberVO vo = ils.select(txt_id.getText());
+		MemberVO vo = null;
+		try {
+			vo = ils.select(txt_id.getText());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		// 아이디가 존재하지 않을 때
 		if(vo == null) {
