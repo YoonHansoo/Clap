@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50RealTimeController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50RealTimeController">
    <children>
-      <VBox prefWidth="1024.0">
+      <VBox fx:id="mainBox" prefWidth="1024.0">
          <children>
             <HBox spacing="5.0">
                <padding>
@@ -125,13 +125,13 @@
                   <Insets left="60.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="3.0" prefWidth="1004.0" style="-fx-background-color: #70d3ff;">
-               <VBox.margin>
-                  <Insets top="5.0" />
-               </VBox.margin>
-            </HBox>
-            <VBox>
+            <VBox >
                <children>
+                  <HBox prefHeight="3.0" prefWidth="1004.0" style="-fx-background-color: #70d3ff;">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
                   <HBox spacing="10.0">
                      <children>
                         <HBox alignment="CENTER_LEFT" maxWidth="170.0" prefHeight="51.0" prefWidth="170.0" spacing="10.0">
