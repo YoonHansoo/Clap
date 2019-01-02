@@ -1,4 +1,4 @@
-package kr.or.ddit.clap.view.member;
+package kr.or.ddit.clap.view.member.mypage;
 
 import java.io.IOException;
 import java.net.URL;
