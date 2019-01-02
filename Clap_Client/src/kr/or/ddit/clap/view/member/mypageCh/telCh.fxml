@@ -35,7 +35,7 @@
             <Text fill="#f80000" layoutX="40.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="＇" />
             <Text fill="#eb6464" layoutX="59.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="저작권보호정책(DRM)이 적용된 음원파일을 재다운로드 받으셔야 합니다." />
             <Button fx:id="btn_ok" layoutX="260.0" layoutY="270.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="109.0" text="확인" />
-            <Button layoutX="397.0" layoutY="270.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="109.0" text="취소" />
+            <Button fx:id="btn_cl" layoutX="397.0" layoutY="270.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="109.0" text="취소" />
          </children>
       </AnchorPane>
    </children>

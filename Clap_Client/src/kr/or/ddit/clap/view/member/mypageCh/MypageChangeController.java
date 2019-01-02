@@ -8,33 +8,38 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
-import javafx.fxml.Initializable;
-import kr.or.ddit.clap.main.LoginSession;
-import kr.or.ddit.clap.service.mypage.IMypageService;
-import kr.or.ddit.clap.vo.member.MemberVO;
-import kr.or.ddit.clap.vo.singer.SingerVO;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.vo.member.MemberVO;
 
 public class MypageChangeController implements Initializable {
+	
 	private Registry reg;
 	private IMypageService ims;
 	@FXML Label id;
 	@FXML Label ph;
+	@FXML JFXTextField em1;
+	@FXML JFXTextField em2;
+	@FXML ComboBox<String> com_em;
 	static Stage tel = new Stage(StageStyle.DECORATED);
 	String tell="" ;
+	@FXML Button ok;
+	@FXML Button cl;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -60,7 +65,30 @@ public class MypageChangeController implements Initializable {
 		}
 		
 		ph.setText(vo2.getMem_tel().substring(0, 3)+"-"+vo2.getMem_tel().substring(4, 8));
+		//이메일 뿌주기
+		String[] str=vo2.getMem_email().split("@");
+		em1.setText(str[0]);
+		em2.setText(str[1]);
+		//이메일값 변경
+		com_em.getItems().addAll("naver.com","gmail.com","nate.com","hanmail.net","chol.com","empal.com","yahoo.co.kr");
+		com_em.setValue("----");
+		com_em.setOnAction(e->{
+			em2.setText(com_em.getValue().toString());
+		});
 		
+		ok.setOnAction(ee->{
+			
+			vo.setMem_id(user_id);
+			vo.setMem_email(em1.getText()+"@"+em2.getText());
+
+			try {
+				int result = ims.updateEmail(vo);
+			} catch (RemoteException e) {
+				System.out.println("에러입니다");
+				e.printStackTrace();
+			}
+			infoMsg("완료","회원정보 수정이 완료되었습니다.");
+		});
 		
 	}
 	
@@ -94,10 +122,23 @@ public class MypageChangeController implements Initializable {
 			tell += tel1.getText();
 			tell += tel2.getText();
 			
-			System.out.println(tell);
+			
+			String user_id = LoginSession.session.getMem_id();
+			MemberVO vo = new MemberVO();
+			vo.setMem_id(user_id);
+			vo.setMem_tel(tell);
+
+			try {
+				int result = ims.updateTel(vo);
+			} catch (RemoteException e) {
+				System.out.println("에러입니다");
+				e.printStackTrace();
+			}
 	
-		
+			tel.close();
 	});
+		Button btn_cl =(Button) root.lookup("#btn_cl");
+		btn_cl.setOnAction(ee->tel.close());
 	}
 	
 	public void errMsg(String headerText, String msg) {
