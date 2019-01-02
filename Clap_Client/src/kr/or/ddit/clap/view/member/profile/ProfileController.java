@@ -48,7 +48,7 @@ public class ProfileController implements Initializable {
 		        	 LoginSession.session.setMem_image(selectFile.getPath());
 		         }
 			}
-		      });
+		   });
 		}
 	
 	
