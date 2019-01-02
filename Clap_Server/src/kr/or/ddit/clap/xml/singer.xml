@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap
-			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
-			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
-<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->			
+         PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+         "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->         
 <sqlMap namespace="singer">
-	
-	 
-	 <select id="selectListAll" resultClass="singerVO">
-	 		select sing_no,sing_name,sing_act_type, sing_act_era,sing_debut_era,sing_debut_mus,sing_image  from singer 
-	 </select>
-	   
-	  <!-- 검색용 쿼리 -->
-	<select id="searchList" resultClass="singerVO" parameterClass="singerVO">
-	 		select sing_no,
-	 			   sing_name,
-	 			   sing_act_type,
-	 			   sing_act_era,
-	 			   sing_debut_era,
-	 			   sing_debut_mus,
-	 			   sing_image  
-	 		  from singer 
-	 	<dynamic prepend="where">
-		 	<isNotEmpty property="sing_name" prepend="and">
-		 		sing_name  like '%' || #sing_name# || '%'
-		 	</isNotEmpty>
-		 	<isNotEmpty property="sing_debut_mus" prepend="and">
-		 		sing_debut_mus  like '%' || #sing_debut_mus# || '%'
-		 	</isNotEmpty>	
-	 	</dynamic>			
-	 </select>  
-		
-	
-	
+   
+    
+    <select id="selectListAll" resultClass="singerVO">
+          select sing_no,sing_name,sing_act_type, sing_act_era,sing_debut_era,sing_debut_mus,sing_image  from singer 
+    </select>
+      
+     <!-- 검색용 쿼리 -->
+   <select id="searchList" resultClass="singerVO" parameterClass="singerVO">
+          select sing_no,
+                sing_name,
+                sing_act_type,
+                sing_act_era,
+                sing_debut_era,
+                sing_debut_mus,
+                sing_image  
+            from singer 
+       <dynamic prepend="where">
+          <isNotEmpty property="sing_name" prepend="and">
+             sing_name  like '%' || #sing_name# || '%'
+          </isNotEmpty>
+          <isNotEmpty property="sing_debut_mus" prepend="and">
+             sing_debut_mus  like '%' || #sing_debut_mus# || '%'
+          </isNotEmpty>   
+       </dynamic>         
+    </select>  
+      
+   
+   
 
-</sqlMap>			
-
+</sqlMap>         
 
 
 
