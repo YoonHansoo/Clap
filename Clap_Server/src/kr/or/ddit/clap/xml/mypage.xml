@@ -6,7 +6,7 @@
 <sqlMap namespace="mypage">
 	
 	 
-	 <select id="selectList" resultClass="memberVO">
+	 <select id="selectList" resultClass="memberVO" parameterClass="memberVO">
 	 		select mem_id,
 	 			   mem_pw,
 	 			   mem_name, 
@@ -25,6 +25,7 @@
 	 			   mem_image,
 	 			   mem_intro
 	 	  from member 
+	 	  where mem_id= #mem_id#
 	 </select>
 
 </sqlMap>			

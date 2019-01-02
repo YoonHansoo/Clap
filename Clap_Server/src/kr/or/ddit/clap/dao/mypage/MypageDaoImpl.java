@@ -37,18 +37,19 @@ public class MypageDaoImpl implements IMypageDao{
 		return dao;
 	}
 
-	public List<MemberVO> selectListAll() {
-		List<MemberVO> list = new ArrayList<MemberVO>();
+	public MemberVO select(MemberVO vo) {
+		MemberVO check = new MemberVO();
 		try {
 
-			list = smc.queryForList("mypage.selectListAll");
+			check = (MemberVO) smc.queryForObject("mypage.select" ,vo);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 
-		return list;
+		return check;
 	}
+
 
 	
 }

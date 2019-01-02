@@ -13,6 +13,6 @@ import kr.or.ddit.clap.vo.member.MemberVO;
 
 public interface IMypageDao {
 
-	public List<MemberVO> selectListAll();
+	public MemberVO select(MemberVO vo);
 	
 }

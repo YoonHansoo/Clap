@@ -12,6 +12,5 @@ import kr.or.ddit.clap.vo.member.MemberVO;
 
 public interface IMypageService  extends Remote {
 
-	public List<MemberVO> selectListAll() throws RemoteException;;
-	
+	public MemberVO select(MemberVO vo) throws RemoteException;
 }

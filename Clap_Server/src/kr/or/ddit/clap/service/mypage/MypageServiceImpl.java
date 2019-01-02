@@ -6,6 +6,7 @@ import java.util.List;
 
 import kr.or.ddit.clap.dao.mypage.MypageDaoImpl;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 
 public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageService  {
 	MypageDaoImpl mypageDao; //사용할 Dao의  멤버변수를 선언
@@ -28,11 +29,10 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 	// 각 메서드에서는 생성된 Dao객체를 이용하여 작업에 맞는 Dao객체의 메서드를 호출한다.
 
 	@Override
-	public List<MemberVO> selectListAll() throws RemoteException {
+	public MemberVO select(MemberVO vo) throws RemoteException {
 		
-		return mypageDao.selectListAll();
+		return mypageDao.select(vo);
 	}
-
 
 	
 }

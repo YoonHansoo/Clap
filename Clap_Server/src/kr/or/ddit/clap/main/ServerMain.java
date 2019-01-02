@@ -3,18 +3,23 @@ package kr.or.ddit.clap.main;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.service.singer.SingerServiceImpl;
 
 public class ServerMain {
 	public static void main(String[] args) {
+		
 		try {
 //			IBoardService bsi = new BoardServiceImpl();
-			ISingerService ssi = SingerServiceImpl.getInstance();
+			ISingerService ssi 	= SingerServiceImpl.getInstance();
+			IMypageService ms 	= MypageServiceImpl.getInstance(); //객체생성
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
 			reg.rebind("singer", ssi);
+			reg.rebind("mypage", ms);
 			  System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
