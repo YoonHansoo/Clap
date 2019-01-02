@@ -15,48 +15,48 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:controller="kr.or.ddit.clap.view.member.mypage.MypageController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="826.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageController">
    <children>
       <HBox layoutY="7.0" prefHeight="879.0" prefWidth="768.0">
          <children>
             <AnchorPane prefHeight="816.0" prefWidth="213.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="21.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@music_main/image.png" />
+                        <Image fx:id="user_img" url="@music_main/image.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="userid" layoutX="115.0" layoutY="56.0" text="Label" />
-                  <Label layoutX="146.0" layoutY="56.0" text="님" />
-                  <JFXButton onAction="#btn_profch" layoutX="105.0" layoutY="82.0" text="프로필 수정 &gt;" />
-                  <Text layoutX="22.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필">
+                  <Label fx:id="userid" layoutX="112.0" layoutY="56.0" text="Label" />
+                  <Label layoutX="175.0" layoutY="56.0" text="님" />
+                  <JFXButton layoutX="103.0" layoutY="98.0" onAction="#btn_profch" text="프로필 수정 &gt;" />
+                  <Text layoutX="22.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필">
                      <font>
                         <Font name="YDIYGO350" size="24.0" />
                      </font>
                   </Text>
-                  <JFXTreeTableView layoutX="8.0" layoutY="354.0" prefHeight="198.0" prefWidth="189.0" />
-                  <JFXButton layoutX="22.0" layoutY="200.0" text="- 베스트 감상곡" />
-                  <JFXButton layoutX="22.0" layoutY="223.0" text="- 좋아요♥" />
-                  <JFXButton layoutX="22.0" layoutY="246.0" text="- 리뷰" />
-                  <JFXButton layoutX="26.0" layoutY="693.0" text="- 최근감상곡" />
-                  <JFXButton layoutX="26.0" layoutY="725.0" text="- 많이 들은곡" />
-                  <JFXButton layoutX="25.0" layoutY="756.0" text="-많이 들은 아티스트" />
-                  <Button layoutX="131.0" layoutY="569.0" mnemonicParsing="false" text="Button" />
-                  <Pagination layoutX="8.0" layoutY="483.0" prefHeight="124.0" prefWidth="110.0" />
-                  <Text layoutX="14.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범">
+                  <JFXTreeTableView layoutX="8.0" layoutY="389.0" prefHeight="198.0" prefWidth="189.0" />
+                  <JFXButton layoutX="22.0" layoutY="235.0" text="- 베스트 감상곡" />
+                  <JFXButton layoutX="22.0" layoutY="258.0" text="- 좋아요♥" />
+                  <JFXButton layoutX="22.0" layoutY="281.0" text="- 리뷰" />
+                  <JFXButton layoutX="26.0" layoutY="728.0" text="- 최근감상곡" />
+                  <JFXButton layoutX="26.0" layoutY="760.0" text="- 많이 들은곡" />
+                  <JFXButton layoutX="25.0" layoutY="791.0" text="-많이 들은 아티스트" />
+                  <Button layoutX="131.0" layoutY="604.0" mnemonicParsing="false" text="Button" />
+                  <Pagination layoutX="8.0" layoutY="518.0" prefHeight="124.0" prefWidth="110.0" />
+                  <Text layoutX="14.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범">
                      <font>
                         <Font name="YDIYGO350" size="24.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="667.0" strokeType="OUTSIDE" strokeWidth="0.0" text="감상이력">
+                  <Text layoutX="14.0" layoutY="702.0" strokeType="OUTSIDE" strokeWidth="0.0" text="감상이력">
                      <font>
                         <Font name="YDIYGO350" size="24.0" />
                      </font>
                   </Text>
-                  <Line endX="89.0" layoutX="122.0" layoutY="150.0" startX="-152.0" />
+                  <Line endX="103.5" layoutX="119.0" layoutY="172.0" startX="-152.0" />
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="879.0" prefWidth="558.0" style="-fx-border-color: #000000;">
+            <AnchorPane prefHeight="879.0" prefWidth="558.0">
                <children>
                   <Button layoutX="113.0" layoutY="77.0" mnemonicParsing="false" text="Button" />
                   <TabPane layoutX="42.0" layoutY="320.0" prefHeight="310.0" prefWidth="427.0" tabClosingPolicy="UNAVAILABLE">
@@ -97,9 +97,9 @@
                   <Text layoutX="38.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰" />
                   <JFXButton layoutX="457.0" layoutY="657.0" text="더보기 &gt;" textFill="#030303" />
                   <JFXTreeTableView layoutX="47.0" layoutY="689.0" prefHeight="124.0" prefWidth="457.0" />
+                  <Line endX="-14.0" endY="854.0" layoutX="15.0" layoutY="25.0" startX="-14.0" startY="-24.99999237060547" />
                </children>
             </AnchorPane>
-            <JFXButton text="더보기 &gt;" textFill="#030303" />
          </children>
       </HBox>
    </children>
