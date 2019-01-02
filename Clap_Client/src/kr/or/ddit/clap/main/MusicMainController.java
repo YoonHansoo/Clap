@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -42,6 +41,7 @@ public class MusicMainController implements Initializable{
 		
 	}
 	
+	@FXML
 	public void login() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
 		Scene scene = new Scene(root);
@@ -54,6 +54,7 @@ public class MusicMainController implements Initializable{
 		loginDialog.show();
 	}
 	
+	@FXML
 	public void join() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
 		Scene scene = new Scene(root);
@@ -66,6 +67,7 @@ public class MusicMainController implements Initializable{
 		joinDialog.show();
 	}
 	
+	@FXML
 	public void mypage() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
 		Scene scene = new Scene(root);
@@ -75,8 +77,8 @@ public class MusicMainController implements Initializable{
 		mypageDialog.show();
 	}
 	
+	@FXML
 	public void buyTicket() throws IOException {
-		
 		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));			
 //		Scene scene = new Scene(root);
 //		buyTicketDialog.setTitle("모여서 각잡고 코딩 - clap");
@@ -84,6 +86,8 @@ public class MusicMainController implements Initializable{
 //		buyTicketDialog.setScene(scene);
 //		buyTicketDialog.show();
 	}
+	
+	
 	
 	@FXML
 	public void top50PageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
