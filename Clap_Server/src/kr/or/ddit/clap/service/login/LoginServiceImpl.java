@@ -22,10 +22,11 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 		}
 		return service;
 	}
-	
+
 	@Override
-	public List<MemberVO> selectList() throws RemoteException {
-		return null;
+	public MemberVO select(String id) throws RemoteException {
+		return loginDao.select(id);
 	}
+
 
 }

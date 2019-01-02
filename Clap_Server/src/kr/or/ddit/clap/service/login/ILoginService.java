@@ -7,5 +7,5 @@ import java.util.List;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 public interface ILoginService extends Remote{
-	public List<MemberVO> selectList() throws RemoteException;
+	public MemberVO select(String id) throws RemoteException;
 }
