@@ -2,7 +2,9 @@ package kr.or.ddit.clap.vo.support;
 
 import java.io.Serializable;
 
-public class QnaVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class QnaVO extends RecursiveTreeObject<QnaVO> implements Serializable{
 	
 	private String qna_no;
 	private String qna_indate;
