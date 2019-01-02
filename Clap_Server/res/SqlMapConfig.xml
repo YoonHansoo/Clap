@@ -12,7 +12,7 @@
 
  	<typeAlias alias="singerVO" type="kr.or.ddit.clap.vo.singer.SingerVO"/>
  	<typeAlias alias="musichistoryVO" type="kr.or.ddit.clap.vo.music.MusicHistoryVO"/>
- 	<typeAlias alias="memberVO" type="kr.or.ddit.clap.vo.member.memberVO"/>
+ 	<typeAlias alias="memberVO" type="kr.or.ddit.clap.vo.member.MemberVO"/>
  	<typeAlias alias="qnaVO" type="kr.or.ddit.clap.vo.support.QnaVO"/>
 
 	<transactionManager type="JDBC">
@@ -29,7 +29,7 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/musichistory.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/login.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/qna.xml"></sqlMap> 
-		<sqlMap resource="kr/or/ddit/clap/xml/mypage.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/mypage.xml"></sqlMap> 
 </sqlMapConfig>
 
 
