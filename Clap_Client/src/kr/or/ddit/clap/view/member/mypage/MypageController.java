@@ -21,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
@@ -111,9 +112,19 @@ public class MypageController implements Initializable {
 						e.printStackTrace();
 					}
 
+				}else {
+					Text test_set =(Text) root.lookup("#text");
+					test_set.setText("\t   잘못된 비밀번호를 입력하였습니다.");
 				}
 
 			}
+		});//btn_ok
+		
+		
+
+		Button btn_no = (Button) root.lookup("#btn_cl");
+		btn_no.setOnMouseClicked(e ->{
+			pwok.close();
 		});
 
 	}

@@ -51,7 +51,7 @@
                   <Label fx:id="id" layoutX="230.0" layoutY="36.0" text="Label" />
                   <Label fx:id="ph" layoutX="230.0" layoutY="87.0" text="Label" />
                   <Label layoutX="301.0" layoutY="87.0" text="-＊＊＊＊" />
-                  <Button fx:id="btn_telCh" layoutX="426.0" layoutY="83.0" mnemonicParsing="false" text="변경하기" />
+                  <Button onAction="#btn_telCh" layoutX="426.0" layoutY="83.0" mnemonicParsing="false" text="변경하기" />
                   <Text layoutX="202.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="clap 뮤직 주요 공지사항 및 결제관련 정보일 경우, 정보 수신 동의 여부에 " />
                   <Text layoutX="202.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="여부에 관계 없이 발송 됩니다.아이디/비밀번호 찾기 또는 중요 알림을 받기  " />
                   <Text layoutX="202.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="위해 사용할 휴대폰 번호를 정확하게 입력해 주세요." />
