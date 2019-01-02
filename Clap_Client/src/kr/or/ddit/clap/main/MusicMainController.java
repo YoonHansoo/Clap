@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -18,6 +20,8 @@ import javafx.stage.StageStyle;
  *
  */
 public class MusicMainController implements Initializable{
+	
+	@FXML VBox vbox;
 	
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
@@ -67,13 +71,15 @@ public class MusicMainController implements Initializable{
 	}
 	
 	public void buyTicket() throws IOException {
-//		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
 //		Scene scene = new Scene(root);
 //		buyTicketDialog.setTitle("모여서 각잡고 코딩 - clap");
 //		
 //		buyTicketDialog.setScene(scene);
 //		buyTicketDialog.show();
 		System.out.println("이용권 구매 화면");
+		vbox.getChildren().remove(1);
+		vbox.getChildren().add(root);
 	}
 
 }
