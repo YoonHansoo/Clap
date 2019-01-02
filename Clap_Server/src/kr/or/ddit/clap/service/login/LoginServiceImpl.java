@@ -11,7 +11,7 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 	LoginServiceImpl loginDao; // 사용할 Dao의  멤버변수를 선언
 	private static LoginServiceImpl service; // Singleton패턴 
 	
-	protected LoginServiceImpl() throws RemoteException {
+	private LoginServiceImpl() throws RemoteException {
 		super();
 		loginDao =  LoginServiceImpl.getInstance(); // Singleton패턴
 	}
