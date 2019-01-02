@@ -32,6 +32,7 @@ public class MusicMainController implements Initializable{
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	
+	
 	/**
 	 * 현지
 	 */
@@ -68,14 +69,30 @@ public class MusicMainController implements Initializable{
 		joinDialog.show();
 	}
 	
+<<<<<<< .mine
+	
+	@FXML
+	public void mypage(ActionEvent event) {
+		try {
+			Parent mypage = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(mypage);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+||||||| .r51762
+	public void mypage() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+		Scene scene = new Scene(root);
+		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
+=======
 	@FXML
 	public void mypage() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
 		Scene scene = new Scene(root);
 		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
+>>>>>>> .r51768
 		
-		mypageDialog.setScene(scene);
-		mypageDialog.show();
 	}
 	
 	@FXML
