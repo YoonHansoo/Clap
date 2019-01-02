@@ -27,6 +27,18 @@
 	 	  from member 
 	 	  where mem_id= #mem_id#
 	 </select>
+	 
+	  <update id="updateTel"  parameterClass="memberVO">
+	 		update member 
+	 		set mem_tel=#mem_tel# 
+			where mem_id = #mem_id#
+	 </update>
+	 
+	   <update id="updateEmail"  parameterClass="memberVO">
+	 		update member 
+	 		set mem_email=#mem_email# 
+			where mem_id = #mem_id#
+	 </update>
 
 </sqlMap>			
 

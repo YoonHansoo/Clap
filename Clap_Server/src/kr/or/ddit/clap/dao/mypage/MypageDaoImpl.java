@@ -46,5 +46,31 @@ public class MypageDaoImpl implements IMypageDao{
 		return check;
 	}
 
+	@Override
+	public int  updateTel(MemberVO vo) {
+			int cnt = 0;
+			try {
+		
+				cnt = smc.update("mypage.updateTel", vo);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return cnt;
+	}
+
+	@Override
+	public int updateEmail(MemberVO vo) {
+		int cnt = 0;
+		try {
+	
+			cnt = smc.update("mypage.updateEmail", vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 
 }

@@ -15,4 +15,7 @@ public interface IMypageDao {
 
 	public MemberVO select(MemberVO vo);
 	
+	public int  updateTel(MemberVO vo);
+	
+	public int  updateEmail(MemberVO vo);
 }
