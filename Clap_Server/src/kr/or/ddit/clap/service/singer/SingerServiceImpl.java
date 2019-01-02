@@ -41,4 +41,10 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 		return singerDao.selectListAll();
 	}
 
+	@Override
+	public List<SingerVO> searchList(SingerVO vo) throws RemoteException {
+		
+		return singerDao.searchList(vo);
+	}
+
 }

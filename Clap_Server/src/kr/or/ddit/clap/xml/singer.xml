@@ -10,7 +10,25 @@
 	 		select sing_no,sing_name,sing_act_type, sing_act_era,sing_debut_era,sing_debut_mus,sing_image  from singer 
 	 </select>
 	   
-	  
+	  <!-- 검색용 쿼리 -->
+	<select id="searchList" resultClass="singerVO" parameterClass="singerVO">
+	 		select sing_no,
+	 			   sing_name,
+	 			   sing_act_type,
+	 			   sing_act_era,
+	 			   sing_debut_era,
+	 			   sing_debut_mus,
+	 			   sing_image  
+	 		  from singer 
+	 	<dynamic prepend="where">
+		 	<isNotEmpty property="sing_name" prepend="and">
+		 		sing_name  like '%' || #sing_name# || '%'
+		 	</isNotEmpty>
+		 	<isNotEmpty property="sing_debut_mus" prepend="and">
+		 		sing_debut_mus  like '%' || #sing_debut_mus# || '%'
+		 	</isNotEmpty>	
+	 	</dynamic>			
+	 </select>  
 		
 	
 	

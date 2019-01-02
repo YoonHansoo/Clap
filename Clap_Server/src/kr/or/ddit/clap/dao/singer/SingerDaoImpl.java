@@ -19,7 +19,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
-public class SingerDaoImpl {
+public class SingerDaoImpl implements ISingerDao {
 
 	private SqlMapClient smc;
 	private static SingerDaoImpl dao; // Singleton 패턴
@@ -53,6 +53,20 @@ public class SingerDaoImpl {
 			e.printStackTrace();
 		}
 
+		return list;
+	}
+
+	@Override
+	public List<SingerVO> searchList(SingerVO vo) {
+		List<SingerVO> list = new ArrayList<SingerVO>();
+		try {
+			
+			list = smc.queryForList("singer.searchList",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
 		return list;
 	}
 

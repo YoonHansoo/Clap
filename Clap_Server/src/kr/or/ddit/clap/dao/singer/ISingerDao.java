@@ -12,4 +12,5 @@ public interface ISingerDao {
 	
 	public List<SingerVO> selectListAll();
 	
+	public List<SingerVO> searchList(SingerVO vo);
 }
