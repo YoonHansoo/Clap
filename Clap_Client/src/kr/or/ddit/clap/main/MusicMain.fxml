@@ -100,7 +100,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="문의사항">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="문의사항" />
+                              <MenuItem mnemonicParsing="false" text="문의사항" onAction="#qna" />
                               <MenuItem mnemonicParsing="false" text="1:1ChatBot" />
                            </items>
                         </Menu>

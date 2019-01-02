@@ -87,6 +87,20 @@ public class MusicMainController implements Initializable{
 	}
 	
 	
+	@FXML
+	public void qna() {
+
+		try {
+			Parent qna = FXMLLoader.load(getClass().getResource("../view/support/qna/QnaMenuList.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(qna);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 	
 	@FXML
 	public void top50PageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
