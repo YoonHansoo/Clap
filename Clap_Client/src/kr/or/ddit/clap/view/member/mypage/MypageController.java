@@ -28,7 +28,7 @@ import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 public class MypageController implements Initializable {
-	
+
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	@FXML
 	Label userid;
@@ -39,13 +39,10 @@ public class MypageController implements Initializable {
 	private Registry reg;
 	private IMypageService ims;
 	static Stage pwok = new Stage(StageStyle.DECORATED);
-	String checkPw;
-	
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		
+
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMypageService) reg.lookup("mypage");
@@ -54,23 +51,9 @@ public class MypageController implements Initializable {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		
 
-	
 		String user_id = LoginSession.session.getMem_id();
 		userid.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
-		
-		MemberVO vo = new MemberVO();
-		vo.setMem_id(user_id);
-		MemberVO vo2 = new MemberVO();
-		
-		try {
-			vo2 = ims.select(vo);
-		} catch (RemoteException e) {
-			System.out.println("에러입니다");
-			e.printStackTrace();
-		}
-		
 
 	}
 
@@ -85,65 +68,54 @@ public class MypageController implements Initializable {
 	}
 
 	@FXML
-	public void btn_my() throws IOException { // 내정보  클릭시
-			Parent root = FXMLLoader.load(getClass().getResource("pwcheck.fxml"));
-			Scene scene = new Scene(root);
-			pwok.setTitle("모여서 각잡고 코딩 - clap");
-			
-			pwok.setScene(scene);
-			pwok.show();
-			
-			Button btn = (Button) root.lookup("#btn_ok");
-			
-			btn.setOnAction(new EventHandler<ActionEvent>() {
-				
-				@Override
-				public void handle(ActionEvent event) {
-					
-					String user_id = LoginSession.session.getMem_id();
-					userid.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
-					
-					MemberVO vo = new MemberVO();
-					vo.setMem_id(user_id);
-					MemberVO vo2 = new MemberVO();
-					
+	public void btn_my() throws IOException { // 내정보 클릭시
+		Parent root = FXMLLoader.load(getClass().getResource("pwcheck.fxml"));
+		Scene scene = new Scene(root);
+		pwok.setTitle("모여서 각잡고 코딩 - clap");
+
+		pwok.setScene(scene);
+		pwok.show();
+
+		Button btn = (Button) root.lookup("#btn_ok");
+
+		btn.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent event) {
+
+				String user_id = LoginSession.session.getMem_id();
+				userid.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
+
+				MemberVO vo = new MemberVO();
+				vo.setMem_id(user_id);
+				MemberVO vo2 = new MemberVO();
+
+				try {
+					vo2 = ims.select(vo);
+				} catch (RemoteException e) {
+					System.out.println("에러입니다");
+					e.printStackTrace();
+				}
+
+				JFXPasswordField fild = (JFXPasswordField) root.lookup("#fild_ok");
+
+				if (fild.getText().equals(vo2.getMem_pw())) {
+					pwok.close();
+
+					Parent root1 = null;
 					try {
-						vo2 = ims.select(vo);
-					} catch (RemoteException e) {
-						System.out.println("에러입니다");
+						root1 = FXMLLoader.load(getClass().getResource("../mypageCh/mypageCh.fxml"));
+						contents.getChildren().removeAll();
+						contents.getChildren().setAll(root1);
+					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					
-					
-					JFXPasswordField  fild = (JFXPasswordField) root.lookup("#fild_ok");
-					
-					if(fild.getText().equals(vo2.getMem_pw())) {
-						pwok.close();
-						
-						Parent root1 = null;
-						try {
-							root1 = FXMLLoader.load(getClass().getResource("../mypageCh/mypageCh.fxml"));
-							contents.getChildren().removeAll();
-							contents.getChildren().setAll(root1);
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-						Scene scene = new Scene(root1);
-						pwok.setTitle("모여서 각잡고 코딩 - clap");
-						pwok.setScene(scene);
-						pwok.show();
-					}
-					
+
 				}
-			});
-			
-			
-		}
-	
-	
-	
 
-	
+			}
+		});
+
+	}
+
 }
-
-
