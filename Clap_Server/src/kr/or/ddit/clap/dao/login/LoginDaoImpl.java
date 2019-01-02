@@ -42,7 +42,7 @@ public class LoginDaoImpl implements ILoginDao{
 	public MemberVO select(String id) {
 		MemberVO rVO = new MemberVO();
 		try {
-			rVO = (MemberVO) smc.queryForObject("memberTest.getMember", id);
+			rVO = (MemberVO) smc.queryForObject("login.select", id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
