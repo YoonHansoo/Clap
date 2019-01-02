@@ -21,6 +21,7 @@ public class MusicMainController implements Initializable{
 	
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
+	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
 	
 	/**
 	 * 현지
@@ -63,6 +64,16 @@ public class MusicMainController implements Initializable{
 		
 		mypageDialog.setScene(scene);
 		mypageDialog.show();
+	}
+	
+	public void buyTicket() throws IOException {
+//		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+//		Scene scene = new Scene(root);
+//		buyTicketDialog.setTitle("모여서 각잡고 코딩 - clap");
+//		
+//		buyTicketDialog.setScene(scene);
+//		buyTicketDialog.show();
+		System.out.println("이용권 구매 화면");
 	}
 
 }
