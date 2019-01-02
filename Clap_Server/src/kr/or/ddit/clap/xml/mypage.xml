@@ -6,7 +6,7 @@
 <sqlMap namespace="mypage">
 	
 	 
-	 <select id="selectList" resultClass="memberVO" parameterClass="memberVO">
+	 <select id="select" resultClass="memberVO" parameterClass="memberVO">
 	 		select mem_id,
 	 			   mem_pw,
 	 			   mem_name, 

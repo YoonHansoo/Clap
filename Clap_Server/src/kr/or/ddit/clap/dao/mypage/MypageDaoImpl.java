@@ -35,9 +35,8 @@ public class MypageDaoImpl implements IMypageDao{
 	}
 
 	public MemberVO select(MemberVO vo) {
-		MemberVO check = new MemberVO();
+		MemberVO check = null;
 		try {
-
 			check = (MemberVO) smc.queryForObject("mypage.select" ,vo);
 
 		} catch (SQLException e) {
@@ -48,5 +47,4 @@ public class MypageDaoImpl implements IMypageDao{
 	}
 
 
-	
 }
