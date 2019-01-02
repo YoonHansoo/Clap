@@ -5,8 +5,6 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -125,91 +123,6 @@
                   <Insets left="60.0" />
                </padding>
             </HBox>
-            <VBox>
-               <children>
-                  <HBox prefHeight="3.0" prefWidth="1004.0" style="-fx-background-color: #70d3ff;">
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox spacing="10.0">
-                     <children>
-                        <HBox alignment="CENTER_LEFT" maxWidth="170.0" prefHeight="51.0" prefWidth="170.0" spacing="10.0">
-                           <children>
-                              <JFXCheckBox checkedColor="#70d3ff" prefHeight="15.0" prefWidth="30.0" text=" " />
-                              <Label text="50">
-                                 <font>
-                                    <Font name="YDIYGO350" size="18.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets left="5.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <ImageView fitHeight="51.0" fitWidth="50.0" pickOnBounds="true">
-                                 <image>
-                                    <Image url="@../Downloads/bebop-wallpaper-3840x2160.jpg" />
-                                 </image>
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </ImageView>
-                           </children>
-                        </HBox>
-                        <HBox minWidth="460.0" prefHeight="50.0">
-                           <children>
-                              <VBox spacing="5.0">
-                                 <children>
-                                    <Label text="곡정보">
-                                       <font>
-                                          <Font name="YDIYGO350" size="25.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="아티스트">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="60.0" />
-                           </HBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" maxWidth="170.0" prefHeight="51.0" prefWidth="170.0" spacing="10.0">
-                           <children>
-                              <JFXButton prefHeight="46.0" prefWidth="30.0" ripplerFill="#70d3ff" text=" ">
-                                 <graphic>
-                                    <FontAwesomeIcon fill="#318dc5" iconName="PLAY_CIRCLE_ALT" size="1cm" />
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton ripplerFill="#70d3ff" text=" ">
-                                 <graphic>
-                                    <FontAwesomeIcon fill="#318dc5" iconName="PLUS" size="1cm" />
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton ripplerFill="#70d3ff" text=" ">
-                                 <graphic>
-                                    <FontAwesomeIcon fill="#318dc5" iconName="FOLDER_ALT" size="1cm" />
-                                 </graphic>
-                              </JFXButton>
-                              <JFXButton ripplerFill="#70d3ff" text=" ">
-                                 <graphic>
-                                    <FontAwesomeIcon fill="#318dc5" iconName="VIMEO_SQUARE" size="1cm" />
-                                 </graphic>
-                              </JFXButton>
-                           </children>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </HBox>
-               </children>
-            </VBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
