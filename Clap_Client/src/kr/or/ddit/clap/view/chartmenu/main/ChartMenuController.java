@@ -3,14 +3,10 @@ package kr.or.ddit.clap.view.chartmenu.main;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import com.jfoenix.controls.JFXTabPane;
-
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 
@@ -39,20 +35,10 @@ public class ChartMenuController implements Initializable{
 		tabPane_main.getSelectionModel().select(menuCount);
 		
 		try {
-			switch(menuCount) {
-				case 0:
-					AnchorPane pane = FXMLLoader.load(getClass().getResource("../top50/Top50RealTime.fxml"));
-					anchorPane_top50.getChildren().removeAll();
-					anchorPane_top50.getChildren().setAll(pane);
-					break;
-				case 1:
-					break;
-				case 2:
-					break;
-				case 3:
-					break;
-				
-			}
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("../top50/Top50RealTime.fxml"));
+			anchorPane_top50.getChildren().removeAll();
+			anchorPane_top50.getChildren().setAll(pane);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
