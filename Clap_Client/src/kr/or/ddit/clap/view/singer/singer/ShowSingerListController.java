@@ -69,6 +69,7 @@ public class ShowSingerListController implements Initializable {
 	private ISingerService iss;
 	private ObservableList<SingerVO> singerList, currentsingerList;
 	private int from, to, itemsForPage, totalPageCnt;
+	@FXML AnchorPane main;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -143,8 +144,8 @@ public class ShowSingerListController implements Initializable {
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
 					Parent singerDetail= loader.load(); 
-					contents.getChildren().removeAll();
-					contents.getChildren().setAll(singerDetail);
+					main.getChildren().removeAll();
+					main.getChildren().setAll(singerDetail);
 					
 					
 				} catch (IOException e1) {

@@ -12,8 +12,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController">
    <children>
       <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="가수이름">
          <font>
@@ -131,7 +130,7 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_LikeCnt" prefWidth="200.0" text="???" textFill="#54b823">
+                        <Label fx:id="label_LikeCnt" prefWidth="200.0" text="???" textFill="#090c64">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -145,8 +144,8 @@
             </VBox>
          </children>
       </HBox>
-      <Line endX="832.0" layoutX="116.0" layoutY="319.0" startX="-100.0" stroke="#54b823" />
-      <JFXButton layoutX="117.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #54b823;" text="크게보기" textFill="WHITE">
+      <Line endX="832.0" layoutX="116.0" layoutY="319.0" startX="-100.0" stroke="#090c64" />
+      <JFXButton layoutX="117.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090c64;" text="크게보기" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
          </graphic>
@@ -164,7 +163,7 @@
             <Font name="YDIYGO340" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="711.0" layoutY="709.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #54b823;" text="Update" textFill="WHITE" />
-      <Button layoutX="833.0" layoutY="709.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #54b823;" text="Delete" textFill="WHITE" />
+      <Button layoutX="711.0" layoutY="709.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090c64;" text="Update" textFill="WHITE" />
+      <Button layoutX="833.0" layoutY="709.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090c64;" text="Delete" textFill="WHITE" />
    </children>
 </AnchorPane>
