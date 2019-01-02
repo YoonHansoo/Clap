@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,19 +10,19 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaMenuController">
    <children>
       <Label layoutX="53.0" layoutY="34.0" text="고객센터" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="56.0">
          <font>
             <Font name="YDIYGO350" size="30.0" />
          </font>
       </Label>
-      <TableView layoutX="53.0" layoutY="180.0" prefHeight="500.0" prefWidth="900.0">
+      <TableView fx:id="tbl_qna" layoutX="53.0" layoutY="180.0" prefHeight="500.0" prefWidth="900.0">
         <columns>
-          <TableColumn prefWidth="92.0" text="번호" />
-          <TableColumn prefWidth="604.0" text="제목" />
-          <TableColumn minWidth="0.0" prefWidth="97.0" text="등록일" />
-          <TableColumn prefWidth="107.0" text="조회수" />
+          <TableColumn fx:id="col_qnaNumber" prefWidth="92.0" text="번호" />
+          <TableColumn fx:id="col_qnaTitle" prefWidth="604.0" text="제목" />
+          <TableColumn fx:id="col_qnaDate" minWidth="0.0" prefWidth="97.0" text="등록일" />
+          <TableColumn fx:id="col_qnaViewCnt" prefWidth="107.0" text="조회수" />
         </columns>
       </TableView>
       <Line endX="900.0" stroke="#0485ee" AnchorPane.leftAnchor="52.5" AnchorPane.topAnchor="95.5" />
@@ -31,5 +32,6 @@
             <Tab text="1:1ChatBot" />
          </tabs>
       </JFXTabPane>
+      <Pagination fx:id="p_paging" layoutX="453.0" layoutY="688.0" prefHeight="51.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
