@@ -2,10 +2,7 @@ package kr.or.ddit.clap.dao.mypage;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -18,7 +15,7 @@ public class MypageDaoImpl implements IMypageDao{
 	private SqlMapClient smc;
 	private static MypageDaoImpl dao; // Singleton 패턴
 
-	private MypageDaoImpl() {
+	private MypageDaoImpl(){
 		Reader rd;
 		try {
 			rd = Resources.getResourceAsReader("SqlMapConfig.xml");
