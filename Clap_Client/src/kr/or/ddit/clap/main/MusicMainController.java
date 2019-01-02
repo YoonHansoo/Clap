@@ -29,6 +29,7 @@ public class MusicMainController implements Initializable{
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
+	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	
 	/**
