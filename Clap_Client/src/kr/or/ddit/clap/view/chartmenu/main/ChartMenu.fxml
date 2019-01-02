@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,10 +12,13 @@
    <children>
       <VBox minHeight="448.0" prefWidth="1024.0" spacing="10.0">
          <children>
-            <Label prefHeight="40.0" prefWidth="139.0" text="Clap차트">
+            <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="139.0" text="Clap차트">
                <font>
-                  <Font name="YDIYGO350" size="32.0" />
+                  <Font size="25.0" />
                </font>
+               <VBox.margin>
+                  <Insets left="100.0" />
+               </VBox.margin>
             </Label>
             <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="252.0">
                <tabs>
