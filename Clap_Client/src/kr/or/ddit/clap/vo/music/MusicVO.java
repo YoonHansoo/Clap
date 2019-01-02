@@ -13,6 +13,7 @@ public class MusicVO implements Serializable{
 	private String mus_edit_son;
 	private String mus_write_son;
 	private String mus_lyrics;
+	private String mus_befor_rank; 
 	private String alb_no;
 	private String gen_detail_no;
 	
@@ -81,6 +82,12 @@ public class MusicVO implements Serializable{
 	}
 	public void setGen_detail_no(String gen_detail_no) {
 		this.gen_detail_no = gen_detail_no;
+	}
+	public String getMus_befor_rank() {
+		return mus_befor_rank;
+	}
+	public void setMus_befor_rank(String mus_befor_rank) {
+		this.mus_befor_rank = mus_befor_rank;
 	}
 
 }

@@ -13,12 +13,14 @@ import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 
 public class MypageChangeController implements Initializable {
 	private Registry reg;
 	private IMypageService ims;
 	@FXML Label id;
 	@FXML Label ph;
+	@FXML Button btn_telCh;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -45,6 +47,7 @@ public class MypageChangeController implements Initializable {
 		}
 		
 		ph.setText(vo2.getMem_tel().substring(0, 3)+"-"+vo2.getMem_tel().substring(4, 8));
+		
 		
 	}
 	
