@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -25,6 +26,7 @@ import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 public class MusicMainController implements Initializable{
 	
 	@FXML VBox vbox;
+	Node root = vbox.getChildren().get(1);
 	
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
@@ -75,7 +77,8 @@ public class MusicMainController implements Initializable{
 	}
 	
 	public void buyTicket() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
+		
+		Node root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));			
 //		Scene scene = new Scene(root);
 //		buyTicketDialog.setTitle("모여서 각잡고 코딩 - clap");
 //		
@@ -83,6 +86,8 @@ public class MusicMainController implements Initializable{
 //		buyTicketDialog.show();
 		System.out.println("이용권 구매 화면");
 		vbox.getChildren().remove(1);
+		root.setLayoutX(100);
+		root.setLayoutY(0);
 		vbox.getChildren().add(root);
 	}
 	
