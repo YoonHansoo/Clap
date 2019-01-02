@@ -32,7 +32,6 @@ public class Top50RealTimeController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
 		VBox vbox = new VBox();
 		
 		for (int i = 0; i < 20; i++) {
@@ -63,7 +62,7 @@ public class Top50RealTimeController implements Initializable{
 						// 순위를 나타내는 Label
 						Label la_Rank = new Label();
 						h_CheckRankImg.setMargin(la_Rank, new Insets(0,0,0,5));
-						la_Rank.setFont(Font.font("YDIYGO350", 18));
+						la_Rank.setFont(Font.font("YDIYGO350", 12));
 						la_Rank.setPrefWidth(23);
 						la_Rank.setPrefHeight(23);
 						la_Rank.setText("" + (i+1));
@@ -91,12 +90,12 @@ public class Top50RealTimeController implements Initializable{
 
 							// 곡제목을 담당하는 라벨
 							Label la_MusicName = new Label();
-							la_MusicName.setFont(Font.font("YDIYGO350", 25));
+							la_MusicName.setFont(Font.font("YDIYGO350", 15));
 							la_MusicName.setText("곡제목");
 							
 							// 곡제목을 담당하는 라벨
 							Label la_SingerName = new Label();
-							la_SingerName.setFont(Font.font("YDIYGO350", 18));
+							la_SingerName.setFont(Font.font("YDIYGO320", 12));
 							la_SingerName.setText("아티스트명");
 							
 							

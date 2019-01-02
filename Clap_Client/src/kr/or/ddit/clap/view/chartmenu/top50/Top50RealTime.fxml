@@ -131,6 +131,9 @@
                <padding>
                   <Insets left="60.0" />
                </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <padding>
