@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50RealTimeController">
+<AnchorPane prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50RealTimeController">
    <children>
       <VBox fx:id="mainBox" prefWidth="1024.0">
          <children>
@@ -125,7 +125,7 @@
                   <Insets left="60.0" />
                </padding>
             </HBox>
-            <VBox >
+            <VBox>
                <children>
                   <HBox prefHeight="3.0" prefWidth="1004.0" style="-fx-background-color: #70d3ff;">
                      <VBox.margin>

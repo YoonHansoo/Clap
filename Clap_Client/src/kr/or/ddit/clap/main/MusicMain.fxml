@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox">
          <children>
@@ -60,10 +60,10 @@
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="TOP50" onAction="#top50PageChange" />
-                              <MenuItem mnemonicParsing="false" text="장르별" onAction="#genrePageChange" />
-                              <MenuItem mnemonicParsing="false" text="시대별" onAction="#periodPageChange" />
-                              <MenuItem mnemonicParsing="false" text="뮤직비디오" onAction="#musicvideoPageChange" />
+                              <MenuItem mnemonicParsing="false" onAction="#top50PageChange" text="TOP50" />
+                              <MenuItem mnemonicParsing="false" onAction="#genrePageChange" text="장르별" />
+                              <MenuItem mnemonicParsing="false" onAction="#periodPageChange" text="시대별" />
+                              <MenuItem mnemonicParsing="false" onAction="#musicvideoPageChange" text="뮤직비디오" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="최신음악">
@@ -113,7 +113,7 @@
                   </MenuBar>
                </children>
             </AnchorPane>
-            <AnchorPane  fx:id="contents" minHeight="448.0" prefHeight="768.0" prefWidth="1005.0" >
+            <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
                <children>
                   <JFXButton layoutX="189.0" layoutY="15.0" text="국외">
                      <font>

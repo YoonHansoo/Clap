@@ -31,7 +31,7 @@ public class Top50RealTimeController implements Initializable{
 		
 		VBox vbox = new VBox();
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 20; i++) {
 			// 파란색 라인 HBox 
 			HBox h_Line = new HBox();
 			h_Line.setPrefWidth(1004);
@@ -64,6 +64,9 @@ public class Top50RealTimeController implements Initializable{
 					ImageView iv_album = new ImageView();
 					Image img_Path = new Image("http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/142/924/81142924_1546233762478_1_600x600.JPG");
 					iv_album.setImage(img_Path);
+					iv_album.setFitWidth(50);
+					iv_album.setFitHeight(50);
+					h_CheckRankImg.setMargin(iv_album, new Insets(0,0,0,20));
 					
 			
 			

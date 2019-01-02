@@ -126,7 +126,7 @@
                   </MenuBar>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contents" minHeight="448.0" prefHeight="1000.0" prefWidth="1005.0" style="-fx-background-color: fff;">
+            <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0" style="-fx-background-color: fff;">
                <children>
                   <JFXButton layoutX="202.0" layoutY="242.0" text="국외">
                      <font>
