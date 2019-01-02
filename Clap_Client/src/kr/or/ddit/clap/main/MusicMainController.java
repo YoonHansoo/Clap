@@ -68,9 +68,9 @@ public class MusicMainController implements Initializable{
 	@FXML
 	public void mypage() {
 		try {
-			Parent mypage = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
 			contents.getChildren().removeAll();
-			contents.getChildren().setAll(mypage);
+			contents.getChildren().setAll(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -24,7 +24,7 @@ public class ClientMain extends Application {
 		
 		//임시 로그인
 		LoginSession.session = new MemberVO(); 
-		LoginSession.session.setMem_id("admin2");
+		LoginSession.session.setMem_id("admin1");
 		LoginSession.session.setMem_pw("4321");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");

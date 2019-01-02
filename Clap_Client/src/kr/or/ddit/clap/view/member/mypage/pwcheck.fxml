@@ -19,8 +19,8 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <JFXPasswordField layoutX="115.0" layoutY="137.0" maxWidth="274.0" minWidth="274.0" prefHeight="35.0" prefWidth="274.0" />
-      <Button fx:id="btn_ok" layoutX="126.0" layoutY="186.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="117.0" text="확인" />
+      <JFXPasswordField fx:id="fild_ok" layoutX="115.0" layoutY="137.0" maxWidth="274.0" minWidth="274.0" prefHeight="35.0" prefWidth="274.0" />
+      <Button  fx:id="btn_ok" layoutX="126.0" layoutY="186.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="117.0" text="확인" />
       <Button layoutX="272.0" layoutY="186.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="117.0" text="취소" />
    </children>
 </AnchorPane>
