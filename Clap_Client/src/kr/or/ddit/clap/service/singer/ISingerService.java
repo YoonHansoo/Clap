@@ -15,4 +15,5 @@ import kr.or.ddit.clap.vo.singer.SingerVO;
 public interface ISingerService extends Remote {
 	public List<SingerVO> selectListAll() throws RemoteException;
 	
+	public List<SingerVO> searchList(SingerVO vo) throws RemoteException;
 }

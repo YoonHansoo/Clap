@@ -23,7 +23,7 @@ public class SingerVO extends RecursiveTreeObject<SingerVO> implements Serializa
 	
 	public ImageView getImgView() {
 		this.imgView = new ImageView();
-		Image img = new Image("http://image.genie.co.kr/Y/IMAGE/IMG_ARTIST/080/247/268/80247268_8_600x600.JPG");
+		Image img = new Image(sing_image);
 		imgView.setImage(img);
 		imgView.setFitWidth(120);
 		imgView.setFitHeight(50);

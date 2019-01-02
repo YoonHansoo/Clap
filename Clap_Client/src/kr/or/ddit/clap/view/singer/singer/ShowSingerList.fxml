@@ -9,7 +9,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -116,12 +115,12 @@
             <TreeTableColumn fx:id="col_singerActType" prefWidth="88.66668701171875" text="활동 유형" />
             <TreeTableColumn fx:id="col_singerEra" prefWidth="81.0" text="활동 연대" />
             <TreeTableColumn fx:id="col_singerDebutEra" prefWidth="83.33331298828125" text="데뷔 년도" />
-            <TreeTableColumn fx:id="col_singerDebutMus" minWidth="0.0" prefWidth="192.0" text="데뷔 곡" />
+            <TreeTableColumn fx:id="col_singerDebutMus" minWidth="0.0" prefWidth="150.0" text="데뷔 곡" />
             <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
          </columns></JFXTreeTableView>
-      <JFXComboBox fx:id="combo_search" layoutX="683.0" layoutY="635.0" promptText="가수 명" />
-      <JFXTextField fx:id="text_search" focusColor="#ffff8d" layoutX="758.0" layoutY="634.0" unFocusColor="#ffff8d" />
-      <JFXButton fx:id="btn_search" layoutX="881.0" layoutY="629.0" prefHeight="42.0" prefWidth="61.0" text=" ">
+      <JFXComboBox fx:id="combo_search" layoutX="723.0" layoutY="635.0" promptText="가수 명" />
+      <JFXTextField fx:id="text_search" focusColor="#ffff8d" layoutX="800.0" layoutY="634.0" unFocusColor="#ffff8d" />
+      <JFXButton fx:id="btn_search" layoutX="923.0" layoutY="629.0" prefHeight="42.0" prefWidth="61.0" text=" ">
          <graphic>
             <FontAwesomeIcon iconName="SEARCH" />
          </graphic>

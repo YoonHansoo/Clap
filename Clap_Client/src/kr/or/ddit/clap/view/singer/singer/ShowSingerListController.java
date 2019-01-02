@@ -1,3 +1,10 @@
+/**
+ *가수 리스트를 출력하는 화면 controller
+ * 
+ * 
+ * @author Hansoo
+ *
+ */
 package kr.or.ddit.clap.view.singer.singer;
 
 import java.net.URL;
@@ -5,6 +12,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.security.Signer;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -18,7 +26,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
@@ -44,10 +54,14 @@ public class ShowSingerListController implements Initializable {
 	@FXML
 	TreeTableColumn<SingerVO, String> col_singerDebutMus;
 	@FXML TreeTableColumn<SingerVO, String> col_singerNo;
+	@FXML JFXComboBox<String> combo_search;
+	@FXML TextField text_search;
+	@FXML Button btn_search;	
+	
 	private Registry reg;
 	private ISingerService iss;
-	private ObservableList<SingerVO> singerList;
-	@FXML JFXComboBox combo_search;
+	private ObservableList<SingerVO> singerList, currentsingerList;
+	private int from, to, itemsForPage, totalPageCnt;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -60,9 +74,6 @@ public class ShowSingerListController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		
-
-
 		col_singerImg
 				.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 
@@ -83,8 +94,6 @@ public class ShowSingerListController implements Initializable {
 
 		col_singerNo.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getValue().getSing_no()));
-
-		
 		
 		try {
 			singerList = FXCollections.observableArrayList(iss.selectListAll());
@@ -92,11 +101,86 @@ public class ShowSingerListController implements Initializable {
 			System.out.println("에러");
 			e.printStackTrace();
 		}
-
+		
+		//데이터 삽입
 		TreeItem<SingerVO> root = new RecursiveTreeItem<>(singerList, RecursiveTreeObject::getChildren);
 		tbl_singer.setRoot(root);
 		tbl_singer.setShowRoot(false);
-		System.out.println("ok...");
+		
+		itemsForPage=10; // 한페이지 보여줄 항목 수 설정
+		
+		paging();
+		
+		combo_search.getItems().addAll("가수이름","데뷔곡");
+		combo_search.setValue(combo_search.getItems().get(0));
+		
+		
+		//검색버튼 클릭
+		btn_search.setOnAction(e ->{
+			search();
+		});
+		}
+		
+	
+	//페이징  메서드
+	private void paging() {
+		totalPageCnt = singerList.size() % itemsForPage == 0 ? singerList.size() / itemsForPage
+				: singerList.size() / itemsForPage + 1;
+		
+		p_paging.setPageCount(totalPageCnt); // 전체 페이지 수 설정
+		
+		p_paging.setPageFactory((Integer pageIndex) -> {
+			
+			from = pageIndex * itemsForPage;
+			to = from + itemsForPage - 1;
+			
+			
+			TreeItem<SingerVO> root = new RecursiveTreeItem<>(getTableViewData(from, to), RecursiveTreeObject::getChildren);
+			tbl_singer.setRoot(root);
+			tbl_singer.setShowRoot(false);
+			return tbl_singer;
+		});
 	}
+	
+	//페이징에 맞는 데이터를 가져옴
+private ObservableList<SingerVO> getTableViewData(int from, int to) {
+		
+	currentsingerList = FXCollections.observableArrayList(); //
+		int totSize = singerList.size();
+		for (int i = from; i <= to && i < totSize; i++) {
+			
+			currentsingerList.add(singerList.get(i));
+		}
+		
+		return currentsingerList;
+	}
+//검색 메서드
+private void search() {
+	try {
+		SingerVO vo = new SingerVO();
+		ObservableList<SingerVO> searchlist = FXCollections.observableArrayList();
+		switch (combo_search.getValue()) {
+		
+		case "가수이름":
+			vo.setSing_name(text_search.getText());
+			searchlist = FXCollections.observableArrayList(iss.searchList(vo));
+			break;
+		case "데뷔곡":
+			vo.setSing_debut_mus(text_search.getText());
+			searchlist = FXCollections.observableArrayList(iss.searchList(vo));
+			break;
+			
+		default :
+			break;
+		}
+		
+		singerList = FXCollections.observableArrayList(searchlist); //검색조건에 맞는 리스트를 저장
+		paging();
+	}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
 
 }
