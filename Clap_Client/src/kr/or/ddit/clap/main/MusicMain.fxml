@@ -22,7 +22,7 @@
    <content>
       <VBox fx:id="vbox">
          <children>
-            <AnchorPane fx:id="menu" prefHeight="160.0" prefWidth="1005.0">
+            <AnchorPane fx:id="mainMenu" prefHeight="160.0" prefWidth="1005.0">
                <children>
                   <FontAwesomeIcon iconName="APPLE" layoutX="106.0" layoutY="117.0" size="2cm">
                      <fill>

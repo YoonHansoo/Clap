@@ -26,10 +26,10 @@ public class MusicMainController implements Initializable{
 	
 	@FXML VBox vbox;
 	
-	static Stage loginDialog = new Stage(StageStyle.DECORATED);
+	public static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
-	@FXML AnchorPane menu;
+	@FXML AnchorPane mainMenu;
 	@FXML AnchorPane contents;
 	
 	
@@ -54,6 +54,16 @@ public class MusicMainController implements Initializable{
 		
 		loginDialog.setScene(scene);
 		loginDialog.show();
+	}
+	
+	public void login_PageLoad() {
+		try {
+			Parent page = FXMLLoader.load(getClass().getResource("../view/login/Member.fxml"));
+//			menu.getChildren().remove(2); // remove하는데 왜 NullPointerException이 뜨지
+//			menu.getChildren().add(2, page);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
@@ -95,6 +105,8 @@ public class MusicMainController implements Initializable{
 //		
 //		buyTicketDialog.setScene(scene);
 //		buyTicketDialog.show();
+		System.out.println("이용권 구매");
+		
 	}
 	
 	

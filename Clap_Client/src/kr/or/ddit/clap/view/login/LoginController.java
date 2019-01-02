@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.view.join.AES256Util;
 
 /**
@@ -20,10 +21,11 @@ import kr.or.ddit.clap.view.join.AES256Util;
  */
 public class LoginController implements Initializable{
 	
+	MusicMainController mmc = new MusicMainController();
+	
 	@FXML JFXTextField txt_id;
 	@FXML JFXPasswordField txt_pw;
 	
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -42,6 +44,8 @@ public class LoginController implements Initializable{
 		System.out.println(encryptedPw);
 		System.out.println(decryptedPw);
 		
+		MusicMainController.loginDialog.close();
+//		mmc.login_PageLoad();
 	}
 
 }
