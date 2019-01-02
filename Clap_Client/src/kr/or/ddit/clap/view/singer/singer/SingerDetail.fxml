@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController">
+   <children>
+      <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="가수이름">
+         <font>
+            <Font name="YDIYGO350" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="15.0" layoutY="67.0" prefHeight="162.0" prefWidth="833.0" style="border: #54b823;">
+         <children>
+            <ImageView fitHeight="211.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox prefHeight="165.0" prefWidth="470.0">
+               <children>
+                  <Label fx:id="label_singerName2" prefHeight="41.0" prefWidth="256.0" text="가수이름">
+                     <font>
+                        <Font name="YDIYGO350" size="36.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="활동 유형">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_ActType" prefWidth="200.0" text="???">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="활동 연대">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_ActEra" prefHeight="15.0" prefWidth="200.0" text="???">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="데뷔년도">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_DebutEra" prefWidth="200.0" text="???">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="데뷔곡">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_DebutMus" prefWidth="200.0" text="???">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="국적">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_Nation" prefHeight="15.0" prefWidth="200.0" text="???">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="100.0">
+                     <children>
+                        <Label prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
+                           <graphic>
+                              <FontAwesomeIcon iconName="HEART" />
+                           </graphic>
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_LikeCnt" prefWidth="200.0" text="???" textFill="#54b823">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Line endX="832.0" layoutX="116.0" layoutY="319.0" startX="-100.0" stroke="#54b823" />
+      <JFXButton layoutX="117.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #54b823;" text="크게보기" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
+         </graphic>
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="26.0" layoutY="343.0" prefHeight="41.0" prefWidth="214.0" text="아티스트 소개">
+         <font>
+            <Font name="YDIYGO350" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_Intro" layoutX="39.0" layoutY="395.0" prefHeight="261.0" prefWidth="873.0" text="아티스트 소개">
+         <font>
+            <Font name="YDIYGO340" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="711.0" layoutY="709.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #54b823;" text="Update" textFill="WHITE" />
+      <Button layoutX="833.0" layoutY="709.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #54b823;" text="Delete" textFill="WHITE" />
+   </children>
+</AnchorPane>
