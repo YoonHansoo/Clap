@@ -69,7 +69,6 @@ public class MusicMainController implements Initializable{
 		joinDialog.show();
 	}
 
-	
 	@FXML
 	public void mypage(ActionEvent event) {
 		try {
@@ -79,6 +78,13 @@ public class MusicMainController implements Initializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void mypage() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+		Scene scene = new Scene(root);
+		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
 	}
 	
 	@FXML
