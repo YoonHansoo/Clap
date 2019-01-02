@@ -68,8 +68,7 @@ public class MusicMainController implements Initializable{
 		joinDialog.setScene(scene);
 		joinDialog.show();
 	}
-	
-<<<<<<< .mine
+
 	
 	@FXML
 	public void mypage(ActionEvent event) {
@@ -80,19 +79,6 @@ public class MusicMainController implements Initializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-||||||| .r51762
-	public void mypage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
-		Scene scene = new Scene(root);
-		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
-=======
-	@FXML
-	public void mypage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
-		Scene scene = new Scene(root);
-		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
->>>>>>> .r51768
-		
 	}
 	
 	@FXML
@@ -140,5 +126,7 @@ public class MusicMainController implements Initializable{
 			e.printStackTrace();
 		}
 	}
+	
+	
 
 }
