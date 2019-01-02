@@ -81,13 +81,6 @@ public class MusicMainController implements Initializable{
 	}
 	
 	@FXML
-	public void mypage() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
-		Scene scene = new Scene(root);
-		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
-	}
-	
-	@FXML
 	public void buyTicket() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));			
 //		Scene scene = new Scene(root);
