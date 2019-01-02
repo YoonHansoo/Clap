@@ -4,15 +4,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 
 /**
  * 메인화면의 fxml 컨트롤러.
@@ -26,6 +29,7 @@ public class MusicMainController implements Initializable{
 	static Stage loginDialog = new Stage(StageStyle.DECORATED);
 	static Stage joinDialog = new Stage(StageStyle.DECORATED);
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
+	@FXML AnchorPane contents;
 	
 	/**
 	 * 현지
@@ -80,6 +84,40 @@ public class MusicMainController implements Initializable{
 		System.out.println("이용권 구매 화면");
 		vbox.getChildren().remove(1);
 		vbox.getChildren().add(root);
+	}
+	
+	@FXML
+	public void top50PageChange(ActionEvent event) { //차트메뉴에서 Top50차트 클릭 했을때 페이지 전환 이벤트
+		ChartMenuController.menuCount = 0;
+		chartMenu_PageLoad();
+	}
+	
+	@FXML
+	public void genrePageChange(ActionEvent event) { //차트메뉴에서 장르별차트 클릭 했을때 페이지 전환 이벤트
+		ChartMenuController.menuCount = 1;
+		chartMenu_PageLoad();
+	}
+	
+	@FXML
+	public void periodPageChange(ActionEvent event) { //차트메뉴에서 시대별차트 클릭 했을때 페이지 전환 이벤트
+		ChartMenuController.menuCount = 2;
+		chartMenu_PageLoad();
+	}
+	
+	@FXML
+	public void musicvideoPageChange(ActionEvent event) { //차트메뉴에서 뮤직비디오차트 클릭 했을때 페이지 전환 이벤트
+		ChartMenuController.menuCount = 3;
+		chartMenu_PageLoad();
+	}
+	
+	public void chartMenu_PageLoad() {
+		try {
+			Parent page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); //바뀔 화면을 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(page);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
