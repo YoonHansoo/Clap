@@ -27,6 +27,7 @@
 	<!-- <sqlMap resource="vo/board.xml"/> -->
 	<sqlMap resource="kr/or/ddit/clap/xml/singer.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/musichistory.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/login.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/qna.xml"></sqlMap> 
 </sqlMapConfig>
 
