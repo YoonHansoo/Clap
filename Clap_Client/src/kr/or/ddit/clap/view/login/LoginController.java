@@ -1,4 +1,4 @@
-package kr.or.ddit.clap.main;
+package kr.or.ddit.clap.view.login;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import kr.or.ddit.clap.main.AES256Util;
 
 /**
  * 로그인창 컨트롤러.
