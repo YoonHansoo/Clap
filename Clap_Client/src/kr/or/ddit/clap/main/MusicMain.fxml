@@ -18,7 +18,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox>
          <children>
@@ -55,7 +55,7 @@
                         </LinearGradient>
                      </unFocusColor>
                   </JFXTextField>
-                  <JFXButton layoutX="96.0" layoutY="19.0" text="이용권 구매" textFill="#8d8d8d" />
+                  <JFXButton layoutX="96.0" layoutY="19.0" onAction="#buyTicket" text="이용권 구매" textFill="#8d8d8d" />
                   <MenuBar layoutX="277.0" layoutY="133.0">
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
