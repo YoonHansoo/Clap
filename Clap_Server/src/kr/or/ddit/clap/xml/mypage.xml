@@ -54,7 +54,7 @@
 	</update>
 	
 	
-	<select id="selectReview" resultClass="MusicReviewVO"
+	<select id="selectReview" resultClass="musicReviewVO"
 		parameterClass="memberVO">
 		select  sing_re_no,
 				sing_re_conntent,
