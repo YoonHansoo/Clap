@@ -53,11 +53,15 @@ public class MypageChangePwController implements Initializable{
 			}
 			
 			if(textF_NowPw.getText().equals(vo2.getMem_pw())) {
-				System.out.println("dd");
+				if(textF_NewPw.getText().equals(textF_NewPwCh.getText())) {
+					
+				}else if(!textF_NewPw.getText().equals(textF_NewPwCh.getText())) {
+					System.out.println("새 비밀번호가 서로 틀림 ");
+				}
 				
 			}else if(!textF_NowPw.getText().equals(vo2.getMem_pw())) {
 				System.out.println("비번이 틀림");
-			}
+			}			
 		});//btn_ok
 	}
 
