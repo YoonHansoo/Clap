@@ -20,7 +20,7 @@
                <children>
                   <Button layoutX="87.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" text="기본정보 변경" />
                   <Button fx:id="btn_PwCh" layoutX="266.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" text="비밀번호 변경" />
-                  <Button layoutX="445.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" text="회원탈퇴" />
+                  <Button fx:id="btn_JoinOut" layoutX="445.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" text="회원탈퇴" />
                   <Line endX="413.0" endY="-1.52587890625E-5" layoutX="211.0" layoutY="68.0" startX="-124.0" startY="-1.52587890625E-5" />
                   <Text layoutX="27.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내 정보">
                      <font>

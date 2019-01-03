@@ -10,4 +10,5 @@ public interface IMypageService  extends Remote {
 	public int  updateTel(MemberVO vo) throws RemoteException;
 	public int  updateEmail(MemberVO vo) throws RemoteException;
 	public int  updatePw(MemberVO vo) throws RemoteException;
+	public int  updateDelTF(MemberVO vo) throws RemoteException;
 }

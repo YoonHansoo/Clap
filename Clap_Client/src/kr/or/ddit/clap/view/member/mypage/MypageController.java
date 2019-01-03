@@ -112,18 +112,15 @@ public class MypageController implements Initializable {
 						e.printStackTrace();
 					}
 
-				}else {
-					Text test_set =(Text) root.lookup("#text");
+				} else {
+					Text test_set = (Text) root.lookup("#text");
 					test_set.setText("\t   잘못된 비밀번호를 입력하였습니다.");
 				}
-
 			}
-		});//btn_Ok
-		
-		
+		});// btn_Ok
 
 		Button btn_no = (Button) root.lookup("#btn_Cl");
-		btn_no.setOnMouseClicked(e ->{
+		btn_no.setOnMouseClicked(e -> {
 			pwok.close();
 		});
 

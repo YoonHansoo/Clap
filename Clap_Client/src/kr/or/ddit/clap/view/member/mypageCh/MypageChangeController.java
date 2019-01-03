@@ -39,10 +39,11 @@ public class MypageChangeController implements Initializable {
 	@FXML ComboBox<String> com_em;
 	static Stage tel = new Stage(StageStyle.DECORATED);
 	String tell="" ;
-	@FXML Button ok;
+	@FXML Button ok; 
 	@FXML Button cl;
 	@FXML Button btn_PwCh;
 	@FXML AnchorPane contents;
+	@FXML Button btn_JoinOut;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -105,6 +106,19 @@ public class MypageChangeController implements Initializable {
 				e1.printStackTrace();
 			}
 			;});
+		
+		//회원탈퇴 클릭시
+		btn_JoinOut.setOnAction(e3->{
+			Parent root;
+			try {
+				root = FXMLLoader.load(getClass().getResource("joinout.fxml"));
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(root);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 		
 	}
 	
