@@ -27,7 +27,7 @@ public class MusicMainController implements Initializable{
 	@FXML VBox vbox;
 	
 	public static Stage loginDialog = new Stage(StageStyle.DECORATED);
-	static Stage joinDialog = new Stage(StageStyle.DECORATED);
+	public static Stage joinDialog = new Stage(StageStyle.DECORATED);
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
