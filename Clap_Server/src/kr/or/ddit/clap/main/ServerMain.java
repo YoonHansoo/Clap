@@ -7,6 +7,8 @@ import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
+import kr.or.ddit.clap.service.music.IMusicService;
+import kr.or.ddit.clap.service.music.MusicServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
@@ -19,11 +21,12 @@ public class ServerMain {
 		
 		try {
 //			IBoardService bsi = new BoardServiceImpl();
-			ISingerService ssi 	= SingerServiceImpl.getInstance();
-			IMypageService ms 	= MypageServiceImpl.getInstance(); //객체생성
-			ILoginService ils 	= LoginServiceImpl.getInstance();
-			IQnaService iqs     = QnaServiceImpl.getInstance();
-			IJoinService ijs     = JoinServiceImpl.getInstance();
+			ISingerService ssi 	= SingerServiceImpl.getInstance();	//가수
+			IMypageService ms 	= MypageServiceImpl.getInstance();	//마이페이지
+			ILoginService ils 	= LoginServiceImpl.getInstance();	//로그인
+			IQnaService iqs     = QnaServiceImpl.getInstance();		//문의사항
+			IJoinService ijs     = JoinServiceImpl.getInstance();	//회원가입
+			IMusicService ims     = MusicServiceImpl.getInstance();	//뮤직
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -32,6 +35,7 @@ public class ServerMain {
 			reg.rebind("login", ils);
 			reg.rebind("qna", iqs);
 			reg.rebind("join", ijs);
+			reg.rebind("music", ims);
 			  System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
