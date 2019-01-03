@@ -65,7 +65,6 @@ public class LoginController implements Initializable{
 		try {
 			idCheck = ils.idCheck(txt_id.getText());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
