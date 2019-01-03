@@ -64,8 +64,6 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 	public static void main(String[] args) {
 		List<Map> list = new MusicHistoryDaoImpl().selectList();
 		
-		
-		
 	}
 
 }

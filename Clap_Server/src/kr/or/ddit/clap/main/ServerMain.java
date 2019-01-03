@@ -7,8 +7,14 @@ import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
+<<<<<<< .mine
+import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
+import kr.or.ddit.clap.service.musichistory.MusicHistoryServiceImpl;
+||||||| .r52131
+=======
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.music.MusicServiceImpl;
+>>>>>>> .r52143
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
@@ -27,6 +33,7 @@ public class ServerMain {
 			IQnaService iqs     = QnaServiceImpl.getInstance();		//문의사항
 			IJoinService ijs     = JoinServiceImpl.getInstance();	//회원가입
 			IMusicService ims     = MusicServiceImpl.getInstance();	//뮤직
+			IMusicHistoryService ims = MusicHistoryServiceImpl.getInstance();
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -35,8 +42,9 @@ public class ServerMain {
 			reg.rebind("login", ils);
 			reg.rebind("qna", iqs);
 			reg.rebind("join", ijs);
+			reg.rebind("history", ims);
 			reg.rebind("music", ims);
-			  System.out.println("clap server  is running...");
+			 System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
 			System.out.println("마 에러다!");
