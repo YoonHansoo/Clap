@@ -33,7 +33,7 @@ public class ServerMain {
 			IQnaService iqs     = QnaServiceImpl.getInstance();		//문의사항
 			IJoinService ijs     = JoinServiceImpl.getInstance();	//회원가입
 			IMusicService ims     = MusicServiceImpl.getInstance();	//뮤직
-			IMusicHistoryService ims = MusicHistoryServiceImpl.getInstance();
+			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); // 뮤직순위
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -42,7 +42,7 @@ public class ServerMain {
 			reg.rebind("login", ils);
 			reg.rebind("qna", iqs);
 			reg.rebind("join", ijs);
-			reg.rebind("history", ims);
+			reg.rebind("history", imhs);
 			reg.rebind("music", ims);
 			 System.out.println("clap server  is running...");
 			  
