@@ -23,7 +23,6 @@ public interface IMypageService  extends Remote {
 	
 	public int  updateDelTF(MemberVO vo) throws RemoteException;
 	
-	//리뷰
-		public List<MusicReviewVO> selectReview(MemberVO vo);
+	
 	
 }

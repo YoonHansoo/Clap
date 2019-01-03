@@ -55,10 +55,6 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.updateDelTF(vo);
 	}
 
-	@Override
-	public List<MusicReviewVO> selectReview(MemberVO vo) {
-		return mypageDao.selectReview(vo);
-	}
-
+	
 	
 }

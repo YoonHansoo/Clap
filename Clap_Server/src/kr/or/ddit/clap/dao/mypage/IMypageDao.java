@@ -25,8 +25,6 @@ public interface IMypageDao {
 	
 	public int  updateDelTF(MemberVO vo);
 	
-	//리뷰
-	public List<MusicReviewVO> selectReview(MemberVO vo);
 	
 	
 }
