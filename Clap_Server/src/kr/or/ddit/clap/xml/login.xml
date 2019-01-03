@@ -4,7 +4,7 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="login">
 	
-	 <select id="select" resultClass="int" parameterClass="String">
+	 <select id="idCheck" resultClass="int" parameterClass="String">
 	 		select count(mem_id) from member
 			where mem_id = #mem_id#
 	 </select>
