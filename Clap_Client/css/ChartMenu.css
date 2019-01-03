@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 * {
     
 }
@@ -14,4 +12,13 @@
 	
 }
 
+.tab-label{
+    -fx-font-family: "-윤고딕320";
+    -fx-font-size: 18;
+}
 
+.mainlabel{
+	 -fx-font-family: "-윤고딕350";
+	 -fx-font-size: 25;
+	 
+}

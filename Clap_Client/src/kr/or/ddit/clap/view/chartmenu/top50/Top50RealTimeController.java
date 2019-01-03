@@ -52,7 +52,7 @@ public class Top50RealTimeController implements Initializable{
 				JFXCheckBox chb_Check = new JFXCheckBox();
 				chb_Check.setPrefWidth(30);
 				chb_Check.setPrefHeight(15);
-				chb_Check.setCheckedColor(Color.valueOf("#70d3ff"));
+				chb_Check.setCheckedColor(Color.valueOf("#9c0000"));
 				
 				// 순위를 나타내는 Label
 				Label la_Rank = new Label();
@@ -86,7 +86,7 @@ public class Top50RealTimeController implements Initializable{
 				// 듣기 버튼
 				JFXButton btn_Play = new JFXButton();
 				h_Table.setMargin(btn_Play, new Insets(0,0,0,285));
-				btn_Play.setRipplerFill(Color.valueOf("#70d3ff"));
+				btn_Play.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Play.setAlignment(Pos.CENTER_LEFT);
 				btn_Play.setPrefWidth(30);
 				btn_Play.setPrefHeight(46);
@@ -94,13 +94,13 @@ public class Top50RealTimeController implements Initializable{
 					// 듣기 아이콘
 					FontAwesomeIcon icon_Play = new FontAwesomeIcon();
 					icon_Play.setIconName("PLAY_CIRCLE_ALT");
-					icon_Play.setFill(Color.valueOf("#318dc5"));
+					icon_Play.setFill(Color.valueOf("#9c0000"));
 					icon_Play.setSize("30");
 					btn_Play.setGraphic(icon_Play);
 					
 				// 추가 버튼
 				JFXButton btn_Add = new JFXButton();
-				btn_Add.setRipplerFill(Color.valueOf("#70d3ff"));
+				btn_Add.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Add.setAlignment(Pos.CENTER_LEFT);
 				btn_Add.setPrefWidth(30);
 				btn_Add.setPrefHeight(46);
@@ -108,13 +108,13 @@ public class Top50RealTimeController implements Initializable{
 					// 추가 아이콘
 					FontAwesomeIcon icon_Add = new FontAwesomeIcon();
 					icon_Add.setIconName("PLUS");
-					icon_Add.setFill(Color.valueOf("#318dc5"));
+					icon_Add.setFill(Color.valueOf("#9c0000"));
 					icon_Add.setSize("30");
 					btn_Add.setGraphic(icon_Add);
 					
 				// 담기 버튼
 				JFXButton btn_Put = new JFXButton();
-				btn_Put.setRipplerFill(Color.valueOf("#70d3ff"));
+				btn_Put.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Put.setAlignment(Pos.CENTER_LEFT);
 				btn_Put.setPrefWidth(30);
 				btn_Put.setPrefHeight(46);
@@ -122,13 +122,13 @@ public class Top50RealTimeController implements Initializable{
 					// 담기 아이콘
 					FontAwesomeIcon icon_Put = new FontAwesomeIcon();
 					icon_Put.setIconName("FOLDER_ALT");
-					icon_Put.setFill(Color.valueOf("#318dc5"));
+					icon_Put.setFill(Color.valueOf("#9c0000"));
 					icon_Put.setSize("30");
 					btn_Put.setGraphic(icon_Put);
 				
 				// 담기 버튼
 				JFXButton btn_Movie = new JFXButton();
-				btn_Movie.setRipplerFill(Color.valueOf("#70d3ff"));
+				btn_Movie.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Movie.setAlignment(Pos.CENTER_LEFT);
 				btn_Movie.setPrefWidth(30);
 				btn_Movie.setPrefHeight(46);
@@ -136,7 +136,7 @@ public class Top50RealTimeController implements Initializable{
 					// 담기 아이콘
 					FontAwesomeIcon icon_Movie = new FontAwesomeIcon();
 					icon_Movie.setIconName("VIMEO_SQUARE");
-					icon_Movie.setFill(Color.valueOf("#318dc5"));
+					icon_Movie.setFill(Color.valueOf("#9c0000"));
 					icon_Movie.setSize("30");
 					btn_Movie.setGraphic(icon_Movie);
 					

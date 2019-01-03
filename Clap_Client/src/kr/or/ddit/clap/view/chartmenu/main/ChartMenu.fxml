@@ -12,7 +12,7 @@
    <children>
       <VBox minHeight="448.0" prefWidth="1024.0" spacing="10.0">
          <children>
-            <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="139.0" text="Clap차트">
+            <Label styleClass="mainlabel" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="139.0" text="Clap차트">
                <font>
                   <Font size="25.0" />
                </font>
@@ -22,7 +22,7 @@
             </Label>
             <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="252.0">
                <tabs>
-                  <Tab fx:id="tab_top50" text="TOP50">
+                  <Tab fx:id="tab_top50" text="TOP50" >
                     <content>
                       <AnchorPane fx:id="anchorPane_top50" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                     </content>
