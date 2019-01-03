@@ -7,14 +7,10 @@ import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
-<<<<<<< .mine
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musichistory.MusicHistoryServiceImpl;
-||||||| .r52131
-=======
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.music.MusicServiceImpl;
->>>>>>> .r52143
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
