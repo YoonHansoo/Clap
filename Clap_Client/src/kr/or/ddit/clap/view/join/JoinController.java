@@ -109,9 +109,9 @@ public class JoinController implements Initializable{
 			int cnt = ijs.insert(vo);
 			
 			if(cnt>0){
-				System.out.println(txt_id.getText() + "회원 가입 성공");
+				System.out.println(txt_id.getText() + "-회원 가입 성공");
 			}else{
-				System.out.println(txt_id.getText() + "회원 가입 실패");
+				System.out.println(txt_id.getText() + "-회원 가입 실패");
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
