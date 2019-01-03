@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.LoginController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.LoginController">
    <children>
       <Label prefHeight="50.0" text="clap 로그인">
          <VBox.margin>
@@ -38,7 +38,10 @@
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <JFXButton fx:id="btn_idSearch" text="아이디" />
+            <JFXButton fx:id="btn_idSearch" text="아이디">
+               <HBox.margin>
+                  <Insets left="25.0" />
+               </HBox.margin></JFXButton>
             <Label text=" / ">
                <HBox.margin>
                   <Insets top="3.0" />
@@ -48,4 +51,7 @@
          </children>
       </HBox>
    </children>
+   <padding>
+      <Insets left="300.0" top="30.0" />
+   </padding>
 </VBox>
