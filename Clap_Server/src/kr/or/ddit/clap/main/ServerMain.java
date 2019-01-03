@@ -3,6 +3,8 @@ package kr.or.ddit.clap.main;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import kr.or.ddit.clap.service.join.IJoinService;
+import kr.or.ddit.clap.service.join.JoinServiceImpl;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
@@ -21,7 +23,7 @@ public class ServerMain {
 			IMypageService ms 	= MypageServiceImpl.getInstance(); //객체생성
 			ILoginService ils 	= LoginServiceImpl.getInstance();
 			IQnaService iqs     = QnaServiceImpl.getInstance();
-//			IJoinService ijs     = JoinServiceImpl.getInstance();
+			IJoinService ijs     = JoinServiceImpl.getInstance();
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
