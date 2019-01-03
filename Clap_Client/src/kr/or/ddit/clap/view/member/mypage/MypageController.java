@@ -32,9 +32,9 @@ public class MypageController implements Initializable {
 
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	@FXML
-	Label userid;
+	Label label_Id;
 	@FXML
-	Image user_img;
+	Image img_User;
 	@FXML
 	AnchorPane contents;
 	private Registry reg;
@@ -54,7 +54,7 @@ public class MypageController implements Initializable {
 		}
 
 		String user_id = LoginSession.session.getMem_id();
-		userid.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
+		label_Id.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
 
 	}
 
@@ -77,7 +77,7 @@ public class MypageController implements Initializable {
 		pwok.setScene(scene);
 		pwok.show();
 
-		Button btn = (Button) root.lookup("#btn_ok");
+		Button btn = (Button) root.lookup("#btn_Ok");
 
 		btn.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -85,7 +85,7 @@ public class MypageController implements Initializable {
 			public void handle(ActionEvent event) {
 
 				String user_id = LoginSession.session.getMem_id();
-				userid.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
+				label_Id.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
 
 				MemberVO vo = new MemberVO();
 				vo.setMem_id(user_id);
@@ -118,11 +118,11 @@ public class MypageController implements Initializable {
 				}
 
 			}
-		});//btn_ok
+		});//btn_Ok
 		
 		
 
-		Button btn_no = (Button) root.lookup("#btn_cl");
+		Button btn_no = (Button) root.lookup("#btn_Cl");
 		btn_no.setOnMouseClicked(e ->{
 			pwok.close();
 		});

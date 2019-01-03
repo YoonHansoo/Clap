@@ -23,10 +23,10 @@
                <children>
                   <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="21.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image fx:id="user_img" url="@music_main/image.png" />
+                        <Image fx:id="img_User" url="@music_main/image.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="userid" layoutX="112.0" layoutY="56.0" text="Label" />
+                  <Label fx:id="label_Id" layoutX="112.0" layoutY="56.0" text="Label" />
                   <Label layoutX="175.0" layoutY="56.0" text="님" />
                   <JFXButton layoutX="103.0" layoutY="98.0" onAction="#btn_profch" text="프로필 수정 &gt;" />
                   <Text layoutX="22.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필">

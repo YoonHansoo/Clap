@@ -31,8 +31,8 @@ public class MypageChangeController implements Initializable {
 	
 	private Registry reg;
 	private IMypageService ims;
-	@FXML Label id;
-	@FXML Label ph;
+	@FXML Label label_Id;
+	@FXML Label label_Tel;
 	@FXML JFXTextField em1;
 	@FXML JFXTextField em2;
 	@FXML ComboBox<String> com_em;
@@ -52,7 +52,7 @@ public class MypageChangeController implements Initializable {
 		}
 		
 		String user_id = LoginSession.session.getMem_id();
-		id.setText(user_id);
+		label_Id.setText(user_id);
 		MemberVO vo = new MemberVO();
 		vo.setMem_id(user_id);
 		MemberVO vo2 = new MemberVO();
@@ -64,7 +64,7 @@ public class MypageChangeController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		ph.setText(vo2.getMem_tel().substring(0, 3)+"-"+vo2.getMem_tel().substring(4, 8));
+		label_Tel.setText(vo2.getMem_tel().substring(0, 3)+"-"+vo2.getMem_tel().substring(4, 8));
 		//이메일 뿌주기
 		String[] str=vo2.getMem_email().split("@");
 		em1.setText(str[0]);
@@ -104,23 +104,23 @@ public class MypageChangeController implements Initializable {
 		combo.setValue(combo.getItems().get(0));
 		combo.setOnAction(e->{combo.getValue().toString();
 		});
-		TextField tel1= (TextField) root.lookup("#tel1");
-		TextField tel2= (TextField) root.lookup("#tel2");
+		TextField textF_Tel1= (TextField) root.lookup("#textF_Tel1");
+		TextField testF_Tel2= (TextField) root.lookup("#testF_Tel2");
 	
 		
-		Button btn_ok =(Button) root.lookup("#btn_ok");
-		btn_ok.setOnAction(ee->{
-			if( !tel1.getText().matches("^[0-9]*$") || !tel2.getText().matches("^[0-9]*$") ||
-					tel1.getText().length()>4|| tel2.getText().length()>4) {
+		Button btn_Ok =(Button) root.lookup("#btn_Ok");
+		btn_Ok.setOnAction(ee->{
+			if( !textF_Tel1.getText().matches("^[0-9]*$") || !testF_Tel2.getText().matches("^[0-9]*$") ||
+					textF_Tel1.getText().length()>4|| testF_Tel2.getText().length()>4) {
 				warning( "휴대폰 번호가 잘못되었습니다","다시입력해주세요");
 				combo.setValue("");
-				tel1.clear();
-				tel2.clear();
+				textF_Tel1.clear();
+				testF_Tel2.clear();
 			}
 			
 			tell += combo.getValue().toString();
-			tell += tel1.getText();
-			tell += tel2.getText();
+			tell += textF_Tel1.getText();
+			tell += testF_Tel2.getText();
 			
 			
 			String user_id = LoginSession.session.getMem_id();
@@ -137,8 +137,8 @@ public class MypageChangeController implements Initializable {
 	
 			tel.close();
 	});
-		Button btn_cl =(Button) root.lookup("#btn_cl");
-		btn_cl.setOnAction(ee->tel.close());
+		Button btn_Cl =(Button) root.lookup("#btn_Cl");
+		btn_Cl.setOnAction(ee->tel.close());
 	}
 	
 	public void errMsg(String headerText, String msg) {
