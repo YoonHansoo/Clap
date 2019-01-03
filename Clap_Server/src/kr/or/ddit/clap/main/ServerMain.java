@@ -9,8 +9,8 @@ import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musichistory.MusicHistoryServiceImpl;
-import kr.or.ddit.clap.service.music.IMusicService;
-import kr.or.ddit.clap.service.music.MusicServiceImpl;
+import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
+import kr.or.ddit.clap.service.musicreview.MusicReviewServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
@@ -28,7 +28,7 @@ public class ServerMain {
 			ILoginService ils 	= LoginServiceImpl.getInstance();	//로그인
 			IQnaService iqs     = QnaServiceImpl.getInstance();		//문의사항
 			IJoinService ijs     = JoinServiceImpl.getInstance();	//회원가입
-			IMusicService ims     = MusicServiceImpl.getInstance();	//뮤직
+			IMusicReviewService imrs  = MusicReviewServiceImpl.getInstance();	//뮤직댓글
 			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); // 뮤직순위
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
@@ -39,7 +39,7 @@ public class ServerMain {
 			reg.rebind("qna", iqs);
 			reg.rebind("join", ijs);
 			reg.rebind("history", imhs);
-			reg.rebind("music", ims);
+			reg.rebind("musicreview", imrs);
 			 System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {

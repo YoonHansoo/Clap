@@ -32,6 +32,7 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/qna.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/mypage.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/join.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/musicreview.xml"></sqlMap> 
 </sqlMapConfig>
 
 
