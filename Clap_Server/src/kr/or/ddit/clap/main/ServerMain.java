@@ -31,7 +31,7 @@ public class ServerMain {
 			reg.rebind("mypage", ms);
 			reg.rebind("login", ils);
 			reg.rebind("qna", iqs);
-			reg.rebind("join", ils);
+			reg.rebind("join", ijs);
 			  System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
