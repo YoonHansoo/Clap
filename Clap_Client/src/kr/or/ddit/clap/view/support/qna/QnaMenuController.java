@@ -66,7 +66,6 @@ public class QnaMenuController implements Initializable {
 
 		try {
 			qnaList = FXCollections.observableArrayList(iqs.selectListAll());
-			System.out.println("dd:"+ qnaList.toString());
 			
 		} catch (RemoteException e) {
 			System.out.println("에러");

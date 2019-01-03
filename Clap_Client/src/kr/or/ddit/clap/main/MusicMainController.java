@@ -88,7 +88,7 @@ public class MusicMainController implements Initializable{
 	
 	
 	@FXML
-	public void qna() {
+	public void qna() { //고객센터 - 문의사항
 
 		try {
 			Parent qna = FXMLLoader.load(getClass().getResource("../view/support/qna/QnaMenuList.fxml"));
