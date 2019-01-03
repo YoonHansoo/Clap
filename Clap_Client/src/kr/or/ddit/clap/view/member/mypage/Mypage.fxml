@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="886.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1005.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageController">
    <children>
       <HBox layoutY="7.0" prefHeight="880.0" prefWidth="875.0">
          <children>
@@ -35,7 +36,6 @@
                      </font>
                   </Text>
                   <JFXTreeTableView layoutX="8.0" layoutY="439.0" prefHeight="198.0" prefWidth="189.0" />
-                  <JFXButton layoutX="22.0" layoutY="285.0" text="- 베스트 감상곡" />
                   <JFXButton layoutX="22.0" layoutY="308.0" text="- 좋아요♥" />
                   <JFXButton layoutX="22.0" layoutY="331.0" text="- 리뷰" />
                   <JFXButton layoutX="26.0" layoutY="778.0" text="- 최근감상곡" />
@@ -59,46 +59,58 @@
             </AnchorPane>
             <AnchorPane fx:id="contents" prefHeight="880.0" prefWidth="728.0">
                <children>
-                  <Button layoutX="148.0" layoutY="77.0" mnemonicParsing="false" text="Button" />
-                  <TabPane layoutX="77.0" layoutY="320.0" prefHeight="310.0" prefWidth="427.0" tabClosingPolicy="UNAVAILABLE">
+                  <TabPane layoutX="92.0" layoutY="147.0" prefHeight="320.0" prefWidth="615.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="     많이 들은 아티스트     ">
                            <content>
-                              <JFXTreeTableView />
+                              <JFXTreeTableView prefHeight="301.0" prefWidth="457.0" />
                            </content>
                         </Tab>
-                      <Tab text="       많이 들은       ">
+                        <Tab text="       최근 감상 곡       ">
                            <content>
                               <JFXTreeTableView />
                            </content>
                         </Tab>
-                        <Tab text="       최근 감상        ">
+                      <Tab text="       많이 들은 곡      ">
                            <content>
                               <JFXTreeTableView />
                            </content>
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <HBox layoutX="66.0" layoutY="112.0" prefHeight="184.0" prefWidth="506.0" style="-fx-border-color: #000000;">
+                  <JFXButton layoutX="611.0" layoutY="151.0" text="더보기" textFill="#030303" />
+                  <Text layoutX="92.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰">
+                     <font>
+                        <Font name="YDIYGO350" size="24.0" />
+                     </font>
+                  </Text>
+                  <JFXTreeTableView layoutX="92.0" layoutY="545.0" prefHeight="212.0" prefWidth="615.0" />
+                  <Line endY="714.0" layoutX="13.0" layoutY="160.0" startY="-160.0" />
+                  <HBox layoutX="129.0" layoutY="100.0" prefHeight="28.0" prefWidth="512.0">
                      <children>
-                        <AnchorPane prefHeight="182.0" prefWidth="274.0">
-                           <children>
-                              <Label layoutX="110.0" layoutY="46.0" text="Label" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="182.0" prefWidth="276.0" style="-fx-border-color: #000000;">
-                           <children>
-                              <Label layoutX="111.0" layoutY="41.0" text="Label" />
-                           </children>
-                        </AnchorPane>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="73.12109375">
+                           <font>
+                              <Font name="YDIYGO350" size="27.0" />
+                           </font>
+                        </Text>
+                        <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" textAlignment="RIGHT">
+                           <graphic>
+                              <FontAwesomeIcon glyphStyleClass="" iconName="PENCIL" size="" text="" wrappingWidth="8.285714149475098" />
+                           </graphic>
+                        </Button>
                      </children>
                   </HBox>
-                  <Label layoutX="97.0" layoutY="81.0" text="Label" />
-                  <JFXButton layoutX="517.0" layoutY="328.0" text="더보기 &gt;" textFill="#030303" />
-                  <Text layoutX="73.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰" />
-                  <JFXButton layoutX="492.0" layoutY="657.0" text="더보기 &gt;" textFill="#030303" />
-                  <JFXTreeTableView layoutX="82.0" layoutY="689.0" prefHeight="124.0" prefWidth="457.0" />
-                  <Line endY="714.0" layoutX="13.0" layoutY="160.0" startY="-160.0" />
+                  <Text fill="RED" layoutX="660.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font>
+                  </Text>
+                  <JFXButton layoutX="615.0" layoutY="521.0" text="더보기" textFill="#030303" />
+                  <Text fill="RED" layoutX="663.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>
