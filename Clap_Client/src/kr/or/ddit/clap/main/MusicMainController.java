@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,7 @@ public class MusicMainController implements Initializable{
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
+	@FXML FontAwesomeIcon icon_firstPage;
 	
 	
 	
@@ -41,15 +43,13 @@ public class MusicMainController implements Initializable{
 	
 	@FXML
 	public void login() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
-		Scene scene = new Scene(root);
-		loginDialog.setTitle("모여서 각잡고 코딩 - clap");
-		if(loginDialog.getModality() == null) {
-			loginDialog.initModality(Modality.APPLICATION_MODAL);			
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		loginDialog.setScene(scene);
-		loginDialog.show();
 	}
 	
 	@FXML
@@ -78,12 +78,7 @@ public class MusicMainController implements Initializable{
 	
 	@FXML
 	public void buyTicket() throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));			
-//		Scene scene = new Scene(root);
-//		buyTicketDialog.setTitle("모여서 각잡고 코딩 - clap");
-//		
-//		buyTicketDialog.setScene(scene);
-//		buyTicketDialog.show();
+		login_PageLoad();
 	}
 	
 	
@@ -137,9 +132,23 @@ public class MusicMainController implements Initializable{
 	}
 
 	public void login_PageLoad() {
-		
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));			
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	
+	public void firstPage() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));			
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
