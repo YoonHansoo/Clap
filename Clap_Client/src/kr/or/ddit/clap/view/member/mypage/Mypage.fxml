@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -86,18 +87,22 @@
                   </Text>
                   <JFXTreeTableView layoutX="92.0" layoutY="545.0" prefHeight="212.0" prefWidth="615.0" />
                   <Line endY="714.0" layoutX="13.0" layoutY="160.0" startY="-160.0" />
-                  <HBox layoutX="129.0" layoutY="100.0" prefHeight="28.0" prefWidth="512.0">
+                  <HBox layoutX="92.0" layoutY="104.0" prefHeight="33.0" prefWidth="615.0">
                      <children>
-                        <Text fx:id="text_UserInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="73.12109375">
-                           <font>
-                              <Font name="YDIYGO350" size="27.0" />
-                           </font>
-                        </Text>
-                        <Button mnemonicParsing="false" prefHeight="28.0" prefWidth="32.0" textAlignment="RIGHT">
-                           <graphic>
-                              <FontAwesomeIcon glyphStyleClass="" iconName="PENCIL" size="" text="" wrappingWidth="8.285714149475098" />
-                           </graphic>
-                        </Button>
+                        <ToolBar prefHeight="33.0" prefWidth="625.0">
+                          <items>
+                              <Text fx:id="text_UserInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Text>
+                            <Button mnemonicParsing="false">
+                                 <graphic>
+                                    <FontAwesomeIcon iconName="PENCIL" />
+                                 </graphic>
+                              </Button>
+                          </items>
+                        </ToolBar>
                      </children>
                   </HBox>
                   <Text fill="RED" layoutX="660.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
