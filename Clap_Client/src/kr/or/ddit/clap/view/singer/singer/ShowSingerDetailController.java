@@ -38,7 +38,7 @@ public class ShowSingerDetailController  implements Initializable {
 	
 	//파라미터로 넘기기 위해 전역으로 선언
 	public SingerVO sVO = null;
-	public int like_cnt; 
+	public String str_like_cnt; 
 	
 	
 	@FXML Label label_singNo;
@@ -92,7 +92,7 @@ public class ShowSingerDetailController  implements Initializable {
 		imgview_singImg.setImage(img);
 		
 		//좋아요 수를 가져오는 쿼리
-		 like_cnt = 0;
+		 int like_cnt = 0;
 		try {
 			like_cnt =  iss.selectSingerLikeCnt(singerNo);
 		} catch (RemoteException e) {
@@ -100,7 +100,7 @@ public class ShowSingerDetailController  implements Initializable {
 		}
 
 		//좋아요는 다른 VO에서 가져와야함...
-		String str_like_cnt =like_cnt+"";
+		 str_like_cnt =like_cnt+"";
 		label_LikeCnt.setText(str_like_cnt);
 		
 	}
@@ -143,7 +143,7 @@ public class ShowSingerDetailController  implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateSinger.fxml"));// initialize실행됨
 			Parent UpdateSinger= loader.load(); 
 			UpdateSingerController cotroller = loader.getController();
-			cotroller.initData(sVO,like_cnt);
+			cotroller.initData(sVO,str_like_cnt);
 			main.getChildren().removeAll();
 			main.getChildren().setAll(UpdateSinger);
 			

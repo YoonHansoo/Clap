@@ -124,7 +124,7 @@
                      <children>
                         <Label prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
                            <graphic>
-                              <FontAwesomeIcon iconName="HEART" />
+                              <FontAwesomeIcon fill="#9c0000" iconName="HEART" />
                            </graphic>
                            <font>
                               <Font name="YDIYGO340" size="14.0" />

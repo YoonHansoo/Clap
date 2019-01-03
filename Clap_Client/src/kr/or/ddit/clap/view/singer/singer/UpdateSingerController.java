@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
@@ -40,16 +41,26 @@ public class UpdateSingerController implements Initializable {
 	@FXML
 	JFXButton btn_chageImg;
 	@FXML
-	JFXTextField txt_intro;
+	JFXTextArea txt_intro;
+	
 
 	public static String singerNo; // PK값 받기
 
-	// 전 화면에 있는 데이터를 초기화해주는 메서드
-	public void initData(SingerVO sVO, int like_cnt) {
+	// 전 화면에 있는 데이터를 그대로 가져와  세팅해주는 메서드
+	public void initData(SingerVO sVO, String str_like_cnt) {
 		System.out.println("initData");
-		Image img = new Image(sVO.getSing_image());
+		
+		Image img = new Image(sVO.getSing_image()); //이미지 객체등록
 		imgview_singImg.setImage(img);
 		txt_name.setText(sVO.getSing_name());
+		combo_actType.setPromptText(sVO.getSing_act_type());
+		combo_actEra.setPromptText(sVO.getSing_act_era());
+		
+		combo_DebutEra.setPromptText(sVO.getSing_debut_era());
+		txt_debutMus.setText(sVO.getSing_debut_mus());
+		txt_nation.setText(sVO.getSing_nation());
+		label_LikeCnt.setText(str_like_cnt);
+		txt_intro.setText(sVO.getSing_intro());
 	}
 
 	@Override

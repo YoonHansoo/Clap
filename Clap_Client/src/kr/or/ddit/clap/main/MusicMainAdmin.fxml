@@ -18,13 +18,13 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:controller="kr.or.ddit.clap.main.MusicMainAdminController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainAdminController">
    <content>
       <VBox>
          <children>
             <AnchorPane fx:id="header" prefHeight="160.0" prefWidth="1005.0" style="-fx-background-color: fff;">
                <children>
-                  <FontAwesomeIcon fx:id="logo_Main" onMouseClicked="#logo_Main" iconName="APPLE" layoutX="106.0" layoutY="117.0" size="2cm">
+                  <FontAwesomeIcon fx:id="logo_Main" iconName="APPLE" layoutX="106.0" layoutY="117.0" onMouseClicked="#logo_Main" size="2cm">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startX="0.6333333333333333" startY="0.1523809523809524">
                            <stops>
@@ -34,35 +34,18 @@
                         </LinearGradient>
                      </fill>
                   </FontAwesomeIcon>
-                  <JFXButton layoutX="903.0" layoutY="94.0" text="회원가입" />
-                  <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" text="로그인" />
-                  <JFXTextField layoutX="239.0" layoutY="91.0" prefColumnCount="50">
-                     <focusColor>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="#e40377" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </focusColor>
-                     <unFocusColor>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="RED" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </unFocusColor>
-                  </JFXTextField>
-                  <JFXButton layoutX="96.0" layoutY="19.0" text="이용권 구매" textFill="#8d8d8d" />
-                  <MenuBar layoutX="176.0" layoutY="134.0" prefHeight="25.0" prefWidth="588.0" style="-fx-background-color: fff;">
+                  <JFXButton layoutX="816.0" layoutY="41.0" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
+                  <JFXButton fx:id="btn_login" layoutX="758.0" layoutY="41.0" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
+                  <JFXTextField focusColor="WHITE" layoutX="176.0" layoutY="91.0" maxWidth="591.0" minWidth="548.0" prefColumnCount="50" prefHeight="29.0" prefWidth="548.0" unFocusColor="#9c0000" />
+                  <JFXButton buttonType="RAISED" layoutX="96.0" layoutY="19.0" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE" />
+                  <MenuBar layoutX="176.0" layoutY="134.0" prefHeight="25.0" prefWidth="581.0" style="-fx-background-color: #090948; -fx-color: #000;">
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="TOP50" onAction="#top50PageChange" />
-                              <MenuItem mnemonicParsing="false" text="장르별" onAction="#genrePageChange" />
-                              <MenuItem mnemonicParsing="false" text="시대별" onAction="#periodPageChange" />
-                              <MenuItem mnemonicParsing="false" text="뮤직비디오" onAction="#musicvideoPageChange" />
+                              <MenuItem mnemonicParsing="false" onAction="#top50PageChange" text="TOP50" />
+                              <MenuItem mnemonicParsing="false" onAction="#genrePageChange" text="장르별" />
+                              <MenuItem mnemonicParsing="false" onAction="#periodPageChange" text="시대별" />
+                              <MenuItem mnemonicParsing="false" onAction="#musicvideoPageChange" text="뮤직비디오" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="최신음악">
@@ -124,9 +107,15 @@
                         </Menu>
                      </menus>
                   </MenuBar>
+                  <JFXButton layoutX="718.0" layoutY="88.0" prefHeight="36.0" prefWidth="39.0" text=" ">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </JFXButton>
+                  <FontAwesomeIcon fill="#090948" iconName="SEARCH" layoutX="727.0" layoutY="108.0" size="2em" wrappingWidth="31.142857551574707" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0" style="-fx-background-color: fff;">
+            <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
                <children>
                   <JFXButton layoutX="202.0" layoutY="242.0" text="국외">
                      <font>
