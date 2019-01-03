@@ -9,6 +9,7 @@ package kr.or.ddit.clap.dao.singer;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,8 @@ public class SingerDaoImpl implements ISingerDao {
 		return dao;
 	}
 
+
+	//가수목록 조회를 위한 쿼리문
 	public List<SingerVO> selectListAll() {
 		List<SingerVO> list = new ArrayList<SingerVO>();
 		try {
@@ -56,6 +59,7 @@ public class SingerDaoImpl implements ISingerDao {
 		return list;
 	}
 
+	//검색조건에 맞게 검색하는 쿼리문
 	@Override
 	public List<SingerVO> searchList(SingerVO vo) {
 		List<SingerVO> list = new ArrayList<SingerVO>();
@@ -70,4 +74,30 @@ public class SingerDaoImpl implements ISingerDao {
 		return list;
 	}
 
+	//가수 상세보기 조회를  위한 쿼리문
+	@Override
+	public SingerVO singerDetailInfo(String singerNo) {
+		SingerVO sVO = new SingerVO();
+		try {
+			
+			sVO = (SingerVO) smc.queryForObject("singer.singerDetailInfo", singerNo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return sVO;
+	}
+//선택한 가수의 좋아요의 수를 조회하는 쿼리문
+	@Override
+	public int selectSingerLikeCnt(String singerNo) {
+		int singerLikeCnt = 0;
+		
+		try {
+			singerLikeCnt = (int) smc.queryForObject("singer.selectSingerLikeCnt",singerNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return singerLikeCnt;
+	}
 }

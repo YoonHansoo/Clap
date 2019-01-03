@@ -6,7 +6,9 @@
  */
 
 package kr.or.ddit.clap.dao.singer;
+import java.rmi.RemoteException;
 import java.util.List;
+
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
 public interface ISingerDao {
@@ -14,4 +16,8 @@ public interface ISingerDao {
 	public List<SingerVO> selectListAll();
 	
 	public List<SingerVO> searchList(SingerVO vo);
+	
+	public SingerVO singerDetailInfo(String singerNo);
+	
+	public int selectSingerLikeCnt(String singerNo);
 }
