@@ -11,15 +11,16 @@
 			  from
 				   (select count(a.mus_no) as count,
 					       b.mus_no,
-					       b.MUS_TITLE,
-					       d.sing_name,
-					       c.alb_image
+					       b.mus_title,
+					       b.mus_befor_rank,
+					       c.alb_image,
+					       d.sing_name
 					  from music_history a, music b, album c, singer d
 					 where a.mus_no = b.mus_no
 					   and b.alb_no = c.alb_no
 					   and c.sing_no = d.sing_no
 					   and a.histo_indate = to_char(sysdate,'YYYYMMDD')
-					 group by b.mus_no, b.MUS_TITLE,d.sing_name,c.alb_image
+					 group by b.mus_no, b.MUS_TITLE,b.mus_befor_rank,d.sing_name,c.alb_image
 					 order by count(a.mus_no) desc)
 			 where rownum &lt;= 50
 	 </select>
