@@ -88,7 +88,7 @@ public class LoginController implements Initializable{
 		System.out.println(decryptedPw);
 		
 		MusicMainController.loginDialog.close();
-		mmc.login_PageLoad();
+		mmc.firstPage();
 	}
 
 }
