@@ -28,7 +28,7 @@ public class ClientMain extends Application {
 		LoginSession.session.setMem_pw("4321");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");
-		LoginSession.session.setMem_auth("f");
+		LoginSession.session.setMem_auth("t");
 		
 		
 		

@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #2A2E37;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerListController">
+<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerListController">
    <children>
-      <VBox layoutX="40.0" layoutY="53.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #FFFF8D; -fx-background-color: #B2B2B2;">
+      <VBox layoutX="40.0" layoutY="53.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color: #150754;">
          <children>
             <VBox prefHeight="200.0" prefWidth="191.0">
                <children>
@@ -37,7 +37,7 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXButton style="-fx-background-color: #2A2E37;" text="logout" textFill="WHITE">
+                        <JFXButton style="-fx-background-color: #9c0000;" text="logout" textFill="WHITE">
                            <font>
                               <Font name="YDIYGO350" size="10.0" />
                            </font>
@@ -103,12 +103,12 @@
       </VBox>
       <AnchorPane fx:id="main" layoutX="234.0" layoutY="3.0" prefHeight="768.0" prefWidth="773.0">
          <children>
-            <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="가수 관리" textFill="WHITE">
+            <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="가수 관리">
                <font>
-                  <Font size="24.0" />
+                  <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #B2B2B2;" />
+            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
             <JFXTreeTableView fx:id="tbl_singer" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
                <columns>
                   <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
@@ -121,9 +121,9 @@
                </columns>
             </JFXTreeTableView>
             <JFXComboBox fx:id="combo_search" layoutX="442.0" layoutY="636.0" promptText="가수 명" />
-            <JFXTextField fx:id="text_search" focusColor="#ffff8d" layoutX="531.0" layoutY="633.0" unFocusColor="#ffff8d" />
+            <JFXTextField fx:id="text_search" focusColor="#150754" layoutX="524.0" layoutY="636.0" unFocusColor="#150754" />
             <Line endX="614.0" layoutX="124.0" layoutY="92.0" startX="-100.0" stroke="#ffff8d" />
-            <JFXButton fx:id="btn_search" layoutX="663.0" layoutY="627.0" prefHeight="42.0" prefWidth="61.0" text=" ">
+            <JFXButton fx:id="btn_search" layoutX="658.0" layoutY="627.0" prefHeight="42.0" prefWidth="61.0" text=" ">
                <graphic>
                   <FontAwesomeIcon iconName="SEARCH" text="" />
                </graphic>
