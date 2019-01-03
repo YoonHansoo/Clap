@@ -1,5 +1,6 @@
 package kr.or.ddit.clap.view.login;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.rmi.NotBoundException;
@@ -17,8 +18,13 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.singer.ISingerService;
@@ -88,7 +94,24 @@ public class LoginController implements Initializable{
 		System.out.println(decryptedPw);
 		
 		MusicMainController.loginDialog.close();
-		mmc.firstPage();
+		//mmc.firstPage();
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
+		ScrollPane root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Scene scene = new Scene(root);
+		Stage primaryStage = (Stage) txt_id.getScene().getWindow();
+		primaryStage.setScene(scene);
+		
+		
+		
+		
 	}
 
 }

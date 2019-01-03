@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -35,6 +36,11 @@ public class ShowSingerDetailController  implements Initializable {
 	private ISingerService iss;
 	private String temp_img_path="";
 	
+	//파라미터로 넘기기 위해 전역으로 선언
+	public SingerVO sVO = null;
+	public int like_cnt; 
+	
+	
 	@FXML Label label_singNo;
 	@FXML AnchorPane contents;
 	@FXML Label label_singerName1;
@@ -47,6 +53,8 @@ public class ShowSingerDetailController  implements Initializable {
 	@FXML Label label_LikeCnt;
 	@FXML ImageView imgview_singImg;
 	@FXML Label txt_intro;
+	@FXML AnchorPane main;
+	
 	
 	
 	
@@ -55,7 +63,6 @@ public class ShowSingerDetailController  implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		System.out.println("가수번호:" +singerNo );
 		
-		SingerVO sVO = null;
 		try {
 			//reg로 ISingerService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);  
@@ -85,7 +92,7 @@ public class ShowSingerDetailController  implements Initializable {
 		imgview_singImg.setImage(img);
 		
 		//좋아요 수를 가져오는 쿼리
-		int like_cnt = 0;
+		 like_cnt = 0;
 		try {
 			like_cnt =  iss.selectSingerLikeCnt(singerNo);
 		} catch (RemoteException e) {
@@ -127,8 +134,26 @@ public class ShowSingerDetailController  implements Initializable {
 
 
 
-
-	@FXML public void updateSinger() {}
+	//수정화면으로 이동
+	@FXML public void updateSinger() {
+		try {
+			//바뀔 화면(FXML)을 가져옴
+			UpdateSingerController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateSinger.fxml"));// initialize실행됨
+			Parent UpdateSinger= loader.load(); 
+			UpdateSingerController cotroller = loader.getController();
+			cotroller.initData(sVO,like_cnt);
+			main.getChildren().removeAll();
+			main.getChildren().setAll(UpdateSinger);
+			
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} 
+		
+		
+	}
 
 
 

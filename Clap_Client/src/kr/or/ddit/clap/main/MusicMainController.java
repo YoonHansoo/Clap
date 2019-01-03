@@ -11,12 +11,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+import com.jfoenix.controls.JFXButton;
 
 /**
  * 메인화면의 fxml 컨트롤러.
@@ -33,6 +35,8 @@ public class MusicMainController implements Initializable{
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	@FXML FontAwesomeIcon icon_firstPage;
+
+	@FXML JFXButton btn_login;
 	
 	
 	
@@ -143,12 +147,25 @@ public class MusicMainController implements Initializable{
 	
 	public void firstPage() {
 		try {
+			System.out.println("getClass:"+getClass());
+			System.out.println(contents.toString());
 			Parent root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));			
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		/*FXMLLoader loader = new FXMLLoader(getClass().getResource("FirstPage.fxml"));
+		AnchorPane root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Scene scene = new Scene(root);
+		Stage primaryStage = (Stage) btn_login.getScene().getWindow();
+		primaryStage.setScene(scene);*/
 	}
 
 }

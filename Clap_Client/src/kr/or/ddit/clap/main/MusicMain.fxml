@@ -35,7 +35,7 @@
                      </fill>
                   </FontAwesomeIcon>
                   <JFXButton layoutX="903.0" layoutY="94.0" onAction="#join" text="회원가입" />
-                  <JFXButton layoutX="828.0" layoutY="94.0" onAction="#login" text="로그인" />
+                  <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" text="로그인" />
                   <JFXButton layoutX="828.0" layoutY="70.0" onAction="#mypage" text="마이페이지 테스트" />
                   <JFXTextField layoutX="200.0" layoutY="91.0" prefColumnCount="50">
                      <focusColor>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -12,9 +14,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.UpdateSingerController">
    <children>
-      <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="가수이름">
+      <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="가수정보 변경">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -27,14 +29,19 @@
                </HBox.margin></ImageView>
             <VBox prefHeight="165.0" prefWidth="470.0">
                <children>
-                  <Label fx:id="label_singerName2" prefHeight="41.0" prefWidth="256.0" text="가수이름">
-                     <font>
-                        <Font name="YDIYGO350" size="36.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="가수 이름">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_name" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
+                     </children>
+                  </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="활동 유형">
@@ -45,11 +52,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_ActType" prefWidth="200.0" text="???">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
+                        <JFXComboBox fx:id="combo_actType" prefHeight="23.0" prefWidth="111.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -62,11 +65,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_ActEra" prefHeight="15.0" prefWidth="200.0" text="???">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
+                        <JFXComboBox fx:id="combo_actEra" prefHeight="23.0" prefWidth="111.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -79,11 +78,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_DebutEra" prefWidth="200.0" text="???">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
+                        <JFXComboBox fx:id="combo_DebutEra" prefHeight="23.0" prefWidth="111.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -96,11 +91,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_DebutMus" prefWidth="200.0" text="???">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
+                        <JFXTextField fx:id="txt_debutMus" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -113,11 +104,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_Nation" prefHeight="15.0" prefWidth="200.0" text="???">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
+                        <JFXTextField fx:id="txt_nation" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="100.0">
@@ -148,9 +135,9 @@
          </children>
       </HBox>
       <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="82.0" layoutY="278.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
+      <JFXButton fx:id="btn_chageImg" layoutX="68.0" layoutY="280.0" onAction="#btn_chageImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 변경" textFill="WHITE">
          <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
+            <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
          </graphic>
          <font>
             <Font name="YDIYGO340" size="14.0" />
@@ -162,7 +149,7 @@
          </font>
       </Label>
       <Button layoutX="510.0" layoutY="689.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-      <Button layoutX="633.0" layoutY="689.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
-      <Label fx:id="txt_intro" layoutX="28.0" layoutY="384.0" prefHeight="296.0" prefWidth="718.0" text="아티스트 소개" wrapText="true" />
+      <Button layoutX="633.0" layoutY="689.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
+      <JFXTextField fx:id="txt_intro" layoutX="28.0" layoutY="384.0" maxWidth="724.0" minWidth="724.0" prefHeight="296.0" prefWidth="724.0" />
    </children>
 </AnchorPane>
