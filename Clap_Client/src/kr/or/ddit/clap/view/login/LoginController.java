@@ -61,18 +61,18 @@ public class LoginController implements Initializable{
 		decryptedPw = aes.decrypt(encryptedPw);
 	
 		// 아이디 확인
-		MemberVO vo = null;
+		Boolean idCheck = false;
 		try {
-			vo = ils.select(txt_id.getText());
+			idCheck = ils.idCheck(txt_id.getText());
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		// 아이디가 존재하지 않을 때
-		if(vo == null) {
-			System.out.println("존재하지 않는 ID입니다.");
-		}
+//		if(vo == null) {
+//			System.out.println("존재하지 않는 ID입니다.");
+//		}
 		
 		// 비밀번호 확인
 		
