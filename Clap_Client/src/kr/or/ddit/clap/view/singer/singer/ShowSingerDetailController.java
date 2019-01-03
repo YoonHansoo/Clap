@@ -7,6 +7,7 @@
  */
 package kr.or.ddit.clap.view.singer.singer;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -15,20 +16,24 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import kr.or.ddit.clap.service.singer.ISingerService;
-import kr.or.ddit.clap.vo.singer.SingerVO;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import kr.or.ddit.clap.service.singer.ISingerService;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 
 public class ShowSingerDetailController  implements Initializable {
 
 	public static String singerNo;// 파라미터로 받은 선택한 가수의 PK 
 	private Registry reg;
 	private ISingerService iss;
+	private String temp_img_path="";
 	
 	@FXML Label label_singNo;
 	@FXML AnchorPane contents;
@@ -76,6 +81,7 @@ public class ShowSingerDetailController  implements Initializable {
 		txt_intro.setText(sVO.getSing_intro());
 		
 		Image img = new Image(sVO.getSing_image());
+		temp_img_path = sVO.getSing_image();   //sVO.getSing_image()를 전역으로 쓰기위해
 		imgview_singImg.setImage(img);
 		
 		//좋아요 수를 가져오는 쿼리
@@ -95,7 +101,29 @@ public class ShowSingerDetailController  implements Initializable {
 
 
 
-	@FXML public void wideView() {}
+	@FXML public void wideView() {
+		//img_wideimg
+		System.out.println("크게보기 버튼클릭");
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerImgWiderDialog.fxml"));
+			Stage stage = new Stage();
+			Scene scene = new Scene(pane);
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			Stage primaryStage = (Stage)label_singerName1.getScene().getWindow();
+			stage.initOwner(primaryStage);
+			stage.setWidth(500);
+			stage.setHeight(600);
+			
+			ImageView img_wideimg = (ImageView) pane.lookup("#img_wideimg");
+			Image temp_img = new Image(temp_img_path);
+			img_wideimg.setImage(temp_img);
+			
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 
 
