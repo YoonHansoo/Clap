@@ -4,12 +4,12 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="join">
 	
-	 <select id="insert" resultClass="int" parameterClass="memberVO">
+	 <insert id="insert" parameterClass="memberVO">
 		insert into member (mem_id, mem_pw, mem_name, mem_email, mem_bir, 
 		        mem_gender, mem_tel, mem_grade, mem_auth, mem_indate, mem_blacklist_tf, mem_del_tf) 
 		values (#mem_id#, #mem_pw#, #mem_name#, #mem_email#, #mem_bir#, #mem_gender#, 
 		#mem_tel#, #mem_grade#, #mem_auth#, #mem_indate#, #mem_blacklist_tf#, #mem_del_tf#) 
-	 </select>
+	 </insert>
 	   
 		
 	
