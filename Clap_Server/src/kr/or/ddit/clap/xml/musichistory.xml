@@ -21,7 +21,7 @@
 					   and a.histo_indate = to_char(sysdate,'YYYYMMDD')
 					 group by b.mus_no, b.MUS_TITLE,d.sing_name,c.alb_image
 					 order by count(a.mus_no) desc)
-			 where rownum <= 50;
+			 where rownum &lt;= 50
 	 </select>
 	   
 	  
