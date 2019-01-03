@@ -58,7 +58,7 @@ public class QnaMenuController implements Initializable {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-
+		
 		col_qnaDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_indate()));
 		col_qnaNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_no()));
 		col_qnaTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_title()));
@@ -66,6 +66,8 @@ public class QnaMenuController implements Initializable {
 
 		try {
 			qnaList = FXCollections.observableArrayList(iqs.selectListAll());
+			System.out.println("dd:"+ qnaList.toString());
+			
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();

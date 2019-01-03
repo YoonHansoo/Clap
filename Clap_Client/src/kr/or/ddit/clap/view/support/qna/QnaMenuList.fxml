@@ -24,8 +24,8 @@
             <Tab text="1:1ChatBot" />
          </tabs>
       </JFXTabPane>
-      <Pagination fx:id="p_paging" layoutX="403.0" layoutY="679.0" prefHeight="51.0" prefWidth="200.0" />
-      <JFXTreeTableView fx:id="tbl_qna" layoutX="78.0" layoutY="160.0" prefHeight="490.0" prefWidth="850.0">
+      <Pagination fx:id="p_paging" layoutX="74.0" layoutY="126.0" prefHeight="552.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="190.0" />
+      <JFXTreeTableView fx:id="tbl_qna" layoutX="78.0" layoutY="160.0" prefHeight="490.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="160.0">
          <columns>
             <TreeTableColumn fx:id="col_qnaNumber" prefWidth="103.0" text="번  호" />
             <TreeTableColumn fx:id="col_qnaTitle" prefWidth="548.0" text="제  목" />
