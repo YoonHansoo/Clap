@@ -35,7 +35,10 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="아이디" textAlignment="RIGHT" />
                   <JFXTextField fx:id="txt_id" />
                   <JFXButton fx:id="btn_idCheck" text="중복 확인" />
-                  <Label text="사용가능합니다." />
+                  <Label text="사용가능합니다.">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -50,7 +53,10 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호" />
                   <JFXTextField fx:id="txt_pw" />
-                  <Label text="규칙에 맞게 입력해주세요." />
+                  <Label text="규칙에 맞게 입력해주세요.">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -60,7 +66,10 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호 확인" />
                   <JFXTextField fx:id="txt_pwCheck" />
-                  <Label text="확인되었습니다." />
+                  <Label text="확인되었습니다.">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -70,7 +79,11 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이름" />
                   <JFXTextField fx:id="txt_name" />
-                  <Label />
+                  <Label>
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -81,7 +94,10 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="성별" />
                   <JFXRadioButton fx:id="radio_m" text="남" />
                   <JFXRadioButton fx:id="radio_f" text="여" />
-                  <Label />
+                  <Label>
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -91,7 +107,10 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="생년월일" />
                   <JFXTextField fx:id="txt_birth" />
-                  <Label />
+                  <Label>
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -106,7 +125,10 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="휴대전화" />
                   <JFXTextField fx:id="txt_tel" />
-                  <Label />
+                  <Label>
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -117,7 +139,10 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이메일" />
                   <JFXTextField fx:id="txt_email" />
                   <JFXButton fx:id="btn_idCheck1" text="인증하기" />
-                  <Label text="인증되었습니다." />
+                  <Label text="인증되었습니다.">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
