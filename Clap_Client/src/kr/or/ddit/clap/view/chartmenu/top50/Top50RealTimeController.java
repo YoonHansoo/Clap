@@ -39,10 +39,20 @@ public class Top50RealTimeController implements Initializable{
 	private IMusicHistoryService imhs;
 	private ObservableList<Map> toDayRank;
 	private ObservableList<JFXCheckBox> listCB = FXCollections.observableArrayList();
+	public int i;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
 		toDayChart();
+		
+		for (i = 0; i < listCB.size(); i++) {
+			listCB.get(i).setOnAction(e -> {
+				System.out.println(toDayRank.get(i).get("MUS_NO"));
+			}); 
+			
+		}
+		
 		
 	}
 	
@@ -87,6 +97,8 @@ public class Top50RealTimeController implements Initializable{
 			h_Line.setPrefWidth(710);
 			h_Line.setPrefHeight(3);
 			h_Line.setStyle("-fx-background-color: #090948;");
+			//h_Line.alignmentProperty("")
+			
 			
 			// 전체 HBox 
 			HBox h_Table = new HBox();
