@@ -3,12 +3,16 @@ package kr.or.ddit.clap.dao.mypage;
 import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 
 public class MypageDaoImpl implements IMypageDao{
 
@@ -96,6 +100,21 @@ public class MypageDaoImpl implements IMypageDao{
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+
+	@Override
+	public List<MusicReviewVO> selectReview(MemberVO vo) {
+		List<MusicReviewVO> list = new ArrayList<MusicReviewVO>();
+		try {
+			
+			list = smc.queryForList("mypage.selectReview",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
 	}
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 import kr.or.ddit.clap.dao.mypage.MypageDaoImpl;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
 public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageService  {
@@ -52,6 +53,11 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 	@Override
 	public int updateDelTF(MemberVO vo) throws RemoteException {
 		return mypageDao.updateDelTF(vo);
+	}
+
+	@Override
+	public List<MusicReviewVO> selectReview(MemberVO vo) {
+		return mypageDao.selectReview(vo);
 	}
 
 	

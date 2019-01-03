@@ -3,6 +3,8 @@ package kr.or.ddit.clap.dao.mypage;
 import java.util.List;
 
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 
 /**
  * 
@@ -22,6 +24,9 @@ public interface IMypageDao {
 	public int  updatePw(MemberVO vo);
 	
 	public int  updateDelTF(MemberVO vo);
+	
+	//리뷰
+	public List<MusicReviewVO> selectReview(MemberVO vo);
 	
 	
 }
