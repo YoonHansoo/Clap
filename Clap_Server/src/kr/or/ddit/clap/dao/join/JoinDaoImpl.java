@@ -38,11 +38,11 @@ public class JoinDaoImpl implements IJoinDao{
 	public int insert(MemberVO vo) {
 		int cnt = 0;
 		try {
-			Object obj = smc.insert("join.insert", vo);
+			 Object obj = smc.insert("join.insert", vo);
 			
-			if(obj == null) {
-				cnt = 1;
-			}
+			 if(obj == null) {
+				 cnt = 1;
+			 }
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
