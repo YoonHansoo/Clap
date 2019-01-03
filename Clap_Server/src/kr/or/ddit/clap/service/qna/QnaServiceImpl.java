@@ -1,3 +1,10 @@
+/**
+ * Singleton 패턴을 적용한 
+ * ISingerService를 구현한 클래스
+ * @author Hanhwa
+ * 
+ *
+ */
 package kr.or.ddit.clap.service.qna;
 
 import java.rmi.RemoteException;
@@ -8,6 +15,7 @@ import kr.or.ddit.clap.dao.qna.QnaDaoImpl;
 import kr.or.ddit.clap.dao.singer.SingerDaoImpl;
 import kr.or.ddit.clap.service.singer.SingerServiceImpl;
 import kr.or.ddit.clap.vo.singer.SingerVO;
+import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 	
@@ -32,7 +40,7 @@ public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 	// 각 메서드에서는 생성된 Dao객체를 이용하여 작업에 맞는 Dao객체의 메서드를 호출한다.
 	
 	@Override
-	public List<SingerVO> selectListAll() throws RemoteException {
+	public List<QnaVO> selectListAll() throws RemoteException {
 		
 		return qnaDao.selectListAll();
 	}

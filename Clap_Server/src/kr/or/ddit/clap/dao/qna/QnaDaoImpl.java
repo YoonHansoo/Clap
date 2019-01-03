@@ -17,6 +17,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.clap.vo.singer.SingerVO;
+import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaDaoImpl {
 	
@@ -42,8 +43,8 @@ public class QnaDaoImpl {
 		return dao;
 	}
 	
-	public List<SingerVO> selectListAll() {
-		List<SingerVO> list = new ArrayList<SingerVO>();
+	public List<QnaVO> selectListAll() {
+		List<QnaVO> list = new ArrayList<QnaVO>();
 		try {
 
 			list = smc.queryForList("qna.selectListAll");
