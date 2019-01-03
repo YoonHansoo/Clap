@@ -19,9 +19,12 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="15.0" layoutY="67.0" prefHeight="162.0" prefWidth="833.0" style="border: #54b823;">
+      <HBox layoutX="15.0" layoutY="67.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;">
          <children>
-            <ImageView fitHeight="211.0" fitWidth="292.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgview_singImg" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin></ImageView>
             <VBox prefHeight="165.0" prefWidth="470.0">
                <children>
                   <Label fx:id="label_singerName2" prefHeight="41.0" prefWidth="256.0" text="가수이름">
@@ -144,8 +147,8 @@
             </VBox>
          </children>
       </HBox>
-      <Line endX="832.0" layoutX="116.0" layoutY="319.0" startX="-100.0" stroke="#090c64" />
-      <JFXButton layoutX="117.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090c64;" text="크게보기" textFill="WHITE">
+      <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
+      <JFXButton layoutX="82.0" layoutY="278.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
          </graphic>
@@ -158,12 +161,12 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="label_Intro" layoutX="39.0" layoutY="395.0" prefHeight="261.0" prefWidth="873.0" text="아티스트 소개">
+      <Label fx:id="label_Intro" layoutX="29.0" layoutY="395.0" prefHeight="261.0" prefWidth="718.0" text="아티스트 소개">
          <font>
-            <Font name="YDIYGO340" size="12.0" />
+            <Font name="YDIYGO340" size="8.0" />
          </font>
       </Label>
-      <Button layoutX="711.0" layoutY="709.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090c64;" text="Update" textFill="WHITE" />
-      <Button layoutX="833.0" layoutY="709.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090c64;" text="Delete" textFill="WHITE" />
+      <Button layoutX="510.0" layoutY="689.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
+      <Button layoutX="632.0" layoutY="689.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
    </children>
 </AnchorPane>
