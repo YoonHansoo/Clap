@@ -71,7 +71,8 @@
                      <columns>
                         <TreeTableColumn fx:id="col_ReviewCont" prefWidth="517.0" text="내용 " />
                         <TreeTableColumn fx:id="col_ReviewDate" prefWidth="96.0" text="등록 날짜" />
-                     </columns></JFXTreeTableView>
+                     </columns>
+                     </JFXTreeTableView>
                   <Line endY="714.0" layoutX="13.0" layoutY="160.0" startY="-160.0" />
                   <HBox layoutX="92.0" layoutY="104.0" prefHeight="33.0" prefWidth="615.0">
                      <children>

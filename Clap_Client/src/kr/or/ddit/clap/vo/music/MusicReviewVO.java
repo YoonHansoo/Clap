@@ -2,13 +2,16 @@ package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
 
-public class MusicReviewVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class MusicReviewVO extends RecursiveTreeObject<MusicReviewVO> implements Serializable{
 	
 	private String mus_re_no;
 	private String mus_re_content;
 	private String mus_re_indate;
 	private String mem_id;
 	private String mus_no;
+	private String indate;
 	
 	public String getMus_re_no() {
 		return mus_re_no;
@@ -39,6 +42,12 @@ public class MusicReviewVO implements Serializable{
 	}
 	public void setMus_no(String mus_no) {
 		this.mus_no = mus_no;
+	}
+	public String getIndate() {
+		return indate;
+	}
+	public void setIndate(String indate) {
+		this.indate = indate;
 	}
 	
 	

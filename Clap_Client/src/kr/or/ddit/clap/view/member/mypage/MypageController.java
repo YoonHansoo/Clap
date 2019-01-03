@@ -11,6 +11,9 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -24,26 +27,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
-import kr.or.ddit.clap.service.music.IMusicService;
+import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.music.MusicVO;
-import kr.or.ddit.clap.vo.singer.SingerVO;
-
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
-import javafx.scene.control.TreeTableColumn;
+import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class MypageController implements Initializable {
 	
@@ -52,7 +48,7 @@ public class MypageController implements Initializable {
 	
 	private Registry reg;
 	private IMypageService ims;
-	private IMusicService imu;
+	private IMusicReviewService imrs;
 	private ObservableList<MusicReviewVO> revList, currentrevList;
 	
 	@FXML Label label_Id;
@@ -63,11 +59,11 @@ public class MypageController implements Initializable {
 	@FXML AnchorPane Head;
 	@FXML JFXTreeTableView tbl_ManySigner;
 	@FXML JFXTreeTableView tbl_ManyMusic;
-	
 	@FXML AnchorPane tbl_NewMusic;
-	@FXML JFXTreeTableView tbl_Review;
+	
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
+	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -75,7 +71,7 @@ public class MypageController implements Initializable {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMypageService) reg.lookup("mypage");
-			imu = (IMusicService) reg.lookup("music");
+			imrs = (IMusicReviewService) reg.lookup("musicreview");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -99,17 +95,24 @@ public class MypageController implements Initializable {
 		//최근댓글테이블
 		col_ReviewCont
 		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
+		col_ReviewDate
+		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate()));
 
 		MusicReviewVO muvo =new MusicReviewVO();
 		muvo.setMem_id(user_id);
 		try {
-			revList = FXCollections.observableArrayList(imu.selectReview(muvo));
+			revList = FXCollections.observableArrayList(imrs.selectReview(muvo));
+			System.out.println(revList.size());
+			System.out.println(revList.get(0).getMus_re_content());
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();
 		}
 		
-				
+		// 데이터 삽입
+		TreeItem<MusicReviewVO> root = new RecursiveTreeItem<>(revList, RecursiveTreeObject::getChildren);
+		tbl_Review.setRoot(root);
+		tbl_Review.setShowRoot(false);
 
 	}
 
