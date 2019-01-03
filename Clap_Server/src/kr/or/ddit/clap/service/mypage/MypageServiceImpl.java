@@ -16,7 +16,6 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 	private MypageServiceImpl() throws RemoteException {
 		super();
 		mypageDao =  MypageDaoImpl.getInstance();//Singleton패턴
-		System.out.println("생성자 실행");
 	}
 	
 	public static MypageServiceImpl getInstance() throws RemoteException {

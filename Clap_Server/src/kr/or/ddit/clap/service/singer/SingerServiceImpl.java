@@ -22,7 +22,6 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 	private SingerServiceImpl() throws RemoteException {
 		super();
 		singerDao =  SingerDaoImpl.getInstance();//Singleton패턴
-		System.out.println("생성자 실행");
 	}
 	
 	public static SingerServiceImpl getInstance() throws RemoteException {

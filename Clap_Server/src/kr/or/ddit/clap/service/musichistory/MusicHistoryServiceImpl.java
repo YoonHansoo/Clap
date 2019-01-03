@@ -23,7 +23,6 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 	private MusicHistoryServiceImpl() throws RemoteException {
 		super();
 		musicHistoryDao =  MusicHistoryDaoImpl.getInstance();//Singleton패턴
-		System.out.println("생성자 실행");
 	}
 	
 	public static MusicHistoryServiceImpl getInstance() throws RemoteException {

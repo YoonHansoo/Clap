@@ -18,7 +18,6 @@ public class MusicReviewServiceImpl  extends UnicastRemoteObject implements IMus
 	private MusicReviewServiceImpl() throws RemoteException {
 		super();
 		musicreviewDao =  MusicReviewDaoImpl.getInstance();//Singleton패턴
-		System.out.println("생성자 실행");
 	}
 	
 	public static MusicReviewServiceImpl getInstance() throws RemoteException {

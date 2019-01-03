@@ -26,7 +26,6 @@ public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 	private QnaServiceImpl() throws RemoteException {
 		super();
 		qnaDao =  QnaDaoImpl.getInstance();//Singleton패턴
-		System.out.println("생성자 실행");
 	}
 	
 	public static QnaServiceImpl getInstance() throws RemoteException {
