@@ -29,17 +29,17 @@ import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 public class MypageController implements Initializable {
-
+	
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
-	@FXML
-	Label label_Id;
-	@FXML
-	Image img_User;
-	@FXML
-	AnchorPane contents;
+	static Stage pwok = new Stage(StageStyle.DECORATED);
+	
 	private Registry reg;
 	private IMypageService ims;
-	static Stage pwok = new Stage(StageStyle.DECORATED);
+	
+	@FXML Label label_Id;
+	@FXML Image img_User;
+	@FXML AnchorPane contents;
+	@FXML Text text_UserInfo;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +55,17 @@ public class MypageController implements Initializable {
 
 		String user_id = LoginSession.session.getMem_id();
 		label_Id.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
+		MemberVO vo = new MemberVO();
+		vo.setMem_id(user_id);
+		MemberVO memvo;
+		try {
+			memvo = ims.select(vo);
+			text_UserInfo.setText(memvo.getMem_intro());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 	}
 

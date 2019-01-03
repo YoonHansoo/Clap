@@ -88,7 +88,7 @@
                   <Line endY="714.0" layoutX="13.0" layoutY="160.0" startY="-160.0" />
                   <HBox layoutX="129.0" layoutY="100.0" prefHeight="28.0" prefWidth="512.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="73.12109375">
+                        <Text fx:id="text_UserInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="73.12109375">
                            <font>
                               <Font name="YDIYGO350" size="27.0" />
                            </font>
