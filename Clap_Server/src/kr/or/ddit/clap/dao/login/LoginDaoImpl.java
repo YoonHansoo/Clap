@@ -39,14 +39,18 @@ public class LoginDaoImpl implements ILoginDao{
 	}
 	
 	@Override
-	public MemberVO select(String id) {
-		MemberVO rVO = new MemberVO();
+	public Boolean idCheck(String id) {
+		Boolean idCheck = false;
 		try {
-			rVO = (MemberVO) smc.queryForObject("login.select", id);
+			int count = (int) smc.queryForObject("login.idCheck", id);
+			
+			if(count > 0) {
+				idCheck = true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return rVO;
+		return idCheck;
 	}
 
 }
