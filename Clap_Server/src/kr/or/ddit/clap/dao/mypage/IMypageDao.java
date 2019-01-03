@@ -25,6 +25,7 @@ public interface IMypageDao {
 	
 	public int  updateDelTF(MemberVO vo);
 	
+	public int  updateInfo(MemberVO vo);
 	
 	
 }

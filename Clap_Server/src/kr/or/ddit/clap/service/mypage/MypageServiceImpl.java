@@ -55,6 +55,11 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.updateDelTF(vo);
 	}
 
+	@Override
+	public int updateInfo(MemberVO vo) throws RemoteException {
+		return mypageDao.updateInfo(vo);
+	}
+
 	
 	
 }
