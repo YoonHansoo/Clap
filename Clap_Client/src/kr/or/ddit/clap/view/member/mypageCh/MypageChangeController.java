@@ -26,6 +26,7 @@ import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import javafx.scene.layout.AnchorPane;
 
 public class MypageChangeController implements Initializable {
 	
@@ -40,6 +41,8 @@ public class MypageChangeController implements Initializable {
 	String tell="" ;
 	@FXML Button ok;
 	@FXML Button cl;
+	@FXML Button btn_PwCh;
+	@FXML AnchorPane contents;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -90,6 +93,19 @@ public class MypageChangeController implements Initializable {
 			infoMsg("완료","회원정보 수정이 완료되었습니다.");
 		});
 		
+		//비밀번호 변경 클릭시
+		btn_PwCh.setOnAction(e->{
+			Parent root;
+			try {
+				root = FXMLLoader.load(getClass().getResource("pwCh.fxml"));
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(root);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			;});
+		
 	}
 	
 	public void btn_telCh() throws IOException { //변경하기 클릭시
@@ -127,6 +143,7 @@ public class MypageChangeController implements Initializable {
 			MemberVO vo = new MemberVO();
 			vo.setMem_id(user_id);
 			vo.setMem_tel(tell);
+			
 
 			try {
 				int result = ims.updateTel(vo);

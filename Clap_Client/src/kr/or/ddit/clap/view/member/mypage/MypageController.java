@@ -105,7 +105,7 @@ public class MypageController implements Initializable {
 
 					Parent root1 = null;
 					try {
-						root1 = FXMLLoader.load(getClass().getResource("../mypageCh/mypageCh.fxml"));
+						root1 = FXMLLoader.load(getClass().getResource("../mypageCh/mypageCh_Info.fxml"));
 						contents.getChildren().removeAll();
 						contents.getChildren().setAll(root1);
 					} catch (IOException e) {
