@@ -117,9 +117,22 @@ public class JoinController implements Initializable{
 			e.printStackTrace();
 		}
 		
+		System.out.println(vo.getMem_id());
+		System.out.println(vo.getMem_pw());
+		System.out.println(vo.getMem_name());
+		System.out.println(vo.getMem_email());
+		System.out.println(vo.getMem_bir());
 		
-		System.out.println("아이디:"+txt_id.getText());
-		System.out.println("성별:"+gender);
+		System.out.println(vo.getMem_gender());
+		System.out.println(vo.getMem_tel());
+		System.out.println(vo.getMem_grade());
+		System.out.println(vo.getMem_auth());
+		System.out.println(vo.getMem_indate());
+		
+		System.out.println(vo.getMem_blacklist_tf());
+		System.out.println(vo.getMem_del_tf());
+		System.out.println(vo.getMem_black_cnt());
+
 	}
 	
 }
