@@ -22,6 +22,7 @@ import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.TextArea;
 
 public class ShowSingerDetailController  implements Initializable {
 
@@ -39,8 +40,8 @@ public class ShowSingerDetailController  implements Initializable {
 	@FXML Label label_DebutMus;
 	@FXML Label label_Nation;
 	@FXML Label label_LikeCnt;
-	@FXML Label label_Intro;
 	@FXML ImageView imgview_singImg;
+	@FXML Label txt_intro;
 	
 	
 	
@@ -72,7 +73,7 @@ public class ShowSingerDetailController  implements Initializable {
 		
 		label_DebutMus.setText(sVO.getSing_debut_mus());
 		label_Nation.setText(sVO.getSing_nation());
-		label_Intro.setText(sVO.getSing_intro());
+		txt_intro.setText(sVO.getSing_intro());
 		
 		Image img = new Image(sVO.getSing_image());
 		imgview_singImg.setImage(img);

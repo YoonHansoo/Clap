@@ -161,12 +161,8 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="label_Intro" layoutX="29.0" layoutY="395.0" prefHeight="261.0" prefWidth="718.0" text="아티스트 소개">
-         <font>
-            <Font name="YDIYGO340" size="8.0" />
-         </font>
-      </Label>
       <Button layoutX="510.0" layoutY="689.0" mnemonicParsing="false" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-      <Button layoutX="632.0" layoutY="689.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
+      <Button layoutX="633.0" layoutY="689.0" mnemonicParsing="false" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
+      <Label fx:id="txt_intro" layoutX="28.0" layoutY="384.0" prefHeight="296.0" prefWidth="718.0" text="아티스트 소개" wrapText="true" />
    </children>
 </AnchorPane>
