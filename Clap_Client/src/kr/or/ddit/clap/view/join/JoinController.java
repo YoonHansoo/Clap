@@ -20,7 +20,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
 import kr.or.ddit.clap.service.join.IJoinService;
-import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**
