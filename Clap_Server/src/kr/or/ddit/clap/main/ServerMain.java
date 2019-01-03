@@ -21,6 +21,7 @@ public class ServerMain {
 			IMypageService ms 	= MypageServiceImpl.getInstance(); //객체생성
 			ILoginService ils 	= LoginServiceImpl.getInstance();
 			IQnaService iqs     = QnaServiceImpl.getInstance();
+//			IJoinService ijs     = JoinServiceImpl.getInstance();
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -28,6 +29,7 @@ public class ServerMain {
 			reg.rebind("mypage", ms);
 			reg.rebind("login", ils);
 			reg.rebind("qna", iqs);
+			reg.rebind("join", ils);
 			  System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
