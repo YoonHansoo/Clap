@@ -35,7 +35,7 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="아이디" textAlignment="RIGHT" />
                   <JFXTextField fx:id="txt_id" />
                   <JFXButton fx:id="btn_idCheck" text="중복 확인" />
-                  <Label text="(사용가능합니다)" />
+                  <Label text="사용가능합니다." />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -50,7 +50,7 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호" />
                   <JFXTextField fx:id="txt_pw" />
-                  <Label text="(비밀번호 규칙에 맞게 입력해주세요)" />
+                  <Label text="규칙에 맞게 입력해주세요." />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -60,7 +60,17 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호 확인" />
                   <JFXTextField fx:id="txt_pwCheck" />
-                  <Label text="(확인되었습니다)" />
+                  <Label text="확인되었습니다." />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이름" />
+                  <JFXTextField fx:id="txt_name" />
+                  <Label />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -87,7 +97,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <Label text="생년월일 예) 1999-09-09. 휴대전화 예) 010-9999-9999">
+            <Label text="생년월일 예) 99/03/03. 휴대전화 예) 01012341234">
                <VBox.margin>
                   <Insets left="120.0" />
                </VBox.margin>
@@ -106,7 +116,8 @@
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이메일" />
                   <JFXTextField fx:id="txt_email" />
-                  <Label />
+                  <JFXButton fx:id="btn_idCheck1" text="인증하기" />
+                  <Label text="인증되었습니다." />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
