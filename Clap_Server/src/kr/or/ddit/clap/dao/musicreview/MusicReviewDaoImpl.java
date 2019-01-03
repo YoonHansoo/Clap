@@ -42,7 +42,7 @@ public class MusicReviewDaoImpl implements IMusicReviewDao{
 		List<MusicReviewVO> list = new ArrayList<MusicReviewVO>();
 		try {
 			
-			list = smc.queryForList("singer.selectReview",vo);
+			list = smc.queryForList("musicreview.selectReview",vo);
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +50,6 @@ public class MusicReviewDaoImpl implements IMusicReviewDao{
 		
 		return list;
 	}
-
 
 
 

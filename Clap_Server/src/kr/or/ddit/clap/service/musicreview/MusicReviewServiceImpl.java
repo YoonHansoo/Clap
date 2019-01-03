@@ -12,12 +12,12 @@ import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
 
 public class MusicReviewServiceImpl  extends UnicastRemoteObject implements IMusicReviewService  {
-	MusicReviewDaoImpl musicDao; //사용할 Dao의  멤버변수를 선언
+	MusicReviewDaoImpl musicreviewDao; //사용할 Dao의  멤버변수를 선언
 	private static MusicReviewServiceImpl service;//Singleton패턴 
 	
 	private MusicReviewServiceImpl() throws RemoteException {
 		super();
-		musicDao =  MusicReviewDaoImpl.getInstance();//Singleton패턴
+		musicreviewDao =  MusicReviewDaoImpl.getInstance();//Singleton패턴
 		System.out.println("생성자 실행");
 	}
 	
@@ -30,7 +30,7 @@ public class MusicReviewServiceImpl  extends UnicastRemoteObject implements IMus
 
 	@Override
 	public List<MusicReviewVO> selectReview(MusicReviewVO vo) {
-		return musicDao.selectReview(vo);
+		return musicreviewDao.selectReview(vo);
 	}
 
 

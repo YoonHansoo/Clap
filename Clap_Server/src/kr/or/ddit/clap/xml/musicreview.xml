@@ -7,25 +7,26 @@
 
 
 	<select id="selectReview" resultClass="MusicReviewVO" parameterClass="MusicReviewVO">
+    select mus_re_no,
+            mus_re_content,
+            mus_re_indate as indate,
+            mem_id,
+            mus_no 
+         from music_review where mem_id=#mem_id# union all
    select  sing_re_no,
             sing_re_conntent,
             sing_re_indate as indate,
             mem_id,
             sing_no
          from singer_review where  mem_id=#mem_id# union all
-      select mus_re_no,
-            mus_re_content,
-            mus_re_indate as indate,
-            mem_id,
-            mus_no 
-         from music_review where mem_id=#mem_id# union all
+     
       select alb_re_no,
             alb_re_content,
             alb_re_indate as indate,
             mem_id,
             alb_no 
          from album_review where  mem_id=#mem_id#
-            order by indate desc;   
+            order by indate desc
     </select>  
 
 
