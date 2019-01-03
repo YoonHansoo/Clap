@@ -14,6 +14,7 @@
  	<typeAlias alias="musichistoryVO" type="kr.or.ddit.clap.vo.music.MusicHistoryVO"/>
  	<typeAlias alias="memberVO" type="kr.or.ddit.clap.vo.member.MemberVO"/>
  	<typeAlias alias="qnaVO" type="kr.or.ddit.clap.vo.support.QnaVO"/>
+ 	<typeAlias alias="musicReviewVO" type="kr.or.ddit.clap.vo.music.MusicReviewVO"/>
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">
