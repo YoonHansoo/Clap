@@ -10,6 +10,8 @@ package kr.or.ddit.clap.service.musichistory;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
+
 import kr.or.ddit.clap.dao.musichistory.MusicHistoryDaoImpl;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 
@@ -35,7 +37,7 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 	// 각 메서드에서는 생성된 Dao객체를 이용하여 작업에 맞는 Dao객체의 메서드를 호출한다.
 	
 	@Override
-	public List<MusicHistoryVO> selectList() throws RemoteException {
+	public List<Map> selectList() throws RemoteException {
 		
 		return musicHistoryDao.selectList();
 	}

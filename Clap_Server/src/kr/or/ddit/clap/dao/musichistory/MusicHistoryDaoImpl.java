@@ -12,6 +12,8 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -46,8 +48,8 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return dao;
 	}
 
-	public List<MusicHistoryVO> selectList() {
-		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
+	public List<Map> selectList() {
+		List<Map> list = new ArrayList<Map>();
 		try {
 
 			list = smc.queryForList("musichistory.selectList");
@@ -60,8 +62,10 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 	}
 	
 	public static void main(String[] args) {
-		List<MusicHistoryVO> list = new MusicHistoryDaoImpl().selectList();
-		System.out.println(list.get(0).getMus_no());
+		List<Map> list = new MusicHistoryDaoImpl().selectList();
+		
+		
+		
 	}
 
 }

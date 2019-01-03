@@ -1,7 +1,8 @@
 package kr.or.ddit.clap.dao.musichistory;
 
 import java.util.List;
-import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+import java.util.Map;
+
 
 /**
  * 
@@ -9,5 +10,5 @@ import kr.or.ddit.clap.vo.music.MusicHistoryVO;
  *
  */
 public interface IMusicHistoryDao {
-	public List<MusicHistoryVO> selectList();
+	public List<Map> selectList();
 }
