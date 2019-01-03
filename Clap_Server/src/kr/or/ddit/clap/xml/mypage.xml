@@ -45,6 +45,12 @@
 	 		set mem_pw=#mem_pw# 
 			where mem_id = #mem_id#
 	 </update>
+	 
+	 <update id="updateDelTF"  parameterClass="memberVO">
+	 		update member 
+	 		set mem_del_tf=#mem_del_tf#
+			where mem_id = #mem_id#
+	 </update>
 
 </sqlMap>			
 

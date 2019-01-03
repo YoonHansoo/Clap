@@ -85,5 +85,18 @@ public class MypageDaoImpl implements IMypageDao{
 		return cnt;
 	}
 
+	@Override
+	public int updateDelTF(MemberVO vo) {
+		int cnt = 0;
+		try {
+	
+			cnt = smc.update("mypage.updateDelTF", vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 
 }

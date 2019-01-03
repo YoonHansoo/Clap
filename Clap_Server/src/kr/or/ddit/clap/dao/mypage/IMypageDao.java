@@ -20,4 +20,8 @@ public interface IMypageDao {
 	public int  updateEmail(MemberVO vo);
 	
 	public int  updatePw(MemberVO vo);
+	
+	public int  updateDelTF(MemberVO vo);
+	
+	
 }
