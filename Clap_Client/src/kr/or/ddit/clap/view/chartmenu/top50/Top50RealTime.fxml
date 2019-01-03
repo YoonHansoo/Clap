@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50RealTimeController">
+<AnchorPane prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50RealTimeController">
    <children>
       <VBox fx:id="mainBox" >
          <children>
@@ -19,7 +19,7 @@
                   <Insets left="30.0" />
                </padding>
                <children>
-                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="78.0" ripplerFill="#9c0000" text="실시간">
+                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="78.0" ripplerFill="#9c0000" text="일간">
                      <HBox.margin>
                         <Insets left="45.0" />
                      </HBox.margin>
@@ -27,12 +27,12 @@
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="76.0" ripplerFill="#9c0000" text="일간">
+                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="76.0" ripplerFill="#9c0000" text="주간">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="76.0" ripplerFill="#9c0000" text="주간">
+                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="76.0" ripplerFill="#9c0000" text="월간">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
