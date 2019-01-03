@@ -19,6 +19,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
+import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
@@ -118,20 +119,8 @@ public class JoinController implements Initializable{
 		}
 		
 		System.out.println(vo.getMem_id());
-		System.out.println(vo.getMem_pw());
-		System.out.println(vo.getMem_name());
-		System.out.println(vo.getMem_email());
-		System.out.println(vo.getMem_bir());
 		
-		System.out.println(vo.getMem_gender());
-		System.out.println(vo.getMem_tel());
-		System.out.println(vo.getMem_grade());
-		System.out.println(vo.getMem_auth());
-		System.out.println(vo.getMem_indate());
-		
-		System.out.println(vo.getMem_blacklist_tf());
-		System.out.println(vo.getMem_del_tf());
-		System.out.println(vo.getMem_black_cnt());
+		MusicMainController.joinDialog.close();
 
 	}
 	
