@@ -25,8 +25,9 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 	}
 
 	@Override
-	public MemberVO select(String id) throws RemoteException {
-		return loginDao.select(id);
+	public Boolean idCheck(String id) throws RemoteException {
+		//return loginDao.idCheck(id);
+		return false;
 	}
 
 
