@@ -8,8 +8,13 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,14 +24,26 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TreeItem;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import kr.or.ddit.clap.vo.music.MusicVO;
+import kr.or.ddit.clap.vo.singer.SingerVO;
+
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.control.TreeTableColumn;
 
 public class MypageController implements Initializable {
 	
@@ -35,11 +52,22 @@ public class MypageController implements Initializable {
 	
 	private Registry reg;
 	private IMypageService ims;
+	private IMusicService imu;
+	private ObservableList<MusicReviewVO> revList, currentrevList;
 	
 	@FXML Label label_Id;
 	@FXML Image img_User;
 	@FXML AnchorPane contents;
 	@FXML Text text_UserInfo;
+	@FXML AnchorPane InfoContents;
+	@FXML AnchorPane Head;
+	@FXML JFXTreeTableView tbl_ManySigner;
+	@FXML JFXTreeTableView tbl_ManyMusic;
+	
+	@FXML AnchorPane tbl_NewMusic;
+	@FXML JFXTreeTableView tbl_Review;
+	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
+	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -47,6 +75,7 @@ public class MypageController implements Initializable {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMypageService) reg.lookup("mypage");
+			imu = (IMusicService) reg.lookup("music");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -66,6 +95,21 @@ public class MypageController implements Initializable {
 			e.printStackTrace();
 		}
 		
+		
+		//최근댓글테이블
+		col_ReviewCont
+		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
+
+		MusicReviewVO muvo =new MusicReviewVO();
+		muvo.setMem_id(user_id);
+		try {
+			revList = FXCollections.observableArrayList(imu.selectReview(muvo));
+		} catch (RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}
+		
+				
 
 	}
 
@@ -135,6 +179,68 @@ public class MypageController implements Initializable {
 			pwok.close();
 		});
 
+	}
+	@FXML
+	public void btn_Info() throws IOException {  //열필모양 (사용자 개인소개)수정
+		
+		
+		
+		Parent root=null;
+		try {
+			 root = FXMLLoader.load(getClass().getResource("mypageSub.fxml"));
+			InfoContents.getChildren().removeAll();
+			InfoContents.getChildren().setAll(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+
+		String user_id = LoginSession.session.getMem_id();
+		MemberVO vo = new MemberVO();
+		vo.setMem_id(user_id);
+		MemberVO memvo =new MemberVO();
+		try {
+			memvo = ims.select(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		JFXButton btn_SubOk =(JFXButton)root.lookup("#btn_SubOk");
+		JFXButton btn_SubCl =(JFXButton)root.lookup("#btn_SubCl");
+		JFXTextField textF_Sub=  (JFXTextField)root.lookup("#textF_Sub");
+		textF_Sub.setText(memvo.getMem_intro());
+		
+		
+		btn_SubOk.setOnAction(e1->{
+			vo.setMem_intro(textF_Sub.getText());
+			try {
+				 ims.updateInfo(vo);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			
+			System.out.println("완료");
+			
+			try {
+				Parent root2 = FXMLLoader.load(getClass().getResource("Mypage.fxml"));
+				Head.getChildren().removeAll();
+				InfoContents.getChildren().removeAll();
+				contents.getChildren().removeAll();
+				Head.getChildren().setAll(root2);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		});
+		
+		btn_SubCl.setOnAction(e1->{try {
+			Parent root2 = FXMLLoader.load(getClass().getResource("Mypage.fxml"));
+			Head.getChildren().removeAll();
+			InfoContents.getChildren().removeAll();
+			contents.getChildren().removeAll();
+			Head.getChildren().setAll(root2);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}});
 	}
 
 }
