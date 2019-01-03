@@ -2,6 +2,10 @@ package kr.or.ddit.clap.view.join;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -15,6 +19,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleGroup;
+import kr.or.ddit.clap.service.join.IJoinService;
+import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**
@@ -37,9 +43,21 @@ public class JoinController implements Initializable{
 	@FXML JFXRadioButton radio_f;
 	
 	ToggleGroup group = new ToggleGroup();
+	
+	private IJoinService ijs;
+	private Registry reg;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ijs = (IJoinService) reg.lookup("join");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		
 		radio_m.setToggleGroup(group);
 		radio_m.setUserData("m");
 		radio_m.setSelected(true);
@@ -87,7 +105,22 @@ public class JoinController implements Initializable{
 		vo.setMem_blacklist_tf("f");
 		vo.setMem_del_tf("f");
 		
+		// insert vo
+		try {
+			int cnt = ijs.insert(vo);
+			
+			if(cnt>0){
+				System.out.println(txt_id.getText() + "회원 가입 성공");
+			}else{
+				System.out.println(txt_id.getText() + "회원 가입 실패");
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		
 		System.out.println("아이디:"+txt_id.getText());
+		System.out.println("성별:"+gender);
 	}
 	
 }
