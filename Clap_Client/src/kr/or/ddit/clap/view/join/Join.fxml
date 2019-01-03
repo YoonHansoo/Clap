@@ -79,8 +79,8 @@
             <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="성별" />
-                  <JFXRadioButton text="남" />
-                  <JFXRadioButton text="여" />
+                  <JFXRadioButton fx:id="radio_m" text="남" />
+                  <JFXRadioButton fx:id="radio_f" text="여" />
                   <Label />
                </children>
                <VBox.margin>
