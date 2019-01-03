@@ -41,7 +41,7 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="1.0">
                <children>
-                  <JFXCheckBox checkedColor="#9c0000" prefHeight="35.0" prefWidth="39.0" text=" " />
+                  <JFXCheckBox fx:id="cb_main" onAction="#mainCheck" checkedColor="#9c0000" prefHeight="35.0" prefWidth="39.0" text=" " />
                   <JFXButton ripplerFill="#9c0000" text="듣기">
                      <graphic>
                         <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
