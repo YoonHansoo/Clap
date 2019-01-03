@@ -34,7 +34,7 @@ public class ClientMain extends Application {
 		
 		
 		//로그인한 Id가 관리자일 경우
-		if(LoginSession.session.getMem_auth().equals("t")&&	LoginSession.session.getMem_del_tf().equals("f")) {
+		if(LoginSession.session.getMem_auth().equals("t")) {
 			System.out.println("관리자로 로그인");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMainAdmin.fxml"));
 			ScrollPane root = loader.load();
@@ -47,7 +47,7 @@ public class ClientMain extends Application {
 		}
 		
 		//로그인은 안했거나/ 일반 사용자일 경우
-		else if(LoginSession.session.getMem_auth().equals("f")&&	LoginSession.session.getMem_del_tf().equals("f")){
+		else if(LoginSession.session.getMem_auth().equals("f")){
 			System.out.println("일반사용자 로그인 또는 비회원");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 			ScrollPane root = loader.load();
