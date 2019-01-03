@@ -34,9 +34,15 @@
 			where mem_id = #mem_id#
 	 </update>
 	 
-	   <update id="updateEmail"  parameterClass="memberVO">
+	  <update id="updateEmail"  parameterClass="memberVO">
 	 		update member 
 	 		set mem_email=#mem_email# 
+			where mem_id = #mem_id#
+	 </update>
+	 
+	 <update id="updatePw"  parameterClass="memberVO">
+	 		update member 
+	 		set mem_pw=#mem_pw# 
 			where mem_id = #mem_id#
 	 </update>
 

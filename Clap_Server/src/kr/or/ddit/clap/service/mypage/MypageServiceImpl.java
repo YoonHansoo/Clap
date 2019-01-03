@@ -44,5 +44,10 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.updateEmail(vo);
 	}
 
+	@Override
+	public int updatePw(MemberVO vo) throws RemoteException {
+		return mypageDao.updatePw(vo);
+	}
+
 	
 }
