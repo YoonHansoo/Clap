@@ -14,22 +14,15 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.login.ILoginService;
-import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.view.join.AES256Util;
-import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**
  * 로그인창 컨트롤러.
@@ -94,14 +87,12 @@ public class LoginController implements Initializable{
 		System.out.println(decryptedPw);
 		
 		MusicMainController.loginDialog.close();
-		//mmc.firstPage();
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
 		ScrollPane root = null;
 		try {
 			root = loader.load();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
