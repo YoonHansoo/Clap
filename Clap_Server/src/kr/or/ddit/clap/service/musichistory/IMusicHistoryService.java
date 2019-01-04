@@ -13,7 +13,8 @@ import java.util.Map;
 
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 public interface IMusicHistoryService extends Remote {
-	public List<Map> selectList() throws RemoteException;
+	public List<Map> toDaySelect() throws RemoteException;
+	public List<Map> weekSelect(Map<String, String> day) throws RemoteException;
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo) throws RemoteException;
 	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo) throws RemoteException;
 }

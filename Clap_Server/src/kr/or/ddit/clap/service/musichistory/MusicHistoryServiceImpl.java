@@ -36,9 +36,15 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 	// 각 메서드에서는 생성된 Dao객체를 이용하여 작업에 맞는 Dao객체의 메서드를 호출한다.
 	
 	@Override
-	public List<Map> selectList() throws RemoteException {
+	public List<Map> toDaySelect() throws RemoteException {
 		
-		return musicHistoryDao.selectList();
+		return musicHistoryDao.toDaySelect();
+	}
+
+	@Override
+	public List<Map> weekSelect(Map<String, String> day) throws RemoteException {
+		
+		return musicHistoryDao.weekSelect(day);
 	}
 
 	@Override

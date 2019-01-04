@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -49,11 +51,24 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return dao;
 	}
 
-	public List<Map> selectList() {
+	public List<Map> toDaySelect() {
 		List<Map> list = new ArrayList<Map>();
 		try {
 
-			list = smc.queryForList("musichistory.selectList");
+			list = smc.queryForList("musichistory.todayselect");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public List<Map> weekSelect(Map<String, String> day) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("musichistory.weekselect",day);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -63,7 +78,11 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 	}
 	
 	public static void main(String[] args) {
-		List<Map> list = new MusicHistoryDaoImpl().selectList();
+		Map day = new HashMap<String,String>();
+		
+		day.put("monday", "18/12/24");
+		day.put("sunday", "18/12/30");
+		List<Map> list = new MusicHistoryDaoImpl().weekSelect(day);
 		
 	}
 
