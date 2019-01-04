@@ -41,6 +41,7 @@ public class MusicMainController implements Initializable{
 	@FXML HBox mem_menu;
 
 	@FXML public JFXButton btn_login;
+	@FXML public JFXButton btn_logout;
 	@FXML public JFXButton btn_join;
 	@FXML public JFXButton btn_mem;
 	
@@ -50,7 +51,7 @@ public class MusicMainController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if(ls.session.getMem_id() == null || ls.session.getMem_id().equals("admin1")) {
+		if(ls.session.getMem_id() == null || ls.session.getMem_id().equals("user1")) {
 			System.out.println("null "+ls.session.getMem_id());
 			mem_menu.setVisible(false);
 			btn_join.setVisible(true);
@@ -61,8 +62,8 @@ public class MusicMainController implements Initializable{
 			btn_join.setVisible(false);
 			btn_login.setVisible(false);
 			
-//			Image img = new Image(getClass().getResourceAsStream("../../../../../../img/purin.jpg"));
-			Image img = new Image(getClass().getResourceAsStream("purin.jpg"));
+			Image img = new Image(getClass().getResourceAsStream("../../../../../purin.jpg"));
+//			Image img = new Image(getClass().getResourceAsStream("purin.jpg"));
 			mem_img.setImage(img);
 		}
 	}
@@ -76,6 +77,11 @@ public class MusicMainController implements Initializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	public void logout() throws IOException {
+		System.out.println("로그아웃처리");
 	}
 	
 	@FXML
@@ -93,6 +99,9 @@ public class MusicMainController implements Initializable{
 
 	@FXML
 	public void mypage() {
+		// 로그인 후 회원정보버튼(btn_mem) 눌렀을때 마이페이지로 이동.
+		System.out.println("마이페이지 출력");
+		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
 			contents.getChildren().removeAll();
