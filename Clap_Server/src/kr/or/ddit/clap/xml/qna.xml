@@ -18,7 +18,33 @@
       </select>
 	 
 	 
-	   
+	 
+	<!-- 문의사항 글 등록 insert ////////////////
+	<insert id="insertSinger" parameterClass="singerVO">
+		<selectKey resultClass="int" keyProperty="id">
+		select SEQ_SING_NO.nextval as id
+		from dual
+		</selectKey>
+	insert into singer (SING_NO,
+						SING_NAME,
+						SING_NATION,
+						SING_ACT_TYPE,
+						SING_DEBUT_MUS,
+						SING_ACT_ERA,
+						SING_IMAGE,
+						SING_DEBUT_ERA,
+						SING_INTRO)
+				values (#id#,
+						#sing_name#,
+						#sing_nation#,
+						#sing_act_type#,
+						#sing_debut_mus#,
+						#sing_act_era#,
+						#sing_image#,
+						#sing_debut_era#,
+						#sing_intro#)		
+	</insert> -->
+		   
 		
 	
 	

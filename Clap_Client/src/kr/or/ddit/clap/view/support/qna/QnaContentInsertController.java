@@ -1,5 +1,6 @@
 package kr.or.ddit.clap.view.support.qna;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -11,10 +12,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.Alert.AlertType;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.qna.IQnaService;
+import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaContentInsertController implements Initializable {
@@ -22,6 +30,7 @@ public class QnaContentInsertController implements Initializable {
 	private Registry reg;
 	private IQnaService iqs;
 	public QnaVO qVO;
+	//public MemberVO mVO;
 	
 	@FXML
 	ComboBox Com_Type;
@@ -34,11 +43,13 @@ public class QnaContentInsertController implements Initializable {
 	@FXML
 	JFXTextField Text_QnaContent;
 	@FXML
-	JFXButton btn_File;
-	@FXML
 	Label Lb_MemId;
 	@FXML
 	JFXButton btn_Add;
+	@FXML
+	AnchorPane head;
+	
+	String type; //combo_Type 값
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -52,16 +63,63 @@ public class QnaContentInsertController implements Initializable {
 			e.printStackTrace();
 		}
 		
+		
 		Com_Type.getItems().addAll("이용방법","벨/링","선물하기","이벤트","결제/요금제","음원오류","14세 미만 가입/승인","인증 문의","회원/로그인","다운로드","오류문의","개선사항","기타");
 		Com_Type.setValue("선택하세요");
 		Com_Type.setOnAction(e -> {
-			qVO.setQna_type(Com_Type.getValue().toString());
+			type = Com_Type.getValue().toString();
 		});
 		
+		MemberVO mVO = new MemberVO();
 		
+		Lb_MemId.setText(LoginSession.session.getMem_id()); //현재 로그인한 사용자
+		//Lb_MemId.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
+		Text_QnaMemTel.setText(LoginSession.session.getMem_tel());
+		Text_QnaMemEmail.setText(LoginSession.session.getMem_email());
+		//Text_QnaMemTel.setText(mVO.getMem_tel());
+		//Text_QnaMemEmail.setText(mVO.getMem_email());
+		//연락처 , 이메일 db에서 가져오기
 		
-			
+		btn_Add.setOnAction(e -> {
+			if(Text_QnaTitle.getText().isEmpty() || Text_QnaContent.getText().isEmpty()) {
+				errMsg("작업오류" , "빈 항목이 잇습니다.");
+				return;
+			} else {
+				qVO.setQna_type(type);
+				qVO.setMem_tel(Text_QnaMemTel.getText());
+				qVO.setMem_email(Text_QnaMemEmail.getText());
+				qVO.setQna_title(Text_QnaContent.getText());
+				qVO.setQna_content(Text_QnaContent.getText());
+				
+				infoMsg("등록 완료", "문의사항 - 글 작성이 완료되었습니다.");
+				
+				Parent root1;
+				try {
+					root1 = FXMLLoader.load(getClass().getResource("QnaMenuList.fxml"));
+					head.getChildren().removeAll();
+					head.getChildren().setAll(root1);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		
+	}
+	
+	public void errMsg(String headerText, String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("오류");
+		errAlert.setHeaderText(headerText);
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+	
+	public void infoMsg(String headerText, String msg) {
+		Alert infoAlert = new Alert(AlertType.INFORMATION);
+		infoAlert.setTitle("정보 확인");
+		infoAlert.setHeaderText(headerText);
+		infoAlert.setContentText(msg);
+		infoAlert.showAndWait();
 	}
 
 }
