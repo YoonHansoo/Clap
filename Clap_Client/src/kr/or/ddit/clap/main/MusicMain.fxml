@@ -47,7 +47,7 @@
                                     <Font name="YDIYGO350" size="18.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="mem_img" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </HBox>
                      </graphic>
