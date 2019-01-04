@@ -46,14 +46,17 @@ public class Top50RealTimeController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
+		// 일간 조회 차트 
 		toDayChart();
+		
 		btnPlayClick();
 		btnAddClick();
 		btnPutClick();
 		btnMovieClick();
 	}
 	
+	// 뮤비 버튼 클릭시 이벤트
 	private void btnMovieClick() {
 		for (int i = 0; i < btnMovieList.size(); i++) {
 			btnMovieList.get(i).setOnAction(e->{
@@ -62,7 +65,8 @@ public class Top50RealTimeController implements Initializable{
 			});
 		}
 	}
-
+	
+	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
@@ -72,7 +76,8 @@ public class Top50RealTimeController implements Initializable{
 		}
 		
 	}
-
+	
+	// 추가 버튼 클릭시 이벤트
 	private void btnAddClick() {
 		for (int i = 0; i < btnAddList.size(); i++) {
 			btnAddList.get(i).setOnAction(e->{
@@ -83,6 +88,7 @@ public class Top50RealTimeController implements Initializable{
 		
 	}
 
+	// 재생 버튼 클릭시 이벤트
 	private void btnPlayClick() {
 		for (int i = 0; i < btnPlayList.size(); i++) {
 			btnPlayList.get(i).setOnAction(e->{
@@ -92,7 +98,8 @@ public class Top50RealTimeController implements Initializable{
 		}
 		
 	}
-
+	
+	// RMI 접속 메서드
 	private void toDayChart() {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -109,7 +116,7 @@ public class Top50RealTimeController implements Initializable{
 		}
 	}
 	
-	// 전체 선택 및 해제
+	// 전체 선택 및 해제 메서드
 	@FXML public void mainCheck() {
 		if (cb_main.isSelected()) {
 			for(int i = 0; i < cbnList.size(); i++) {
@@ -120,10 +127,9 @@ public class Top50RealTimeController implements Initializable{
 				cbnList.get(i).setSelected(false);
 			}
 		}
-		
 	}
 	
-	// 뮤직 List 
+	// 곡 리스트 로직 만드는 메서드
 	private void musicList(int size) {
 		VBox vbox = new VBox();
 		
