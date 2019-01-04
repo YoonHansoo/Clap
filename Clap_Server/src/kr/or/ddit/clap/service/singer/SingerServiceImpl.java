@@ -57,6 +57,11 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 		return singerDao.selectSingerLikeCnt(singerNo);
 	}
 
+	@Override
+	public int updateSingerInfo(SingerVO vo) throws RemoteException {
+		return singerDao.updateSingerInfo(vo);
+	}
+
 	
 
 }

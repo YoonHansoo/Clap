@@ -19,4 +19,6 @@ public interface ISingerDao {
 	public SingerVO singerDetailInfo(String singerNo);
 	
 	public int selectSingerLikeCnt(String singerNo);
+	
+	public int updateSingerInfo(SingerVO vo);
 }

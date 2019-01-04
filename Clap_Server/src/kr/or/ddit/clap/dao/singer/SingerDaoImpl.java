@@ -100,4 +100,17 @@ public class SingerDaoImpl implements ISingerDao {
 		}
 		return singerLikeCnt;
 	}
+
+	//가수정보를 수정하는 쿼리
+	@Override
+	public int updateSingerInfo(SingerVO vo) {
+		int cnt = 0;
+		try {
+		cnt = smc.update("singer.updateSingerInfo",vo);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
 }

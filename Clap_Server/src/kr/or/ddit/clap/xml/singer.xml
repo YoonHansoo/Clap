@@ -52,6 +52,19 @@
   	   where sing_no =#String#
    </select>
    
+   <!-- 가수정보 수정 쿼리 -->
+   <update id="updateSingerInfo" parameterClass="singerVO">
+	 		update singer set 
+	 								SING_NAME 		= #sing_name#,
+	 								SING_NATION 	= #sing_nation#,
+	 								SING_ACT_TYPE 	= #sing_act_type#,
+	 								SING_DEBUT_MUS  = #sing_debut_mus#,
+	 								SING_ACT_ERA 	= #sing_act_era#,
+	 								SING_IMAGE		= #sing_image#,
+	 								SING_DEBUT_ERA	= #sing_debut_era#,
+	 								SING_INTRO		= #sing_intro#
+	 			        	where SING_NO=#sing_no#
+	 </update>
 
 </sqlMap>         
 
