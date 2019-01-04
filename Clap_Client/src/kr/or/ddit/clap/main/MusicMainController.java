@@ -11,7 +11,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,13 +32,14 @@ public class MusicMainController implements Initializable{
    
    @FXML VBox vbox;
    
+   public static Stage loginDialog = new Stage(StageStyle.DECORATED);
+   public static Stage joinDialog = new Stage(StageStyle.DECORATED);
    static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
    @FXML AnchorPane menu;
    @FXML AnchorPane contents;
    @FXML FontAwesomeIcon icon_firstPage;
    @FXML HBox mem_menu;
 
-   @FXML public Label lb_id;
    @FXML public JFXButton btn_login;
    @FXML public JFXButton btn_logout;
    @FXML public JFXButton btn_join;
@@ -51,6 +51,8 @@ public class MusicMainController implements Initializable{
    
    @Override
    public void initialize(URL location, ResourceBundle resources) {
+	   System.out.println();
+	   
       if(ls.session == null || ls.session.getMem_id().equals("user1")) {
          mem_menu.setVisible(false);
          btn_join.setVisible(true);
@@ -60,8 +62,6 @@ public class MusicMainController implements Initializable{
          mem_menu.setVisible(true);
          btn_join.setVisible(false);
          btn_login.setVisible(false);
-         
-         lb_id.setText(ls.session.getMem_id()+"님");
          
          Image img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));
          mem_img.setImage(img);
@@ -92,13 +92,15 @@ public class MusicMainController implements Initializable{
    
    @FXML
    public void join() throws IOException {
-	   try {
-	      Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
-	      contents.getChildren().removeAll();
-	      contents.getChildren().setAll(root);
-	   } catch (IOException e) {
-	      e.printStackTrace();
-	   }
+      Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
+      Scene scene = new Scene(root);
+      joinDialog.setTitle("모여서 각잡고 코딩 - clap");
+      if(joinDialog.getModality() == null) {
+         joinDialog.initModality(Modality.APPLICATION_MODAL);         
+      }
+      
+      joinDialog.setScene(scene);
+      joinDialog.show();
    }
 
    @FXML

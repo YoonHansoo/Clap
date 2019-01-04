@@ -76,11 +76,16 @@ public class MypageChangePwController implements Initializable{
 				}
 				
 				infoMsg("비밀번호 변경 완료", "");
-				
+				textF_NowPw.clear();
+				textF_NewPw.clear();
+				textF_NewPwCh.clear();
 			}else if(!textF_NowPw.getText().equals(vo2.getMem_pw())) {
 				warning("잘못된 패스워드를 입력하셨습니다.", "");
 				
-			}			
+			}else if(textF_NowPw.getText().isEmpty() || textF_NewPw.getText().isEmpty() || textF_NewPwCh.getText().isEmpty()) {
+				warning("작업 오류", "빈 항목이 있습니다.");
+				return;
+			}	
 		});//btn_ok
 		
 	btn_Cl.setOnAction(e2->{

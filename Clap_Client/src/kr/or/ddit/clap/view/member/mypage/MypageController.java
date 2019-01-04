@@ -298,7 +298,7 @@ public class MypageController implements Initializable {
 	
 	@FXML
 	public void btn_like() throws IOException {  
-		System.out.println("dgdg");
+		System.out.println("dd");
 	}
 
 }

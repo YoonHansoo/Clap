@@ -22,7 +22,7 @@ public class ClientMain extends Application {
 		LoginSession ls = new LoginSession();
 
 		LoginSession.session = new MemberVO(); 
-		LoginSession.session.setMem_id("admin1");
+		LoginSession.session.setMem_id("user2");
 		LoginSession.session.setMem_pw("4321");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");
