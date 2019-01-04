@@ -14,12 +14,12 @@
    <children>
       <VBox fx:id="mainBox">
          <children>
-            <HBox spacing="5.0">
+            <HBox alignment="CENTER_LEFT" spacing="5.0">
                <padding>
                   <Insets left="30.0" />
                </padding>
                <children>
-                  <JFXButton fx:id="btn_ToDay" prefWidth="50.0" ripplerFill="#9c0000" text="일간" onAction="#toDayChart">
+                  <JFXButton fx:id="btn_ToDay" onAction="#toDayChart" prefWidth="50.0" ripplerFill="#9c0000" text="일간">
                      <HBox.margin>
                         <Insets left="45.0" />
                      </HBox.margin>
@@ -27,16 +27,24 @@
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btn_Week" prefWidth="50.0" ripplerFill="#9c0000" text="주간" onAction="#weekChart">
+                  <JFXButton fx:id="btn_Week" onAction="#weekChart" prefWidth="50.0" ripplerFill="#9c0000" text="주간">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btn_Month" prefWidth="50.0" ripplerFill="#9c0000" text="월간" onAction="#monthChart">
+                  <JFXButton fx:id="btn_Month" onAction="#monthChart" prefWidth="50.0" ripplerFill="#9c0000" text="월간">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
+                  <Label fx:id="la_Date" text="Label">
+                     <font>
+                        <Font name="-윤고딕350" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="170.0" />
+                     </HBox.margin>
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="1.0">
