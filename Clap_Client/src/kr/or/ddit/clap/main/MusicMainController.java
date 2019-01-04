@@ -36,7 +36,9 @@ public class MusicMainController implements Initializable{
 	@FXML AnchorPane contents;
 	@FXML FontAwesomeIcon icon_firstPage;
 
-	@FXML JFXButton btn_login;
+	@FXML public JFXButton btn_login;
+	@FXML public JFXButton btn_join;
+	@FXML public JFXButton btn_mem;
 	
 	
 	
