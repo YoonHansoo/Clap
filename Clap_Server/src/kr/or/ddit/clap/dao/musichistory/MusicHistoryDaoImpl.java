@@ -80,4 +80,18 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return list;
 	}
 
+	@Override
+	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo) {
+		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
+		try {
+			
+			list = smc.queryForList("musichistory.selectMayIndate",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 }

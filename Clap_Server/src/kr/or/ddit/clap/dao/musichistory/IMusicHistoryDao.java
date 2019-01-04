@@ -15,4 +15,5 @@ import kr.or.ddit.clap.vo.singer.SingerVO;
 public interface IMusicHistoryDao {
 	public List<Map> selectList();
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo);
+	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo);
 }

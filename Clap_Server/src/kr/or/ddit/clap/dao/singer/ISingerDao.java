@@ -6,7 +6,6 @@
  */
 
 package kr.or.ddit.clap.dao.singer;
-import java.rmi.RemoteException;
 import java.util.List;
 
 import kr.or.ddit.clap.vo.singer.SingerVO;
