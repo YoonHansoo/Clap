@@ -19,7 +19,7 @@
             <Font name="D2Coding" size="22.0" />
          </font>
       </Label>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="90.0" prefWidth="200.0">
          <children>
             <VBox maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="284.0">
                <children>
@@ -36,6 +36,14 @@
             <Insets />
          </VBox.margin>
       </HBox>
+      <Label fx:id="lb_check" text="아이디 또는 비밀번호를 확인해주세요." textFill="RED" visible="false">
+         <VBox.margin>
+            <Insets left="35.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </Label>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <JFXButton fx:id="btn_idSearch" text="아이디">
@@ -49,6 +57,9 @@
             </Label>
             <JFXButton fx:id="btn_pwSearch" text="비밀번호 찾기" />
          </children>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
       </HBox>
    </children>
    <padding>
