@@ -39,8 +39,8 @@ import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
-import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.music.MusicHistoryVO;;
+import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;;
 
 public class MypageController implements Initializable {
 	
@@ -69,8 +69,8 @@ public class MypageController implements Initializable {
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
 
 	@FXML JFXTreeTableView tbl_ManySigner;
-	@FXML TreeTableColumn col_MSno;
-	@FXML TreeTableColumn col_MSits;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSno;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSits;
 
 
 	@Override
@@ -124,15 +124,13 @@ public class MypageController implements Initializable {
 		//----------------------
 		
 		//최근많이 들은 아티스트이름넣기 
-		col_MSno
-		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
 		col_MSits
-		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate()));
+		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 
-		MusicReviewVO muvo =new MusicReviewVO();
-		muvo.setMem_id(user_id);
+		MusicHistoryVO muh =new MusicHistoryVO();
+		muh.setMem_id(user_id);
 		try {
-			revList1 = FXCollections.observableArrayList(imrs.selectReview(muvo));
+			singList = FXCollections.observableArrayList(imhs.(muh));
 			
 		} catch (RemoteException e) {
 			System.out.println("에러");

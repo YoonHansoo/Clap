@@ -15,6 +15,6 @@ import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 
 public interface IMusicHistoryService extends Remote {
 	public List<Map> selectList() throws RemoteException;
-	public int selectSingerLikeCnt(String singerNo) throws RemoteException;
+	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo) throws RemoteException;
 	
 }
