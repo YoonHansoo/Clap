@@ -9,14 +9,12 @@
 			where mem_id = #mem_id#
 	 </select>
 	   
-		
-	<!-- 
 	<select id="select" resultClass="memberVO" parameterClass="String">
 			select mem_id, mem_pw, mem_name, mem_email, mem_bir, mem_gender, mem_tel, mem_grade, 
-			mem_auth, mem_indate, mem_blacklist_tf, mem_del_tf mem_black_cnt mem_image mem_intro 
+			mem_auth, mem_indate, mem_blacklist_tf, mem_del_tf, mem_black_cnt, mem_image, mem_intro 
 			from member where mem_id=#mem_id#
 	</select>
-	 -->
+
 	
 
 </sqlMap>			
