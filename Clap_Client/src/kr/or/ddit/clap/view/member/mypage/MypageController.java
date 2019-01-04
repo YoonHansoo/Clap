@@ -43,7 +43,8 @@ import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;;
 
 public class MypageController implements Initializable {
-	int no=0;
+	int no1=0;
+	int no2=0;
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	static Stage pwok = new Stage(StageStyle.DECORATED);
 	
@@ -53,7 +54,7 @@ public class MypageController implements Initializable {
 	private IMusicHistoryService imhs;
 	private ObservableList<MusicReviewVO> revList, currentrevList;
 	private ObservableList<MusicHistoryVO> singList;	//최근음악 담기
-	//private ObservableList<MusicReviewVO> newList
+	private ObservableList<MusicHistoryVO> newList;
 	@FXML Label label_Id;
 	@FXML Image img_User;
 	@FXML AnchorPane contents;
@@ -61,7 +62,6 @@ public class MypageController implements Initializable {
 	@FXML AnchorPane InfoContents;
 	@FXML AnchorPane Head;
 	
-	@FXML JFXTreeTableView tbl_ManyMusic;
 	@FXML JFXTreeTableView tbl_NewMusic;
 	
 	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review;
@@ -71,6 +71,11 @@ public class MypageController implements Initializable {
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManySigner;
 	@FXML TreeTableColumn col_MSno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSits;
+	
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManyMusic;
+	@FXML TreeTableColumn col_MMno;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMits;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMtitle;
 
 
 	@Override
@@ -126,45 +131,30 @@ public class MypageController implements Initializable {
 		
 	
 		//최근많이 들은 아티스트이름넣기 
-		col_MSno.setCellValueFactory(param -> new SimpleStringProperty(""+(no++)));
-		col_MSits
-		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
+		col_MSno.setCellValueFactory(param -> new SimpleStringProperty(""+(no1++)));
+		col_MSits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 
-		MusicHistoryVO muh =new MusicHistoryVO();
-		muh.setMem_id(user_id);
-		try {
-			singList = FXCollections.observableArrayList(imhs.selectMayIts(muh));
-		} catch (RemoteException e) {
-			System.out.println("에러");
-			e.printStackTrace();
-		}
-		
-		
-		
 		//최근많이 들은 곡
-		col_MSno.setCellValueFactory(param -> new SimpleStringProperty(""+(no++)));
-		col_MSits
-		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
-
-		MusicHistoryVO muh =new MusicHistoryVO();
-		muh.setMem_id(user_id);
-		try {
-			singList = FXCollections.observableArrayList(imhs.selectMayIts(muh));
-		} catch (RemoteException e) {
-			System.out.println("에러");
-			e.printStackTrace();
-		}
+		col_MMno.setCellValueFactory(param -> new SimpleStringProperty(""+(no2++)));
+		col_MMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
+		col_MMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 		
 		
 		// 데이터 삽입
+		MusicHistoryVO muh =new MusicHistoryVO();
+		muh.setMem_id(user_id);
+		try {
+			singList = FXCollections.observableArrayList(imhs.selectMayIts(muh));
+		} catch (RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}	
+		
 		TreeItem<MusicHistoryVO> root1 = new RecursiveTreeItem<>(singList, RecursiveTreeObject::getChildren);
 		tbl_ManySigner.setRoot(root1);
 		tbl_ManySigner.setShowRoot(false);
-		
-		
-	
-				
-				
+		tbl_ManyMusic.setRoot(root1);
+		tbl_ManyMusic.setShowRoot(false);
 		
 		
 		
