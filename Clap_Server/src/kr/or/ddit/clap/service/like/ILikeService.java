@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 
 import kr.or.ddit.clap.vo.music.MusicLikeVO;
 
-public interface ILikeService extends Remote {
+public interface ILikeService extends Remote{
 	public MusicLikeVO selectLike(MusicLikeVO vo) throws RemoteException;
 }
+

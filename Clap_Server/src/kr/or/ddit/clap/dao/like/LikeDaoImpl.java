@@ -38,7 +38,7 @@ public class LikeDaoImpl implements ILikeDao{
 	public MusicLikeVO selectLike(MusicLikeVO vo) {
 		MusicLikeVO check = null;
 		try {
-			check = (MusicLikeVO) smc.queryForObject("like.selectLike" ,vo);
+			check = (MusicLikeVO) smc.queryForObject("like.muLike" ,vo);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
