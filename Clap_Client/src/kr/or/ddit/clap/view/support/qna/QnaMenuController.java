@@ -5,6 +5,7 @@
  */
 package kr.or.ddit.clap.view.support.qna;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -20,11 +21,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.service.qna.IQnaService;
+import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaMenuController implements Initializable {
@@ -41,6 +47,8 @@ public class QnaMenuController implements Initializable {
 	TreeTableColumn<QnaVO, String> col_qnaDate;
 	@FXML
 	TreeTableColumn<QnaVO, String> col_qnaViewCnt;
+	@FXML
+	AnchorPane main;
 
 	private Registry reg;
 	private IQnaService iqs;
@@ -80,6 +88,33 @@ public class QnaMenuController implements Initializable {
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
 		paging();
+		
+		
+		// 더블클릭
+		tbl_qna.setOnMouseClicked(e -> {
+			if (e.getClickCount() > 1) {
+				int index = tbl_qna.getSelectionModel().getSelectedIndex();
+				System.out.println("선택한 인덱스 : " + index);
+				QnaVO vo = qnaList.get(index);
+				System.out.println("번호:" + vo.getQna_no());
+				String ContentNo = vo.getQna_no();
+
+				try {
+					// 바뀔 화면(FXML)을 가져옴
+					QnaDetailContentController.ContentNo = vo.getQna_no();// 번호을 변수로 넘겨줌
+					System.out.println(vo.getQna_no());
+
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaDetailContent.fxml"));// init실행됨
+					Parent singerDetail = loader.load();
+					main.getChildren().removeAll();
+					main.getChildren().setAll(singerDetail);
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		
 
 	}
 

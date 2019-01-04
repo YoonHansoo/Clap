@@ -10,7 +10,8 @@ public interface IQnaService extends Remote {
 	
 
 	public List<QnaVO> selectListAll() throws RemoteException;
-	
+
+	public QnaVO qnaDetailContent(String ContentNo) throws RemoteException;
 
 
 }
