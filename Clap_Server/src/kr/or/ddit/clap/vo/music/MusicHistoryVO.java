@@ -9,6 +9,7 @@ public class MusicHistoryVO implements Serializable{
 	private String mus_no;
 	private String mem_id;
 	private String name;
+	private String title;
 	
 	public String getHisto_no() {
 		return histo_no;
@@ -39,6 +40,12 @@ public class MusicHistoryVO implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }
