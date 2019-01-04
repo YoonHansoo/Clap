@@ -19,19 +19,20 @@ public class ClientMain extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
+		LoginSession ls = new LoginSession();
 		
 		//임시 로그인
-		LoginSession.session = new MemberVO(); 
-		LoginSession.session.setMem_id("user1");
-		LoginSession.session.setMem_pw("4321");
-		LoginSession.session.setMem_gender("m");
-		LoginSession.session.setMem_name("윤한수");
-		LoginSession.session.setMem_auth("f");
+		ls.session = new MemberVO(); 
+		ls.session.setMem_id("user1");
+		ls.session.setMem_pw("4321");
+		ls.session.setMem_gender("m");
+		ls.session.setMem_name("윤한수");
+		ls.session.setMem_auth("t");
 		
 		
 		
 		//로그인한 Id가 관리자일 경우
-		if(LoginSession.session.getMem_auth().equals("t")) {
+		if(ls.session.getMem_auth().equals("t")) {
 			System.out.println("관리자로 로그인");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMainAdmin.fxml"));
 			ScrollPane root = loader.load();
@@ -44,7 +45,7 @@ public class ClientMain extends Application {
 		}
 		
 		//로그인은 안했거나/ 일반 사용자일 경우
-		else if(LoginSession.session.getMem_auth().equals("f")){
+		else if(ls.session.getMem_auth().equals("f") || ls.session == null){
 			System.out.println("일반사용자 로그인 또는 비회원");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 			ScrollPane root = loader.load();
