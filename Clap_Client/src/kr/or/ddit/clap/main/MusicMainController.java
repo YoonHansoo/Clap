@@ -51,8 +51,9 @@ public class MusicMainController implements Initializable{
    
    @Override
    public void initialize(URL location, ResourceBundle resources) {
-      if(ls.session.getMem_id() == null || ls.session.getMem_id().equals("user1")) {
-         System.out.println("null "+ls.session.getMem_id());
+	   System.out.println();
+	   
+      if(ls.session == null || ls.session.getMem_id().equals("user1")) {
          mem_menu.setVisible(false);
          btn_join.setVisible(true);
          btn_login.setVisible(true);         
@@ -72,18 +73,21 @@ public class MusicMainController implements Initializable{
    
    @FXML
    public void login() throws IOException {
-      try {
-         Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
-         contents.getChildren().removeAll();
-         contents.getChildren().setAll(root);
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
+	   try {
+	      Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
+	      contents.getChildren().removeAll();
+	      contents.getChildren().setAll(root);
+	   } catch (IOException e) {
+	      e.printStackTrace();
+	   }
    }
    
    @FXML
    public void logout() throws IOException {
-      System.out.println("로그아웃처리");
+	   System.out.println("로그아웃처리");
+	   ls.session = null;
+	   System.out.println(ls.session);
+	   firstPage();
    }
    
    @FXML
@@ -179,26 +183,17 @@ public class MusicMainController implements Initializable{
    }
    
    public void firstPage() {
-      try {
-         System.out.println("getClass:"+getClass());
-         System.out.println(contents.toString());
-         Parent root = FXMLLoader.load(getClass().getResource("FirstPage.fxml"));         
-         contents.getChildren().removeAll();
-         contents.getChildren().setAll(root);
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
-      /*FXMLLoader loader = new FXMLLoader(getClass().getResource("FirstPage.fxml"));
-      AnchorPane root = null;
-      try {
-         root = loader.load();
-      } catch (IOException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-      Scene scene = new Scene(root);
-      Stage primaryStage = (Stage) btn_login.getScene().getWindow();
-      primaryStage.setScene(scene);*/
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
+		ScrollPane root = null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		Scene scene = new Scene(root);
+		Stage primaryStage = (Stage) btn_login.getScene().getWindow();
+		primaryStage.setScene(scene);
    }
 
 }
