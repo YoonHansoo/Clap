@@ -7,6 +7,7 @@ import kr.or.ddit.clap.dao.like.LikeDaoImpl;
 import kr.or.ddit.clap.dao.musichistory.MusicHistoryDaoImpl;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musichistory.MusicHistoryServiceImpl;
+import kr.or.ddit.clap.vo.music.MusicLikeVO;
 
 public class LikeServiceImpl extends UnicastRemoteObject implements ILikeService  {
 	
@@ -23,5 +24,10 @@ public class LikeServiceImpl extends UnicastRemoteObject implements ILikeService
 			service = new LikeServiceImpl();
 		}
 		return service;
+	}
+
+	@Override
+	public MusicLikeVO selectLike(MusicLikeVO vo) throws RemoteException {
+		return likeDao.selectLike(vo);
 	}
 }

@@ -2,10 +2,14 @@ package kr.or.ddit.clap.dao.like;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.SQLException;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+
+import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.music.MusicLikeVO;
 
 public class LikeDaoImpl implements ILikeDao{
 	
@@ -29,6 +33,18 @@ public class LikeDaoImpl implements ILikeDao{
 			dao = new LikeDaoImpl();
 		}
 		return dao;
+	}
+
+	public MusicLikeVO selectLike(MusicLikeVO vo) {
+		MusicLikeVO check = null;
+		try {
+			check = (MusicLikeVO) smc.queryForObject("like.selectLike" ,vo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return check;
 	}
 	
 }
