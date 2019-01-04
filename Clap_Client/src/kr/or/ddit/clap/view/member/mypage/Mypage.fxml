@@ -112,7 +112,11 @@
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
                                  <children>
-                                    <JFXTreeTableView fx:id="tbl_ManySigner" layoutX="-2.0" layoutY="-3.0" prefHeight="281.0" prefWidth="625.0" />
+                                    <JFXTreeTableView fx:id="tbl_ManySigner" layoutX="-2.0" layoutY="-3.0" prefHeight="281.0" prefWidth="625.0">
+                                       <columns>
+                                          <TreeTableColumn fx:id="col_MSno" prefWidth="137.0" text="번호" />
+                                          <TreeTableColumn fx:id="col_MSits" prefWidth="487.0" text="아티스트" />
+                                       </columns></JFXTreeTableView>
                                  </children></AnchorPane>
                           </content>
                         </Tab>
@@ -120,22 +124,26 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
                                  <children>
-                                    <JFXTreeTableView fx:id="tbl_ManyMusic" layoutX="-6.0" layoutY="-3.0" prefHeight="288.0" prefWidth="628.0" />
+                                    <JFXTreeTableView fx:id="tbl_ManyMusic" layoutX="-6.0" layoutY="-3.0" prefHeight="288.0" prefWidth="628.0">
+                                       <columns>
+                                          <TreeTableColumn prefWidth="75.0" text="번호" />
+                                          <TreeTableColumn prefWidth="91.0" text="아티스트 명 " />
+                                          <TreeTableColumn prefWidth="461.0" text="곡" />
+                                       </columns></JFXTreeTableView>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="         최근 감상 곡         ">
                            <content>
-                              <AnchorPane fx:id="tbl_NewMusic" minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
                                  <children>
-                                    <JFXTreeTableView layoutX="-6.0" layoutY="-1.0" prefHeight="283.0" prefWidth="633.0">
+                                    <JFXTreeTableView fx:id="tbl_NewMusic" layoutX="-6.0" layoutY="-1.0" prefHeight="283.0" prefWidth="633.0">
                                        <columns>
                                           <TreeTableColumn prefWidth="54.0" text="번호" />
-                                          <TreeTableColumn prefWidth="96.0" text="Image" />
-                                          <TreeTableColumn prefWidth="107.0" text="이름" />
-                                          <TreeTableColumn prefWidth="235.0" text="곡" />
-                                          <TreeTableColumn prefWidth="140.0" text="감상 날짜" />
+                                          <TreeTableColumn prefWidth="96.0" text="아티스트 명 " />
+                                          <TreeTableColumn prefWidth="332.0" text="곡" />
+                                          <TreeTableColumn prefWidth="150.0" text="감상 날짜" />
                                        </columns>
                                     </JFXTreeTableView>
                                  </children>

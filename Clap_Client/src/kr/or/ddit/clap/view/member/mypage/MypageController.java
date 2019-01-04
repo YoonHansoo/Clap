@@ -35,11 +35,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.support.QnaVO;
+import kr.or.ddit.clap.vo.music.MusicHistoryVO;;
 
 public class MypageController implements Initializable {
 	
@@ -49,21 +50,28 @@ public class MypageController implements Initializable {
 	private Registry reg;
 	private IMypageService ims;
 	private IMusicReviewService imrs;
+	private IMusicHistoryService imhs;
 	private ObservableList<MusicReviewVO> revList, currentrevList;
-	
+	private ObservableList<MusicHistoryVO> singList;	//최근음악 담기
+	//private ObservableList<MusicReviewVO> newList
 	@FXML Label label_Id;
 	@FXML Image img_User;
 	@FXML AnchorPane contents;
 	@FXML Text text_UserInfo;
 	@FXML AnchorPane InfoContents;
 	@FXML AnchorPane Head;
-	@FXML JFXTreeTableView tbl_ManySigner;
-	@FXML JFXTreeTableView tbl_ManyMusic;
-	@FXML AnchorPane tbl_NewMusic;
 	
+	@FXML JFXTreeTableView tbl_ManyMusic;
+	@FXML JFXTreeTableView tbl_NewMusic;
+	
+	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review;
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
-	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review;
+
+	@FXML JFXTreeTableView tbl_ManySigner;
+	@FXML TreeTableColumn col_MSno;
+	@FXML TreeTableColumn col_MSits;
+
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -72,6 +80,7 @@ public class MypageController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMypageService) reg.lookup("mypage");
 			imrs = (IMusicReviewService) reg.lookup("musicreview");
+			imhs = (IMusicHistoryService) reg.lookup("history");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -102,8 +111,7 @@ public class MypageController implements Initializable {
 		muvo.setMem_id(user_id);
 		try {
 			revList = FXCollections.observableArrayList(imrs.selectReview(muvo));
-			System.out.println(revList.size());
-			System.out.println(revList.get(0).getMus_re_content());
+			
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();
@@ -113,6 +121,30 @@ public class MypageController implements Initializable {
 		TreeItem<MusicReviewVO> root = new RecursiveTreeItem<>(revList, RecursiveTreeObject::getChildren);
 		tbl_Review.setRoot(root);
 		tbl_Review.setShowRoot(false);
+		//----------------------
+		
+		//최근많이 들은 아티스트이름넣기 
+		col_MSno
+		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
+		col_MSits
+		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate()));
+
+		MusicReviewVO muvo =new MusicReviewVO();
+		muvo.setMem_id(user_id);
+		try {
+			revList1 = FXCollections.observableArrayList(imrs.selectReview(muvo));
+			
+		} catch (RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}
+		
+		// 데이터 삽입
+		TreeItem<MusicReviewVO> root = new RecursiveTreeItem<>(revList1, RecursiveTreeObject::getChildren);
+		tbl_ManySigner.setRoot(root);
+		tbl_ManySigner.setShowRoot(false);
+		
+		
 
 	}
 
