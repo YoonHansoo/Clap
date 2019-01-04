@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50Controller">
+<AnchorPane prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50Controller">
    <children>
-      <VBox fx:id="mainBox" >
+      <VBox fx:id="mainBox">
          <children>
             <HBox spacing="5.0">
                <padding>
                   <Insets left="30.0" />
                </padding>
                <children>
-                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="78.0" ripplerFill="#9c0000" text="일간">
+                  <JFXButton fx:id="btn_ToDay" prefWidth="50.0" ripplerFill="#9c0000" text="일간" onAction="#toDayChart">
                      <HBox.margin>
                         <Insets left="45.0" />
                      </HBox.margin>
@@ -27,12 +27,12 @@
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="76.0" ripplerFill="#9c0000" text="주간">
+                  <JFXButton fx:id="btn_Week" prefWidth="50.0" ripplerFill="#9c0000" text="주간" onAction="#weekChart">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton buttonType="RAISED" prefHeight="34.0" prefWidth="76.0" ripplerFill="#9c0000" text="월간">
+                  <JFXButton fx:id="btn_Month" prefWidth="50.0" ripplerFill="#9c0000" text="월간" onAction="#monthChart">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
@@ -41,8 +41,8 @@
             </HBox>
             <HBox alignment="CENTER_LEFT" spacing="1.0">
                <children>
-                  <JFXCheckBox fx:id="cb_main" onAction="#mainCheck" checkedColor="#9c0000" prefHeight="35.0" prefWidth="39.0" text=" " />
-                  <JFXButton ripplerFill="#9c0000" text="듣기" onAction="#btnMainPlay">
+                  <JFXCheckBox fx:id="cb_main" checkedColor="#9c0000" onAction="#mainCheck" prefHeight="35.0" prefWidth="39.0" text=" " />
+                  <JFXButton onAction="#btnMainPlay" ripplerFill="#9c0000" text="듣기">
                      <graphic>
                         <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
                      </graphic>
@@ -53,7 +53,7 @@
                         <Font name="-윤고딕340" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton ripplerFill="#9c0000" text="추가" onAction="#btnMainAdd">
+                  <JFXButton onAction="#btnMainAdd" ripplerFill="#9c0000" text="추가">
                      <graphic>
                         <FontAwesomeIcon iconName="PLUS" size="20" />
                      </graphic>
@@ -61,7 +61,7 @@
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton ripplerFill="#9c0000" text="담기" onAction="#btnMainPut">
+                  <JFXButton onAction="#btnMainPut" ripplerFill="#9c0000" text="담기">
                      <graphic>
                         <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
                      </graphic>

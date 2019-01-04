@@ -36,6 +36,9 @@ public class Top50Controller implements Initializable{
 
 	@FXML VBox mainBox;
 	@FXML JFXCheckBox cb_main;
+	@FXML JFXButton btn_ToDay;
+	@FXML JFXButton btn_Week;
+	@FXML JFXButton btn_Month;
 	private Registry reg;
 	private IMusicHistoryService imhs;
 	private ObservableList<Map> toDayRank;
@@ -47,17 +50,23 @@ public class Top50Controller implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			imhs = (IMusicHistoryService) reg.lookup("history");
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		
 		// 일간 조회 차트 
 		toDayChart();
 		
-		btnPlayClick();
-		btnAddClick();
-		btnPutClick();
-		btnMovieClick();
+		
 	}
 	
-	// 메인 듣기 버튼 이벤트
+	// 메인 재생 버튼 이벤트
 	@FXML public void btnMainPlay() {
 		ArrayList<String> list = musicList();
 		System.out.println(list);
@@ -75,6 +84,7 @@ public class Top50Controller implements Initializable{
 		System.out.println(list);
 	}
 	
+	// 체크 박스 선택한 곡넘버 보내기
 	private ArrayList<String> musicList() {
 		ArrayList<String> List = new ArrayList<>();
 		for (int i = 0; i < cbnList.size(); i++) {
@@ -103,7 +113,6 @@ public class Top50Controller implements Initializable{
 				System.out.println(btn_PutMy.getId());
 			});
 		}
-		
 	}
 	
 	// 추가 버튼 클릭시 이벤트
@@ -125,25 +134,49 @@ public class Top50Controller implements Initializable{
 				System.out.println(btn_PlayMy.getId());
 			});
 		}
-		
 	}
-	
-	// RMI 접속 메서드
-	private void toDayChart() {
+	@FXML public void toDayChart() {
 		try {
-			reg = LocateRegistry.getRegistry("localhost", 8888);
-			imhs = (IMusicHistoryService) reg.lookup("history");
-			
 			toDayRank = FXCollections.observableArrayList(imhs.selectList());
+			btn_ToDay.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Month.setStyle("-fx-background-color:#FFFFFF;");
 			
 			musicList(toDayRank.size());
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		} catch (NotBoundException e) {
+		}
+	}
+
+	@FXML public void weekChart() {
+		try {
+			toDayRank = FXCollections.observableArrayList(imhs.selectList());
+			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Week.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Month.setStyle("-fx-background-color:#FFFFFF;");
+			
+			musicList(toDayRank.size());
+			
+		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
+
+	@FXML public void monthChart() {
+		try {
+			toDayRank = FXCollections.observableArrayList(imhs.selectList());
+			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Month.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			
+			musicList(toDayRank.size());
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	// 전체 선택 및 해제 메서드
 	@FXML public void mainCheck() {
@@ -326,6 +359,16 @@ public class Top50Controller implements Initializable{
 			
 		}
 		
+		if (mainBox.getChildren().size() == 4) {
+			mainBox.getChildren().remove(3);
+		}
 		mainBox.getChildren().add(vbox);
+		
+		btnPlayClick();
+		btnAddClick();
+		btnPutClick();
+		btnMovieClick();
 	}
+
+	
 }

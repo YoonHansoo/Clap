@@ -27,6 +27,8 @@ public class ChartMenuController implements Initializable{
 	@FXML Tab tab_musicvideo;
 	@FXML AnchorPane anchorPane_top50;
 
+	@FXML AnchorPane main;
+
 	
 
 	@Override

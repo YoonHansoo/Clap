@@ -1,5 +1,9 @@
 * {
-    
+  
+}
+
+#main{
+	-fx-background-color: white;
 }
 
 .tab{
@@ -21,4 +25,9 @@
 	 -fx-font-family: "-윤고딕350";
 	 -fx-font-size: 25;
 	 
+}
+
+.tab:selected{
+	-fx-border-width: 0 0 5 0;
+	-fx-border-color: #9c0000;
 }
