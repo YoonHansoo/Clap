@@ -6,13 +6,18 @@
 <sqlMap namespace="qna">
 	
 	 
-	 <!-- <select id="selectListAll" resultClass="qnaVO">
-	 		select qna_no, qna_indate, qna_title, mem_tel, mem_email, qna_type, qna_view_cnt, parent_no, attach_file, qna_content, mem_id from qna
-	 </select>
-	  -->
+	 
 	 <select id="selectListAll" resultClass="qnaVO">
 	 		select qna_no, qna_indate, qna_title,qna_view_cnt from qna
 	 </select>
+	 
+	 
+	 <select id="qnaDetailContent" resultClass="qnaVO" parameterClass="String">
+         
+		  select qna_type, qna_title, qna_indate, qna_content from qna where qna_no = #String#
+      </select>
+	 
+	 
 	   
 		
 	

@@ -8,6 +8,7 @@ package kr.or.ddit.clap.dao.qna;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
-public class QnaDaoImpl {
+public class QnaDaoImpl implements IQnaDao{
 	
 	private SqlMapClient smc;
 	private static QnaDaoImpl dao; // Singleton 패턴
@@ -55,7 +56,21 @@ public class QnaDaoImpl {
 
 		return list;
 	}
-	
-	
 
-}
+	@Override
+	public QnaVO qnaDetailContent(String ContentNo) throws RemoteException {
+		QnaVO qVO = new QnaVO();
+		try {
+
+			qVO = (QnaVO)smc.queryForObject("qna.qnaDetailContent", ContentNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return qVO;
+	}
+		
+		
+	}
+	

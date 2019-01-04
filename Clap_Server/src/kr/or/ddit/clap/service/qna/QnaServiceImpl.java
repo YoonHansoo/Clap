@@ -44,6 +44,11 @@ public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 		return qnaDao.selectListAll();
 	}
 
+	@Override
+	public QnaVO qnaDetailContent(String ContentNo) throws RemoteException {
+		return qnaDao.qnaDetailContent(ContentNo);
+	}
+
 
 
 	

@@ -6,12 +6,18 @@
  */
 package kr.or.ddit.clap.dao.qna;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public interface IQnaDao {
 	
+
 	public List<QnaVO> selectListAll();
+	
+	
+	public QnaVO qnaDetailContent(String title) throws RemoteException;
+	
 
 }
