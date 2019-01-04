@@ -38,7 +38,7 @@
                      </font>
                   </Text>
                   <JFXTreeTableView layoutX="8.0" layoutY="439.0" prefHeight="198.0" prefWidth="189.0" />
-                  <JFXButton layoutX="22.0" layoutY="308.0" text="- 좋아요♥" />
+                  <JFXButton onAction="#btn_like" layoutX="22.0" layoutY="308.0" text="- 좋아요♥" />
                   <JFXButton layoutX="22.0" layoutY="331.0" text="- 리뷰" />
                   <JFXButton layoutX="26.0" layoutY="778.0" text="- 최근감상곡" />
                   <JFXButton layoutX="26.0" layoutY="810.0" text="- 많이 들은곡" />
@@ -140,10 +140,10 @@
                                  <children>
                                     <JFXTreeTableView fx:id="tbl_NewMusic" layoutX="-6.0" layoutY="-1.0" prefHeight="283.0" prefWidth="633.0">
                                        <columns>
-                                          <TreeTableColumn  prefWidth="54.0" text="번호" />
-                                          <TreeTableColumn prefWidth="96.0" text="아티스트 명 " />
-                                          <TreeTableColumn prefWidth="332.0" text="곡" />
-                                          <TreeTableColumn prefWidth="150.0" text="감상 날짜" />
+                                          <TreeTableColumn fx:id="col_NMno" prefWidth="54.0" text="번호" />
+                                          <TreeTableColumn fx:id="col_NMits" prefWidth="96.0" text="아티스트 명 " />
+                                          <TreeTableColumn  fx:id="col_NMtitle" prefWidth="332.0" text="곡" />
+                                          <TreeTableColumn  fx:id="col_NMdate" prefWidth="150.0" text="감상 날짜" />
                                        </columns>
                                     </JFXTreeTableView>
                                  </children>

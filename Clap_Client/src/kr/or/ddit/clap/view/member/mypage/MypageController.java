@@ -45,6 +45,7 @@ import kr.or.ddit.clap.vo.music.MusicReviewVO;;
 public class MypageController implements Initializable {
 	int no1=0;
 	int no2=0;
+	int no3=0;
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	static Stage pwok = new Stage(StageStyle.DECORATED);
 	
@@ -62,20 +63,24 @@ public class MypageController implements Initializable {
 	@FXML AnchorPane InfoContents;
 	@FXML AnchorPane Head;
 	
-	@FXML JFXTreeTableView tbl_NewMusic;
-	
-	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review;
+	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review; 	//리뷰
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
 
-	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManySigner;
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManySigner;	//많이들은 아티스트
 	@FXML TreeTableColumn col_MSno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSits;
 	
-	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManyMusic;
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManyMusic;	//많이들은 곡
 	@FXML TreeTableColumn col_MMno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMits;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMtitle;
+	
+	@FXML JFXTreeTableView tbl_NewMusic;					//최근들은곡
+	@FXML TreeTableColumn col_NMno;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMits;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMtitle;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMdate;
 
 
 	@Override
@@ -105,30 +110,9 @@ public class MypageController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		
 		//최근댓글테이블
-		col_ReviewCont
-		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
-		col_ReviewDate
-		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate()));
-
-		MusicReviewVO muvo =new MusicReviewVO();
-		muvo.setMem_id(user_id);
-		try {
-			revList = FXCollections.observableArrayList(imrs.selectReview(muvo));
-			
-		} catch (RemoteException e) {
-			System.out.println("에러");
-			e.printStackTrace();
-		}
-		
-		// 데이터 삽입
-		TreeItem<MusicReviewVO> root = new RecursiveTreeItem<>(revList, RecursiveTreeObject::getChildren);
-		tbl_Review.setRoot(root);
-		tbl_Review.setShowRoot(false);
-		//----------------------
-		
-		
+		col_ReviewCont.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
+		col_ReviewDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate()));
 	
 		//최근많이 들은 아티스트이름넣기 
 		col_MSno.setCellValueFactory(param -> new SimpleStringProperty(""+(no1++)));
@@ -138,17 +122,33 @@ public class MypageController implements Initializable {
 		col_MMno.setCellValueFactory(param -> new SimpleStringProperty(""+(no2++)));
 		col_MMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 		col_MMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
+	
+		//최근 감상곡
+		col_NMno.setCellValueFactory(param -> new SimpleStringProperty(""+(no3++)));
+		col_NMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
+		col_NMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
+		col_NMdate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getHisto_indate().substring(0,10)));
+		
+		
 		
 		
 		// 데이터 삽입
+		MusicReviewVO muvo =new MusicReviewVO();
+		muvo.setMem_id(user_id);
 		MusicHistoryVO muh =new MusicHistoryVO();
 		muh.setMem_id(user_id);
 		try {
+			revList = FXCollections.observableArrayList(imrs.selectReview(muvo));
 			singList = FXCollections.observableArrayList(imhs.selectMayIts(muh));
+			newList = FXCollections.observableArrayList(imhs.selectMayIndate(muh));
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();
 		}	
+		
+		TreeItem<MusicReviewVO> root = new RecursiveTreeItem<>(revList, RecursiveTreeObject::getChildren);
+		tbl_Review.setRoot(root);
+		tbl_Review.setShowRoot(false);
 		
 		TreeItem<MusicHistoryVO> root1 = new RecursiveTreeItem<>(singList, RecursiveTreeObject::getChildren);
 		tbl_ManySigner.setRoot(root1);
@@ -156,6 +156,9 @@ public class MypageController implements Initializable {
 		tbl_ManyMusic.setRoot(root1);
 		tbl_ManyMusic.setShowRoot(false);
 		
+		TreeItem<MusicHistoryVO> root2 = new RecursiveTreeItem<>(newList, RecursiveTreeObject::getChildren);
+		tbl_NewMusic.setRoot(root2);
+		tbl_NewMusic.setShowRoot(false);
 		
 		
 
@@ -289,6 +292,13 @@ public class MypageController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}});
+	}
+	
+	
+	
+	@FXML
+	public void btn_like() throws IOException {  
+		System.out.println("dgdg");
 	}
 
 }

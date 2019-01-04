@@ -2,12 +2,35 @@ package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
 
-public class MusicLikeVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class MusicLikeVO extends RecursiveTreeObject<MusicLikeVO> implements Serializable{
 	
 	private String mem_id;
 	private String mus_no;
 	private String mus_like_date;
+	private String title;
+	private String sname;
+	private String aname;
 	
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getSname() {
+		return sname;
+	}
+	public void setSname(String sname) {
+		this.sname = sname;
+	}
+	public String getAname() {
+		return aname;
+	}
+	public void setAname(String aname) {
+		this.aname = aname;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}

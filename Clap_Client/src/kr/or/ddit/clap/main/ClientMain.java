@@ -20,14 +20,14 @@ public class ClientMain extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		LoginSession ls = new LoginSession();
-		
-		//임시 로그인
-		ls.session = new MemberVO(); 
-		ls.session.setMem_id("user1");
-		ls.session.setMem_pw("4321");
-		ls.session.setMem_gender("m");
-		ls.session.setMem_name("윤한수");
-		ls.session.setMem_auth("t");
+
+		LoginSession.session = new MemberVO(); 
+		LoginSession.session.setMem_id("admin1");
+		LoginSession.session.setMem_pw("4321");
+		LoginSession.session.setMem_gender("m");
+		LoginSession.session.setMem_name("윤한수");
+		LoginSession.session.setMem_auth("f");
+
 		
 		
 		
