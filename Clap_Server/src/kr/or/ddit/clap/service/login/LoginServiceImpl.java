@@ -2,6 +2,7 @@ package kr.or.ddit.clap.service.login;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.or.ddit.clap.dao.login.LoginDaoImpl;
@@ -27,6 +28,25 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 	@Override
 	public Boolean idCheck(String id) throws RemoteException {
 		return loginDao.idCheck(id);
+	}
+
+	@Override
+	public List<MemberVO> select(String id) throws RemoteException {
+		return loginDao.select(id);
+	}
+	
+	public static void main(String[] args) {
+		try {
+			service = service.getInstance();
+			List<MemberVO> list = new ArrayList<MemberVO>();
+			boolean a = false;
+			a = service.idCheck("park11");
+			list = service.select("park11");
+			System.out.println(list.get(0).getMem_id());
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 
 
