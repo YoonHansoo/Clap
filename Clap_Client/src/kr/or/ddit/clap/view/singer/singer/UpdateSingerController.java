@@ -216,20 +216,7 @@ public class UpdateSingerController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		Parent singerList = null;
-		try {
-			//바뀔 화면(FXML)을 가져옴
-			ShowSingerDetailController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
-			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
-			Parent singerDetail= loader.load(); 
-			main.getChildren().removeAll();
-			main.getChildren().setAll(singerDetail);
-			
-			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} 
+		chagePage();
 		
 	}
 	
@@ -243,8 +230,23 @@ public class UpdateSingerController implements Initializable {
 	
 
 	@FXML
-	public void deleteSinger() {
-
+	public void cancel() {
+		chagePage();
 	}
-
+	public void chagePage() {
+		try {
+			//바뀔 화면(FXML)을 가져옴
+			//singerDetail
+			ShowSingerDetailController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
+			Parent singerDetail= loader.load(); 
+			main.getChildren().removeAll();
+			main.getChildren().setAll(singerDetail);
+			
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} 
+	}
 }

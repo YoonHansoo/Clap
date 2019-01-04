@@ -153,7 +153,7 @@ public class InsertSingerController implements Initializable {
 	}
 
 	@FXML //업데이트 하는 버튼
-	public void updateSinger() {
+	public void insertSinger() {
 		
 		if(txt_name.getText().isEmpty()) {
 			errMsg("가수이름은 필수 입력 사항입니다.");
@@ -201,16 +201,21 @@ public class InsertSingerController implements Initializable {
 		sVO.setSing_image(img_path);
 		sVO.setSing_intro(txt_intro.getText());
 		try {
-			iss.updateSingerInfo(sVO);
+			int flag=iss.insertSinger(sVO);
+			if(flag==1) {
 			System.out.println("가수등록 완료");
+			}
+			else {
+				System.out.println("가수등록 실패");
+			}
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
 		}
 		
 			//바뀔 화면(FXML)을 가져옴
-			
-			
+		
+		chagePage();
 			
 		
 	}
@@ -225,8 +230,21 @@ public class InsertSingerController implements Initializable {
 	
 
 	@FXML
-	public void deleteSinger() {
-
+	public void cancel() {
+		chagePage();
 	}
-
+	
+	//화면을 조회창으로 이동해주는 메서드
+	public void chagePage() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowSingerList.fxml"));// init실행됨
+		Parent singerList;
+		try {
+			singerList = loader.load();
+			main.getChildren().removeAll();
+			main.getChildren().setAll(singerList);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+	}
 }

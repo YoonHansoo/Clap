@@ -158,7 +158,37 @@ public class ShowSingerDetailController  implements Initializable {
 
 
 
-	@FXML public void deleteSinger() {}
+	@FXML public void deleteSinger() {
+		try {
+			int cnt =iss.deleteSinger(singerNo);
+			
+			if(cnt>=1) {
+				System.out.println("삭제성공");
+			}
+			else {
+				System.out.println("삭제실패");
+				
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		
+		//화면전환
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowSingerList.fxml"));
+		Parent singerList;
+		try {
+			singerList = loader.load();
+			main.getChildren().removeAll();
+			main.getChildren().setAll(singerList);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
+			
+		
+		
+	}
 
 	
 }

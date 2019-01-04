@@ -151,6 +151,6 @@
       <JFXButton />
       <TextArea fx:id="txt_intro" layoutX="15.0" layoutY="384.0" prefHeight="275.0" prefWidth="734.0" wrapText="true" />
       <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
+      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
    </children>
 </AnchorPane>
