@@ -15,6 +15,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,6 +38,7 @@ public class MusicMainController implements Initializable{
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	@FXML FontAwesomeIcon icon_firstPage;
+	@FXML HBox mem_menu;
 
 	@FXML public JFXButton btn_login;
 	@FXML public JFXButton btn_join;
@@ -50,17 +52,18 @@ public class MusicMainController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		if(ls.session.getMem_id() == null || ls.session.getMem_id().equals("admin1")) {
 			System.out.println("null "+ls.session.getMem_id());
-			btn_mem.setVisible(false);
+			mem_menu.setVisible(false);
 			btn_join.setVisible(true);
 			btn_login.setVisible(true);			
 		}else {
 			System.out.println("not null "+ls.session.getMem_id());
-			btn_mem.setVisible(true);
+			mem_menu.setVisible(true);
 			btn_join.setVisible(false);
 			btn_login.setVisible(false);
 			
-//			Image img = new Image(getClass().getResourceAsStream("../../img/purin.jpg"));
-//			mem_img.setImage(img);
+//			Image img = new Image(getClass().getResourceAsStream("../../../../../../img/purin.jpg"));
+			Image img = new Image(getClass().getResourceAsStream("purin.jpg"));
+			mem_img.setImage(img);
 		}
 	}
 	
