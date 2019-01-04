@@ -135,6 +135,7 @@
                         </Menu>
                      </menus>
                   </MenuBar>
+                  <JFXButton onAction="#mypage" layoutX="840.0" layoutY="52.0" text="마이페이지 테스" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">

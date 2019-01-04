@@ -1,8 +1,12 @@
 package kr.or.ddit.clap.vo.member;
 
 import java.io.Serializable;
+import java.util.Map;
 
-public class MemberVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+
+public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializable{
 	
 	private String mem_id;
 	private String mem_pw;
