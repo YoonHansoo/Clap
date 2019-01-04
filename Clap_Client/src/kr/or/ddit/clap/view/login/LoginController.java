@@ -9,6 +9,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXPasswordField;
@@ -18,6 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
@@ -41,6 +44,9 @@ public class LoginController implements Initializable{
 	
 	@FXML JFXTextField txt_id;
 	@FXML JFXPasswordField txt_pw;
+	@FXML Label lb_check;
+	
+	List<MemberVO> list = new ArrayList<MemberVO>();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -69,47 +75,59 @@ public class LoginController implements Initializable{
 		Boolean idCheck = false;
 		try {
 			idCheck = ils.idCheck(txt_id.getText());
+			// DB에 id가 없을경우 -> false
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		
-		// 아이디가 존재하지 않을 때
-//		if(vo == null) {
-//			System.out.println("존재하지 않는 ID입니다.");
-//		}
+		System.out.println("아이디체크 " + idCheck);
+		if(!idCheck) {
+			lb_check.setVisible(true);
+			return;
+		}
 		
 		// 비밀번호 확인
+		// dao로 비밀번호 가져오기.
+		try {
+			list = ils.select(txt_id.getText());
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
+		System.out.println("가져온 비밀번호 "+list.get(0).getMem_pw());
+		
+		if(encryptedPw.equals(list.get(0).getMem_pw())) {
+			System.out.println("로그인 진행");
+			MusicMainController.loginDialog.close();
+			
+			// session에 vo넘기기
+			vo.setMem_id(txt_id.getText());
+			ls.session = vo;
+			System.out.println("확인 "+ls.session.getMem_id());
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
+			ScrollPane root = null;
+			try {
+				root = loader.load();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			Scene scene = new Scene(root);
+			Stage primaryStage = (Stage) txt_id.getScene().getWindow();
+			primaryStage.setScene(scene);
+		}else {
+			System.out.println("비밀번호 불일치");
+			lb_check.setVisible(true);
+		}
 		
 		// 비밀번호가 일치하지 않을 때
-		if(false) {
-			System.out.println("비밀번호를 정확히 입력해주세요.");
-			// 3회 이상 실패하면 captcha.
-		}
+//		if(false) {
+//			System.out.println("비밀번호를 정확히 입력해주세요.");
+//			// 3회 이상 실패하면 captcha.
+//		}
 		
 		
 		
-		System.out.println(txt_id.getText());
-		System.out.println(encryptedPw);
-		System.out.println(decryptedPw);
-		
-		MusicMainController.loginDialog.close();
-		
-		// session에 vo넘기기
-		vo.setMem_id(txt_id.getText());
-		ls.session = vo;
-		System.out.println("확인 "+ls.session.getMem_id());
-		
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
-		ScrollPane root = null;
-		try {
-			root = loader.load();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		Scene scene = new Scene(root);
-		Stage primaryStage = (Stage) txt_id.getScene().getWindow();
-		primaryStage.setScene(scene);
 		
 		
 		
