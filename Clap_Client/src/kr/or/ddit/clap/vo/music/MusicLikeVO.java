@@ -15,7 +15,8 @@ public class MusicLikeVO extends RecursiveTreeObject<MusicLikeVO> implements Ser
 	private String title;
 	private String sname;
 	private String aname; 
-	private ImageView imgView; 
+	private ImageView imgView;
+	
 	
 	public ImageView getImgView() {
 		this.imgView = new ImageView();
