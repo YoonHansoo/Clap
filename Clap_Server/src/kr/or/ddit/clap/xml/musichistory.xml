@@ -57,7 +57,7 @@
 					   and c.sing_no = d.sing_no
                        and a.mem_id=#mem_id#
 					 group by b.mus_no, b.MUS_TITLE,d.sing_name,a.mem_id, a.histo_indate
-					 order by count(a.histo_indate) desc
+					 order by a.histo_indate desc
 	  
 		</select>
 	
