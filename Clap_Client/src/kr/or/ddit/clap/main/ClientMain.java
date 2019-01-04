@@ -15,8 +15,6 @@ import kr.or.ddit.clap.vo.member.MemberVO;
  *
  */
 
-
-
 public class ClientMain extends Application {
 
 	@Override

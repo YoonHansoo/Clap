@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
@@ -31,7 +32,7 @@ import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
  *
  */
 
-public class Top50RealTimeController implements Initializable{
+public class Top50Controller implements Initializable{
 
 	@FXML VBox mainBox;
 	@FXML JFXCheckBox cb_main;
@@ -56,6 +57,34 @@ public class Top50RealTimeController implements Initializable{
 		btnMovieClick();
 	}
 	
+	// 메인 듣기 버튼 이벤트
+	@FXML public void btnMainPlay() {
+		ArrayList<String> list = musicList();
+		System.out.println(list);
+	}
+
+	// 메인 추가 버튼 이벤트
+	@FXML public void btnMainAdd() {
+		ArrayList<String> list = musicList();
+		System.out.println(list);
+	}
+
+	// 메인 담기 버튼 이벤트
+	@FXML public void btnMainPut() {
+		ArrayList<String> list = musicList();
+		System.out.println(list);
+	}
+	
+	private ArrayList<String> musicList() {
+		ArrayList<String> List = new ArrayList<>();
+		for (int i = 0; i < cbnList.size(); i++) {
+			if (cbnList.get(i).isSelected()) {
+				List.add(cbnList.get(i).getId());
+			}
+		}
+		return List;
+	}
+
 	// 뮤비 버튼 클릭시 이벤트
 	private void btnMovieClick() {
 		for (int i = 0; i < btnMovieList.size(); i++) {
@@ -299,5 +328,4 @@ public class Top50RealTimeController implements Initializable{
 		
 		mainBox.getChildren().add(vbox);
 	}
-
 }

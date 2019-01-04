@@ -35,7 +35,7 @@ public class ChartMenuController implements Initializable{
 		tabPane_main.getSelectionModel().select(menuCount);
 		
 		try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("../top50/Top50RealTime.fxml"));
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("../top50/Top50.fxml"));
 			anchorPane_top50.getChildren().removeAll();
 			anchorPane_top50.getChildren().setAll(pane);
 			
