@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="like">
+	
+	 <select id="muLike" resultClass="MusicLikeVO" parameterClass="MusicLikeVO">
+	 	 select a.MEM_ID,
+				a.MUS_NO,
+				a.MUS_LIKE_DATE,
+				b.mus_title as title,
+				d.sing_name as sname,
+				c.alb_name as aname
+         from MUSIC_LIKE a, music b, album c , singer d
+         	where 	a.mus_no = b.mus_no
+				and b.alb_no = c.alb_no
+				and c.sing_no = d.sing_no
+                and a.mem_id=#mem_id# 
+	 </select>
+	   
+		
+	
+	
+
+</sqlMap>			
+
+    
+   
