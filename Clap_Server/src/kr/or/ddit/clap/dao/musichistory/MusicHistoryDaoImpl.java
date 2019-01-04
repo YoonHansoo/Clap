@@ -18,6 +18,7 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 
 /**
  * 
@@ -64,6 +65,19 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 	public static void main(String[] args) {
 		List<Map> list = new MusicHistoryDaoImpl().selectList();
 		
+	}
+
+	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo) {
+		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
+		try {
+			
+			list = smc.queryForList("musichistory.selectMayIts",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
 	}
 
 }
