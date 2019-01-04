@@ -97,7 +97,6 @@ public class LoginController implements Initializable{
 		
 		if(encryptedPw.equals(list.get(0).getMem_pw())) {
 			System.out.println("로그인 진행");
-			MusicMainController.loginDialog.close();
 			
 			// session에 vo넘기기
 			vo.setMem_id(txt_id.getText());
