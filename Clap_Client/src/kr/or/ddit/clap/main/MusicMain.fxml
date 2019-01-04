@@ -39,13 +39,13 @@
                   <JFXButton fx:id="btn_join" layoutX="903.0" layoutY="94.0" onAction="#join" text="회원가입" />
                   <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" text="로그인" />
                   <JFXButton layoutX="828.0" layoutY="70.0" onAction="#mypage" text="마이페이지 테스트" />
-                  <HBox fx:id="mem_menu" layoutX="759.0" layoutY="90.0" prefHeight="23.0" prefWidth="230.0" spacing="5.0" visible="false">
+                  <HBox fx:id="mem_menu" layoutX="759.0" layoutY="90.0" prefHeight="23.0" prefWidth="230.0" spacing="5.0">
                      <children>
-                        <JFXButton fx:id="btn_mem" text=" ">
+                        <JFXButton fx:id="btn_mem" onAction="#mypage2" text=" ">
                            <graphic>
                               <HBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="130.0" spacing="5.0">
                                  <children>
-                                    <Label text="ddddit님">
+                                    <Label onMouseClicked="#mypage" text="ddddit님">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
@@ -55,7 +55,7 @@
                               </HBox>
                            </graphic>
                         </JFXButton>
-                        <JFXButton text="로그아웃">
+                        <JFXButton fx:id="btn_logout" onAction="#logout" text="로그아웃">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
