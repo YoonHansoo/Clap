@@ -12,6 +12,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -40,11 +42,26 @@ public class MusicMainController implements Initializable{
 	@FXML public JFXButton btn_join;
 	@FXML public JFXButton btn_mem;
 	
+	@FXML ImageView mem_img;
 	
+	LoginSession ls = new LoginSession();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		if(ls.session.getMem_id() == null || ls.session.getMem_id().equals("admin1")) {
+			System.out.println("null "+ls.session.getMem_id());
+			btn_mem.setVisible(false);
+			btn_join.setVisible(true);
+			btn_login.setVisible(true);			
+		}else {
+			System.out.println("not null "+ls.session.getMem_id());
+			btn_mem.setVisible(true);
+			btn_join.setVisible(false);
+			btn_login.setVisible(false);
+			
+//			Image img = new Image(getClass().getResourceAsStream("../../img/purin.jpg"));
+//			mem_img.setImage(img);
+		}
 	}
 	
 	@FXML
