@@ -5,6 +5,8 @@ import java.rmi.registry.Registry;
 
 import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
+import kr.or.ddit.clap.service.like.ILikeService;
+import kr.or.ddit.clap.service.like.LikeServiceImpl;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
@@ -30,6 +32,7 @@ public class ServerMain {
 			IJoinService ijs     = JoinServiceImpl.getInstance();	//회원가입
 			IMusicReviewService imrs  = MusicReviewServiceImpl.getInstance();	//뮤직댓글
 			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); // 뮤직순위
+			ILikeService ilks = LikeServiceImpl.getInstance(); // 좋아요
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -40,6 +43,7 @@ public class ServerMain {
 			reg.rebind("join", ijs);
 			reg.rebind("history", imhs);
 			reg.rebind("musicreview", imrs);
+			reg.rebind("like", ilks);
 			 System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
