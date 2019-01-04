@@ -2,13 +2,16 @@ package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
 
-public class MusicHistoryVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class MusicHistoryVO extends RecursiveTreeObject<MusicHistoryVO> implements Serializable{
 	
 	private String histo_no;
 	private String histo_indate;
 	private String mus_no;
 	private String mem_id;
 	private String name;
+	private String title;
 	
 	public String getHisto_no() {
 		return histo_no;
@@ -39,6 +42,12 @@ public class MusicHistoryVO implements Serializable{
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 }

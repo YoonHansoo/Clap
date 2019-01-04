@@ -43,7 +43,7 @@ import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;;
 
 public class MypageController implements Initializable {
-	
+	int no=0;
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	static Stage pwok = new Stage(StageStyle.DECORATED);
 	
@@ -68,8 +68,8 @@ public class MypageController implements Initializable {
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
 
-	@FXML JFXTreeTableView tbl_ManySigner;
-	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSno;
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManySigner;
+	@FXML TreeTableColumn col_MSno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSits;
 
 
@@ -123,24 +123,49 @@ public class MypageController implements Initializable {
 		tbl_Review.setShowRoot(false);
 		//----------------------
 		
+		
+	
 		//최근많이 들은 아티스트이름넣기 
+		col_MSno.setCellValueFactory(param -> new SimpleStringProperty(""+(no++)));
 		col_MSits
 		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 
 		MusicHistoryVO muh =new MusicHistoryVO();
 		muh.setMem_id(user_id);
 		try {
-			singList = FXCollections.observableArrayList(imhs.(muh));
-			
+			singList = FXCollections.observableArrayList(imhs.selectMayIts(muh));
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();
 		}
 		
+		
+		
+		//최근많이 들은 곡
+		col_MSno.setCellValueFactory(param -> new SimpleStringProperty(""+(no++)));
+		col_MSits
+		.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
+
+		MusicHistoryVO muh =new MusicHistoryVO();
+		muh.setMem_id(user_id);
+		try {
+			singList = FXCollections.observableArrayList(imhs.selectMayIts(muh));
+		} catch (RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}
+		
+		
 		// 데이터 삽입
-		TreeItem<MusicReviewVO> root = new RecursiveTreeItem<>(revList1, RecursiveTreeObject::getChildren);
-		tbl_ManySigner.setRoot(root);
+		TreeItem<MusicHistoryVO> root1 = new RecursiveTreeItem<>(singList, RecursiveTreeObject::getChildren);
+		tbl_ManySigner.setRoot(root1);
 		tbl_ManySigner.setShowRoot(false);
+		
+		
+	
+				
+				
+		
 		
 		
 
