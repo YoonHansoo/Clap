@@ -1,4 +1,4 @@
-package kr.or.ddit.clap.view.member.profile;
+package kr.or.ddit.clap.view.member.profilech;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class ProfileController implements Initializable {
+public class ProfileChController implements Initializable {
 	public Stage primaryStage;
 	@FXML Button btn_sh;
 	@FXML ImageView img;

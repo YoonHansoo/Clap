@@ -166,7 +166,7 @@ public class MypageController implements Initializable {
 
 	@FXML
 	public void btn_profch() throws IOException { // 프로필 수정 클릭시
-		Parent root = FXMLLoader.load(getClass().getResource("../profile/profile.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../profilech/profile.fxml"));
 		Scene scene = new Scene(root);
 		mypageDialog.setTitle("모여서 각잡고 코딩 - clap");
 
@@ -221,6 +221,7 @@ public class MypageController implements Initializable {
 				} else {
 					Text test_set = (Text) root.lookup("#text");
 					test_set.setText("\t   잘못된 비밀번호를 입력하였습니다.");
+					fild.clear();
 				}
 			}
 		});// btn_Ok
@@ -298,7 +299,16 @@ public class MypageController implements Initializable {
 	
 	@FXML
 	public void btn_like() throws IOException {  
-		System.out.println("dd");
+		
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../profiles/like.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

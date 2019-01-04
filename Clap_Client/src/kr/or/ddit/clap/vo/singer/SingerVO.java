@@ -19,7 +19,7 @@ public class SingerVO extends RecursiveTreeObject<SingerVO> implements Serializa
 	private String sing_image;
 	private String sing_debut_era;
 	private String sing_intro;
-	private ImageView imgView;
+	private ImageView imgView; 
 	
 	public ImageView getImgView() {
 		this.imgView = new ImageView();

@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class MusicLikeVO extends RecursiveTreeObject<MusicLikeVO> implements Serializable{
 	
 	private String mem_id;
@@ -11,8 +14,30 @@ public class MusicLikeVO extends RecursiveTreeObject<MusicLikeVO> implements Ser
 	private String mus_like_date;
 	private String title;
 	private String sname;
-	private String aname;
+	private String aname; 
+	private ImageView imgView; 
 	
+	public ImageView getImgView() {
+		this.imgView = new ImageView();
+		Image img = new Image(sing_image);
+		imgView.setImage(img);
+		imgView.setFitWidth(120);
+		imgView.setFitHeight(50);
+		System.out.println("imgView생성");
+		return imgView;
+	}
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
+	}
+	public String getSing_image() {
+		return sing_image;
+	}
+	public void setSing_image(String sing_image) {
+		this.sing_image = sing_image;
+	}
+	private String sing_image;
+	
+
 	public String getTitle() {
 		return title;
 	}
