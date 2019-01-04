@@ -92,7 +92,7 @@
                         <Font name="-윤고딕320" size="12.0" />
                      </font>
                      <padding>
-                        <Insets left="60.0" />
+                        <Insets left="65.0" />
                      </padding>
                   </Label>
                   <Label text="듣기">

@@ -86,13 +86,13 @@ public class Top50Controller implements Initializable{
 	
 	// 체크 박스 선택한 곡넘버 보내기
 	private ArrayList<String> musicList() {
-		ArrayList<String> List = new ArrayList<>();
+		ArrayList<String> list = new ArrayList<>();
 		for (int i = 0; i < cbnList.size(); i++) {
 			if (cbnList.get(i).isSelected()) {
-				List.add(cbnList.get(i).getId());
+				list.add(cbnList.get(i).getId());
 			}
 		}
-		return List;
+		return list;
 	}
 
 	// 뮤비 버튼 클릭시 이벤트
@@ -141,6 +141,7 @@ public class Top50Controller implements Initializable{
 			btn_ToDay.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Month.setStyle("-fx-background-color:#FFFFFF;");
+			cb_main.setSelected(false);
 			
 			musicList(toDayRank.size());
 			
@@ -155,6 +156,7 @@ public class Top50Controller implements Initializable{
 			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Week.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_Month.setStyle("-fx-background-color:#FFFFFF;");
+			cb_main.setSelected(false);
 			
 			musicList(toDayRank.size());
 			
@@ -169,6 +171,7 @@ public class Top50Controller implements Initializable{
 			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Month.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			cb_main.setSelected(false);
 			
 			musicList(toDayRank.size());
 			
@@ -194,6 +197,12 @@ public class Top50Controller implements Initializable{
 	// 곡 리스트 로직 만드는 메서드
 	private void musicList(int size) {
 		VBox vbox = new VBox();
+		
+		cbnList.clear();
+		btnPlayList.clear();
+		btnAddList.clear();
+		btnPutList.clear();
+		btnMovieList.clear();
 		
 		for (int i = 0; i < size; i++) {
 			// 파란색 라인 HBox 
@@ -234,18 +243,22 @@ public class Top50Controller implements Initializable{
 					// 전날 순위에 대한 변동순위를 나타내는 Label
 					Label la_PreRank = new Label();
 					la_PreRank.setFont(Font.font("-윤고딕350", 12));
-					la_PreRank.setPrefWidth(23);
+					la_PreRank.setPrefWidth(26);
 					la_PreRank.setPrefHeight(23);
-					int beforRank = Integer.parseInt(toDayRank.get(i).get("MUS_BEFOR_RANK").toString());
+					int beforRank = 0;
+					if(toDayRank.get(i).get("MUS_BEFOR_RANK") != null) {
+						beforRank = Integer.parseInt(toDayRank.get(i).get("MUS_BEFOR_RANK").toString());
+					}
 					int rank = i+1;
 					String str_beforRank = "";
 					FontAwesomeIcon rankImg = new FontAwesomeIcon();
 					rankImg.setSize("15");
-					la_PreRank.setGraphic(rankImg);
+					
 					
 					if (rank == beforRank) {
 						rankImg.setIconName("MINUS");
 						rankImg.setFill(Color.valueOf("#A4A4A4"));
+						la_PreRank.setGraphic(rankImg);
 						
 					} else if (rank <= beforRank) {
 						beforRank -= rank;
@@ -253,12 +266,20 @@ public class Top50Controller implements Initializable{
 						la_PreRank.setTextFill(Color.valueOf("#FE5C62"));
 						rankImg.setIconName("CARET_UP");
 						rankImg.setFill(Color.valueOf("#FE5C62"));
-					} else {
+						la_PreRank.setGraphic(rankImg);
+						
+					} else if (rank >= beforRank && beforRank != 0){
 						rank -= beforRank;
 						str_beforRank = Integer.toString(rank);
 						la_PreRank.setTextFill(Color.valueOf("#609ACF"));
 						rankImg.setIconName("CARET_DOWN");
 						rankImg.setFill(Color.valueOf("#609ACF"));
+						la_PreRank.setGraphic(rankImg);
+			
+					} else if (beforRank == 0){
+						str_beforRank = "new";
+						la_PreRank.setTextFill(Color.valueOf("#609ACF"));
+						
 					}
 					la_PreRank.setText(str_beforRank);
 				
@@ -369,6 +390,4 @@ public class Top50Controller implements Initializable{
 		btnPutClick();
 		btnMovieClick();
 	}
-
-	
 }
