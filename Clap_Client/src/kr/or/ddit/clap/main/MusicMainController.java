@@ -62,8 +62,7 @@ public class MusicMainController implements Initializable{
          btn_join.setVisible(false);
          btn_login.setVisible(false);
          
-         Image img = new Image(getClass().getResourceAsStream("../../../../..//purin.jpg"));
-//         Image img = new Image(getClass().getResourceAsStream("purin.jpg"));
+         Image img = new Image(getClass().getResourceAsStream("../../../../../purin.jpg"));
          mem_img.setImage(img);
 
 

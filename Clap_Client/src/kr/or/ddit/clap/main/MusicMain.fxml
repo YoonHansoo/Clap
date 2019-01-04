@@ -41,16 +41,16 @@
                   <JFXButton layoutX="828.0" layoutY="70.0" onAction="#mypage" text="마이페이지 테스트" />
                   <HBox fx:id="mem_menu" layoutX="759.0" layoutY="90.0" prefHeight="23.0" prefWidth="230.0" spacing="5.0">
                      <children>
-                        <JFXButton fx:id="btn_mem" text=" ">
+                        <JFXButton fx:id="btn_mem" onAction="#mypage" text=" ">
                            <graphic>
-                              <HBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="130.0" spacing="5.0">
+                              <HBox alignment="TOP_CENTER" onMouseClicked="#mypage" prefHeight="23.0" prefWidth="130.0" spacing="5.0">
                                  <children>
                                     <Label onMouseClicked="#mypage" text="ddddit님">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                     </Label>
-                                    <ImageView fx:id="mem_img" fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="mem_img" fitHeight="23.0" fitWidth="23.0" onMouseClicked="#mypage" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </HBox>
                            </graphic>
