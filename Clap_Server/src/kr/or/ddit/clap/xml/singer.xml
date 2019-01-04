@@ -66,6 +66,37 @@
 	 			        	where SING_NO=#sing_no#
 	 </update>
 
+<!-- 가수정보등록 쿼리 -->
+<insert id="insertSinger" parameterClass="singerVO">
+<selectKey resultClass="int" keyProperty="id">
+select SEQ_SING_NO.nextval as id
+from dual
+</selectKey>
+insert into singer (SING_NO,
+					SING_NAME,
+					SING_NATION,
+					SING_ACT_TYPE,
+					SING_DEBUT_MUS,
+					SING_ACT_ERA,
+					SING_IMAGE,
+					SING_DEBUT_ERA,
+					SING_INTRO)
+			values (#id#,
+					#sing_name#,
+					#sing_nation#,
+					#sing_act_type#,
+					#sing_debut_mus#,
+					#sing_act_era#,
+					#sing_image#,
+					#sing_debut_era#,
+					#sing_intro#)		
+</insert>
+	
+	
+<!--  가수정보를 삭제하는 쿼리 -->
+ <delete id="deleteSinger" parameterClass="String">
+			delete from singer where mem_id=#String#
+	 </delete>
 </sqlMap>         
 
 

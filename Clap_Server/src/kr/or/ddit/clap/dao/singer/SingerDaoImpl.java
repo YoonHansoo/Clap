@@ -113,4 +113,31 @@ public class SingerDaoImpl implements ISingerDao {
 		} 
 		return cnt;
 	}
+
+	@Override
+	public int insertSinger(SingerVO vo) {
+		int cnt = 0;
+		try {
+		Object obj = smc.insert("singer.insertSinger", vo);
+		if(obj == null) { //쿼리수행이 성공적으로 끝남
+			cnt = 1;
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+	
+	}
+
+	@Override
+	public int deleteSinger(String singerNo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("singer.deleteSinger",singerNo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
 }

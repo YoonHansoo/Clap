@@ -21,4 +21,8 @@ public interface ISingerDao {
 	public int selectSingerLikeCnt(String singerNo);
 	
 	public int updateSingerInfo(SingerVO vo);
+	
+	public int insertSinger(SingerVO vo);
+	
+	 public int deleteSinger(String singerNo);
 }

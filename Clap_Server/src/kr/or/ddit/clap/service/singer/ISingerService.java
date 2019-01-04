@@ -22,4 +22,8 @@ public interface ISingerService extends Remote {
 	public int selectSingerLikeCnt(String singerNo) throws RemoteException;
 	
 	public int updateSingerInfo(SingerVO vo) throws RemoteException;
+	
+	public int insertSinger(SingerVO vo) throws RemoteException;
+	
+	 public int deleteSinger(String singerNo) throws RemoteException;
 }

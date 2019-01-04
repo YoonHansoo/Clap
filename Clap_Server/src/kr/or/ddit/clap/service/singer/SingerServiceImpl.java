@@ -62,6 +62,16 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 		return singerDao.updateSingerInfo(vo);
 	}
 
+	@Override
+	public int insertSinger(SingerVO vo) throws RemoteException {
+		return singerDao.insertSinger(vo);
+	}
+
+	@Override
+	public int deleteSinger(String singerNo) throws RemoteException {
+		return singerDao.deleteSinger(singerNo);
+	}
+
 	
 
 }
