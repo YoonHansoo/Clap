@@ -35,7 +35,7 @@
                         </LinearGradient>
                      </fill>
                   </FontAwesomeIcon>
-                  <JFXButton layoutX="903.0" layoutY="94.0" onAction="#join" text="회원가입" />
+                  <JFXButton fx:id="btn_join" layoutX="903.0" layoutY="94.0" onAction="#join" text="회원가입" />
                   <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" text="로그인" />
                   <JFXButton layoutX="828.0" layoutY="70.0" onAction="#mypage" text="마이페이지 테스트" />
                   <JFXButton fx:id="btn_mem" layoutX="799.0" layoutY="90.0" text=" " visible="false" AnchorPane.leftAnchor="799.0">
