@@ -26,10 +26,9 @@ public class ClientMain extends Application {
 		LoginSession.session.setMem_pw("1234");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");
+
 		LoginSession.session.setMem_auth("t");
 
-		
-		
 		
 		//로그인한 Id가 관리자일 경우
 		if(ls.session.getMem_auth().equals("t")) {

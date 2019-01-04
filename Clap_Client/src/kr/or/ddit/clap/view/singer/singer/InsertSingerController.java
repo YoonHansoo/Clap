@@ -40,7 +40,7 @@ import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 import javafx.scene.layout.AnchorPane;
 
-public class UpdateSingerController implements Initializable {
+public class InsertSingerController implements Initializable {
 
 	@FXML
 	ImageView imgview_singImg;
@@ -71,23 +71,15 @@ public class UpdateSingerController implements Initializable {
 	private ISingerService iss;
 	
 	
-	public static String singerNo; // PK값 받기
 
 	// 전 화면에 있는 데이터를 그대로 가져와  세팅해주는 메서드
-	public void initData(SingerVO sVO, String str_like_cnt) {
+	public void initData() {
 		System.out.println("initData");
 		
-		img_path = sVO.getSing_image(); //이미지경로를 전역에 저장
-		Image img = new Image(img_path); //이미지 객체등록
+		img_path = "file:\\\\\\\\Sem-pc\\\\공유폴더\\\\Clap\\\\img\\\\noImg.png";// 처음 아무것도 선택하지 않았을 떄의 이미지
+		Image img = new Image(img_path); 
 		imgview_singImg.setImage(img);
-		txt_name.setText(sVO.getSing_name()); 
-		combo_actType.setValue(sVO.getSing_act_type());
-		combo_actEra.setValue(sVO.getSing_act_era());
-		combo_DebutEra.setValue(sVO.getSing_debut_era());
-		txt_debutMus.setText(sVO.getSing_debut_mus());
-		txt_nation.setText(sVO.getSing_nation());
-		label_LikeCnt.setText(str_like_cnt);
-		txt_intro.setText(sVO.getSing_intro());
+	
 	}
 
 	@Override
@@ -95,13 +87,13 @@ public class UpdateSingerController implements Initializable {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			iss = (ISingerService) reg.lookup("singer");
+			initData();
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println("가수번호:" + singerNo);
 		combo_actType.getItems().add("여성/솔로");
 		combo_actType.getItems().add("여성/그룹");
 		combo_actType.getItems().add("남성/솔로");
@@ -126,14 +118,14 @@ public class UpdateSingerController implements Initializable {
 		 fileChooser = new FileChooser();
 		 fileChooser.setTitle("Open image");
 		 
-		 //사용자의 디렉토리 보여줌
+		 //사용자에 화면에 해당 디렉토리가 기본값으로 보여짐 
 		 //String userDirectoryString = System.getProperty("user.home") + "\\Pictures"; 기본위치
 		 String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\singer";
 		 
 		 System.out.println("userDirectoryString:" + userDirectoryString);
 		 File userDirectory = new File(userDirectoryString); 
 		 
-		 if(!userDirectory.canRead()) {
+		 if(!userDirectory.canRead()) { //예외시?
 			 userDirectory = new File("c:/");
 		 }
 		 
@@ -197,7 +189,7 @@ public class UpdateSingerController implements Initializable {
 		
 		
 		SingerVO sVO = new SingerVO();
-		sVO.setSing_no(singerNo);
+		
 		sVO.setSing_name(txt_name.getText());
 		sVO.setSing_nation(txt_nation.getText());
 		
@@ -210,26 +202,16 @@ public class UpdateSingerController implements Initializable {
 		sVO.setSing_intro(txt_intro.getText());
 		try {
 			iss.updateSingerInfo(sVO);
-			System.out.println("가수정보 변경 완료");
+			System.out.println("가수등록 완료");
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
 		}
 		
-		Parent singerList = null;
-		try {
 			//바뀔 화면(FXML)을 가져옴
-			ShowSingerDetailController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
-			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
-			Parent singerDetail= loader.load(); 
-			main.getChildren().removeAll();
-			main.getChildren().setAll(singerDetail);
 			
 			
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		} 
+			
 		
 	}
 	

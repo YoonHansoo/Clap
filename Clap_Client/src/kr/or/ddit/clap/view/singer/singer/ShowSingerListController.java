@@ -213,5 +213,21 @@ private void search() {
 	}
 }
 
-
+public void InsertSinger() {
+	
+	try {
+		//바뀔 화면(FXML)을 가져옴
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("InsertSinger.fxml"));// init실행됨
+		Parent InsertSinger= loader.load(); 
+		main.getChildren().removeAll();
+		main.getChildren().setAll(InsertSinger);
+		
+		
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	} 
+	
+	
+}
 }
