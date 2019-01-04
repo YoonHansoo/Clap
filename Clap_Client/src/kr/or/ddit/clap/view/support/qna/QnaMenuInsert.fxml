@@ -15,8 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaContentInsertController">
    <children>
       <Label layoutX="59.0" layoutY="56.0" text="고객센터" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="56.0">
          <font>
@@ -36,7 +35,6 @@
             <RowConstraints maxHeight="149.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="140.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="136.0" vgrow="ALWAYS" />
-            <RowConstraints maxHeight="27.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <Label alignment="CENTER" text="문의유형" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
@@ -44,7 +42,7 @@
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <ComboBox prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <ComboBox fx:id="Com_Type" prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
@@ -55,55 +53,37 @@
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="ddit206" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Label fx:id="Lb_MemId" alignment="CENTER" contentDisplay="CENTER" text="ddit206" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <JFXTextField fx:id="Text_QnaMemTel" maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="이메일" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <JFXTextField fx:id="Text_QnaMemEmail" maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="제목" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <JFXTextField maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <JFXTextField fx:id="Text_QnaTitle" maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <Label alignment="CENTER" contentDisplay="CENTER" text="내용" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <JFXTextArea maxWidth="469.0" minWidth="264.0" prefColumnCount="35" prefHeight="131.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <JFXTextArea fx:id="Text_QnaContent" maxWidth="469.0" minWidth="264.0" prefColumnCount="35" prefHeight="131.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin>
             </JFXTextArea>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="첨부파일" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
-               <font>
-                  <Font name="YDIYGO350" size="17.0" />
-               </font>
-            </Label>
-            <JFXTextField maxWidth="382.0" minWidth="227.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </JFXTextField>
-            <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" text="파일선택" textAlignment="CENTER" textFill="#aeaeae" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font name="YDIYGO350" size="12.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="35.0" />
-               </GridPane.margin>
-            </JFXButton>
          </children>
       </GridPane>
-      <JFXButton alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="463.0" layoutY="648.0" text="문의하기" textAlignment="CENTER" AnchorPane.leftAnchor="463.0" AnchorPane.topAnchor="648.0">
+      <JFXButton fx:id="btn_Add" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="463.0" layoutY="648.0" text="등록하기" textAlignment="CENTER" AnchorPane.leftAnchor="463.0" AnchorPane.topAnchor="648.0">
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>
