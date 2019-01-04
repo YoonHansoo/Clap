@@ -208,10 +208,13 @@ public class Top50Controller implements Initializable{
 			la_Date.setText(toDay);
 			
 			Map day = new HashMap<String,String>();
-			cal.add(Calendar.DATE, 6);
 			
-			day.put("monday", last_week);
-			day.put("sunday", cal.get(Calendar.DAY_OF_MONTH));
+			String monday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
+			cal.add(Calendar.DATE, 6);
+			String sunday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
+			day.put("monday", monday);
+			
+			day.put("sunday", sunday);
 			
 			weekRank = FXCollections.observableArrayList(imhs.weekSelect(day));
 			musicList(weekRank);
