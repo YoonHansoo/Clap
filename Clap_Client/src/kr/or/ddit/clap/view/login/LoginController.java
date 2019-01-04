@@ -96,6 +96,11 @@ public class LoginController implements Initializable{
 			e.printStackTrace();
 		}
 		
+		// 로그인 mem 버튼 변경
+		mmc.btn_mem.setVisible(true);
+		mmc.btn_join.setVisible(false);
+		mmc.btn_login.setVisible(false);
+		
 		Scene scene = new Scene(root);
 		Stage primaryStage = (Stage) txt_id.getScene().getWindow();
 		primaryStage.setScene(scene);
