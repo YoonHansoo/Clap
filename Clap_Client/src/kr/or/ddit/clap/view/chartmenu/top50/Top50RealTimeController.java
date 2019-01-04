@@ -39,19 +39,19 @@ public class Top50RealTimeController implements Initializable{
 	private IMusicHistoryService imhs;
 	private ObservableList<Map> toDayRank;
 	private ObservableList<JFXCheckBox> listCB = FXCollections.observableArrayList();
-	public int i;
+	public boolean flag = true;
+	public int j = 0;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		toDayChart();
 		
-		for (i = 0; i < listCB.size(); i++) {
-			listCB.get(i).setOnAction(e -> {
-				System.out.println(toDayRank.get(i).get("MUS_NO"));
-			}); 
-			
-		}
+		/*for (int i = 0; i < listCB.size(); i++) {
+			listCB.get(i).setOnAction(e->{
+				System.out.println(e.getSource().toString());
+			});
+		}*/
 		
 		
 	}
