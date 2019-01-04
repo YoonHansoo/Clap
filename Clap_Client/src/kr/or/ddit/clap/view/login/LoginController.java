@@ -20,9 +20,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.join.AES256Util;
+import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**
  * 로그인창 컨트롤러.
@@ -34,6 +36,8 @@ public class LoginController implements Initializable{
 	MusicMainController mmc = new MusicMainController();
 	private ILoginService ils;
 	private Registry reg;
+	
+	LoginSession ls = new LoginSession();
 	
 	@FXML JFXTextField txt_id;
 	@FXML JFXPasswordField txt_pw;
@@ -58,6 +62,8 @@ public class LoginController implements Initializable{
 		
 		String decryptedPw = ""; // 복호화시킨 pw
 		decryptedPw = aes.decrypt(encryptedPw);
+		
+		MemberVO vo = new MemberVO();
 	
 		// 아이디 확인
 		Boolean idCheck = false;
@@ -88,6 +94,11 @@ public class LoginController implements Initializable{
 		
 		MusicMainController.loginDialog.close();
 		
+		// session에 vo넘기기
+		vo.setMem_id(txt_id.getText());
+		ls.session = vo;
+		System.out.println("확인 "+ls.session.getMem_id());
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
 		ScrollPane root = null;
 		try {
@@ -95,11 +106,6 @@ public class LoginController implements Initializable{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		// 로그인 mem 버튼 변경
-		mmc.btn_mem.setVisible(true);
-		mmc.btn_join.setVisible(false);
-		mmc.btn_login.setVisible(false);
 		
 		Scene scene = new Scene(root);
 		Stage primaryStage = (Stage) txt_id.getScene().getWindow();
