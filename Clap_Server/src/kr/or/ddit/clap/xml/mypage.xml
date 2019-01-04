@@ -53,7 +53,12 @@
 		where mem_id = #mem_id#
 	</update>
 	
-
+	<update id="updateInfo" parameterClass="memberVO">
+		update member
+		set mem_intro=#mem_intro#
+		where mem_id = #mem_id#
+	</update>
+	
 
 </sqlMap>			
 
