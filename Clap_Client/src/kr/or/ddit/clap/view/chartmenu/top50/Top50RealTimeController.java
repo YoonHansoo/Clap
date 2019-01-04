@@ -38,24 +38,61 @@ public class Top50RealTimeController implements Initializable{
 	private Registry reg;
 	private IMusicHistoryService imhs;
 	private ObservableList<Map> toDayRank;
-	private ObservableList<JFXCheckBox> listCB = FXCollections.observableArrayList();
-	public boolean flag = true;
-	public int j = 0;
+	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnPlayList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		toDayChart();
-		
-		/*for (int i = 0; i < listCB.size(); i++) {
-			listCB.get(i).setOnAction(e->{
-				System.out.println(e.getSource().toString());
-			});
-		}*/
-		
-		
+		btnPlayClick();
+		btnAddClick();
+		btnPutClick();
+		btnMovieClick();
 	}
 	
+	private void btnMovieClick() {
+		for (int i = 0; i < btnMovieList.size(); i++) {
+			btnMovieList.get(i).setOnAction(e->{
+				JFXButton btn_MovieMy = (JFXButton) e.getSource();
+				System.out.println(btn_MovieMy.getId());
+			});
+		}
+	}
+
+	private void btnPutClick() {
+		for (int i = 0; i < btnPutList.size(); i++) {
+			btnPutList.get(i).setOnAction(e->{
+				JFXButton btn_PutMy = (JFXButton) e.getSource();
+				System.out.println(btn_PutMy.getId());
+			});
+		}
+		
+	}
+
+	private void btnAddClick() {
+		for (int i = 0; i < btnAddList.size(); i++) {
+			btnAddList.get(i).setOnAction(e->{
+				JFXButton btn_AddMy = (JFXButton) e.getSource();
+				System.out.println(btn_AddMy.getId());
+			});
+		}
+		
+	}
+
+	private void btnPlayClick() {
+		for (int i = 0; i < btnPlayList.size(); i++) {
+			btnPlayList.get(i).setOnAction(e->{
+				JFXButton btn_PlayMy = (JFXButton) e.getSource();
+				System.out.println(btn_PlayMy.getId());
+			});
+		}
+		
+	}
+
 	private void toDayChart() {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -75,12 +112,12 @@ public class Top50RealTimeController implements Initializable{
 	// 전체 선택 및 해제
 	@FXML public void mainCheck() {
 		if (cb_main.isSelected()) {
-			for(int i = 0; i < listCB.size(); i++) {
-				listCB.get(i).setSelected(true);
+			for(int i = 0; i < cbnList.size(); i++) {
+				cbnList.get(i).setSelected(true);
 			}
 		} else {
-			for(int i = 0; i < listCB.size(); i++) {
-				listCB.get(i).setSelected(false);
+			for(int i = 0; i < cbnList.size(); i++) {
+				cbnList.get(i).setSelected(false);
 			}
 		}
 		
@@ -111,7 +148,8 @@ public class Top50RealTimeController implements Initializable{
 				chb_Check.setPrefWidth(30);
 				chb_Check.setPrefHeight(15);
 				chb_Check.setCheckedColor(Color.valueOf("#9c0000"));
-				listCB.add(chb_Check);
+				chb_Check.setId(toDayRank.get(i).get("MUS_NO").toString());
+				cbnList.add(chb_Check);
 				
 				// 곡제목 및 아티스트명을 담는 VBox
 				VBox v_rank = new VBox();
@@ -188,6 +226,7 @@ public class Top50RealTimeController implements Initializable{
 				btn_Play.setAlignment(Pos.CENTER_LEFT);
 				btn_Play.setPrefWidth(30);
 				btn_Play.setPrefHeight(46);
+				btn_Play.setId(toDayRank.get(i).get("MUS_NO").toString());
 					
 					// 듣기 아이콘
 					FontAwesomeIcon icon_Play = new FontAwesomeIcon();
@@ -195,6 +234,7 @@ public class Top50RealTimeController implements Initializable{
 					icon_Play.setFill(Color.valueOf("#9c0000"));
 					icon_Play.setSize("30");
 					btn_Play.setGraphic(icon_Play);
+					btnPlayList.add(btn_Play);
 					
 				// 추가 버튼
 				JFXButton btn_Add = new JFXButton();
@@ -202,6 +242,7 @@ public class Top50RealTimeController implements Initializable{
 				btn_Add.setAlignment(Pos.CENTER_LEFT);
 				btn_Add.setPrefWidth(30);
 				btn_Add.setPrefHeight(46);
+				btn_Add.setId(toDayRank.get(i).get("MUS_NO").toString());
 					
 					// 추가 아이콘
 					FontAwesomeIcon icon_Add = new FontAwesomeIcon();
@@ -209,6 +250,7 @@ public class Top50RealTimeController implements Initializable{
 					icon_Add.setFill(Color.valueOf("#9c0000"));
 					icon_Add.setSize("30");
 					btn_Add.setGraphic(icon_Add);
+					btnAddList.add(btn_Add);
 					
 				// 담기 버튼
 				JFXButton btn_Put = new JFXButton();
@@ -216,6 +258,7 @@ public class Top50RealTimeController implements Initializable{
 				btn_Put.setAlignment(Pos.CENTER_LEFT);
 				btn_Put.setPrefWidth(30);
 				btn_Put.setPrefHeight(46);
+				btn_Put.setId(toDayRank.get(i).get("MUS_NO").toString());
 					
 					// 담기 아이콘
 					FontAwesomeIcon icon_Put = new FontAwesomeIcon();
@@ -223,6 +266,7 @@ public class Top50RealTimeController implements Initializable{
 					icon_Put.setFill(Color.valueOf("#9c0000"));
 					icon_Put.setSize("30");
 					btn_Put.setGraphic(icon_Put);
+					btnPutList.add(btn_Put);
 				
 				// 담기 버튼
 				JFXButton btn_Movie = new JFXButton();
@@ -230,6 +274,7 @@ public class Top50RealTimeController implements Initializable{
 				btn_Movie.setAlignment(Pos.CENTER_LEFT);
 				btn_Movie.setPrefWidth(30);
 				btn_Movie.setPrefHeight(46);
+				btn_Movie.setId(toDayRank.get(i).get("MUS_NO").toString());
 					
 					// 담기 아이콘
 					FontAwesomeIcon icon_Movie = new FontAwesomeIcon();
@@ -237,6 +282,7 @@ public class Top50RealTimeController implements Initializable{
 					icon_Movie.setFill(Color.valueOf("#9c0000"));
 					icon_Movie.setSize("30");
 					btn_Movie.setGraphic(icon_Movie);
+					btnMovieList.add(btn_Movie);
 					
 				v_rank.getChildren().addAll(la_Rank,la_PreRank);
 				v_MusicInfo.getChildren().addAll(la_MusicName,la_SingerName);
