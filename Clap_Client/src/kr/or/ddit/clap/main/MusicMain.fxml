@@ -45,7 +45,7 @@
                            <graphic>
                               <HBox alignment="TOP_CENTER" onMouseClicked="#mypage" prefHeight="23.0" prefWidth="130.0" spacing="5.0">
                                  <children>
-                                    <Label onMouseClicked="#mypage" text="ddddit님">
+                                    <Label fx:id="lb_id" onMouseClicked="#mypage" text="ddddit님">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
