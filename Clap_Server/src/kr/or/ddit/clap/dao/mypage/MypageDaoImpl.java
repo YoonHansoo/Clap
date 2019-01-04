@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -113,6 +114,21 @@ public class MypageDaoImpl implements IMypageDao{
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+
+	@Override
+	public List<Map> selectMusLike(MemberVO vo) {
+		// TODO Auto-generated method stub
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("mypage.selectMusLike",vo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 	

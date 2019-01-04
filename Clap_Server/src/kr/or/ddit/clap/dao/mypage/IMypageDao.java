@@ -1,6 +1,9 @@
 package kr.or.ddit.clap.dao.mypage;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
@@ -27,5 +30,6 @@ public interface IMypageDao {
 	
 	public int  updateInfo(MemberVO vo);
 	
+	public List<Map> selectMusLike(MemberVO vo);	
 	
 }

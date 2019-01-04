@@ -3,6 +3,7 @@ package kr.or.ddit.clap.service.mypage;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.dao.mypage.MypageDaoImpl;
 import kr.or.ddit.clap.vo.member.MemberVO;
@@ -57,6 +58,11 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 	@Override
 	public int updateInfo(MemberVO vo) throws RemoteException {
 		return mypageDao.updateInfo(vo);
+	}
+
+	@Override
+	public List<Map> selectMusLike(MemberVO vo) throws RemoteException {
+		return mypageDao.selectMusLike(vo);
 	}
 
 	
