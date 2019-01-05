@@ -33,8 +33,6 @@ public class MusicMainController implements Initializable{
    
    @FXML VBox vbox;
    
-   public static Stage loginDialog = new Stage(StageStyle.DECORATED);
-   public static Stage joinDialog = new Stage(StageStyle.DECORATED);
    static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
    @FXML AnchorPane menu;
    @FXML AnchorPane contents;
@@ -96,15 +94,13 @@ public class MusicMainController implements Initializable{
    
    @FXML
    public void join() throws IOException {
-      Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
-      Scene scene = new Scene(root);
-      joinDialog.setTitle("모여서 각잡고 코딩 - clap");
-      if(joinDialog.getModality() == null) {
-         joinDialog.initModality(Modality.APPLICATION_MODAL);         
-      }
-      
-      joinDialog.setScene(scene);
-      joinDialog.show();
+	   try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
    }
 
    @FXML
