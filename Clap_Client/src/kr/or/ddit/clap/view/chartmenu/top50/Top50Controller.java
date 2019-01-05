@@ -1,5 +1,6 @@
 package kr.or.ddit.clap.view.chartmenu.top50;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -13,6 +14,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.Initializable;
@@ -21,6 +23,7 @@ import javafx.geometry.Pos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -59,6 +62,7 @@ public class Top50Controller implements Initializable{
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
+	private VBox content;
 	
 
 	@Override
@@ -66,10 +70,13 @@ public class Top50Controller implements Initializable{
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imhs = (IMusicHistoryService) reg.lookup("history");
+			content = FXMLLoader.load(getClass().getResource("../main/Dialog.fxml"));
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		// 일간 조회 차트 
@@ -117,16 +124,18 @@ public class Top50Controller implements Initializable{
 	
 	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
-		
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
-				JFXButton btn_PutMy = (JFXButton) e.getSource();
-				JFXDialog dialog = new JFXDialog(stackpane, new Button("asdfasdfas"), JFXDialog.DialogTransition.CENTER);
-				dialog.show();
+				dialog();
 			});
 		}
 	}
 	
+	private void dialog() {
+		JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+		dialog.show();
+	}
+
 	// 추가 버튼 클릭시 이벤트
 	private void btnAddClick() {
 		for (int i = 0; i < btnAddList.size(); i++) {
