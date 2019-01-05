@@ -2,7 +2,9 @@ package kr.or.ddit.clap.vo.myalbum;
 
 import java.io.Serializable;
 
-public class MyAlbumVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Serializable{
 	
 	private String myalb_no;
 	private String myalb_name;

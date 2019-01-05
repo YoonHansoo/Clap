@@ -62,16 +62,12 @@ public class Top50Controller implements Initializable{
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
-	private VBox content;
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imhs = (IMusicHistoryService) reg.lookup("history");
-			content = FXMLLoader.load(getClass().getResource("../main/Dialog.fxml"));
-			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -132,8 +128,15 @@ public class Top50Controller implements Initializable{
 	}
 	
 	private void dialog() {
-		JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-		dialog.show();
+		StackPane content;
+		try {
+			content = FXMLLoader.load(getClass().getResource("../main/Dialog.fxml"));
+			JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+			dialog.show();
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 	}
 
 	// 추가 버튼 클릭시 이벤트

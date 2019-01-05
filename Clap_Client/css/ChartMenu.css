@@ -31,3 +31,21 @@
 	-fx-border-width: 0 0 5 0;
 	-fx-border-color: #9c0000;
 }
+
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
+    -fx-text-fill: white;
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected {
+    -fx-background-color: #9c0000;
+    -fx-table-cell-border-color: #9c0000;
+}
+
+
+.tree-table-view .column-background{
+    -fx-background-color: white;
+}
+
+.tree-table-view .column-header{
+    -fx-background-color: white;
+}

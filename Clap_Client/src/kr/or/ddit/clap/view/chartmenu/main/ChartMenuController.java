@@ -31,10 +31,6 @@ public class ChartMenuController implements Initializable{
 	@FXML AnchorPane main;
 	@FXML StackPane stackPane_top50;
 
-	
-
-	
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
