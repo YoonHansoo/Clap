@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -45,6 +46,7 @@ public class MusicMainController implements Initializable{
    @FXML public JFXButton btn_join;
    @FXML public JFXButton btn_mem;
    
+   @FXML Label lb_id;
    @FXML ImageView mem_img;
    
    LoginSession ls = new LoginSession();
@@ -53,7 +55,7 @@ public class MusicMainController implements Initializable{
    public void initialize(URL location, ResourceBundle resources) {
 	   System.out.println();
 	   
-      if(ls.session == null || ls.session.getMem_id().equals("user1")) {
+      if(ls.session == null) {
          mem_menu.setVisible(false);
          btn_join.setVisible(true);
          btn_login.setVisible(true);         
@@ -62,6 +64,8 @@ public class MusicMainController implements Initializable{
          mem_menu.setVisible(true);
          btn_join.setVisible(false);
          btn_login.setVisible(false);
+         
+         lb_id.setText(ls.session.getMem_id()+"님");
          
          Image img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));
          mem_img.setImage(img);
