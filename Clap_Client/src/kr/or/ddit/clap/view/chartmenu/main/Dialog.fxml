@@ -19,7 +19,7 @@
          <children>
             <Label text="마이앨범 담기">
                <font>
-                  <Font name="YDIYGO350" size="15.0" />
+                  <Font name="-윤고딕350" size="15.0" />
                </font>
                <VBox.margin>
                   <Insets left="7.0" />
@@ -29,7 +29,7 @@
                <children>
                   <JFXTextField fx:id="tf_albumName" focusColor="#9c0000" promptText="새 앨범" unFocusColor="#c9c9c9">
                      <font>
-                        <Font name="YDIYGO330" size="12.0" />
+                        <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXTextField>
                   <JFXButton fx:id="btn_ok" prefHeight="25.0" prefWidth="42.0" ripplerFill="#9c0000" style="-fx-border-color: #c9c9c9;" text="확인" />
