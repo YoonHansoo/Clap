@@ -1,11 +1,12 @@
 package kr.or.ddit.clap.view.chartmenu.dialog;
 
-import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -26,16 +27,22 @@ import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
+/**
+ * 
+ * @author 진민규
+ *
+ */
+
 public class MyAlbumDialogController implements Initializable{
 	
 	@FXML JFXTextField tf_albumName;
-	@FXML JFXButton btn_ok;
 	@FXML JFXTreeTableView<MyAlbumVO> t_table;
 	@FXML TreeTableColumn<MyAlbumVO, String> tcol_album;
 	
 	private ObservableList<MyAlbumVO> albumList;
 	private Registry reg;
 	private IMyAlbumService imas;
+	private String id;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -43,7 +50,7 @@ public class MyAlbumDialogController implements Initializable{
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imas = (IMyAlbumService) reg.lookup("myalbum");
-			String id = LoginSession.session.getMem_id();
+			id = LoginSession.session.getMem_id();
 			albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
 			
 		} catch (RemoteException e) {
@@ -61,5 +68,22 @@ public class MyAlbumDialogController implements Initializable{
 		t_table.setShowRoot(false);
 		
 	}
-
+	
+	@FXML public void myAlbumInsert() {
+		if (tf_albumName.getText().length() != 0) {
+			try {
+				Map<String, String> myAlbum = new HashMap<>();
+				myAlbum.put("name", tf_albumName.getText());
+				myAlbum.put("id", id);
+				int result = imas.myAlbumInsert(myAlbum);
+				System.out.println(result);
+				
+				albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
+				TreeItem<MyAlbumVO> root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
+				t_table.setRoot(root);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}		
+		}
+	}
 }

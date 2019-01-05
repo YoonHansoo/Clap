@@ -32,7 +32,7 @@
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
                   </JFXTextField>
-                  <JFXButton fx:id="btn_ok" prefHeight="25.0" prefWidth="42.0" ripplerFill="#9c0000" style="-fx-border-color: #c9c9c9;" text="확인" />
+                  <JFXButton prefHeight="25.0" prefWidth="42.0" ripplerFill="#9c0000" style="-fx-border-color: #c9c9c9;" text="확인" onAction="#myAlbumInsert"/>
                </children>
             </HBox>
             <ScrollPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;">
