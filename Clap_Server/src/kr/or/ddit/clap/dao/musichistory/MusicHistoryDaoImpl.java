@@ -68,7 +68,7 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		List<Map> list = new ArrayList<Map>();
 		try {
 
-			list = smc.queryForList("musichistory.weekselect",day);
+			list = smc.queryForList("musichistory.periodselect",day);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
