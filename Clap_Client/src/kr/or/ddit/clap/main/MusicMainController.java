@@ -53,12 +53,16 @@ public class MusicMainController implements Initializable{
    @Override
    public void initialize(URL location, ResourceBundle resources) {
 	   System.out.println();
-	   
+	   if(ls.session!=null) {
+		   System.out.println(ls.session.getMem_name());
+		   System.out.println(ls.session.getMem_auth());
+	   }
       if(ls.session == null) {
          mem_menu.setVisible(false);
          btn_join.setVisible(true);
          btn_login.setVisible(true);         
       }else {
+    	  System.out.println(ls.session.getMem_id() + ls.session.getMem_auth());
     	  if(ls.session.getMem_auth().equals("t")) { //관리자 일 때 관리자모드 버튼 활성화
     		  menu_admin.setVisible(true);
     	  }
