@@ -69,9 +69,18 @@ public class InsertSingerController implements Initializable {
 	private String img_path;
 	private Registry reg;
 	private ISingerService iss;
-	
+	public static AnchorPane contents;
 	
 
+	
+
+	//ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
+	//현재 씬의 VBox까지 모두 제거 후   ShowSingerList를 불러야함.
+	public void givePane(AnchorPane contents) {
+		this.contents = contents;
+		System.out.println("contents 적용완료");
+	}
+	
 	// 전 화면에 있는 데이터를 그대로 가져와  세팅해주는 메서드
 	public void initData() {
 		System.out.println("initData");
@@ -240,8 +249,8 @@ public class InsertSingerController implements Initializable {
 		Parent singerList;
 		try {
 			singerList = loader.load();
-			main.getChildren().removeAll();
-			main.getChildren().setAll(singerList);
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(singerList);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

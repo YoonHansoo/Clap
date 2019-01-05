@@ -20,6 +20,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,10 +42,10 @@ public class ShowSingerDetailController  implements Initializable {
 	//파라미터로 넘기기 위해 전역으로 선언
 	public SingerVO sVO = null;
 	public String str_like_cnt; 
+	public static AnchorPane contents;
 	
 	
 	@FXML Label label_singNo;
-	@FXML AnchorPane contents;
 	@FXML Label label_singerName1;
 	@FXML Label label_singerName2;
 	@FXML Label label_ActType;
@@ -56,7 +59,12 @@ public class ShowSingerDetailController  implements Initializable {
 	@FXML AnchorPane main;
 	
 	
-	
+	//ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
+	//현재 씬의 VBox까지 모두 제거 후   ShowSingerList를 불러야함.
+	public void givePane(AnchorPane contents) {
+		this.contents = contents;
+		System.out.println("contents 적용완료");
+	}
 	
 	
 	@Override
@@ -159,9 +167,17 @@ public class ShowSingerDetailController  implements Initializable {
 
 
 	@FXML public void deleteSinger() {
+		//Alert창을 출력해 정말 삭제할 지 물어봄
 		try {
-			int cnt =iss.deleteSinger(singerNo);
+			if(0>alertConfrimDelete()) {
+				return;
+			}
 			
+			
+			
+			int cnt =iss.deleteSinger(singerNo);
+			System.out.println("삭제곡 번호"+singerNo);
+			System.out.println("삭제 여부:"+ cnt);
 			if(cnt>=1) {
 				System.out.println("삭제성공");
 			}
@@ -178,9 +194,14 @@ public class ShowSingerDetailController  implements Initializable {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowSingerList.fxml"));
 		Parent singerList;
 		try {
+			
 			singerList = loader.load();
-			main.getChildren().removeAll();
-			main.getChildren().setAll(singerList);
+			//ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
+			//현재 씬의 VBox까지 모두 제거 후   ShowSingerList를 불러야함.
+			
+			contents.getChildren().removeAll();
+		//	main.getChildren().removeAll();
+			contents.getChildren().setAll(singerList);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -190,5 +211,23 @@ public class ShowSingerDetailController  implements Initializable {
 		
 	}
 
-	
+	//사용자가 확인을 누르면 1을 리턴 이외는 -1
+	public int alertConfrimDelete() {
+		Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
+	      
+	      alertConfirm.setTitle("CONFIRMATION");
+	      alertConfirm.setContentText("정말로 삭제하시겠습니까?(해당 가수의 앨범 및 곡이 모두 삭제됩니다)");
+	      
+	      // Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
+	      ButtonType confirmResult = alertConfirm.showAndWait().get();
+	      
+	      if (confirmResult == ButtonType.OK) {
+	         System.out.println("OK 버튼을 눌렀습니다.");
+	         return 1;
+	      } else if (confirmResult == ButtonType.CANCEL) {
+	         System.out.println("취소 버튼을 눌렀습니다.");
+	         return -1;
+	      }
+	      return -1;
+	}
 }

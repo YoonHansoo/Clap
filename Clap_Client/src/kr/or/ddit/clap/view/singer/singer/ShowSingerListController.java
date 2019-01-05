@@ -60,13 +60,13 @@ public class ShowSingerListController implements Initializable {
 	@FXML JFXComboBox<String> combo_search;
 	@FXML TextField text_search;
 	@FXML Button btn_search;	
-	@FXML AnchorPane contents;
 	
 	private Registry reg;
 	private ISingerService iss;
 	private ObservableList<SingerVO> singerList, currentsingerList;
 	private int from, to, itemsForPage, totalPageCnt;
 	@FXML AnchorPane main;
+	@FXML AnchorPane contents;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -137,10 +137,15 @@ public class ShowSingerListController implements Initializable {
 				
 				try {
 					//바뀔 화면(FXML)을 가져옴
+
 					ShowSingerDetailController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
 					Parent singerDetail= loader.load(); 
+					
+					ShowSingerDetailController cotroller = loader.getController();
+					cotroller.givePane(contents); 
+					
 					main.getChildren().removeAll();
 					main.getChildren().setAll(singerDetail);
 					
@@ -220,6 +225,10 @@ public void InsertSinger() {
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("InsertSinger.fxml"));// init실행됨
 		Parent InsertSinger= loader.load(); 
+		
+		InsertSingerController cotroller = loader.getController();
+		cotroller.givePane(contents); 
+		
 		main.getChildren().removeAll();
 		main.getChildren().setAll(InsertSinger);
 		
