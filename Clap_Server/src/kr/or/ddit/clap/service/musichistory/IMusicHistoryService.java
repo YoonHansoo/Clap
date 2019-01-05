@@ -10,8 +10,13 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Map;
-
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+
+/**
+ * 
+ * @author 진민규
+ *
+ */
 public interface IMusicHistoryService extends Remote {
 	public List<Map> toDaySelect() throws RemoteException;
 	public List<Map> periodSelect(Map<String, String> day) throws RemoteException;

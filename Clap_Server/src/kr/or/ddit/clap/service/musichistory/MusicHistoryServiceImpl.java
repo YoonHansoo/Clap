@@ -15,6 +15,12 @@ import java.util.Map;
 import kr.or.ddit.clap.dao.musichistory.MusicHistoryDaoImpl;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 
+/**
+ * 
+ * @author 진민규
+ *
+ */
+
 public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMusicHistoryService  {
 	
 	MusicHistoryDaoImpl musicHistoryDao; //사용할 Dao의  멤버변수를 선언

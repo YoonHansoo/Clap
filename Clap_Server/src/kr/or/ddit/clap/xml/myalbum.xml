@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->			
+<sqlMap namespace="myalbum">
+	
+	 <select id="myalbumselect" resultClass="myalbumVO" parameterClass="String">
+	   select myalb_name
+		 from myalbum
+		where mem_id = #string_id#
+	</select>
+	
+</sqlMap>			
+
+
+
+
+
