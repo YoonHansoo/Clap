@@ -76,7 +76,13 @@ public class MusicMainController implements Initializable {
 
 			lb_id.setText(ls.session.getMem_id() + "님");
 
-			Image img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));
+			Image img = null;
+			if(ls.session.getMem_image() == null) {
+				img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));				
+			}else {
+				img = new Image(getClass().getResourceAsStream("../../../../../"+ls.session.getMem_image()));
+				
+			}
 			mem_img.setImage(img);
 
 		}

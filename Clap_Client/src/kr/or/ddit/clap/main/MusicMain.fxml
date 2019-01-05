@@ -38,30 +38,36 @@
                   </FontAwesomeIcon>
                   <JFXButton fx:id="btn_join" layoutX="903.0" layoutY="94.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
                   <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
-                  <HBox fx:id="mem_menu" layoutX="759.0" layoutY="90.0" prefHeight="23.0" prefWidth="230.0" spacing="5.0">
+                  <HBox fx:id="mem_menu" layoutX="749.0" layoutY="84.0" prefHeight="23.0" prefWidth="249.0">
                      <children>
-                        <JFXButton fx:id="btn_mem" onAction="#mypage" text=" " textFill="WHITE">
+                        <JFXButton fx:id="btn_mem" onAction="#mypage" prefWidth="180.0" text=" " textFill="WHITE">
                            <graphic>
-                              <HBox alignment="TOP_CENTER" onMouseClicked="#mypage" prefHeight="23.0" prefWidth="130.0" spacing="5.0">
+                              <HBox alignment="TOP_CENTER" onMouseClicked="#mypage" prefHeight="23.0" prefWidth="149.0" spacing="5.0">
                                  <children>
-                                    <Label fx:id="lb_id" onMouseClicked="#mypage" style="-fx-background-color: #090948;" text="ddddit님" textFill="WHITE">
+                                    <Label fx:id="lb_id" alignment="CENTER" onMouseClicked="#mypage" prefHeight="26.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="ddddit님" textFill="WHITE">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets top="4.0" />
+                                       </HBox.margin>
                                     </Label>
-                                    <ImageView fx:id="mem_img" fitHeight="23.0" fitWidth="23.0" onMouseClicked="#mypage" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="mem_img" fitHeight="33.0" fitWidth="33.0" onMouseClicked="#mypage" pickOnBounds="true" preserveRatio="true">
+                                       <HBox.margin>
+                                          <Insets left="9.0" />
+                                       </HBox.margin></ImageView>
                                  </children>
                               </HBox>
                            </graphic>
                         </JFXButton>
                         <JFXButton fx:id="btn_logout" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE">
                            <HBox.margin>
-                              <Insets top="5.0" />
+                              <Insets top="9.0" />
                            </HBox.margin>
                         </JFXButton>
                      </children>
                   </HBox>
-                  <JFXTextField layoutX="200.0" layoutY="91.0" prefColumnCount="50" unFocusColor="#9c0000">
+                  <JFXTextField layoutX="200.0" layoutY="91.0" prefColumnCount="50" prefWidth="500.0" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -142,11 +148,8 @@
                      </menus>
                   </MenuBar>
                   <JFXButton layoutX="840.0" layoutY="52.0" onAction="#mypage" style="-fx-background-color: #090948;" text="마이페이지 테스" textFill="WHITE" />
-                  <JFXButton layoutX="721.0" layoutY="94.0" text=" ">
-                     <graphic>
-                        <FontAwesomeIcon iconName="SEARCH" size="1.5em" />
-                     </graphic>
-                  </JFXButton>
+                  <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
+                  <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
