@@ -100,7 +100,7 @@ public class LoginController implements Initializable{
 			
 			// session에 vo넘기기
 			vo.setMem_id(txt_id.getText());
-			ls.session = vo;
+			ls.session = list.get(0);
 			System.out.println("확인 "+ls.session.getMem_id());
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
