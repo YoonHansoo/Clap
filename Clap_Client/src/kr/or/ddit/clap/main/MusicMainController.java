@@ -19,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
@@ -33,33 +32,22 @@ import com.jfoenix.controls.JFXButton;
  */
 public class MusicMainController implements Initializable {
 
-	@FXML
-	VBox vbox;
 
 	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
-	@FXML
-	AnchorPane menu;
-	@FXML
-	AnchorPane contents;
-	@FXML
-	FontAwesomeIcon icon_firstPage;
-	@FXML
-	HBox mem_menu;
+	@FXML AnchorPane menu;
+	@FXML AnchorPane contents;
+	@FXML FontAwesomeIcon icon_firstPage;
+	@FXML HBox mem_menu;
 
-	@FXML
-	public JFXButton btn_login;
-	@FXML
-	public JFXButton btn_logout;
-	@FXML
-	public JFXButton btn_join;
-	@FXML
-	public JFXButton btn_mem;
-	@FXML
-	Menu menu_admin;
-	@FXML
-	Label lb_id;
-	@FXML
-	ImageView mem_img;
+	@FXML public JFXButton btn_login;
+	@FXML public JFXButton btn_logout;
+	@FXML public JFXButton btn_join;
+	@FXML public JFXButton btn_mem;
+	
+	@FXML VBox vbox;
+	@FXML Menu menu_admin;
+	@FXML Label lb_id;
+	@FXML ImageView mem_img;
 
 	LoginSession ls = new LoginSession();
 
