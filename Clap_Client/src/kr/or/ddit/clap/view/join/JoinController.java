@@ -11,6 +11,7 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -45,7 +46,7 @@ public class JoinController implements Initializable{
 	@FXML JFXTextField txt_id;
 	@FXML JFXPasswordField txt_pw;
 	@FXML JFXPasswordField txt_pwCheck;
-	@FXML JFXTextField txt_birth;
+	@FXML JFXTextField txt_bir;
 	@FXML JFXTextField txt_tel;
 	@FXML JFXTextField txt_email;
 	@FXML JFXTextField txt_name;
@@ -55,12 +56,21 @@ public class JoinController implements Initializable{
 	@FXML JFXRadioButton radio_f;
 	
 	@FXML Label lb_id;
+	@FXML Label lb_pw;
+	@FXML Label lb_pwCheck;
+	@FXML Label lb_bir;
+	@FXML Label lb_tel;
+	@FXML Label lb_email;
+	@FXML Label lb_ok;
 	
 	ToggleGroup group = new ToggleGroup();
 	
 	private IJoinService ijs;
 	private ILoginService ils;
 	private Registry reg;
+	
+	private boolean pwFlag;
+	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -81,6 +91,22 @@ public class JoinController implements Initializable{
 		radio_f.setToggleGroup(group);
 		radio_f.setUserData("f");
 		
+		txt_pw.setOnAction(e->{
+			pwCheck();
+		});
+		
+		txt_pwCheck.setOnAction(e->{
+			pwEqualCheck();
+		});
+		
+		txt_bir.setOnAction(e->{
+			birCheck();
+		});
+		
+		txt_tel.setOnAction(e->{
+			telCheck();
+		});
+		
 	}
 
 	public void join() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException {
@@ -96,7 +122,7 @@ public class JoinController implements Initializable{
 		String gender = group.getSelectedToggle().getUserData().toString();
 		
 		Date now = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		
 		
 		// 아이디 유효성 검사
 		
@@ -110,7 +136,7 @@ public class JoinController implements Initializable{
 		vo.setMem_pw(encryptedPw);
 		vo.setMem_name(txt_name.getText());
 		vo.setMem_email(txt_email.getText());
-		vo.setMem_bir(txt_birth.getText());
+		vo.setMem_bir(txt_bir.getText());
 
 		vo.setMem_gender(gender);
 		vo.setMem_tel(txt_tel.getText());
@@ -188,8 +214,83 @@ public class JoinController implements Initializable{
         	lb_id.setTextFill(Color.RED);
         	txt_id.requestFocus();
         }  
-		
 
 	}
 	
+	public void pwCheck() {
+		Pattern p = Pattern.compile("(^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[`~!@#$%^&*?]).{8,}$)");
+		Matcher m = p.matcher(txt_pw.getText());
+		
+        if(m.find()) { // m.find() -> true or false.
+        	System.out.println("ok");
+        	pwFlag = true;
+        	lb_pw.setVisible(false);
+        }
+        else{
+        	System.out.println("no");
+        	lb_pw.setVisible(true);
+        	lb_pw.setText("규칙에 맞게 입력해주세요.");
+        	lb_pw.setTextFill(Color.RED);
+        	txt_pw.requestFocus();
+        }  
+	}
+	
+	public void pwEqualCheck() {
+		if(!pwFlag) {
+			lb_pwCheck.setVisible(true);
+			lb_pwCheck.setText("비밀번호를 먼저 입력해주세요.");			
+			lb_pwCheck.setTextFill(Color.RED);
+			txt_pw.requestFocus();
+		}else if(!txt_pw.getText().equals(txt_pwCheck.getText())) {
+			lb_pwCheck.setVisible(true);
+			lb_pwCheck.setText("비밀번호가 일치하지 않습니다.");
+			lb_pwCheck.setTextFill(Color.RED);
+			txt_pwCheck.requestFocus();
+		}else {
+			lb_pwCheck.setVisible(true);
+			lb_pwCheck.setText("확인되었습니다.");
+			lb_pwCheck.setTextFill(Color.valueOf("#00cc00"));
+		}
+	}
+	
+	public void birCheck() {
+		// 생년월일. 정규표현식 검사후 유효성 검사.
+		Pattern p = Pattern.compile("(^\\d{2}/\\d{2}/\\d{2}$)");
+		Matcher m = p.matcher(txt_bir.getText());
+		
+		if(!m.find()) {
+			lb_bir.setVisible(true);
+			lb_bir.setText("형식에 맞게 입력해주세요.");
+			lb_bir.setTextFill(Color.RED);
+			txt_bir.requestFocus();
+		}else {
+			// 유효성 검사.
+			boolean birCheck = dateCheck(txt_bir.getText(), "yy/MM/dd");
+			System.out.println(birCheck);
+			if(!birCheck) {
+				lb_bir.setVisible(true);
+				lb_bir.setText("생년월일을 다시 확인해주세요.");
+				lb_bir.setTextFill(Color.RED);
+				txt_bir.requestFocus();
+			}else if(birCheck){
+				lb_bir.setVisible(false);				
+			}
+		}
+		System.out.println(11);
+	}
+	
+	public boolean dateCheck(String date, String format) {
+		SimpleDateFormat dateFormatParser = new SimpleDateFormat(format, Locale.KOREA);
+		dateFormatParser.setLenient(false);
+		try {
+			dateFormatParser.parse(date);
+			return true;
+		} catch (Exception Ex) {
+			return false;
+		}
+	}
+	
+	public void telCheck() {
+		
+	}
 }
