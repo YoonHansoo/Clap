@@ -66,9 +66,28 @@ public class MyAlbumyDaoImpl implements IMyAlbumyDao{
 		return list;
 	}
 	
+	@Override
+	public int myAlbumInsert(Map<String, String> myAlbum) {
+		int cnt = 0;
+		try {
+	
+			cnt = smc.update("myalbum.myalbuminsert",myAlbum);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	
 	public static void main(String[] args) {
-		new MyAlbumyDaoImpl().myAlbumSelect("user1");
+		Map<String, String> myAlbum = new HashMap<>();
+		myAlbum.put("name", "test2");
+		myAlbum.put("id", "user1");
+		int cnt = new MyAlbumyDaoImpl().myAlbumInsert(myAlbum);
+		System.out.println(cnt);
 		
 	}
+
+	
 
 }

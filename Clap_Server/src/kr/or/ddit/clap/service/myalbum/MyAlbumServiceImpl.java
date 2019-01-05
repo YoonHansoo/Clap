@@ -3,6 +3,8 @@ package kr.or.ddit.clap.service.myalbum;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
+
 import kr.or.ddit.clap.dao.myalbum.MyAlbumyDaoImpl;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
@@ -31,6 +33,12 @@ public class MyAlbumServiceImpl  extends UnicastRemoteObject implements IMyAlbum
 	@Override
 	public List<MyAlbumVO> myAlbumSelect(String id) {
 		return myalbumydao.myAlbumSelect(id);
+	}
+
+	@Override
+	public int myAlbumInsert(Map<String, String> myAlbum) throws RemoteException {
+		// TODO Auto-generated method stub
+		return myalbumydao.myAlbumInsert(myAlbum);
 	}
 
 
