@@ -213,7 +213,7 @@ public class Top50Controller implements Initializable{
 			
 			day.put("sunday", sunday);
 			
-			weekRank = FXCollections.observableArrayList(imhs.);
+			weekRank = FXCollections.observableArrayList(imhs.weekSelect(day));
 			musicList(weekRank);
 			
 		} catch (RemoteException e) {
