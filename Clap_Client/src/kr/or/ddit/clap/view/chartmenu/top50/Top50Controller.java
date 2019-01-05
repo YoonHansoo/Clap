@@ -129,7 +129,6 @@ public class Top50Controller implements Initializable{
 				System.out.println(btn_AddMy.getId());
 			});
 		}
-		
 	}
 
 	// 재생 버튼 클릭시 이벤트
@@ -184,8 +183,6 @@ public class Top50Controller implements Initializable{
 			}
 			cal.add(Calendar.DATE, -temp);
 			
-			
-			
 			// 몇주차 구하기
 			int count = 1;
 			cal2.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
@@ -216,7 +213,7 @@ public class Top50Controller implements Initializable{
 			
 			day.put("sunday", sunday);
 			
-			weekRank = FXCollections.observableArrayList(imhs.weekSelect(day));
+			weekRank = FXCollections.observableArrayList(imhs.);
 			musicList(weekRank);
 			
 		} catch (RemoteException e) {
