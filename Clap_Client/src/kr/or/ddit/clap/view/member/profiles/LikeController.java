@@ -71,7 +71,7 @@ public class LikeController implements Initializable{
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();
-		}
+		}    
 	
 		for ( i = 1; i <= likeList.size()-1; i++) {
 		col_Its.setCellValueFactory(
@@ -79,9 +79,7 @@ public class LikeController implements Initializable{
 		
 		col_LikeIndate.setCellValueFactory(
 				param -> new SimpleStringProperty(likeList.get(i-1).get("MUS_LIKE_DATE").toString()));
-		System.out.println(i);
-		
-		System.out.println(likeList.size());
+
 		}
 		tbl_Like.setItems(likeList);
 		
