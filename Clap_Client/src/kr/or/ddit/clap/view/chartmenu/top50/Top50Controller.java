@@ -102,6 +102,19 @@ public class Top50Controller implements Initializable{
 		System.out.println(list);
 	}
 	
+	// 전체 선택 및 해제 메서드
+	@FXML public void mainCheck() {
+		if (cb_main.isSelected()) {
+			for(int i = 0; i < cbnList.size(); i++) {
+				cbnList.get(i).setSelected(true);
+			}
+		} else {
+			for(int i = 0; i < cbnList.size(); i++) {
+				cbnList.get(i).setSelected(false);
+			}
+		}
+	}
+	
 	// 체크 박스 선택한 곡넘버 보내기
 	private ArrayList<String> musicCheckList() {
 		ArrayList<String> list = new ArrayList<>();
@@ -113,6 +126,7 @@ public class Top50Controller implements Initializable{
 		return list;
 	}
 	
+	// 일간차트
 	@FXML public void toDayChart() {
 		try {
 			toDayRank = FXCollections.observableArrayList(imhs.toDaySelect());
@@ -133,7 +147,8 @@ public class Top50Controller implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 주간차트
 	@FXML public void weekChart() {
 		try {
 			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
@@ -193,7 +208,8 @@ public class Top50Controller implements Initializable{
 			e.printStackTrace();
 		}
 	}
-
+	
+	// 월간 차트
 	@FXML public void monthChart() {
 		try {
 			
@@ -219,20 +235,6 @@ public class Top50Controller implements Initializable{
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
-		}
-	}
-	
-	
-	// 전체 선택 및 해제 메서드
-	@FXML public void mainCheck() {
-		if (cb_main.isSelected()) {
-			for(int i = 0; i < cbnList.size(); i++) {
-				cbnList.get(i).setSelected(true);
-			}
-		} else {
-			for(int i = 0; i < cbnList.size(); i++) {
-				cbnList.get(i).setSelected(false);
-			}
 		}
 	}
 }

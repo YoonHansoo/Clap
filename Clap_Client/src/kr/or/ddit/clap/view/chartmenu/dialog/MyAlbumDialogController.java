@@ -1,4 +1,4 @@
-package kr.or.ddit.clap.view.chartmenu.main;
+package kr.or.ddit.clap.view.chartmenu.dialog;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +26,7 @@ import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
-public class DialogController implements Initializable{
+public class MyAlbumDialogController implements Initializable{
 	
 	@FXML JFXTextField tf_albumName;
 	@FXML JFXButton btn_ok;

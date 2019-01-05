@@ -1,14 +1,11 @@
 package kr.or.ddit.clap.view.chartmenu.musiclist;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Map;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDialog;
-
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -74,7 +71,7 @@ public class MusicList {
 	private void btnPutClick() {
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
-				dialog();
+				 myAlbumdialog();
 			});
 		}
 	}
@@ -89,10 +86,10 @@ public class MusicList {
 		}
 	}
 	
-	private void dialog() {
+	private void myAlbumdialog() {
 		StackPane content;
 		try {
-			content = FXMLLoader.load(getClass().getResource("../main/Dialog.fxml"));
+			content = FXMLLoader.load(getClass().getResource("../dialog/MyAlbumDialog.fxml"));
 			JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
 			dialog.show();
 			
