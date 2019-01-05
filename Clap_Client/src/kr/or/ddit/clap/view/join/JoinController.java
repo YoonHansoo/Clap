@@ -276,7 +276,6 @@ public class JoinController implements Initializable{
 				lb_bir.setVisible(false);				
 			}
 		}
-		System.out.println(11);
 	}
 	
 	public boolean dateCheck(String date, String format) {
@@ -291,6 +290,16 @@ public class JoinController implements Initializable{
 	}
 	
 	public void telCheck() {
+		Pattern p = Pattern.compile("(^01\\d{9}$)");
+		Matcher m = p.matcher(txt_tel.getText());
 		
+		if(!m.find()) {
+			lb_tel.setVisible(true);
+			lb_tel.setText("형식에 맞게 입력해주세요.");
+			lb_tel.setTextFill(Color.RED);
+			lb_tel.requestFocus();
+		}else {
+			lb_tel.setVisible(false);
+		}
 	}
 }
