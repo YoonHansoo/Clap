@@ -64,7 +64,7 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return list;
 	}
 	
-	public List<Map> weekSelect(Map<String, String> day) {
+	public List<Map> periodSelect(Map<String, String> day) {
 		List<Map> list = new ArrayList<Map>();
 		try {
 
@@ -82,7 +82,7 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		
 		day.put("monday", "18/12/24");
 		day.put("sunday", "18/12/30");
-		List<Map> list = new MusicHistoryDaoImpl().weekSelect(day);
+		List<Map> list = new MusicHistoryDaoImpl().periodSelect(day);
 		
 	}
 

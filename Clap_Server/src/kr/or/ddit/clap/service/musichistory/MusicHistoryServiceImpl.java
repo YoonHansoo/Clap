@@ -42,9 +42,9 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 	}
 
 	@Override
-	public List<Map> weekSelect(Map<String, String> day) throws RemoteException {
+	public List<Map> periodSelect(Map<String, String> day) throws RemoteException {
 		
-		return musicHistoryDao.weekSelect(day);
+		return musicHistoryDao.periodSelect(day);
 	}
 
 	@Override
