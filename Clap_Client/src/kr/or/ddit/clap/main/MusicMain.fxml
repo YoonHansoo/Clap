@@ -22,7 +22,7 @@
 
 <ScrollPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
-      <VBox fx:id="vbox">
+      <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
             <AnchorPane fx:id="menu" prefHeight="160.0" prefWidth="1005.0">
                <children>
@@ -36,15 +36,15 @@
                         </LinearGradient>
                      </fill>
                   </FontAwesomeIcon>
-                  <JFXButton fx:id="btn_join" layoutX="903.0" layoutY="94.0" onAction="#join" text="회원가입" />
-                  <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" text="로그인" />
+                  <JFXButton fx:id="btn_join" layoutX="903.0" layoutY="94.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
+                  <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
                   <HBox fx:id="mem_menu" layoutX="759.0" layoutY="90.0" prefHeight="23.0" prefWidth="230.0" spacing="5.0">
                      <children>
-                        <JFXButton fx:id="btn_mem" onAction="#mypage" text=" ">
+                        <JFXButton fx:id="btn_mem" onAction="#mypage" text=" " textFill="WHITE">
                            <graphic>
                               <HBox alignment="TOP_CENTER" onMouseClicked="#mypage" prefHeight="23.0" prefWidth="130.0" spacing="5.0">
                                  <children>
-                                    <Label fx:id="lb_id" onMouseClicked="#mypage" text="ddddit님">
+                                    <Label fx:id="lb_id" onMouseClicked="#mypage" style="-fx-background-color: #090948;" text="ddddit님" textFill="WHITE">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
@@ -54,14 +54,14 @@
                               </HBox>
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_logout" onAction="#logout" text="로그아웃">
+                        <JFXButton fx:id="btn_logout" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE">
                            <HBox.margin>
                               <Insets top="5.0" />
                            </HBox.margin>
                         </JFXButton>
                      </children>
                   </HBox>
-                  <JFXTextField layoutX="200.0" layoutY="91.0" prefColumnCount="50">
+                  <JFXTextField layoutX="200.0" layoutY="91.0" prefColumnCount="50" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -70,17 +70,9 @@
                            </stops>
                         </LinearGradient>
                      </focusColor>
-                     <unFocusColor>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop color="BLACK" />
-                              <Stop color="RED" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </unFocusColor>
                   </JFXTextField>
-                  <JFXButton layoutX="96.0" layoutY="19.0" onAction="#buyTicket" text="이용권 구매" textFill="#8d8d8d" />
-                  <MenuBar layoutX="277.0" layoutY="133.0">
+                  <JFXButton layoutX="96.0" layoutY="19.0" onAction="#buyTicket" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE" />
+                  <MenuBar layoutX="277.0" layoutY="133.0" style="-fx-background-color: #090948; -fx-color: #000;">
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
                            <items>
@@ -133,9 +125,28 @@
                               <MenuItem mnemonicParsing="false" text="Event" />
                            </items>
                         </Menu>
+                        <Menu fx:id="menu_admin" mnemonicParsing="false" text="관리자모드" visible="false">
+                           <items>
+                              <MenuItem mnemonicParsing="false" text="회원 관리" />
+                              <MenuItem mnemonicParsing="false" text="블랙리스트 관리" />
+                              <MenuItem fx:id="item_SigerManage" mnemonicParsing="false" onAction="#singerManage" text="가수 관리" />
+                              <MenuItem mnemonicParsing="false" text="앨범 관리" />
+                              <MenuItem mnemonicParsing="false" text="곡 관리" />
+                              <MenuItem mnemonicParsing="false" text="장르 관리" />
+                              <MenuItem mnemonicParsing="false" text="추천 관리" />
+                              <MenuItem mnemonicParsing="false" text="Event 관리" />
+                              <MenuItem mnemonicParsing="false" text="이용권 관리" />
+                              <MenuItem mnemonicParsing="false" text="매출 관리" />
+                           </items>
+                        </Menu>
                      </menus>
                   </MenuBar>
-                  <JFXButton onAction="#mypage" layoutX="840.0" layoutY="52.0" text="마이페이지 테스" />
+                  <JFXButton layoutX="840.0" layoutY="52.0" onAction="#mypage" style="-fx-background-color: #090948;" text="마이페이지 테스" textFill="WHITE" />
+                  <JFXButton layoutX="721.0" layoutY="94.0" text=" ">
+                     <graphic>
+                        <FontAwesomeIcon iconName="SEARCH" size="1.5em" />
+                     </graphic>
+                  </JFXButton>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
@@ -203,7 +214,7 @@
                         <TableColumn prefWidth="148.0" text="가수이름" />
                      </columns>
                   </TableView>
-                  <ImageView fitHeight="158.0" fitWidth="369.0" layoutX="521.0" layoutY="282.0" pickOnBounds="true">
+                  <ImageView fitHeight="158.0" fitWidth="369.0" layoutX="529.0" layoutY="280.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
@@ -243,6 +254,7 @@
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="160.0" prefWidth="1005.0" />
+            <FontAwesomeIcon fill="#3d3dc6" iconName="SEARCH" size="2em" wrappingWidth="31.142857551574707" />
          </children>
       </VBox>
    </content>

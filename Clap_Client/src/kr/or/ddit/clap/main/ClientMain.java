@@ -26,26 +26,9 @@ public class ClientMain extends Application {
 		LoginSession.session.setMem_pw("1234");
 		LoginSession.session.setMem_gender("m");
 		LoginSession.session.setMem_name("윤한수");
-
 		LoginSession.session.setMem_auth("t");
 
-		
-		//로그인한 Id가 관리자일 경우
-		if(ls.session.getMem_auth().equals("t")) {
-			System.out.println("관리자로 로그인");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMainAdmin.fxml"));
-			ScrollPane root = loader.load();
-			
-			Scene scene = new Scene(root);
-		//	scene.getStylesheets().add(getClass().getResource("MainClient.css").toString());
-			primaryStage.setTitle("Clap:음악, 그리고 설레임");
-			primaryStage.setScene(scene);
-			primaryStage.show();
-		}
-		
-		//로그인은 안했거나/ 일반 사용자일 경우
-		else if(ls.session.getMem_auth().equals("f") || ls.session == null){
-			System.out.println("일반사용자 로그인 또는 비회원");
+			System.out.println("Start Clap!");
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 			ScrollPane root = loader.load();
 			
@@ -53,8 +36,6 @@ public class ClientMain extends Application {
 			primaryStage.setTitle("Clap:음악, 그리고 설레임");
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		}
-		
 		
 	}
 	public static void main(String[] args) {

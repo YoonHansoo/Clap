@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,7 +44,7 @@ public class MusicMainController implements Initializable{
    @FXML public JFXButton btn_logout;
    @FXML public JFXButton btn_join;
    @FXML public JFXButton btn_mem;
-   
+   @FXML Menu menu_admin;
    @FXML Label lb_id;
    @FXML ImageView mem_img;
    
@@ -58,6 +59,12 @@ public class MusicMainController implements Initializable{
          btn_join.setVisible(true);
          btn_login.setVisible(true);         
       }else {
+    	  if(ls.session.getMem_auth().equals("t")) { //관리자 일 때 관리자모드 버튼 활성화
+    		  menu_admin.setVisible(true);
+    	  }
+    	  else {
+    		  menu_admin.setVisible(false);         //일반사용자일경우( 관리자로 로그인 후 사용자로 로그인 했을 경우를 대비해서만들었음
+    	  }
          System.out.println("not null "+ls.session.getMem_id());
          mem_menu.setVisible(true);
          btn_join.setVisible(false);
@@ -67,8 +74,6 @@ public class MusicMainController implements Initializable{
          
          Image img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));
          mem_img.setImage(img);
-
-
 
       }
    }
@@ -195,5 +200,21 @@ public class MusicMainController implements Initializable{
 		Stage primaryStage = (Stage) btn_login.getScene().getWindow();
 		primaryStage.setScene(scene);
    }
+   
+   @FXML
+	public void singerManage(ActionEvent event) { //가수관리를 클릭 했을 때. 
+		try {
+			Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); //바뀔 화면을 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(singerManage);
+			
+		//System.out.println(item_SigerManage.getText());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+   
+   
 
 }
