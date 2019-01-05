@@ -81,7 +81,7 @@ insert into singer (SING_NO,
 					SING_IMAGE,
 					SING_DEBUT_ERA,
 					SING_INTRO)
-			values (#id#,
+			values (#sing_no#,
 					#sing_name#,
 					#sing_nation#,
 					#sing_act_type#,
