@@ -12,6 +12,8 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXDialog;
+
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -19,10 +21,13 @@ import javafx.geometry.Pos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -42,6 +47,7 @@ public class Top50Controller implements Initializable{
 	@FXML JFXButton btn_Week;
 	@FXML JFXButton btn_Month;
 	@FXML Label la_Date;
+	@FXML StackPane stackpane;
 	
 	private Registry reg;
 	private IMusicHistoryService imhs;
@@ -53,6 +59,7 @@ public class Top50Controller implements Initializable{
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -65,11 +72,8 @@ public class Top50Controller implements Initializable{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		
 		// 일간 조회 차트 
 		toDayChart();
-		
-		
 	}
 	
 	// 메인 재생 버튼 이벤트
@@ -113,10 +117,12 @@ public class Top50Controller implements Initializable{
 	
 	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
+		
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
 				JFXButton btn_PutMy = (JFXButton) e.getSource();
-				System.out.println(btn_PutMy.getId());
+				JFXDialog dialog = new JFXDialog(stackpane, new Button("asdfasdfas"), JFXDialog.DialogTransition.CENTER);
+				dialog.show();
 			});
 		}
 	}
@@ -206,14 +212,14 @@ public class Top50Controller implements Initializable{
 			
 			Map day = new HashMap<String,String>();
 			
-			String monday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
+			String startday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
 			cal.add(Calendar.DATE, 6);
-			String sunday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
-			day.put("monday", monday);
+			String endday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
+			day.put("startday", startday);
 			
-			day.put("sunday", sunday);
+			day.put("endday", endday);
 			
-			weekRank = FXCollections.observableArrayList(imhs.weekSelect(day));
+			weekRank = FXCollections.observableArrayList(imhs.periodSelect(day));
 			musicList(weekRank);
 			
 		} catch (RemoteException e) {
@@ -223,13 +229,26 @@ public class Top50Controller implements Initializable{
 
 	@FXML public void monthChart() {
 		try {
-			toDayRank = FXCollections.observableArrayList(imhs.toDaySelect()); // 맵에서 가져왓어요
+			
 			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Month.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			musicList(toDayRank);
+			Calendar cal = Calendar.getInstance();
+			cal.add(Calendar.MONTH, -1);
+			String monthText = cal.get(Calendar.YEAR)+"."+(cal.get(Calendar.MONTH)+1);
+			la_Date.setText(monthText);
+			
+			Map month = new HashMap<String,String>();
+			cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
+			String startday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
+			String endday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+			month.put("startday", startday);
+			month.put("endday", endday);
+			
+			monthRank = FXCollections.observableArrayList(imhs.periodSelect(month)); // 맵에서 가져왓어요
+			musicList(monthRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -446,4 +465,6 @@ public class Top50Controller implements Initializable{
 		btnPutClick();
 		btnMovieClick();
 	}
+
+	
 }

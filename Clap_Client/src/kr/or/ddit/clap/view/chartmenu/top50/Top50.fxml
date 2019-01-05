@@ -5,12 +5,13 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50Controller">
+
+<StackPane fx:id="stackpane" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50Controller" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox fx:id="mainBox">
          <children>
@@ -149,4 +150,4 @@
          </padding>
       </VBox>
    </children>
-</AnchorPane>
+</StackPane>

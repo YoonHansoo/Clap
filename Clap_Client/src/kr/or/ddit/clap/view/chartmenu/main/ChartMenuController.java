@@ -7,8 +7,11 @@ import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import com.jfoenix.controls.JFXTabPane;
+
+import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 /**
  * 
@@ -25,9 +28,10 @@ public class ChartMenuController implements Initializable{
 	@FXML Tab tab_genre;
 	@FXML Tab tab_period;
 	@FXML Tab tab_musicvideo;
-	@FXML AnchorPane anchorPane_top50;
-
 	@FXML AnchorPane main;
+	@FXML StackPane stackPane_top50;
+
+	
 
 	
 
@@ -37,9 +41,9 @@ public class ChartMenuController implements Initializable{
 		tabPane_main.getSelectionModel().select(menuCount);
 		
 		try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("../top50/Top50.fxml"));
-			anchorPane_top50.getChildren().removeAll();
-			anchorPane_top50.getChildren().setAll(pane);
+			StackPane pane = FXMLLoader.load(getClass().getResource("../top50/Top50.fxml"));
+			stackPane_top50.getChildren().removeAll();
+			stackPane_top50.getChildren().setAll(pane);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
