@@ -68,8 +68,8 @@
 
 <!-- 가수정보등록 쿼리 -->
 <insert id="insertSinger" parameterClass="singerVO">
-<selectKey resultClass="int" keyProperty="id">
-select SEQ_SING_NO.nextval as id
+<selectKey resultClass="String" keyProperty="sing_no">
+select SEQ_SING_NO.nextval
 from dual
 </selectKey>
 insert into singer (SING_NO,
@@ -95,7 +95,7 @@ insert into singer (SING_NO,
 	
 <!--  가수정보를 삭제하는 쿼리 -->
  <delete id="deleteSinger" parameterClass="String">
-			delete from singer where mem_id=#String#
+			delete from singer where SING_NO=#String#
 	 </delete>
 </sqlMap>         
 
