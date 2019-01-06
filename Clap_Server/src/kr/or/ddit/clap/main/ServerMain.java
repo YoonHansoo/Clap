@@ -15,6 +15,8 @@ import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.musicreview.MusicReviewServiceImpl;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.myalbum.MyAlbumServiceImpl;
+import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
+import kr.or.ddit.clap.service.myalbumlist.MyAlbumListServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
@@ -36,6 +38,7 @@ public class ServerMain {
 			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); // 뮤직순위
 			ILikeService ilks = LikeServiceImpl.getInstance(); // 좋아요
 			IMyAlbumService imas = MyAlbumServiceImpl.getInstance(); // 마이앨범
+			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); // 마이앨범리스트
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -48,6 +51,7 @@ public class ServerMain {
 			reg.rebind("musicreview", imrs);
 			reg.rebind("like", ilks);
 			reg.rebind("myalbum", imas);
+			reg.rebind("myalbumlist", imals);
 			 System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {

@@ -28,12 +28,12 @@ import kr.or.ddit.clap.vo.singer.SingerVO;
  * @author 진민규
  *
  */
-public class MyAlbumyDaoImpl implements IMyAlbumyDao{
+public class MyAlbumDaoImpl implements IMyAlbumDao{
 
 	private SqlMapClient smc;
-	private static MyAlbumyDaoImpl dao; // Singleton 패턴
+	private static MyAlbumDaoImpl dao; // Singleton 패턴
 
-	private MyAlbumyDaoImpl() {
+	private MyAlbumDaoImpl() {
 		Reader rd;
 		try {
 			rd = Resources.getResourceAsReader("SqlMapConfig.xml");
@@ -45,9 +45,9 @@ public class MyAlbumyDaoImpl implements IMyAlbumyDao{
 		}
 	}
 
-	public static MyAlbumyDaoImpl getInstance() { // Singleton 패턴
+	public static MyAlbumDaoImpl getInstance() { // Singleton 패턴
 		if (dao == null) {
-			dao = new MyAlbumyDaoImpl();
+			dao = new MyAlbumDaoImpl();
 		}
 		return dao;
 	}
@@ -83,7 +83,7 @@ public class MyAlbumyDaoImpl implements IMyAlbumyDao{
 		Map<String, String> myAlbum = new HashMap<>();
 		myAlbum.put("name", "test2");
 		myAlbum.put("id", "user1");
-		int cnt = new MyAlbumyDaoImpl().myAlbumInsert(myAlbum);
+		int cnt = new MyAlbumDaoImpl().myAlbumInsert(myAlbum);
 		System.out.println(cnt);
 		
 	}

@@ -10,7 +10,7 @@ import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
  * @author 진민규
  *
  */
-public interface IMyAlbumyDao {
+public interface IMyAlbumDao {
 	public List<MyAlbumVO> myAlbumSelect(String id);
 	public int myAlbumInsert(Map<String,String> myAlbum);
 	

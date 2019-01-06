@@ -5,7 +5,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.clap.dao.myalbum.MyAlbumyDaoImpl;
+import kr.or.ddit.clap.dao.myalbum.MyAlbumDaoImpl;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
 /**
@@ -15,12 +15,12 @@ import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
  */
 
 public class MyAlbumServiceImpl  extends UnicastRemoteObject implements IMyAlbumService  {
-	MyAlbumyDaoImpl myalbumydao; //사용할 Dao의  멤버변수를 선언
+	MyAlbumDaoImpl myalbumdao; //사용할 Dao의  멤버변수를 선언
 	private static MyAlbumServiceImpl service;//Singleton패턴 
 	
 	private MyAlbumServiceImpl() throws RemoteException {
 		super();
-		myalbumydao =  MyAlbumyDaoImpl.getInstance();//Singleton패턴
+		myalbumdao =  MyAlbumDaoImpl.getInstance();//Singleton패턴
 	}
 	
 	public static MyAlbumServiceImpl getInstance() throws RemoteException {
@@ -32,13 +32,13 @@ public class MyAlbumServiceImpl  extends UnicastRemoteObject implements IMyAlbum
 
 	@Override
 	public List<MyAlbumVO> myAlbumSelect(String id) {
-		return myalbumydao.myAlbumSelect(id);
+		return myalbumdao.myAlbumSelect(id);
 	}
 
 	@Override
 	public int myAlbumInsert(Map<String, String> myAlbum) throws RemoteException {
 		// TODO Auto-generated method stub
-		return myalbumydao.myAlbumInsert(myAlbum);
+		return myalbumdao.myAlbumInsert(myAlbum);
 	}
 
 
