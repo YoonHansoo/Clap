@@ -3,6 +3,10 @@ package kr.or.ddit.clap.view.member.profilech;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 import javafx.application.Application;
@@ -17,46 +21,56 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.like.ILikeService;
+import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.vo.member.MemberVO;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 
 public class ProfileChController implements Initializable {
+	private Registry reg;
+	private IMypageService ims;
+	
 	public Stage primaryStage;
 	@FXML Button btn_sh;
 	@FXML ImageView img;
+	@FXML TextField textF_Info;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ims = (IMypageService) reg.lookup("mypage");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		
-		
-		
-		btn_sh.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				 FileChooser fileChooser = new FileChooser();
-
-		         // 확장자별로 파일 구분하는 필터 등록하기
-		         fileChooser.getExtensionFilters().addAll(new ExtensionFilter("Text Files", "*,txt"),
-		               new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
-		               new ExtensionFilter("Audio Files", "*.wav", "*.mp3"), new ExtensionFilter("All Files", "*.*"));
-		         
-		         //Dialog창에서 '열기'버튼을 누르면선택한 파일 정보기 반환되고
-		         //'취소'버튼을 누르면 null이 반환된다.
-		         File selectFile = fileChooser.showOpenDialog(primaryStage);
-		         if(selectFile!=null) {
-		            //이영역에서 파일내용을 일거오는 작업을 수행한다.
-		        	 LoginSession.session.setMem_image(selectFile.getPath());
-		         }
-			}
-		   });
-		
-		
+		String user_id = LoginSession.session.getMem_id();
+		MemberVO vo = new MemberVO();
+		vo.setMem_id(user_id);
+		MemberVO memvo;
+		try {
+			memvo = ims.select(vo);
+			textF_Info.setText(memvo.getMem_intro());
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		}
 	
 	
+	@FXML public void btn_Img() {
+
 		
-	
+	}
+		
+	@FXML public void btn_Del() {
+		textF_Info.setText("");
+	}
 }
 
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Pagination?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -23,23 +23,23 @@
             <Button layoutX="353.0" layoutY="89.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" style="-fx-background-color: #090948;" text="추천" textFill="WHITE" />
             <Button layoutX="188.0" layoutY="89.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="161.0" style="-fx-background-color: #090948; -fx-border-color: #000000;" text="앨범" textFill="WHITE" />
             <Button layoutX="535.0" layoutY="89.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" style="-fx-background-color: #090948;" text="아티스트" textFill="WHITE" />
-            <JFXCheckBox layoutX="26.0" layoutY="174.0" prefHeight="24.0" prefWidth="37.0" text=" " />
+            <JFXCheckBox onAction="#mainCheck" fx:id="chbox_main" layoutX="26.0" layoutY="174.0" prefHeight="24.0" prefWidth="37.0" text=" " />
             <Button layoutX="94.0" layoutY="175.0" mnemonicParsing="false" text="듣기" />
             <Button layoutX="185.0" layoutY="175.0" mnemonicParsing="false" text="추가" />
             <Button layoutX="269.0" layoutY="175.0" mnemonicParsing="false" text="담기" />
-            <Pagination layoutX="10.0" layoutY="220.0" prefHeight="478.0" prefWidth="711.0" />
-            <TableView fx:id="tbl_Like" layoutX="22.0" layoutY="247.0" prefHeight="395.0" prefWidth="696.0">
-              <columns>
-                <TableColumn fx:id="col_Checks" prefWidth="35.0" />
-                <TableColumn fx:id="col_No" prefWidth="44.0" text="번호" />
-                  <TableColumn fx:id="col_Img" prefWidth="146.0" text=" " />
-                  <TableColumn fx:id="col_MusInfo" prefWidth="75.0" text="곡정보" />
-                  <TableColumn fx:id="col_Its" prefWidth="75.0" text="아티스트" />
-                  <TableColumn fx:id="col_Alb" prefWidth="75.0" text="앨범명" />
-                  <TableColumn fx:id="col_LikeIndate" prefWidth="75.0" text="좋아요 한 날 " />
-                  <TableColumn fx:id="col_Like" prefWidth="75.0" text="좋아요 " />
-              </columns>
-            </TableView>
+            <JFXTreeTableView fx:id="tbl_like" layoutX="26.0" layoutY="227.0" prefHeight="400.0" prefWidth="682.0">
+               <columns>
+                  <TreeTableColumn fx:id="col_Checks" prefWidth="28.0" text="  " />
+                  <TreeTableColumn fx:id="col_No" prefWidth="54.0" text="번호" />
+                  <TreeTableColumn fx:id="col_Img" prefWidth="116.0" text=" " />
+                  <TreeTableColumn fx:id="col_MusInfo" prefWidth="132.0" text="곡정보" />
+                  <TreeTableColumn fx:id="col_Its" prefWidth="93.0" text="아티스트" />
+                  <TreeTableColumn fx:id="col_Alb" prefWidth="74.0" text="앨범명" />
+                  <TreeTableColumn fx:id="col_LikeIndate" prefWidth="106.0" text="좋아요 한 날" />
+                  <TreeTableColumn fx:id="col_Like" prefWidth="78.0" text="좋아요" />
+               </columns>
+            </JFXTreeTableView>
+            <Pagination fx:id="p_Paging" layoutX="10.0" layoutY="220.0" prefHeight="478.0" prefWidth="711.0" />
          </children>
       </AnchorPane>
       <Line endX="606.5" layoutX="139.0" layoutY="208.0" startX="-150.0" strokeMiterLimit="20.0" />
