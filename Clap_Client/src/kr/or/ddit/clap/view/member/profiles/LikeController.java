@@ -109,6 +109,7 @@ public class LikeController implements Initializable{
 		itemsForPage=10; // 한페이지 보여줄 항목 수 설정
 		
 		paging();
+		
 	}
 
 	private void paging() {
@@ -143,21 +144,24 @@ public class LikeController implements Initializable{
 			return currentsingerList;
 		}
 	
-	/*// 전체 선택 및 해제 메서드
+	// 전체 선택 및 해제 메서드
 	@FXML public void mainCheck() {
-		
+		no=0;
 		if (chbox_main.isSelected()) {
 			for(int i = 0; i < likeList.size(); i++) {
-				System.out.println("dd");
-				likeList.get(i).getChBox().setSelected(true);
-				col_Checks.getCellData(i).setSelected(true);
-			}
+			    likeList.get(i).getChBox().setSelected(true);	
+			    System.out.println( col_Checks.getCellData(i).isSelected());
+			   
+			    col_Checks.getCellData(i).setSelected(true);
+			 
+			    }
 		} else {
 			for(int i = 0; i < likeList.size(); i++) {
 				likeList.get(i).getChBox().setSelected(false);
 			}
 		}
-	}*/
+		paging();
+	}
 	
 	
 }

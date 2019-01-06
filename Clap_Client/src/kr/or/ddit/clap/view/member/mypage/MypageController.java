@@ -40,7 +40,8 @@ import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
-import kr.or.ddit.clap.vo.music.MusicReviewVO;;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import javafx.scene.image.ImageView;;
 
 public class MypageController implements Initializable {
 	int no1=0;
@@ -56,6 +57,9 @@ public class MypageController implements Initializable {
 	private ObservableList<MusicReviewVO> revList, currentrevList;
 	private ObservableList<MusicHistoryVO> singList;	//최근음악 담기
 	private ObservableList<MusicHistoryVO> newList;
+	
+	private String temp_img_path="";
+	
 	@FXML Label label_Id;
 	@FXML Image img_User;
 	@FXML AnchorPane contents;
@@ -81,6 +85,7 @@ public class MypageController implements Initializable {
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMits;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMtitle;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMdate;
+	@FXML ImageView img_UserImg;
 
 
 	@Override
@@ -101,7 +106,7 @@ public class MypageController implements Initializable {
 		label_Id.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
 		MemberVO vo = new MemberVO();
 		vo.setMem_id(user_id);
-		MemberVO memvo;
+		MemberVO memvo =new MemberVO();
 		try {
 			memvo = ims.select(vo);
 			text_UserInfo.setText(memvo.getMem_intro());
@@ -109,6 +114,12 @@ public class MypageController implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		//이미지 설정
+		Image img = new Image(memvo.getMem_image());
+		temp_img_path = memvo.getMem_image();   //sVO.getSing_image()를 전역으로 쓰기위해
+		img_UserImg.setImage(img);
+		
 		
 		//최근댓글테이블
 		col_ReviewCont.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));

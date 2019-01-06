@@ -5,6 +5,8 @@ import java.util.Map;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializable{
 	
@@ -23,7 +25,22 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
 	private String mem_black_cnt;
 	private String mem_image;
 	private String mem_intro;
+	private ImageView imgView;
 	
+	     
+	public ImageView getImgView() {	//try {
+		this.imgView = new ImageView();
+		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
+		Image img = new Image(mem_image);
+		imgView.setImage(img);
+		imgView.setFitWidth(80);
+		imgView.setFitHeight(100);
+		System.out.println("imgView생성");
+		return imgView;
+	}
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}

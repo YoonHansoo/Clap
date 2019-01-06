@@ -18,10 +18,10 @@
       <Text fill="RED" layoutX="226.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="선정적 또는 상업적 이미지 등록 시 관리자에 의해 삭제 될 수 있습니다." />
       <Button onAction="#btn_Img" fx:id="btn_Image"  layoutX="576.0" layoutY="185.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="102.0" text="찾아보기" />
       <TextField layoutX="208.0" layoutY="185.0" prefHeight="29.0" prefWidth="346.0" />
-      <Button layoutX="226.0" layoutY="340.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="115.0" text="설정" />
-      <Button layoutX="396.0" layoutY="340.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="115.0" text="확인" />
+      <Button layoutX="226.0" layoutY="340.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="115.0" text="취소" />
+      <Button onAction="#updateUser" layoutX="396.0" layoutY="340.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="115.0" text="설정" />
       <TextField fx:id="textF_Info" layoutX="56.0" layoutY="272.0" prefHeight="39.0" prefWidth="674.0" />
-      <ImageView fitHeight="150.0" fitWidth="161.0" layoutX="36.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="imgview_UserImg" fitHeight="150.0" fitWidth="161.0" layoutX="36.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
       <JFXCheckBox  layoutX="700.0" layoutY="190.0" text="삭제" />
       <JFXButton onAction="#btn_Del" layoutX="734.0" layoutY="277.0" text="X" />
    </children>

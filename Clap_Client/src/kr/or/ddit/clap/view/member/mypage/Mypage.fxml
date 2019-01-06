@@ -24,7 +24,7 @@
          <children>
             <AnchorPane prefHeight="880.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="21.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="img_UserImg" fitHeight="100.0" fitWidth="170.0" layoutX="21.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image fx:id="img_User" url="@music_main/image.png" />
                      </image>
