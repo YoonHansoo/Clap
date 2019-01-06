@@ -35,6 +35,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
+import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 
 /**
@@ -99,7 +100,9 @@ public class Top50Controller implements Initializable{
 	// 메인 담기 버튼 이벤트
 	@FXML public void btnMainPut() {
 		ArrayList<String> list = musicCheckList();
-		System.out.println(list);
+		MyAlbumDialogController.mus_no.clear();
+		MyAlbumDialogController.mus_no = list;
+		musicList.myAlbumdialog();
 	}
 	
 	// 전체 선택 및 해제 메서드

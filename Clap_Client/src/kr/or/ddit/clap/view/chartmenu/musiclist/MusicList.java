@@ -18,6 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 
 public class MusicList {
 	
@@ -71,7 +72,10 @@ public class MusicList {
 	private void btnPutClick() {
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
-				 myAlbumdialog();
+				JFXButton btn_PutMy = (JFXButton) e.getSource();
+				MyAlbumDialogController.mus_no.clear();
+				MyAlbumDialogController.mus_no.add(btn_PutMy.getId());
+				myAlbumdialog();
 			});
 		}
 	}
@@ -86,7 +90,7 @@ public class MusicList {
 		}
 	}
 	
-	private void myAlbumdialog() {
+	public void myAlbumdialog() {
 		StackPane content;
 		try {
 			content = FXMLLoader.load(getClass().getResource("../dialog/MyAlbumDialog.fxml"));
