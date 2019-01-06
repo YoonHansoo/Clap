@@ -1,8 +1,10 @@
 package kr.or.ddit.clap.dao.like;
 
-import kr.or.ddit.clap.vo.music.MusicLikeVO;
+import java.util.List;
+
+import kr.or.ddit.clap.vo.member.LikeVO;
 
 public interface ILikeDao {
-	public MusicLikeVO selectLike(MusicLikeVO vo);
+	public List<LikeVO> selectMusLike(LikeVO vo);
 
 }

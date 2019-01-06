@@ -5,13 +5,13 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="like">
 	
-	 <select id="muLike" resultClass="MusicLikeVO" parameterClass="MusicLikeVO">
-	 	 select a.MEM_ID,
-				a.MUS_NO,
-				a.MUS_LIKE_DATE,
-				b.mus_title as title,
-				d.sing_name as sname,
-				c.alb_name as aname
+ 	 <select id="selectMusLike" resultClass="LikeVO" parameterClass="LikeVO">
+	 	 select a.mem_id,
+				a.mus_no,
+				a.mus_like_date,
+				b.mus_title,
+				d.sing_name,
+				c.alb_name
          from MUSIC_LIKE a, music b, album c , singer d
          	where 	a.mus_no = b.mus_no
 				and b.alb_no = c.alb_no
@@ -19,9 +19,22 @@
                 and a.mem_id=#mem_id# 
 	 </select>
 	   
-		
-	
-	
+		<!--
+	<select id="selectMusLike" resultClass="java.util.HashMap" parameterClass="memberVO">
+		 select a.mem_id,
+				a.mus_no,
+				a.mus_like_date,
+				b.mus_title ,
+				d.sing_name ,
+				c.alb_name ,
+                d.sing_image
+         from MUSIC_LIKE a, music b, album c , singer d
+         	where 	a.mus_no = b.mus_no
+				and b.alb_no = c.alb_no
+				and c.sing_no = d.sing_no
+                and a.mem_id= #mem_id#
+	</select>
+	 -->
 
 </sqlMap>			
 

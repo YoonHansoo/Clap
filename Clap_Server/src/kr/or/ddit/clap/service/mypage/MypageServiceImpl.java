@@ -60,10 +60,7 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.updateInfo(vo);
 	}
 
-	@Override
-	public List<Map> selectMusLike(MemberVO vo) throws RemoteException {
-		return mypageDao.selectMusLike(vo);
-	}
+	
 
 	
 	

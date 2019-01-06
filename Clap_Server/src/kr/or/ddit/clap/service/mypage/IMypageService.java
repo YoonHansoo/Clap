@@ -26,7 +26,7 @@ public interface IMypageService  extends Remote {
 	
 	public int  updateInfo(MemberVO vo) throws RemoteException;
 	
-	public List<Map> selectMusLike(MemberVO vo) throws RemoteException;
+	
 	
 	
 }

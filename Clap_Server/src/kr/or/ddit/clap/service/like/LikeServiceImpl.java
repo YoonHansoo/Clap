@@ -2,11 +2,13 @@ package kr.or.ddit.clap.service.like;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 import kr.or.ddit.clap.dao.like.LikeDaoImpl;
 import kr.or.ddit.clap.dao.musichistory.MusicHistoryDaoImpl;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musichistory.MusicHistoryServiceImpl;
+import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.music.MusicLikeVO;
 
 public class LikeServiceImpl extends UnicastRemoteObject implements ILikeService  {
@@ -29,5 +31,10 @@ public class LikeServiceImpl extends UnicastRemoteObject implements ILikeService
 	@Override
 	public MusicLikeVO selectLike(MusicLikeVO vo) throws RemoteException {
 		return likeDao.selectLike(vo);
+	}
+
+	@Override
+	public List<LikeVO> selectMusLike(LikeVO vo) throws RemoteException {
+	return likeDao.selectMusLike(vo);
 	}
 }

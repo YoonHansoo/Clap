@@ -18,6 +18,7 @@
  	<typeAlias alias="musicLikeVO" type="kr.or.ddit.clap.vo.music.MusicLikeVO"/>
  	<typeAlias alias="myalbumVO" type="kr.or.ddit.clap.vo.myalbum.MyAlbumVO"/>
  	<typeAlias alias="myalbumlistVO" type="kr.or.ddit.clap.vo.myalbum.MyAlbumListVO"/>
+ 	<typeAlias alias="likeVO" type="kr.or.ddit.clap.vo.member.LikeVO"/>
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">

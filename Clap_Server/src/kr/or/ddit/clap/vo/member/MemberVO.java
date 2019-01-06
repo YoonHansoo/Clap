@@ -24,7 +24,7 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
 	private String mem_black_cnt;
 	private String mem_image;
 	private String mem_intro;
-	
+	     
 	public String getMem_id() {
 		return mem_id;
 	}

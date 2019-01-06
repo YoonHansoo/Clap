@@ -30,6 +30,6 @@ public interface IMypageDao {
 	
 	public int  updateInfo(MemberVO vo);
 	
-	public List<Map> selectMusLike(MemberVO vo);	
+
 	
 }

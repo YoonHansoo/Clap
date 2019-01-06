@@ -116,21 +116,7 @@ public class MypageDaoImpl implements IMypageDao{
 		return cnt;
 	}
 
-	@Override
-	public List<Map> selectMusLike(MemberVO vo) {
-		// TODO Auto-generated method stub
-		List<Map> list = new ArrayList<Map>();
-		try {
-
-			list = smc.queryForList("mypage.selectMusLike",vo);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
-	}
-
+	
 	
 	}
 
