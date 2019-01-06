@@ -11,7 +11,7 @@
 	</update>
 	
 	 <select id="myalbumselect" resultClass="myalbumVO" parameterClass="String">
-	   select myalb_name
+	   select myalb_name,myalb_no
 		 from myalbum
 		where mem_id = #string_id#
 	</select>
