@@ -63,7 +63,6 @@ public class LikeController implements Initializable {
 	Pagination p_Paging;
 	@FXML
 	JFXCheckBox chbox_main;
-	@FXML Button btn_mus;
 	@FXML AnchorPane Head;
 
 	@Override
@@ -187,6 +186,8 @@ public class LikeController implements Initializable {
 		try {
 			Parent root1 = FXMLLoader.load(getClass().getResource("albLike.fxml"));
 			System.out.println("앨범");
+			
+			
 			Head.getChildren().removeAll();
 			Head.getChildren().setAll(root1);
 			
