@@ -28,13 +28,15 @@ public class LikeServiceImpl extends UnicastRemoteObject implements ILikeService
 		return service;
 	}
 
-	@Override
-	public MusicLikeVO selectLike(MusicLikeVO vo) throws RemoteException {
-		return likeDao.selectLike(vo);
-	}
+
 
 	@Override
 	public List<LikeVO> selectMusLike(LikeVO vo) throws RemoteException {
 	return likeDao.selectMusLike(vo);
+	}
+
+	@Override
+	public int deleteMusLike(LikeVO vo) {
+		return likeDao.deleteMusLike(vo);
 	}
 }

@@ -39,18 +39,7 @@ public class LikeDaoImpl implements ILikeDao{
 		return dao;
 	}
 
-	public MusicLikeVO selectLike(MusicLikeVO vo) {
-		MusicLikeVO check = null;
-		try {
-			check = (MusicLikeVO) smc.queryForObject("like.muLike" ,vo);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return check;
-	}
-
+	
 	@Override
 	public List<LikeVO> selectMusLike(LikeVO vo) {
 		List<LikeVO> list = new ArrayList<LikeVO>();
@@ -63,6 +52,18 @@ public class LikeDaoImpl implements ILikeDao{
 		} 
 		
 		return list;
+	}
+
+	@Override
+	public int deleteMusLike(LikeVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("like.deleteMusLike",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 	
 }

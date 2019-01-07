@@ -1,17 +1,20 @@
 package kr.or.ddit.clap.vo.member;
 
 import java.io.Serializable;
+import java.rmi.registry.Registry;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import kr.or.ddit.clap.service.like.ILikeService;
 
 public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable{
+	private Registry reg;
+	private ILikeService ilks;
+	
 	private String mus_no;
 	private String mus_like_date;
 	private String mus_title;
@@ -20,8 +23,8 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	private String sing_image;
 	private String mem_id;
 	private ImageView imgView; 
-	private JFXCheckBox chBox; 
-	private JFXButton btnLike; 
+	private JFXCheckBox chBox;
+	private JFXButton btnLike;
 	
 
 	public String getMus_no() {
@@ -41,6 +44,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	}
 	public void setMus_title(String mus_title) {
 		this.mus_title = mus_title;
+		
 	}
 	public String getSing_name() {
 		return sing_name;
@@ -70,6 +74,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		this.imgView = new ImageView();
 		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
 		Image img = new Image(sing_image);
+		
 		imgView.setImage(img);
 		imgView.setFitWidth(120);
 		imgView.setFitHeight(50);
@@ -90,22 +95,28 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	}
 	public JFXCheckBox getChBox() {
 		this.chBox = new JFXCheckBox();
-		chBox.setGraphic(new JFXCheckBox());
-		return chBox;
 		
+		return this.chBox;
+		
+	}
+	public JFXCheckBox getchBox1() {
+		return this.chBox;
 	}
 	public void setChBox(JFXCheckBox chBox) {
 		this.chBox = chBox;
 	}
 	public JFXButton getBtnLike() {
 		this.btnLike = new JFXButton();
-		btnLike.setGraphic(new Button());
+		btnLike.setOnAction(e->{ 
 		
-		return btnLike;
+		});
+		
+		return this.btnLike;
 	}
 	public void setBtnLike(JFXButton btnLike) {
 		this.btnLike = btnLike;
 	}
+	
 	
 	
 }

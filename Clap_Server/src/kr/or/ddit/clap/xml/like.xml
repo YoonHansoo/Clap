@@ -11,6 +11,7 @@
 				a.mus_like_date,
 				b.mus_title,
 				d.sing_name,
+				 d.sing_image,
 				c.alb_name
          from MUSIC_LIKE a, music b, album c , singer d
          	where 	a.mus_no = b.mus_no
@@ -19,22 +20,18 @@
                 and a.mem_id=#mem_id# 
 	 </select>
 	   
-		<!--
-	<select id="selectMusLike" resultClass="java.util.HashMap" parameterClass="memberVO">
-		 select a.mem_id,
-				a.mus_no,
-				a.mus_like_date,
-				b.mus_title ,
-				d.sing_name ,
-				c.alb_name ,
-                d.sing_image
-         from MUSIC_LIKE a, music b, album c , singer d
-         	where 	a.mus_no = b.mus_no
-				and b.alb_no = c.alb_no
-				and c.sing_no = d.sing_no
-                and a.mem_id= #mem_id#
-	</select>
-	 -->
+	<delete id="deleteMusLike"  parameterClass="LikeVO">
+		delete from MUSIC_LIKE 
+    		where 	mem_id=#mem_id# 
+   			 and	 mus_no=#mus_no#
+	</delete>
+	
+		<delete id="deleteAlbLike"  parameterClass="LikeVO">
+		delete from MUSIC_LIKE 
+    		where 	mem_id=#mem_id# 
+   			 and	 mus_no=#mus_no#
+	</delete>
+	
 
 </sqlMap>			
 
