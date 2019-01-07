@@ -59,6 +59,12 @@
 		where mem_id = #mem_id#
 	</update>
 	
+	<update id="updateImage" parameterClass="memberVO">
+		update member
+		set mem_image=#mem_image# ,mem_intro=#mem_intro#
+		where mem_id = #mem_id#
+	</update>
+	
 	
 
 </sqlMap>			

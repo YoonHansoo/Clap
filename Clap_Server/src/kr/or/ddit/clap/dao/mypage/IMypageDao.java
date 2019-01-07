@@ -30,6 +30,8 @@ public interface IMypageDao {
 	
 	public int  updateInfo(MemberVO vo);
 	
+	public int  updateImage(MemberVO vo);
+	
 
 	
 }
