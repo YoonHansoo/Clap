@@ -184,6 +184,17 @@ public class LikeController implements Initializable {
 		}
 	}
 	
-	
+	@FXML 
+	public void btn_Rcm() {
+		try {
+			Parent root1 = FXMLLoader.load(getClass().getResource("rcmlike.fxml"));
+			System.out.println("앨범");
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root1);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 }

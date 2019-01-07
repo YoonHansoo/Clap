@@ -24,7 +24,7 @@
                         <Font name="YDIYGO350" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="353.0" layoutY="89.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" style="-fx-background-color: #090948;" text="추천" textFill="WHITE" />
+                  <Button onAction="#btn_Rcm" layoutX="353.0" layoutY="89.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" style="-fx-background-color: #090948;" text="추천" textFill="WHITE" />
                   <Button layoutX="188.0" layoutY="89.0" mnemonicParsing="false" onAction="#btn_alb" prefHeight="65.0" prefWidth="161.0" style="-fx-background-color: #090948; -fx-border-color: #000000;" text="앨범" textFill="WHITE" />
                   <Button layoutX="535.0" layoutY="89.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="179.0" style="-fx-background-color: #090948;" text="아티스트" textFill="WHITE" />
                </children>
