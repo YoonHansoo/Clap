@@ -23,7 +23,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	
 	private String mus_no;
 	private String alb_no;
-	private String its_no;
+	private String sing_no;
 	private String rcm_alb_no;
 	
 	private String like_date;
@@ -41,9 +41,15 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	
 	
 	
+	public String getSing_no() {
+		return sing_no;
+	}
+	public void setSing_no(String sing_no) {
+		this.sing_no = sing_no;
+	}
 	public JFXButton getRcmbtnLike() {	
 		this.rcmbtnLike= new JFXButton();
-	return rcmbtnLike;
+	return this.rcmbtnLike;
 	}
 	public void setRcmbtnLike(JFXButton rcmbtnLike) {
 		this.rcmbtnLike = rcmbtnLike;
@@ -62,12 +68,6 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	public void setAlb_no(String alb_no) {
 		this.alb_no = alb_no;
 	}
-	public String getIts_no() {
-		return its_no;
-	}
-	public void setIts_no(String its_no) {
-		this.its_no = its_no;
-	}
 	public JFXButton getAlbbtnLike() {
 		this.albbtnLike= new JFXButton();
 		
@@ -77,6 +77,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		this.albbtnLike = albbtnLike;
 	}
 	public JFXButton getItsbtnLike() {
+		this.itsbtnLike =  new JFXButton();
 		return itsbtnLike;
 	}
 	public void setItsbtnLike(JFXButton itsbtnLike) {

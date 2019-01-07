@@ -59,4 +59,14 @@ public class LikeServiceImpl extends UnicastRemoteObject implements ILikeService
 	public int deleteRcmLike(LikeVO vo) throws RemoteException {
 		return likeDao.deleteRcmLike(vo);
 	}
+
+	@Override
+	public List<LikeVO> selectSingLike(LikeVO vo) throws RemoteException {
+		return likeDao.selectSingLike(vo);
+	}
+
+	@Override
+	public int deleteSingLike(LikeVO vo) throws RemoteException {
+		return likeDao.deleteSingLike(vo);
+	}
 }

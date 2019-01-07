@@ -13,5 +13,8 @@ public interface ILikeDao {
 	
 	public List<LikeVO> selectRcmLike(LikeVO vo);
 	public int deleteRcmLike(LikeVO vo);
+	
+	public List<LikeVO> selectSingLike(LikeVO vo);
+	public int deleteSingLike(LikeVO vo);
 
 }

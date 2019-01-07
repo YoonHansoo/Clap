@@ -48,7 +48,6 @@
 	</delete>
 	
 	<select id="selectRcmLike" resultClass="LikeVO" parameterClass="LikeVO" >
-		
 		 select a.mem_id,
 				a.rcm_alb_no,
 				a.rcm_like_date as like_date,
@@ -63,6 +62,22 @@
 		delete from recommend_like 
     		where 	mem_id=#mem_id# 
    			 and	 rcm_alb_no=#rcm_alb_no#
+	</delete>
+	
+	<select id="selectSingLike" resultClass="LikeVO" parameterClass="LikeVO">
+		 select a.mem_id,
+                 d.sing_name,
+				a.sing_no ,
+				a.sing_like_date as like_date,
+				 d.sing_image
+         from singer_like a, singer d
+         	where 	a.sing_no =  d.sing_no
+                and a.mem_id=#mem_id# 
+	</select>
+	<delete id="deleteSingLike"  parameterClass="LikeVO">
+		delete from singer_like 
+    		where 	mem_id=#mem_id# 
+   			 and	 sing_no=#sing_no#
 	</delete>
 	
 	

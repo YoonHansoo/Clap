@@ -44,7 +44,7 @@ public class ServerMain {
 			IMyAlbumService imas 	  = MyAlbumServiceImpl.getInstance(); // 마이앨범
 			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); // 마이앨범리스트
 			IAlbumService ias 		  = AlbumServiceImpl.getInstance(); //앨범
-			INoticeBoardService ins   = NoticeBoardDaoImpl.getInstance();//공지사항
+			//INoticeBoardService ins   = NoticeBoardDaoImpl.getInstance();//공지사항
 			
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
