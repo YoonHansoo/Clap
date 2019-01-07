@@ -113,4 +113,18 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return list;
 	}
 
+	@Override
+	public List<Map> genreSelect(String genre) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("musichistory.genreselect",genre);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }

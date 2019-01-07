@@ -25,6 +25,27 @@
 			 where rownum &lt;= 50
 	 </select>
 	 
+	 <select id="genreselect" resultClass="java.util.HashMap" parameterClass="String">
+	 		select * 
+			  from
+				   (select count(a.mus_no) as count,
+					       b.mus_no,
+					       b.mus_title,
+					       b.mus_befor_rank,
+					       c.alb_image,
+					       d.sing_name
+					  from music_history a, music b, album c, singer d, genre_detail f
+					 where a.mus_no = b.mus_no
+					   and b.alb_no = c.alb_no
+					   and c.sing_no = d.sing_no
+                       and b.gen_detail_no = f.gen_detail_no
+                       and a.histo_indate = to_char(sysdate-1,'YYYYMMDD')
+                       and f.gen_no = #gen_no#
+					 group by b.mus_no, b.MUS_TITLE,b.mus_befor_rank,d.sing_name,c.alb_image
+					 order by count(a.mus_no) desc)
+			 where rownum &lt;= 50;
+	 </select>
+	 
 	  <select id="periodselect" resultClass="java.util.HashMap" parameterClass="java.util.HashMap">
 	 		select * 
 			  from

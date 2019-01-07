@@ -63,4 +63,9 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 		return musicHistoryDao.selectMayIndate(vo);
 	}
 
+	@Override
+	public List<Map> genreSelect(String genre) throws RemoteException {
+		return musicHistoryDao.genreSelect(genre);
+	}
+
 }

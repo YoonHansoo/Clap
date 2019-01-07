@@ -15,6 +15,7 @@ import kr.or.ddit.clap.vo.singer.SingerVO;
  */
 public interface IMusicHistoryDao {
 	public List<Map> toDaySelect();
+	public List<Map> genreSelect(String genre);
 	public List<Map> periodSelect(Map<String, String> day);
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo);
 	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo);
