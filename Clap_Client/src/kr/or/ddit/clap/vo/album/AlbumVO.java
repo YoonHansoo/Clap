@@ -2,7 +2,12 @@ package kr.or.ddit.clap.vo.album;
 
 import java.io.Serializable;
 
-public class AlbumVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public class AlbumVO extends RecursiveTreeObject<AlbumVO> implements Serializable{
 	
 	private String alb_no;
 	private String alb_name;
@@ -13,7 +18,27 @@ public class AlbumVO implements Serializable{
 	private String alb_sale_enter;
 	private String alb_entertain;
 	private String sing_no;
+	private String sing_name;
+	private ImageView imgView; 
 	
+	public ImageView getImgView() {
+		this.imgView = new ImageView();
+		Image img = new Image(alb_image);
+		imgView.setImage(img);
+		imgView.setFitWidth(120);
+		imgView.setFitHeight(50);
+		System.out.println("imgView생성");
+		return imgView;
+	}
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
+	}
+	public String getSing_name() {
+		return sing_name;
+	}
+	public void setSing_name(String sing_name) {
+		this.sing_name = sing_name;
+	}
 	public String getAlb_no() {
 		return alb_no;
 	}
