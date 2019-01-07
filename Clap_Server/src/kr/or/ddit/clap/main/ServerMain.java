@@ -3,6 +3,7 @@ package kr.or.ddit.clap.main;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import kr.or.ddit.clap.dao.noticeboard.NoticeBoardDaoImpl;
 import kr.or.ddit.clap.service.album.AlbumServiceImpl;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.join.IJoinService;
@@ -21,6 +22,7 @@ import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
 import kr.or.ddit.clap.service.myalbumlist.MyAlbumListServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
+import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.service.qna.QnaServiceImpl;
 import kr.or.ddit.clap.service.singer.ISingerService;
@@ -31,17 +33,18 @@ public class ServerMain {
 		
 		try {
 //			IBoardService bsi = new BoardServiceImpl();
-			ISingerService ssi 	= SingerServiceImpl.getInstance();	//가수
-			IMypageService ms 	= MypageServiceImpl.getInstance();	//마이페이지
-			ILoginService ils 	= LoginServiceImpl.getInstance();	//로그인
-			IQnaService iqs     = QnaServiceImpl.getInstance();		//문의사항
-			IJoinService ijs     = JoinServiceImpl.getInstance();	//회원가입
+			ISingerService ssi 		  = SingerServiceImpl.getInstance();	//가수
+			IMypageService ms 		  = MypageServiceImpl.getInstance();	//마이페이지
+			ILoginService ils 		  = LoginServiceImpl.getInstance();	//로그인
+			IQnaService iqs     	  = QnaServiceImpl.getInstance();		//문의사항
+			IJoinService ijs     	  = JoinServiceImpl.getInstance();	//회원가입
 			IMusicReviewService imrs  = MusicReviewServiceImpl.getInstance();	//뮤직댓글
 			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); // 뮤직순위
-			ILikeService ilks = LikeServiceImpl.getInstance(); // 좋아요
-			IMyAlbumService imas = MyAlbumServiceImpl.getInstance(); // 마이앨범
+			ILikeService ilks 		  = LikeServiceImpl.getInstance(); // 좋아요
+			IMyAlbumService imas 	  = MyAlbumServiceImpl.getInstance(); // 마이앨범
 			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); // 마이앨범리스트
-			IAlbumService ias = AlbumServiceImpl.getInstance(); //앨범
+			IAlbumService ias 		  = AlbumServiceImpl.getInstance(); //앨범
+			INoticeBoardService ins   = NoticeBoardDaoImpl.getInstance();//공지사항
 			
 			
 			Registry reg = LocateRegistry.createRegistry(8888);

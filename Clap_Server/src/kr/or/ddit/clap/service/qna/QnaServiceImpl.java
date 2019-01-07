@@ -1,6 +1,6 @@
 /**
  * Singleton 패턴을 적용한 
- * ISingerService를 구현한 클래스
+ * IQnaService를 구현한 클래스
  * @author Hanhwa
  * 
  *
