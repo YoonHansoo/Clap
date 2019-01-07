@@ -22,11 +22,8 @@ public interface IAlbumService extends Remote {
 	public AlbumVO albumDetailInfo(String albumNo) throws RemoteException;
 	
 	public int selectAlbumLikeCnt(String albumNo) throws RemoteException;
-	/*
 	
+	public int updateAlbumInfo(AlbumVO vo) throws RemoteException;
 	
-	public int updateSingerInfo(SingerVO vo) throws RemoteException;
-	
-	
-	 public int deleteSinger(String singerNo) throws RemoteException;*/
+	 public int deleteAlbum(String albumNo) throws RemoteException;
 }
