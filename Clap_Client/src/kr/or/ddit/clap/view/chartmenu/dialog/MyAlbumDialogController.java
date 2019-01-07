@@ -7,16 +7,12 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,7 +21,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import kr.or.ddit.clap.main.LoginSession;
-import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;

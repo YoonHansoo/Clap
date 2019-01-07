@@ -21,7 +21,7 @@
                   <Insets left="100.0" />
                </VBox.margin>
             </Label>
-            <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="252.0">
+            <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="337.0" VBox.vgrow="SOMETIMES">
                <tabs>
                   <Tab fx:id="tab_top50" text="TOP50">
                     <content>
@@ -33,7 +33,7 @@
                   </Tab>
                   <Tab fx:id="tab_genre" text="장르별 차트">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1024.0">
                            <children>
                               <StackPane fx:id="stackPane_genre" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                            </children></AnchorPane>
@@ -43,15 +43,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <StackPane minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
-                           </children></AnchorPane>
-                     </content>
-                  </Tab>
-                  <Tab fx:id="tab_musicvideo" text="뮤직비디오 차트">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <StackPane minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
+                              <StackPane fx:id="stackPane_period" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                            </children></AnchorPane>
                      </content>
                   </Tab>
