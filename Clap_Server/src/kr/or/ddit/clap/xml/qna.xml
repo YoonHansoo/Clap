@@ -46,6 +46,12 @@
 	</insert>
 		
 	
+	<!--  문의사항 글을 삭제하는 쿼리 -->
+	<delete id="deleteQnaContent" parameterClass="String">
+			delete from qna where QNA_NO=#String#
+	 </delete>
+	
+	
 	
 
 </sqlMap>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -9,8 +10,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
 
-
-<AnchorPane minHeight="448.0" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaDetailContentController">
+<AnchorPane fx:id="main" minHeight="448.0" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaDetailContentController">
    <children>
       <Label text="고객센터" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="15.0">
          <font>
@@ -33,5 +33,6 @@
             <Text fx:id="Text_Content" strokeType="OUTSIDE" strokeWidth="0.0" text="문의 내용" />
          </children>
       </TextFlow>
+      <JFXButton fx:id="btn_delete" layoutX="475.0" layoutY="578.0" text="삭제하기" />
    </children>
 </AnchorPane>

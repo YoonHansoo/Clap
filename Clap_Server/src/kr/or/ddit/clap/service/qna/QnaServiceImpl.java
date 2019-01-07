@@ -53,6 +53,11 @@ public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 	public int insertQna(QnaVO vo) throws RemoteException {
 		return qnaDao.insertQna(vo);
 	}
+
+	@Override
+	public int deleteQnaContent(String qna_no) throws RemoteException {
+		return qnaDao.deleteQnaContent(qna_no);
+	}
 	
 
 }

@@ -15,5 +15,7 @@ public interface IQnaService extends Remote {
 	public QnaVO qnaDetailContent(String ContentNo) throws RemoteException;
 
 	public int insertQna(QnaVO vo) throws RemoteException;
+	
+	public int deleteQnaContent(String qna_no) throws RemoteException;
 
 }

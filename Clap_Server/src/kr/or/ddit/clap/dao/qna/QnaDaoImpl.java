@@ -77,7 +77,21 @@ public class QnaDaoImpl implements IQnaDao{
 		try {
 			Object obj = smc.insert("qna.insertQna", vo);
 		} catch(SQLException e) {
-			System.out.println("insertㅅㅠ");
+			System.out.println("insert실패");
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int deleteQnaContent(String qna_no) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.delete("qna.deleteQnaContent", qna_no);
+			
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		
