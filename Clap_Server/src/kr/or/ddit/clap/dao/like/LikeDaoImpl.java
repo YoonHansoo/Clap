@@ -65,5 +65,20 @@ public class LikeDaoImpl implements ILikeDao{
 		}
 		return cnt;
 	}
+
+	@Override
+	public List<LikeVO> selectAlbLike(LikeVO vo) {
+		List<LikeVO> list = new ArrayList<LikeVO>();
+		try {
+			
+			list = smc.queryForList("like.selectAlbLike",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 	
 }

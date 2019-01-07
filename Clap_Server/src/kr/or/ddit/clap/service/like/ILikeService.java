@@ -12,5 +12,7 @@ import kr.or.ddit.clap.vo.music.MusicLikeVO;
 public interface ILikeService extends Remote{
 	public List<LikeVO> selectMusLike(LikeVO vo) throws RemoteException;
 	public int deleteMusLike(LikeVO vo)throws RemoteException;
+	
+	public List<LikeVO> selectAlbLike(LikeVO vo) throws RemoteException;
 }
 
