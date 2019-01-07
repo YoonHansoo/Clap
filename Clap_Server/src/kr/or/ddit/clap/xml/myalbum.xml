@@ -7,7 +7,7 @@
 	
 	<update id="myalbuminsert" parameterClass="java.util.HashMap">
 		insert into myalbum (myalb_no, myalb_name, myalb_indate, mem_id)
-        values ( (select max(myalb_no)+1 from myalbum), #name#, sysdate, #id#)
+        values ( seq_myalb_no.nextval, #name#, sysdate, #id#)
 	</update>
 	
 	 <select id="myalbumselect" resultClass="myalbumVO" parameterClass="String">

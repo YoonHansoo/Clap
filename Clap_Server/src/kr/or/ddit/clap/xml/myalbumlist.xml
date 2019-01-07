@@ -6,8 +6,8 @@
 <sqlMap namespace="myalbumlist">
 	
 	<update id="myalbumlistinsert" parameterClass="java.util.HashMap">
-		insert into myalbum_list (myalb_no, mus_no, myalb_list_indate)
-        values ( #myalb_no#, #mus_no#, sysdate)
+		insert into myalbum_list (myalb_list_no, myalb_no, mus_no, myalb_list_indate)
+        values ( seq_myalb_list_no.nextval, #myalb_no#, #mus_no#, sysdate)
 	</update>
 	
 </sqlMap>			
