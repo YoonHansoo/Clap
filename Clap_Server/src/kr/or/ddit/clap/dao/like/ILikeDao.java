@@ -9,5 +9,9 @@ public interface ILikeDao {
 	public int deleteMusLike(LikeVO vo);
 	
 	public List<LikeVO> selectAlbLike(LikeVO vo);
+	public int deleteAlbLike(LikeVO vo);
+	
+	public List<LikeVO> selectRcmLike(LikeVO vo);
+	public int deleteRcmLike(LikeVO vo);
 
 }

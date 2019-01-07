@@ -80,5 +80,43 @@ public class LikeDaoImpl implements ILikeDao{
 		return list;
 	}
 
+	@Override
+	public int deleteAlbLike(LikeVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("like.deleteAlbLike",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<LikeVO> selectRcmLike(LikeVO vo) {
+		List<LikeVO> list = new ArrayList<LikeVO>();
+		try {
+			
+			list = smc.queryForList("like.selectRcmLike",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public int deleteRcmLike(LikeVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("like.deleteRcmLike",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 	
 }

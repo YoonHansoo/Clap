@@ -8,7 +8,7 @@
  	 <select id="selectMusLike" resultClass="LikeVO" parameterClass="LikeVO">
 	 	 select a.mem_id,
 				a.mus_no,
-				a.mus_like_date,
+				a.mus_like_date as like_date,
 				b.mus_title,
 				d.sing_name,
 				 d.sing_image,
@@ -28,8 +28,8 @@
 	 
 	 <select id="selectAlbLike"  resultClass="LikeVO" parameterClass="LikeVO" >
 	  select 	a.mem_id,
-				a.alb_no,
-				a.alb_like_date,
+				a.alb_no ,
+				a.alb_like_date as like_date,
 				d.sing_name,
                 b.mus_title,
 				d.sing_image,
@@ -41,12 +41,32 @@
                 and  a.mem_id=#mem_id#
 	 </select>
 
-<!-- 		<delete id="deleteAlbLike"  parameterClass="LikeVO">
-		delete from MUSIC_LIKE 
+	<delete id="deleteAlbLike"  parameterClass="LikeVO">
+		delete from album_like 
     		where 	mem_id=#mem_id# 
-   			 and	 mus_no=#mus_no#
+   			 and	 alb_no=#alb_no#
 	</delete>
-	 -->
+	
+	<select id="selectRcmLike" resultClass="LikeVO" parameterClass="LikeVO" >
+		
+		 select a.mem_id,
+				a.rcm_alb_no,
+				a.rcm_like_date as like_date,
+				c.rcm_alb_name as mus_title,
+                c.rcm_content as sing_name,
+				 c.rcm_alb_image as sing_image
+         from recommend_like a,  recommend_album c
+         	where  a.rcm_alb_no = c.rcm_alb_no
+                and  a.mem_id=#mem_id#
+	</select>
+	<delete id="deleteRcmLike"  parameterClass="LikeVO">
+		delete from recommend_like 
+    		where 	mem_id=#mem_id# 
+   			 and	 rcm_alb_no=#rcm_alb_no#
+	</delete>
+	
+	
+	
 </sqlMap>			
 
     
