@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
@@ -33,5 +34,6 @@
             <TreeTableColumn fx:id="col_qnaViewCnt" prefWidth="100.0" text="조회수" />
          </columns>
       </JFXTreeTableView>
+      <JFXButton fx:id="btn_ins" layoutX="829.0" layoutY="127.0" text="문의 글 작성" />
    </children>
 </AnchorPane>

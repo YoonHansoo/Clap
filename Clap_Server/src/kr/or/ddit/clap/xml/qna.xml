@@ -8,7 +8,7 @@
 	 
 	 
 	 <select id="selectListAll" resultClass="qnaVO">
-	 		select qna_no, qna_indate, qna_title,qna_view_cnt from qna
+	 		select qna_no, qna_indate, qna_title, qna_view_cnt from qna
 	 </select>
 	 
 	 
@@ -18,33 +18,32 @@
       </select>
 	 
 	 
-	 
-	<!-- 문의사항 글 등록 insert ////////////////
-	<insert id="insertSinger" parameterClass="singerVO">
-		<selectKey resultClass="int" keyProperty="id">
-		select SEQ_SING_NO.nextval as id
-		from dual
+	<!-- 문의사항 글 등록 insert -->
+	<insert id="insertQna" parameterClass="qnaVO">
+	<selectKey resultClass="String" keyProperty="qna_no">
+		select SEQ_QNA_NO.nextval from dual
 		</selectKey>
-	insert into singer (SING_NO,
-						SING_NAME,
-						SING_NATION,
-						SING_ACT_TYPE,
-						SING_DEBUT_MUS,
-						SING_ACT_ERA,
-						SING_IMAGE,
-						SING_DEBUT_ERA,
-						SING_INTRO)
-				values (#id#,
-						#sing_name#,
-						#sing_nation#,
-						#sing_act_type#,
-						#sing_debut_mus#,
-						#sing_act_era#,
-						#sing_image#,
-						#sing_debut_era#,
-						#sing_intro#)		
-	</insert> -->
+		insert into qna
+				(QNA_NO,
+                QNA_INDATE,
+                QNA_TITLE,
+                MEM_TEL,
+                MEM_EMAIL,
+                QNA_TYPE,
+                QNA_VIEW_CNT,
+                QNA_CONTENT,
+                MEM_ID)
+        values (#qna_no#,
+                sysdate,
+                #qna_title#,
+                #mem_tel#,
+                #mem_email#,
+                #qna_type#,
+                0,
+                #qna_content#,
+                #mem_id#)
 		   
+	</insert>
 		
 	
 	

@@ -32,6 +32,7 @@ import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
+import com.jfoenix.controls.JFXButton;
 
 public class QnaMenuController implements Initializable {
 
@@ -49,6 +50,8 @@ public class QnaMenuController implements Initializable {
 	TreeTableColumn<QnaVO, String> col_qnaViewCnt;
 	@FXML
 	AnchorPane main;
+	@FXML
+	JFXButton btn_ins;
 
 	private Registry reg;
 	private IQnaService iqs;
@@ -115,6 +118,23 @@ public class QnaMenuController implements Initializable {
 			}
 		});
 		
+		btn_ins.setOnAction(e ->{
+			
+			try {
+				// 바뀔 화면(FXML)을 가져옴	
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaMenuInsert.fxml"));// init실행됨
+				Parent QnaInsert = loader.load();
+				main.getChildren().removeAll();
+				main.getChildren().setAll(QnaInsert);
+
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+			
+			
+		});
+		
 
 	}
 
@@ -150,5 +170,5 @@ public class QnaMenuController implements Initializable {
 
 		return currentqnaList;
 	}
-
+	
 }

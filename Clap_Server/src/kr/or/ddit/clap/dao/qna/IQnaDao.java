@@ -19,5 +19,7 @@ public interface IQnaDao {
 	
 	public QnaVO qnaDetailContent(String title) throws RemoteException;
 	
+	public int insertQna(QnaVO vo);
+	
 
 }

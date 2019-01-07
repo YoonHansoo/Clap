@@ -9,6 +9,7 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
@@ -29,11 +30,11 @@ public class QnaContentInsertController implements Initializable {
 	
 	private Registry reg;
 	private IQnaService iqs;
-	public QnaVO qVO;
+	public QnaVO qVO = new QnaVO();
 	//public MemberVO mVO;
 	
 	@FXML
-	ComboBox Com_Type;
+	ComboBox<String> Com_Type;
 	@FXML
 	JFXTextField Text_QnaMemTel;
 	@FXML
@@ -41,16 +42,14 @@ public class QnaContentInsertController implements Initializable {
 	@FXML
 	JFXTextField Text_QnaTitle;
 	@FXML
-	JFXTextField Text_QnaContent;
+	JFXTextArea Text_QnaContent;
 	@FXML
 	Label Lb_MemId;
 	@FXML
 	JFXButton btn_Add;
 	@FXML
-	AnchorPane head;
+	AnchorPane main;
 	
-	String type; //combo_Type 값
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -66,14 +65,10 @@ public class QnaContentInsertController implements Initializable {
 		
 		Com_Type.getItems().addAll("이용방법","벨/링","선물하기","이벤트","결제/요금제","음원오류","14세 미만 가입/승인","인증 문의","회원/로그인","다운로드","오류문의","개선사항","기타");
 		Com_Type.setValue("선택하세요");
-		Com_Type.setOnAction(e -> {
-			type = Com_Type.getValue().toString();
-		});
 		
 		MemberVO mVO = new MemberVO();
 		
 		Lb_MemId.setText(LoginSession.session.getMem_id()); //현재 로그인한 사용자
-		//Lb_MemId.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
 		Text_QnaMemTel.setText(LoginSession.session.getMem_tel());
 		Text_QnaMemEmail.setText(LoginSession.session.getMem_email());
 		//Text_QnaMemTel.setText(mVO.getMem_tel());
@@ -81,23 +76,32 @@ public class QnaContentInsertController implements Initializable {
 		//연락처 , 이메일 db에서 가져오기
 		
 		btn_Add.setOnAction(e -> {
+			
 			if(Text_QnaTitle.getText().isEmpty() || Text_QnaContent.getText().isEmpty()) {
-				errMsg("작업오류" , "빈 항목이 잇습니다.");
+				errMsg("작업오류" , "빈 항목이 있습니다.");
 				return;
 			} else {
-				qVO.setQna_type(type);
+				qVO.setQna_type(Com_Type.getValue());
 				qVO.setMem_tel(Text_QnaMemTel.getText());
 				qVO.setMem_email(Text_QnaMemEmail.getText());
-				qVO.setQna_title(Text_QnaContent.getText());
+				qVO.setQna_title(Text_QnaTitle.getText());
 				qVO.setQna_content(Text_QnaContent.getText());
+				qVO.setMem_id(LoginSession.session.getMem_id());
+				
+				try {
+					int flag=iqs.insertQna(qVO);
+				} catch (RemoteException ee) {
+					
+					ee.printStackTrace();
+				}
 				
 				infoMsg("등록 완료", "문의사항 - 글 작성이 완료되었습니다.");
 				
 				Parent root1;
 				try {
 					root1 = FXMLLoader.load(getClass().getResource("QnaMenuList.fxml"));
-					head.getChildren().removeAll();
-					head.getChildren().setAll(root1);
+					main.getChildren().removeAll();
+					main.getChildren().setAll(root1);
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}

@@ -70,6 +70,19 @@ public class QnaDaoImpl implements IQnaDao{
 
 		return qVO;
 	}
+
+	@Override
+	public int insertQna(QnaVO vo) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("qna.insertQna", vo);
+		} catch(SQLException e) {
+			System.out.println("insertㅅㅠ");
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
 		
 		
 	}
