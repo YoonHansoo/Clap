@@ -145,7 +145,6 @@ public class JoinController implements Initializable{
 		captchaKey = captchaKey();
 		captchaImage(captchaKey);
 		
-		
 	}
 	
 	public void captchaImage(String CaptchaKey) {
