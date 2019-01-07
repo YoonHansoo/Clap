@@ -37,7 +37,7 @@ public class LikeController implements Initializable {
 	private Registry reg;
 	private ILikeService ilks;
 
-	int no;
+	private int no;
 	@FXML
 	JFXTreeTableView<LikeVO> tbl_like;
 	@FXML
@@ -64,6 +64,7 @@ public class LikeController implements Initializable {
 	@FXML
 	JFXCheckBox chbox_main;
 	@FXML AnchorPane Head;
+	@FXML AnchorPane contents;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -75,25 +76,14 @@ public class LikeController implements Initializable {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		col_Img.setCellValueFactory(
-				param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
+		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 		col_No.setCellValueFactory(param -> new SimpleStringProperty("" + no++));
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
-
 		col_MusInfo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_title()));
-
 		col_Alb.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAlb_name()));
-		col_LikeIndate
-				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_like_date()));
-//tbl_like.col
-		// CheckBox chbox = new CheckBox();
-
-		col_Checks.setCellValueFactory(
-				param -> new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getChBox()));
-
-		
-		col_Like.setCellValueFactory(
-				param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getBtnLike()));
+		col_LikeIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getlike_date()));
+		col_Checks.setCellValueFactory(param -> new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getChBox()));
+		col_Like.setCellValueFactory(param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getBtnLike()));
 
 		String user_id = LoginSession.session.getMem_id();
 		LikeVO vo = new LikeVO();
@@ -184,12 +174,10 @@ public class LikeController implements Initializable {
 	@FXML 
 	public void btn_alb() {
 		try {
-			Parent root1 = FXMLLoader.load(getClass().getResource("albLike.fxml"));
+			Parent root1 = FXMLLoader.load(getClass().getResource("alblike.fxml"));
 			System.out.println("앨범");
-			
-			
-			Head.getChildren().removeAll();
-			Head.getChildren().setAll(root1);
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root1);
 			
 		} catch (IOException e) {
 			e.printStackTrace();

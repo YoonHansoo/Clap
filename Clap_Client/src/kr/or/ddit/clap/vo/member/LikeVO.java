@@ -23,7 +23,11 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	private ILikeService ilks;
 	
 	private String mus_no;
-	private String mus_like_date;
+	private String alb_no;
+	private String its_no;
+	private String rcm_alb_no;
+	
+	private String like_date;
 	private String mus_title;
 	private String sing_name;
 	private String alb_name;
@@ -31,19 +35,88 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	private String mem_id;
 	private ImageView imgView; 
 	private JFXCheckBox chBox;
-	private JFXButton btnLike;
+	private JFXButton mubtnLike;
+	private JFXButton albbtnLike;
+	private JFXButton itsbtnLike;
+	private JFXButton rcmbtnLike;
 	
+	
+	
+	public JFXButton getRcmbtnLike() {
+		this.rcmbtnLike= new JFXButton();
+		return rcmbtnLike;
+	}
+	public void setRcmbtnLike(JFXButton rcmbtnLike) {
+		this.rcmbtnLike = rcmbtnLike;
+	}
+	public String getRcm_alb_no() {
+		return rcm_alb_no;
+	}
+	public void setRcm_alb_no(String rcm_alb_no) {
+		this.rcm_alb_no = rcm_alb_no;
+	}
+	public String getAlb_no() {
+		return alb_no;
+	}
+	public void setAlb_no(String alb_no) {
+		this.alb_no = alb_no;
+	}
+	public String getIts_no() {
+		return its_no;
+	}
+	public void setIts_no(String its_no) {
+		this.its_no = its_no;
+	}
+	public JFXButton getAlbbtnLike() {
+		this.albbtnLike= new JFXButton();
+		albbtnLike.setId(alb_no);
+		albbtnLike.setText("앨범♥");
+		albbtnLike.setPrefSize(90, 70);
+		albbtnLike.setOnAction(e2->{ 
+			
+			try {
+				reg = LocateRegistry.getRegistry("localhost", 8888);
+				ilks = (ILikeService) reg.lookup("like");
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (NotBoundException e) {
+				e.printStackTrace();
+			}
+			String user_id1 = LoginSession.session.getMem_id();
+			LikeVO vo1 = new LikeVO();
+			vo1.setMem_id(user_id1);
+			vo1.setAlb_no(albbtnLike.getId());
+			try {
+			List<Integer> liset = FXCollections.observableArrayList(ilks.deleteAlbLike(vo1));
+			} catch (RemoteException e) {
+				System.out.println("에러");
+				e.printStackTrace();
+			}
+			
+		});
+		
+		return this.albbtnLike;
+	}
+	public void setAlbbtnLike(JFXButton albbtnLike) {
+		this.albbtnLike = albbtnLike;
+	}
+	public JFXButton getItsbtnLike() {
+		return itsbtnLike;
+	}
+	public void setItsbtnLike(JFXButton itsbtnLike) {
+		this.itsbtnLike = itsbtnLike;
+	}
 	public String getMus_no() {
 		return mus_no;
 	}
 	public void setMus_no(String mus_no) {
 		this.mus_no = mus_no;
 	}
-	public String getMus_like_date() {
-		return mus_like_date;
+	public String getlike_date() {
+		return like_date;
 	}
-	public void setMus_like_date(String mus_like_date) {
-		this.mus_like_date = mus_like_date;
+	public void setlike_date(String like_date) {
+		this.like_date = like_date;
 	}
 	public String getMus_title() {
 		return mus_title;
@@ -111,13 +184,13 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		this.chBox = chBox;
 	}
 	public JFXButton getBtnLike() {
-		this.btnLike = new JFXButton();
-		btnLike.setId(mus_no);
+		this.mubtnLike = new JFXButton();
+		mubtnLike.setId(mus_no);
 		
 		//FontAwesomeIcon iconName="PENCIL" />
-		btnLike.setText("♥");
-		btnLike.setPrefSize(90, 70);
-		btnLike.setOnAction(e2->{ 
+		mubtnLike.setText("곡♥");
+		mubtnLike.setPrefSize(90, 70);
+		mubtnLike.setOnAction(e2->{ 
 			
 			try {
 				reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -132,28 +205,20 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 			String user_id = LoginSession.session.getMem_id();
 			LikeVO vo = new LikeVO();
 			vo.setMem_id(user_id);
-			vo.setMus_no(btnLike.getId());
+			vo.setMus_no(mubtnLike.getId());
 			try {
 				ObservableList<Integer> cnt = FXCollections.observableArrayList(ilks.deleteMusLike(vo));
 			} catch (RemoteException e) {
 				System.out.println("에러");
 				e.printStackTrace();
 			}
-			
-/*			
-			try {
-			List<LikeVO>liset = FXCollections.observableArrayList(ilks.selectMusLike(vo));
-			} catch (RemoteException e) {
-				System.out.println("에러");
-				e.printStackTrace();
-			}
-			*/
+		
 		});
 		
-		return this.btnLike;
+		return this.mubtnLike;
 	}
 	public void setBtnLike(JFXButton btnLike) {
-		this.btnLike = btnLike;
+		this.mubtnLike = btnLike;
 	}
 	
 	
