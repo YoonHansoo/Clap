@@ -59,6 +59,7 @@ public class MusicMainController implements Initializable {
 	@FXML ImageView new8;
 
 	LoginSession ls = new LoginSession();
+	public Stage musicplayer = new Stage();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -264,7 +265,17 @@ public class MusicMainController implements Initializable {
 	
 	@FXML
 	public void musicPlayer(ActionEvent event) { // MusicPlayer를 클릭 했을 때.
-
+		
+		try {
+			AnchorPane root = FXMLLoader.load(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
+			Scene scene = new Scene(root);
+			musicplayer.setTitle("MusicPlayer");
+			musicplayer.setScene(scene);
+			musicplayer.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }
