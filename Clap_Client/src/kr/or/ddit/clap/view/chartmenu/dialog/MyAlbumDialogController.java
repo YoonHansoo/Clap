@@ -90,11 +90,11 @@ public class MyAlbumDialogController implements Initializable{
 						myAlbumList.put("mus_no", mus_no.get(i));
 						imals.myAlbumListInsert(myAlbumList);
 						
-						albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
-						root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
-						t_table.setRoot(root);
+						
 					}
-					
+					albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
+					root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
+					t_table.setRoot(root);
 					
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
