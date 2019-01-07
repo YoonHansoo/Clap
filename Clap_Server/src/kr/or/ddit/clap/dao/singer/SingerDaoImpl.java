@@ -9,7 +9,6 @@ package kr.or.ddit.clap.dao.singer;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;

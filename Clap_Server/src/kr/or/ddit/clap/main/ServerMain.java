@@ -3,6 +3,8 @@ package kr.or.ddit.clap.main;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import kr.or.ddit.clap.service.album.AlbumServiceImpl;
+import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
 import kr.or.ddit.clap.service.like.ILikeService;
@@ -39,6 +41,8 @@ public class ServerMain {
 			ILikeService ilks = LikeServiceImpl.getInstance(); // 좋아요
 			IMyAlbumService imas = MyAlbumServiceImpl.getInstance(); // 마이앨범
 			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); // 마이앨범리스트
+			IAlbumService ias = AlbumServiceImpl.getInstance(); //앨범
+			
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -52,6 +56,9 @@ public class ServerMain {
 			reg.rebind("like", ilks);
 			reg.rebind("myalbum", imas);
 			reg.rebind("myalbumlist", imals);
+			reg.rebind("album", ias);
+			
+			
 			 System.out.println("clap server  is running...");
 			  
 		} catch (Exception e) {
