@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="38.0" layoutY="49.0" text="공지사항" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <JFXTabPane layoutX="99.0" layoutY="121.0" prefWidth="500.0" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="62.0">
+         <tabs>
+            <Tab text="공지사항" />
+         </tabs>
+      </JFXTabPane>
+      <Line endX="900.0" stroke="#0485ee" strokeWidth="2.0" AnchorPane.leftAnchor="52.5" AnchorPane.topAnchor="60.0" />
+      <JFXTreeTableView layoutX="208.0" layoutY="140.0" prefHeight="490.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="160.0">
+         <columns>
+            <TreeTableColumn prefWidth="106.0" text="Column X" />
+            <TreeTableColumn prefWidth="548.0" text="Column X" />
+            <TreeTableColumn prefWidth="97.0" text="Column X" />
+            <TreeTableColumn prefWidth="98.0" text="Column X" />
+         </columns>
+      </JFXTreeTableView>
+      <Pagination layoutX="78.0" layoutY="190.0" prefHeight="552.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="190.0" />
+   </children>
+</AnchorPane>
