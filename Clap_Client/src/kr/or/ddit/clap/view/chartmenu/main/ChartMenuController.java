@@ -30,6 +30,7 @@ public class ChartMenuController implements Initializable{
 	@FXML Tab tab_musicvideo;
 	@FXML AnchorPane main;
 	@FXML StackPane stackPane_top50;
+	@FXML StackPane stackPane_genre;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -41,16 +42,14 @@ public class ChartMenuController implements Initializable{
 			stackPane_top50.getChildren().removeAll();
 			stackPane_top50.getChildren().setAll(pane);
 			
+			StackPane pane2 = FXMLLoader.load(getClass().getResource("../genre/Genre.fxml"));
+			stackPane_genre.getChildren().removeAll();
+			stackPane_genre.getChildren().setAll(pane2);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		
-		
 	}
 	
 }

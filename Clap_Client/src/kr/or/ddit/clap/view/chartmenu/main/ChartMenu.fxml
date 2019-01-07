@@ -35,7 +35,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <StackPane minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
+                              <StackPane fx:id="stackPane_genre" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                            </children></AnchorPane>
                      </content>
                   </Tab>

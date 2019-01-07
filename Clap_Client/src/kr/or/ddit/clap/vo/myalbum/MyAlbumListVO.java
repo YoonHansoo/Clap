@@ -4,10 +4,17 @@ import java.io.Serializable;
 
 public class MyAlbumListVO implements Serializable{
 	
+	private String myalb_list_no;
 	private String myalb_no;
 	private String mus_no;
 	private String myalb_list_indate;
 	
+	public String getMyalb_list_no() {
+		return myalb_list_no;
+	}
+	public void setMyalb_list_no(String myalb_list_no) {
+		this.myalb_list_no = myalb_list_no;
+	}
 	public String getMyalb_no() {
 		return myalb_no;
 	}
