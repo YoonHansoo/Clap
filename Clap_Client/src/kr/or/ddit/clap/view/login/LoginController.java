@@ -37,6 +37,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
@@ -62,6 +63,7 @@ public class LoginController implements Initializable{
 	@FXML JFXTextField txt_captcha;
 	@FXML JFXPasswordField txt_pw;
 	@FXML Button btn_login;
+	@FXML VBox box;
 	@FXML HBox box1;
 	@FXML HBox box2;
 	@FXML HBox box3;
@@ -332,17 +334,13 @@ public class LoginController implements Initializable{
 	}
 	
 	public void search() {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("Search.fxml"));
-		BorderPane root = null;
 		try {
-			root = loader.load();
+			Parent root = FXMLLoader.load(getClass().getResource("Search.fxml"));
+			box.getChildren().removeAll();
+			box.getChildren().setAll(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		Scene scene = new Scene(root);
-		Stage primaryStage = (Stage) txt_id.getScene().getWindow();
-		primaryStage.setScene(scene);
 	}
 	
 }
