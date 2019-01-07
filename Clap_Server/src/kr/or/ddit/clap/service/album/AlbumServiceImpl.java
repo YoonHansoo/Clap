@@ -46,6 +46,21 @@ public class AlbumServiceImpl extends UnicastRemoteObject implements IAlbumServi
 		return albumDao.searchList(vo);
 	}
 
+	@Override
+	public int insertAlbum(AlbumVO vo) throws RemoteException {
+		return albumDao.insertAlbum(vo);
+	}
+
+	@Override
+	public AlbumVO albumDetailInfo(String albumNo) throws RemoteException {
+		return albumDao.albumDetailInfo(albumNo);
+	}
+
+	@Override
+	public int selectAlbumLikeCnt(String albumNo) throws RemoteException {
+		return albumDao.selectAlbumLikeCnt(albumNo);
+	}
+
 	
 
 	

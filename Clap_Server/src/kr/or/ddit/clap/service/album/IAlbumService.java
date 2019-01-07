@@ -17,13 +17,16 @@ public interface IAlbumService extends Remote {
 	
 	public List<AlbumVO> searchList(AlbumVO vo) throws RemoteException;
 	
-	/*public SingerVO singerDetailInfo(String singerNo) throws RemoteException;
+	public int insertAlbum(AlbumVO vo) throws RemoteException;
 	
-	public int selectSingerLikeCnt(String singerNo) throws RemoteException;
+	public AlbumVO albumDetailInfo(String albumNo) throws RemoteException;
+	
+	public int selectAlbumLikeCnt(String albumNo) throws RemoteException;
+	/*
+	
 	
 	public int updateSingerInfo(SingerVO vo) throws RemoteException;
 	
-	public int insertSinger(SingerVO vo) throws RemoteException;
 	
 	 public int deleteSinger(String singerNo) throws RemoteException;*/
 }

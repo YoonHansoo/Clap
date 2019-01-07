@@ -17,7 +17,8 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-import kr.or.ddit.clap.vo.album.AlbumVO; 
+import kr.or.ddit.clap.vo.album.AlbumVO;
+import kr.or.ddit.clap.vo.singer.SingerVO; 
 
 public class AlbumDaoImpl implements IAlbumDao {
 
@@ -71,6 +72,47 @@ public class AlbumDaoImpl implements IAlbumDao {
 			} 
 			
 			return list;
+		}
+
+		@Override
+		public int insertAlbum(AlbumVO vo) {
+			int cnt = 0;
+			try {
+			Object obj = smc.insert("album.insertAlbum", vo);
+			if(obj == null) { //쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			return cnt;
+		
+		}
+
+		@Override
+		public AlbumVO albumDetailInfo(String albumNo) {
+			AlbumVO aVO = new AlbumVO();
+			try {
+				
+				aVO = (AlbumVO) smc.queryForObject("album.albumDetailInfo", albumNo);
+			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			
+			return aVO;
+		}
+
+		@Override
+		public int selectAlbumLikeCnt(String albumNo) {
+			int singerLikeCnt = 0;
+			
+			try {
+				singerLikeCnt = (int) smc.queryForObject("album.selectAlbumLikeCnt",albumNo);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return singerLikeCnt;
 		}
 
 }

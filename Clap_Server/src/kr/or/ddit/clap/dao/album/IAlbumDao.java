@@ -15,14 +15,17 @@ public interface IAlbumDao {
 	public List<AlbumVO> selectListAll();
 	
 	public List<AlbumVO> searchList(AlbumVO vo);
-	/*
-	public SingerVO singerDetailInfo(String singerNo);
 	
-	public int selectSingerLikeCnt(String singerNo);
+	public int insertAlbum(AlbumVO vo);
+	
+public AlbumVO albumDetailInfo(String albumNo);
+
+	public int selectAlbumLikeCnt(String albumNo);
+	
+	/*
 	
 	public int updateSingerInfo(SingerVO vo);
 	
-	public int insertSinger(SingerVO vo);
 	
 	 public int deleteSinger(String singerNo);*/
 }
