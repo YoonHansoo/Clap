@@ -130,38 +130,41 @@ public class PeriodController implements Initializable{
 	}
 	
 	@FXML public void interiorChart() {
+		
 		try {
-			interiorRank = FXCollections.observableArrayList(imhs.genreSelect("1"));
+			Calendar cal = Calendar.getInstance();
+			String year = "";
+			year = ""+(cal.get(Calendar.YEAR)-1);
+			la_Date.setText(year);
+			year = (year.substring(year.length()-2, year.length()));
+			
+			interiorRank = FXCollections.observableArrayList(imhs.interiorSelect(year));
 			btn_Interior.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_Foreign.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			Calendar cal = Calendar.getInstance();
-			String toDay = "";
-			toDay = ""+(cal.get(Calendar.YEAR)-1);
-			la_Date.setText(toDay);
-			
 			musicList.musicList(interiorRank);
-			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+		
 	}
 
 	@FXML public void foreignChart() {
+		
 		try {
-			foreignRank = FXCollections.observableArrayList(imhs.genreSelect("1"));
+			Calendar cal = Calendar.getInstance();
+			String year = "";
+			year = ""+(cal.get(Calendar.YEAR)-1);
+			la_Date.setText(year);
+			year = (year.substring(year.length()-2, year.length()));
+			foreignRank = FXCollections.observableArrayList(imhs.foreignSelect(year));
+			
 			btn_Interior.setStyle("-fx-background-color:#FFFFFF;");
 			btn_Foreign.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			Calendar cal = Calendar.getInstance();
-			String toDay = "";
-			toDay = ""+(cal.get(Calendar.YEAR)-1);
-			la_Date.setText(toDay);
-			
-			musicList.musicList(interiorRank);
-			
+			musicList.musicList(foreignRank);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
