@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTreeTableView;
 
 public class NoticeMenuController implements Initializable {
-	
+	/*
 	private Registry reg;
 	private INoticeBoardService ins;
 	public NoticeBoardVO nVO = new NoticeBoardVO();
@@ -39,20 +39,20 @@ public class NoticeMenuController implements Initializable {
 	@FXML
 	Pagination n_paging;
 	
-	
+	*/
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		try {
+		/*try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ins = (INoticeBoardService) reg.lookup("notice");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 	}

@@ -5,7 +5,6 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 import kr.or.ddit.clap.vo.member.LikeVO;
-import kr.or.ddit.clap.vo.music.MusicLikeVO;
 
 public interface ILikeService extends Remote{
 	public List<LikeVO> selectMusLike(LikeVO vo) 		throws RemoteException;
@@ -16,5 +15,9 @@ public interface ILikeService extends Remote{
 	
 	public List<LikeVO> selectRcmLike(LikeVO vo)		throws RemoteException;
 	public int deleteRcmLike(LikeVO vo)					throws RemoteException;
+	
+	public List<LikeVO> selectSingLike(LikeVO vo)		throws RemoteException;
+	public int deleteSingLike(LikeVO vo)					throws RemoteException;
+
 }
 
