@@ -115,4 +115,30 @@ public class AlbumDaoImpl implements IAlbumDao {
 			return singerLikeCnt;
 		}
 
+		@Override
+		public int updateAlbumInfo(AlbumVO vo) {
+			int cnt = 0;
+			try {
+			cnt = smc.update("album.updateAlbumInfo",vo);
+			} catch (SQLException e) {
+
+				e.printStackTrace();
+			} 
+			return cnt;
+			
+		}
+
+		@Override
+		public int deleteAlbum(String albumNo) {
+			
+			int cnt = 0;
+			try {
+				cnt = smc.delete("album.deleteAlbum",albumNo);
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
+			return cnt;
+		}
+
 }

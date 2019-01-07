@@ -31,24 +31,25 @@
     </select>  
       
       <select id="singerDetailInfo" resultClass="singerVO" parameterClass="String">
-               select  a.ALB_NO,
-				a.ALB_NAME,
-				a.ALB_SALEDATE,
-				a.ALB_IMAGE,
-				a.ALB_INTRO,
-				a.ALB_SALE_ENTER,
-				a.ALB_ENTERTAIN,
-				b.SING_NAME
-		  from ALBUM a, SINGER b
-		  WHERE a.SING_NO = b.SING_NO
-		    and a.ALB_NO =#String#;
+             select SING_NO,
+            SING_NAME,
+            SING_NATION,
+            SING_INDATE,
+            SING_ACT_TYPE,
+            SING_DEBUT_MUS,
+            SING_ACT_ERA,
+            SING_IMAGE,
+            SING_DEBUT_ERA,
+            SING_INTRO
+        from SINGER
+        WHERE SING_NO = #String#
       </select>
    
    <!-- //좋이요 갯수 쿼리 --> 
-   <select id = "selectAlbumLikeCnt" resultClass="int" parameterClass="String">
-   	select count(ALB_NO)
-  		from ALB_LIKE
-  	   where alb_no =#String#
+   <select id = "selectSingerLikeCnt" resultClass="int" parameterClass="String">
+   	select count(SING_NO)
+  		from SINGER
+  	   where SING_NO =#String#
    </select>
    
    <!-- 가수정보 수정 쿼리 -->

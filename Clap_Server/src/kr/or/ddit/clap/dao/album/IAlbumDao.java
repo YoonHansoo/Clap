@@ -22,10 +22,8 @@ public AlbumVO albumDetailInfo(String albumNo);
 
 	public int selectAlbumLikeCnt(String albumNo);
 	
-	/*
+	public int updateAlbumInfo(AlbumVO vo);
+
 	
-	public int updateSingerInfo(SingerVO vo);
-	
-	
-	 public int deleteSinger(String singerNo);*/
+	 public int deleteAlbum(String albumNo);
 }

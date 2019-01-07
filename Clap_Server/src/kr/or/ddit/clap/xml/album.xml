@@ -76,10 +76,11 @@
 				a.ALB_INTRO,
 				a.ALB_SALE_ENTER,
 				a.ALB_ENTERTAIN,
-				b.SING_NAME
+				b.SING_NAME,
+				a.SING_NO
 		  from ALBUM a, SINGER b
 		  WHERE a.SING_NO = b.SING_NO
-		    and a.ALB_NO =#String#;
+		    and a.ALB_NO =#String#
 	</select>
 
 	<!-- //좋이요 갯수 쿼리 -->
@@ -87,11 +88,29 @@
 		parameterClass="String">
 		  select count(ALB_NO)
 		from ALBUM_LIKE
-		where ALB_NO =#String#;
+		where ALB_NO =#String#
 	</select>
 
 
+ <!-- 가수정보 수정 쿼리 -->
+   <update id="updateAlbumInfo" parameterClass="albumVO">
+	 		update album set 
+	 								ALB_NAME 		= #alb_name#,
+	 								ALB_SALEDATE 	= #alb_saledate#,
+	 								ALB_IMAGE 	= #alb_image#,
+	 								ALB_INTRO  = #alb_intro#,
+	 								ALB_SALE_ENTER 	= #alb_sale_enter#,
+	 								ALB_ENTERTAIN		= #alb_entertain#,
+	 								SING_NO	= #sing_no#
+	 			        	where ALB_NO=#alb_no#
+	 </update>
 
+
+
+
+ <delete id="deleteAlbum" parameterClass="String">
+			delete from album where ALB_NO=#String#
+	 </delete>
 </sqlMap>         
 
 
