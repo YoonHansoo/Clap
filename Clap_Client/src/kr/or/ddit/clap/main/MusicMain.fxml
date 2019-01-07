@@ -170,22 +170,22 @@
                         <Font size="20.0" />
                      </font>
                   </JFXButton>
-                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="770.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="new8" fitHeight="100.0" fitWidth="170.0" layoutX="770.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="546.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="new7" fitHeight="100.0" fitWidth="170.0" layoutX="546.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="310.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="new6" fitHeight="100.0" fitWidth="170.0" layoutX="310.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="170.0" layoutX="83.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="new5" fitHeight="100.0" fitWidth="170.0" layoutX="83.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@image.png" />
                      </image>

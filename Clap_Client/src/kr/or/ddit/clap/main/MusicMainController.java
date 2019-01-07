@@ -53,6 +53,10 @@ public class MusicMainController implements Initializable {
 	@FXML ImageView new2;
 	@FXML ImageView new3;
 	@FXML ImageView new4;
+	@FXML ImageView new5;
+	@FXML ImageView new6;
+	@FXML ImageView new7;
+	@FXML ImageView new8;
 
 	LoginSession ls = new LoginSession();
 
@@ -91,7 +95,8 @@ public class MusicMainController implements Initializable {
 			mem_img.setImage(img);
 		}
 		
-		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg"};
+		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"
+				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "XX.jpg"};
 		Image[] images = new Image[names.length];
 		
 		for(int i=0; i<names.length; i++) {
@@ -102,6 +107,10 @@ public class MusicMainController implements Initializable {
 		new2.setImage(images[2]);
 		new3.setImage(images[0]);
 		new4.setImage(images[1]);
+		new5.setImage(images[4]);
+		new6.setImage(images[5]);
+		new7.setImage(images[6]);
+		new8.setImage(images[7]);
 	}
 
 	@FXML
