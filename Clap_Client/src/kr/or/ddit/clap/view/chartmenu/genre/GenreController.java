@@ -48,23 +48,26 @@ public class GenreController implements Initializable{
 
 	@FXML VBox mainBox;
 	@FXML JFXCheckBox cb_main;
-	@FXML JFXButton btn_ToDay;
-	@FXML JFXButton btn_Week;
-	@FXML JFXButton btn_Month;
+	@FXML JFXButton btn_Song;
+	@FXML JFXButton btn_Pop;
+	@FXML JFXButton btn_Ost;
+	@FXML JFXButton btn_Other;
 	@FXML Label la_Date;
 	@FXML StackPane stackpane;
 	
 	private Registry reg;
 	private IMusicHistoryService imhs;
 	private MusicList musicList;
-	private ObservableList<Map> toDayRank;
-	private ObservableList<Map> weekRank;
-	private ObservableList<Map> monthRank;
+	private ObservableList<Map> songRank;
+	private ObservableList<Map> popRank;
+	private ObservableList<Map> ostRank;
+	private ObservableList<Map> otherRank;
 	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPlayList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -82,7 +85,7 @@ public class GenreController implements Initializable{
 								  btnMovieList, mainBox, stackpane);
 		
 		// 일간 조회 차트 
-		toDayChart();
+		songChart();
 	}
 	
 	// 메인 재생 버튼 이벤트
@@ -129,13 +132,14 @@ public class GenreController implements Initializable{
 		return list;
 	}
 	
-	// 일간차트
-	@FXML public void toDayChart() {
+	// 가요장르
+	@FXML public void songChart() {
 		try {
-			toDayRank = FXCollections.observableArrayList(imhs.toDaySelect());
-			btn_ToDay.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
-			btn_Month.setStyle("-fx-background-color:#FFFFFF;");
+			songRank = FXCollections.observableArrayList(imhs.toDaySelect());
+			btn_Song.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
 			Calendar cal = Calendar.getInstance();
@@ -144,97 +148,76 @@ public class GenreController implements Initializable{
 					"." + cal.get(Calendar.DAY_OF_MONTH);
 			la_Date.setText(toDay);
 			
-			musicList.musicList(toDayRank);
+			musicList.musicList(songRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	// 주간차트
-	@FXML public void weekChart() {
+	// POP장르
+	@FXML public void popChart() {
 		try {
-			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
-			btn_Week.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-			btn_Month.setStyle("-fx-background-color:#FFFFFF;");
+			popRank = FXCollections.observableArrayList(imhs.toDaySelect());
+			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
 			Calendar cal = Calendar.getInstance();
-			Calendar cal2 = Calendar.getInstance();
-			cal.add(Calendar.DATE, -7);
-			System.out.println(cal.get(Calendar.DAY_OF_MONTH));
-			int temp = 0; 
-			int beforeWeek = 0; // 지난주차
-			
-			// 주자 월요일 날짜 구하기
-			if (cal.get(Calendar.DAY_OF_WEEK) > 2) {
-				temp = cal.get(Calendar.DAY_OF_WEEK) - 2;
-			}else if (cal.get(Calendar.DAY_OF_WEEK) < 2) {
-				temp = 6;
-			}
-			cal.add(Calendar.DATE, -temp);
-			
-			// 몇주차 구하기
-			int count = 1;
-			cal2.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
-			System.out.println(cal2.get(Calendar.MONTH));
-			
-			while(cal2.get(Calendar.DAY_OF_WEEK) != 2 ) {
-				count++;
-				cal2.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), count);
-			}
-			
-			int first_week = cal2.get(Calendar.DAY_OF_MONTH);
-			int last_week = cal.get(Calendar.DAY_OF_MONTH); 
-			
-			for(; first_week<=last_week; first_week+=7) {
-				beforeWeek++;
-			}
-			
-			String toDay = cal.get(Calendar.YEAR) + "." + (cal.get(Calendar.MONTH) +1) + "." + beforeWeek+"주차";
-			
+			String toDay = "";
+			toDay = cal.get(Calendar.YEAR)+"." + (cal.get(Calendar.MONTH)+1) + 
+					"." + cal.get(Calendar.DAY_OF_MONTH);
 			la_Date.setText(toDay);
 			
-			Map day = new HashMap<String,String>();
-			
-			String startday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
-			cal.add(Calendar.DATE, 6);
-			String endday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
-			day.put("startday", startday);
-			
-			day.put("endday", endday);
-			
-			weekRank = FXCollections.observableArrayList(imhs.periodSelect(day));
-			musicList.musicList(weekRank);
+			musicList.musicList(popRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	// 월간 차트
-	@FXML public void monthChart() {
+
+	// OST장르
+	@FXML public void ostChart() {
 		try {
-			
-			btn_ToDay.setStyle("-fx-background-color:#FFFFFF;");
-			btn_Week.setStyle("-fx-background-color:#FFFFFF;");
-			btn_Month.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			ostRank = FXCollections.observableArrayList(imhs.toDaySelect());
+			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
 			Calendar cal = Calendar.getInstance();
-			cal.add(Calendar.MONTH, -1);
-			String monthText = cal.get(Calendar.YEAR)+"."+(cal.get(Calendar.MONTH)+1);
-			la_Date.setText(monthText);
+			String toDay = "";
+			toDay = cal.get(Calendar.YEAR)+"." + (cal.get(Calendar.MONTH)+1) + 
+					"." + cal.get(Calendar.DAY_OF_MONTH);
+			la_Date.setText(toDay);
 			
-			Map month = new HashMap<String,String>();
-			cal.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
-			String startday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.get(Calendar.DAY_OF_MONTH);
-			String endday = cal.get(Calendar.YEAR)+"/" + (cal.get(Calendar.MONTH)+1) + "/" + cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-			month.put("startday", startday);
-			month.put("endday", endday);
+			musicList.musicList(ostRank);
 			
-			monthRank = FXCollections.observableArrayList(imhs.periodSelect(month)); // 맵에서 가져왓어요
-			musicList.musicList(monthRank);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 그 외 장르
+	@FXML public void otherChart() {
+		try {
+			otherRank = FXCollections.observableArrayList(imhs.toDaySelect());
+			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			cb_main.setSelected(false);
+			
+			Calendar cal = Calendar.getInstance();
+			String toDay = "";
+			toDay = cal.get(Calendar.YEAR)+"." + (cal.get(Calendar.MONTH)+1) + 
+					"." + cal.get(Calendar.DAY_OF_MONTH);
+			la_Date.setText(toDay);
+			
+			musicList.musicList(otherRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
