@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="812.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
    <top>
       <VBox prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -84,7 +84,7 @@
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin></Label>
-                  <JFXPasswordField fx:id="txt_pwCheck" onMouseClicked="#pwCheck" />
+                  <JFXPasswordField fx:id="txt_pwCheck" />
                   <Label fx:id="lb_pwCheck" text="확인되었습니다." textFill="#00cc00" visible="false">
                      <HBox.margin>
                         <Insets top="4.0" />
@@ -100,7 +100,7 @@
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin></Label>
-                  <JFXTextField fx:id="txt_name" onMouseClicked="#pwEqualCheck" />
+                  <JFXTextField fx:id="txt_name" />
                   <Label>
                      <HBox.margin>
                         <Insets top="4.0" />
@@ -152,7 +152,7 @@
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin></Label>
-                  <JFXTextField fx:id="txt_tel" onMouseClicked="#birCheck" />
+                  <JFXTextField fx:id="txt_tel" />
                   <Label fx:id="lb_tel" text="형식에 맞게 입력해주세요." visible="false">
                      <HBox.margin>
                         <Insets top="4.0" />
@@ -168,9 +168,9 @@
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin></Label>
-                  <JFXTextField fx:id="txt_email" onMouseClicked="#telCheck" />
-                  <JFXButton fx:id="btn_idCheck1" text="인증하기" />
-                  <Label fx:id="lb_email" text="인증되었습니다. or" textFill="#00cc00">
+                  <JFXTextField fx:id="txt_email" />
+                  <JFXButton fx:id="btn_email" onAction="#emailCheck" text="메일 발송" />
+                  <Label fx:id="lb_email" text="인증되었습니다. or" textFill="#00cc00" visible="false">
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin></Label>
@@ -179,33 +179,54 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="29.0" prefWidth="200.0" spacing="10.0">
+            <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="인증코드">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin>
+                  </Label>
+                  <JFXTextField fx:id="txt_emailCheck" />
+                  <JFXButton fx:id="btn_emailCheck" onAction="#codeCheck" text="인증하기" />
+                  <Label fx:id="lb_emailCheck" text="인증되었습니다. or" textFill="#00cc00" visible="false">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="100.0" text="보안문자 입력">
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="29.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXButton text="새로고침" />
+                  <ImageView fx:id="img_captcha" fitHeight="90.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                  <JFXButton fx:id="btn_refresh" onAction="#imgRefresh" text="새로고침" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
             </HBox>
-            <HBox prefHeight="29.0" prefWidth="200.0" spacing="10.0">
+            <HBox prefHeight="35.0" prefWidth="200.0" spacing="10.0">
                <children>
                   <Label alignment="CENTER_RIGHT" prefWidth="100.0" text=" ">
                      <HBox.margin>
                         <Insets top="4.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXTextField prefWidth="138.0" />
-                  <Label text="확인되었습니다.">
-                     <HBox.margin>
-                        <Insets top="4.0" />
-                     </HBox.margin>
-                  </Label>
+                  <JFXTextField fx:id="txt_captcha" prefWidth="138.0" />
+                  <JFXButton fx:id="btn_captcha" onAction="#captchaCheck" text="입력 확인" />
+                  <VBox prefHeight="200.0" prefWidth="260.0">
+                     <children>
+                        <Label fx:id="lb_captcha" text="확인되었습니다." visible="false" />
+                        <Label fx:id="lb_captcha2" text="확인되었습니다." visible="false" />
+                     </children>
+                  </VBox>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -220,7 +241,7 @@
             <Separator prefWidth="200.0" />
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0">
                <children>
-                  <Label fx:id="lb_ok" text="중복확인, 비번, 입력, 형식, 메일인증">
+                  <Label fx:id="lb_ok" text="중복확인, 비번, 입력, 형식, 메일인증" visible="false">
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin>
@@ -236,6 +257,6 @@
       </VBox>
    </bottom>
    <padding>
-      <Insets left="212.0" />
+      <Insets left="222.0" />
    </padding>
 </BorderPane>
