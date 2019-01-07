@@ -309,7 +309,7 @@ public class MypageController implements Initializable {
 	
 	
 	@FXML
-	public void btn_like() throws IOException {  
+	public void btn_like() throws IOException {   //좋아요클릭시
 		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../profiles/like.fxml"));
@@ -321,5 +321,7 @@ public class MypageController implements Initializable {
 		}
 		
 	}
+	
+	
 
 }

@@ -1,19 +1,27 @@
 package kr.or.ddit.clap.vo.member;
 
 import java.io.Serializable;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import de.jensd.fx.glyphs.GlyphIcon;
-import de.jensd.fx.glyphs.GlyphsBuilder;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.scene.control.Button;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.like.ILikeService;
 
 public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable{
+	private Registry reg;
+	private ILikeService ilks;
+	
 	private String mus_no;
 	private String mus_like_date;
 	private String mus_title;
@@ -22,10 +30,8 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	private String sing_image;
 	private String mem_id;
 	private ImageView imgView; 
-	private JFXCheckBox chBox; 
-	private JFXButton btnLike; 
-	
-	
+	private JFXCheckBox chBox;
+	private JFXButton btnLike;
 	
 	public String getMus_no() {
 		return mus_no;
@@ -44,6 +50,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	}
 	public void setMus_title(String mus_title) {
 		this.mus_title = mus_title;
+		
 	}
 	public String getSing_name() {
 		return sing_name;
@@ -74,8 +81,8 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
 		Image img = new Image(sing_image);
 		imgView.setImage(img);
-		imgView.setFitWidth(120);
-		imgView.setFitHeight(50);
+		imgView.setFitWidth(100);
+		imgView.setFitHeight(70);
 		System.out.println("imgView생성");
 		/*}catch (Exception e) {
 			//이미지 불러올 때 예외발생시
@@ -93,21 +100,62 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	}
 	public JFXCheckBox getChBox() {
 		this.chBox = new JFXCheckBox();
-		chBox.setGraphic(new JFXCheckBox());
-		return chBox;
 		
+		return this.chBox;
+		
+	}
+	public JFXCheckBox getchBox1() {
+		return this.chBox;
 	}
 	public void setChBox(JFXCheckBox chBox) {
 		this.chBox = chBox;
 	}
 	public JFXButton getBtnLike() {
 		this.btnLike = new JFXButton();
-		btnLike.setGraphic(new Button());
-		return btnLike;
+		btnLike.setId(mus_no);
+		
+		//FontAwesomeIcon iconName="PENCIL" />
+		btnLike.setText("♥");
+		btnLike.setPrefSize(90, 70);
+		btnLike.setOnAction(e2->{ 
+			
+			try {
+				reg = LocateRegistry.getRegistry("localhost", 8888);
+				ilks = (ILikeService) reg.lookup("like");
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} catch (NotBoundException e) {
+				e.printStackTrace();
+			}
+
+			
+			String user_id = LoginSession.session.getMem_id();
+			LikeVO vo = new LikeVO();
+			vo.setMem_id(user_id);
+			vo.setMus_no(btnLike.getId());
+			try {
+				ObservableList<Integer> cnt = FXCollections.observableArrayList(ilks.deleteMusLike(vo));
+			} catch (RemoteException e) {
+				System.out.println("에러");
+				e.printStackTrace();
+			}
+			
+/*			
+			try {
+			List<LikeVO>liset = FXCollections.observableArrayList(ilks.selectMusLike(vo));
+			} catch (RemoteException e) {
+				System.out.println("에러");
+				e.printStackTrace();
+			}
+			*/
+		});
+		
+		return this.btnLike;
 	}
 	public void setBtnLike(JFXButton btnLike) {
 		this.btnLike = btnLike;
 	}
+	
 	
 	
 }
