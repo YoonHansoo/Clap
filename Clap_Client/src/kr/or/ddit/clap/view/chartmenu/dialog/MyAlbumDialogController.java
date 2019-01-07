@@ -48,6 +48,7 @@ public class MyAlbumDialogController implements Initializable{
 	private IMyAlbumService imas;
 	private IMyAlbumListService imals;
 	private String id;
+	private TreeItem<MyAlbumVO> root;
 	public static ArrayList<String> mus_no = new ArrayList<>();
 	
 	@Override
@@ -74,7 +75,7 @@ public class MyAlbumDialogController implements Initializable{
 			new SimpleStringProperty(param.getValue().getValue().getMyalb_no())
 		);
 	
-		TreeItem<MyAlbumVO> root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
+		root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
 		t_table.setRoot(root);
 		t_table.setShowRoot(false);
 		
@@ -88,6 +89,10 @@ public class MyAlbumDialogController implements Initializable{
 						myAlbumList.put("myalb_no", albumNo);
 						myAlbumList.put("mus_no", mus_no.get(i));
 						imals.myAlbumListInsert(myAlbumList);
+						
+						albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
+						root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
+						t_table.setRoot(root);
 					}
 					
 					
@@ -108,7 +113,7 @@ public class MyAlbumDialogController implements Initializable{
 				System.out.println(result);
 				
 				albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
-				TreeItem<MyAlbumVO> root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
+				root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);
 				t_table.setRoot(root);
 			} catch (RemoteException e) {
 				e.printStackTrace();

@@ -10,6 +10,7 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	private String myalb_name;
 	private String myalb_indate;
 	private String mem_id;
+	private String mus_count;
 	
 	public String getMyalb_no() {
 		return myalb_no;
@@ -35,5 +36,16 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
 	}
+	public String getMus_count() {
+		return mus_count;
+	}
+	public void setMus_count(String mus_count) {
+		if (Integer.parseInt(mus_count) != 0) {
+			this.myalb_name = this.myalb_name + ("(" + mus_count + ")");
+		}
+		
+		this.mus_count = mus_count;
+	}
+	
 
 }
