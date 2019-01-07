@@ -43,6 +43,7 @@ public class MusicMainController implements Initializable {
 	@FXML public JFXButton btn_logout;
 	@FXML public JFXButton btn_join;
 	@FXML public JFXButton btn_mem;
+	@FXML public JFXButton btn_player;
 	
 	@FXML VBox vbox;
 	@FXML Menu menu_admin;
@@ -250,6 +251,11 @@ public class MusicMainController implements Initializable {
 			   e.printStackTrace();
 		   }
 		   
-	   }
+	}
+	
+	@FXML
+	public void musicPlayer(ActionEvent event) { // MusicPlayer를 클릭 했을 때.
+
+	}
 
 }
