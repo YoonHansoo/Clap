@@ -122,7 +122,7 @@
                   <FontAwesomeIcon iconName="SEARCH" text="" />
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="622.0" layoutY="687.0" onAction="#InsertSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+            <JFXButton layoutX="622.0" layoutY="687.0" onAction="#InsertAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

@@ -7,6 +7,7 @@
  */
 package kr.or.ddit.clap.view.album.album;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -24,7 +25,9 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
@@ -136,25 +139,25 @@ public class ShowAlbumLIstController implements Initializable {
 				System.out.println("가수번호:" + vo.getAlb_no());
 				String albumNo =  vo.getAlb_no(); //가수번호(PK)를 받아옴
 				
-	/*			
+				
 				try {
 					//바뀔 화면(FXML)을 가져옴
 
-					//ShowSingerDetailController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
+					AlbumDetailController.albumNo = albumNo;//가수번호를 변수로 넘겨줌
 					
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
-					Parent singerDetail= loader.load(); 
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("AlbumDetail.fxml"));// init실행됨
+					Parent albumDetail= loader.load(); 
 					
-					ShowSingerDetailController cotroller = loader.getController();
+					AlbumDetailController cotroller = loader.getController();
 					cotroller.givePane(contents); 
 					
 					main.getChildren().removeAll();
-					main.getChildren().setAll(singerDetail);
+					main.getChildren().setAll(albumDetail);
 					
 					
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				} */
+				} 
 			}
 		});
 		}
@@ -220,15 +223,15 @@ private void search() {
 	}
 }
 
-public void InsertSinger() {
+public void InsertAlbum() {
 	
-/*	try {
+	try {
 		//바뀔 화면(FXML)을 가져옴
 		
-	FXMLLoader loader = new FXMLLoader(getClass().getResource("InsertSinger.fxml"));// init실행됨
+	FXMLLoader loader = new FXMLLoader(getClass().getResource("InsertAlbum.fxml"));// init실행됨
 		Parent InsertSinger= loader.load(); 
 		
-		InsertSingerController cotroller = loader.getController();
+		InsertAlbumController cotroller = loader.getController();
 		cotroller.givePane(contents); 
 		
 		main.getChildren().removeAll();
@@ -239,6 +242,6 @@ public void InsertSinger() {
 		e1.printStackTrace();
 	} 
 	
-	*/
+	
 }
 }
