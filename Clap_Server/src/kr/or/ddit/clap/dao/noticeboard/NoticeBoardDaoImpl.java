@@ -29,13 +29,13 @@ public class NoticeBoardDaoImpl implements INoticeBoardDao {
 			e.printStackTrace();
 		}
 	}
-	
+	/*
 	public static INoticeBoardService getInstance() { // Singleton 패턴
 		if (dao == null) {
 			dao = new NoticeBoardDaoImpl();
 		}
-		return dao;
-	}
+		//return dao;
+	}*/
 
 	@Override
 	public List<NoticeBoardVO> selectListAll() {
