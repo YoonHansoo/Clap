@@ -68,4 +68,14 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 		return musicHistoryDao.genreSelect(genre);
 	}
 
+	@Override
+	public List<Map> interiorSelect(String year) {
+		return musicHistoryDao.interiorSelect(year);
+	}
+
+	@Override
+	public List<Map> foreignSelect(String year) {
+		return musicHistoryDao.foreignSelect(year);
+	}
+
 }

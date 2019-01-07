@@ -21,6 +21,8 @@ public interface IMusicHistoryService extends Remote {
 	public List<Map> toDaySelect() throws RemoteException;
 	public List<Map> genreSelect(String genre) throws RemoteException;
 	public List<Map> periodSelect(Map<String, String> day) throws RemoteException;
+	public List<Map> interiorSelect(String year);
+	public List<Map> foreignSelect(String year);
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo) throws RemoteException;
 	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo) throws RemoteException;
 }

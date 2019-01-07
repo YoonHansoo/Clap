@@ -77,15 +77,6 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return list;
 	}
 	
-	public static void main(String[] args) {
-		Map day = new HashMap<String,String>();
-		
-		day.put("monday", "18/12/24");
-		day.put("sunday", "18/12/30");
-		List<Map> list = new MusicHistoryDaoImpl().periodSelect(day);
-		
-	}
-
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo) {
 		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
 		try {
@@ -125,6 +116,43 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		}
 
 		return list;
+	}
+	
+	@Override
+	public List<Map> interiorSelect(String year) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("musichistory.interiorselect", year);
+ 
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<Map> foreignSelect(String year) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("musichistory.foreignselect", year);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+	
+	public static void main(String[] args) {
+		Map day = new HashMap<String,String>();
+		
+		day.put("monday", "18/12/24");
+		day.put("sunday", "18/12/30");
+		List<Map> list = new MusicHistoryDaoImpl().interiorSelect("18");
+		
 	}
 
 }
