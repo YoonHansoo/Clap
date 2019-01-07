@@ -150,6 +150,7 @@
                   <JFXButton layoutX="840.0" layoutY="52.0" onAction="#mypage" style="-fx-background-color: #090948;" text="마이페이지 테스" textFill="WHITE" />
                   <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
                   <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
+                  <JFXButton fx:id="btn_player" layoutX="450.0" layoutY="19.0" onAction="#buyTicket" style="-fx-background-color: #090948;" text="MusicPlayer" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
