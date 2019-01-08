@@ -1,9 +1,13 @@
 package kr.or.ddit.clap.view.member.profiles;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.album.IAlbumReviewService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.vo.album.AlbumReviewVO;
@@ -18,9 +22,13 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TreeItem;
 
 public class ReviewAlbController  implements Initializable{
 	private Registry reg;
@@ -36,8 +44,10 @@ public class ReviewAlbController  implements Initializable{
 	@FXML TreeTableColumn<AlbumReviewVO,JFXButton> col_del;
 	@FXML Pagination p_Paging;
 
-	private ObservableList<MusicReviewVO> reviewList, currentsingerList;
+	private ObservableList<AlbumReviewVO> reviewList,  currentsingerList;
 	private int from, to, itemsForPage, totalPageCnt;
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -48,7 +58,68 @@ public class ReviewAlbController  implements Initializable{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+	
+		col_imge.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
+		col_title.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAlb_name()));
+		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
+		col_Reviewcon.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAlb_re_content()));
+		col_ReviwIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAlb_re_indate()));
+		col_del.setCellValueFactory(param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getBtnDel()));
 		
+		String user_id = LoginSession.session.getMem_id();
+		AlbumReviewVO vo = new AlbumReviewVO();
+		vo.setMem_id(user_id);
+		try {
+			reviewList = FXCollections.observableArrayList(iars.selectAlbReview(vo));
+			
+		} catch (RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}
+		// 데이터 삽입
+
+				TreeItem<AlbumReviewVO> root = new RecursiveTreeItem<>(reviewList, RecursiveTreeObject::getChildren);
+				tbl_Review.setRoot(root);
+				tbl_Review.setShowRoot(false);
+
+				itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+
+				paging();
+
+			}
+
+	private void paging() {
+		totalPageCnt = reviewList.size() % itemsForPage == 0 ? reviewList.size() / itemsForPage
+				: reviewList.size() / itemsForPage + 1;
+
+		p_Paging.setPageCount(totalPageCnt); // 전체 페이지 수 설정
+
+		p_Paging.setPageFactory((Integer pageIndex) -> {
+
+			from = pageIndex * itemsForPage;
+			to = from + itemsForPage - 1;
+
+			TreeItem<AlbumReviewVO> root = new RecursiveTreeItem<>(getTableViewData(from, to),
+					RecursiveTreeObject::getChildren);
+			tbl_Review.setRoot(root);
+			tbl_Review.setShowRoot(false);
+			return tbl_Review;
+		});
+
 	}
+	private ObservableList<AlbumReviewVO> getTableViewData(int from, int to) {
+
+		currentsingerList = FXCollections.observableArrayList(); //
+		int totSize = reviewList.size();
+		for (int i = from; i <= to && i < totSize; i++) {
+
+			currentsingerList.add(reviewList.get(i));
+		}
+
+		return currentsingerList;
+	}
+
+	
+	
 
 }

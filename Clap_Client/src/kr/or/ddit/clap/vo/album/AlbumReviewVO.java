@@ -1,14 +1,23 @@
 package kr.or.ddit.clap.vo.album;
 
 import java.io.Serializable;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.album.IAlbumReviewService;
 
 public class AlbumReviewVO extends RecursiveTreeObject<AlbumReviewVO>  implements Serializable{
+	private Registry reg;
+	private IAlbumReviewService iars;
+	
 	
 	private String alb_re_no;
 	private String alb_re_content;
@@ -61,6 +70,31 @@ public class AlbumReviewVO extends RecursiveTreeObject<AlbumReviewVO>  implement
 	}
 	public JFXButton getBtnDel() {
 		this.btnDel= new JFXButton();
+		btnDel.setId(alb_re_no);
+		btnDel.setText("x");
+		btnDel.setPrefSize(30, 50);
+		btnDel.setOnAction(ee->{ 
+			
+			try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			iars = (IAlbumReviewService) reg.lookup("albreview");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		String user_id = LoginSession.session.getMem_id();
+		AlbumReviewVO vo1 = new AlbumReviewVO();
+		vo1.setMem_id(user_id);
+		vo1.setAlb_re_no(btnDel.getId());
+		try {
+			iars.deleteAlbReview(vo1);
+		} catch (RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}
+			
+		});
 		return this.btnDel;
 	}
 	public void setBtnDel(JFXButton btnDel) {

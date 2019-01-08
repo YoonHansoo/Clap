@@ -148,7 +148,15 @@ public class ReviewMusController  implements Initializable{
 	}
 
 	@FXML public void btn_Its() {
-		System.out.println("아티스트");
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("itsreview.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 }
