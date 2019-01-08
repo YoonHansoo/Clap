@@ -1,15 +1,19 @@
 package kr.or.ddit.clap.vo.album;
 
 import java.io.Serializable;
+import java.rmi.registry.Registry;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import kr.or.ddit.clap.service.album.IAlbumReviewService;
 
 public class AlbumReviewVO extends RecursiveTreeObject<AlbumReviewVO>  implements Serializable{
+	private Registry reg;
+	private IAlbumReviewService iars;
+	
 	
 	private String alb_re_no;
 	private String alb_re_content;
