@@ -248,67 +248,115 @@ public class JoinController implements Initializable{
 			lb_ok.setText("아이디를 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_id.requestFocus();	
+			return;
 		}else if(!idFlag) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("아이디 중복확인을 해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_id.requestFocus();
-		}else if(txt_pw.getText().equals("")) {
+			return;
+		}
+		
+		
+		if(txt_pw.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("비밀번호를 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
-			txt_pw.requestFocus();			
-		}else if(!pwFlag) {
-			pwCheck();
-		}else if(txt_pwCheck.getText().equals("")) {
+			txt_pw.requestFocus();	
+			return;
+		}
+		
+		pwCheck();
+		if(!pwFlag) {
+        	lb_pw.setVisible(true);
+        	lb_pw.setText("규칙에 맞게 입력해주세요.");
+        	lb_pw.setTextFill(Color.RED);
+        	txt_pw.requestFocus();
+        	return;
+		}
+		
+		if(txt_pwCheck.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("비밀번호를 한번 더 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_pwCheck.requestFocus();			
-		}else if(!pwFlag2) {
-			pwCheck();
+		}
+		
+		pwEqualCheck();
+		
+		if(!pwFlag2) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("비밀번호가 일치하지 않습니다.");
 			lb_ok.setTextFill(Color.RED);
-			txt_pwCheck.requestFocus();						
-		}else if(txt_name.getText().equals("")) {
+			txt_pwCheck.requestFocus();		
+			return;
+		}
+		
+		if(txt_name.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("이름을 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
-			txt_name.requestFocus();	
-		}else if(txt_bir.getText().equals("")) {
+			txt_name.requestFocus();
+			return;
+		}
+		
+		if(txt_bir.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("생년월일을 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_bir.requestFocus();
-		}else if(!birFlag) {
-			birCheck();
+			return;
+		}
+		
+		birCheck();
+		
+		if(!birFlag) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("생년월일을 확인해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_bir.requestFocus();
-		} else if (txt_tel.getText().equals("")) {
+			return;
+		}
+		
+		if (txt_tel.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("전화번호를 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_tel.requestFocus();
-		} else if (!telFlag) {
-			telCheck();
+			return;
+		}
+		
+		telCheck();
+			
+		if (!telFlag) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("전화번호를 확인해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_tel.requestFocus();
-		} else if (txt_email.getText().equals("")) {
+			return;
+		}
+		
+		if (txt_email.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("메일주소를 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_email.requestFocus();
-		} else if (!emailFlag) {
+			return;
+		}
+		
+		if(!emailFlag) {
+			emailCheck();			
+		}
+		
+		if (!emailFlag) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("메일 인증을 완료해주세요.");
 			lb_ok.setTextFill(Color.RED);
 			txt_emailCheck.requestFocus();
-		} else if (txt_captcha.getText().equals("")) {
+			return;
+		}
+		
+		if (txt_captcha.getText().equals("")) {
 			lb_ok.setVisible(true);
 			lb_ok.setText("보안문자를 입력해주세요.");
 			lb_ok.setTextFill(Color.RED);
@@ -374,6 +422,9 @@ public class JoinController implements Initializable{
         	System.out.println("ok");
         	lb_id.setVisible(false);
         	
+        	MemberVO vo = new MemberVO();
+        	vo.setMem_id(txt_id.getText());
+        	
     		Boolean idCheck = false;
     		try {
     			idCheck = ils.idCheck(txt_id.getText());
@@ -424,6 +475,7 @@ public class JoinController implements Initializable{
         	lb_pw.setText("규칙에 맞게 입력해주세요.");
         	lb_pw.setTextFill(Color.RED);
         	txt_pw.requestFocus();
+        	
         }  
 	}
 	
