@@ -74,6 +74,21 @@ public class LoginDaoImpl implements ILoginDao{
 		return list;
 	}
 
+	@Override
+	public Boolean emailCheck(MemberVO vo) {
+		Boolean emailCheck = false;
+		try {
+			int count = (int) smc.queryForObject("login.emailCheck", vo);
+			
+			if(count > 0) {
+				emailCheck = true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return emailCheck;
+	}
+
 
 
 }

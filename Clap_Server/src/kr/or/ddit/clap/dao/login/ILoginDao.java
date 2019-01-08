@@ -10,4 +10,6 @@ public interface ILoginDao {
 	public List<MemberVO> select(String id); 
 	
 	public List<MemberVO> idSearch(MemberVO vo);
+	
+	public Boolean emailCheck(MemberVO vo);
 }
