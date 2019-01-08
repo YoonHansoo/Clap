@@ -31,12 +31,11 @@ public class NoticeBoardDetailContentController implements Initializable {
 	Text Text_NtcTitle;
 	@FXML
 	Text Text_NtcDate;
-	@FXML
-	Text Text_Content;
-	@FXML
-	AnchorPane main;
+	@FXML Text Text_NtcContent;
+	@FXML AnchorPane n_main;
 	
-	public NoticeBoardVO nVO = null;
+	
+	public NoticeBoardVO nVO;
 	
 	
 
@@ -49,7 +48,7 @@ public class NoticeBoardDetailContentController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);  
 			ins = (INoticeBoardService) reg.lookup("notice");
 			nVO = ins.NoticeBoardDetailContent(NoticeNo);
-			System.out.println("noticeNO??>>" + nVO.getNotice_no());
+			System.out.println("noticeNO??ff>>" + nVO.getNotice_no());
 			//파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
 			System.out.println("Detail 1");
@@ -62,7 +61,7 @@ public class NoticeBoardDetailContentController implements Initializable {
 		Text_NtcNo.setText(nVO.getNotice_no());
 		Text_NtcTitle.setText(nVO.getNotice_title());
 		Text_NtcDate.setText(nVO.getNotice_indate());
-		Text_Content.setText(nVO.getNotice_content());
+		Text_NtcContent.setText(nVO.getNotice_content());
 		
 		
 		

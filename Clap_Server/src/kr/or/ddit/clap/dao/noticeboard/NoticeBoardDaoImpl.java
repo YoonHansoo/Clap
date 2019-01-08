@@ -72,7 +72,7 @@ public class NoticeBoardDaoImpl implements INoticeBoardDao {
 
 		
 		
-		return null;
+		return nVO;
 	}
 
 }

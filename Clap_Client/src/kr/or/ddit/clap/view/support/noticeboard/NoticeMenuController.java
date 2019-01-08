@@ -48,6 +48,7 @@ public class NoticeMenuController implements Initializable {
 	//public NoticeBoardVO nVO = new NoticeBoardVO();
 	private ObservableList<NoticeBoardVO> ntcList, currentntcList;
 	private int from, to, itemsForPage, totalPageCnt;
+	@FXML AnchorPane main;
 	
 	
 	
