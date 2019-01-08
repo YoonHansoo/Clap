@@ -44,15 +44,10 @@ public class ReviewMusController  implements Initializable{
 	@FXML TreeTableColumn<MusicReviewVO,String> col_Reviewcon;
 	@FXML TreeTableColumn<MusicReviewVO,String> col_ReviwIndate;
 	@FXML TreeTableColumn<MusicReviewVO,JFXButton> col_del;
-	
+	@FXML Pagination p_Paging;
 	private ObservableList<MusicReviewVO> reviewList, currentsingerList;
 	private int from, to, itemsForPage, totalPageCnt;
 
-	
-	@FXML Pagination p_Paging;
-
-	
-	
 
 
 	@Override
@@ -141,7 +136,14 @@ public class ReviewMusController  implements Initializable{
 	}
 
 	@FXML public void btn_alb() {
-		System.out.println("앨범");
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("albreview.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	
 	}
 

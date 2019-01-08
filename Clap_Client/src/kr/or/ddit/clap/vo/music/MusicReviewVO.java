@@ -1,6 +1,9 @@
 package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import com.jfoenix.controls.JFXButton;
@@ -8,6 +11,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 
 public class MusicReviewVO  extends RecursiveTreeObject<MusicReviewVO>  implements Serializable{
@@ -67,7 +71,7 @@ public class MusicReviewVO  extends RecursiveTreeObject<MusicReviewVO>  implemen
 		this.imgView = imgView;
 	}
 	public JFXButton getBtnDel() {
-		this.btnDel= new JFXButton();/*
+		this.btnDel= new JFXButton();
 		btnDel.setId(mus_re_no);
 		btnDel.setText("x");
 		btnDel.setPrefSize(30, 50);
@@ -92,7 +96,7 @@ public class MusicReviewVO  extends RecursiveTreeObject<MusicReviewVO>  implemen
 			e.printStackTrace();
 		}
 			
-		});*/
+		});
 		return this.btnDel;
 	}
 	public void setBtnDel(JFXButton btnDel) {
