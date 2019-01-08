@@ -61,7 +61,9 @@ public class MypageChangePwController implements Initializable{
 			} catch (RemoteException e) {
 				System.out.println("에러입니다");
 				e.printStackTrace();
-			}
+			} 
+			
+			//암호화하여 커밋
 			
 			if(textF_NowPw.getText().equals(vo2.getMem_pw())) {
 				if(textF_NewPw.getText().equals(textF_NewPwCh.getText())) {

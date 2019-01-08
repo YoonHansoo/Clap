@@ -3,11 +3,13 @@ package kr.or.ddit.clap.view.member.mypage;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.security.GeneralSecurityException;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -48,6 +50,7 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.view.join.AES256Util;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;;
@@ -321,11 +324,35 @@ public class MypageController implements Initializable {
 
 		Button btn = (Button) root.lookup("#btn_Ok");
 
-		btn.setOnAction(new EventHandler<ActionEvent>() {
+		btn.setOnAction(new EventHandler<ActionEvent>()  {
 
 			@Override
 			public void handle(ActionEvent event) {
+				AES256Util aes = null;
+				try {
+					aes = new AES256Util();
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				JFXPasswordField fild = (JFXPasswordField) root.lookup("#fild_ok");
 
+				String encryptedPw = ""; // 암호화된 pw
+				try {
+					encryptedPw = aes.encrypt(fild.getText());
+				} catch (UnsupportedEncodingException | GeneralSecurityException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				String decryptedPw = ""; // 복호화시킨 pw
+				try {
+					decryptedPw = aes.decrypt(encryptedPw);
+				} catch (UnsupportedEncodingException | GeneralSecurityException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				String user_id = LoginSession.session.getMem_id();
 				label_Id.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
 
@@ -340,9 +367,8 @@ public class MypageController implements Initializable {
 					e.printStackTrace();
 				}
 
-				JFXPasswordField fild = (JFXPasswordField) root.lookup("#fild_ok");
-
-				if (fild.getText().equals(vo2.getMem_pw())) {
+				
+				if (encryptedPw.equals(vo2.getMem_pw())) {
 					pwok.close();
 
 					Parent root1 = null;
