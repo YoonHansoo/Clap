@@ -45,10 +45,33 @@
          and mem_id=#mem_id#
     </select>
     <delete id="deleteMusReview" parameterClass="MusicReviewVO">
-   		 delete  form music_review
+   		 delete  from music_review
    		    where mem_id=#mem_id# 
    			 and mus_re_no=#mus_re_no#
     </delete>
+    
+    
+     <select id="selectAlbReview" resultClass="AlbumReviewVO" parameterClass="AlbumReviewVO">
+        select 
+           a.alb_re_no,
+            a.alb_re_content,
+            a.alb_re_indate,
+            a.mem_id,
+            c.alb_name,
+            a.alb_no,
+            c.alb_image,
+            d.sing_name
+         from ALBUM_REVIEW a,  album c,singer d
+         where a.alb_no = c.alb_no
+            and c.sing_no = d.sing_no
+         and mem_id=#mem_id# 
+    </select>
+    <delete id="deleteAlbReview" parameterClass="AlbumReviewVO">
+   		 delete  from ALBUM_REVIEW
+   		    where mem_id=#mem_id# 
+   			 and alb_re_no=#alb_re_no#
+    </delete>
+    
 
 
 </sqlMap>			

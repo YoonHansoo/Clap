@@ -67,32 +67,7 @@ public class MusicReviewVO  extends RecursiveTreeObject<MusicReviewVO>  implemen
 		this.imgView = imgView;
 	}
 	public JFXButton getBtnDel() {
-		this.btnDel= new JFXButton();/*
-		btnDel.setId(mus_re_no);
-		btnDel.setText("x");
-		btnDel.setPrefSize(30, 50);
-		btnDel.setOnAction(ee->{ 
-			
-			try {
-			reg = LocateRegistry.getRegistry("localhost", 8888);
-			imrs = (IMusicReviewService) reg.lookup("musicreview");
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		String user_id = LoginSession.session.getMem_id();
-		MusicReviewVO vo1 = new MusicReviewVO();
-		vo1.setMem_id(user_id);
-		vo1.setMus_re_no(btnDel.getId());
-		try {
-		imrs.deleteMusReview(vo1);
-		} catch (RemoteException e) {
-			System.out.println("에러");
-			e.printStackTrace();
-		}
-			
-		});*/
+		this.btnDel= new JFXButton();
 		return this.btnDel;
 	}
 	public void setBtnDel(JFXButton btnDel) {

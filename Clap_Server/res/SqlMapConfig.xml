@@ -22,6 +22,7 @@
  	<typeAlias alias="albumVO" type		  ="kr.or.ddit.clap.vo.album.AlbumVO"/>
  	<typeAlias alias="NoticeBoardVO" type ="kr.or.ddit.clap.vo.support.NoticeBoardVO"/>
  	<typeAlias alias="musicVO" type       ="kr.or.ddit.clap.vo.music.MusicVO"/>
+ 	<typeAlias alias="albumReviewVO" type ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">

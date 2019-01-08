@@ -4,7 +4,9 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import kr.or.ddit.clap.dao.noticeboard.NoticeBoardDaoImpl;
+import kr.or.ddit.clap.service.album.AlbumReviewServiceImpl;
 import kr.or.ddit.clap.service.album.AlbumServiceImpl;
+import kr.or.ddit.clap.service.album.IAlbumReviewService;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
@@ -48,9 +50,8 @@ public class ServerMain {
 			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); 	// 마이앨범리스트
 			IAlbumService ias 		  = AlbumServiceImpl.getInstance(); 		// 앨범
 			INoticeBoardService ins   = NoticeBoardServiceImpl.getInstance();	// 공지사항
-			
 			IMusicService ims = MusicServiceImpl.getInstance(); 				//곡
-			
+			IAlbumReviewService iars  = AlbumReviewServiceImpl.getInstance(); 	// 앨범 리뷰
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
 			reg.rebind("singer", ssi);
@@ -66,6 +67,7 @@ public class ServerMain {
 			reg.rebind("album", ias);
 			reg.rebind("notice", ins);
 			reg.rebind("music", ims);
+			reg.rebind("albreview", iars);
 			
 			
 			 System.out.println("clap server  is running...");

@@ -2,7 +2,14 @@ package kr.or.ddit.clap.vo.album;
 
 import java.io.Serializable;
 
-public class AlbumReviewVO implements Serializable{
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
+
+public class AlbumReviewVO extends RecursiveTreeObject<AlbumReviewVO>  implements Serializable{
 	
 	private String alb_re_no;
 	private String alb_re_content;
@@ -10,6 +17,56 @@ public class AlbumReviewVO implements Serializable{
 	private String mem_id;
 	private String alb_no;
 	
+	/**
+	 * 현지 마이페이지 리뷰를 위해 추가
+	 */
+	private String alb_name;
+	private String alb_image;
+	private String sing_name;
+	private ImageView imgView;
+	private JFXButton btnDel;
+	
+	
+	
+	public String getAlb_name() {
+		return alb_name;
+	}
+	public void setAlb_name(String alb_name) {
+		this.alb_name = alb_name;
+	}
+	public String getAlb_image() {
+		return alb_image;
+	}
+	public void setAlb_image(String alb_image) {
+		this.alb_image = alb_image;
+	}
+	public String getSing_name() {
+		return sing_name;
+	}
+	public void setSing_name(String sing_name) {
+		this.sing_name = sing_name;
+	}
+	public ImageView getImgView() {
+		this.imgView = new ImageView();
+		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
+		Image img = new Image(alb_image);
+		imgView.setImage(img);
+		imgView.setFitWidth(100);
+		imgView.setFitHeight(70);
+		System.out.println("imgView생성");
+	
+		return imgView;
+	}
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
+	}
+	public JFXButton getBtnDel() {
+		this.btnDel= new JFXButton();
+		return this.btnDel;
+	}
+	public void setBtnDel(JFXButton btnDel) {
+		this.btnDel = btnDel;
+	}
 	public String getAlb_re_no() {
 		return alb_re_no;
 	}
