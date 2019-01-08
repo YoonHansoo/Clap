@@ -10,6 +10,13 @@
 	 </select>
 
 
+	<select id="NoticeBoardDetailContent" resultClass="NoticeBoardVO" parameterClass="String">
+         
+		  select notice_no, notice_indate, notice_title, notice_content from notice_board where notice_no = #String#
+      </select>
+
+
+
 
 
 

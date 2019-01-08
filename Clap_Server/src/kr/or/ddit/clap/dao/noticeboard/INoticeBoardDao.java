@@ -6,6 +6,7 @@
  */
 package kr.or.ddit.clap.dao.noticeboard;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
@@ -13,6 +14,8 @@ import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 public interface INoticeBoardDao {
 	
 	public List<NoticeBoardVO> selectListAll();
+	
+	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException;
 	
 	
 

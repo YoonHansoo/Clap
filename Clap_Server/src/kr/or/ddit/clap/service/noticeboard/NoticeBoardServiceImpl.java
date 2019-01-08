@@ -40,6 +40,11 @@ public class NoticeBoardServiceImpl extends UnicastRemoteObject implements INoti
 		
 		return noticeBoardDao.selectListAll();
 	}
+
+	@Override
+	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException {
+		return noticeBoardDao.NoticeBoardDetailContent(NoticeNo);
+	}
 	
 	
 	

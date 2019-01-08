@@ -8,6 +8,7 @@ package kr.or.ddit.clap.dao.noticeboard;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
+import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class NoticeBoardDaoImpl implements INoticeBoardDao {
 	
@@ -55,6 +57,22 @@ public class NoticeBoardDaoImpl implements INoticeBoardDao {
 		}
 
 		return list;
+	}
+
+	@Override
+	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException {
+		NoticeBoardVO nVO = new NoticeBoardVO();
+		try {
+
+			nVO = (NoticeBoardVO)smc.queryForObject("notice.NoticeBoardDetailContent", NoticeNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		
+		
+		return null;
 	}
 
 }
