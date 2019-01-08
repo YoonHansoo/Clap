@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="507.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.SearchController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.SearchController">
    <top>
       <VBox prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Label text="clap 아이디 찾기">
                <font>
-                  <Font name="D2Coding" size="18.0" />
+                  <Font name="YDIYGO350" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0" />
+                  <Insets bottom="17.0" left="15.0" />
                </VBox.margin>
             </Label>
             <Separator prefWidth="200.0" />
@@ -37,34 +37,51 @@
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="생년월일">
                      <HBox.margin>
                         <Insets top="4.0" />
-                     </HBox.margin></Label>
-                  <JFXTextField fx:id="txt_bir" />
-                  <Label fx:id="lb_bir" text="형식에 맞게 입력해주세요." visible="false">
+                     </HBox.margin>
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font></Label>
+                  <JFXTextField fx:id="txt_bir">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font></JFXTextField>
+                  <Label fx:id="lb_id" text="형식에 맞게 입력해주세요." visible="false">
                      <HBox.margin>
                         <Insets top="4.0" />
-                     </HBox.margin></Label>
+                     </HBox.margin>
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font></Label>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
                </VBox.margin>
             </HBox>
-            <Label text="생년월일 예) 99/03/03  |  휴대전화 예) 01012341234">
+            <Label text="생년월일 예) 99/03/03  |  휴대전화 예) 01099998888">
                <VBox.margin>
                   <Insets left="120.0" />
                </VBox.margin>
+               <font>
+                  <Font name="YDIYGO350" size="14.0" />
+               </font>
             </Label>
             <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="휴대전화">
                      <HBox.margin>
                         <Insets top="4.0" />
-                     </HBox.margin></Label>
-                  <JFXTextField fx:id="txt_tel" />
-                  <JFXButton text="아이디 찾기" />
-                  <Label fx:id="lb_tel" text="형식에 맞게 입력해주세요." visible="false">
-                     <HBox.margin>
-                        <Insets top="4.0" />
-                     </HBox.margin></Label>
+                     </HBox.margin>
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font></Label>
+                  <JFXTextField fx:id="txt_tel">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font></JFXTextField>
+                  <JFXButton onAction="#idSearch" text="아이디 찾기">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font></JFXButton>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -72,10 +89,10 @@
             </HBox>
             <Label text="clap 비밀번호 찾기">
                <font>
-                  <Font name="D2Coding" size="18.0" />
+                  <Font name="YDIYGO350" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="5.0" top="25.0" />
+                  <Insets bottom="17.0" left="15.0" top="50.0" />
                </VBox.margin>
             </Label>
             <Separator prefWidth="200.0" />
@@ -87,37 +104,45 @@
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font>
                         </Label>
-                        <JFXTextField fx:id="txt_id" />
-                        <Label fx:id="lb_id" text="사용가능합니다." textFill="#00cc00" visible="false">
+                        <JFXTextField fx:id="txt_id">
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font></JFXTextField>
+                        <Label fx:id="lb_pw" text="사용가능합니다." textFill="#00cc00" visible="false">
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font>
                         </Label>
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label text="아이디는 6자 이상입니다.">
-                     <VBox.margin>
-                        <Insets left="120.0" />
-                     </VBox.margin>
-                  </Label>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
                         <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이메일">
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font>
                         </Label>
-                        <JFXTextField fx:id="txt_email" />
-                        <JFXButton fx:id="btn_email" onAction="#emailCheck" text="메일 발송" />
-                        <Label fx:id="lb_email" text="인증되었습니다. or" textFill="#00cc00" visible="false">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Label>
+                        <JFXTextField fx:id="txt_email">
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font></JFXTextField>
+                        <JFXButton fx:id="btn_email" onAction="#emailCheck" text="메일 발송">
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font></JFXButton>
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -129,14 +154,18 @@
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font>
                         </Label>
-                        <JFXTextField fx:id="txt_emailCheck" />
-                        <JFXButton fx:id="btn_emailCheck" text="비밀번호 찾기" />
-                        <Label fx:id="lb_emailCheck" text="인증되었습니다. or" textFill="#00cc00" visible="false">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                        </Label>
+                        <JFXTextField fx:id="txt_emailCheck">
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font></JFXTextField>
+                        <JFXButton fx:id="btn_emailCheck" onAction="#pwSearch" text="비밀번호 찾기">
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font></JFXButton>
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -147,12 +176,4 @@
          </children>
       </VBox>
    </center>
-   <bottom>
-      <VBox alignment="CENTER_RIGHT" prefHeight="51.0" prefWidth="600.0" BorderPane.alignment="CENTER_RIGHT">
-         <children>
-            <Separator prefWidth="200.0" />
-            <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="200.0" spacing="5.0" />
-         </children>
-      </VBox>
-   </bottom>
 </BorderPane>
