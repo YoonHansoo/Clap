@@ -72,6 +72,26 @@
    			 and alb_re_no=#alb_re_no#
     </delete>
     
+      <select id="selectItsReview" resultClass="SingerReviewVO" parameterClass="SingerReviewVO">
+         select 
+           a.sing_re_no,
+            a.sing_re_content,
+            a.sing_re_indate,
+            a.mem_id,
+            d.sing_debut_era,
+            a.sing_no,
+            d.sing_image,
+            d.sing_name
+         from SINGER_REVIEW a,  singer d
+         where a.sing_no = d.sing_no
+         and mem_id=#mem_id# 
+    </select>
+    <delete id="deleteItsReview" parameterClass="SingerReviewVO">
+   		 delete  from SINGER_REVIEW
+   		    where mem_id=#mem_id# 
+   			 and sing_re_no=#sing_re_no#
+    </delete>
+    
 
 
 </sqlMap>			

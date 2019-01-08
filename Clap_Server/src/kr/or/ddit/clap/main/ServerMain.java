@@ -30,7 +30,9 @@ import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.service.noticeboard.NoticeBoardServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.service.qna.QnaServiceImpl;
+import kr.or.ddit.clap.service.singer.ISingerReviewService;
 import kr.or.ddit.clap.service.singer.ISingerService;
+import kr.or.ddit.clap.service.singer.SingerReviewServiceImpl;
 import kr.or.ddit.clap.service.singer.SingerServiceImpl;
 
 public class ServerMain {
@@ -52,6 +54,7 @@ public class ServerMain {
 			INoticeBoardService ins   = NoticeBoardServiceImpl.getInstance();	// 공지사항
 			IMusicService ims = MusicServiceImpl.getInstance(); 				//곡
 			IAlbumReviewService iars  = AlbumReviewServiceImpl.getInstance(); 	// 앨범 리뷰
+			ISingerReviewService isrs = SingerReviewServiceImpl.getInstance();  // 가수 리뷰
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
 			reg.rebind("singer", ssi);
@@ -68,6 +71,7 @@ public class ServerMain {
 			reg.rebind("notice", ins);
 			reg.rebind("music", ims);
 			reg.rebind("albreview", iars);
+			reg.rebind("singreview", isrs);
 			
 			
 			 System.out.println("clap server  is running...");
