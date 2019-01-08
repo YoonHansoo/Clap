@@ -2,7 +2,9 @@ package kr.or.ddit.clap.vo.support;
 
 import java.io.Serializable;
 
-public class NoticeBoardVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class NoticeBoardVO extends RecursiveTreeObject<NoticeBoardVO> implements Serializable{
 	
 	private String notice_no;
 	private String notice_indate;

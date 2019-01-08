@@ -22,7 +22,7 @@ public class NoticeBoardServiceImpl extends UnicastRemoteObject implements INoti
 	
 	private NoticeBoardServiceImpl() throws RemoteException {
 		super();
-		//noticeBoardDao =  NoticeBoardDaoImpl.getInstance();//Singleton패턴
+		noticeBoardDao =  NoticeBoardDaoImpl.getInstance();//Singleton패턴
 	}
 	
 	public static NoticeBoardServiceImpl getInstance() throws RemoteException {

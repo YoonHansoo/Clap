@@ -23,6 +23,7 @@ import kr.or.ddit.clap.service.myalbumlist.MyAlbumListServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
+import kr.or.ddit.clap.service.noticeboard.NoticeBoardServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.service.qna.QnaServiceImpl;
 import kr.or.ddit.clap.service.singer.ISingerService;
@@ -44,7 +45,7 @@ public class ServerMain {
 			IMyAlbumService imas 	  = MyAlbumServiceImpl.getInstance(); // 마이앨범
 			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); // 마이앨범리스트
 			IAlbumService ias 		  = AlbumServiceImpl.getInstance(); //앨범
-			//INoticeBoardService ins   = NoticeBoardDaoImpl.getInstance();//공지사항
+			INoticeBoardService ins   = NoticeBoardServiceImpl.getInstance();//공지사항
 			
 			
 			Registry reg = LocateRegistry.createRegistry(8888);

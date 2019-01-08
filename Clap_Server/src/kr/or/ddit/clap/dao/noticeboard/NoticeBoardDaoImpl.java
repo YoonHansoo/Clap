@@ -1,3 +1,9 @@
+/**
+ * 실제 DB와 연결해서 SQL문을 수행하여 결과를 작성하여
+ * service에 전달하는 DAO의 interface
+ * @author Hanhwa
+ *
+ */
 package kr.or.ddit.clap.dao.noticeboard;
 
 import java.io.IOException;
@@ -29,13 +35,13 @@ public class NoticeBoardDaoImpl implements INoticeBoardDao {
 			e.printStackTrace();
 		}
 	}
-	/*
-	public static INoticeBoardService getInstance() { // Singleton 패턴
+	
+	public static NoticeBoardDaoImpl getInstance() { // Singleton 패턴
 		if (dao == null) {
 			dao = new NoticeBoardDaoImpl();
 		}
-		//return dao;
-	}*/
+		return dao;
+	}
 
 	@Override
 	public List<NoticeBoardVO> selectListAll() {
