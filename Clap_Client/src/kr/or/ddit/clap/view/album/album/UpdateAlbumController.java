@@ -13,9 +13,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -44,7 +42,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.vo.album.AlbumVO;
-import oracle.sql.DATE;
 
 public class UpdateAlbumController implements Initializable {
 
