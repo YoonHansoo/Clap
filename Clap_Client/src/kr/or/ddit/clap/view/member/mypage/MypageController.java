@@ -61,7 +61,8 @@ public class MypageController implements Initializable {
 	int no3 = 0;
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	static Stage pwok = new Stage(StageStyle.DECORATED);
-
+	static Stage myalb = new Stage(StageStyle.DECORATED);
+	
 	public Stage primaryStage;
 
 	private FileChooser fileChooser;
@@ -498,6 +499,16 @@ public class MypageController implements Initializable {
 			e.printStackTrace();
 		}
 
+	}
+
+	@FXML public void btn_MyalbCh(ActionEvent event) throws IOException { //마이앨범 편집 클릭시
+		Parent root = FXMLLoader.load(getClass().getResource("myalbCh.fxml"));
+		Scene scene = new Scene(root);
+		myalb.setTitle("모여서 각잡고 코딩 - clap");
+
+		myalb.setScene(scene);
+		myalb.show();
+		
 	}
 	
 	

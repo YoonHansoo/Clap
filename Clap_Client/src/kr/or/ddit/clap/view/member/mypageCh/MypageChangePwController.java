@@ -1,11 +1,13 @@
 package kr.or.ddit.clap.view.member.mypageCh;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.security.GeneralSecurityException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXPasswordField;
@@ -22,6 +24,7 @@ import javafx.stage.StageStyle;
 import javafx.scene.control.Button;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.view.join.AES256Util;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 public class MypageChangePwController implements Initializable{
@@ -50,6 +53,30 @@ public class MypageChangePwController implements Initializable{
 		}
 		
 		btn_Ok.setOnAction(e1->{
+			AES256Util aes = null;
+			try {
+				aes = new AES256Util();
+			} catch (UnsupportedEncodingException e11) {
+				// TODO Auto-generated catch block
+				e11.printStackTrace();
+			}
+			
+			String NowencryptedPw = ""; // 암호화된 pw
+			try {
+				NowencryptedPw = aes.encrypt(textF_NowPw.getText());
+			} catch (UnsupportedEncodingException | GeneralSecurityException e12) {
+				// TODO Auto-generated catch block
+				e12.printStackTrace();
+			}
+			
+			String NowdecryptedPw = ""; // 복호화시킨 pw
+			try {
+				NowdecryptedPw = aes.decrypt(NowencryptedPw);
+			} catch (UnsupportedEncodingException | GeneralSecurityException e13) {
+				// TODO Auto-generated catch block
+				e13.printStackTrace();
+			}
+			
 			String user_id = LoginSession.session.getMem_id();
 			MemberVO vo = new MemberVO();
 			vo.setMem_id(user_id);
@@ -63,11 +90,43 @@ public class MypageChangePwController implements Initializable{
 				e.printStackTrace();
 			} 
 			
+			
+			
+			
 			//암호화하여 커밋
 			
-			if(textF_NowPw.getText().equals(vo2.getMem_pw())) {
+			if(NowencryptedPw.equals(vo2.getMem_pw())) {
 				if(textF_NewPw.getText().equals(textF_NewPwCh.getText())) {
-					vo.setMem_pw(textF_NewPw.getText());
+					
+					String encryptedPw = "";
+					try {
+						encryptedPw = aes.encrypt(textF_NewPwCh.getText());
+					} catch (UnsupportedEncodingException | GeneralSecurityException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+					}
+					try {
+						String decryptedPw = aes.decrypt(encryptedPw);
+					} catch (UnsupportedEncodingException | GeneralSecurityException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+					}
+					
+					String encryptedPwCheck = "";
+					try {
+						encryptedPwCheck = aes.encrypt(textF_NewPwCh.getText());
+					} catch (UnsupportedEncodingException | GeneralSecurityException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+					}
+					try {
+						String decryptedPwCheck = aes.decrypt(encryptedPwCheck);
+					} catch (UnsupportedEncodingException | GeneralSecurityException e3) {
+						// TODO Auto-generated catch block
+						e3.printStackTrace();
+					}
+					
+					vo.setMem_pw(encryptedPw);
 					try {
 						int result = ims.updatePw(vo);
 					} catch (RemoteException e) {
