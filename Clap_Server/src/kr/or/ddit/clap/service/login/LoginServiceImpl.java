@@ -35,19 +35,30 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 		return loginDao.select(id);
 	}
 	
+	@Override
+	public List<MemberVO> idSearch(MemberVO vo) throws RemoteException {
+		return loginDao.idSearch(vo);
+	}
+
+	
 	public static void main(String[] args) {
 		try {
 			service = service.getInstance();
 			List<MemberVO> list = new ArrayList<MemberVO>();
+			MemberVO vo = new MemberVO();
 			boolean a = false;
-			a = service.idCheck("park11");
-			list = service.select("park11");
+//			a = service.idCheck("park11");
+//			list = service.select("park11");
+//			System.out.println(list.get(0).getMem_id());
+			
+			vo.setMem_bir("90/09/09");
+			vo.setMem_tel("01099998888");
+			list = service.idSearch(vo);
 			System.out.println(list.get(0).getMem_id());
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
-
 
 }
