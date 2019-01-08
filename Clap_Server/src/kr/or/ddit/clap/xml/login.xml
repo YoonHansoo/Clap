@@ -7,6 +7,7 @@
 	 <select id="idCheck" resultClass="int" parameterClass="String">
 	 		select count(mem_id) from member
 			where mem_id = #mem_id#
+			and mem_email = #mem_email#
 	 </select>
 	   
 	<select id="select" resultClass="memberVO" parameterClass="String">
@@ -15,8 +16,17 @@
 			from member where mem_id=#mem_id#
 	</select>
 
-	
+	<select id="idSearch" resultClass="memberVO" parameterClass="memberVO">
+			select mem_id from member
+			where mem_bir = #mem_bir#
+			and mem_tel = #mem_tel#
+	</select>
 
+	<select id="emailCheck" resultClass="memberVO" parameterClass="memberVO">
+	 		select mem_id from member
+			where mem_id = #mem_id#
+			and mem_email = #mem_email#
+	</select>
 </sqlMap>			
 
 
