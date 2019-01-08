@@ -40,6 +40,11 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 		return loginDao.idSearch(vo);
 	}
 
+	@Override
+	public Boolean emailCheck(MemberVO vo) throws RemoteException {
+		return loginDao.emailCheck(vo);
+	}
+
 	
 	public static void main(String[] args) {
 		try {
@@ -50,15 +55,23 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 //			a = service.idCheck("park11");
 //			list = service.select("park11");
 //			System.out.println(list.get(0).getMem_id());
-			
+						
+			vo.setMem_id("park11");
 			vo.setMem_bir("90/09/09");
 			vo.setMem_tel("01099998888");
-			list = service.idSearch(vo);
-			System.out.println(list.get(0).getMem_id());
+			vo.setMem_email("dfdf@naver.com");
+//			list = service.idSearch(vo);
+//			System.out.println(list.get(0).getMem_id());
+			
+			boolean check = service.emailCheck(vo);
+			System.out.println(check);
+			
+			
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
+
 
 }

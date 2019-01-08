@@ -12,4 +12,7 @@ public interface ILoginService extends Remote{
 	public List<MemberVO> select(String id) throws RemoteException;
 
 	public List<MemberVO> idSearch(MemberVO vo) throws RemoteException;
+	
+	public Boolean emailCheck(MemberVO vo) throws RemoteException;
 }
+
