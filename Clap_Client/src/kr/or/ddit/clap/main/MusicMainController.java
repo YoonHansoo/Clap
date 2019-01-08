@@ -33,7 +33,6 @@ import com.jfoenix.controls.JFXButton;
 public class MusicMainController implements Initializable {
 
 
-	static Stage buyTicketDialog = new Stage(StageStyle.DECORATED);
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	@FXML FontAwesomeIcon icon_firstPage;
