@@ -39,7 +39,7 @@
                   </Text>
                   <JFXTreeTableView layoutX="8.0" layoutY="439.0" prefHeight="198.0" prefWidth="189.0" />
                   <JFXButton onAction="#btn_like" layoutX="22.0" layoutY="308.0" text="- 좋아요♥" />
-                  <JFXButton layoutX="22.0" layoutY="331.0" text="- 리뷰" />
+                  <JFXButton onAction="#btn_riew" layoutX="22.0" layoutY="331.0" text="- 리뷰" />
                   <JFXButton layoutX="26.0" layoutY="778.0" text="- 최근감상곡" />
                   <JFXButton layoutX="26.0" layoutY="810.0" text="- 많이 들은곡" />
                   <JFXButton layoutX="25.0" layoutY="841.0" text="-많이 들은 아티스트" />

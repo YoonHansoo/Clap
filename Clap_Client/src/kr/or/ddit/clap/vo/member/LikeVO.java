@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.like.ILikeService;
+import kr.or.ddit.clap.view.member.profiles.LikeAlbController;
 
 public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable{
 	private Registry reg;
@@ -113,14 +114,14 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 			vo1.setMem_id(user_id1);
 			vo1.setAlb_no(albbtnLike.getId());
 			try {
-			List<Integer> liset = FXCollections.observableArrayList(ilks.deleteAlbLike(vo1));
+			int liset = ilks.deleteAlbLike(vo1);
 			} catch (RemoteException e) {
 				System.out.println("에러");
 				e.printStackTrace();
 			}
 			
 		});
-		
+	
 		return this.albbtnLike;
 	}
 	public void setAlbbtnLike(JFXButton albbtnLike) {

@@ -215,7 +215,7 @@ public class MypageController implements Initializable {
 		mypageDialog.setScene(scene);
 		mypageDialog.show();
 
-	/*	Button btnCl = (Button) root.lookup("#btn_ProfileCl");
+		Button btnCl = (Button) root.lookup("#btn_ProfileCl");
 		btnCl.setOnAction(e -> {
 			mypageDialog.close();
 		});
@@ -293,19 +293,20 @@ public class MypageController implements Initializable {
 			System.out.println(textF_Info.getText());
 			System.out.println(img_path);
 			MemberVO vo1 = new MemberVO();
-			vo.setMem_intro(textF_Info.getText());
-			vo.setMem_image(img_path);
-			vo.setMem_id(user_id);
+			vo1.setMem_intro(textF_Info.getText());
+			vo1.setMem_image(img_path);
+			vo1.setMem_id(user_id);
 			try {
 				int c=ims.updateImage(vo1);
-
-				System.out.println(c);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 
 			}
 			mypageDialog.close();
-		});*/
+			chagePage();
+		});
+		
+		
 
 	}
 
@@ -442,5 +443,37 @@ public class MypageController implements Initializable {
 		}
 
 	}
+	
+	public void chagePage() {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Mypage.fxml"));// init실행됨
+		Parent mypage;
+		try {
+			mypage = loader.load();
+			Head.getChildren().removeAll();
+			InfoContents.getChildren().removeAll();
+			contents.getChildren().removeAll();
+			contents.getChildren().removeAll();
+			Head.getChildren().setAll(mypage);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@FXML
+	public void btn_riew() throws IOException { // 좋아요클릭시
+
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../profiles/review.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 
 }
