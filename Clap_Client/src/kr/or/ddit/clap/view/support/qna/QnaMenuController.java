@@ -13,6 +13,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -29,10 +30,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.service.qna.IQnaService;
-import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
-import kr.or.ddit.clap.vo.singer.SingerVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
-import com.jfoenix.controls.JFXButton;
 
 public class QnaMenuController implements Initializable {
 
@@ -108,9 +106,9 @@ public class QnaMenuController implements Initializable {
 					System.out.println(vo.getQna_no());
 
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaDetailContent.fxml"));// init실행됨
-					Parent singerDetail = loader.load();
+					Parent qnaDetail = loader.load();
 					main.getChildren().removeAll();
-					main.getChildren().setAll(singerDetail);
+					main.getChildren().setAll(qnaDetail);
 
 				} catch (IOException e1) {
 					e1.printStackTrace();

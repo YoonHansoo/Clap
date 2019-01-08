@@ -276,5 +276,18 @@ public class MusicMainController implements Initializable {
 		}
 		
 	}
+	
+	@FXML
+	public void notice() { // 공지사항
+								
+		try {
+			Parent notice = FXMLLoader.load(getClass().getResource("../view/support/noticeboard/NoticeMenuList.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(notice);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }

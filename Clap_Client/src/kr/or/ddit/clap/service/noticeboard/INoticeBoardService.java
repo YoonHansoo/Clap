@@ -9,5 +9,7 @@ import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 public interface INoticeBoardService extends Remote {
 	
 	public List<NoticeBoardVO> selectListAll() throws RemoteException;
+	
+	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException;
 
 }

@@ -72,6 +72,8 @@ public class QnaDetailContentController implements Initializable {
 		Text_Content.setText(qVO.getQna_content());
 		
 		
+		
+		
 		btn_delete.setOnMouseClicked(e -> {
 			
 			//Alert창을 출력해 정말 삭제할 지 물어봄

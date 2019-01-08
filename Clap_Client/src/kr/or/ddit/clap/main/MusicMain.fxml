@@ -117,7 +117,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="공지사항">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="공지사항" />
+                              <MenuItem mnemonicParsing="false" onAction="#notice" text="공지사항" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="문의사항">
