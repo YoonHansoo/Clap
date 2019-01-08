@@ -28,8 +28,18 @@ public class MusicReviewServiceImpl  extends UnicastRemoteObject implements IMus
 	}
 
 	@Override
-	public List<MusicReviewVO> selectReview(MusicReviewVO vo) {
+	public List<MusicReviewVO> selectReview(MusicReviewVO vo) throws RemoteException{
 		return musicreviewDao.selectReview(vo);
+	}
+
+	@Override
+	public List<MusicReviewVO> selectMusReview(MusicReviewVO vo) throws RemoteException {
+		return musicreviewDao.selectMusReview(vo);
+	}
+
+	@Override
+	public int deleteMusReview(MusicReviewVO vo) throws RemoteException {
+		return musicreviewDao.deleteMusReview(vo);
 	}
 
 

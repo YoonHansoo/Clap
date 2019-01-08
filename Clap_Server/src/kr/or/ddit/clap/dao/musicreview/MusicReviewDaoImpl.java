@@ -10,6 +10,7 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
@@ -51,6 +52,33 @@ public class MusicReviewDaoImpl implements IMusicReviewDao{
 		return list;
 	}
 
+	@Override
+	public List<MusicReviewVO> selectMusReview(MusicReviewVO vo) {
+		List<MusicReviewVO> list = new ArrayList<MusicReviewVO>();
+		try {
+			
+			list = smc.queryForList("musicreview.selectMusReview",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public int deleteMusReview(MusicReviewVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("musicreview.deleteMusReview",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+	}
 
 
-}
+
+
