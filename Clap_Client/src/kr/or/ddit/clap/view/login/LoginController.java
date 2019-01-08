@@ -124,6 +124,8 @@ public class LoginController implements Initializable{
 		}
 		
 		// 아이디 확인
+		vo.setMem_id(txt_id.getText());
+		
 		Boolean idCheck = false;
 		try {
 			idCheck = ils.idCheck(txt_id.getText());
@@ -132,8 +134,6 @@ public class LoginController implements Initializable{
 			e.printStackTrace();
 		}
 		
-		System.out.println("아이디체크 " + idCheck);
-
 		if(!idCheck) {
 			lb_check.setVisible(true);
 			lb_check.setText("존재하지 않는 아이디입니다.");

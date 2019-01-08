@@ -78,14 +78,22 @@
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
                      </font></JFXTextField>
-                  <JFXButton onAction="#idSearch" text="아이디 찾기">
-                     <font>
-                        <Font name="YDIYGO350" size="14.0" />
-                     </font></JFXButton>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <JFXButton onAction="#idSearch" text="아이디 찾기">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="190.0" top="10.0" />
+                     </HBox.margin>
+                  </JFXButton>
+               </children>
             </HBox>
             <Label text="clap 비밀번호 찾기">
                <font>
@@ -148,24 +156,15 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
+                  <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="임시 비밀번호">
-                           <HBox.margin>
-                              <Insets top="4.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="YDIYGO350" size="14.0" />
-                           </font>
-                        </Label>
-                        <JFXTextField fx:id="txt_emailCheck">
-                           <font>
-                              <Font name="YDIYGO350" size="14.0" />
-                           </font></JFXTextField>
                         <JFXButton fx:id="btn_emailCheck" onAction="#pwSearch" text="비밀번호 찾기">
                            <font>
                               <Font name="YDIYGO350" size="14.0" />
-                           </font></JFXButton>
+                           </font>
+                           <HBox.margin>
+                              <Insets right="190.0" top="10.0" />
+                           </HBox.margin></JFXButton>
                      </children>
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
