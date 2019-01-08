@@ -64,6 +64,16 @@ public class LoginDaoImpl implements ILoginDao{
 		return list;
 	}
 
+	public List<MemberVO> idSearch(MemberVO vo) {
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			list = smc.queryForList("login.idSearch", vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 
 
 }

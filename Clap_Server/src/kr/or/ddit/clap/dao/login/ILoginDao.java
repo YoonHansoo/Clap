@@ -8,4 +8,6 @@ public interface ILoginDao {
 	public Boolean idCheck(String id);
 	
 	public List<MemberVO> select(String id); 
+	
+	public List<MemberVO> idSearch(MemberVO vo);
 }
