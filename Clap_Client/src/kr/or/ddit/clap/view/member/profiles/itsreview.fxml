@@ -12,17 +12,17 @@
          <children>
             <AnchorPane prefHeight="587.0" prefWidth="720.0">
                <children>
-                  <JFXTreeTableView fx:id="tbl_Review" layoutX="8.0" layoutY="116.0" prefHeight="400.0" prefWidth="704.0">
+                  <JFXTreeTableView fx:id="tbl_Review" layoutX="8.0" layoutY="109.0" prefHeight="407.0" prefWidth="704.0">
                      <columns>
-                        <TreeTableColumn fx:id="col_imge" minWidth="0.0" prefWidth="108.0" text="  " />
-                        <TreeTableColumn fx:id="col_title" minWidth="0.0" prefWidth="114.0" text="앨범제목" />
-                        <TreeTableColumn fx:id="col_Its" prefWidth="51.0" text="가수명" />
-                        <TreeTableColumn fx:id="col_Reviewcon" prefWidth="294.0" text="댓글 내용" />
+                        <TreeTableColumn fx:id="col_imge" minWidth="0.0" prefWidth="112.0" text="  " />
+                        <TreeTableColumn fx:id="col_Its" minWidth="0.0" prefWidth="81.0" text="가수명" />
+                        <TreeTableColumn fx:id="col_Debu" prefWidth="99.0" text="데뷔년도" />
+                        <TreeTableColumn fx:id="col_Reviewcon" prefWidth="275.0" text="댓글 내용" />
                         <TreeTableColumn fx:id="col_ReviwIndate" prefWidth="108.0" text="댓글 등록일" />
                         <TreeTableColumn fx:id="col_del" prefWidth="28.0" text="삭제" />
                      </columns>
                   </JFXTreeTableView>
-                  <Pagination fx:id="p_Paging" layoutX="-8.0" layoutY="83.0" prefHeight="521.0" prefWidth="728.0" />
+                  <Pagination fx:id="p_Paging" layoutX="-8.0" layoutY="82.0" prefHeight="522.0" prefWidth="728.0" />
                </children>
             </AnchorPane>
          </children>
