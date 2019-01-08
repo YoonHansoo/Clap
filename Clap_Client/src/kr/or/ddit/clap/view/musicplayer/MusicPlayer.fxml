@@ -56,7 +56,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </ImageView>
-                  <JFXSlider fx:id="slider_time" value="0">
+                  <JFXSlider fx:id="slider_time" value="10.0">
                      <VBox.margin>
                         <Insets top="70.0" />
                      </VBox.margin>
