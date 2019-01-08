@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+         PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+         "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->
+<sqlMap namespace="music">
+
+
+	<select id="selectListAll" resultClass="musicVO">
+		
+	    select a.ALB_IMAGE,
+           b.MUS_TITLE,
+           a.ALB_NAME,
+           c.SING_NAME,
+           d.GEN_DETALE_NAME,
+           b.MUS_NO
+      from album a, music b, singer c, GENRE_DETAIL d
+     where a.alb_no = b.alb_no
+       and a.sing_no = c.sing_no
+       and b.gen_detail_no = d.gen_detail_no;
+
+	</select>
+
+
+
+	<!-- 검색용 쿼리 -->
+	<select id="searchList" resultClass="albumVO"
+		parameterClass="albumVO">
+
+
+		SELECT a.ALB_NO
+		, a.ALB_NAME
+		, a.ALB_IMAGE
+		, b.SING_NAME
+		, to_char(a.ALB_SALEDATE, 'yyyy/mm/dd') as ALB_SALEDATE
+		, a.ALB_SALE_ENTER
+		FROM ALBUM a, SINGER b
+		WHERE a.SING_NO = b.SING_NO
+		<isNotEmpty property="alb_name" prepend="and">
+			a.ALB_NAME like '%' || #alb_name# || '%'
+		</isNotEmpty>
+		<isNotEmpty property="sing_name" prepend="and">
+			b.sing_name like '%' || #sing_name# || '%'
+		</isNotEmpty>
+	</select>
+
+	<!-- 앨범정보등록 쿼리 -->
+	<insert id="insertAlbum" parameterClass="albumVO">
+		<selectKey resultClass="String" keyProperty="alb_no">
+			select SEQ_ALB_NO.nextval
+			from dual
+		</selectKey>
+		insert into ALBUM (ALB_NO,
+		ALB_NAME,
+		ALB_SALEDATE,
+		ALB_IMAGE,
+		ALB_INTRO,
+		ALB_SALE_ENTER,
+		ALB_ENTERTAIN,
+		SING_NO)
+		values (#alb_no#,
+		#alb_name#,
+		#alb_saledate#,
+		#alb_image#,
+		#alb_intro#,
+		#alb_sale_enter#,
+		#alb_entertain#,
+		#sing_no#)
+	</insert>
+
+	<select id="albumDetailInfo" resultClass="albumVO"
+		parameterClass="String">
+		        select  a.ALB_NO,
+				a.ALB_NAME,
+				a.ALB_SALEDATE,
+				a.ALB_IMAGE,
+				a.ALB_INTRO,
+				a.ALB_SALE_ENTER,
+				a.ALB_ENTERTAIN,
+				b.SING_NAME,
+				a.SING_NO
+		  from ALBUM a, SINGER b
+		  WHERE a.SING_NO = b.SING_NO
+		    and a.ALB_NO =#String#
+	</select>
+
+	<!-- //좋이요 갯수 쿼리 -->
+	<select id="selectAlbumLikeCnt" resultClass="int"
+		parameterClass="String">
+		  select count(ALB_NO)
+		from ALBUM_LIKE
+		where ALB_NO =#String#
+	</select>
+
+
+ <!-- 가수정보 수정 쿼리 -->
+   <update id="updateAlbumInfo" parameterClass="albumVO">
+	 		update album set 
+	 								ALB_NAME 		= #alb_name#,
+	 								ALB_SALEDATE 	= #alb_saledate#,
+	 								ALB_IMAGE 	= #alb_image#,
+	 								ALB_INTRO  = #alb_intro#,
+	 								ALB_SALE_ENTER 	= #alb_sale_enter#,
+	 								ALB_ENTERTAIN		= #alb_entertain#,
+	 								SING_NO	= #sing_no#
+	 			        	where ALB_NO=#alb_no#
+	 </update>
+
+
+
+
+ <delete id="deleteAlbum" parameterClass="String">
+			delete from album where ALB_NO=#String#
+	 </delete>
+</sqlMap>         
+
+
+
+
