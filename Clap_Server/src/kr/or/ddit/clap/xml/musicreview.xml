@@ -14,7 +14,7 @@
             mus_no 
          from music_review where mem_id=#mem_id# union all
    select  sing_re_no,
-            sing_re_conntent,
+            sing_re_content,
             sing_re_indate as indate,
             mem_id,
             sing_no
