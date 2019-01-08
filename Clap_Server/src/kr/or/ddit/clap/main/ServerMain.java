@@ -34,18 +34,18 @@ public class ServerMain {
 		
 		try {
 //			IBoardService bsi = new BoardServiceImpl();
-			ISingerService ssi 		  = SingerServiceImpl.getInstance();	//가수
-			IMypageService ms 		  = MypageServiceImpl.getInstance();	//마이페이지
-			ILoginService ils 		  = LoginServiceImpl.getInstance();	//로그인
-			IQnaService iqs     	  = QnaServiceImpl.getInstance();		//문의사항
-			IJoinService ijs     	  = JoinServiceImpl.getInstance();	//회원가입
-			IMusicReviewService imrs  = MusicReviewServiceImpl.getInstance();	//뮤직댓글
-			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); // 뮤직순위
-			ILikeService ilks 		  = LikeServiceImpl.getInstance(); // 좋아요
-			IMyAlbumService imas 	  = MyAlbumServiceImpl.getInstance(); // 마이앨범
-			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); // 마이앨범리스트
-			IAlbumService ias 		  = AlbumServiceImpl.getInstance(); //앨범
-			INoticeBoardService ins   = NoticeBoardServiceImpl.getInstance();//공지사항
+			ISingerService ssi 		  = SingerServiceImpl.getInstance();		// 가수
+			IMypageService ms 		  = MypageServiceImpl.getInstance();		// 마이페이지
+			ILoginService ils 		  = LoginServiceImpl.getInstance();			// 로그인
+			IQnaService iqs     	  = QnaServiceImpl.getInstance();			// 문의사항
+			IJoinService ijs     	  = JoinServiceImpl.getInstance();			// 회원가입
+			IMusicReviewService imrs  = MusicReviewServiceImpl.getInstance();	// 뮤직댓글
+			IMusicHistoryService imhs = MusicHistoryServiceImpl.getInstance(); 	// 뮤직순위
+			ILikeService ilks 		  = LikeServiceImpl.getInstance(); 			// 좋아요
+			IMyAlbumService imas 	  = MyAlbumServiceImpl.getInstance();		// 마이앨범
+			IMyAlbumListService imals = MyAlbumListServiceImpl.getInstance(); 	// 마이앨범리스트
+			IAlbumService ias 		  = AlbumServiceImpl.getInstance(); 		// 앨범
+			INoticeBoardService ins   = NoticeBoardServiceImpl.getInstance();	// 공지사항
 			
 			
 			Registry reg = LocateRegistry.createRegistry(8888);
