@@ -119,16 +119,15 @@ public class SelectSingerController implements Initializable {
 		//더블클릭
 		tbl_singer.setOnMouseClicked(e ->{
 			if (e.getClickCount()  > 1) {
-				int index = tbl_singer.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : "+index);
-				SingerVO vo = singerList.get(index);
-				String singNo = vo.getSing_no();
-				String singName = vo.getSing_name();
-				System.out.println("가수번호:" +singNo);
-				System.out.println("가수이름 :"+ singName);
+				String singNo = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_no();
+				String singName = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_name();
+				System.out.println("선택한 가수번호: "+singNo);
+				System.out.println("선택한 가수이름: "+singName);
+				
+			
 				
 				InsertAlbumController.singNo = singNo;
-				InsertAlbumController.singNo = singName;
+				InsertAlbumController.singName = singName;
 				
 				iAC.label_singName.setText(singName);
 				iAC.label_singerNO.setText(singNo);

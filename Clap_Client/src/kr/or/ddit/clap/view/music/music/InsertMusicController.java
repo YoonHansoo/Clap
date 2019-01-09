@@ -145,7 +145,7 @@ public class InsertMusicController implements Initializable {
 		
 		
 		
-		//장르콤보박스 값이 바뀔 때  장르상세도 그에 맞게 출력d
+		//장르콤보박스 값이 바뀔 때  장르상세도 그에 맞게 출력
 		combo_genre.valueProperty().addListener((e->{
 			combo_genreDetail.getItems().clear();
 			String genreName = combo_genre.getValue();

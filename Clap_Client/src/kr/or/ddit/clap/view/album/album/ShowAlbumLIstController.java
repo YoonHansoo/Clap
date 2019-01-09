@@ -133,12 +133,10 @@ public class ShowAlbumLIstController implements Initializable {
 		tbl_album.setOnMouseClicked(e ->{
 			System.out.println("dd");
 			if (e.getClickCount()  > 1) {
-				int index = tbl_album.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : "+index);
-				AlbumVO vo = albumList.get(index);
-				System.out.println("가수번호:" + vo.getAlb_no());
-				String albumNo =  vo.getAlb_no(); //가수번호(PK)를 받아옴
 				
+				
+				String albumNo = tbl_album.getSelectionModel().getSelectedItem().getValue().getAlb_no();
+				System.out.println("선택한 앨범번호: "+albumNo);
 				
 				try {
 					//바뀔 화면(FXML)을 가져옴

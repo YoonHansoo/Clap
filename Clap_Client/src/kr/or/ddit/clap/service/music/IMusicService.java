@@ -27,10 +27,10 @@ public interface IMusicService extends Remote {
 	
 	public List<GenreDetailVO> showGenreDetail(String genreNo) throws RemoteException;
 	
+	public MusicVO selectMusicDetailInfo(String musicNo) throws RemoteException;
 	
 	public int insertMusic(MusicVO vo) throws RemoteException;
 	
-	public MusicVO musicDetailInfo(String musicNo) throws RemoteException;
 	
 	public int selectMusicLikeCnt(String musicNo) throws RemoteException;
 	

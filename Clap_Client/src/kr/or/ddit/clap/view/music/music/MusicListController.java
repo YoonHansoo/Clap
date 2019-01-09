@@ -133,30 +133,30 @@ public class MusicListController implements Initializable {
 		
 		//더블클릭
 		tbl_Music.setOnMouseClicked(e ->{
-			System.out.println("dd");
+			System.out.println("더블클릭");
 			if (e.getClickCount()  > 1) {
-				int index = tbl_Music.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : "+index);
-				MusicVO vo = musicList.get(index);
-				System.out.println("가수번호:" + vo.getAlb_no());
-				String albumNo =  vo.getAlb_no(); //가수번호(PK)를 받아옴
 				
+				
+				
+				String musicNo = tbl_Music.getSelectionModel().getSelectedItem().getValue().getMus_no();
+				System.out.println("곡 번호:" + musicNo);
 				
 				try {
 					//바뀔 화면(FXML)을 가져옴
 
-					AlbumDetailController.albumNo = albumNo;//가수번호를 변수로 넘겨줌
+					MusicDetailController.musicNo = musicNo;//곡 번호를 변수로 넘겨줌
 					
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("AlbumDetail.fxml"));// init실행됨
-					Parent albumDetail= loader.load(); 
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicDetail.fxml"));// init실행됨
+					Parent musicDetail= loader.load(); 
 					
-					AlbumDetailController cotroller = loader.getController();
+					MusicDetailController cotroller = loader.getController();
 					cotroller.givePane(contents); 
 					
 					main.getChildren().removeAll();
-					main.getChildren().setAll(albumDetail);
+					main.getChildren().setAll(musicDetail);
 					
 					
+				
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} 

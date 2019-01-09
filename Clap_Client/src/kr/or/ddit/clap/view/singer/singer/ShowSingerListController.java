@@ -129,18 +129,14 @@ public class ShowSingerListController implements Initializable {
 		//더블클릭
 		tbl_singer.setOnMouseClicked(e ->{
 			if (e.getClickCount()  > 1) {
-				int index = tbl_singer.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : "+index);
-				SingerVO vo = singerList.get(index);
-				System.out.println("가수번호:" + vo.getSing_no());
-				String singerNo =  vo.getSing_no(); //가수번호(PK)를 받아옴
-				
+				//int index = tbl_singer.getSelectionModel().getSelectedIndex();
+				String singNo = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_no();
+				System.out.println("선택한 가수번호: "+singNo);
 				
 				
 				try {
 					//바뀔 화면(FXML)을 가져옴
-
-					ShowSingerDetailController.singerNo = singerNo;//가수번호를 변수로 넘겨줌
+					ShowSingerDetailController.singerNo = singNo;//가수번호를 변수로 넘겨줌
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
 					Parent singerDetail= loader.load(); 

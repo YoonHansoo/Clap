@@ -140,15 +140,15 @@ public class SelectAlbumController implements Initializable {
 		tbl_album.setOnMouseClicked(e ->{
 
 			if (e.getClickCount()  > 1) {
-				int index = tbl_album.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : "+index);
-				AlbumVO vo = albumList.get(index);
-				System.out.println("가수번호:" + vo.getAlb_no());
 				
-				String albumNo =  vo.getAlb_no(); //앨범번호 
-				String albName = vo.getAlb_name(); 
-				String singname = vo.getSing_name(); //아티스트 이름
-				String img_path = vo.getAlb_image();
+				String albumNo = tbl_album.getSelectionModel().getSelectedItem().getValue().getAlb_no();
+				String albName = tbl_album.getSelectionModel().getSelectedItem().getValue().getAlb_name();
+				String singname = tbl_album.getSelectionModel().getSelectedItem().getValue().getSing_name();
+				String img_path = tbl_album.getSelectionModel().getSelectedItem().getValue().getAlb_image();
+				System.out.println("선택한 앨범번호: "+albumNo);
+				
+				
+				
 				
 				iMC.label_albNO.setText(albumNo);
 				iMC.txt_albName.setText(albName);
