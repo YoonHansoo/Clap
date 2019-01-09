@@ -100,6 +100,19 @@ public class MyAlbumDaoImpl implements IMyAlbumDao{
 		return cnt;
 	}
 
+	@Override
+	public int updateMyalb(MyAlbumVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("myalbum.updateMyalb", vo);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
 	
 
 }

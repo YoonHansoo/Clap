@@ -7,6 +7,7 @@ import java.util.Map;
 
 import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
+import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 
 /**
  * 
@@ -19,5 +20,6 @@ public interface IMyAlbumService  extends Remote {
 	public List<MyAlbumVO> myAlbumSelect(String id) throws RemoteException;
 	public int myAlbumInsert(Map<String,String> myAlbum) throws RemoteException;
 	
-	public int deleteMyalb(MyAlbumVO vo)					throws RemoteException;
+	public int deleteMyalb(MyAlbumVO vo)		throws RemoteException;
+	public int updateMyalb(MyAlbumVO vo) 	throws RemoteException;
 }

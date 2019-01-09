@@ -23,6 +23,12 @@
            delete from myalbum 
 	    where mem_id=#mem_id# and myalb_no=#myalb_no#
 	</delete> 
+	
+	<update id="updateMyalb" parameterClass="myalbumVO">
+		update myalbum 
+		set myalb_name=#myalb_name#
+		 where mem_id=#mem_id# and myalb_no=#myalb_no#
+	</update>
 </sqlMap>			
 
 

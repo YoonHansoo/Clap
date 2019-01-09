@@ -5,6 +5,7 @@ import java.util.Map;
 
 import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
+import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 
 
 /**
@@ -20,5 +21,6 @@ public interface IMyAlbumDao {
 	 * 현지
 	 */
 	public int deleteMyalb(MyAlbumVO vo);
+	public int updateMyalb(MyAlbumVO vo);
 	
 }
