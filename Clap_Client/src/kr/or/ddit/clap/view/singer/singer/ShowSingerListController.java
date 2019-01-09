@@ -208,7 +208,7 @@ private void search() {
 			
 		default :
 			break;
-		}
+		} 
 		
 		singerList = FXCollections.observableArrayList(searchlist); //검색조건에 맞는 리스트를 저장
 		paging();

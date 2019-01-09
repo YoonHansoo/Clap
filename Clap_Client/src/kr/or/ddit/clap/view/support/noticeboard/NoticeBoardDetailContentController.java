@@ -22,6 +22,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 import com.jfoenix.controls.JFXButton;
@@ -52,6 +53,12 @@ public class NoticeBoardDetailContentController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		if(LoginSession.session.getMem_auth().equals("t")){
+			btn_del.setVisible(true);
+		} else {
+			btn_del.setVisible(false);
+		}
+		
 		
 		try {
 			System.out.println("noticeNO??" + NoticeNo);

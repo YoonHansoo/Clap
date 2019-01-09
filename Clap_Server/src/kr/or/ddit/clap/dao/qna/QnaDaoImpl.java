@@ -97,6 +97,22 @@ public class QnaDaoImpl implements IQnaDao{
 		
 		return cnt;
 	}
+
+	// 수정 쿼리
+	@Override
+	public int updateQna(QnaVO vo) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.update("qna.updateQna", vo);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return cnt;
+	}
 		
 		
 	}

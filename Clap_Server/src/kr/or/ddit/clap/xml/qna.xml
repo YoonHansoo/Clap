@@ -44,6 +44,28 @@
                 #mem_id#)
 		   
 	</insert>
+	
+	
+	<!-- 문의사항 글 수정 쿼리 -->
+	<update id="updateQna" parameterClass="qnaVO">
+	 		update qna set 
+					QNA_INDATE = sysdate,
+	                QNA_TITLE = #qna_title#,
+	                MEM_TEL = #mem_tel#,
+	                MEM_EMAIL = #mem_email#,
+	                QNA_TYPE = #qna_type#,
+	                QNA_VIEW_CNT = 0,
+	                QNA_CONTENT = #qna_content#,
+	                MEM_ID = #mem_id#
+        	where QNA_NO=#qna_no#
+	 </update>
+	
+	
+	
+	
+	
+	
+	
 		
 	
 	<!--  문의사항 글을 삭제하는 쿼리 -->

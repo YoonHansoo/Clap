@@ -33,6 +33,7 @@
             <Text fx:id="Text_Content" strokeType="OUTSIDE" strokeWidth="0.0" text="문의 내용" />
          </children>
       </TextFlow>
-      <JFXButton fx:id="btn_delete" layoutX="475.0" layoutY="578.0" text="삭제하기" />
+      <JFXButton fx:id="btn_delete" layoutX="820.0" layoutY="578.0" text="삭  제" />
+      <JFXButton fx:id="btn_update" layoutX="750.0" layoutY="578.0" text="수  정" />
    </children>
 </AnchorPane>

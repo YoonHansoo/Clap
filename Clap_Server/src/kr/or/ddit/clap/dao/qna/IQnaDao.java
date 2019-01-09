@@ -22,4 +22,6 @@ public interface IQnaDao {
 	public int insertQna(QnaVO vo);
 	
 	public int deleteQnaContent(String qna_no);
+	
+	public int updateQna(QnaVO vo);
 }

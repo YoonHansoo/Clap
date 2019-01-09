@@ -13,6 +13,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
+import javax.mail.Session;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,6 +23,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.text.Text;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.vo.support.QnaVO;
 import com.jfoenix.controls.JFXButton;
@@ -31,7 +34,6 @@ public class QnaDetailContentController implements Initializable {
 	public static String ContentNo;
 	private Registry reg;
 	private IQnaService iqs;
-	
 	@FXML
 	Text Text_QnaType;
 	@FXML
@@ -44,11 +46,21 @@ public class QnaDetailContentController implements Initializable {
 	JFXButton btn_delete;
 	@FXML
 	AnchorPane main;
+	@FXML 
+	JFXButton btn_update;
 	
 	public QnaVO qVO = null;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// 관리자 모드 - 삭제창
+		if(LoginSession.session.getMem_auth().equals("t")){
+			btn_delete.setVisible(true);
+		} else {
+			btn_delete.setVisible(false);
+		}
+		// 사용자 모드 - 수정창 만들기
+		
 		
 		try {
 			System.out.println(ContentNo);
@@ -91,6 +103,26 @@ public class QnaDetailContentController implements Initializable {
 			}
 			
 		});
+		
+		
+		btn_update.setOnMouseClicked(e -> {
+			try {
+				
+				System.out.println("수 정");
+				// 바뀔 화면(FXML)을 가져옴
+				QnaContentUpdateController.ContentNo = ContentNo; //번호를 변수로 넘겨줌
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaContentUpdate.fxml"));
+				Parent UpdateQna = loader.load();
+				QnaContentUpdateController controller = loader.getController();
+				controller.initData(qVO);
+				main.getChildren().removeAll();
+				main.getChildren().setAll(UpdateQna);
+				
+			} catch(IOException ee) {
+				ee.printStackTrace();
+			}
+		});
+		
 		
 	}
 		

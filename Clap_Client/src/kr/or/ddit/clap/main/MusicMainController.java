@@ -39,6 +39,17 @@ public class MusicMainController implements Initializable {
 	@FXML HBox mem_menu;
 
 	@FXML public JFXButton btn_login;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	@FXML public JFXButton btn_logout;
 	@FXML public JFXButton btn_join;
 	@FXML public JFXButton btn_mem;
