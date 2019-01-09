@@ -553,11 +553,26 @@ public class MypageController implements Initializable {
 	}
 
 	@FXML public void btn_ThrReview() {
-		System.out.println("리뷰");
+		try {
+		Parent root = FXMLLoader.load(getClass().getResource("../profiles/review.fxml"));
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(root);
+
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+
 	}
 
 	@FXML public void btn_TheMus() {
-		System.out.println("최근");
+		try {
+		Parent root = FXMLLoader.load(getClass().getResource("../profilesmus/thenewmus.fxml"));
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(root);
+
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
 	}
 	
 	
