@@ -5,6 +5,7 @@
  */
 package kr.or.ddit.clap.view.support.noticeboard;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -13,11 +14,17 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
+import com.jfoenix.controls.JFXButton;
 
 public class NoticeBoardDetailContentController implements Initializable {
 	
@@ -31,8 +38,12 @@ public class NoticeBoardDetailContentController implements Initializable {
 	Text Text_NtcTitle;
 	@FXML
 	Text Text_NtcDate;
-	@FXML Text Text_NtcContent;
-	@FXML AnchorPane n_main;
+	@FXML
+	Text Text_NtcContent;
+	@FXML
+	AnchorPane n_main;
+	@FXML
+	JFXButton btn_del;
 	
 	
 	public NoticeBoardVO nVO;
@@ -64,8 +75,58 @@ public class NoticeBoardDetailContentController implements Initializable {
 		Text_NtcContent.setText(nVO.getNotice_content());
 		
 		
+		btn_del.setOnMouseClicked(e -> {
+			
+			//Alert창을 출력해 정말 삭제할 지 물어봄
+			try {
+				if(0>alertConfrimDelete()) {
+					return;
+				}
+				
+				int cnt = ins.deleteNoticeContent(NoticeNo);
+				
+				
+				
+			} catch(RemoteException ee) {
+				ee.printStackTrace();
+			}
+			
+		});
+		
+		
 		
 		
 	}
+	
+	
+	//사용자가 확인을 누르면 1을 리턴 이외는 -1
+			public int alertConfrimDelete() {
+				Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
+			      
+			      alertConfirm.setTitle("CONFIRMATION");
+			      alertConfirm.setContentText("삭제하시면 복구가 불가능합니다.");
+			      
+			      // Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
+			      ButtonType confirmResult = alertConfirm.showAndWait().get();
+			      
+			      if (confirmResult == ButtonType.OK) {
+			         System.out.println("OK 버튼을 눌렀습니다.");
+			         
+			         Parent root1;
+						try {
+							root1 = FXMLLoader.load(getClass().getResource("NoticeMenuList.fxml"));
+							n_main.getChildren().removeAll();
+							n_main.getChildren().setAll(root1);
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+			         
+			         return 1;
+			      } else if (confirmResult == ButtonType.CANCEL) {
+			         System.out.println("취소 버튼을 눌렀습니다.");
+			         return -1;
+			      }
+			      return -1;
+			}
 
 }

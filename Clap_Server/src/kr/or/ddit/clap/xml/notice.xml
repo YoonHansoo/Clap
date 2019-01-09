@@ -15,8 +15,33 @@
 		  select notice_no, notice_indate, notice_title, notice_content from notice_board where notice_no = #String#
       </select>
 
+	<!-- 공지사항 글 등록 insert -->
+	<insert id="insertNotice" parameterClass="NoticeBoardVO">
+	<selectKey resultClass="String" keyProperty="notice_no">
+		select SEQ_NOTICE_NO.nextval from dual
+		</selectKey>
+		insert into notice_board
+				(notice_no,
+                notice_indate,
+                notice_title,
+                notice_content,
+                notice_view_cnt,
+                mem_id)
+        values (#notice_no#,
+                sysdate,
+                #notice_title#,
+                #notice_content#,
+                0,
+                #mem_id#)
+		   
+	</insert>
 
 
+
+	<!--  공지사항 글을 삭제하는 쿼리 -->
+	<delete id="deleteNoticeContent" parameterClass="String">
+			delete from notice_board where notice_no=#String#
+	 </delete>
 
 
 

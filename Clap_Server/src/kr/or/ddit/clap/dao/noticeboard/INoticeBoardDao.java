@@ -17,6 +17,10 @@ public interface INoticeBoardDao {
 	
 	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException;
 	
+	public int insertNotice(NoticeBoardVO vo);
+	
+	public int deleteNoticeContent(String notice_no);
+	
 	
 
 }

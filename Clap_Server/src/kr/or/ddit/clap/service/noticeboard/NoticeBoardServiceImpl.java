@@ -45,6 +45,16 @@ public class NoticeBoardServiceImpl extends UnicastRemoteObject implements INoti
 	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException {
 		return noticeBoardDao.NoticeBoardDetailContent(NoticeNo);
 	}
+
+	@Override
+	public int insertNotice(NoticeBoardVO vo) throws RemoteException {
+		return noticeBoardDao.insertNotice(vo);
+	}
+
+	@Override
+	public int deleteNoticeContent(String notice_no) throws RemoteException {
+		return noticeBoardDao.deleteNoticeContent(notice_no);
+	}
 	
 	
 	

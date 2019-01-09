@@ -11,5 +11,9 @@ public interface INoticeBoardService extends Remote {
 	public List<NoticeBoardVO> selectListAll() throws RemoteException;
 	
 	public NoticeBoardVO NoticeBoardDetailContent(String NoticeNo) throws RemoteException;
+	
+	public int insertNotice(NoticeBoardVO vo) throws RemoteException;
+	
+	public int deleteNoticeContent(String notice_no) throws RemoteException;
 
 }

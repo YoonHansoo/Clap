@@ -25,6 +25,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
+import com.jfoenix.controls.JFXButton;
 
 public class NoticeMenuController implements Initializable {
 	
@@ -42,6 +43,8 @@ public class NoticeMenuController implements Initializable {
 	AnchorPane d_main;
 	@FXML
 	Pagination n_paging;
+	@FXML
+	JFXButton btn_add;
 	
 	private Registry reg;
 	private INoticeBoardService ins;
@@ -113,6 +116,24 @@ public class NoticeMenuController implements Initializable {
 							e1.printStackTrace();
 						}
 					}
+				});
+				
+				
+				btn_add.setOnAction(e -> {
+					
+					try {
+						// 바뀔 화면(FXML)을 가져옴	
+
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("NoticeBoardInsert.fxml"));// init실행됨
+						Parent NoticeInsert = loader.load();
+						main.getChildren().removeAll();
+						main.getChildren().setAll(NoticeInsert);
+
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
+					
+					
 				});
 				
 				

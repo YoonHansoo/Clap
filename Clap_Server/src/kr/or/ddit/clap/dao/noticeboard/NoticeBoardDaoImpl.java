@@ -75,4 +75,34 @@ public class NoticeBoardDaoImpl implements INoticeBoardDao {
 		return nVO;
 	}
 
+	@Override
+	public int insertNotice(NoticeBoardVO vo) {
+		
+		int cnt = 0;
+		
+		try {
+			Object obj = smc.insert("notice.insertNotice", vo);
+		} catch(SQLException e) {
+			System.out.println("insert실패");
+			e.printStackTrace();
+		}
+		
+		
+		return cnt;
+	}
+
+	@Override
+	public int deleteNoticeContent(String notice_no) {
+
+		int cnt = 0; 
+		
+		try {
+			cnt = smc.delete("notice.deleteNoticeContent", notice_no);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 }
