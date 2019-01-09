@@ -88,6 +88,18 @@ public class MyAlbumDaoImpl implements IMyAlbumDao{
 		
 	}
 
+	@Override
+	public int deleteMyalb(MyAlbumVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("myalbum.deleteMyalb",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 	
 
 }

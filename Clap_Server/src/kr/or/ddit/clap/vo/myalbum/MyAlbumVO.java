@@ -2,6 +2,7 @@ package kr.or.ddit.clap.vo.myalbum;
 
 import java.io.Serializable;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Serializable{
@@ -12,6 +13,25 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	private String mem_id;
 	private String mus_count;
 	
+	/**
+	 * 체크박스 추가
+	 * @현지
+	 */
+	
+	private JFXCheckBox chBox;
+	
+	
+	
+	public JFXCheckBox getChBox() {
+		this.chBox = new JFXCheckBox();
+		return chBox;
+	}
+	public JFXCheckBox getchBox1() {
+		return this.chBox;
+	}
+	public void setChBox(JFXCheckBox chBox) {
+		this.chBox = chBox;
+	}
 	public String getMyalb_no() {
 		return myalb_no;
 	}

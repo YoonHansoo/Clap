@@ -18,6 +18,11 @@
 		where mem_id = #id#
 	</select>
 	
+	
+	<delete id="deleteMyalb" parameterClass="myalbumVO">
+           delete from myalbum 
+	    where mem_id='mem_id' and myalb_no='myalb_no'
+	</delete> 
 </sqlMap>			
 
 

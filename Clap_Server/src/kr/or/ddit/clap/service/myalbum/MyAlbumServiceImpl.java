@@ -41,5 +41,10 @@ public class MyAlbumServiceImpl  extends UnicastRemoteObject implements IMyAlbum
 		return myalbumdao.myAlbumInsert(myAlbum);
 	}
 
+	@Override
+	public int deleteMyalb(MyAlbumVO vo) throws RemoteException {
+		return myalbumdao.deleteMyalb(vo);
+	}
+
 
 }
