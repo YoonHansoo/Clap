@@ -25,6 +25,8 @@
  	<typeAlias alias="musicVO" type        ="kr.or.ddit.clap.vo.music.MusicVO"/>
  	<typeAlias alias="albumReviewVO" type  ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
  	<typeAlias alias="singerReviewVO" type ="kr.or.ddit.clap.vo.singer.SingerReviewVO"/>
+ 	<typeAlias alias="GenreVO" type ="kr.or.ddit.clap.vo.genre.GenreVO"/>
+ 	<typeAlias alias="GenreDetailVO" type ="kr.or.ddit.clap.vo.genre.GenreDetailVO"/>
 
  	<typeAlias alias="EventBoardVO" type   ="kr.or.ddit.clap.vo.support.EventBoardVO"/>
 

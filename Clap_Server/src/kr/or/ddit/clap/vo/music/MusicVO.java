@@ -28,6 +28,7 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 	private String sing_name;
 	private String gen_name;
 	private ImageView imgView;
+	private String gen_detail_name;
 
 	public ImageView getImgView() {
 		this.imgView = new ImageView();
@@ -91,7 +92,6 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 		this.gen_detail_name = gen_detail_name;
 	}
 
-	private String gen_detail_name;
 
 	public String getMus_no() {
 		return mus_no;

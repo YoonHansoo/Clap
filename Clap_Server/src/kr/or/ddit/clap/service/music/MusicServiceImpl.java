@@ -12,6 +12,8 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import kr.or.ddit.clap.dao.music.MusicDaoImpl;
+import kr.or.ddit.clap.vo.genre.GenreDetailVO;
+import kr.or.ddit.clap.vo.genre.GenreVO;
 import kr.or.ddit.clap.vo.music.MusicVO;
 
 public class MusicServiceImpl extends UnicastRemoteObject implements IMusicService  {
@@ -69,6 +71,27 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 	@Override
 	public int deleteMusic(String musicNo) throws RemoteException {
 		return musicDao.deleteMusic(musicNo);
+	}
+
+	@Override
+	public List<GenreVO> showGenre() throws RemoteException {
+		return musicDao.showGenre();
+	}
+
+	
+	@Override
+	public List<GenreDetailVO> showGenreDetail(String genreNo) throws RemoteException {
+		return musicDao.showGenreDetail(genreNo);
+	}
+
+	@Override
+	public String selectGenreNO(String genreName) throws RemoteException {
+		return musicDao.selectGenreNO(genreName);
+	}
+
+	@Override
+	public String selectGenreDetailNO(String genreName) throws RemoteException {
+		return musicDao.selectGenreDetailNO(genreName);
 	}
 
 	

@@ -17,7 +17,9 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-import kr.or.ddit.clap.vo.music.MusicVO; 
+import kr.or.ddit.clap.vo.genre.GenreDetailVO;
+import kr.or.ddit.clap.vo.genre.GenreVO;
+import kr.or.ddit.clap.vo.music.MusicVO;
 
 public class MusicDaoImpl implements IMusicDao {
 
@@ -43,13 +45,12 @@ public class MusicDaoImpl implements IMusicDao {
 		return dao;
 	}
 
-
-	//가수목록 조회를 위한 쿼리문
+	// 노래목록 조회를 위한 쿼리문
 	public List<MusicVO> selectListAll() {
 		List<MusicVO> list = new ArrayList<MusicVO>();
 		try {
 
-			list = smc.queryForList("Music.selectListAll");
+			list = smc.queryForList("music.selectListAll");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -57,87 +58,152 @@ public class MusicDaoImpl implements IMusicDao {
 
 		return list;
 	}
-	
-	//검색조건에 맞게 검색하는 쿼리문
-		@Override
-		public List<MusicVO> searchList(MusicVO vo) {
-			List<MusicVO> list = new ArrayList<MusicVO>();
-			try {
-				
-				list = smc.queryForList("Music.searchList",vo);
-			
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			
-			return list;
+
+	// 검색조건에 맞게 검색하는 쿼리문
+	@Override
+	public List<MusicVO> searchList(MusicVO vo) {
+		List<MusicVO> list = new ArrayList<MusicVO>();
+		try {
+
+			list = smc.queryForList("music.searchList", vo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		public int insertMusic(MusicVO vo) {
-			int cnt = 0;
-			try {
-			Object obj = smc.insert("Music.insertMusic", vo);
-			if(obj == null) { //쿼리수행이 성공적으로 끝남
+		return list;
+	}
+
+	@Override
+	public int insertMusic(MusicVO vo) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("music.insertMusic", vo);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
 				cnt = 1;
 			}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			return cnt;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+
+	}
+
+	@Override
+	public MusicVO musicDetailInfo(String MusicNo) {
+		MusicVO aVO = new MusicVO();
+		try {
+
+			aVO = (MusicVO) smc.queryForObject("music.MusicDetailInfo", MusicNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return aVO;
+	}
+
+	@Override
+	public int selectMusicLikeCnt(String MusicNo) {
+		int singerLikeCnt = 0;
+
+		try {
+			singerLikeCnt = (int) smc.queryForObject("music.selectMusicLikeCnt", MusicNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return singerLikeCnt;
+	}
+
+	@Override
+	public int updateMusicInfo(MusicVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("music.updateMusicInfo", vo);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return cnt;
+
+	}
+
+	@Override
+	public int deleteMusic(String MusicNo) {
+
+		int cnt = 0;
+		try {
+			cnt = smc.delete("music.deleteMusic", MusicNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<GenreVO> showGenre() {
+
+		List<GenreVO> list = new ArrayList<GenreVO>();
+		try {
+
+			list = smc.queryForList("music.showGenre");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+
+	
+
+	@Override
+	public String selectGenreNO(String genreName) {
+
+		String genreNo = null;
+		try {
+
+			genreNo = (String) smc.queryForObject("music.selectGenreNO", genreName);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return genreNo;
+
+	}
+
+	@Override
+	public List<GenreDetailVO> showGenreDetail(String genreNO) {
+		List<GenreDetailVO> list = new ArrayList<GenreDetailVO>();
+		try {
+
+			list = smc.queryForList("music.showGenreDetail",genreNO);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public String selectGenreDetailNO(String genreName) {
+		String genreDetailNo = null;
+		try {
+
+			genreDetailNo = (String) smc.queryForObject("music.selectGenreDetailNO", genreName);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return genreDetailNo;
 		
-		}
-
-		@Override
-		public MusicVO musicDetailInfo(String MusicNo) {
-			MusicVO aVO = new MusicVO();
-			try {
-				
-				aVO = (MusicVO) smc.queryForObject("Music.MusicDetailInfo", MusicNo);
-			
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			
-			return aVO;
-		}
-
-		@Override
-		public int selectMusicLikeCnt(String MusicNo) {
-			int singerLikeCnt = 0;
-			
-			try {
-				singerLikeCnt = (int) smc.queryForObject("Music.selectMusicLikeCnt",MusicNo);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return singerLikeCnt;
-		}
-
-		@Override
-		public int updateMusicInfo(MusicVO vo) {
-			int cnt = 0;
-			try {
-			cnt = smc.update("Music.updateMusicInfo",vo);
-			} catch (SQLException e) {
-
-				e.printStackTrace();
-			} 
-			return cnt;
-			
-		}
-
-		@Override
-		public int deleteMusic(String MusicNo) {
-			
-			int cnt = 0;
-			try {
-				cnt = smc.delete("Music.deleteMusic",MusicNo);
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			return cnt;
-		}
+		
+		
+	}
 
 }

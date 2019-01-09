@@ -6,23 +6,36 @@
  */
 
 package kr.or.ddit.clap.dao.music;
+
+import java.rmi.RemoteException;
 import java.util.List;
 
+import kr.or.ddit.clap.vo.genre.GenreDetailVO;
+import kr.or.ddit.clap.vo.genre.GenreVO;
 import kr.or.ddit.clap.vo.music.MusicVO;
 
 public interface IMusicDao {
-	
-public List<MusicVO> selectListAll();
-	
+
+	public List<MusicVO> selectListAll();
+
 	public List<MusicVO> searchList(MusicVO vo);
+
+	public List<GenreVO> showGenre();
+
 	
+	public String selectGenreNO(String genreName);
+	
+	public String selectGenreDetailNO(String genreName);
+	
+	public List<GenreDetailVO> showGenreDetail(String genreNo);
+
 	public int insertMusic(MusicVO vo);
-	
+
 	public MusicVO musicDetailInfo(String musicNo);
-	
+
 	public int selectMusicLikeCnt(String musicNo);
-	
+
 	public int updateMusicInfo(MusicVO vo);
-	
-	 public int deleteMusic(String musicNo);
+
+	public int deleteMusic(String musicNo);
 }
