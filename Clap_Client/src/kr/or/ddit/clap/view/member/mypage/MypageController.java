@@ -442,7 +442,7 @@ public class MypageController implements Initializable {
 	}
 
 	@FXML
-	public void btn_Info() throws IOException { // 열필모양 (사용자 개인소개)수정
+	public void btn_Info() throws IOException { // 연필모양 (사용자 개인소개)수정
 
 		Parent root = null;
 		try {
