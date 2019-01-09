@@ -2,7 +2,9 @@ package kr.or.ddit.clap.vo.support;
 
 import java.io.Serializable;
 
-public class EventBoardVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class EventBoardVO extends RecursiveTreeObject<EventBoardVO> implements Serializable{
 	
 	private String event_no;
 	private String event_title;
