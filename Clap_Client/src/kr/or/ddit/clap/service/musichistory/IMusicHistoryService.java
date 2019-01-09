@@ -25,4 +25,5 @@ public interface IMusicHistoryService extends Remote {
 	public List<Map> foreignSelect(String year) throws RemoteException;
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo) throws RemoteException;
 	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo) throws RemoteException;
+	public List<MusicHistoryVO> selectNewLisMus(String id) throws RemoteException;
 }

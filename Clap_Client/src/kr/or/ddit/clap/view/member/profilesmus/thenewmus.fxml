@@ -20,15 +20,15 @@
                   <Button layoutX="90.0" layoutY="99.0" mnemonicParsing="false" text="듣기" />
                   <Button layoutX="168.0" layoutY="99.0" mnemonicParsing="false" text="추가" />
                   <Button layoutX="230.0" layoutY="99.0" mnemonicParsing="false" text="담기" />
-                  <JFXTreeTableView fx:id="tbl_like" layoutX="11.0" layoutY="160.0" prefHeight="400.0" prefWidth="704.0">
+                  <JFXTreeTableView fx:id="tbl_Newmus" layoutX="11.0" layoutY="160.0" prefHeight="400.0" prefWidth="704.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Checks" prefWidth="41.0" text="  " />
                         <TreeTableColumn fx:id="col_No" prefWidth="42.0" text="번호" />
                         <TreeTableColumn fx:id="col_Img" prefWidth="138.0" text=" " />
-                        <TreeTableColumn fx:id="col_Its" prefWidth="169.0" text="곡 " />
-                        <TreeTableColumn fx:id="col_LikeIndate" prefWidth="107.0" text="가수명" />
-                        <TreeTableColumn fx:id="col_Like" prefWidth="70.0" text="감상횟수" />
-                        <TreeTableColumn fx:id="col_Its1" prefWidth="136.0" text="최근 감상시간 " />
+                        <TreeTableColumn fx:id="col_Mus" prefWidth="169.0" text="곡 " />
+                        <TreeTableColumn fx:id="col_Singer" prefWidth="107.0" text="가수명" />
+                        <TreeTableColumn fx:id="col_MusCount" prefWidth="70.0" text="감상횟수" />
+                        <TreeTableColumn fx:id="col_NewMusTime" prefWidth="136.0" text="최근 감상시간 " />
                      </columns>
                   </JFXTreeTableView>
                   <Pagination fx:id="p_Paging" layoutX="6.0" layoutY="141.0" prefHeight="517.0" prefWidth="714.0" />
