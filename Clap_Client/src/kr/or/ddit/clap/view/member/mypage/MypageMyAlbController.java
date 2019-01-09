@@ -72,21 +72,10 @@ public class MypageMyAlbController implements Initializable{
 		}
 		myAlb();
 		
-		
-	/*	int count=0;
-		System.out.println(myAlbList.size());
-			for (int i = 0; i < myAlbList.size(); i++) {
-			if(myAlbList.get(i).getChBox().isSelected()) {
-				if(myAlbList.get(i).getchBox1().isSelected())
-				{
-					System.out.println(myAlbList.get(i).getchBox1().isSelected());
-					count++;
-				la_Muscount.setText("선택"+count+"/"+ myAlbList.size());
-				}
-			}else {
-				la_Muscount.setText("선택"+count+"/"+ myAlbList.size());
-			}
-		}*/
+		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
+		col_MusCount.setOnEditCommit(e->{
+			e.getTreeTableView().getTreeItem(e.getTreeTablePosition().getRow());
+		});
 		
 	}
 
