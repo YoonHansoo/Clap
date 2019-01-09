@@ -17,7 +17,6 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-import kr.or.ddit.clap.vo.singer.SingerVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaDaoImpl implements IQnaDao{

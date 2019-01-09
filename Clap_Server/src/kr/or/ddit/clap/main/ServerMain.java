@@ -7,6 +7,8 @@ import kr.or.ddit.clap.service.album.AlbumReviewServiceImpl;
 import kr.or.ddit.clap.service.album.AlbumServiceImpl;
 import kr.or.ddit.clap.service.album.IAlbumReviewService;
 import kr.or.ddit.clap.service.album.IAlbumService;
+import kr.or.ddit.clap.service.eventboard.EventBoardServiceImpl;
+import kr.or.ddit.clap.service.eventboard.IEventBoardService;
 import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.join.JoinServiceImpl;
 import kr.or.ddit.clap.service.like.ILikeService;
@@ -59,7 +61,9 @@ public class ServerMain {
 			IAlbumReviewService iars  = AlbumReviewServiceImpl.getInstance(); 	// 앨범 리뷰
 			ISingerReviewService isrs = SingerReviewServiceImpl.getInstance();  // 가수 리뷰
 			IPlayListService ipls     = PlayListServiceImpl.getInstance();		// 플레이 리스트
+			IEventBoardService ies	  = EventBoardServiceImpl.getInstance();	// 이벤트
 			ITicketService its     	  = TicketServiceImpl.getInstance();		// 이용권
+
 
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -79,7 +83,10 @@ public class ServerMain {
 			reg.rebind("music", ims);
 			reg.rebind("albreview", iars);
 			reg.rebind("singreview", isrs);
+			reg.rebind("eventboard", ies);
+
 			reg.rebind("ticket", its);
+
 			
 			 System.out.println("clap server  is running...");
 			  
