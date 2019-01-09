@@ -202,7 +202,6 @@ public class MypageController implements Initializable {
 		TreeItem<MusicHistoryVO> root2 = new RecursiveTreeItem<>(newList, RecursiveTreeObject::getChildren);
 		tbl_NewMusic.setRoot(root2);
 		tbl_NewMusic.setShowRoot(false);
-		
 		//마이앨범 
 		try {
 			myAlbList = FXCollections.observableArrayList(imas.myAlbumSelect(user_id));
