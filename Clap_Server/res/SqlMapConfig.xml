@@ -25,6 +25,7 @@
  	<typeAlias alias="musicVO" type       ="kr.or.ddit.clap.vo.music.MusicVO"/>
  	<typeAlias alias="albumReviewVO" type ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
  	<typeAlias alias="singerReviewVO" type ="kr.or.ddit.clap.vo.singer.SingerReviewVO"/>
+ 	<typeAlias alias="ticketBuyVO" type ="kr.or.ddit.clap.vo.ticket.TicketBuyListVO"/>
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">
@@ -50,6 +51,7 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/notice.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/playlist.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/music.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/ticket.xml"></sqlMap> 
 </sqlMapConfig>
 
 
