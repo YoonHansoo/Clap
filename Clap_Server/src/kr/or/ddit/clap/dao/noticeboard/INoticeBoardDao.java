@@ -21,6 +21,8 @@ public interface INoticeBoardDao {
 	
 	public int deleteNoticeContent(String notice_no);
 	
+	public int updateNotice(NoticeBoardVO vo);
+	
 	
 
 }

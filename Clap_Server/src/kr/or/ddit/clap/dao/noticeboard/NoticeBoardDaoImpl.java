@@ -105,4 +105,18 @@ public class NoticeBoardDaoImpl implements INoticeBoardDao {
 		return cnt;
 	}
 
+	@Override
+	public int updateNotice(NoticeBoardVO vo) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.update("notice.updateNotice", vo);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
 }

@@ -35,6 +35,21 @@
                 #mem_id#)
 		   
 	</insert>
+	
+	
+	<!-- 공지사항 글 수정 쿼리 -->
+	<update id="updateNotice" parameterClass="NoticeBoardVO">
+			update notice_board set 
+                notice_indate = sysdate,
+                notice_title = #notice_title#,
+                notice_content = #notice_content#,
+                notice_view_cnt = 0,
+                mem_id = #mem_id#
+            where notice_no=#notice_no#
+    </update>
+			
+	
+	
 
 
 

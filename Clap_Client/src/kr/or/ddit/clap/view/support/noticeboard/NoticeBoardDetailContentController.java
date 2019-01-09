@@ -45,6 +45,8 @@ public class NoticeBoardDetailContentController implements Initializable {
 	AnchorPane n_main;
 	@FXML
 	JFXButton btn_del;
+	@FXML
+	JFXButton btn_upd;
 	
 	
 	public NoticeBoardVO nVO;
@@ -53,10 +55,13 @@ public class NoticeBoardDetailContentController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
 		if(LoginSession.session.getMem_auth().equals("t")){
 			btn_del.setVisible(true);
+			btn_upd.setVisible(true);
 		} else {
 			btn_del.setVisible(false);
+			btn_upd.setVisible(false);
 		}
 		
 		
@@ -101,6 +106,23 @@ public class NoticeBoardDetailContentController implements Initializable {
 		});
 		
 		
+		btn_upd.setOnAction(e -> {
+			try {
+				System.out.println("수 정");
+				// 바뀔 화면(FXML)을 가져옴
+				NoticeBoardUpdateController.NoticeNo = NoticeNo;
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("NoticeBoardUpdate.fxml"));
+				Parent UpdateNotice = loader.load();
+				NoticeBoardUpdateController controller = loader.getController();
+				controller.initData(nVO);
+				n_main.getChildren().removeAll();
+				n_main.getChildren().setAll(UpdateNotice);
+				
+				
+			} catch(IOException ee) {
+				ee.printStackTrace();
+			}
+		});
 		
 		
 	}

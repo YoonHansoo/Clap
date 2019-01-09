@@ -32,6 +32,7 @@
             <Text fx:id="Text_NtcContent" strokeType="OUTSIDE" strokeWidth="0.0" text="내용" />
          </children>
       </TextFlow>
-      <JFXButton fx:id="btn_del" layoutX="469.0" layoutY="572.0" text="삭  제" />
+      <JFXButton fx:id="btn_del" layoutX="870.0" layoutY="572.0" text="삭  제" />
+      <JFXButton fx:id="btn_upd" layoutX="815.0" layoutY="572.0" text="수  정" />
    </children>
 </AnchorPane>
