@@ -21,6 +21,7 @@
  	<typeAlias alias="likeVO" type		  ="kr.or.ddit.clap.vo.member.LikeVO"/>
  	<typeAlias alias="albumVO" type		  ="kr.or.ddit.clap.vo.album.AlbumVO"/>
  	<typeAlias alias="NoticeBoardVO" type ="kr.or.ddit.clap.vo.support.NoticeBoardVO"/>
+ 	<typeAlias alias="playlistVO" type ="kr.or.ddit.clap.vo.music.PlayListVO"/>
  	<typeAlias alias="musicVO" type       ="kr.or.ddit.clap.vo.music.MusicVO"/>
  	<typeAlias alias="albumReviewVO" type ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
  	<typeAlias alias="singerReviewVO" type ="kr.or.ddit.clap.vo.singer.SingerReviewVO"/>
@@ -46,7 +47,8 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/myalbum.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/myalbumlist.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/album.xml"></sqlMap>
-	<sqlMap resource="kr/or/ddit/clap/xml/notice.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/notice.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/playlist.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/music.xml"></sqlMap> 
 </sqlMapConfig>
 

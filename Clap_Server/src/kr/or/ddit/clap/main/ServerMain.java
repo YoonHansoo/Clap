@@ -3,7 +3,6 @@ package kr.or.ddit.clap.main;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import kr.or.ddit.clap.dao.noticeboard.NoticeBoardDaoImpl;
 import kr.or.ddit.clap.service.album.AlbumReviewServiceImpl;
 import kr.or.ddit.clap.service.album.AlbumServiceImpl;
 import kr.or.ddit.clap.service.album.IAlbumReviewService;
@@ -27,6 +26,8 @@ import kr.or.ddit.clap.service.myalbumlist.MyAlbumListServiceImpl;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
+import kr.or.ddit.clap.service.playlist.IPlayListService;
+import kr.or.ddit.clap.service.playlist.PlayListServiceImpl;
 import kr.or.ddit.clap.service.noticeboard.NoticeBoardServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.service.qna.QnaServiceImpl;
@@ -55,6 +56,8 @@ public class ServerMain {
 			IMusicService ims = MusicServiceImpl.getInstance(); 				//곡
 			IAlbumReviewService iars  = AlbumReviewServiceImpl.getInstance(); 	// 앨범 리뷰
 			ISingerReviewService isrs = SingerReviewServiceImpl.getInstance();  // 가수 리뷰
+			IPlayListService ipls     = PlayListServiceImpl.getInstance();
+
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
 			reg.rebind("singer", ssi);
@@ -68,11 +71,11 @@ public class ServerMain {
 			reg.rebind("myalbum", imas);
 			reg.rebind("myalbumlist", imals);
 			reg.rebind("album", ias);
+			reg.rebind("playlist", ipls);
 			reg.rebind("notice", ins);
 			reg.rebind("music", ims);
 			reg.rebind("albreview", iars);
 			reg.rebind("singreview", isrs);
-			
 			
 			 System.out.println("clap server  is running...");
 			  
@@ -80,11 +83,5 @@ public class ServerMain {
 			System.out.println("마 에러다!");
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
-	
-	
-
 }

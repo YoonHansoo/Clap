@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->			
+<sqlMap namespace="playlist">
+	
+	<select id="playlistselect" resultClass="playlistVO" parameterClass="String">
+	   select mus_no,
+              mem_id
+         from playlist
+        where mem_id = #str_id#
+	</select>
+	
+	<update id="playlistinsert" parameterClass="playlistVO">
+		insert into playlist (play_no, play_indate, mus_no, mem_id)
+             values (seq_play_no.nextval, sysdate, #mus_no#, #mem_id#)
+	</update>
+	
+	<delete id="playlistdelete" parameterClass="playlistVO">
+		delete from playlist 
+              where mem_id = #mem_id# 
+                and mus_no = #mus_no#
+	</delete>
+	
+</sqlMap>			
+
+
+
+
+
