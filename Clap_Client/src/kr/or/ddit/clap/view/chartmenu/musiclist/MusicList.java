@@ -41,6 +41,7 @@ public class MusicList {
 		this.mainBox = mainBox;
 	}
 	
+	
 	private ObservableList<JFXCheckBox> cbnList;
 	private ObservableList<JFXButton> btnPlayList;
 	private ObservableList<JFXButton> btnAddList;

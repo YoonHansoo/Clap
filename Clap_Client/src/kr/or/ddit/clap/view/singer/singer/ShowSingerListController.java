@@ -105,6 +105,7 @@ public class ShowSingerListController implements Initializable {
 		} catch (RemoteException e) {
 			System.out.println("에러");
 			e.printStackTrace();
+			
 		}
 		
 		//데이터 삽입
@@ -133,6 +134,7 @@ public class ShowSingerListController implements Initializable {
 				SingerVO vo = singerList.get(index);
 				System.out.println("가수번호:" + vo.getSing_no());
 				String singerNo =  vo.getSing_no(); //가수번호(PK)를 받아옴
+				
 				
 				
 				try {

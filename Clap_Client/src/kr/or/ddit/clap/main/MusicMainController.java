@@ -269,6 +269,17 @@ public class MusicMainController implements Initializable {
 		   }
 		   
 	}
+	public void musicManage(ActionEvent event) { //곡 관리를 클릭 했을 때. 
+		try {
+			Parent albumManage = FXMLLoader.load(getClass().getResource("../view/music/music/MusicList.fxml")); //바뀔 화면을 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(albumManage);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
 	
 	@FXML
 	public void musicPlayer(ActionEvent event) { // MusicPlayer를 클릭 했을 때.

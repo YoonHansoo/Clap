@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.music.music.InsertMusicController">
+   <children>
+      <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="곡 등록">
+         <font>
+            <Font name="YDIYGO350" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="11.0" layoutY="68.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;">
+         <children>
+            <ImageView fx:id="imgview_albumImg" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin></ImageView>
+            <VBox prefHeight="165.0" prefWidth="470.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="곡">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_name" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_albName" editable="false" focusColor="#090948" />
+                        <JFXButton onAction="#btn_selectAlbum" prefHeight="23.0" prefWidth="33.0" text=" ">
+                           <graphic>
+                              <FontAwesomeIcon fill="#9c0000" iconName="SEARCH" size="1.5em" />
+                           </graphic></JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="아티스트">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_singerName" editable="false" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="작곡가">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_write" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="편곡자">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_edit" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="작사">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_muswrite" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="Music File">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_file" editable="false" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
+                        <JFXButton fx:id="btn_insertImg" onAction="#btn_upload" prefHeight="28.0" prefWidth="85.0" style="-fx-background-color: #090948;" text="Upload" textFill="WHITE">
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="FILE" />
+                           </graphic>
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="장르">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXComboBox fx:id="combo_genre" prefHeight="23.0" prefWidth="113.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="장르상세">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXComboBox fx:id="combo_genreDetail" prefHeight="23.0" prefWidth="111.0" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="재생시간 ">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="txt_time" promptText="00:00" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Line endX="625.0" layoutX="111.0" layoutY="344.0" startX="-92.0" stroke="#9c0000" />
+      <Label layoutX="26.0" layoutY="343.0" prefHeight="41.0" prefWidth="214.0" text="가사">
+         <font>
+            <Font name="YDIYGO350" size="24.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="txt_lyrics" layoutX="15.0" layoutY="384.0" prefHeight="275.0" prefWidth="734.0" wrapText="true" />
+      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#insertMusic" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
+      <Label layoutX="147.0" layoutY="342.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범번호">
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="509.0" layoutY="350.0" prefHeight="18.0" prefWidth="116.0" style="-fx-background-color: #ffffff;" text="장르소분류류No">
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="147.0" layoutY="360.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="곡번호">
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="genreDetail" layoutX="625.0" layoutY="347.0" text="Label" />
+      <Label fx:id="label_albNO" layoutX="225.0" layoutY="340.0" text="Label" />
+      <Label fx:id="label_musNO" layoutX="225.0" layoutY="362.0" text="Label" />
+   </children>
+</AnchorPane>
