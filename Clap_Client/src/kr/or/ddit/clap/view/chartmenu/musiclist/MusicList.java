@@ -13,6 +13,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -95,6 +96,7 @@ public class MusicList {
 		try {
 			content = FXMLLoader.load(getClass().getResource("../dialog/MyAlbumDialog.fxml"));
 			JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+			dialog.setBackground(Background.EMPTY);
 			dialog.show();
 			
 		} catch (IOException e1) {
