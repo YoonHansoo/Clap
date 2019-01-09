@@ -37,6 +37,12 @@ public class AES256Util {
 		String decryptedPw2 = aes.decrypt(encryptedPw2);
 		System.out.println(decryptedPw1);
 		System.out.println(decryptedPw2);
+		
+		// 비밀번호 일치여부 확인시
+		// -> 암호화시킨 입력값과 vo의 값 비교.
+		
+		// 비밀번호 업데이트 시
+		// -> 입력값을 암호화시키고 DB에 저장.
 	}
 	
 	
