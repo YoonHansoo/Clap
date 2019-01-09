@@ -3,6 +3,8 @@ package kr.or.ddit.clap.service.playlist;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
+
 import kr.or.ddit.clap.dao.playlist.PlayListDaoImpl;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 
@@ -29,17 +31,22 @@ public class PlayListServiceImpl  extends UnicastRemoteObject implements IPlayLi
 	}
 
 	@Override
-	public List<PlayListVO> PlayListSelect(String str_id) throws RemoteException {
-		return playlistdao.PlayListSelect(str_id);
+	public List<PlayListVO> playlistSelect(String mem_id) throws RemoteException {
+		return playlistdao.playlistSelect(mem_id);
 	}
 
 	@Override
-	public int PlayListInsert(PlayListVO vo) throws RemoteException {
-		return playlistdao.PlayListInsert(vo);
+	public int playlistInsert(PlayListVO vo) throws RemoteException {
+		return playlistdao.playlistInsert(vo);
 	}
 
 	@Override
-	public int PlayListDelete(PlayListVO vo) throws RemoteException {
-		return playlistdao.PlayListDelete(vo);
+	public int playlistDelete(PlayListVO vo) throws RemoteException {
+		return playlistdao.playlistDelete(vo);
+	}
+
+	@Override
+	public List<Map> infoSelect(String mus_no) throws RemoteException {
+		return playlistdao.infoSelect(mus_no);
 	}
 }

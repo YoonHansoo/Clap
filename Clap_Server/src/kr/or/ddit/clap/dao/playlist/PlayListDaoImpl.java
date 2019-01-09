@@ -12,6 +12,8 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
@@ -58,14 +60,16 @@ public class PlayListDaoImpl implements IPlayListDao{
 		int cnt = new PlayListDaoImpl().PlayListDelete(vo);
 		System.out.println(cnt);*/
 		
+		List<Map> list = new PlayListDaoImpl().infoSelect("3");
+		
 	}
 
 	@Override
-	public List<PlayListVO> PlayListSelect(String str_id) {
+	public List<PlayListVO> playlistSelect(String mem_id) {
 		List<PlayListVO> list = new ArrayList<PlayListVO>();
 		try {
 
-			list = smc.queryForList("playlist.playlistselect", str_id);
+			list = smc.queryForList("playlist.playlistselect", mem_id);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,7 +79,7 @@ public class PlayListDaoImpl implements IPlayListDao{
 	}
 
 	@Override
-	public int PlayListInsert(PlayListVO vo) {
+	public int playlistInsert(PlayListVO vo) {
 		int cnt = 0;
 		try {
 	
@@ -88,7 +92,7 @@ public class PlayListDaoImpl implements IPlayListDao{
 	}
 
 	@Override
-	public int PlayListDelete(PlayListVO vo) {
+	public int playlistDelete(PlayListVO vo) {
 		int cnt = 0;
 		try {
 	
@@ -98,6 +102,20 @@ public class PlayListDaoImpl implements IPlayListDao{
 			e.printStackTrace();
 		}
 		return cnt;
+	}
+
+	@Override
+	public List<Map> infoSelect(String mus_no) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("playlist.infoselect", mus_no);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
 	}
 
 }

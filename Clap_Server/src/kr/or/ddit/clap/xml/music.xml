@@ -20,9 +20,7 @@
        and b.gen_detail_no = d.gen_detail_no;
 
 	</select>
-
-
-
+	
 	<!-- 검색용 쿼리 -->
 	<select id="searchList" resultClass="albumVO"
 		parameterClass="albumVO">

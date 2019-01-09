@@ -1,6 +1,7 @@
 package kr.or.ddit.clap.dao.playlist;
 
 import java.util.List;
+import java.util.Map;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 
 
@@ -10,8 +11,9 @@ import kr.or.ddit.clap.vo.music.PlayListVO;
  *
  */
 public interface IPlayListDao {
-	public List<PlayListVO> PlayListSelect(String str_id);
-	public int PlayListInsert(PlayListVO vo);
-	public int PlayListDelete(PlayListVO vo);
+	public List<PlayListVO> playlistSelect(String mem_id);
+	public List<Map> infoSelect(String mus_no);
+	public int playlistInsert(PlayListVO vo);
+	public int playlistDelete(PlayListVO vo);
 	
 }
