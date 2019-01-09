@@ -49,11 +49,16 @@ import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
+import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
+import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.view.join.AES256Util;
+import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
-import kr.or.ddit.clap.vo.music.MusicReviewVO;;
+import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
+import javafx.scene.control.Pagination;;
 
 public class MypageController implements Initializable {
 	int no1 = 0;
@@ -69,72 +74,62 @@ public class MypageController implements Initializable {
 	private String img_path;
 	private File filePath;
 	private Registry reg;
+	
 	private IMypageService ims;
 	private IMusicReviewService imrs;
 	private IMusicHistoryService imhs;
+	private IMyAlbumService imas;
+	
 	private ObservableList<MusicReviewVO> revList, currentrevList;
 	private ObservableList<MusicHistoryVO> singList; // 최근음악 담기
 	private ObservableList<MusicHistoryVO> newList;
 
 	private String temp_img_path = "";
 
-	@FXML
-	Label label_Id;
-	@FXML
-	Image img_User;
-	@FXML
-	AnchorPane contents;
-	@FXML
-	Text text_UserInfo;
-	@FXML
-	AnchorPane InfoContents;
-	@FXML
-	AnchorPane Head;
+	@FXML Label label_Id;
+	@FXML Image img_User;
+	@FXML AnchorPane contents;
+	@FXML Text text_UserInfo;
+	@FXML AnchorPane InfoContents;
+	@FXML AnchorPane Head;
 
-	@FXML
-	JFXTreeTableView<MusicReviewVO> tbl_Review; // 리뷰
-	@FXML
-	TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
-	@FXML
-	TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
+	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review; // 리뷰
+	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
+	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
 
-	@FXML
-	JFXTreeTableView<MusicHistoryVO> tbl_ManySigner; // 많이들은 아티스트
-	@FXML
-	TreeTableColumn col_MSno;
-	@FXML
-	TreeTableColumn<MusicHistoryVO, String> col_MSits;
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManySigner; // 많이들은 아티스트
+	@FXML TreeTableColumn col_MSno;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSits;
 
-	@FXML
-	JFXTreeTableView<MusicHistoryVO> tbl_ManyMusic; // 많이들은 곡
-	@FXML
-	TreeTableColumn col_MMno;
-	@FXML
-	TreeTableColumn<MusicHistoryVO, String> col_MMits;
-	@FXML
-	TreeTableColumn<MusicHistoryVO, String> col_MMtitle;
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManyMusic; // 많이들은 곡
+	@FXML TreeTableColumn col_MMno;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMits;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMtitle;
 
-	@FXML
-	JFXTreeTableView tbl_NewMusic; // 최근들은곡
-	@FXML
-	TreeTableColumn col_NMno;
-	@FXML
-	TreeTableColumn<MusicHistoryVO, String> col_NMits;
-	@FXML
-	TreeTableColumn<MusicHistoryVO, String> col_NMtitle;
-	@FXML
-	TreeTableColumn<MusicHistoryVO, String> col_NMdate;
-	@FXML
-	ImageView img_UserImg;
+	@FXML JFXTreeTableView tbl_NewMusic; // 최근들은곡
+	@FXML TreeTableColumn col_NMno;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMits;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMtitle;
+	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMdate;
+	@FXML ImageView img_UserImg;
+	
+	
+	@FXML JFXTreeTableView tbl_Myalb; //마이앨범
+	private ObservableList<MyAlbumVO> myAlbList, currentsingerList;;
+	@FXML TreeTableColumn<MyAlbumVO,String> col_Myalb;
+	private int from, to, itemsForPage, totalPageCnt;
+	@FXML Pagination p_Paging;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
-			ims = (IMypageService) reg.lookup("mypage");
+			ims  = (IMypageService) reg.lookup("mypage");
 			imrs = (IMusicReviewService) reg.lookup("musicreview");
 			imhs = (IMusicHistoryService) reg.lookup("history");
+			imas = (IMyAlbumService) reg.lookup("myalbum");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -207,8 +202,58 @@ public class MypageController implements Initializable {
 		TreeItem<MusicHistoryVO> root2 = new RecursiveTreeItem<>(newList, RecursiveTreeObject::getChildren);
 		tbl_NewMusic.setRoot(root2);
 		tbl_NewMusic.setShowRoot(false);
+		
+		//마이앨범 
+		try {
+			myAlbList = FXCollections.observableArrayList(imas.myAlbumSelect(user_id));
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		col_Myalb.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMyalb_name()));
+		
+		TreeItem<MyAlbumVO> root3 = new RecursiveTreeItem<>(myAlbList, RecursiveTreeObject::getChildren);
+		tbl_Myalb.setRoot(root3);
+		tbl_Myalb.setShowRoot(false);
+		
+		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+
+		paging();
+	}
+	
+	private void paging() {
+		totalPageCnt = myAlbList.size() % itemsForPage == 0 ? myAlbList.size() / itemsForPage
+				: myAlbList.size() / itemsForPage + 1;
+
+		p_Paging.setPageCount(totalPageCnt); // 전체 페이지 수 설정
+
+		p_Paging.setPageFactory((Integer pageIndex) -> {
+
+			from = pageIndex * itemsForPage;
+			to = from + itemsForPage - 1;
+
+			TreeItem<MyAlbumVO> root = new RecursiveTreeItem<>(getTableViewData(from, to),
+					RecursiveTreeObject::getChildren);
+			tbl_Myalb.setRoot(root);
+			tbl_Myalb.setShowRoot(false);
+			return tbl_Myalb;
+		});
 
 	}
+
+	
+	private ObservableList<MyAlbumVO> getTableViewData(int from, int to) {
+
+		currentsingerList = FXCollections.observableArrayList(); //
+		int totSize = myAlbList.size();
+		for (int i = from; i <= to && i < totSize; i++) {
+
+			currentsingerList.add(myAlbList.get(i));
+		}
+
+		return currentsingerList;
+	}
+
 
 	@FXML
 	public void btn_profch() throws IOException {// 프로필 수정 클릭시
@@ -500,12 +545,11 @@ public class MypageController implements Initializable {
 		}
 
 	}
-
+	
 	@FXML public void btn_MyalbCh(ActionEvent event) throws IOException { //마이앨범 편집 클릭시
 		Parent root = FXMLLoader.load(getClass().getResource("myalbCh.fxml"));
 		Scene scene = new Scene(root);
 		myalb.setTitle("모여서 각잡고 코딩 - clap");
-
 		myalb.setScene(scene);
 		myalb.show();
 		

@@ -57,7 +57,6 @@ public class MypageChangePwController implements Initializable{
 			try {
 				aes = new AES256Util();
 			} catch (UnsupportedEncodingException e11) {
-				// TODO Auto-generated catch block
 				e11.printStackTrace();
 			}
 			
@@ -65,7 +64,6 @@ public class MypageChangePwController implements Initializable{
 			try {
 				NowencryptedPw = aes.encrypt(textF_NowPw.getText());
 			} catch (UnsupportedEncodingException | GeneralSecurityException e12) {
-				// TODO Auto-generated catch block
 				e12.printStackTrace();
 			}
 			
@@ -73,7 +71,6 @@ public class MypageChangePwController implements Initializable{
 			try {
 				NowdecryptedPw = aes.decrypt(NowencryptedPw);
 			} catch (UnsupportedEncodingException | GeneralSecurityException e13) {
-				// TODO Auto-generated catch block
 				e13.printStackTrace();
 			}
 			
