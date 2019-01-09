@@ -83,4 +83,14 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 		return musicHistoryDao.selectNewLisMus(id);
 	}
 
+	@Override
+	public List<MusicHistoryVO> selectManyLisMus(String id) throws RemoteException {
+		return musicHistoryDao.selectManyLisMus(id);
+	}
+
+	@Override
+	public List<MusicHistoryVO> selectManyIts(String id) throws RemoteException {
+		return musicHistoryDao.selectManyIts(id);
+	}
+
 }

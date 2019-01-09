@@ -158,7 +158,38 @@
                        and a.mem_id=#id#
 					 group by b.mus_no, b.MUS_TITLE,d.sing_name,a.mem_id, c.alb_image
 					 order by histo_indate desc 
-		
+		</select>
+		<select id="selectManyLisMus" resultClass="MusicHistoryVO" parameterClass="String">
+		select			 count(a.mus_no) as histo_no,
+					       b.mus_no,
+					       d.sing_name as name,
+                           b.mus_title as title,
+                           a.mem_id,
+                           c.alb_image as image,
+                           max(a.histo_indate) as histo_indate
+					  from music_history a, music b, album c, singer d
+					 where a.mus_no = b.mus_no
+					   and b.alb_no = c.alb_no
+					   and c.sing_no = d.sing_no
+                       and a.mem_id=#id#
+					 group by b.mus_no, b.MUS_TITLE,d.sing_name,a.mem_id, c.alb_image
+					order by count(a.mus_no) desc 
+		</select>
+		<select id="selectManyIts" resultClass="MusicHistoryVO" parameterClass="String">
+		select			 a.mus_no , 
+					      count( d.sing_name) as histo_no,  
+                          d.sing_name as name,
+                           d.sing_debut_mus  as title, 
+                           a.mem_id,
+                           d.sing_image as image,
+                           d.sing_debut_era as histo_indate
+					  from music_history a, music b, album c, singer d
+					 where a.mus_no = b.mus_no
+					   and b.alb_no = c.alb_no
+					   and c.sing_no = d.sing_no
+                       and a.mem_id=#id#
+					 group by d.sing_debut_mus,a.mem_id, d.sing_image, a.mus_no,d.sing_name,d.sing_debut_era
+					 order by count(d.sing_name) desc 
 		</select>
 	
 	
