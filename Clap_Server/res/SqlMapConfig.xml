@@ -10,22 +10,26 @@
 		lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
 		maxTransactions="5" useStatementNamespaces="true" />
 
- 	<typeAlias alias="singerVO" type	  ="kr.or.ddit.clap.vo.singer.SingerVO"/>
- 	<typeAlias alias="musichistoryVO" type="kr.or.ddit.clap.vo.music.MusicHistoryVO"/>
- 	<typeAlias alias="memberVO" type	  ="kr.or.ddit.clap.vo.member.MemberVO"/>
- 	<typeAlias alias="qnaVO" type		  ="kr.or.ddit.clap.vo.support.QnaVO"/>
- 	<typeAlias alias="musicReviewVO" type ="kr.or.ddit.clap.vo.music.MusicReviewVO"/>
- 	<typeAlias alias="musicLikeVO" type	  ="kr.or.ddit.clap.vo.music.MusicLikeVO"/>
- 	<typeAlias alias="myalbumVO" type	  ="kr.or.ddit.clap.vo.myalbum.MyAlbumVO"/>
- 	<typeAlias alias="myalbumlistVO" type ="kr.or.ddit.clap.vo.myalbum.MyAlbumListVO"/>
- 	<typeAlias alias="likeVO" type		  ="kr.or.ddit.clap.vo.member.LikeVO"/>
- 	<typeAlias alias="albumVO" type		  ="kr.or.ddit.clap.vo.album.AlbumVO"/>
- 	<typeAlias alias="NoticeBoardVO" type ="kr.or.ddit.clap.vo.support.NoticeBoardVO"/>
- 	<typeAlias alias="playlistVO" type ="kr.or.ddit.clap.vo.music.PlayListVO"/>
- 	<typeAlias alias="musicVO" type       ="kr.or.ddit.clap.vo.music.MusicVO"/>
- 	<typeAlias alias="albumReviewVO" type ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
+ 	<typeAlias alias="singerVO" type	   ="kr.or.ddit.clap.vo.singer.SingerVO"/>
+ 	<typeAlias alias="musichistoryVO" type ="kr.or.ddit.clap.vo.music.MusicHistoryVO"/>
+ 	<typeAlias alias="memberVO" type	   ="kr.or.ddit.clap.vo.member.MemberVO"/>
+ 	<typeAlias alias="qnaVO" type		   ="kr.or.ddit.clap.vo.support.QnaVO"/>
+ 	<typeAlias alias="musicReviewVO" type  ="kr.or.ddit.clap.vo.music.MusicReviewVO"/>
+ 	<typeAlias alias="musicLikeVO" type	   ="kr.or.ddit.clap.vo.music.MusicLikeVO"/>
+ 	<typeAlias alias="myalbumVO" type	   ="kr.or.ddit.clap.vo.myalbum.MyAlbumVO"/>
+ 	<typeAlias alias="myalbumlistVO" type  ="kr.or.ddit.clap.vo.myalbum.MyAlbumListVO"/>
+ 	<typeAlias alias="likeVO" type		   ="kr.or.ddit.clap.vo.member.LikeVO"/>
+ 	<typeAlias alias="albumVO" type		   ="kr.or.ddit.clap.vo.album.AlbumVO"/>
+ 	<typeAlias alias="NoticeBoardVO" type  ="kr.or.ddit.clap.vo.support.NoticeBoardVO"/>
+ 	<typeAlias alias="playlistVO" type 	   ="kr.or.ddit.clap.vo.music.PlayListVO"/>
+ 	<typeAlias alias="musicVO" type        ="kr.or.ddit.clap.vo.music.MusicVO"/>
+ 	<typeAlias alias="albumReviewVO" type  ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
  	<typeAlias alias="singerReviewVO" type ="kr.or.ddit.clap.vo.singer.SingerReviewVO"/>
+
+ 	<typeAlias alias="EventBoardVO" type   ="kr.or.ddit.clap.vo.support.EventBoardVO"/>
+
  	<typeAlias alias="ticketBuyVO" type ="kr.or.ddit.clap.vo.ticket.TicketBuyListVO"/>
+
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">
@@ -51,7 +55,9 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/notice.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/playlist.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/music.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/eventboard.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/ticket.xml"></sqlMap> 
+
 </sqlMapConfig>
 
 
