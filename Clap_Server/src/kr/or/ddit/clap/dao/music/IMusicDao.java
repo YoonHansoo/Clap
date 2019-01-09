@@ -28,10 +28,10 @@ public interface IMusicDao {
 	public String selectGenreDetailNO(String genreName);
 	
 	public List<GenreDetailVO> showGenreDetail(String genreNo);
+	
+	public MusicVO selectMusicDetailInfo(String musicNo);
 
 	public int insertMusic(MusicVO vo);
-
-	public MusicVO musicDetailInfo(String musicNo);
 
 	public int selectMusicLikeCnt(String musicNo);
 

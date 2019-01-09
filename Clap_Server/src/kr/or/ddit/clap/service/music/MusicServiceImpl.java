@@ -53,10 +53,7 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 		return musicDao.insertMusic(vo);
 	}
 
-	@Override
-	public MusicVO musicDetailInfo(String musicNo) throws RemoteException {
-		return musicDao.musicDetailInfo(musicNo);
-	}
+
 
 	@Override
 	public int selectMusicLikeCnt(String musicNo) throws RemoteException {
@@ -93,6 +90,12 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 	public String selectGenreDetailNO(String genreName) throws RemoteException {
 		return musicDao.selectGenreDetailNO(genreName);
 	}
+
+	@Override
+	public MusicVO selectMusicDetailInfo(String musicNo) throws RemoteException {
+		return musicDao.selectMusicDetailInfo(musicNo);
+	}
+
 
 	
 

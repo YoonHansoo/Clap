@@ -89,30 +89,18 @@ public class MusicDaoImpl implements IMusicDao {
 
 	}
 
-	@Override
-	public MusicVO musicDetailInfo(String MusicNo) {
-		MusicVO aVO = new MusicVO();
-		try {
-
-			aVO = (MusicVO) smc.queryForObject("music.MusicDetailInfo", MusicNo);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return aVO;
-	}
+	
 
 	@Override
 	public int selectMusicLikeCnt(String MusicNo) {
-		int singerLikeCnt = 0;
+		int musicLikeCnt = 0;
 
 		try {
-			singerLikeCnt = (int) smc.queryForObject("music.selectMusicLikeCnt", MusicNo);
+			musicLikeCnt = (int) smc.queryForObject("music.selectMusicLikeCnt", MusicNo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return singerLikeCnt;
+		return musicLikeCnt;
 	}
 
 	@Override
@@ -204,6 +192,20 @@ public class MusicDaoImpl implements IMusicDao {
 		
 		
 		
+	}
+
+	@Override
+	public MusicVO selectMusicDetailInfo(String musicNo) {
+		MusicVO aVO = new MusicVO();
+		try {
+
+			aVO = (MusicVO) smc.queryForObject("music.selectMusicDetailInfo", musicNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return aVO;
 	}
 
 }
