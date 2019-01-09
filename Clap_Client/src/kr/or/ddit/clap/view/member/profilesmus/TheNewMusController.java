@@ -7,7 +7,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -21,14 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
-import javafx.util.Callback;
 import kr.or.ddit.clap.main.LoginSession;
-import kr.or.ddit.clap.service.like.ILikeService;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
-import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 
 public class TheNewMusController implements Initializable{

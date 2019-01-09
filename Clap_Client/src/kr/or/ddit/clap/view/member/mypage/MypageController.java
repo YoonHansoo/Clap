@@ -574,6 +574,39 @@ public class MypageController implements Initializable {
 		e.printStackTrace();
 	}
 	}
+
+	@FXML public void btn_NewLisMus() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../profilesmus/thenewmus.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML public void btn_ManyLisMus() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../profilesmus/themanymus.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@FXML public void btn_ManyLisIts() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../profilesmus/themanyits.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 

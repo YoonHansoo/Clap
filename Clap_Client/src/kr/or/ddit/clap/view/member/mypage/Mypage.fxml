@@ -43,9 +43,9 @@
                      </columns></JFXTreeTableView>
                   <JFXButton layoutX="31.0" layoutY="288.0" onAction="#btn_like" text="- 좋아요♥" />
                   <JFXButton layoutX="35.0" layoutY="317.0" onAction="#btn_riew" text="- 리뷰" />
-                  <JFXButton layoutX="26.0" layoutY="709.0" text="- 최근감상곡" />
-                  <JFXButton layoutX="26.0" layoutY="741.0" text="- 많이 들은곡" />
-                  <JFXButton layoutX="25.0" layoutY="772.0" text="-많이 들은 아티스트" />
+                  <JFXButton onAction="#btn_NewLisMus" layoutX="26.0" layoutY="709.0" text="- 최근감상곡" />
+                  <JFXButton onAction="#btn_ManyLisMus" layoutX="26.0" layoutY="741.0" text="- 많이 들은곡" />
+                  <JFXButton onAction="#btn_ManyLisIts" layoutX="25.0" layoutY="772.0" text="-많이 들은 아티스트" />
                   <Button layoutX="157.0" layoutY="360.0" mnemonicParsing="false" onAction="#btn_MyalbCh" text="편집" />
                   <Pagination  fx:id="p_Paging" layoutX="5.0" layoutY="385.0" prefHeight="263.0" prefWidth="211.0" />
                   <Text layoutX="14.0" layoutY="383.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범">
