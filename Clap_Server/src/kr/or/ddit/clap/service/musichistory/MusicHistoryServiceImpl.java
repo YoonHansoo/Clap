@@ -78,4 +78,9 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 		return musicHistoryDao.foreignSelect(year);
 	}
 
+	@Override
+	public List<MusicHistoryVO> selectNewLisMus(String id) throws RemoteException {
+		return musicHistoryDao.selectNewLisMus(id);
+	}
+
 }

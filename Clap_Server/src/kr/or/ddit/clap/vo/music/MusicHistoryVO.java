@@ -2,7 +2,13 @@ package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
 
-public class MusicHistoryVO implements Serializable{
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+public class MusicHistoryVO  extends RecursiveTreeObject<MusicHistoryVO> implements Serializable{
 	
 	private String histo_no;
 	private String histo_indate;
@@ -10,7 +16,43 @@ public class MusicHistoryVO implements Serializable{
 	private String mem_id;
 	private String name;
 	private String title;
+	private String image;
+	private ImageView imageView;
+	private JFXCheckBox chBox;
 	
+	
+	
+	
+	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	public ImageView getImageView() {
+		this.imageView = new ImageView();
+		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
+		Image img = new Image(image);
+		imageView.setImage(img);
+		imageView.setFitWidth(120);
+		imageView.setFitHeight(50);
+		return imageView;
+	}
+	public void setImageView(ImageView imageView) {
+		this.imageView = imageView;
+	}
+	public JFXCheckBox getChBox() {
+		this.chBox =new JFXCheckBox();
+		return this.chBox;
+	}
+	
+	public JFXCheckBox getChBox1() {
+		return this.chBox;
+	}
+	public void setChBox(JFXCheckBox chBox) {
+		this.chBox = chBox;
+	}
 	public String getHisto_no() {
 		return histo_no;
 	}

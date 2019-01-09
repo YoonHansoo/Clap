@@ -18,4 +18,5 @@ public interface IMusicHistoryDao {
 	public List<Map> foreignSelect(String year);
 	public List<MusicHistoryVO> selectMayIts(MusicHistoryVO vo);
 	public List<MusicHistoryVO> selectMayIndate(MusicHistoryVO vo);
+	public List<MusicHistoryVO> selectNewLisMus(String id);
 }

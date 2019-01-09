@@ -155,4 +155,18 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		
 	}
 
+	@Override
+	public List<MusicHistoryVO> selectNewLisMus(String id) {
+		List<MusicHistoryVO> list = new ArrayList<MusicHistoryVO>();
+		try {
+			
+			list = smc.queryForList("musichistory.selectNewLisMus",id);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 }
