@@ -53,12 +53,21 @@ public class MypageMyAlbController implements Initializable{
 	@FXML TreeTableColumn<MyAlbumVO,String> col_MusCount;
 	
 	static Stage myalb = new Stage(StageStyle.DECORATED);
-	
+	String myAlbName;
+	String myAlbNo;
 	private int number;
 	private ObservableList<MyAlbumVO> myAlbList, currentsingerList;
 	@FXML JFXCheckBox chbox_main;
 	@FXML Label la_Muscount;
-
+	public void returnData(String myAlbName, String myAlbNo) {
+		try {
+			this.myAlbName = myAlbName;
+			this.myAlbNo = myAlbNo;
+		} catch (Exception e) {
+			e.printStackTrace();
+			e.getMessage();
+		}
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -79,7 +88,7 @@ public class MypageMyAlbController implements Initializable{
 		
 	}
 
-	private void myAlb() {
+	public void myAlb() {
 		// 마이앨범
 		String user_id = LoginSession.session.getMem_id();
 		try {
@@ -119,8 +128,10 @@ public class MypageMyAlbController implements Initializable{
 	@FXML public void btn_edit() {
 		TextField fild= new TextField(); 
 		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
-		String name=col_MyAlbname.getCellData(index).toString();
-		MypageMyAlbEditController.myAlbName = name;//가수번호를 변수로 넘겨줌
+		String myAlbName=col_MyAlbname.getCellData(index).toString();
+		String myAlbNo =myAlbList.get(index).getMyalb_no();
+		MypageMyAlbEditController.myAlbName = myAlbName; //앨범명 변수로 넘겨줌
+		MypageMyAlbEditController.myAlbNo = myAlbNo;//앨범번호 변수로 넘겨줌
 		InsertSinger();
 	
 	
@@ -146,10 +157,7 @@ public class MypageMyAlbController implements Initializable{
 					
 					
 				};
-			
-
-		
-	}
+			}
 	}
 	
 public void InsertSinger() {
@@ -180,8 +188,11 @@ public void infoMsg(String headerText, String msg) {
 	infoAlert.setContentText(msg);
 	infoAlert.showAndWait();
 }
-
-	
+public void  btn_Cl() {
+	Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
+	dialogStage.close();
+}
+public void  btn_Ok() {}
 	
 }
 	

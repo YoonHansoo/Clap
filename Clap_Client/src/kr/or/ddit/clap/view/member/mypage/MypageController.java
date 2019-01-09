@@ -36,6 +36,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -50,15 +51,12 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
-import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.view.join.AES256Util;
-import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
-import javafx.scene.control.Pagination;;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;;
 
 public class MypageController implements Initializable {
 	int no1 = 0;
@@ -532,7 +530,7 @@ public class MypageController implements Initializable {
 	}
 	
 	@FXML
-	public void btn_riew() throws IOException { // 좋아요클릭시
+	public void btn_riew() throws IOException { // 리뷰클릭시
 
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../profiles/review.fxml"));
@@ -552,6 +550,14 @@ public class MypageController implements Initializable {
 		myalb.setScene(scene);
 		myalb.show();
 		
+	}
+
+	@FXML public void btn_ThrReview() {
+		System.out.println("리뷰");
+	}
+
+	@FXML public void btn_TheMus() {
+		System.out.println("최근");
 	}
 	
 	

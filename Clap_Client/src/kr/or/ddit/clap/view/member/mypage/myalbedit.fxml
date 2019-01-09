@@ -15,7 +15,7 @@
          </font>
       </Label>
       <JFXTextField fx:id="fild_Name" layoutX="35.0" layoutY="86.0" maxWidth="270.0" minWidth="270.0" prefHeight="38.0" prefWidth="270.0" />
-      <Button  layoutX="196.0" layoutY="141.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" text="확인" />
-      <Button layoutX="92.0" layoutY="141.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" text="취소" />
+      <Button onAction="#btn_Ok"  layoutX="196.0" layoutY="141.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" text="확인" />
+      <Button onAction="#btn_Cl" layoutX="92.0" layoutY="141.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="54.0" text="취소" />
    </children>
 </AnchorPane>

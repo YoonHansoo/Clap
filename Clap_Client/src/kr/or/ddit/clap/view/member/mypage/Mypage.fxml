@@ -64,7 +64,7 @@
             </AnchorPane>
             <AnchorPane fx:id="contents" prefHeight="896.0" prefWidth="724.0">
                <children>
-                  <JFXButton layoutX="611.0" layoutY="72.0" text="더보기" textFill="#030303" />
+                  <JFXButton onAction="#btn_ThrReview" layoutX="611.0" layoutY="72.0" text="더보기" textFill="#030303" />
                   <Text layoutX="92.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰">
                      <font>
                         <Font name="YDIYGO350" size="24.0" />
@@ -103,7 +103,7 @@
                         <Font name="YDIYGO350" size="14.0" />
                      </font>
                   </Text>
-                  <JFXButton layoutX="611.0" layoutY="505.0" text="더보기" textFill="#030303" />
+                  <JFXButton onAction="#btn_TheMus" layoutX="611.0" layoutY="505.0" text="더보기" textFill="#030303" />
                   <Text fill="RED" layoutX="683.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
