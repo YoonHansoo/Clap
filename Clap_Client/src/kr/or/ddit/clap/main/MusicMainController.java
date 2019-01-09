@@ -159,7 +159,13 @@ public class MusicMainController implements Initializable {
 
 	@FXML
 	public void buyTicket() throws IOException {
-		login_PageLoad();
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/ticket/ticket/Ticket.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -210,15 +216,6 @@ public class MusicMainController implements Initializable {
 		}
 	}
 
-	public void login_PageLoad() {
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/login/Login.fxml"));
-			contents.getChildren().removeAll();
-			contents.getChildren().setAll(root);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void firstPage() {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
