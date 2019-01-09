@@ -20,6 +20,26 @@ public class AES256Util {
 
 	final static String key = "1st-is-clap-1234"; // 16자 비밀키 입력
 
+	public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException {
+		AES256Util aes = new AES256Util();
+		System.out.println("암호화 하기.");
+		String pw1 = "1234"; // 입력 값
+		String pw2 = "ddit206";
+		
+		String encryptedPw1 = aes.encrypt(pw1); // 암호화된 값.
+		String encryptedPw2 = aes.encrypt(pw2);
+		System.out.println(encryptedPw1);
+		System.out.println(encryptedPw2);
+		
+		System.out.println();
+		System.out.println("복호화 하기.");
+		String decryptedPw1 = aes.decrypt(encryptedPw1); // 복호화된 값.
+		String decryptedPw2 = aes.decrypt(encryptedPw2);
+		System.out.println(decryptedPw1);
+		System.out.println(decryptedPw2);
+	}
+	
+	
 	public AES256Util() throws UnsupportedEncodingException {
 		this.iv = key.substring(0, 16);
 		byte[] keyBytes = new byte[16];
@@ -70,4 +90,5 @@ public class AES256Util {
 		byte[] byteStr = Base64.decodeBase64(str.getBytes());
 		return new String(c.doFinal(byteStr), "UTF-8");
 	}
+
 }
