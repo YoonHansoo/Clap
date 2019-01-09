@@ -56,7 +56,7 @@ public class ServerMain {
 			IMusicService ims = MusicServiceImpl.getInstance(); 				//곡
 			IAlbumReviewService iars  = AlbumReviewServiceImpl.getInstance(); 	// 앨범 리뷰
 			ISingerReviewService isrs = SingerReviewServiceImpl.getInstance();  // 가수 리뷰
-			IPlayListService ipls     = PlayListServiceImpl.getInstance();
+			IPlayListService ipls     = PlayListServiceImpl.getInstance();		// 플레이 리스트
 
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
