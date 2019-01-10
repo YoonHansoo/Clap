@@ -71,6 +71,8 @@ public class MusicMainController implements Initializable {
 	@FXML ImageView new6;
 	@FXML ImageView new7;
 	@FXML ImageView new8;
+	@FXML ImageView new9;
+	@FXML ImageView new10;
 
 	LoginSession ls = new LoginSession();
 	public static Stage musicplayer = new Stage();
@@ -111,7 +113,8 @@ public class MusicMainController implements Initializable {
 		}
 		
 		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"
-				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "XX.jpg"};
+				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "XX.jpg", "XX.jpg"
+				, "XX.jpg"};
 		Image[] images = new Image[names.length];
 		
 		for(int i=0; i<names.length; i++) {
@@ -126,6 +129,10 @@ public class MusicMainController implements Initializable {
 		new6.setImage(images[5]);
 		new7.setImage(images[6]);
 		new8.setImage(images[7]);
+		new9.setImage(images[7]);
+		new10.setImage(images[7]);
+		
+//		new1.setona
 	}
 	@FXML
 	public void goBack(ActionEvent event) throws IOException {
