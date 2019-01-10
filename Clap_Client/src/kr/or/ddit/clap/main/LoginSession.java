@@ -1,7 +1,5 @@
 package kr.or.ddit.clap.main;
 
-import java.util.Stack;
-
 import kr.or.ddit.clap.vo.member.MemberVO;
 public class LoginSession {
 	

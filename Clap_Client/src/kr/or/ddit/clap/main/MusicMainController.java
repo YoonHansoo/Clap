@@ -1,7 +1,6 @@
 package kr.or.ddit.clap.main;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
@@ -34,13 +33,15 @@ import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
  */
 public class MusicMainController implements Initializable {
 
-
+	@FXML ScrollPane all;
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	@FXML FontAwesomeIcon icon_firstPage;
 	@FXML HBox mem_menu;
 
 	@FXML public JFXButton btn_login;
+	@FXML public JFXButton btn_goforward;
+	@FXML public JFXButton btn_goback;
 	
 	
 	
@@ -75,7 +76,7 @@ public class MusicMainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println();
+		
 		if (ls.session != null) {
 			System.out.println(ls.session.getMem_name());
 			System.out.println(ls.session.getMem_auth());
@@ -127,18 +128,35 @@ public class MusicMainController implements Initializable {
 	}
 	@FXML
 	public void goBack(ActionEvent event) throws IOException {
-		String path = gobackStack.goBack();
+
+		gobackStack.goBack();
+		String path = gobackStack.printPage();
 		System.out.println("경로:"+ path);
 		URL fxmlURL = Paths.get(path).toUri().toURL();  //Stirng 값을 URL로 변환
 		
 		Parent goback = FXMLLoader.load(fxmlURL); //대입
 		
+		System.out.println(path.substring(path.length()-14,path.length()));
+	
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(goback);
 		
+	}
+	@FXML
+	public void goforward(ActionEvent event) throws IOException {
+		gobackStack.goForward();
+		String path = gobackStack.printPage();
+		System.out.println("goforawrd:"+ path);
+		System.out.println("경로:"+ path);
+		URL fxmlURL = Paths.get(path).toUri().toURL();  //Stirng 값을 URL로 변환
 		
+		Parent goback = FXMLLoader.load(fxmlURL); //대입
 		
 		contents.getChildren().removeAll();
 		contents.getChildren().setAll(goback);
+		
 	}
+	
 	
 
 	@FXML
@@ -263,12 +281,13 @@ public class MusicMainController implements Initializable {
 		try {
 			//상대경로
 			Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); 
-
-			//현재화면의 fxml경로를 저장해야함
-			String current_temp_path = (getClass().getResource("MusicMain.fxml")).getPath();
-			String current_path = current_temp_path.substring(1, current_temp_path.length());
-			System.out.println("현재 화면의 절대경로:"+ current_path);
-			gobackStack.goURL(current_path);  
+		
+			//현재화면 절대경로
+			String temp_path = (getClass().getResource("../view/singer/singer/ShowSingerList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); 
+			
+			//현재화면의 fxml절대경로를 저장해야함
+			gobackStack.goURL(path);  
 			
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(singerManage);
@@ -282,6 +301,12 @@ public class MusicMainController implements Initializable {
 	public void albumManage(ActionEvent event) { //앨범관리를 클릭 했을 때. 
 		   try {
 			   Parent albumManage = FXMLLoader.load(getClass().getResource("../view/album/album/ShowAlbumLIst.fxml")); //바뀔 화면을 가져옴
+			   
+			   String temp_path = (getClass().getResource("../view/album/album/ShowAlbumLIst.fxml")).getPath();
+				String path = temp_path.substring(1, temp_path.length()); //현재화면 절대경로
+				
+				gobackStack.goURL(path);  
+			   
 			   contents.getChildren().removeAll();
 			   contents.getChildren().setAll(albumManage);
 			   
@@ -293,6 +318,12 @@ public class MusicMainController implements Initializable {
 	public void musicManage(ActionEvent event) { //곡 관리를 클릭 했을 때. 
 		try {
 			Parent albumManage = FXMLLoader.load(getClass().getResource("../view/music/music/MusicList.fxml")); //바뀔 화면을 가져옴
+			
+			String temp_path = (getClass().getResource("../view/music/music/MusicList.fxml")).getPath();
+				String path = temp_path.substring(1, temp_path.length()); //현재화면 절대경로
+				
+				gobackStack.goURL(path);  
+
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(albumManage);
 			
