@@ -158,7 +158,6 @@ public class MusicMainController implements Initializable {
 	@FXML
 	public void mypage() {
 		// 로그인 후 회원정보버튼(btn_mem) 눌렀을때 마이페이지로 이동.
-		System.out.println("마이페이지 출력");
 
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));

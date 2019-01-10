@@ -32,6 +32,8 @@ public class MypageJoinOutController implements Initializable{
 	@FXML Button btn_Ok;
 	@FXML Button btn_Cl;
 	@FXML CheckBox combo_Check;
+	LoginSession ls = new LoginSession();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -63,7 +65,7 @@ public class MypageJoinOutController implements Initializable{
 				}
 				
 				infoMsg("회원탈퇴가 완료 되었습니다.", "더 노력하는 CLAP가 되겠습니다.\n그동안 이용해 주셔서 감사합니다");
-				
+				ls.session = null;
 				try {
 					Parent root = FXMLLoader.load(getClass().getResource("../../../main/MusicMain.fxml"));
 					Scene scene = new Scene(root);

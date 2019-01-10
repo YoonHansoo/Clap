@@ -69,15 +69,16 @@ public class MypageMyAlbEditController implements Initializable{
 				int OK=imas.updateMyalb(vo);
 				if(OK>0) {
 					warning("앨범명 변경 완료");
+					Stage dialogStage = (Stage) fild_Name.getScene().getWindow();
+					dialogStage.close();
+
 				}
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 				
 				
-				Stage dialogStage = (Stage) fild_Name.getScene().getWindow();
-				dialogStage.close();
-
+				
 			}
 		}
 	}
