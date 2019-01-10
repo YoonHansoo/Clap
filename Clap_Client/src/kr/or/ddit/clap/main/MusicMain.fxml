@@ -183,20 +183,16 @@
                   <VBox layoutX="99.0" layoutY="42.0" prefHeight="316.0" prefWidth="796.0" style="-fx-background-color: white;">
                      <children>
                         <HBox prefHeight="200.0" prefWidth="373.0" spacing="4.0">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
                            <children>
-                              <ImageView fx:id="new1" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </ImageView>
+                              <ImageView fx:id="new1" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="new2" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="new3" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="new4" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="new5" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
-                           <VBox.margin>
-                              <Insets bottom="4.0" />
-                           </VBox.margin>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0" spacing="4.0">
                            <children>
@@ -205,6 +201,31 @@
                               <ImageView fx:id="new8" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="new9" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
                               <ImageView fx:id="new10" fitHeight="160.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="99.0" layoutY="43.0" opacity="0.0" prefHeight="316.0" prefWidth="796.0" style="-fx-background-color: white;">
+                     <children>
+                        <HBox prefHeight="200.0" prefWidth="373.0" spacing="4.0">
+                           <VBox.margin>
+                              <Insets bottom="4.0" />
+                           </VBox.margin>
+                           <children>
+                              <JFXButton fx:id="btn_new1" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new2" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new3" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new4" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new5" minHeight="160.0" minWidth="160.0" text=" " />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="4.0">
+                           <children>
+                              <JFXButton fx:id="btn_new6" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new7" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new8" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new9" minHeight="160.0" minWidth="160.0" text=" " />
+                              <JFXButton fx:id="btn_new10" minHeight="160.0" minWidth="160.0" text=" " />
                            </children>
                         </HBox>
                      </children>
