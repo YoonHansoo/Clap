@@ -56,9 +56,6 @@ public class MypageJoinOutController implements Initializable{
 				vo.setMem_del_tf("t");
 				try {
 					int res= ims.updateDelTF(vo);
-						if(res<0) {
-						System.out.println("실패");
-					}
 				} catch (RemoteException e1) {
 					
 					e1.printStackTrace();
