@@ -3,11 +3,12 @@ package kr.or.ddit.clap.vo.myalbum;
 import java.io.Serializable;
 
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class MyAlbumListVO implements Serializable{
+public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implements Serializable{
 	
 	private String myalb_list_no;
 	private String myalb_no;
@@ -17,11 +18,17 @@ public class MyAlbumListVO implements Serializable{
 	private String alb_image;
 	private String sing_name;
 	private String myalb_name;
+	private String mem_id;
 	private JFXCheckBox chBox;
 	private ImageView imgView;
 
-
 	
+	public String getMem_id() {
+		return mem_id;
+	}
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
 	public JFXCheckBox getChBox() {
 		this.chBox = new JFXCheckBox();
 		return chBox;

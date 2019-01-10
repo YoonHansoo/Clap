@@ -16,5 +16,5 @@ import kr.or.ddit.clap.vo.myalbum.MyAlbumListVO;
 public interface IMyAlbumListService  extends Remote {
 	
 	public int myAlbumListInsert(Map<String,String> myAlbumList) throws RemoteException;
-	public List<MyAlbumListVO> selectMyAlbList(String id) throws RemoteException;
+	public List<MyAlbumListVO> selectMyAlbList(MyAlbumListVO vo) throws RemoteException;
 }

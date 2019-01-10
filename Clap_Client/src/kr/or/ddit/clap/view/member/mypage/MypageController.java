@@ -22,7 +22,6 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,10 +37,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -55,11 +52,14 @@ import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.view.album.album.SelectSingerController;
 import kr.or.ddit.clap.view.join.AES256Util;
+import kr.or.ddit.clap.view.support.noticeboard.NoticeBoardDetailContentController;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
+import kr.or.ddit.clap.vo.support.NoticeBoardVO;;
 
 public class MypageController implements Initializable {
 	int no1 = 0;
@@ -107,7 +107,7 @@ public class MypageController implements Initializable {
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMits;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMtitle;
 
-	@FXML JFXTreeTableView tbl_NewMusic; // 최근들은곡
+	@FXML JFXTreeTableView<MusicHistoryVO> tbl_NewMusic; // 최근들은곡
 	@FXML TreeTableColumn col_NMno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMits;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMtitle;
@@ -115,12 +115,16 @@ public class MypageController implements Initializable {
 	@FXML ImageView img_UserImg;
 	
 	
-	@FXML JFXTreeTableView tbl_Myalb; //마이앨범
-	private ObservableList<MyAlbumVO> myAlbList, currentsingerList;;
+	@FXML JFXTreeTableView<MyAlbumVO> tbl_Myalb; //마이앨범
+	private ObservableList<MyAlbumVO> myAlbList, currentsingerList;
 	@FXML TreeTableColumn<MyAlbumVO,String> col_Myalb;
 	private int from, to, itemsForPage, totalPageCnt;
 	@FXML Pagination p_Paging;
+private MypageMyAlbListController iAC;
 	
+	public void setcontroller(MypageMyAlbListController iAC){
+		this.iAC = iAC;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -220,6 +224,30 @@ public class MypageController implements Initializable {
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
 		paging();
+		
+		tbl_Myalb.setOnMouseClicked(e2 ->{
+			if (e2.getClickCount()  > 1) {
+
+				String myAlbNo = tbl_Myalb.getSelectionModel().getSelectedItem().getValue().getMyalb_no();
+				String myAlbName = tbl_Myalb.getSelectionModel().getSelectedItem().getValue().getMyalb_name();
+				
+				try {
+					// 바뀔 화면(FXML)을 가져옴
+					MypageMyAlbListController.myAlbNo = myAlbNo;// 번호을 변수로 넘겨줌
+					MypageMyAlbListController.myAlbName = myAlbName;// 번호을 변수로 넘겨줌
+					
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("myalblist.fxml"));// init실행됨
+					Parent myAlblists = loader.load();
+					contents.getChildren().removeAll();
+					contents.getChildren().setAll(myAlblists);
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+			
+		});
+		
 	}
 	
 	private void paging() {

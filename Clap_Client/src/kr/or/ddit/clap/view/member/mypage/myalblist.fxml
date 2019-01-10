@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.profilesmus.TheManyItsController">
+<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageMyAlbListController">
    <children>
       <VBox layoutX="4.0" layoutY="2.0" prefHeight="894.0" prefWidth="720.0">
          <children>
@@ -20,11 +19,11 @@
                   <Button layoutX="90.0" layoutY="128.0" mnemonicParsing="false" text="듣기" />
                   <Button layoutX="168.0" layoutY="128.0" mnemonicParsing="false" text="추가" />
                   <Button layoutX="230.0" layoutY="128.0" mnemonicParsing="false" text="담기" />
-                  <JFXTreeTableView fx:id="tbl_ManyIts" layoutX="11.0" layoutY="184.0" prefHeight="400.0" prefWidth="704.0">
+                  <JFXTreeTableView fx:id="tbl_MyAlbLists" layoutX="11.0" layoutY="184.0" prefHeight="400.0" prefWidth="704.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Checks" prefWidth="41.0" text="  " />
-                        <TreeTableColumn fx:id="col_No" prefWidth="170.0" />
-                        <TreeTableColumn fx:id="col_Img" prefWidth="333.0" text="곡" />
+                        <TreeTableColumn fx:id="col_Img" prefWidth="170.0" />
+                        <TreeTableColumn fx:id="col_Mus" prefWidth="333.0" text="곡" />
                         <TreeTableColumn fx:id="col_Its" prefWidth="159.0" text="가수명" />
                      </columns>
                   </JFXTreeTableView>
@@ -34,7 +33,7 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="31.0" layoutY="88.0" text="앨범명">
+                  <Label fx:id="la_MyAlbName" layoutX="31.0" layoutY="88.0" text="앨범명">
                      <font>
                         <Font size="24.0" />
                      </font>
