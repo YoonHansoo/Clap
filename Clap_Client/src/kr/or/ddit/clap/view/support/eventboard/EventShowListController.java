@@ -16,13 +16,19 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,7 +42,7 @@ public class EventShowListController implements Initializable {
 	@FXML
 	AnchorPane main;
 	@FXML
-	Pagination paging;
+	Pagination e_paging;
 	@FXML
 	JFXTreeTableView<EventBoardVO> tbl_Event;
 	@FXML
@@ -48,13 +54,15 @@ public class EventShowListController implements Initializable {
 	@FXML
 	TreeTableColumn<EventBoardVO, String> col_EventEDate;
 	@FXML
-	TreeTableColumn<EventBoardVO, String> col_EventContent;
-	@FXML
 	TreeTableColumn<EventBoardVO, ImageView> col_EventImage;
 	@FXML
 	JFXComboBox<String> combo_Search;
 	@FXML
 	JFXButton btn_Add;
+	@FXML
+	JFXButton btn_search;
+	@FXML
+	JFXTextField text_Search;
 	
 	private Registry reg;
 	private IEventBoardService ies;
@@ -74,13 +82,119 @@ public class EventShowListController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		//col_EventImage.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getEvent_image()));
-		// vo에 imageview 물어보고 고치기
+		col_EventImage.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
+		col_EventNo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_no()));
+		col_EventTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_title()));
+		col_EventSDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_sdate()));
+		col_EventEDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_edate()));
+		
+		try {
+			
+			eventList = FXCollections.observableArrayList(ies.selectListAll());
+		} catch(RemoteException e) {
+			System.out.println("에러");
+			e.printStackTrace();
+		}
+		
+		//데이터 삽입
+		TreeItem<EventBoardVO> root = new RecursiveTreeItem<>(eventList,RecursiveTreeObject::getChildren);
+		tbl_Event.setRoot(root);
+		tbl_Event.setShowRoot(false);
+		
+		itemsForPage=10; // 한페이지 보여줄 항목 수 설정
+		
+		paging();
+		
+		combo_Search.getItems().addAll("제목명");
+		combo_Search.setValue(combo_Search.getItems().get(0));
 		
 		
+		//검색버튼 클릭
+		btn_search.setOnAction(e ->{
+			search();
+		});
+		
+		/*// 더블클릭
+		tbl_Event.setOnMouseClicked(e -> {
+			if (e.getClickCount()  > 1) {
+				String eventNo = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_no();
+				System.out.println("선택한 글 번호 : " + eventNo);
+				
+				try {
+					//바뀔 화면(FXML)을 가져옴
+					
+				}
+			}
+			
+		});*/
 		
 		
 		
 	}
+	
+	
+	
+	
+	//페이징  메서드
+		private void paging() {
+			totalPageCnt = eventList.size() % itemsForPage == 0 ? eventList.size() / itemsForPage
+					: eventList.size() / itemsForPage + 1;
+			
+			e_paging.setPageCount(totalPageCnt); // 전체 페이지 수 설정
+			
+			e_paging.setPageFactory((Integer pageIndex) -> {
+				
+				from = pageIndex * itemsForPage;
+				to = from + itemsForPage - 1;
+				
+				
+				TreeItem<EventBoardVO> root = new RecursiveTreeItem<>(getTableViewData(from, to), RecursiveTreeObject::getChildren);
+				tbl_Event.setRoot(root);
+				tbl_Event.setShowRoot(false);
+				return tbl_Event;
+			});
+		}
+		
+		
+	// 페이징에 맞는 데이터를 가져옴
+	private ObservableList<EventBoardVO> getTableViewData(int from, int to) {
+
+		currenteventList = FXCollections.observableArrayList(); //
+		int totSize = eventList.size();
+		for (int i = from; i <= to && i < totSize; i++) {
+
+			currenteventList.add(eventList.get(i));
+		}
+
+		return currenteventList;
+
+	}
+		
+	// 검색 메서드
+	private void search() {
+		try {
+			EventBoardVO vo = new EventBoardVO();
+			ObservableList<EventBoardVO> searchlist = FXCollections.observableArrayList();
+
+			switch (combo_Search.getValue()) {
+
+			case "제목명":
+				vo.setEvent_title(text_Search.getText());
+				searchlist = FXCollections.observableArrayList(ies.searchList(vo));
+				break;
+
+			default:
+				break;
+
+			}
+
+			eventList = FXCollections.observableArrayList(searchlist); // 검색조건에 맞는 리스트를 저장
+			paging();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+		
 
 }

@@ -108,7 +108,7 @@
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <Pagination fx:id="paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
+            <Pagination fx:id="e_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
             <JFXTreeTableView fx:id="tbl_Event" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
                <columns>
                   <TreeTableColumn fx:id="col_EventNo" prefWidth="54.0" text="번 호" />
