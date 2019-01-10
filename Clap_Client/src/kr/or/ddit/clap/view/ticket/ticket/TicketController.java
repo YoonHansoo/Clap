@@ -55,8 +55,8 @@ public class TicketController implements Initializable{
 	@FXML Button btn_no3;
 	
 	static String[] ticketDate = new String[2]; // 이용권 기한. [0]은 만료일. [1]은 남은 일수.
-	static Object[] ticketInfo = new Object[4]; 
-	// [0]은 이용권 정보. [1]은 금액. [2]는 액수String. [3]은 이용권 t/f.
+	static Object[] ticketInfo = new Object[5]; 
+	// [0]은 이용권 정보. [1]은 금액. [2]는 액수String. [3]은 이용권 t/f. [4]는 ticket_no (123456)
 	// 이용권 정보. 1개월 1, 6개월 2, 1년은 3.
 
 	@Override
@@ -138,36 +138,42 @@ public class TicketController implements Initializable{
 			ticketInfo[0] = "1개월";
 			ticketInfo[1] = 2500;
 			ticketInfo[2] = "2,500원";
+			ticketInfo[4] = 1;
 			buyTicket();
 		});
 		btn_no2.setOnAction(e->{
 			ticketInfo[0] = "6개월";
 			ticketInfo[1] = 5000;
 			ticketInfo[2] = "5,000원";
+			ticketInfo[4] = 3;
 			buyTicket();
 		});
 		btn_no3.setOnAction(e->{
 			ticketInfo[0] = "1년";
 			ticketInfo[1] = 8000;
 			ticketInfo[2] = "8,000원";
+			ticketInfo[4] = 5;
 			buyTicket();
 		});
 		btn1.setOnAction(e->{
 			ticketInfo[0] = "1개월";
 			ticketInfo[1] = 2000;
 			ticketInfo[2] = "2,000원";
+			ticketInfo[4] = 2;
 			buyTicket();
 		});
 		btn2.setOnAction(e->{
 			ticketInfo[0] = "6개월";
 			ticketInfo[1] = 4000;
 			ticketInfo[2] = "4,000원";
+			ticketInfo[4] = 4;
 			buyTicket();
 		});
 		btn3.setOnAction(e->{
 			ticketInfo[0] = "1년";
 			ticketInfo[1] = 6500;
 			ticketInfo[2] = "6,500원";
+			ticketInfo[4] = 6;
 			buyTicket();
 		});
 		
