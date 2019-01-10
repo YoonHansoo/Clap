@@ -2,6 +2,8 @@ package kr.or.ddit.clap.vo.myalbum;
 
 import java.io.Serializable;
 
+import com.jfoenix.controls.JFXCheckBox;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -14,10 +16,28 @@ public class MyAlbumListVO implements Serializable{
 	private String mus_title;
 	private String alb_image;
 	private String sing_name;
+	private String myalb_name;
+	private JFXCheckBox chBox;
 	private ImageView imgView;
 
 
 	
+	public JFXCheckBox getChBox() {
+		this.chBox = new JFXCheckBox();
+		return chBox;
+	}
+	public JFXCheckBox getChBox1() {
+		return chBox;
+	}
+	public void setChBox(JFXCheckBox chBox) {
+		this.chBox = chBox;
+	}
+	public String getMyalb_name() {
+		return myalb_name;
+	}
+	public void setMyalb_name(String myalb_name) {
+		this.myalb_name = myalb_name;
+	}
 	public String getMus_title() {
 		return mus_title;
 	}

@@ -22,6 +22,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,8 +38,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -200,6 +203,7 @@ public class MypageController implements Initializable {
 		TreeItem<MusicHistoryVO> root2 = new RecursiveTreeItem<>(newList, RecursiveTreeObject::getChildren);
 		tbl_NewMusic.setRoot(root2);
 		tbl_NewMusic.setShowRoot(false);
+		
 		//마이앨범 
 		try {
 			myAlbList = FXCollections.observableArrayList(imas.myAlbumSelect(user_id));
