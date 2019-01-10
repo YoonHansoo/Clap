@@ -78,11 +78,11 @@ public class MyAlbumListDaoImpl implements IMyAlbumListDao{
 	}
 
 	@Override
-	public List<MyAlbumListVO> selectMyAlbList(String id) {
+	public List<MyAlbumListVO> selectMyAlbList(MyAlbumListVO vo) {
 		List<MyAlbumListVO> list = new ArrayList<MyAlbumListVO>();
 		try {
 			
-			list = smc.queryForList("myalbumlist.selectMyAlbList",id);
+			list = smc.queryForList("myalbumlist.selectMyAlbList",vo);
 		
 		} catch (SQLException e) {
 			e.printStackTrace();

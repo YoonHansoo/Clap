@@ -14,5 +14,5 @@ import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
  */
 public interface IMyAlbumListDao {
 	public int myAlbumListInsert(Map<String,String> myAlbumList);
-	public List<MyAlbumListVO> selectMyAlbList(String id);
+	public List<MyAlbumListVO> selectMyAlbList(MyAlbumListVO vo);
 }

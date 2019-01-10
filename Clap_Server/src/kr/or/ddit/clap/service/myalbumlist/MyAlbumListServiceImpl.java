@@ -38,8 +38,8 @@ public class MyAlbumListServiceImpl  extends UnicastRemoteObject implements IMyA
 	}
 
 	@Override
-	public List<MyAlbumListVO> selectMyAlbList(String id) throws RemoteException {
-		return myalbumlistdao.selectMyAlbList(id);
+	public List<MyAlbumListVO> selectMyAlbList(MyAlbumListVO vo) throws RemoteException {
+		return myalbumlistdao.selectMyAlbList(vo);
 	}
 
 

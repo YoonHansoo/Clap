@@ -10,7 +10,7 @@
         values ( seq_myalb_list_no.nextval, #myalb_no#, #mus_no#, sysdate)
 	</update>
 	
-	<select id="selectMyAlbList" resultClass="MyAlbumListVO" parameterClass="String">
+	<select id="selectMyAlbList" resultClass="MyAlbumListVO" parameterClass="MyAlbumListVO">
 			select distinct
 			    b.mus_no ,
 			    c.mus_title,
@@ -25,7 +25,7 @@
 			    album d,
 			    singer e
 			where
-			    mem_id = #id#
+			    mem_id = #mem_id#
 			    and   b.myalb_no = a.myalb_no
 			    and   b.mus_no = c.mus_no
 			    and   d.alb_no = c.alb_no
