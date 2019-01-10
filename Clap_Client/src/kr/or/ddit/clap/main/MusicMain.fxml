@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -151,6 +152,11 @@
                   <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
                   <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
                   <JFXButton layoutX="450.0" layoutY="19.0" onAction="#musicPlayer" style="-fx-background-color: #090948;" text="MusicPlayer" textFill="WHITE" />
+                  <Button layoutX="6.0" layoutY="19.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="24.0" style="-fx-background-color: #090948;" textFill="WHITE">
+                     <graphic>
+                        <FontAwesomeIcon fill="WHITE" iconName="ARROW_LEFT" />
+                     </graphic>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
