@@ -45,8 +45,4 @@ public class PlayListServiceImpl  extends UnicastRemoteObject implements IPlayLi
 		return playlistdao.playlistDelete(vo);
 	}
 
-	@Override
-	public List<Map> infoSelect(String mus_no) throws RemoteException {
-		return playlistdao.infoSelect(mus_no);
-	}
 }

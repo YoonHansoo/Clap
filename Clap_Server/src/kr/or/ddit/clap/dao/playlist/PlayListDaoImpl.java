@@ -50,7 +50,7 @@ public class PlayListDaoImpl implements IPlayListDao{
 
 	public static void main(String[] args) {
 		/*
-		List<PlayListVO> list = new PlayListDaoImpl().PlayListSelect("user1");
+		
 		System.out.println(list.size());
 		
 		PlayListVO vo = new PlayListVO();
@@ -59,8 +59,7 @@ public class PlayListDaoImpl implements IPlayListDao{
 		
 		int cnt = new PlayListDaoImpl().PlayListDelete(vo);
 		System.out.println(cnt);*/
-		
-		List<Map> list = new PlayListDaoImpl().infoSelect("3");
+		List<PlayListVO> list = new PlayListDaoImpl().playlistSelect("user1");
 		
 	}
 
@@ -102,20 +101,6 @@ public class PlayListDaoImpl implements IPlayListDao{
 			e.printStackTrace();
 		}
 		return cnt;
-	}
-
-	@Override
-	public List<Map> infoSelect(String mus_no) {
-		List<Map> list = new ArrayList<Map>();
-		try {
-
-			list = smc.queryForList("playlist.infoselect", mus_no);
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return list;
 	}
 
 }

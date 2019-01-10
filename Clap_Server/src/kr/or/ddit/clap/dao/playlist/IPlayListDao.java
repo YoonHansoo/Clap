@@ -12,7 +12,6 @@ import kr.or.ddit.clap.vo.music.PlayListVO;
  */
 public interface IPlayListDao {
 	public List<PlayListVO> playlistSelect(String mem_id);
-	public List<Map> infoSelect(String mus_no);
 	public int playlistInsert(PlayListVO vo);
 	public int playlistDelete(PlayListVO vo);
 	

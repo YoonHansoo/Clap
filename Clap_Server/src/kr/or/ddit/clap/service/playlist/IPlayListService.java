@@ -15,7 +15,6 @@ import kr.or.ddit.clap.vo.music.PlayListVO;
 
 public interface IPlayListService  extends Remote {
 	public List<PlayListVO> playlistSelect(String mem_id) throws RemoteException;
-	public List<Map> infoSelect(String mus_no) throws RemoteException;
 	public int playlistInsert(PlayListVO vo) throws RemoteException;
 	public int playlistDelete(PlayListVO vo) throws RemoteException;
 }
