@@ -2,7 +2,10 @@ package kr.or.ddit.clap.main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
@@ -20,9 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
-import com.jfoenix.controls.JFXButton;
 
 /**
  * 메인화면의 fxml 컨트롤러.
@@ -245,8 +246,18 @@ public class MusicMainController implements Initializable {
 	@FXML
 	public void singerManage(ActionEvent event) { // 가수관리를 클릭 했을 때.
 		try {
-			Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); // 바뀔
-																														// 화면을
+			//상대경로
+			//Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); 
+			
+			//상대경로로 찾은 fxml의 절대경로를 얻음
+			String temp_path = (getClass().getResource("../view/singer/singer/ShowSingerList.fxml")).getPath();
+			
+			
+			String path = temp_path.substring(1, temp_path.length());
+			System.out.println("경로:"+ path);
+			URL fxmlURL = Paths.get(path).toUri().toURL();  //Stirng 값을 URL로 변환
+			
+			Parent singerManage = FXMLLoader.load(fxmlURL); //대입
 																														// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(singerManage);
