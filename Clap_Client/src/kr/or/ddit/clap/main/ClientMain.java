@@ -23,41 +23,41 @@ import kr.or.ddit.clap.vo.member.MemberVO;
  */
 
 public class ClientMain extends Application {
-	
-	private ILoginService ils;
-	private Registry reg;
-	List<MemberVO> list = new ArrayList<MemberVO>();
+   
+   private ILoginService ils;
+   private Registry reg;
+   List<MemberVO> list = new ArrayList<MemberVO>();
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		LoginSession ls = new LoginSession();
+   @Override
+   public void start(Stage primaryStage) throws Exception {
+      LoginSession ls = new LoginSession();
 
-		// 임시로그인 부분
-		try {
-			reg = LocateRegistry.getRegistry("localhost", 8888);
-			ils = (ILoginService) reg.lookup("login");
-			
-			list = ils.select("user1");
-			ls.session = list.get(0);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		// 임시로그인 부분
+      // 임시로그인 부분
+      try {
+         reg = LocateRegistry.getRegistry("localhost", 8888);
+         ils = (ILoginService) reg.lookup("login");
+         
+         list = ils.select("user1");
+         ls.session = list.get(0);
+      } catch (RemoteException e) {
+         e.printStackTrace();
+      } catch (NotBoundException e) {
+         e.printStackTrace();
+      }
+      // 임시로그인 부분
 
-		System.out.println("Start Clap!");
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
-		ScrollPane root = loader.load();
-		
-		Scene scene = new Scene(root);
-		primaryStage.setTitle("Clap:음악, 그리고 설레임");
-		primaryStage.setScene(scene);
-		primaryStage.show();
-		
-	}
-	public static void main(String[] args) {
-		launch(args);
-	}
-	
+      System.out.println("Start Clap!");
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
+      ScrollPane root = loader.load();
+      
+      Scene scene = new Scene(root);
+      primaryStage.setTitle("Clap:음악, 그리고 설레임");
+      primaryStage.setScene(scene);
+      primaryStage.show();
+      
+   }
+   public static void main(String[] args) {
+      launch(args);
+   }
+   
 }
