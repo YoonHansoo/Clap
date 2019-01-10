@@ -1,6 +1,7 @@
 package kr.or.ddit.clap.main;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
@@ -125,8 +126,18 @@ public class MusicMainController implements Initializable {
 		new8.setImage(images[7]);
 	}
 	@FXML
-	public void goBack(ActionEvent event) {
+	public void goBack(ActionEvent event) throws IOException {
+		String path = gobackStack.goBack();
+		System.out.println("경로:"+ path);
+		URL fxmlURL = Paths.get(path).toUri().toURL();  //Stirng 값을 URL로 변환
 		
+		Parent goback = FXMLLoader.load(fxmlURL); //대입
+		
+		
+		
+		
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(goback);
 	}
 	
 
@@ -251,22 +262,17 @@ public class MusicMainController implements Initializable {
 	public void singerManage(ActionEvent event) { // 가수관리를 클릭 했을 때.
 		try {
 			//상대경로
-			//Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); 
+			Parent singerManage = FXMLLoader.load(getClass().getResource("../view/singer/singer/ShowSingerList.fxml")); 
+
+			//현재화면의 fxml경로를 저장해야함
+			String current_temp_path = (getClass().getResource("MusicMain.fxml")).getPath();
+			String current_path = current_temp_path.substring(1, current_temp_path.length());
+			System.out.println("현재 화면의 절대경로:"+ current_path);
+			gobackStack.goURL(current_path);  
 			
-			//상대경로로 찾은 fxml의 절대경로를 얻음
-			String temp_path = (getClass().getResource("../view/singer/singer/ShowSingerList.fxml")).getPath();
-			
-			
-			String path = temp_path.substring(1, temp_path.length());
-			System.out.println("경로:"+ path);
-			URL fxmlURL = Paths.get(path).toUri().toURL();  //Stirng 값을 URL로 변환
-			
-			Parent singerManage = FXMLLoader.load(fxmlURL); //대입
-																														// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(singerManage);
 
-			// System.out.println(item_SigerManage.getText());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
