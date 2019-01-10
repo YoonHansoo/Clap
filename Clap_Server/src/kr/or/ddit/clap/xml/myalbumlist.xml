@@ -16,6 +16,7 @@
 			    c.mus_title,
 			    a.myalb_no,
 			    d.alb_image,
+			    a.myalb_name,
 			    e.sing_name
 			from
 			    myalbum a,

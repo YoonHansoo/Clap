@@ -19,7 +19,10 @@ import java.util.Map;
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+
+import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumListVO;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
@@ -72,6 +75,20 @@ public class MyAlbumListDaoImpl implements IMyAlbumListDao{
 		int cnt = new MyAlbumListDaoImpl().myAlbumListInsert(myAlbumList);
 		System.out.println(cnt);
 		
+	}
+
+	@Override
+	public List<MyAlbumListVO> selectMyAlbList(String id) {
+		List<MyAlbumListVO> list = new ArrayList<MyAlbumListVO>();
+		try {
+			
+			list = smc.queryForList("myalbumlist.selectMyAlbList",id);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
 	}
 
 	

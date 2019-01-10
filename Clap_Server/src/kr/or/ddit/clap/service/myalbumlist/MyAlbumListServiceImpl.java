@@ -7,6 +7,7 @@ import java.util.Map;
 
 import kr.or.ddit.clap.dao.myalbum.MyAlbumDaoImpl;
 import kr.or.ddit.clap.dao.myalbumlist.MyAlbumListDaoImpl;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumListVO;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
 /**
@@ -33,8 +34,12 @@ public class MyAlbumListServiceImpl  extends UnicastRemoteObject implements IMyA
 
 	@Override
 	public int myAlbumListInsert(Map<String, String> myAlbumList) throws RemoteException {
-		// TODO Auto-generated method stub
 		return myalbumlistdao.myAlbumListInsert(myAlbumList);
+	}
+
+	@Override
+	public List<MyAlbumListVO> selectMyAlbList(String id) throws RemoteException {
+		return myalbumlistdao.selectMyAlbList(id);
 	}
 
 
