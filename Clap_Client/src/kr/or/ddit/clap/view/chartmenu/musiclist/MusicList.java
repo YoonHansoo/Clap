@@ -39,6 +39,10 @@ public class MusicList {
 		this.btnMovieList = btnMovieList;
 		this.stackpane = stackpane;
 		this.mainBox = mainBox;
+		
+		
+		
+		
 	}
 	
 	

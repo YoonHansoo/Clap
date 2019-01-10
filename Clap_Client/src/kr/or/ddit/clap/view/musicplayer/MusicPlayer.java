@@ -1,6 +1,8 @@
 package kr.or.ddit.clap.view.musicplayer;
 
 import java.io.File;
+import java.util.ArrayList;
+
 import com.jfoenix.controls.JFXSlider;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.scene.control.Label;
@@ -10,7 +12,7 @@ import javafx.scene.media.MediaPlayer.Status;
 import javafx.util.Duration;
 
     public class   MusicPlayer {
-	private MediaPlayer mediaPlayer;
+	public MediaPlayer mediaPlayer;
 	private Media media;
 	private Status status;
 	
@@ -19,17 +21,10 @@ import javafx.util.Duration;
 		
 	}
 	
-	public MusicPlayer(String path) {
-		media = new Media(new File(path).toURI().toString());
-		mediaPlayer = new MediaPlayer(media);
-	}
-	
 	public void play(FontAwesomeIcon icon_play) {
 		status = mediaPlayer.getStatus();
 		
-		if (status == Status.PAUSED ||
-			status == Status.READY ||
-			status == Status.STOPPED) {
+		if (status != status.PLAYING) {
 			icon_play.setIconName("PAUSE");
 			mediaPlayer.play();
 		}else  {
@@ -76,5 +71,10 @@ import javafx.util.Duration;
 				}
 			});
 		});
+	}
+	
+	public void setMedia(String path) {
+		media = new Media(new File(path).toURI().toString());
+		mediaPlayer = new MediaPlayer(media);
 	}
 }

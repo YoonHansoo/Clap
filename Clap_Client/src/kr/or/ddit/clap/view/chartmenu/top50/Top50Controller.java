@@ -94,6 +94,8 @@ public class Top50Controller implements Initializable{
 	// 메인 추가 버튼 이벤트
 	@FXML public void btnMainAdd() {
 		ArrayList<String> list = musicCheckList();
+		MyAlbumDialogController.mus_no.clear();
+		MyAlbumDialogController.mus_no = list;
 		System.out.println(list);
 	}
 

@@ -1,14 +1,37 @@
 package kr.or.ddit.clap.view.musicplayer;
 
 import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.playlist.IPlayListService;
+import kr.or.ddit.clap.vo.music.PlayListVO;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXSlider;
 import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
+
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import com.jfoenix.controls.JFXButton;
 
 public class MusicPlayerController implements Initializable{
 	
@@ -16,19 +39,53 @@ public class MusicPlayerController implements Initializable{
 	@FXML JFXSlider slider_time;
 	@FXML Label Label_nowTime;
 	@FXML Label Label_finalTime; 
+	@FXML TreeTableColumn<PlayListVO, JFXCheckBox> tcol_check;
+	@FXML TreeTableColumn<PlayListVO, VBox> tcol_vbox;
+	@FXML JFXTreeTableView<PlayListVO> t_table;
+	@FXML Label label_musicName;
+	@FXML Label label_singerName;
+	@FXML ImageView imgview_album;
+	@FXML JFXButton btn_backward;
+	@FXML JFXButton btn_forward;
 	
 	private Stage stage;
-	private String path;
 	private MusicPlayer player;
+	private ObservableList<PlayListVO> list;
+	private IPlayListService ipls;
+	private Registry reg;
+	private ObservableList<MediaPlayer> playlist;
+	
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ipls = (IPlayListService) reg.lookup("playlist");
+			list = FXCollections.observableArrayList(ipls.playlistSelect(LoginSession.session.getMem_id()));
+		} catch (RemoteException e2) {
+			e2.printStackTrace();
+		} catch (NotBoundException e1) {
+			e1.printStackTrace();
+		}
+		
+		player = new MusicPlayer();
+		
 		stage = MusicMainController.musicplayer;
-//		path = "C://Users//jin//Downloads//3.mp3";
-		path = "////Sem-pc//공유폴더//Clap//mp3//2.mp3";
-		player = new MusicPlayer(path);
-		player.Ready(Label_nowTime, Label_finalTime, slider_time);
+
+		tcol_check.setCellValueFactory( param -> 
+		new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getCheckbox())
+		);
+		
+		tcol_vbox.setCellValueFactory( param ->
+			new SimpleObjectProperty<VBox>(param.getValue().getValue().getVbox())
+		);
+		
+		TreeItem<PlayListVO> root = new RecursiveTreeItem<>(list, RecursiveTreeObject::getChildren);
+		t_table.setRoot(root);
+		t_table.setShowRoot(false);
+		
 		
 		stage.setOnCloseRequest(e -> { 
 			player.stop();
@@ -38,6 +95,17 @@ public class MusicPlayerController implements Initializable{
 			player.musicSync(slider_time.getValue());
 		});
 		
+		t_table.setOnMouseClicked(e->{
+			int index = t_table.getSelectionModel().getSelectedIndex();
+			System.out.println(index);
+			System.out.println(list.get(index).getMus_file());
+			player.setMedia(list.get(index).getMus_file());
+			label_musicName.setText(list.get(index).getMus_title());
+			label_singerName.setText(list.get(index).getSing_name());
+			imgview_album.setImage(new Image(list.get(index).getAlb_image()));
+			player.Ready(Label_nowTime, Label_finalTime, slider_time);
+			player.play(icon_play);
+		});
 	}
 
 	@FXML public void onPlay() {
