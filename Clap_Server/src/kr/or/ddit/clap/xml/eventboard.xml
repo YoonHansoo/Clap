@@ -6,7 +6,35 @@
 <sqlMap namespace="eventboard">
 
 	 <select id="selectListAll" resultClass="EventBoardVO">
+ 		select
+ 				event_no,
+ 				event_title,
+ 				event_sdate,
+ 				event_edate,
+ 				event_image
+		  from
+			  	event_board 
 	 </select>
-
-
+	 
+	 
+	 <!-- 검색용 쿼리 -->
+	 <select id="searchList" resultClass="EventBoardVO" parameterClass="EventBoardVO">
+     select
+            event_no,
+            event_title,
+            event_sdate,
+            event_edate,
+            event_image
+       from
+       		event_board
+     <dynamic prepend="where">
+     	<isNotEmpty property="event_title" prepend="and">
+     		event_title like '%' || #event_title# || '%'
+     	</isNotEmpty>
+     </dynamic>
+            
+	 
+	 </select>
+	 
+	 
 </sqlMap>
