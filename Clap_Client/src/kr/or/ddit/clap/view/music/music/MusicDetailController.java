@@ -32,7 +32,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.music.IMusicService;
-import kr.or.ddit.clap.view.album.album.UpdateAlbumController;
 import kr.or.ddit.clap.vo.music.MusicVO;
 
 public class MusicDetailController implements Initializable {
@@ -60,6 +59,7 @@ public class MusicDetailController implements Initializable {
 	@FXML Label txt_edit;
 	@FXML Label txt_muswrite;
 	@FXML Label txt_file;
+	@FXML Label txt_fileVideo;
 	@FXML JFXComboBox<String> combo_genre;
 	@FXML JFXComboBox<String> combo_genreDetail;
 	@FXML Label txt_time;
@@ -87,6 +87,7 @@ public class MusicDetailController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMusicService) reg.lookup("music");
 			mVO = ims.selectMusicDetailInfo(musicNo);
+			System.out.println("뮤비파일"+mVO.getMus_mvfile());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -108,6 +109,7 @@ public class MusicDetailController implements Initializable {
 		txt_edit.setText(mVO.getMus_edit_son());
 		txt_muswrite.setText(mVO.getMus_muswrite_son());
 		txt_file.setText(mVO.getMus_file()); 
+		txt_fileVideo.setText(mVO.getMus_mvfile());
 		combo_genre.setValue(mVO.getGen_name());  
 		
 		combo_genreDetail.setValue(mVO.getGen_detail_name()); 
@@ -156,28 +158,6 @@ public class MusicDetailController implements Initializable {
 		}
 	}
 
-	// 수정화면으로 이동
-	@FXML
-	public void updateAlbum() {
-
-	/*	try {
-			// 바뀔 화면(FXML)을 가져옴
-			UpdateAlbumController.mu = musicNo;// 가수번호를 변수로 넘겨줌
-
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateAlbum.fxml"));// initialize실행됨
-			Parent UpdateAlbum = loader.load();
-			UpdateAlbumController cotroller = loader.getController();
-			cotroller.initData(mVO, str_like_cnt);
-			main.getChildren().removeAll();
-			main.getChildren().setAll(UpdateAlbum);
-
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-*/
-	}
-
-
 
 	// 사용자가 확인을 누르면 1을 리턴 이외는 -1
 	public int alertConfrimDelete() {
@@ -199,7 +179,23 @@ public class MusicDetailController implements Initializable {
 		return -1;
 	}
 
-	@FXML public void updateMusic() {}
+	@FXML public void updateMusic() {
+		try {
+			// 바뀔 화면(FXML)을 가져옴
+			UpdateMusicController.musicNo = musicNo;// 가수번호를 변수로 넘겨줌
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateMusic.fxml"));// initialize실행됨
+			Parent UpdateMusic = loader.load();
+			UpdateMusicController cotroller = loader.getController();
+			cotroller.initData(mVO, str_like_cnt);
+			main.getChildren().removeAll();
+			main.getChildren().setAll(UpdateMusic);
+
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+	}
 
 
 	@FXML public void deleteMusic() {

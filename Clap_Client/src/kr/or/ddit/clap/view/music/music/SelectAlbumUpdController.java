@@ -36,7 +36,7 @@ import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 
-public class SelectAlbumController implements Initializable {
+public class SelectAlbumUpdController implements Initializable {
 
 	@FXML
 	Pagination p_paging;
@@ -63,13 +63,10 @@ public class SelectAlbumController implements Initializable {
 	private IAlbumService ias;
 	private ObservableList<AlbumVO> albumList, currentalbumList;
 	private int from, to, itemsForPage, totalPageCnt;
+	private UpdateMusicController uMC;
 	
-	//부모창의 InsertMusicController를 자신의 멤버변수로 선언한다.
-	private InsertMusicController iMC;
-	
-	// 매개변수로 받은 InsertMusicController를 this연산자로  자신의 멤버변수에 set한다.
-	public void setcontroller(InsertMusicController iMC){
-		this.iMC = iMC;
+	public void setcontroller(UpdateMusicController uMC){
+		this.uMC = uMC;
 	}
 	
 	
@@ -145,15 +142,19 @@ public class SelectAlbumController implements Initializable {
 				String img_path = tbl_album.getSelectionModel().getSelectedItem().getValue().getAlb_image();
 				System.out.println("선택한 앨범번호: "+albumNo);
 				
-				//InsertMusicController를 참조하는 멤버변수를 가지고 있기때문에 자식창에서 부모창의 멤버변수와 메서드를 사용할 수  있다.
-				iMC.label_albNO.setText(albumNo);
-				iMC.txt_albName.setText(albName);
-				iMC.txt_singerName.setText(singname);
+				
+				
+				
+				uMC.label_albNO.setText(albumNo);
+				uMC.txt_albName.setText(albName);
+				uMC.txt_singerName.setText(singname);
 
 				//이미지를 바꿔준다.
 				Image img = new Image(img_path);
-				iMC.imgview_albumImg.setImage(img);
+				uMC.imgview_albumImg.setImage(img);
 				
+			
+
 				//자식창 닫음
 				Stage dialogStage = (Stage) btn_search.getScene().getWindow();
 				dialogStage.close();

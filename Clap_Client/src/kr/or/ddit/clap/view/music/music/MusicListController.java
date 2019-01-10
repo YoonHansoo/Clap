@@ -36,8 +36,6 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.service.music.IMusicService;
-import kr.or.ddit.clap.view.album.album.AlbumDetailController;
-import kr.or.ddit.clap.view.album.album.InsertAlbumController;
 import kr.or.ddit.clap.vo.music.MusicVO;
 
 public class MusicListController implements Initializable {
@@ -234,7 +232,7 @@ public void InsertMusic() {
 	try {
 		//바뀔 화면(FXML)을 가져옴
 		
-	FXMLLoader loader = new FXMLLoader(getClass().getResource("insertMusic.fxml"));// init실행됨
+	FXMLLoader loader = new FXMLLoader(getClass().getResource("InsertMusic.fxml"));// init실행됨
 		Parent InsertMusic= loader.load(); 
 		
 		InsertMusicController cotroller = loader.getController();

@@ -14,6 +14,9 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 	private String mus_time;
 	private String mus_indate;
 	private String mus_file;
+	private String mus_mvfile;
+	
+
 	private String mus_muswrite_son;
 	private String mus_edit_son;
 	private String mus_write_son;
@@ -29,7 +32,15 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 	private String gen_name;
 	private ImageView imgView;
 	private String gen_detail_name;
+	
+	public String getMus_mvfile() {
+		return mus_mvfile;
+	}
 
+	public void setMus_mvfile(String mus_mvfile) {
+		this.mus_mvfile = mus_mvfile;
+	}
+	
 	public ImageView getImgView() {
 		this.imgView = new ImageView();
 		Image img = new Image(alb_image);

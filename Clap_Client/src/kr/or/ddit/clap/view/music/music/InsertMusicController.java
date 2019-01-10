@@ -66,6 +66,9 @@ public class InsertMusicController implements Initializable {
 	@FXML
 	JFXTextField txt_file;
 	@FXML
+	JFXTextField txt_fileVideo;
+	
+	@FXML
 	JFXButton btn_insertImg;
 	
 	@FXML
@@ -92,6 +95,10 @@ public class InsertMusicController implements Initializable {
 	@FXML
 	Label label_musNO;
 
+	@FXML JFXButton btn_insertvideo;
+	
+	
+	
 	private FileChooser fileChooser;
 	private File filePath;
 	private String img_path;
@@ -182,13 +189,16 @@ public class InsertMusicController implements Initializable {
 	public void btn_selectAlbum() {
 		System.out.println("앨범조회 버튼클릭");
 		try {
-			
+			//InsertMusicController(부모창)에서 SelectAlbumController(자식창)을 연다.
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SelectAlbum.fxml"));
 			Parent selectAlbum= loader.load(); 
+			
+			//SelectAlbumController를 받아온다.
 			SelectAlbumController cotroller = loader.getController();
 			
+			//SelectAlbumController에 setcontroller메소드를 정의한다.
+			//이 메소드는 this로 받은 자기자신(InsertMusicController)객체를 매개변수로  SelectAlbumController객체의 멤버변수로  set한다.
 			cotroller.setcontroller(this);
-			
 			
 			Stage stage = new Stage();
 			Scene scene = new Scene(selectAlbum);
@@ -237,11 +247,37 @@ public class InsertMusicController implements Initializable {
 		
 		txt_file.setText(str_filePath);
 		
-		
-		
 		}
-	
+
+	@FXML
+	public void btn_uploadVideo(ActionEvent event) {
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		fileChooser = new FileChooser();
+		fileChooser.setTitle("Open VideoFile");
+
+		// 사용자에 화면에 해당 디렉토리가 기본값으로 보여짐
+		// String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
+		// 기본위치
+		String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\video";
+
+		File userDirectory = new File(userDirectoryString);
+
+		if (!userDirectory.canRead()) { // 예외시?
+			userDirectory = new File("c:/");
+		}
+
+		fileChooser.setInitialDirectory(userDirectory);
+		;
+
+		this.filePath = fileChooser.showOpenDialog(stage);
+
+		String str_filePath = "file:" + filePath;
+		System.out.println("파일경로:" + str_filePath);
 		
+		txt_fileVideo.setText(str_filePath);
+		
+		}	
+	
 	@FXML
 	public void btn_chageImg(ActionEvent event) {
 		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -306,6 +342,10 @@ public class InsertMusicController implements Initializable {
 			errMsg("Music File은 필수 입력 사항입니다.");
 			return;
 		}
+		if (txt_fileVideo.getText().isEmpty()) {
+			errMsg("Video File은 필수 입력 사항입니다.");
+			return;
+		}
 
 
 		
@@ -314,6 +354,7 @@ public class InsertMusicController implements Initializable {
 		mVO.setMus_title(txt_name.getText());
 		mVO.setMus_time(txt_time.getText());
 		mVO.setMus_file(txt_file.getText());
+		mVO.setMus_mvfile(txt_fileVideo.getText());
 		mVO.setMus_muswrite_son(txt_write.getText());
 		mVO.setMus_edit_son(txt_edit.getText());
 		mVO.setMus_write_son(txt_muswrite.getText());
