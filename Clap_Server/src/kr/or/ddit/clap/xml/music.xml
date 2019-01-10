@@ -86,7 +86,8 @@
 						MUS_WRITE_SON,
 						MUS_LYRICS,
 						ALB_NO,
-						GEN_DETAIL_NO
+						GEN_DETAIL_NO,
+						MUS_MVFILE
 			)
 			values(			
 						seq_mus_no.nextval,
@@ -98,7 +99,8 @@
 						#mus_write_son#,
 						#mus_lyrics#,
 						#alb_no#,
-						#gen_detail_no#
+						#gen_detail_no#,
+						#mus_mvfile#
 			)
 			
 	</insert>
@@ -119,7 +121,8 @@
            a.alb_no,
            d.gen_Detail_no,
            b.mus_time,
-           b.MUS_FILE
+           b.MUS_FILE,
+           b.MUS_MVFILE
       from album a, music b, singer c, GENRE_DETAIL d, GENRE e
      where a.alb_no = b.alb_no
        and a.sing_no = c.sing_no
@@ -140,6 +143,24 @@
  <delete id="deleteMusic" parameterClass="String">
 			delete from music where MUS_NO=#String#
 	 </delete>
+  
+  
+  <update id="updateMusicInfo" parameterClass="musicVO">
+	 							update music 
+	 							set 
+	 								MUS_TITLE 		= #mus_title#,
+	 								MUS_TIME 	= #mus_time#,
+	 								MUS_FILE 	= #mus_file#,
+	 								MUS_MUSWRITE_SON  = #mus_muswrite_son#,
+	 								MUS_EDIT_SON 	= #mus_edit_son#,
+	 								MUS_WRITE_SON		= #mus_write_son#,
+	 								MUS_LYRICS		= #mus_lyrics#,
+	 								ALB_NO		= #alb_no#,
+	 								GEN_DETAIL_NO		= #gen_detail_no#,
+	 								MUS_BEFOR_RANK		= #mus_befor_rank#,
+	 								MUS_MVFILE		= #mus_mvfile#
+	 			        	where MUS_NO=#mus_no#
+	 </update>
   
 </sqlMap>         
 
