@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -37,8 +38,25 @@ public class TicketController implements Initializable{
 	@FXML Label lb_date1;
 	@FXML Label lb_date2;
 	@FXML Label lb_date3; // 이용권 없는 회원
+	@FXML Label lb1;
+	@FXML Label lb2;
+	@FXML Label lb3;
+	@FXML Label lb4;
+	@FXML Label lb5;
+	@FXML Label lb6;
+	@FXML Label lb_no1;
+	@FXML Label lb_no2;
+	@FXML Label lb_no3;
+	@FXML Button btn1;
+	@FXML Button btn2;
+	@FXML Button btn3;
+	@FXML Button btn_no1;
+	@FXML Button btn_no2;
+	@FXML Button btn_no3;
 	
-	String[] ticketDate = new String[2]; // 이용권 기한. [0]은 만료일. [1]은 남은 일수.
+	static String[] ticketDate = new String[2]; // 이용권 기한. [0]은 만료일. [1]은 남은 일수.
+	static Object[] ticketInfo = new Object[3]; // [0]은 이용권 정보. [1]은 금액. [2]는 액수String
+	// 이용권 정보. 1개월 1, 6개월 2, 1년은 3.
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -60,19 +78,20 @@ public class TicketController implements Initializable{
 			List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
 			try {
 				list = its.selectList(ls.session.getMem_id());
-				System.out.println("사이즈 "+list.size());
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 			
 			
 			if(list.size()==0) {
+				lb_date1.setVisible(false);			
+				lb_date2.setVisible(false);			
 				lb_date3.setVisible(true);			
 				lb_date3.setText("사용중인 이용권이 없습니다.");	
 			}else {
 				ticketDate = dateCheck(list);
 				
-				if(ticketDate.equals("no")) {
+				if(ticketDate[0].equals("no")) {
 					lb_date3.setVisible(true);			
 					lb_date3.setText("사용중인 이용권이 없습니다.");
 				}else {
@@ -86,10 +105,67 @@ public class TicketController implements Initializable{
 				}
 			}
 					
-//			lb_date1.setTextFill(Color.valueOf("#00cc00"));
-
+			if(!ls.session.getMem_grade().equalsIgnoreCase("vip")) {
+				// vip 아닐때.
+				
+			}else if(ls.session.getMem_grade().equalsIgnoreCase("vip")) {
+				lb_no1.setTextFill(Color.valueOf("#9d9d9d"));
+				lb_no2.setTextFill(Color.valueOf("#9d9d9d"));
+				lb_no3.setTextFill(Color.valueOf("#9d9d9d"));
+				lb1.setTextFill(Color.BLACK);
+				lb2.setTextFill(Color.BLACK);
+				lb3.setTextFill(Color.BLACK);
+				lb4.setTextFill(Color.BLACK);
+				lb5.setTextFill(Color.BLACK);
+				lb6.setTextFill(Color.BLACK);
+				btn1.setDisable(false);
+				btn2.setDisable(false);
+				btn3.setDisable(false);
+				btn_no1.setDisable(true);
+				btn_no2.setDisable(true);
+				btn_no3.setDisable(true);
+			}
 			
+//			lb_date1.setTextFill(Color.valueOf("#00cc00"));
 		}
+		
+		// 신빌더에서 onaction을 없애주니까 되네.
+		btn_no1.setOnAction(e->{
+			ticketInfo[0] = "1개월";
+			ticketInfo[1] = 2500;
+			ticketInfo[2] = "2,500원";
+			buyTicket();
+		});
+		btn_no2.setOnAction(e->{
+			ticketInfo[0] = "6개월";
+			ticketInfo[1] = 5000;
+			ticketInfo[2] = "5,000원";
+			buyTicket();
+		});
+		btn_no3.setOnAction(e->{
+			ticketInfo[0] = "1년";
+			ticketInfo[1] = 8000;
+			ticketInfo[2] = "8,000원";
+			buyTicket();
+		});
+		btn1.setOnAction(e->{
+			ticketInfo[0] = "1개월";
+			ticketInfo[1] = 2000;
+			ticketInfo[2] = "2,000원";
+			buyTicket();
+		});
+		btn2.setOnAction(e->{
+			ticketInfo[0] = "6개월";
+			ticketInfo[1] = 4000;
+			ticketInfo[2] = "4,000원";
+			buyTicket();
+		});
+		btn3.setOnAction(e->{
+			ticketInfo[0] = "1년";
+			ticketInfo[1] = 6500;
+			ticketInfo[2] = "6,500원";
+			buyTicket();
+		});
 		
 	}
 
