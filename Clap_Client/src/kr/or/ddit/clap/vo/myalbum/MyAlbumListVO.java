@@ -2,13 +2,51 @@ package kr.or.ddit.clap.vo.myalbum;
 
 import java.io.Serializable;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class MyAlbumListVO implements Serializable{
 	
 	private String myalb_list_no;
 	private String myalb_no;
 	private String mus_no;
 	private String myalb_list_indate;
+	private String mus_title;
+	private String alb_image;
+	private String sing_name;
+	private ImageView imgView;
+
+
 	
+	public String getMus_title() {
+		return mus_title;
+	}
+	public void setMus_title(String mus_title) {
+		this.mus_title = mus_title;
+	}
+	public String getAlb_image() {
+		return alb_image;
+	}
+	public void setAlb_image(String alb_image) {
+		this.alb_image = alb_image;
+	}
+	public String getSing_name() {
+		return sing_name;
+	}
+	public void setSing_name(String sing_name) {
+		this.sing_name = sing_name;
+	}
+	public ImageView getImgView() {
+		this.imgView = new ImageView();
+		Image img = new Image(alb_image);
+		imgView.setImage(img);
+		imgView.setFitWidth(120);
+		imgView.setFitHeight(50);
+		return imgView;
+	}
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
+	}
 	public String getMyalb_list_no() {
 		return myalb_list_no;
 	}

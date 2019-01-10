@@ -35,7 +35,6 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
       imgView.setImage(img);
       imgView.setFitWidth(80);
       imgView.setFitHeight(100);
-      System.out.println("imgView생성");
       return imgView;
    }
    public void setImgView(ImageView imgView) {

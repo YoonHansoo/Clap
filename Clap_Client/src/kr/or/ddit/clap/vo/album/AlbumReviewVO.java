@@ -61,7 +61,6 @@ public class AlbumReviewVO extends RecursiveTreeObject<AlbumReviewVO>  implement
 		imgView.setImage(img);
 		imgView.setFitWidth(100);
 		imgView.setFitHeight(70);
-		System.out.println("imgView생성");
 	
 		return imgView;
 	}
