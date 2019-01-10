@@ -40,6 +40,7 @@ public class MusicMainController implements Initializable {
 	@FXML HBox mem_menu;
 
 	@FXML public JFXButton btn_login;
+
 	@FXML public JFXButton btn_goforward;
 	@FXML public JFXButton btn_goback;
 	
@@ -359,6 +360,19 @@ public class MusicMainController implements Initializable {
 			e.printStackTrace();
 		}
 
+	}
+	
+	
+	public void eventManage(ActionEvent event) { //이벤트관리를 클릭 했을 때. 
+		   try {
+			   Parent eventManage = FXMLLoader.load(getClass().getResource("../view/support/eventboard/EventShowList.fxml")); //바뀔 화면을 가져옴
+			   contents.getChildren().removeAll();
+			   contents.getChildren().setAll(eventManage);
+			   
+		   } catch (IOException e) {
+			   e.printStackTrace();
+		   }
+		   
 	}
 
 }
