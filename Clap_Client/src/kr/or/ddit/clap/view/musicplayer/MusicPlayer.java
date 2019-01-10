@@ -74,6 +74,10 @@ import javafx.util.Duration;
 	}
 	
 	public void setMedia(String path) {
+		if (mediaPlayer != null) {
+			mediaPlayer.stop();
+			
+		}
 		media = new Media(new File(path).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
 	}

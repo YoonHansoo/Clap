@@ -50,7 +50,7 @@
                      </font></Label>
                   <ImageView fx:id="imgview_album" cache="true" cacheHint="ROTATE" fitHeight="230.0" fitWidth="230.0" pickOnBounds="true">
                      <image>
-                        <Image url="http://image.genie.co.kr/Y/IMAGE/IMG_ALBUM/081/041/199/81041199_1520491576393_1_600x600.JPG" />
+                        <Image url="file:\\Sem-pc\공유폴더\Clap\img\album\제목없음.png" />
                      </image>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -86,7 +86,7 @@
                         <Insets top="15.0" />
                      </VBox.margin>
                      <children>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton onAction="#retweetClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="RETWEET" size="30" />
                            </graphic>
@@ -94,12 +94,12 @@
                               <Insets bottom="4.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton onAction="#randomClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="RANDOM" size="30" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_backward" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton fx:id="btn_backward" onAction="#backWard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="BACKWARD" size="30" />
                            </graphic>
@@ -109,17 +109,17 @@
                               <FontAwesomeIcon fx:id="icon_play" fill="WHITE" iconName="PLAY" size="30" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton fx:id="btn_forward" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton fx:id="btn_forward" onAction="#forWard" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="FORWARD" size="30" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton onAction="#volumeClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="VOLUME_UP" size="30" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton onAction="#lyricsClick" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="BARS" size="30" />
                            </graphic>
