@@ -8,10 +8,15 @@ package kr.or.ddit.clap.dao.eventboard;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
+
+import kr.or.ddit.clap.vo.support.EventBoardVO;
 
 public class EventBoardDaoImpl implements IEventBoardDao {
 
@@ -30,12 +35,39 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		}
 	}
 
-	public static EventBoardDaoImpl getInstance() {
+	public static EventBoardDaoImpl getInstance() { // Singleton 패턴
 		if (dao == null) {
 			dao = new EventBoardDaoImpl();
 		}
 		return dao;
 
+	}
+
+	//공지사항 조회를 위한 쿼리문
+	@Override
+	public List<EventBoardVO> selectListAll() {
+		List<EventBoardVO> list = new ArrayList<EventBoardVO>();
+		try {
+			list = smc.queryForList("eventboard.selectListAll");
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	//검색조건에 맞게 검색하는 쿼리문
+	@Override
+	public List<EventBoardVO> searchList(EventBoardVO vo) {
+		List<EventBoardVO> list = new ArrayList<EventBoardVO>();
+		
+		try {
+			list = smc.queryForList("eventboard.searchList", vo);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }
