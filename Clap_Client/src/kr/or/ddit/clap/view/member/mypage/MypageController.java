@@ -294,7 +294,7 @@ public class MypageController implements Initializable {
 			// 사용자의 디렉토리 보여줌
 			// String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
 			// 기본위치
-			String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\singer";
+			String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg";
 
 			System.out.println("userDirectoryString:" + userDirectoryString);
 			File userDirectory = new File(userDirectoryString);
@@ -313,18 +313,22 @@ public class MypageController implements Initializable {
 				BufferedImage bufferedImage = ImageIO.read(filePath);
 				Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 				imgview_UserImg.setImage(image);
-				System.out.println("파일경로:" + filePath);
 				String str_filePath = "file:" + filePath;
 				// userDirectoryString = "file:\\\\Sem-pc\\공유폴더\\Clap\\img\\singer"; //화면 출력 시
 				// 절대경로로 이미지를 읽기위해서
 				img_path = str_filePath;
-
+				TextField textF_File =  (TextField) root.lookup("#textF_File");
+				textF_File.setText(str_filePath);
 			} catch (Exception e) {
 				// System.out.println(e.getMessage());
 				// e.printStackTrace();
 				System.out.println("이미지를 선택하지 않았습니다.");
 			}
+			
+			
 		});
+		
+			
 
 		JFXCheckBox chBox_del = (JFXCheckBox) root.lookup("#chBox_del");
 		chBox_del.setOnAction(ee -> {

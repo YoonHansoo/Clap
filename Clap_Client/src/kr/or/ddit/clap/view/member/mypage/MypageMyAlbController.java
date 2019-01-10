@@ -89,14 +89,14 @@ public class MypageMyAlbController implements Initializable{
 		tbl_Myalb.setEditable(true);
 		col_MyAlbname.setCellFactory(TextFieldTreeTableCell.forTreeTableColumn());	//클릭시 컬럼이 필드로 변경 값 저장시 엔터 키로 저장 시켜야 한다.
 		col_MyAlbname.setOnEditCommit(new EventHandler<CellEditEvent<MyAlbumVO, String>>() {
-
 			@Override
 			public void handle(CellEditEvent<MyAlbumVO, String> e) {
 				int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
 				e.getTreeTableView().getTreeItem(index).getValue().setMyalb_name(e.getNewValue());
 			}
-
 		});
+		
+		
 
 	}
 
@@ -133,24 +133,10 @@ public class MypageMyAlbController implements Initializable{
 		}
 	}
 	
-	public void chBoxCount() {
-	
-	}
+	public void chBoxCount() {}
 	@FXML public void btn_edit() {}
-/*	@FXML public void btn_edit() throws IOException {
-		
-		TextField fild= new TextField(); 
-		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
-		String myAlbName=col_MyAlbname.getCellData(index).toString();
-	
-		MypageMyAlbEditController.myAlbName = myAlbName; //앨범명 변수로 넘겨줌
-		MypageMyAlbEditController.myAlbNo = myAlbNo;//앨범번호 변수로 넘겨줌
-		InsertSinger();
-		}*/
 	
 	
-	
-
 	@FXML public void btn_del() {
 			for (int i = 0; i < myAlbList.size(); i++) {
 				if(myAlbList.get(i).getchBox1().isSelected()) {
@@ -168,7 +154,6 @@ public class MypageMyAlbController implements Initializable{
 					} catch (RemoteException e) {
 						e.printStackTrace();
 					}
-					
 			}
 			;
 		}
@@ -183,10 +168,11 @@ public class MypageMyAlbController implements Initializable{
 		;
 		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
 		if (index <= 0) {
-			
+
 			Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
-			dialogStage.close();return;
-			
+			dialogStage.close();
+			return;
+
 		}
 		String myAlbName = col_MyAlbname.getCellData(index).toString();
 		String myAlbNo = myAlbList.get(index).getMyalb_no();
@@ -198,7 +184,6 @@ public class MypageMyAlbController implements Initializable{
 					errMsg("중복되는 앨범명이 있습니다.");
 					return;
 				}
-
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -219,52 +204,32 @@ public class MypageMyAlbController implements Initializable{
 
 		Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
 		dialogStage.close();
-		
-
 	}
-
-	/*
-	 * public void InsertSinger() throws IOException { FXMLLoader loader = new
-	 * FXMLLoader(getClass().getResource("myalbedit.fxml")); Parent myEdit=
-	 * loader.load(); MypageMyAlbEditController cotroller = loader.getController();
-	 * 
-	 * cotroller.setcontroller(this);
-	 * 
-	 * Stage stage = new Stage(); Scene scene = new Scene(myEdit);
-	 * stage.setScene(scene); stage.initModality(Modality.APPLICATION_MODAL); Stage
-	 * primaryStage = (Stage)Head.getScene().getWindow();
-	 * stage.initOwner(primaryStage); stage.show();
-	 * 
-	 * 
-	 * }
-	 */
 
 	public void infoMsg(String headerText, String msg) {
 		Alert infoAlert = new Alert(AlertType.INFORMATION);
 		infoAlert.setTitle("정보 확인");
-	infoAlert.setHeaderText(headerText);
-	infoAlert.setContentText(msg);
-	infoAlert.showAndWait();
-}
-public void errMsg(String msg) {
-	Alert errAlert = new Alert(AlertType.ERROR);
-	errAlert.setTitle("중복 검사");
-	errAlert.setHeaderText("중복 검사");
-	errAlert.setContentText(msg);
-	errAlert.showAndWait();
-}
+		infoAlert.setHeaderText(headerText);
+		infoAlert.setContentText(msg);
+		infoAlert.showAndWait();
+	}
 
-public void warning(String msg) {
-	Alert alertWarning = new Alert(AlertType.WARNING);
-	alertWarning.setTitle("완료");
-	alertWarning.setContentText(msg);
-	alertWarning.showAndWait();
+	public void errMsg(String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("중복 검사");
+		errAlert.setHeaderText("중복 검사");
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
+	}
+
+	public void warning(String msg) {
+		Alert alertWarning = new Alert(AlertType.WARNING);
+		alertWarning.setTitle("완료");
+		alertWarning.setContentText(msg);
+		alertWarning.showAndWait();
+	}
+
 }
-	
-}
-	
-	
-	
 	
 	
 	
