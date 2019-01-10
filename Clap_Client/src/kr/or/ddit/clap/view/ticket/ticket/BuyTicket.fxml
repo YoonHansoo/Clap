@@ -117,7 +117,7 @@
                         </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="820.0" spacing="30.0" style="-fx-border-color: #090948;">
                            <children>
-                              <JFXRadioButton text="신용카드">
+                              <JFXRadioButton fx:id="rb1" text="신용카드">
                                  <font>
                                     <Font name="YDIYGO350" size="20.0" />
                                  </font>
@@ -125,7 +125,7 @@
                                     <Insets left="15.0" />
                                  </HBox.margin>
                               </JFXRadioButton>
-                              <JFXRadioButton text="실시간 계좌이체">
+                              <JFXRadioButton fx:id="rb2" text="실시간 계좌이체">
                                  <font>
                                     <Font name="YDIYGO350" size="20.0" />
                                  </font>
@@ -133,7 +133,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </JFXRadioButton>
-                              <JFXRadioButton text="무통장입금">
+                              <JFXRadioButton fx:id="rb3" text="무통장입금">
                                  <font>
                                     <Font name="YDIYGO350" size="20.0" />
                                  </font>
@@ -141,7 +141,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </JFXRadioButton>
-                              <JFXRadioButton text="휴대폰">
+                              <JFXRadioButton fx:id="rb4" text="휴대폰">
                                  <font>
                                     <Font name="YDIYGO350" size="20.0" />
                                  </font>
@@ -163,12 +163,12 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXRadioButton text="개인카드">
+                                    <JFXRadioButton fx:id="rb_card1" text="개인카드">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                     </JFXRadioButton>
-                                    <JFXRadioButton text="법인카드">
+                                    <JFXRadioButton fx:id="rb_card2" text="법인카드">
                                        <HBox.margin>
                                           <Insets left="20.0" />
                                        </HBox.margin>
@@ -188,7 +188,7 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXComboBox prefWidth="130.0" />
+                                    <JFXComboBox fx:id="combo1" prefWidth="100.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" spacing="10.0">
@@ -201,12 +201,12 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                     </Label>
-                                    <JFXComboBox prefWidth="130.0" />
+                                    <JFXComboBox fx:id="combo2" prefWidth="100.0" />
                                  </children>
                               </HBox>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <JFXButton text="결제하기">
+                                    <JFXButton fx:id="btn_ok" text="결제하기">
                                        <font>
                                           <Font name="YDIYGO350" size="20.0" />
                                        </font>

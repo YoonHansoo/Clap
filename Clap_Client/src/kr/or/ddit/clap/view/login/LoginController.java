@@ -149,6 +149,12 @@ public class LoginController implements Initializable{
 		}
 		System.out.println("가져온 비밀번호 "+list.get(0).getMem_pw());
 		
+		if(list.get(0).getMem_del_tf().equals("t")) { // 탈퇴한 회원인 경우.
+			lb_check.setVisible(true);
+			lb_check.setText("탈퇴한 회원입니다.");
+			return;
+		}
+		
 		if(encryptedPw.equals(list.get(0).getMem_pw())) {
 			System.out.println("로그인 진행");
 			
