@@ -124,6 +124,11 @@ public class MusicMainController implements Initializable {
 		new7.setImage(images[6]);
 		new8.setImage(images[7]);
 	}
+	@FXML
+	public void goBack(ActionEvent event) {
+		
+	}
+	
 
 	@FXML
 	public void login() throws IOException {
