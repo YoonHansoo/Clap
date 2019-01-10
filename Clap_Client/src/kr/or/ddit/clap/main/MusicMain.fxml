@@ -152,7 +152,7 @@
                   <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
                   <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
                   <JFXButton layoutX="450.0" layoutY="19.0" onAction="#musicPlayer" style="-fx-background-color: #090948;" text="MusicPlayer" textFill="WHITE" />
-                  <Button layoutX="6.0" layoutY="19.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="24.0" style="-fx-background-color: #090948;" textFill="WHITE">
+                  <Button layoutX="6.0" layoutY="19.0" mnemonicParsing="false" onAction="#goBack" prefHeight="23.0" prefWidth="24.0" style="-fx-background-color: #090948;" textFill="WHITE">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_LEFT" />
                      </graphic>
