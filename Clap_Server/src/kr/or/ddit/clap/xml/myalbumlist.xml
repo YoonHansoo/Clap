@@ -10,6 +10,28 @@
         values ( seq_myalb_list_no.nextval, #myalb_no#, #mus_no#, sysdate)
 	</update>
 	
+	<select id="selectMyAlbList" resultClass="MyAlbumListVO" parameterClass="String">
+			select distinct
+			    b.mus_no ,
+			    c.mus_title,
+			    a.myalb_no,
+			    d.alb_image,
+			    e.sing_name
+			from
+			    myalbum a,
+			    music c,
+			    myalbum_list b ,
+			    album d,
+			    singer e
+			where
+			    mem_id = #id#
+			    and   b.myalb_no = a.myalb_no
+			    and   b.mus_no = c.mus_no
+			    and   d.alb_no = c.alb_no
+			    and   e.sing_no = d.sing_no
+			    and   a.myalb_no = #myalb_no#
+	</select>
+	
 </sqlMap>			
 
 

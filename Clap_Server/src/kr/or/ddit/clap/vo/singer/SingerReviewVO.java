@@ -58,7 +58,6 @@ public class SingerReviewVO extends RecursiveTreeObject<SingerReviewVO>  impleme
 		imgView.setImage(img);
 		imgView.setFitWidth(100);
 		imgView.setFitHeight(70);
-		System.out.println("imgView생성");
 	
 		return imgView;
 	}
