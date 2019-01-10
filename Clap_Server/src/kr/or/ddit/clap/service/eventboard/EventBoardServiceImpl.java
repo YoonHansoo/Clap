@@ -2,8 +2,10 @@ package kr.or.ddit.clap.service.eventboard;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
 
 import kr.or.ddit.clap.dao.eventboard.EventBoardDaoImpl;
+import kr.or.ddit.clap.vo.support.EventBoardVO;
 
 public class EventBoardServiceImpl extends UnicastRemoteObject implements IEventBoardService {
 	
@@ -23,6 +25,18 @@ public class EventBoardServiceImpl extends UnicastRemoteObject implements IEvent
 		}
 		return service;
 		
+	}
+
+	@Override
+	public List<EventBoardVO> selectListAll() throws RemoteException {
+		
+		return eventboarddao.selectListAll();
+	}
+
+	@Override
+	public List<EventBoardVO> searchList(EventBoardVO vo) throws RemoteException {
+		
+		return eventboarddao.searchList(vo);
 	}
 
 }
