@@ -4,6 +4,9 @@ import java.io.Serializable;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 public class EventBoardVO extends RecursiveTreeObject<EventBoardVO> implements Serializable{
 	
 	private String event_no;
@@ -14,7 +17,21 @@ public class EventBoardVO extends RecursiveTreeObject<EventBoardVO> implements S
 	private String event_image;
 	private String event_content;
 	private String mem_id;
+	private ImageView imgView;
 	
+	public ImageView getImgView() {
+		this.imgView = new ImageView();
+		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
+		Image img = new Image(event_image);
+		imgView.setImage(img);
+		imgView.setFitWidth(120);
+		imgView.setFitHeight(50);
+		System.out.println("imgView생성");
+		return imgView;
+	}
+	public void setImgView(ImageView imgView) {
+		this.imgView = imgView;
+	}
 	public String getEvent_no() {
 		return event_no;
 	}
