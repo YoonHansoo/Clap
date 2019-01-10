@@ -12,5 +12,7 @@ public interface IEventBoardService extends Remote {
 	
 	public List<EventBoardVO> searchList(EventBoardVO vo) throws RemoteException;
 	
+	public int insertEvent(EventBoardVO vo) throws RemoteException;
+	
 
 }

@@ -42,6 +42,7 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		return dao;
 
 	}
+	//-------2019-01-10 , 10:03 update
 
 	//공지사항 조회를 위한 쿼리문
 	@Override
@@ -68,6 +69,21 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		}
 		
 		return list;
+	}
+
+	@Override
+	public int insertEvent(EventBoardVO vo) {
+		
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("eventboard.insertSinger", vo);
+			
+		} catch(SQLException e) {
+			System.out.println("Dao insert 실패");
+			e.printStackTrace();
+			
+		}
+		return cnt;
 	}
 
 }

@@ -78,6 +78,7 @@ public class ServerMain {
 			reg.rebind("myalbum", imas);
 			reg.rebind("myalbumlist", imals);
 			reg.rebind("album", ias);
+			reg.rebind("notice", ins);
 			reg.rebind("playlist", ipls);
 			reg.rebind("notice", ins);
 			reg.rebind("music", ims);

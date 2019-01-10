@@ -36,5 +36,37 @@
 	 
 	 </select>
 	 
+	 <!-- 이벤트 등록 쿼리 -->
+	 <insert id="insertEvent" parameterClass="EventBoardVO">
+		 <selectKey resultClass="String" keyProperty="event_no">
+			select SEQ_EVENT_NO.nextval
+			from dual
+		</selectKey>
+			<!-- 에러 날경우, EVENT_VIEW_CNT 확인하기 -->
+			insert into event_board (EVENT_NO,
+									EVENT_TITLE,
+									EVENT_SDATE,
+									EVENT_EDATE,
+									EVENT_VIEW_CNT,
+									EVENT_IMAGE,
+									EVENT_CONTENT,
+									MEM_ID
+									)
+							 values (#event_no#,
+							 		#EVENT_TITLE#,
+							 		#EVENT_SDATE#,
+							 		#EVENT_EDATE#,
+							 		0,
+							 		#EVENT_IMAGE#,
+							 		#EVENT_CONTENT#,
+							 		#MEM_ID#
+							 		)
+	 
+	 </insert>
+	 
+	 
+	 
+	 
+	 
 	 
 </sqlMap>
