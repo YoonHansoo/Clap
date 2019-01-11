@@ -136,21 +136,22 @@ public class MusicMainController implements Initializable {
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
 		try {
 			albumList = ias.selectListAll();
+			System.out.println(albumList.size());
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
 		// 최신순으로 10개 뽑는 메서드.
-		setNewList();
+//		setNewList();
 		
 		
-		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"
-				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "STATUES.JPG", "XX.jpg"
-				, "남자친구 OST Part 7 (tvN 수목드라마).JPG"};
-		Image[] images = new Image[newList.size()];
+//		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"
+//				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "STATUES.JPG", "XX.jpg"
+//				, "남자친구 OST Part 7 (tvN 수목드라마).JPG"};
+		Image[] images = new Image[albumList.size()];
 		
 		
-		for(int i=0; i<newList.size(); i++) {
-			images[i] = new Image(newList.get(i).getAlb_image());
+		for(int i=0; i<albumList.size(); i++) {
+			images[i] = new Image(albumList.get(i).getAlb_image());
 		}
 		
 		new1.setImage(images[0]);
