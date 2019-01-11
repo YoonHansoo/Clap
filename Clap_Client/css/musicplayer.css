@@ -1,6 +1,26 @@
 * {
   
 }
+.tab{
+	-fx-background-color: #cdcdcd;
+	
+}
+
+.tab-header-background{
+	-fx-background-color: #cdcdcd;
+	
+}
+
+.tab-label{
+    -fx-font-family: "-윤고딕320";
+    -fx-font-size: 18;
+}
+
+.mainlabel{
+	 -fx-font-family: "-윤고딕350";
+	 -fx-font-size: 25;
+	 
+}
 
 .tree-table-row-cell:selected .tree-table-cell .label{
     -fx-text-fill: white;

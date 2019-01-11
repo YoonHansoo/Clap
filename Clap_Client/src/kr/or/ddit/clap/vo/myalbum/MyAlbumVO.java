@@ -24,11 +24,9 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	
 	public JFXCheckBox getChBox() {
 		this.chBox = new JFXCheckBox();
-		
 		return chBox;
 	}
 	public JFXCheckBox getchBox1() {
-		
 		return this.chBox;
 	}
 	public void setChBox(JFXCheckBox chBox) {
@@ -63,7 +61,7 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	}
 	public void setMus_count(String mus_count) {
 		if (Integer.parseInt(mus_count) != 0) {
-			this.myalb_name = this.myalb_name + ("(" + mus_count + ")");
+			this.myalb_name = this.myalb_name + ("  (" + mus_count + ")");
 		}
 		
 		this.mus_count = mus_count;

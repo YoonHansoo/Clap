@@ -2,13 +2,14 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXPopup?>
 <?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
@@ -101,9 +102,14 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </HBox>
+                  <JFXSlider fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0" visible="false">
+                     <VBox.margin>
+                        <Insets left="240.0" />
+                     </VBox.margin>
+                  </JFXSlider>
                   <HBox alignment="CENTER_LEFT">
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets />
                      </VBox.margin>
                      <children>
                         <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#retweetClick" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
@@ -122,7 +128,7 @@
                               <Insets left="28.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="btn_backward" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#backWard" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#backWard" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="BACKWARD" size="30" />
                            </graphic>
@@ -138,7 +144,7 @@
                               <Insets left="28.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="btn_forward" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#forWard" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#forWard" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="FORWARD" size="30" />
                            </graphic>
@@ -146,7 +152,7 @@
                               <Insets left="28.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton fx:id="btn_volum" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#popupVolum" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#volumClick" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="VOLUME_UP" size="30" />
                            </graphic>
@@ -164,7 +170,6 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <JFXPopup fx:id="popup" />
                </children>
                <HBox.margin>
                   <Insets top="30.0" />
@@ -181,20 +186,53 @@
                         </Label>
                      </children>
                   </HBox>
-                  <ScrollPane>
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="622.0" prefWidth="421.0">
-                           <children>
-                              <JFXTreeTableView fx:id="t_table" prefHeight="622.0">
-                                 <columns>
-                                    <TreeTableColumn fx:id="tcol_check" prefWidth="64.0" />
-                                    <TreeTableColumn fx:id="tcol_vbox" prefWidth="371.0" />
-                                 </columns>
-                              </JFXTreeTableView>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </ScrollPane>
+                  <JFXTabPane fx:id="tabpane_main" tabMinWidth="214.0" VBox.vgrow="SOMETIMES" >
+                     <tabs>
+                        <Tab text="PlayList">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane vbarPolicy="ALWAYS">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="622.0" prefWidth="425.0">
+                                             <children>
+                                                <JFXTreeTableView fx:id="t_playListTable" prefHeight="622.0">
+                                                   <columns>
+                                                      <TreeTableColumn fx:id="tcol_playListCheck" prefWidth="64.0" />
+                                                      <TreeTableColumn fx:id="tcol_playListVbox" prefWidth="371.0" />
+                                                   </columns>
+                                                </JFXTreeTableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="MyAlbum">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ScrollPane vbarPolicy="ALWAYS">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="622.0" prefWidth="425.0">
+                                             <children>
+                                                <JFXTreeTableView fx:id="t_myAlbumTable" prefHeight="622.0" prefWidth="425.0">
+                                                   <columns>
+                                                      <TreeTableColumn fx:id="tcol_myAlbum" prefWidth="424.0" />
+                                                   </columns>
+                                                </JFXTreeTableView>
+                                             </children>
+                                          </AnchorPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
                   <HBox alignment="CENTER_LEFT" opacity="0.6" prefHeight="30.0" style="-fx-background-color: #090948;">
                      <children>
                         <JFXCheckBox checkedColor="BLACK" text=" ">
@@ -202,9 +240,9 @@
                               <Insets left="14.0" />
                            </HBox.margin>
                         </JFXCheckBox>
-                        <JFXButton text="삭제" textFill="WHITE">
+                        <JFXButton text="추가" textFill="WHITE">
                            <graphic>
-                              <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="30" />
+                              <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="30" />
                            </graphic>
                            <font>
                               <Font name="-윤고딕330" size="12.0" />
@@ -213,12 +251,23 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </JFXButton>
+                        <JFXButton text="삭제" textFill="WHITE">
+                           <graphic>
+                              <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="30" />
+                           </graphic>
+                           <font>
+                              <Font name="-윤고딕330" size="12.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="180.0" />
+                           </HBox.margin>
+                        </JFXButton>
                         <Label text="50곡" textFill="WHITE">
                            <font>
                               <Font name="-윤고딕340" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="260.0" />
+                              <Insets left="10.0" />
                            </HBox.margin>
                         </Label>
                      </children>
