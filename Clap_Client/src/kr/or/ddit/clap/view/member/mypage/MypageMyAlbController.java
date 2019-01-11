@@ -165,7 +165,6 @@ public class MypageMyAlbController implements Initializable{
 	}
 
 	public void btn_Ok() {
-		;
 		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
 		if (index <= 0) {
 
@@ -183,7 +182,12 @@ public class MypageMyAlbController implements Initializable{
 				if (myAlbList.get(i).getMyalb_name().equals(myAlbName)) {
 					errMsg("중복되는 앨범명이 있습니다.");
 					return;
+				}else if(myAlbName.equals("")){
+					errMsg("앨범명을 입력해주세요");
+					return;
 				}
+				
+				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -216,8 +220,7 @@ public class MypageMyAlbController implements Initializable{
 
 	public void errMsg(String msg) {
 		Alert errAlert = new Alert(AlertType.ERROR);
-		errAlert.setTitle("중복 검사");
-		errAlert.setHeaderText("중복 검사");
+		errAlert.setTitle(msg);
 		errAlert.setContentText(msg);
 		errAlert.showAndWait();
 	}

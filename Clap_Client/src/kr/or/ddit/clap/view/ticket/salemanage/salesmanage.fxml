@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
@@ -103,35 +102,32 @@
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <Pagination fx:id="p_paging" layoutX="24.0" layoutY="144.0" prefHeight="532.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_album" layoutX="23.0" layoutY="183.0" prefHeight="419.0" prefWidth="715.0">
+            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="221.0" prefHeight="496.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
+            <JFXTreeTableView fx:id="tbl_sales" layoutX="23.0" layoutY="220.0" prefHeight="382.0" prefWidth="715.0">
                <columns>
-                  <TreeTableColumn fx:id="col_albumImg" prefWidth="172.0" text="Image" />
-                  <TreeTableColumn fx:id="col_albumName" prefWidth="162.0" text="앨범 명" />
-                  <TreeTableColumn fx:id="col_singerName" prefWidth="88.0" text="가수 명" />
-                  <TreeTableColumn fx:id="col_saleDate" prefWidth="133.0" text="발매일" />
-                  <TreeTableColumn fx:id="col_saleEnter" minWidth="0.0" prefWidth="158.6666259765625" text="발매사" />
-                  <TreeTableColumn fx:id="col_albumNo" minWidth="0.0" prefWidth="0.0" text="앨범번호" visible="false" />
+                  <TreeTableColumn fx:id="col_Buyuser" prefWidth="153.0" text="구매자" />
+                  <TreeTableColumn fx:id="col_saleDate" prefWidth="190.0" text="구매일수" />
+                  <TreeTableColumn fx:id="col_TictekNo" minWidth="0.0" prefWidth="151.0" text="구매한 이용권" />
+                  <TreeTableColumn fx:id="col_Price" prefWidth="118.0" text="가격" />
+                  <TreeTableColumn fx:id="col_BuyType" prefWidth="102.0" text="결제방법" />
                </columns>
             </JFXTreeTableView>
             <Line endX="614.0" layoutX="124.0" layoutY="92.0" startX="-100.0" stroke="#ffff8d" />
-            <JFXDatePicker defaultColor="#9c0000" layoutX="137.0" layoutY="115.0" />
-            <JFXDatePicker defaultColor="#9c0000" layoutX="414.0" layoutY="115.0" />
-            <Label layoutX="359.0" layoutY="122.0" text="~" />
-            <JFXComboBox fx:id="combo_Ticket" layoutX="146.0" layoutY="63.0" prefHeight="23.0" prefWidth="110.0" />
-            <Label layoutX="61.0" layoutY="122.0" text="조회기간" />
-            <JFXButton layoutX="630.0" layoutY="115.0" prefHeight="29.0" prefWidth="61.0" text="&gt;" textFill="#9c0000">
+            <JFXDatePicker fx:id="date_Start" defaultColor="#9c0000" layoutX="107.0" layoutY="136.0" />
+            <JFXDatePicker fx:id="date_End" defaultColor="#9c0000" layoutX="412.0" layoutY="136.0" />
+            <Label layoutX="321.0" layoutY="130.0" prefHeight="15.0" prefWidth="19.0" text="~">
+               <font>
+                  <Font size="36.0" />
+               </font></Label>
+            <JFXComboBox fx:id="combo_Ticket" layoutX="162.0" layoutY="60.0" prefHeight="29.0" prefWidth="97.0" />
+            <JFXButton layoutX="626.0" layoutY="140.0" onAction="#btn_Search" text="&gt;" textFill="#9c0000">
                <graphic>
                   <Label text="조회" />
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="630.0" layoutY="689.0"  prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Graph" textFill="WHITE" />
+            <Label layoutX="24.0" layoutY="143.0" text="조회기간" />
+            <JFXButton layoutX="618.0" layoutY="689.0" onAction="#graph" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Graph" textFill="WHITE" />
          </children>
       </AnchorPane>
-      <JFXButton layoutX="10.0" layoutY="10.0"  text=" ">
-         <graphic>
-            <FontAwesomeIcon fill="#9c0000" iconName="SEARCH" size="1.5em" />
-         </graphic>
-      </JFXButton>
    </children>
 </AnchorPane>

@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class TicketBuyListVO extends RecursiveTreeObject<TicketBuyListVO> implements Serializable{
 	
@@ -19,9 +18,16 @@ public class TicketBuyListVO extends RecursiveTreeObject<TicketBuyListVO> implem
 	private String account_holder;
 	private String ticket_no;
 	private String mem_id;
+	private String price;
 	
 	
 	
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
 	public String getTicket_buydate1() {
 		return ticket_buydate1;
 	}
