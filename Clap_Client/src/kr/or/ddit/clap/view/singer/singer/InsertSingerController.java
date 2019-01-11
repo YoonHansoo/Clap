@@ -70,6 +70,7 @@ public class InsertSingerController implements Initializable {
 	private Registry reg;
 	private ISingerService iss;
 	public static AnchorPane contents;
+	@FXML ImageView imgview_eventImg;
 	
 
 	

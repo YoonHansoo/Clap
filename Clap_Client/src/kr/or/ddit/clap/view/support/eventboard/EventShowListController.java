@@ -7,6 +7,7 @@
  */
 package kr.or.ddit.clap.view.support.eventboard;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -26,13 +27,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.service.eventboard.IEventBoardService;
+import kr.or.ddit.clap.view.singer.singer.InsertSingerController;
 import kr.or.ddit.clap.vo.support.EventBoardVO;
 
 public class EventShowListController implements Initializable {
@@ -113,6 +117,32 @@ public class EventShowListController implements Initializable {
 		btn_search.setOnAction(e ->{
 			search();
 		});
+		
+		
+		btn_Add.setOnMouseClicked(e -> {
+			
+			try {
+				// 바뀔 화면(FXML)을 가져옴	
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("EventContentInsert.fxml"));// init실행됨
+				Parent EventInsert = loader.load();
+				
+				EventContentInsertController cotroller = loader.getController();
+				cotroller.givePane(contents); 
+				
+				main.getChildren().removeAll();
+				main.getChildren().setAll(EventInsert);
+				
+				
+			} catch(IOException ee) {
+				ee.printStackTrace();
+			}
+			
+			
+		});
+		
+		
+		
+		
 		
 		/*// 더블클릭
 		tbl_Event.setOnMouseClicked(e -> {

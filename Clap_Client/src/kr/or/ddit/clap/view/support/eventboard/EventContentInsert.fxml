@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.InsertSingerController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.eventboard.EventContentInsertController">
    <children>
       <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="이벤트 등록">
          <font>
@@ -107,7 +107,7 @@
          </children>
       </HBox>
       <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton fx:id="btn_insertImg" layoutX="68.0" layoutY="280.0" onAction="btn_InsertImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE">
+      <JFXButton fx:id="btn_insertImg" layoutX="68.0" layoutY="280.0" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
          </graphic>
@@ -121,8 +121,8 @@
          </font>
       </Label>
       <JFXButton />
-      <JFXButton fx:id="btn_Insert" layoutX="473.0" layoutY="689.0" onAction="#insertEvent" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
-      <JFXButton fx:id="btn_cancel" layoutX="594.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
+      <JFXButton fx:id="btn_Insert" layoutX="473.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+      <JFXButton fx:id="btn_cancel" layoutX="594.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
       <JFXTextArea fx:id="text_Content" layoutX="60.0" layoutY="398.0" maxWidth="653.0" minWidth="653.0" prefHeight="256.0" prefWidth="653.0" />
    </children>
 </AnchorPane>

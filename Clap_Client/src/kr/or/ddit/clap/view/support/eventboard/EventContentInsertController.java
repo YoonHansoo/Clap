@@ -21,17 +21,15 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.fxml.Initializable;
 import javafx.embed.swing.SwingFXUtils;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -39,9 +37,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.eventboard.IEventBoardService;
-import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.vo.support.EventBoardVO;
-import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 
 
 
@@ -117,7 +113,7 @@ public class EventContentInsertController implements Initializable {
 			fileChooser.setTitle("Open image");
 			
 			//사용자에 화면에 해당 디렉토리가 기본값으로 보여짐 
-			String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\singer";
+			String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\event";
 			
 			System.out.println("userDirectoryString:" + userDirectoryString);
 			File userDirectory = new File(userDirectoryString); 
@@ -165,14 +161,21 @@ public class EventContentInsertController implements Initializable {
 			
 			try {
 				int flag = ies.insertEvent(eVO);
-				if(flag==1) {
-					System.out.println("등록 완료");
-					}
-					else {
-						System.out.println("등록 실패");
-					}
+				
 			} catch(RemoteException ee) {
 				ee.printStackTrace();
+			}
+			
+			infoMsg("등록 완료", "문의사항 - 글 작성이 완료되었습니다.");
+			
+			Parent root1;
+			
+			try {
+				root1 = FXMLLoader.load(getClass().getResource("EventShowList.fxml"));
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(root1);
+			} catch (IOException e1) {
+				e1.printStackTrace();
 			}
 			
 		});
