@@ -118,7 +118,7 @@
             <JFXDatePicker defaultColor="#9c0000" layoutX="137.0" layoutY="115.0" />
             <JFXDatePicker defaultColor="#9c0000" layoutX="414.0" layoutY="115.0" />
             <Label layoutX="359.0" layoutY="122.0" text="~" />
-            <JFXComboBox layoutX="146.0" layoutY="63.0" prefHeight="23.0" prefWidth="110.0" />
+            <JFXComboBox fx:id="combo_Ticket" layoutX="146.0" layoutY="63.0" prefHeight="23.0" prefWidth="110.0" />
             <Label layoutX="61.0" layoutY="122.0" text="조회기간" />
             <JFXButton layoutX="630.0" layoutY="115.0" prefHeight="29.0" prefWidth="61.0" text="&gt;" textFill="#9c0000">
                <graphic>

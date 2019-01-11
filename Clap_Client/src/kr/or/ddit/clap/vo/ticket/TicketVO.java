@@ -2,7 +2,9 @@ package kr.or.ddit.clap.vo.ticket;
 
 import java.io.Serializable;
 
-public class TicketVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class TicketVO  extends RecursiveTreeObject<TicketVO>  implements Serializable{
 	
 	private String ticket_no;
 	private String ticket_price;
