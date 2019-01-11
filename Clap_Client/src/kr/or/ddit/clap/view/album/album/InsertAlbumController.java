@@ -13,6 +13,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
@@ -224,6 +226,11 @@ public class InsertAlbumController implements Initializable {
 		aVO.setAlb_entertain(txt_entertain.getText());
 		aVO.setAlb_image(img_path);
 		aVO.setAlb_intro(txt_intro.getText());
+		
+		// indate 자동 입력되도록 추가.
+		Date now = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+		aVO.setAlb_indate(sdf.format(now));
 
 		try {
 			int flag = ias.insertAlbum(aVO);
