@@ -65,4 +65,9 @@ public class TicketServiceImpl extends UnicastRemoteObject implements ITicketSer
 		return ticketDao.insertTicketBuy(vo);
 	}
 
+	@Override
+	public List<TicketBuyListVO> selectTickChart() throws RemoteException {
+		return ticketDao.selectTickChart();
+	}
+
 }

@@ -11,6 +11,7 @@ public interface ITicketService extends Remote{
 	public List<TicketBuyListVO> selectList(String id) throws RemoteException;
 	public List<TicketBuyListVO> selectTickBuyAllList(TicketBuyListVO vo) throws RemoteException;
 	public List<TicketVO> selectTicket() throws RemoteException;
+	public List<TicketBuyListVO> selectTickChart() throws RemoteException;
 	
 	public int insertTicketBuy(TicketBuyListVO vo) throws RemoteException;
 }

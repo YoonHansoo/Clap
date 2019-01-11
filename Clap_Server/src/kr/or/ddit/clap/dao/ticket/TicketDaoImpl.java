@@ -94,4 +94,18 @@ public class TicketDaoImpl implements ITicketDao{
 		return cnt;
 	}
 
+	@Override
+	public List<TicketBuyListVO> selectTickChart() {
+		List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
+		try {
+			
+			list = smc.queryForList("ticket.selectTickChart");
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 }

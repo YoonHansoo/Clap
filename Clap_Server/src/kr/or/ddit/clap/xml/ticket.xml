@@ -57,6 +57,17 @@
 			#ticket_no#,
 			#mem_id#)
 	</insert>
+	
+	<select id="selectTickChart" resultClass="ticketBuyVO" >
+	            
+		 select  (EXTRACT (YEAR FROM SYSDATE) - EXTRACT(YEAR FROM to_date(MEM_BIR))+1) as ticket_buy_no,
+ a.ticket_no,
+   			 sum(b.ticket_price) as price
+		 from ticket_buy_list a, ticket b ,member c
+		 where  a.ticket_no= b.ticket_no
+         and c.mem_id= a.mem_id
+          group by  a.ticket_no,(EXTRACT (YEAR FROM SYSDATE) - EXTRACT(YEAR FROM to_date(MEM_BIR))+1)
+	</select>
 
 </sqlMap>         
 
