@@ -3,6 +3,10 @@ package kr.or.ddit.clap.view.ticket.ticket;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
@@ -30,10 +34,15 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.login.ILoginService;
+import kr.or.ddit.clap.service.ticket.ITicketService;
 import kr.or.ddit.clap.view.join.AES256Util;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 
@@ -54,15 +63,33 @@ public class BuyTicketController implements Initializable{
 	@FXML JFXComboBox<String> combo1;
 	@FXML JFXComboBox<String> combo2;
 	@FXML Button btn_ok;
+	@FXML BorderPane pane;
+	@FXML VBox box;
 	
 	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	SimpleDateFormat sdf2 = new SimpleDateFormat("~ yyyy-MM-dd");
+	SimpleDateFormat sdf3 = new SimpleDateFormat("yy/MM/dd");
 	TicketController tc = new TicketController();
 	TicketBuyListVO vo = new TicketBuyListVO();
 	LoginSession ls = new LoginSession();
+	private ITicketService its;
+	private Registry reg;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			its = (ITicketService) reg.lookup("ticket");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		
+		box.setOpacity(0);
+		box.setLayoutY(620);
+		pane.setOpacity(1);
+		
 		vo = new TicketBuyListVO();
 		vo.setMem_id(ls.session.getMem_id());
 		vo.setTicket_no(String.valueOf(tc.ticketInfo[4]));
@@ -103,9 +130,9 @@ public class BuyTicketController implements Initializable{
 		rb_card2.setToggleGroup(group2);
 		
 		rb1.setUserData("카드");
-		rb2.setUserData("2");
-		rb3.setUserData("3");
-		rb4.setUserData("4");
+		rb2.setUserData("계좌이체");
+		rb3.setUserData("무통장입금");
+		rb4.setUserData("휴대폰");
 		rb_card1.setUserData("개인");
 		rb_card2.setUserData("법인");
 		rb1.setSelected(true);
@@ -185,11 +212,26 @@ public class BuyTicketController implements Initializable{
 				}
 				
 				vo.setCard_account_no(txt1.getText()+txt2.getText()+encryptedTxt3+encryptedTxt4);
+				vo.setTicket_buydate(time.toString());
+				try {
+					System.out.println(vo.getTicket_buydate());
+					int cnt = its.insertTicketBuy(vo);
+					System.out.println("insert성공은 1 -> "+cnt);
+					// date 집어넣기.. 일단 DB에서 sysdate로 넣기.
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				}
+				
+				dialog.close();
+				
+				box.setOpacity(1);
+				box.setLayoutY(1);
+				pane.setOpacity(0);
 			});
 			
-//			btnCancel.setOnAction(event->{
-//				dialog.close();
-//			});
+			btn_cancel.setOnAction(event->{
+				dialog.close();
+			});
 			
 			// 5. Scene 객체 생성해서 컨테이너 객체 추가하기
 			Scene scene = new Scene(parent);

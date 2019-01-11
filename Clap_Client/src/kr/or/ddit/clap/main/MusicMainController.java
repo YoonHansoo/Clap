@@ -140,15 +140,10 @@ public class MusicMainController implements Initializable {
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
-		// 최신순으로 10개 뽑는 메서드.
+		// 최신순으로 10개 뽑는 메서드. -> 쿼리 이용하도록 수정.
 //		setNewList();
 		
-		
-//		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"
-//				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "STATUES.JPG", "XX.jpg"
-//				, "남자친구 OST Part 7 (tvN 수목드라마).JPG"};
 		Image[] images = new Image[albumList.size()];
-		
 		
 		for(int i=0; i<albumList.size(); i++) {
 			images[i] = new Image(albumList.get(i).getAlb_image());

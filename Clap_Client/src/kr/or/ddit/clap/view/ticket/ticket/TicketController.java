@@ -72,9 +72,16 @@ public class TicketController implements Initializable{
 			e.printStackTrace();
 		}
 		
+		btn_no1.setDisable(false);
+		btn_no2.setDisable(false);
+		btn_no3.setDisable(false);
+		
 		if(ls.session==null) {
 			lb_date3.setVisible(true);			
-			lb_date3.setText("로그인이 필요합니다.");			
+			lb_date3.setText("로그인이 필요합니다.");	
+			btn_no1.setDisable(true);
+			btn_no2.setDisable(true);
+			btn_no3.setDisable(true);
 		}else {
 			List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
 			try {
@@ -246,7 +253,7 @@ public class TicketController implements Initializable{
 
 	public void buyTicket() {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("BuyTicket.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("BuyTicket2.fxml"));
 			pane.getChildren().removeAll();
 			pane.getChildren().setAll(root);
 		} catch (IOException e) {
