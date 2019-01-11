@@ -21,10 +21,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.ImageView;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumListVO;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 
 public class MypageMyAlbListController implements Initializable{
 
@@ -37,7 +41,7 @@ public class MypageMyAlbListController implements Initializable{
 	@FXML Label la_MyAlbName;
 	@FXML JFXCheckBox chbox_main;
 	
-	@FXML JFXTreeTableView<MyAlbumListVO> tbl_MyAlbListsLists;
+	@FXML JFXTreeTableView<MyAlbumListVO> tbl_MyAlbLists;
 	@FXML TreeTableColumn<MyAlbumListVO,JFXCheckBox> col_Checks;
 	@FXML TreeTableColumn<MyAlbumListVO,ImageView> col_Img;
 	@FXML TreeTableColumn<MyAlbumListVO,String> col_Mus;
@@ -69,7 +73,6 @@ public class MypageMyAlbListController implements Initializable{
 		MyAlbumListVO vo = new MyAlbumListVO();
 		vo.setMem_id(user_id);
 		vo.setMyalb_no(myAlbNo);
-		vo.setMem_id(user_id);
 		try {
 			myAlbList = FXCollections.observableArrayList(imals.selectMyAlbList(vo));
 		} catch (RemoteException e) {
@@ -83,8 +86,8 @@ public class MypageMyAlbListController implements Initializable{
 
 
 		TreeItem<MyAlbumListVO> root3 = new RecursiveTreeItem<>(myAlbList, RecursiveTreeObject::getChildren);
-		tbl_MyAlbListsLists.setRoot(root3);
-		tbl_MyAlbListsLists.setShowRoot(false);
+		tbl_MyAlbLists.setRoot(root3);
+		tbl_MyAlbLists.setShowRoot(false);
 		
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
@@ -104,9 +107,9 @@ public class MypageMyAlbListController implements Initializable{
 
 			TreeItem<MyAlbumListVO> root = new RecursiveTreeItem<>(getTableViewData(from, to),
 					RecursiveTreeObject::getChildren);
-			tbl_MyAlbListsLists.setRoot(root);
-			tbl_MyAlbListsLists.setShowRoot(false);
-			return tbl_MyAlbListsLists;
+			tbl_MyAlbLists.setRoot(root);
+			tbl_MyAlbLists.setShowRoot(false);
+			return tbl_MyAlbLists;
 		});
 
 	}
@@ -137,6 +140,36 @@ public class MypageMyAlbListController implements Initializable{
 			}
 		}
 	}
+
+	@FXML
+	public void btn_Cl() {
+		for (int i = 0; i < myAlbList.size(); i++) {
+			if (myAlbList.get(i).getChBox1().isSelected()) {
+				MyAlbumListVO vo = new MyAlbumListVO();
+				vo.setMus_no(myAlbList.get(i).getMus_no());
+				vo.setMyalb_no(myAlbNo);
+				try {
+					int ok = imals.deleteMyAlbList(vo);
+					if (ok > 0) {
+						infoMsg("삭제 완료", "");
+					}
+					myAlblist();
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				}
+			}
+			;
+		}
+	}
+
+	public void infoMsg(String headerText, String msg) {
+		Alert infoAlert = new Alert(AlertType.INFORMATION);
+		infoAlert.setTitle("정보 확인");
+		infoAlert.setHeaderText(headerText);
+		infoAlert.setContentText(msg);
+		infoAlert.showAndWait();
+	}
+
 	
 	
 

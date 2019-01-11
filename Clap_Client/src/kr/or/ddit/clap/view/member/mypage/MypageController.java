@@ -303,11 +303,10 @@ private MypageMyAlbListController iAC;
 		vo.setMem_id(user_id);
 		MemberVO memvo = new MemberVO();
 		try {
-			memvo = ims.select(vo);
+			memvo = ims.select(vo);			//사용자 자기소개 출력
 			TextField textF_Info = (TextField) root.lookup("#textF_Info");
 			textF_Info.setText(memvo.getMem_intro());
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -316,16 +315,11 @@ private MypageMyAlbListController iAC;
 		ImageView imgview_UserImg = (ImageView) root.lookup("#imgview_UserImg");
 		imgview_UserImg.setImage(img);
 
-		Button btn_Image = (Button) root.lookup("#btn_Image");
-
+		Button btn_Image = (Button) root.lookup("#btn_Image");//찾아보기 클릭시
 		btn_Image.setOnAction(e1 -> {
 			Stage stage = (Stage) ((Node) e1.getSource()).getScene().getWindow();
 			fileChooser = new FileChooser();
 			fileChooser.setTitle("Open image");
-
-			// 사용자의 디렉토리 보여줌
-			// String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
-			// 기본위치
 			String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg";
 
 			System.out.println("userDirectoryString:" + userDirectoryString);
@@ -346,7 +340,6 @@ private MypageMyAlbListController iAC;
 				Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 				imgview_UserImg.setImage(image);
 				String str_filePath = "file:" + filePath;
-				// userDirectoryString = "file:\\\\Sem-pc\\공유폴더\\Clap\\img\\singer"; //화면 출력 시
 				// 절대경로로 이미지를 읽기위해서
 				img_path = str_filePath;
 				TextField textF_File =  (TextField) root.lookup("#textF_File");
@@ -362,11 +355,23 @@ private MypageMyAlbListController iAC;
 		
 			
 
-		JFXCheckBox chBox_del = (JFXCheckBox) root.lookup("#chBox_del");
-		chBox_del.setOnAction(ee -> {
+		JFXCheckBox chBox_del = (JFXCheckBox) root.lookup("#chBox_del");//삭제 버튼 클릭시
+		chBox_del.setOnAction(e1 -> {
+			img_path = "file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png"; 
+			Image img2 = new Image(img_path);
+			imgview_UserImg.setImage(img2);
+			
+			// sVO.getSing_image()를 전역으로 쓰기위해
+			
+			
+		});
+		
+		
+		JFXButton btn_InfoDel = (JFXButton) root.lookup("#btn_InfoDel");// x표시 클릭시
+		btn_InfoDel.setOnAction(e->{
 			TextField textF_Info = (TextField) root.lookup("#textF_Info");
 			textF_Info.setText("");
-		});// x표시 클릭시
+		});
 
 		Button btn_ProfileOk = (Button) root.lookup("#btn_ProfileOk");// 설정 클릭시
 		btn_ProfileOk.setOnAction(eee -> {

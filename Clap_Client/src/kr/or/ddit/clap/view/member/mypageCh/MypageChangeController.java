@@ -190,6 +190,9 @@ public class MypageChangeController implements Initializable {
 				combo.setValue("");
 				textF_Tel1.clear();
 				testF_Tel2.clear();
+			}else if(textF_Tel1.getText().isEmpty() || testF_Tel2.getText().isEmpty() ) {
+				errMsg("작업 오류", "빈 항목이 있습니다.");
+				return;
 			}
 
 			else {

@@ -142,7 +142,7 @@
                               <MenuItem mnemonicParsing="false" text="추천 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#eventManage" text="Event 관리" />
                               <MenuItem mnemonicParsing="false" text="이용권 관리" />
-                              <MenuItem mnemonicParsing="false" text="매출 관리" />
+                              <MenuItem onAction="#salesMange" mnemonicParsing="false" text="매출 관리" />
                            </items>
                         </Menu>
                      </menus>

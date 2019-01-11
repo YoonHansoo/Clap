@@ -23,6 +23,6 @@
       <TextField fx:id="textF_Info" layoutX="56.0" layoutY="272.0" prefHeight="39.0" prefWidth="674.0" />
       <ImageView  fx:id="imgview_UserImg" fitHeight="150.0" fitWidth="161.0" layoutX="36.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" />
       <JFXCheckBox fx:id="chBox_del"  layoutX="700.0" layoutY="190.0" text="삭제" />
-      <JFXButton  layoutX="734.0" layoutY="277.0" text="X" />
+      <JFXButton fx:id="btn_InfoDel" layoutX="734.0" layoutY="277.0" text="X" />
    </children>
 </AnchorPane>
