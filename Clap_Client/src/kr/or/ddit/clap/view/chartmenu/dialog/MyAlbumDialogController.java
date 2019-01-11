@@ -21,8 +21,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
+import kr.or.ddit.clap.view.musicplayer.MusicPlayer;
+import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
 /**
@@ -46,9 +49,10 @@ public class MyAlbumDialogController implements Initializable{
 	private TreeItem<MyAlbumVO> root;
 	public static ArrayList<String> mus_no = new ArrayList<>();
 	
+	private MusicPlayerController mpc;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		mpc = MusicMainController.playerLoad.getController();
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imas = (IMyAlbumService) reg.lookup("myalbum");
@@ -85,6 +89,9 @@ public class MyAlbumDialogController implements Initializable{
 						myAlbumList.put("mus_no", mus_no.get(i));
 						imals.myAlbumListInsert(myAlbumList);
 						
+						if (MusicMainController.musicplayer.isShowing()) {
+							// myalum 새로고침
+						}
 						
 					}
 					albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));

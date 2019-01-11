@@ -83,6 +83,7 @@ public class MusicMainController implements Initializable {
 	private ILoginService ils;
 	private IAlbumService ias;
 	private Registry reg;
+	public static FXMLLoader playerLoad;
 	
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
@@ -93,6 +94,7 @@ public class MusicMainController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
 			ias = (IAlbumService) reg.lookup("album");
+			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -435,7 +437,8 @@ public class MusicMainController implements Initializable {
 	public void musicPlayer(ActionEvent event) { // MusicPlayer를 클릭 했을 때.
 		if (!musicplayer.isShowing()) {
 			try {
-				AnchorPane root = FXMLLoader.load(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
+				playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
+				AnchorPane root = playerLoad.load();
 				Scene scene = new Scene(root);
 				musicplayer.setTitle("MusicPlayer");
 				musicplayer.setScene(scene);

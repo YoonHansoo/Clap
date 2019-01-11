@@ -11,6 +11,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -186,61 +187,40 @@
                         </Label>
                      </children>
                   </HBox>
-                  <JFXTabPane fx:id="tabpane_main" tabMinWidth="214.0" VBox.vgrow="SOMETIMES" >
+                  <JFXTabPane fx:id="tabpane_main" tabMinWidth="214.0" VBox.vgrow="SOMETIMES">
                      <tabs>
                         <Tab text="PlayList">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0">
                                  <children>
-                                    <ScrollPane vbarPolicy="ALWAYS">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="622.0" prefWidth="425.0">
-                                             <children>
-                                                <JFXTreeTableView fx:id="t_playListTable" prefHeight="622.0">
-                                                   <columns>
-                                                      <TreeTableColumn fx:id="tcol_playListCheck" prefWidth="64.0" />
-                                                      <TreeTableColumn fx:id="tcol_playListVbox" prefWidth="371.0" />
-                                                   </columns>
-                                                </JFXTreeTableView>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </ScrollPane>
+                                    <JFXTreeTableView fx:id="t_playListTable" minHeight="590.0" prefHeight="590.0" prefWidth="438.0">
+                                       <columns>
+                                          <TreeTableColumn fx:id="tcol_playListCheck" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" />
+                                          <TreeTableColumn fx:id="tcol_playListVbox" maxWidth="395.0" prefWidth="395.0" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                    </JFXTreeTableView>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="MyAlbum">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                 <children>
-                                    <ScrollPane vbarPolicy="ALWAYS">
-                                       <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="622.0" prefWidth="425.0">
-                                             <children>
-                                                <JFXTreeTableView fx:id="t_myAlbumTable" prefHeight="622.0" prefWidth="425.0">
-                                                   <columns>
-                                                      <TreeTableColumn fx:id="tcol_myAlbum" prefWidth="424.0" />
-                                                   </columns>
-                                                </JFXTreeTableView>
-                                             </children>
-                                          </AnchorPane>
-                                       </content>
-                                    </ScrollPane>
-                                 </children>
-                              </AnchorPane>
+                            <AnchorPane fx:id="anchorpane_myalbum" minHeight="0.0" minWidth="0.0" />
                           </content>
                         </Tab>
                      </tabs>
                   </JFXTabPane>
                   <HBox alignment="CENTER_LEFT" opacity="0.6" prefHeight="30.0" style="-fx-background-color: #090948;">
                      <children>
-                        <JFXCheckBox checkedColor="BLACK" text=" ">
+                        <JFXCheckBox fx:id="btn_check" onAction="#allCheck" checkedColor="BLACK" text=" ">
                            <HBox.margin>
                               <Insets left="14.0" />
                            </HBox.margin>
                         </JFXCheckBox>
-                        <JFXButton text="추가" textFill="WHITE">
+                        <JFXButton onAction="#playListAdd" text="추가" textFill="WHITE">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="PLUS" size="30" />
                            </graphic>
@@ -251,7 +231,7 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton text="삭제" textFill="WHITE">
+                        <JFXButton onAction="#playListDelete" text="삭제" textFill="WHITE">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="CLOSE" size="30" />
                            </graphic>

@@ -49,7 +49,7 @@
 .tree-table-view .column-header{
     -fx-background-color: white;
     -fx-border-color: #c9c9c9;
-     -fx-font-family: "-윤고딕330";
+    -fx-font-family: "-윤고딕330";
 }
 
 .button{

@@ -5,8 +5,12 @@ import java.io.Serializable;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implements Serializable{
 	
@@ -21,8 +25,23 @@ public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implement
 	private String mem_id;
 	private JFXCheckBox chBox;
 	private ImageView imgView;
+	private VBox musicVbox;
 
 	
+	public VBox getMusicVbox() {
+		this.musicVbox = new VBox();
+		Label sigerName = new Label(sing_name);
+		sigerName.setFont(Font.font("-윤고딕330", 12));
+		sigerName.setTextFill(Color.valueOf("#dcdcdc"));
+		
+		Label musicName = new Label(mus_title);
+		musicName.setFont(Font.font("-윤고딕330", 15));
+		musicVbox.getChildren().addAll(musicName,sigerName);
+		return this.musicVbox;
+	}
+	public void setMusicVbox(VBox musicVbox) {
+		this.musicVbox = musicVbox;
+	}
 	public String getMem_id() {
 		return mem_id;
 	}
@@ -31,7 +50,8 @@ public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implement
 	}
 	public JFXCheckBox getChBox() {
 		this.chBox = new JFXCheckBox();
-		return chBox;
+		chBox.setCheckedColor(Color.valueOf("#9c0000"));
+		return this.chBox;
 	}
 	public JFXCheckBox getChBox1() {
 		return chBox;
