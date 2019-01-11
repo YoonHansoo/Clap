@@ -37,11 +37,13 @@ public class TicketServiceImpl extends UnicastRemoteObject implements ITicketSer
 			List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
 			list = service.selectList("admin1");
 			System.out.println("size  "+list.size());
-			System.out.println(list.get(0).getTicket_no());
-			System.out.println(list.get(1).getTicket_no());
-			System.out.println(list.get(2).getTicket_no());
-			System.out.println(list.get(3).getTicket_no());
-			System.out.println(list.get(4).getTicket_no());
+			
+			System.out.println();
+			
+			TicketBuyListVO vo = new TicketBuyListVO();
+			
+			int cnt = service.insertTicketBuy(vo);
+			System.out.println(cnt);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -56,6 +58,11 @@ public class TicketServiceImpl extends UnicastRemoteObject implements ITicketSer
 	@Override
 	public List<TicketVO> selectTicket() throws RemoteException {
 		return ticketDao.selectTicket();
+	}
+
+	@Override
+	public int insertTicketBuy(TicketBuyListVO vo) throws RemoteException {
+		return ticketDao.insertTicketBuy(vo);
 	}
 
 }

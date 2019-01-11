@@ -80,4 +80,18 @@ public class TicketDaoImpl implements ITicketDao{
 		return list;
 	}
 
+	@Override
+	public int insertTicketBuy(TicketBuyListVO vo) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("ticket.insertTicketBuy", vo);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 }

@@ -32,6 +32,31 @@
 
 	<!--ticket_buydate:시작 , ticket_buydate1: 끝  -->
     </select>
+    
+   	<insert id="insertTicketBuy" parameterClass="ticketBuyVO">
+		insert into ticket_buy_list (
+			ticket_buy_no,
+			ticket_buydate,
+			card_account_no,
+			ticket_buy_type,
+			card_bank_name,
+			refund_date,
+			refund_tf,
+			account_holder,
+			ticket_no,
+			mem_id)
+		values(			
+			seq_ticket_buy_no.nextval,
+			sysdate,
+			#card_account_no#,
+			#ticket_buy_type#,
+			#card_bank_name#,
+			#refund_date#,
+			#refund_tf#,
+			#account_holder#,
+			#ticket_no#,
+			#mem_id#)
+	</insert>
 
 </sqlMap>         
 

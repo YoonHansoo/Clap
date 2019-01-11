@@ -86,7 +86,8 @@ public class ServerMain {
 			reg.rebind("singreview", isrs);
 			reg.rebind("eventboard", ies);
 
-			reg.rebind("ticket", its);
+			reg.rebind("tick"
+					+ "et", its);
 
 			
 			 System.out.println("clap server  is running...");

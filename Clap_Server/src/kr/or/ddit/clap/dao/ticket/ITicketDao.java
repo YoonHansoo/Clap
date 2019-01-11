@@ -9,4 +9,6 @@ public interface ITicketDao {
 	public List<TicketBuyListVO> selectList(String id);
 	public List<TicketBuyListVO> selectTickBuyAllList(TicketBuyListVO vo);
 	public List<TicketVO> selectTicket();
+	
+	public int insertTicketBuy(TicketBuyListVO vo);
 }
