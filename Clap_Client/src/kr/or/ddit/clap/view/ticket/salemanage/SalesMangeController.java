@@ -172,8 +172,6 @@ public class SalesMangeController implements Initializable{
 
 	@FXML public void graph() throws IOException {
 		
-		String singNo = date_Start.getValue().toString();
-		SalemangeGraphController.singNo = singNo;
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("graph.fxml"));// init실행됨
 		Parent singerDetail= loader.load(); 
