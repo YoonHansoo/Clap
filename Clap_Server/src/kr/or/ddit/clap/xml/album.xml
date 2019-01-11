@@ -56,7 +56,8 @@
 		ALB_INTRO,
 		ALB_SALE_ENTER,
 		ALB_ENTERTAIN,
-		SING_NO)
+		SING_NO,
+		ALB_INDATE)
 		values (#alb_no#,
 		#alb_name#,
 		#alb_saledate#,
@@ -64,7 +65,8 @@
 		#alb_intro#,
 		#alb_sale_enter#,
 		#alb_entertain#,
-		#sing_no#)
+		#sing_no#,
+		#alb_indate#)
 	</insert>
 
 	<select id="albumDetailInfo" resultClass="albumVO"
