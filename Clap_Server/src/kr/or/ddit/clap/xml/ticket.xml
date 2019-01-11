@@ -19,8 +19,17 @@
     </select>
     
     <select id="selectTickBuyAllList" resultClass="ticketBuyVO" parameterClass="ticketBuyVO">
-    select mem_id, ticket_no, ticket_buydate from ticket_buy_list
-	where ticket_buydate between to_date(#ticket_buydate#, 'YYMMDD') and to_date(#ticket_buydate1#, 'YYMMDD')
+	    select a.mem_id, a.ticket_no, a.ticket_buydate ,
+   			 b.ticket_price as price, a.ticket_buy_type ,a.card_bank_name
+		 from ticket_buy_list a, ticket b
+		 where  a.ticket_no= b.ticket_no
+		and  ticket_buydate between to_date(#ticket_buydate#, 'yyyy/mm/dd') and to_date(#ticket_buydate1#, 'yyyy/mm/dd')
+		 
+		  <isNotEmpty property="ticket_no" prepend="and">
+			b.ticket_no in(#ticket_no#,to_number(#ticket_no#)+1)
+		</isNotEmpty>
+		
+
 	<!--ticket_buydate:시작 , ticket_buydate1: 끝  -->
     </select>
 
