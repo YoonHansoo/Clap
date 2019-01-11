@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->			
+<sqlMap namespace="qna">
+	
+	 
+	 
+	 <select id="selectListAll" resultClass="qnaVO">
+	 		select qna_no, qna_indate, qna_title, qna_view_cnt from qna
+	 </select>
+	 
+	 
+	 <select id="qnaDetailContent" resultClass="qnaVO" parameterClass="String">
+         
+		  select qna_type, qna_title, qna_indate, qna_content from qna where qna_no = #String#
+      </select>
+	 
+	 
+	<!-- 문의사항 글 등록 insert -->
+	<insert id="insertQna" parameterClass="qnaVO">
+	<selectKey resultClass="String" keyProperty="qna_no">
+		select SEQ_QNA_NO.nextval from dual
+		</selectKey>
+		insert into qna
+				(QNA_NO,
+                QNA_INDATE,
+                QNA_TITLE,
+                MEM_TEL,
+                MEM_EMAIL,
+                QNA_TYPE,
+                QNA_VIEW_CNT,
+                QNA_CONTENT,
+                MEM_ID)
+        values (#qna_no#,
+                sysdate,
+                #qna_title#,
+                #mem_tel#,
+                #mem_email#,
+                #qna_type#,
+                0,
+                #qna_content#,
+                #mem_id#)
+		   
+	</insert>
+		
+	
+	<!--  문의사항 글을 삭제하는 쿼리 -->
+	<delete id="deleteQnaContent" parameterClass="String">
+			delete from qna where QNA_NO=#String#
+	 </delete>
+	
+	
+	
+
+</sqlMap>

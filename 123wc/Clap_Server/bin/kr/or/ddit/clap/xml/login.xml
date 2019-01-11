@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="login">
+	
+	 <select id="idCheck" resultClass="int" parameterClass="String">
+	 		select count(mem_id) from member
+			where mem_id = #mem_id#
+	 </select>
+	   
+	<select id="select" resultClass="memberVO" parameterClass="String">
+			select mem_id, mem_pw, mem_name, mem_email, mem_bir, mem_gender, mem_tel, mem_grade, 
+			mem_auth, mem_indate, mem_blacklist_tf, mem_del_tf, mem_black_cnt, mem_image, mem_intro 
+			from member where mem_id=#mem_id#
+	</select>
+
+	
+
+</sqlMap>			
+
+
+
+
+

@@ -1,0 +1,6 @@
+테스트서버
+https://SEM-PC/svn/projects/201809M/team2/documents
+
+운영서버 
+http://112.220.114.130:10001/svn/projects/201809M/team1/documents
+http://112.220.114.130:10001/svn/projects/201809M/team1/source

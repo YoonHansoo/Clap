@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1005.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageController">
+   <children>
+      <HBox layoutY="7.0" prefHeight="880.0" prefWidth="875.0">
+         <children>
+            <AnchorPane prefHeight="880.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="img_UserImg" fitHeight="100.0" fitWidth="170.0" layoutX="21.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image fx:id="img_User" url="@music_main/image.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="label_Id" layoutX="112.0" layoutY="56.0" text="Label" />
+                  <Label layoutX="175.0" layoutY="56.0" text="님" />
+                  <JFXButton layoutX="103.0" layoutY="98.0" onAction="#btn_profch" text="프로필 수정 &gt;" />
+                  <Text layoutX="22.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필">
+                     <font>
+                        <Font name="YDIYGO350" size="24.0" />
+                     </font>
+                  </Text>
+                  <JFXTreeTableView layoutX="8.0" layoutY="439.0" prefHeight="198.0" prefWidth="189.0" />
+                  <JFXButton onAction="#btn_like" layoutX="22.0" layoutY="308.0" text="- 좋아요♥" />
+                  <JFXButton layoutX="22.0" layoutY="331.0" text="- 리뷰" />
+                  <JFXButton layoutX="26.0" layoutY="778.0" text="- 최근감상곡" />
+                  <JFXButton layoutX="26.0" layoutY="810.0" text="- 많이 들은곡" />
+                  <JFXButton layoutX="25.0" layoutY="841.0" text="-많이 들은 아티스트" />
+                  <Button layoutX="131.0" layoutY="654.0" mnemonicParsing="false" text="Button" />
+                  <Pagination layoutX="8.0" layoutY="568.0" prefHeight="124.0" prefWidth="110.0" />
+                  <Text layoutX="14.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범">
+                     <font>
+                        <Font name="YDIYGO350" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="752.0" strokeType="OUTSIDE" strokeWidth="0.0" text="감상이력">
+                     <font>
+                        <Font name="YDIYGO350" size="24.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="12.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_my" prefHeight="44.0" prefWidth="94.0" text="내 정보" />
+                  <Button layoutX="122.0" layoutY="173.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="94.0" text="이용권내역" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="contents" prefHeight="880.0" prefWidth="728.0">
+               <children>
+                  <JFXButton layoutX="707.0" layoutY="146.0" text="더보기" textFill="#030303" />
+                  <Text layoutX="92.0" layoutY="528.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰">
+                     <font>
+                        <Font name="YDIYGO350" size="24.0" />
+                     </font>
+                  </Text>
+                  <JFXTreeTableView fx:id="tbl_Review" layoutX="92.0" layoutY="545.0" prefHeight="212.0" prefWidth="615.0">
+                     <columns>
+                        <TreeTableColumn fx:id="col_ReviewCont" prefWidth="517.0" text="내용 " />
+                        <TreeTableColumn fx:id="col_ReviewDate" prefWidth="96.0" text="등록 날짜" />
+                     </columns>
+                     </JFXTreeTableView>
+                  <Line endY="714.0" layoutX="13.0" layoutY="160.0" startY="-160.0" />
+                  <HBox layoutX="92.0" layoutY="104.0" prefHeight="33.0" prefWidth="615.0">
+                     <children>
+                        <AnchorPane fx:id="InfoContents" prefHeight="44.0" prefWidth="632.0">
+                           <children>
+                              <ToolBar layoutX="-7.0" prefHeight="46.0" prefWidth="623.0">
+                                <items>
+                                    <Text fx:id="text_UserInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Text>
+                                  <Button mnemonicParsing="false" onAction="#btn_Info">
+                                       <graphic>
+                                          <FontAwesomeIcon iconName="PENCIL" />
+                                       </graphic>
+                                    </Button>
+                                </items>
+                              </ToolBar>
+                           </children>
+                        </AnchorPane>
+                     </children></HBox>
+                  <Text fill="RED" layoutX="766.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font>
+                  </Text>
+                  <JFXButton layoutX="707.0" layoutY="543.0" text="더보기" textFill="#030303" />
+                  <Text fill="RED" layoutX="760.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
+                     <font>
+                        <Font name="YDIYGO350" size="14.0" />
+                     </font>
+                  </Text>
+                  <JFXTabPane layoutX="87.0" layoutY="151.0">
+                     <tabs>
+                        <Tab text="     많이 들은 아티스트    ">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
+                                 <children>
+                                    <JFXTreeTableView fx:id="tbl_ManySigner" layoutX="-2.0" layoutY="-3.0" prefHeight="281.0" prefWidth="625.0">
+                                       <columns>
+                                          <TreeTableColumn fx:id="col_MSno" prefWidth="137.0" text="번호" />
+                                          <TreeTableColumn fx:id="col_MSits" prefWidth="487.0" text="아티스트" />
+                                       </columns></JFXTreeTableView>
+                                 </children></AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="         많이 들은 곡         ">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
+                                 <children>
+                                    <JFXTreeTableView fx:id="tbl_ManyMusic" layoutX="-6.0" layoutY="-3.0" prefHeight="288.0" prefWidth="628.0">
+                                       <columns>
+                                          <TreeTableColumn fx:id="col_MMno" prefWidth="75.0" text="번호" />
+                                          <TreeTableColumn fx:id="col_MMits" prefWidth="91.0" text="아티스트 명 " />
+                                          <TreeTableColumn fx:id="col_MMtitle" prefWidth="461.0" text="곡" />
+                                       </columns></JFXTreeTableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="         최근 감상 곡         ">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0">
+                                 <children>
+                                    <JFXTreeTableView fx:id="tbl_NewMusic" layoutX="-6.0" layoutY="-1.0" prefHeight="283.0" prefWidth="633.0">
+                                       <columns>
+                                          <TreeTableColumn fx:id="col_NMno" prefWidth="54.0" text="번호" />
+                                          <TreeTableColumn fx:id="col_NMits" prefWidth="96.0" text="아티스트 명 " />
+                                          <TreeTableColumn  fx:id="col_NMtitle" prefWidth="332.0" text="곡" />
+                                          <TreeTableColumn  fx:id="col_NMdate" prefWidth="150.0" text="감상 날짜" />
+                                       </columns>
+                                    </JFXTreeTableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

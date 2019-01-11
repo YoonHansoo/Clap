@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->			
+<sqlMap namespace="myalbum">
+	
+	<update id="myalbuminsert" parameterClass="java.util.HashMap">
+		insert into myalbum (myalb_no, myalb_name, myalb_indate, mem_id)
+        values ( seq_myalb_no.nextval, #name#, sysdate, #id#)
+	</update>
+	
+	 <select id="myalbumselect" resultClass="myalbumVO" parameterClass="String">
+	    select a.myalb_name, a.myalb_no,(select count(b.mus_no)
+                                           from myalbum_list b
+                                          where b.myalb_no = a.myalb_no) as mus_count
+		 from myalbum a
+		where mem_id = #id#
+	</select>
+	
+</sqlMap>			
+
+
+
+
+

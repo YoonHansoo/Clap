@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+         PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+         "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->         
+<sqlMap namespace="singer">
+   
+    
+    <select id="selectListAll" resultClass="singerVO">
+          select sing_no,sing_name,sing_act_type, sing_act_era,sing_debut_era,sing_debut_mus,sing_image  from singer 
+    </select>
+      
+     <!-- 검색용 쿼리 -->
+   <select id="searchList" resultClass="singerVO" parameterClass="singerVO">
+          select sing_no,
+                sing_name,
+                sing_act_type,
+                sing_act_era,
+                sing_debut_era,
+                sing_debut_mus,
+                sing_image  
+            from singer 
+       <dynamic prepend="where">
+          <isNotEmpty property="sing_name" prepend="and">
+             sing_name  like '%' || #sing_name# || '%'
+          </isNotEmpty>
+          <isNotEmpty property="sing_debut_mus" prepend="and">
+             sing_debut_mus  like '%' || #sing_debut_mus# || '%'
+          </isNotEmpty>   
+       </dynamic>         
+    </select>  
+      
+      <select id="singerDetailInfo" resultClass="singerVO" parameterClass="String">
+               select  a.ALB_NO,
+				a.ALB_NAME,
+				a.ALB_SALEDATE,
+				a.ALB_IMAGE,
+				a.ALB_INTRO,
+				a.ALB_SALE_ENTER,
+				a.ALB_ENTERTAIN,
+				b.SING_NAME
+		  from ALBUM a, SINGER b
+		  WHERE a.SING_NO = b.SING_NO
+		    and a.ALB_NO =#String#;
+      </select>
+   
+   <!-- //좋이요 갯수 쿼리 --> 
+   <select id = "selectAlbumLikeCnt" resultClass="int" parameterClass="String">
+   	select count(ALB_NO)
+  		from ALB_LIKE
+  	   where alb_no =#String#
+   </select>
+   
+   <!-- 가수정보 수정 쿼리 -->
+   <update id="updateSingerInfo" parameterClass="singerVO">
+	 		update singer set 
+	 								SING_NAME 		= #sing_name#,
+	 								SING_NATION 	= #sing_nation#,
+	 								SING_ACT_TYPE 	= #sing_act_type#,
+	 								SING_DEBUT_MUS  = #sing_debut_mus#,
+	 								SING_ACT_ERA 	= #sing_act_era#,
+	 								SING_IMAGE		= #sing_image#,
+	 								SING_DEBUT_ERA	= #sing_debut_era#,
+	 								SING_INTRO		= #sing_intro#
+	 			        	where SING_NO=#sing_no#
+	 </update>
+
+<!-- 가수정보등록 쿼리 -->
+<insert id="insertSinger" parameterClass="singerVO">
+<selectKey resultClass="String" keyProperty="sing_no">
+select SEQ_SING_NO.nextval
+from dual
+</selectKey>
+insert into singer (SING_NO,
+					SING_NAME,
+					SING_NATION,
+					SING_ACT_TYPE,
+					SING_DEBUT_MUS,
+					SING_ACT_ERA,
+					SING_IMAGE,
+					SING_DEBUT_ERA,
+					SING_INTRO)
+			values (#sing_no#,
+					#sing_name#,
+					#sing_nation#,
+					#sing_act_type#,
+					#sing_debut_mus#,
+					#sing_act_era#,
+					#sing_image#,
+					#sing_debut_era#,
+					#sing_intro#)		
+</insert>
+	
+	
+<!--  가수정보를 삭제하는 쿼리 -->
+ <delete id="deleteSinger" parameterClass="String">
+			delete from singer where SING_NO=#String#
+	 </delete>
+</sqlMap>         
+
+
+
+

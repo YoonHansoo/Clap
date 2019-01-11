@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane fx:id="main" minHeight="448.0" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaDetailContentController">
+   <children>
+      <Label text="고객센터" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font name="YDIYGO350" size="30.0" />
+         </font>
+      </Label>
+      <Line endX="900.0" stroke="#0485ee" strokeWidth="2.0" AnchorPane.leftAnchor="52.5" AnchorPane.topAnchor="60.0" />
+      <JFXTabPane prefWidth="500.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="62.0">
+         <tabs>
+            <Tab text="문의내역" />
+         </tabs>
+      </JFXTabPane>
+      <Line endX="820.0" layoutX="92.0" layoutY="150.0" AnchorPane.leftAnchor="91.5" AnchorPane.topAnchor="149.5" />
+      <Text fx:id="Text_QnaType" layoutX="149.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="문의유형" />
+      <Text fx:id="Text_QnaTitle" layoutX="232.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="문의 제목" />
+      <Text fx:id="Text_Date" layoutX="750.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="등록일" />
+      <Line endX="820.0" layoutX="101.0" layoutY="200.0" strokeWidth="0.5" AnchorPane.leftAnchor="91.5" />
+      <TextFlow layoutX="147.0" layoutY="232.0" prefHeight="200.0" prefWidth="714.0">
+         <children>
+            <Text fx:id="Text_Content" strokeType="OUTSIDE" strokeWidth="0.0" text="문의 내용" />
+         </children>
+      </TextFlow>
+      <JFXButton fx:id="btn_delete" layoutX="475.0" layoutY="578.0" text="삭제하기" />
+   </children>
+</AnchorPane>

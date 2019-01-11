@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->
+<sqlMap namespace="mypage">
+
+
+	<select id="select" resultClass="memberVO"
+		parameterClass="memberVO">
+		select mem_id,
+		mem_pw,
+		mem_name,
+		mem_email,
+		mem_bir,
+
+		mem_gender,
+		mem_tel,
+		mem_grade,
+		mem_auth,
+		mem_indate,
+
+		mem_blacklist_tf,
+		mem_del_tf,
+		mem_black_cnt,
+		mem_image,
+		mem_intro
+		from member
+		where mem_id= #mem_id#
+	</select>
+
+	<update id="updateTel" parameterClass="memberVO">
+		update member
+		set mem_tel=#mem_tel#
+		where mem_id = #mem_id#
+	</update>
+
+	<update id="updateEmail" parameterClass="memberVO">
+		update member
+		set mem_email=#mem_email#
+		where mem_id = #mem_id#
+	</update>
+
+	<update id="updatePw" parameterClass="memberVO">
+		update member
+		set mem_pw=#mem_pw#
+		where mem_id = #mem_id#
+	</update>
+
+	<update id="updateDelTF" parameterClass="memberVO">
+		update member
+		set mem_del_tf=#mem_del_tf#
+		where mem_id = #mem_id#
+	</update>
+	
+	<update id="updateInfo" parameterClass="memberVO">
+		update member
+		set mem_intro=#mem_intro#
+		where mem_id = #mem_id#
+	</update>
+	
+	
+
+</sqlMap>			
+
+
+
+
+
