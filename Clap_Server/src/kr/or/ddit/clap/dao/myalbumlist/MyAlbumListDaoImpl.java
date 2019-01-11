@@ -91,6 +91,18 @@ public class MyAlbumListDaoImpl implements IMyAlbumListDao{
 		return list;
 	}
 
+	@Override
+	public int deleteMyAlbList(MyAlbumListVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("myalbumlist.deleteMyAlbList",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 	
 
 }

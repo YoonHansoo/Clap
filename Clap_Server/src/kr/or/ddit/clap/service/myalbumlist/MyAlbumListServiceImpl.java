@@ -42,5 +42,10 @@ public class MyAlbumListServiceImpl  extends UnicastRemoteObject implements IMyA
 		return myalbumlistdao.selectMyAlbList(vo);
 	}
 
+	@Override
+	public int deleteMyAlbList(MyAlbumListVO vo) throws RemoteException {
+		return myalbumlistdao.deleteMyAlbList(vo);
+	}
+
 
 }

@@ -10,6 +10,13 @@
     	select mem_id, ticket_no, ticket_buydate from ticket_buy_list
 		where mem_id = #mem_id#
     </select>
+    
+    <select id="selectTicket"  >
+    select ticket_no,
+		ticket_price,
+		ticket_content
+		from ticket
+    </select>
 
 </sqlMap>         
 

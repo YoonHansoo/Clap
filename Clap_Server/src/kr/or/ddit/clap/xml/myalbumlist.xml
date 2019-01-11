@@ -32,6 +32,13 @@
 			    and   e.sing_no = d.sing_no
 			    and   a.myalb_no = #myalb_no#
 	</select>
+	<delete id="deleteMyAlbList"  parameterClass="MyAlbumListVO">
+	   delete from myalbum_list 
+	    where mus_no=#mus_no#
+        and myalb_no=#myalb_no#
+         
+	</delete>
+	 
 	
 </sqlMap>			
 
