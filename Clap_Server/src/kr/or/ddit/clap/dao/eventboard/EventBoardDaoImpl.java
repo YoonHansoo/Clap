@@ -42,8 +42,8 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		return dao;
 
 	}
-	//-------2019-01-10 , 10:03 update
 
+	
 	//공지사항 조회를 위한 쿼리문
 	@Override
 	public List<EventBoardVO> selectListAll() {
@@ -76,7 +76,10 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		
 		int cnt = 0;
 		try {
-			Object obj = smc.insert("eventboard.insertSinger", vo);
+			Object obj = smc.insert("eventboard.insertEvent", vo);
+			if(obj == null) { //쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
 			
 		} catch(SQLException e) {
 			System.out.println("Dao insert 실패");
