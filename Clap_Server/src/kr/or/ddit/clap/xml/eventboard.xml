@@ -17,7 +17,7 @@
 	 </select>
 	 
 	 
-	 <!-- 검색용 쿼리 -->
+	 <!--  검색용 쿼리 
 	 <select id="searchList" resultClass="EventBoardVO" parameterClass="EventBoardVO">
      select
             event_no,
@@ -36,13 +36,13 @@
 	 
 	 </select>
 	 
-	 <!-- 이벤트 등록 쿼리 -->
+	 이벤트 등록 쿼리
 	 <insert id="insertEvent" parameterClass="EventBoardVO">
 		 <selectKey resultClass="String" keyProperty="event_no">
 			select SEQ_EVENT_NO.nextval
 			from dual
 		</selectKey>
-			<!-- 에러 날경우, EVENT_VIEW_CNT 확인하기 -->
+			에러 날경우, EVENT_VIEW_CNT 확인하기
 			insert into event_board (EVENT_NO,
 									EVENT_TITLE,
 									EVENT_SDATE,
@@ -62,7 +62,7 @@
 							 		#MEM_ID#
 							 		)
 	 
-	 </insert>
+	 </insert> -->
 	 
 	 
 	 
