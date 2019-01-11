@@ -1,5 +1,6 @@
 package kr.or.ddit.clap.view.ticket.salemanage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -17,16 +18,26 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.ticket.ITicketService;
+import kr.or.ddit.clap.view.album.album.InsertAlbumController;
+import kr.or.ddit.clap.view.album.album.SelectSingerController;
+import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 
 public class SalesMangeController implements Initializable{
 	
+	static Stage grp = new Stage(StageStyle.DECORATED);
 	private static String user_id = LoginSession.session.getMem_id();
 	private Registry reg;
 	private ITicketService its;
@@ -159,8 +170,22 @@ public class SalesMangeController implements Initializable{
 		return currenttickeylist;
 	}
 
-	@FXML public void graph() {
-		System.out.println("dsg");
+	@FXML public void graph() throws IOException {
+		
+		String singNo = date_Start.getValue().toString();
+		SalemangeGraphController.singNo = singNo;
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("graph.fxml"));// init실행됨
+		Parent singerDetail= loader.load(); 
+		
+		SalemangeGraphController cotroller = loader.getController();
+		Scene scene = new Scene(singerDetail);
+		grp.setTitle("모여서 각잡고 코딩 - clap");
+		grp.setScene(scene);
+		grp.show();
+		
+		
+		
 	}
 
 }

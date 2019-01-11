@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="kr.or.ddit.clap.view.ticket.salemanage.SalemangeGraphController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="458.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <LineChart layoutX="37.0" layoutY="47.0" prefHeight="383.0" prefWidth="529.0">
+      <LineChart fx:id="lineChart" layoutX="37.0" layoutY="47.0" prefHeight="383.0" prefWidth="529.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
