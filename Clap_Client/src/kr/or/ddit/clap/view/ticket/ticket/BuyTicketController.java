@@ -102,13 +102,14 @@ public class BuyTicketController implements Initializable{
 		rb_card1.setToggleGroup(group2);
 		rb_card2.setToggleGroup(group2);
 		
-		rb1.setUserData("card");
+		rb1.setUserData("카드");
 		rb2.setUserData("2");
 		rb3.setUserData("3");
 		rb4.setUserData("4");
 		rb_card1.setUserData("개인");
 		rb_card2.setUserData("법인");
 		rb1.setSelected(true);
+		rb_card1.setSelected(true);
 		
 		group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 			@Override
@@ -127,9 +128,9 @@ public class BuyTicketController implements Initializable{
 			}
 		});
 		
-		combo1.getItems().addAll("국민", "비씨", "신한", "현대", "삼성", "롯데", "외환", "NH", 
-				"하나", "카카오뱅크", "케이뱅크");
-		combo1.setValue("국민");
+		combo1.getItems().addAll("삼성카드", "비씨카드", "신한은행", "현대카드", "KB국민은행", 
+				"롯데카드", "외환은행", "NH농협은행", "하나은행", "카카오뱅크", "케이뱅크");
+		combo1.setValue("삼성카드");
 		combo2.getItems().add("일시불");
 		combo2.setValue("일시불");
 		
@@ -152,6 +153,7 @@ public class BuyTicketController implements Initializable{
 			// 부모창에서 FXML로 만든 자식창의 컨트롤객체 얻기 ★★ "lookup()"	
 			Label lblb1 = (Label) parent.lookup("#lblb1");
 			Label lblb2 = (Label) parent.lookup("#lblb2");
+			Label lb_card = (Label) parent.lookup("#lb_card");
 			TextField txt1 = (TextField) parent.lookup("#txt1");
 			TextField txt2 = (TextField) parent.lookup("#txt2");
 			PasswordField txt3 = (PasswordField) parent.lookup("#txt3");
@@ -162,6 +164,10 @@ public class BuyTicketController implements Initializable{
 			lblb1.setText((String) tc.ticketInfo[2]);
 			Date time = new Date();
 			lblb2.setText(sdf1.format(time));
+			lb_card.setText(combo1.getValue());
+			
+			vo.setCard_bank_name(combo1.getValue());
+			vo.setTicket_buy_type(String.valueOf(group.getSelectedToggle().getUserData()));
 			
 			btn_okok.setOnAction(event->{
 				System.out.println(txt1.getText());
@@ -192,7 +198,26 @@ public class BuyTicketController implements Initializable{
 			dialog.setScene(scene);
 			dialog.setResizable(false); // 크기 고정
 			dialog.show();
+			
+			txt1.setOnKeyReleased(e2->{
+				System.out.println(txt1.getText().length());
+				if(txt1.getText().length()==4) {
+					txt2.requestFocus();
+				}
+			});
+			txt2.setOnKeyReleased(e2->{
+				if(txt2.getText().length()==4) {
+					txt3.requestFocus();
+				}
+			});
+			txt3.setOnKeyReleased(e2->{
+				if(txt3.getText().length()==4) {
+					txt4.requestFocus();
+				}
+			});
+
 		});
+		
 	}
 	
 	public String check_lb4(String compareDate) {

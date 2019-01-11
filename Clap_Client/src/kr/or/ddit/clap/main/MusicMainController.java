@@ -98,12 +98,21 @@ public class MusicMainController implements Initializable {
 
 			Image img = null;
 			if(ls.session.getMem_image() == null) {
-				img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));				
+//				img = new Image(getClass().getResourceAsStream("../../../../../people_small.png"));				
+				img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\people_small.png");
+//				img = new Image(url)
+				// file:\\Sem-pc\공유폴더\Clap\img\album\Palette.JPG
+			
 			}else {
-				img = new Image(getClass().getResourceAsStream("../../../../../"+ls.session.getMem_image()));
+//				img = new Image(getClass().getResourceAsStream("../../../../../"+ls.session.getMem_image()));
+				img = new Image(ls.session.getMem_image());
 				
 			}
 			mem_img.setImage(img);
+//			Image img = new Image(aVO.getAlb_image());
+//			temp_img_path = aVO.getAlb_image(); // aVO.getSing_image()를 전역으로 쓰기위해
+//			imgview_albumImg.setImage(img);
+
 		}
 		
 		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"

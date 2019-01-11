@@ -35,7 +35,7 @@
                         <Insets bottom="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label text="NH농협은행">
+                  <Label fx:id="lb_card" text="NH농협은행">
                      <font>
                         <Font size="26.0" />
                      </font>
@@ -135,7 +135,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <TextField fx:id="txt1" />
-                        <PasswordField fx:id="txt2" />
+                        <TextField fx:id="txt2" />
                         <PasswordField fx:id="txt3" />
                         <PasswordField fx:id="txt4" />
                      </children>
