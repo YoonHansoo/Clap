@@ -245,58 +245,58 @@
                         <TableColumn prefWidth="148.0" text="가수이름" />
                      </columns>
                   </TableView>
-                  <JFXTabPane layoutX="529.0" layoutY="380.0" minHeight="398.0" minWidth="398.0">
+                  <JFXTabPane layoutX="529.0" layoutY="380.0" maxHeight="398.0" maxWidth="398.0" minHeight="398.0" minWidth="398.0">
                      <tabs>
                         <Tab text="Untitled Tab">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <AnchorPane fx:id="tab_pane1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tab1" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                           </content>
                         </Tab>
                         <Tab text="Untitled Tab">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane fx:id="tab_pane2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tab2" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="Untitled Tab">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane fx:id="tab_pane3" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tab3" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="Untitled Tab">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane fx:id="tab_pane4" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tab4" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                         <Tab text="Untitled Tab">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane fx:id="tab_pane5" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tab5" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <VBox layoutX="529.0" layoutY="375.0" prefHeight="39.0" prefWidth="398.0" style="-fx-background-color: white;">
+                  <VBox layoutX="529.0" layoutY="375.0" prefHeight="42.0" prefWidth="398.0" style="-fx-background-color: white;">
                      <children>
-                        <Label text="에디터 추천">
+                        <Label text="에디터 추천 ">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>

@@ -75,8 +75,10 @@ public class MusicMainController implements Initializable {
 	@FXML ImageView mem_img;
 	@FXML ImageView new1, new2, new3, new4, new5;
 	@FXML ImageView new6, new7, new8, new9, new10;
+	@FXML ImageView tab1, tab2, tab3, tab4, tab5;
 	@FXML JFXButton btn_new1, btn_new2, btn_new3, btn_new4, btn_new5;
 	@FXML JFXButton btn_new6, btn_new7, btn_new8, btn_new9, btn_new10;
+	@FXML AnchorPane tab_pane1, tab_pane2, tab_pane3, tab_pane4, tab_pane5;
 	
 	LoginSession ls = new LoginSession();
 	public static Stage musicplayer = new Stage();
@@ -162,6 +164,12 @@ public class MusicMainController implements Initializable {
 		new9.setImage(images[8]);
 		new10.setImage(images[9]);
 		
+		tab1.setImage(images[5]);
+		tab2.setImage(images[6]);
+		tab3.setImage(images[7]);
+		tab4.setImage(images[8]);
+		tab5.setImage(images[9]);
+		
 		btn_new1.setOnAction(e->{
 			System.out.println("new1");
 		});
@@ -194,6 +202,11 @@ public class MusicMainController implements Initializable {
 		btn_new10.setOnAction(e->{
 			System.out.println("new10");
 		});
+		
+		
+//		tab1.setOnAction(e->{
+//			System.out.println("new10");
+//		});
 		
 		
 	}
