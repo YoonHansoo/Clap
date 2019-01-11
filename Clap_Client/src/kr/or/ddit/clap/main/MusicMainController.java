@@ -29,8 +29,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**
@@ -79,13 +81,17 @@ public class MusicMainController implements Initializable {
 	LoginSession ls = new LoginSession();
 	public static Stage musicplayer = new Stage();
 	private ILoginService ils;
+	private IAlbumService ias;
 	private Registry reg;
+	
+	List<AlbumVO> albumList = new ArrayList<>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
+			ias = (IAlbumService) reg.lookup("album");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -125,6 +131,13 @@ public class MusicMainController implements Initializable {
 			mem_img.setImage(img);
 
 		}
+		
+		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
+//		try {
+//			albumList = ias.selectListAll();
+//		} catch (RemoteException e1) {
+//			e1.printStackTrace();
+//		}
 		
 		String[] names = new String[] {"ben1.jpg", "winner.jpg", "벌써 12시.jpg", "Circular.jpg", "PERCENT.jpg"
 				, "알함브라 궁전의 추억 OST Part 5 (tvN 주말드라마).jpg", "SOLO.JPG", "STATUES.JPG", "XX.jpg"
@@ -178,6 +191,8 @@ public class MusicMainController implements Initializable {
 		btn_new10.setOnAction(e->{
 			System.out.println("new10");
 		});
+		
+		
 	}
 	@FXML
 	public void goBack(ActionEvent event) throws IOException {
@@ -320,11 +335,11 @@ public class MusicMainController implements Initializable {
 		try {
 			if(ls.session!=null) {
 				list = ils.select(ls.session.getMem_id());				
+				ls.session = list.get(0);
 			}
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
-		ls.session = list.get(0);
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 		ScrollPane root = null;
