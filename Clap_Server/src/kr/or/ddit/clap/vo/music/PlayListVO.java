@@ -44,6 +44,9 @@ public class PlayListVO extends RecursiveTreeObject<PlayListVO> implements Seria
 		this.checkbox = new JFXCheckBox();
 		return this.checkbox;
 	}
+	public JFXCheckBox getCheckbox1() {
+		return this.checkbox;
+	}
 	public void setCheckbox(JFXCheckBox checkbox) {
 		this.checkbox = checkbox;
 	}
