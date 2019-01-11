@@ -3,6 +3,12 @@ package kr.or.ddit.clap.main;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -23,7 +29,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**
  * 메인화면의 fxml 컨트롤러.
@@ -70,9 +78,19 @@ public class MusicMainController implements Initializable {
 	
 	LoginSession ls = new LoginSession();
 	public static Stage musicplayer = new Stage();
+	private ILoginService ils;
+	private Registry reg;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ils = (ILoginService) reg.lookup("login");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		
 		if (ls.session != null) {
 			System.out.println(ls.session.getMem_name());
@@ -96,9 +114,10 @@ public class MusicMainController implements Initializable {
 
 			lb_id.setText(ls.session.getMem_id() + "님");
 
+			System.out.println("이미지");
 			Image img = null;
 			if(ls.session.getMem_image() == null) {
-				img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\people_small.png");
+				img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
 			
 			}else {
 				img = new Image(ls.session.getMem_image());
@@ -297,6 +316,16 @@ public class MusicMainController implements Initializable {
 
 
 	public void firstPage() {
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			if(ls.session!=null) {
+				list = ils.select(ls.session.getMem_id());				
+			}
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		}
+		ls.session = list.get(0);
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 		ScrollPane root = null;
 		try {
