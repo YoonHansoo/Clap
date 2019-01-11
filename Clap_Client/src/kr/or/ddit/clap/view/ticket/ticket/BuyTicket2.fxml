@@ -259,7 +259,7 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="412.0" prefWidth="880.0" spacing="15.0">
                <children>
-                  <FontAwesomeIcon iconName="CHECK_CIRCLE" size="60" />
+                  <FontAwesomeIcon fill="#090948" iconName="CHECK_CIRCLE" size="60" />
                   <Label text="결제 완료!">
                      <font>
                         <Font size="24.0" />

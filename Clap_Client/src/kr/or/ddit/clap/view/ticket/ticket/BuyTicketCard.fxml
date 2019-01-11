@@ -14,8 +14,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXProgressBar layoutX="100.0" layoutY="200.0" opacity="0.23" />
-      <VBox prefHeight="400.0" prefWidth="400.0">
+      <JFXProgressBar fx:id="progress" layoutX="100.0" layoutY="200.0" opacity="0.0" />
+      <VBox fx:id="childBox" prefHeight="400.0" prefWidth="400.0">
          <children>
             <HBox minHeight="51.0" prefHeight="51.0" prefWidth="200.0" spacing="10.0">
                <children>

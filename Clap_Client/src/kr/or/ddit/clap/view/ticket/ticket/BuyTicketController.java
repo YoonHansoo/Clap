@@ -16,10 +16,13 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXProgressBar;
 import com.jfoenix.controls.JFXRadioButton;
 
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -65,6 +68,8 @@ public class BuyTicketController implements Initializable{
 	@FXML Button btn_ok;
 	@FXML BorderPane pane;
 	@FXML VBox box;
+	VBox childBox = null;
+	JFXProgressBar progress = null;
 	
 	SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	SimpleDateFormat sdf2 = new SimpleDateFormat("~ yyyy-MM-dd");
@@ -187,6 +192,8 @@ public class BuyTicketController implements Initializable{
 			PasswordField txt4 = (PasswordField) parent.lookup("#txt4");
 			Button btn_okok = (Button) parent.lookup("#btn_okok");
 			Button btn_cancel = (Button) parent.lookup("#btn_cancel");
+			childBox = (VBox) parent.lookup("#childBox"); 
+			progress = (JFXProgressBar) parent.lookup("#progress"); 
 			
 			lblb1.setText((String) tc.ticketInfo[2]);
 			Date time = new Date();
@@ -198,6 +205,9 @@ public class BuyTicketController implements Initializable{
 			
 			btn_okok.setOnAction(event->{
 				System.out.println(txt1.getText());
+				
+				progress.setOpacity(0);
+				childBox.setOpacity(1);
 				
 				// 카드번호 뒷부분 암호화.
 				String encryptedTxt3 = "";
@@ -221,6 +231,8 @@ public class BuyTicketController implements Initializable{
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
 				}
+				
+//				waitingNext(e); // 프로그레스바 띄우고 2초기다리기.
 				
 				dialog.close();
 				
@@ -262,6 +274,39 @@ public class BuyTicketController implements Initializable{
 		
 	}
 	
+	private boolean isStoped;
+	private void waitingNext(ActionEvent e) {
+		Thread thread = new Thread(new Runnable() { // 익명클래스.
+			@Override
+			public void run() {
+				isStoped = false;
+				childBox.setOpacity(0.5);
+				progress.setOpacity(1);
+				
+				while(!isStoped) {
+					try {
+						System.out.println("쓰레드");
+						Thread.sleep(20000);
+						Platform.runLater(new Runnable() { 
+							@Override
+							public void run() {
+								childBox.setOpacity(1);
+								progress.setOpacity(0.5);
+								isStoped = true;
+							}
+						});
+						
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		
+		thread.setDaemon(true); // 데몬쓰레드로 설정 true.
+		thread.start();
+	}
+
 	public String check_lb4(String compareDate) {
 		// lb4 값 구하기.
 		// 날짜 + 일수 ( ~ 2019-02-20 (+31일) )

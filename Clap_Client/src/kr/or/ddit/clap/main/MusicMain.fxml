@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
@@ -9,12 +10,14 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -142,7 +145,7 @@
                               <MenuItem mnemonicParsing="false" text="추천 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#eventManage" text="Event 관리" />
                               <MenuItem mnemonicParsing="false" text="이용권 관리" />
-                              <MenuItem onAction="#salesMange" mnemonicParsing="false" text="매출 관리" />
+                              <MenuItem mnemonicParsing="false" onAction="#salesMange" text="매출 관리" />
                            </items>
                         </Menu>
                      </menus>
@@ -180,9 +183,10 @@
                         <Font size="20.0" />
                      </font>
                   </JFXButton>
-                  <VBox layoutX="99.0" layoutY="42.0" prefHeight="316.0" prefWidth="796.0" style="-fx-background-color: white;">
+                  <StackPane prefHeight="212.0" prefWidth="268.0" />
+                  <VBox layoutX="99.0" layoutY="42.0" maxHeight="324.0" prefHeight="324.0" prefWidth="816.0">
                      <children>
-                        <HBox prefHeight="200.0" prefWidth="373.0" spacing="4.0">
+                        <HBox minHeight="160.0" minWidth="816.0" prefHeight="0.0" prefWidth="373.0" spacing="4.0">
                            <VBox.margin>
                               <Insets bottom="4.0" />
                            </VBox.margin>
@@ -205,32 +209,35 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <VBox layoutX="99.0" layoutY="43.0" opacity="0.0" prefHeight="316.0" prefWidth="796.0" style="-fx-background-color: white;">
+                  <StackPane layoutX="99.0" layoutY="43.0" maxHeight="324.0" maxWidth="-Infinity" minHeight="324.0" minWidth="816.0" prefHeight="400.0" prefWidth="816.0">
                      <children>
-                        <HBox prefHeight="200.0" prefWidth="373.0" spacing="4.0">
-                           <VBox.margin>
-                              <Insets bottom="4.0" />
-                           </VBox.margin>
+                        <VBox prefHeight="316.0" prefWidth="796.0">
                            <children>
-                              <JFXButton fx:id="btn_new1" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new2" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new3" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new4" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new5" minHeight="160.0" minWidth="160.0" text=" " />
+                              <HBox prefHeight="200.0" prefWidth="373.0" spacing="4.0">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <JFXButton fx:id="btn_new1" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new2" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new3" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new4" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new5" minHeight="160.0" minWidth="160.0" text=" " />
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" spacing="4.0">
+                                 <children>
+                                    <JFXButton fx:id="btn_new6" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new7" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new8" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new9" minHeight="160.0" minWidth="160.0" text=" " />
+                                    <JFXButton fx:id="btn_new10" minHeight="160.0" minWidth="160.0" text=" " />
+                                 </children>
+                              </HBox>
                            </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="4.0">
-                           <children>
-                              <JFXButton fx:id="btn_new6" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new7" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new8" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new9" minHeight="160.0" minWidth="160.0" text=" " />
-                              <JFXButton fx:id="btn_new10" minHeight="160.0" minWidth="160.0" text=" " />
-                           </children>
-                        </HBox>
+                        </VBox>
                      </children>
-                  </VBox>
-                  <Label layoutX="529.0" layoutY="388.0" text="HOT &amp; NEW" />
+                  </StackPane>
                   <Label layoutX="92.0" layoutY="388.0" text="실시간 차트" />
                   <TableView layoutX="83.0" layoutY="409.0" prefHeight="163.0" prefWidth="398.0">
                      <columns>
@@ -238,39 +245,92 @@
                         <TableColumn prefWidth="148.0" text="가수이름" />
                      </columns>
                   </TableView>
-                  <ImageView fitHeight="158.0" fitWidth="369.0" layoutX="529.0" layoutY="412.0" pickOnBounds="true">
+                  <JFXTabPane layoutX="529.0" layoutY="380.0" minHeight="398.0" minWidth="398.0">
+                     <tabs>
+                        <Tab text="Untitled Tab">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                          </content>
+                        </Tab>
+                        <Tab text="Untitled Tab">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Untitled Tab">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Untitled Tab">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Untitled Tab">
+                           <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+                  <VBox layoutX="529.0" layoutY="375.0" prefHeight="39.0" prefWidth="398.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label text="에디터 추천">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label layoutX="92.0" layoutY="900.0" text="HOT &amp; NEW" />
+                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="696.0" layoutY="920.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="92.0" layoutY="600.0" text="에디터 추천" />
-                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="696.0" layoutY="620.0" pickOnBounds="true">
+                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="389.0" layoutY="920.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="389.0" layoutY="620.0" pickOnBounds="true">
+                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="76.0" layoutY="920.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="76.0" layoutY="620.0" pickOnBounds="true">
+                  <Label layoutX="99.0" layoutY="1042.0" text="음악 보기" />
+                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="703.0" layoutY="1062.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="99.0" layoutY="742.0" text="음악 보기" />
-                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="703.0" layoutY="762.0" pickOnBounds="true">
+                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="396.0" layoutY="1062.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="396.0" layoutY="762.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@image.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="83.0" layoutY="762.0" pickOnBounds="true">
+                  <ImageView fitHeight="100.0" fitWidth="200.0" layoutX="83.0" layoutY="1062.0" pickOnBounds="true">
                      <image>
                         <Image url="@image.png" />
                      </image>

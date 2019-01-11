@@ -16,14 +16,18 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -71,6 +75,8 @@ public class LoginController implements Initializable{
 	@FXML Label lb_captcha;
 	@FXML Label lb_ok;
 	@FXML ImageView img_captcha;
+	@FXML Button btnn;
+	@FXML Button btnnn;
 	
 	List<MemberVO> list = new ArrayList<MemberVO>();
 	
@@ -92,8 +98,9 @@ public class LoginController implements Initializable{
 		
 		captchaKey = captchaKey();
 		captchaImage(captchaKey);
+		
 	}
-	
+
 	public void login() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException{
 		AES256Util aes = new AES256Util();
 		
