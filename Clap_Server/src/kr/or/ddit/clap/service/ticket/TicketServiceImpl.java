@@ -7,6 +7,7 @@ import java.util.List;
 
 import kr.or.ddit.clap.dao.ticket.TicketDaoImpl;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
+import kr.or.ddit.clap.vo.ticket.TicketVO;
 
 public class TicketServiceImpl extends UnicastRemoteObject implements ITicketService{
 
@@ -45,6 +46,16 @@ public class TicketServiceImpl extends UnicastRemoteObject implements ITicketSer
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public List<TicketBuyListVO> selectTickBuyAllList(TicketBuyListVO vo) throws RemoteException {
+		return ticketDao.selectTickBuyAllList(vo);
+	}
+
+	@Override
+	public List<TicketVO> selectTicket() throws RemoteException {
+		return ticketDao.selectTicket();
 	}
 
 }

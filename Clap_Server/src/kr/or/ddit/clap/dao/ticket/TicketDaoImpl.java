@@ -12,6 +12,7 @@ import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
+import kr.or.ddit.clap.vo.ticket.TicketVO;
 
 public class TicketDaoImpl implements ITicketDao{
 	
@@ -43,6 +44,34 @@ public class TicketDaoImpl implements ITicketDao{
 		try {
 			
 			list = smc.queryForList("ticket.selectList", id);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public List<TicketBuyListVO> selectTickBuyAllList(TicketBuyListVO vo) {
+		List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
+		try {
+			
+			list = smc.queryForList("ticket.selectTickBuyAllList", vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
+	@Override
+	public List<TicketVO> selectTicket() {
+		List<TicketVO> list = new ArrayList<TicketVO>();
+		try {
+			
+			list = smc.queryForList("ticket.selectTicket");
 		
 		} catch (SQLException e) {
 			e.printStackTrace();

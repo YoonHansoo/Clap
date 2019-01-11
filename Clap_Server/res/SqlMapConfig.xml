@@ -27,10 +27,9 @@
  	<typeAlias alias="singerReviewVO" type ="kr.or.ddit.clap.vo.singer.SingerReviewVO"/>
  	<typeAlias alias="GenreVO" type ="kr.or.ddit.clap.vo.genre.GenreVO"/>
  	<typeAlias alias="GenreDetailVO" type ="kr.or.ddit.clap.vo.genre.GenreDetailVO"/>
-
  	<typeAlias alias="EventBoardVO" type   ="kr.or.ddit.clap.vo.support.EventBoardVO"/>
-
  	<typeAlias alias="ticketBuyVO" type ="kr.or.ddit.clap.vo.ticket.TicketBuyListVO"/>
+ 	<typeAlias alias="ticketVO" type ="kr.or.ddit.clap.vo.ticket.TicketVO"/>
 
 
 	<transactionManager type="JDBC">

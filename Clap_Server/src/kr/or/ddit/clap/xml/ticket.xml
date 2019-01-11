@@ -11,11 +11,17 @@
 		where mem_id = #mem_id#
     </select>
     
-    <select id="selectTicket"  >
+    <select id="selectTicket" resultClass="TicketVO" >
     select ticket_no,
 		ticket_price,
 		ticket_content
 		from ticket
+    </select>
+    
+    <select id="selectTickBuyAllList" resultClass="ticketBuyVO" parameterClass="ticketBuyVO">
+    select mem_id, ticket_no, ticket_buydate from ticket_buy_list
+	where ticket_buydate between to_date(#ticket_buydate#, 'YYMMDD') and to_date(#ticket_buydate1#, 'YYMMDD')
+	<!--ticket_buydate:시작 , ticket_buydate1: 끝  -->
     </select>
 
 </sqlMap>         

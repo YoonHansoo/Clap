@@ -2,10 +2,15 @@ package kr.or.ddit.clap.vo.ticket;
 
 import java.io.Serializable;
 
-public class TicketBuyListVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import kr.or.ddit.clap.vo.support.QnaVO;
+
+public class TicketBuyListVO extends RecursiveTreeObject<TicketBuyListVO> implements Serializable{
 	
 	private String ticket_buy_no;
 	private String ticket_buydate;
+	private String ticket_buydate1;
 	private String card_account_no;
 	private String ticket_buy_type;
 	private String card_bank_name;
@@ -15,6 +20,14 @@ public class TicketBuyListVO implements Serializable{
 	private String ticket_no;
 	private String mem_id;
 	
+	
+	
+	public String getTicket_buydate1() {
+		return ticket_buydate1;
+	}
+	public void setTicket_buydate1(String ticket_buydate1) {
+		this.ticket_buydate1 = ticket_buydate1;
+	}
 	public String getTicket_buy_no() {
 		return ticket_buy_no;
 	}
