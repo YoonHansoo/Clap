@@ -51,7 +51,7 @@ public class NoticeMenuController implements Initializable {
 	//public NoticeBoardVO nVO = new NoticeBoardVO();
 	private ObservableList<NoticeBoardVO> ntcList, currentntcList;
 	private int from, to, itemsForPage, totalPageCnt;
-	@FXML AnchorPane main;
+	//@FXML AnchorPane main;
 	
 	
 	
@@ -126,8 +126,8 @@ public class NoticeMenuController implements Initializable {
 
 						FXMLLoader loader = new FXMLLoader(getClass().getResource("NoticeBoardInsert.fxml"));// init실행됨
 						Parent NoticeInsert = loader.load();
-						main.getChildren().removeAll();
-						main.getChildren().setAll(NoticeInsert);
+						d_main.getChildren().removeAll();
+						d_main.getChildren().setAll(NoticeInsert);
 
 					} catch (IOException e1) {
 						e1.printStackTrace();
