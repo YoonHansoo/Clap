@@ -17,6 +17,7 @@
 		, a.ALB_SALE_ENTER
 		FROM ALBUM a, SINGER b
 		WHERE a.SING_NO = b.SING_NO
+		order by to_number(a.ALB_NO) desc
 
 	</select>
 
