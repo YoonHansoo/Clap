@@ -75,6 +75,13 @@ public class MemberManageController implements Initializable{
 
 		}
 
+		for (int i = 0; i < memList.size(); i++) {
+			if(memList.get(i).getMem_del_tf().equals("f")) {
+				memList.get(i).setMem_del_tf("X");
+			}else {
+				memList.get(i).setMem_del_tf("O");
+			}
+		}
 		// 데이터 삽입
 		TreeItem<MemberVO> root = new RecursiveTreeItem<>(memList, RecursiveTreeObject::getChildren);
 		tbl_Member.setRoot(root);
@@ -82,7 +89,7 @@ public class MemberManageController implements Initializable{
 
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
-		//paging();
+		paging();
 
 		combo_search.getItems().addAll("이름", "아이디");
 		combo_search.setValue(combo_search.getItems().get(0));
