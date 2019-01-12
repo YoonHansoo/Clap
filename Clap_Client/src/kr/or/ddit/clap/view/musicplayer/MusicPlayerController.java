@@ -61,23 +61,26 @@ public class MusicPlayerController implements Initializable{
 	@FXML ImageView imgview_album;
 	@FXML JFXTabPane tabpane_main;
 	@FXML AnchorPane anchorpane_myalbum;
+	@FXML JFXCheckBox btn_check;
+	@FXML JFXButton btn_add;
+	@FXML JFXButton btn_del;
+
 
 	private Stage stage;
 	private MusicPlayer player;
 	private ObservableList<PlayListVO> playList;
-	private IPlayListService ipls;
+	private ObservableList<String> addMus_no;
+	private ObservableList<String> delMus_no;
 	private Registry reg;
+	private IPlayListService ipls;
 	private boolean retweenFlag = false;
 	private boolean randomFlag = false;
+	private boolean refreshFlag = false;
 	private int[] randomIndex;
 	private int count;
-	private TreeItem<PlayListVO> playListRoot;
-	private boolean refreshFlag = false;
 	private int mus_index;
+	private TreeItem<PlayListVO> playListRoot;
 	private MyAlbumListController mal;
-	@FXML JFXCheckBox btn_check;
-	
-	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -89,6 +92,10 @@ public class MusicPlayerController implements Initializable{
 			player = new MusicPlayer();
 			stage = MusicMainController.musicplayer;
 			scroll_lyrics.setVisible(false);
+			btn_add.setVisible(false);
+			addMus_no = FXCollections.observableArrayList();
+			delMus_no = FXCollections.observableArrayList();
+			t_playListTable.setPlaceholder(new Label(""));
 		} catch (RemoteException e2) {
 			e2.printStackTrace();
 		} catch (NotBoundException e1) {
@@ -154,7 +161,6 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	@FXML public void volumClick() {
-		reFresh();
 		if(!slider_volum.isVisible()) {
 			slider_volum.setVisible(true);
 			setVolum();
@@ -176,11 +182,57 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	@FXML public void playListAdd() {
+		addMus_no.clear();
+		mal = MyAlbumController.loader.getController();
 		
+		for (int i = 0; i < mal.myalbumList.size(); i++) {
+			if (mal.t_table.getTreeItem(i).getValue().getChBox1().isSelected()) {
+				addMus_no.add(mal.t_table.getTreeItem(i).getValue().getMus_no());
+			}
+		}
+		
+		PlayListVO vo = new PlayListVO();
+		for (int i = 0; i < addMus_no.size(); i++) {
+			vo.setMem_id(LoginSession.session.getMem_id());
+			vo.setMus_no(addMus_no.get(i));
+			try {
+				ipls.playlistInsert(vo);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+		btn_check.setSelected(false);
+		allCheck();
+		reFresh();
 	}
 
 	@FXML public void playListDelete() {
+		delMus_no.clear();
 		
+		for (int i = 0; i < playList.size(); i++) {
+			if (t_playListTable.getTreeItem(i).getValue().getCheckbox1().isSelected()) {
+				delMus_no.add(t_playListTable.getTreeItem(i).getValue().getMus_no());
+			}
+		}
+		
+		PlayListVO vo = new PlayListVO();
+		for (int i = 0; i < delMus_no.size(); i++) {
+			vo.setMem_id(LoginSession.session.getMem_id());
+			vo.setMus_no(delMus_no.get(i));
+			try {
+				ipls.playlistDelete(vo);
+				if (player.mediaPlayer != null) {
+					player.mediaPlayer.stop();
+					label_musicName.setText("재생 목록이 없습니다");
+					label_singerName.setText("듣고 싶은 곡을 선택해 보세요!");
+					imgview_album.setImage(null);
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+		btn_check.setSelected(false);
+		reFresh();
 	}
 	
 	@FXML public void allCheck() {
@@ -232,8 +284,10 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	public void playListTableSelet() {
+		
 		t_playListTable.getSelectionModel().selectedIndexProperty().addListener((observable,oldValue,newValue) -> {
-			if (refreshFlag) {
+			System.out.println("asdf");
+			if (refreshFlag && player.mediaPlayer != null) {
 				t_playListTable.getSelectionModel().select(mus_index);
 				refreshFlag=false;
 			}else {
@@ -251,12 +305,16 @@ public class MusicPlayerController implements Initializable{
 			public void invalidated(Observable observable) {
 				if (tabpane_main.getSelectionModel().isSelected(1)) {
 					try {
+						btn_del.setVisible(false);
 						AnchorPane pane = FXMLLoader.load(getClass().getResource("MyAlbum.fxml"));
 						anchorpane_myalbum.getChildren().removeAll();
 						anchorpane_myalbum.getChildren().setAll(pane);
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
+				}else {
+					btn_del.setVisible(true);
+					btn_add.setVisible(false);
 				}
 			}
 		});
@@ -283,10 +341,14 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	public void reFresh() {
-		refreshFlag = true;
-			playList.add(playList.get(1));
+		try {
+			refreshFlag = true;
+			playList = FXCollections.observableArrayList(ipls.playlistSelect(LoginSession.session.getMem_id()));
 			playListRoot = new RecursiveTreeItem<>(playList, RecursiveTreeObject::getChildren);
 			t_playListTable.setRoot(playListRoot);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void randomSuffle() {
@@ -307,6 +369,10 @@ public class MusicPlayerController implements Initializable{
 			}
 			count = 0;
 		}
+	}
+	
+	public void selectIndex() {
+		t_playListTable.getSelectionModel().select(playList.size()-1);
 	}
 	
 	public void selectIndex(boolean forward) {

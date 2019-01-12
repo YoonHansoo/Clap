@@ -16,6 +16,8 @@ import javafx.fxml.FXMLLoader;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
@@ -42,6 +44,7 @@ public class MyAlbumController implements Initializable{
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imas = (IMyAlbumService) reg.lookup("myalbum");
 			myAlbumList = FXCollections.observableArrayList(imas.myAlbumSelect(LoginSession.session.getMem_id()));
+			t_myAlbumTable.setPlaceholder(new Label("등록 하신 MyAlbum이 없습니다."));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {

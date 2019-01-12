@@ -88,11 +88,6 @@ public class MyAlbumDialogController implements Initializable{
 						myAlbumList.put("myalb_no", albumNo);
 						myAlbumList.put("mus_no", mus_no.get(i));
 						imals.myAlbumListInsert(myAlbumList);
-						
-						if (MusicMainController.musicplayer.isShowing()) {
-							// myalum 새로고침
-						}
-						
 					}
 					albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
 					root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);

@@ -41,14 +41,14 @@ public class MyAlbumListController implements Initializable{
 	@FXML TreeTableColumn<MyAlbumListVO, VBox> tcol_musicVbox;
 	@FXML Label label_name;
 	@FXML JFXButton btn_back;
+	@FXML AnchorPane anchorpane_myalbum;
 	
 	public static String album_no;
 	public static String album_name;
 	private Registry reg;
 	private IMyAlbumListService imals;
 	public ObservableList<MyAlbumListVO> myalbumList;
-	@FXML AnchorPane anchorpane_myalbum;
-	
+	private MusicPlayerController mpc;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -59,6 +59,7 @@ public class MyAlbumListController implements Initializable{
 			vo.setMyalb_no(album_no);
 			vo.setMem_id(LoginSession.session.getMem_id());
 			myalbumList = FXCollections.observableArrayList(imals.selectMyAlbList(vo));
+			t_table.setPlaceholder(new Label(" MyAlbum에 등록하신 곡이 없습니다."));
 		} catch (RemoteException e2) {
 			e2.printStackTrace();
 		} catch (NotBoundException e1) {
@@ -79,10 +80,14 @@ public class MyAlbumListController implements Initializable{
 		t_table.setRoot(root);
 		t_table.setShowRoot(false);
 		
+		mpc = MusicMainController.playerLoad.getController();
+		mpc.btn_add.setVisible(true);
+		
 	}
 
 	@FXML public void backClick() {
 		try {
+			mpc.btn_add.setVisible(false);
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("MyAlbum.fxml"));
 			anchorpane_myalbum.getChildren().removeAll();
 			anchorpane_myalbum.getChildren().setAll(pane);

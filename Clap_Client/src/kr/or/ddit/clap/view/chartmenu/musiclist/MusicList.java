@@ -1,6 +1,10 @@
 package kr.or.ddit.clap.view.chartmenu.musiclist;
 
 import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.Map;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -19,7 +23,12 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
+import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
+import kr.or.ddit.clap.vo.music.PlayListVO;
 
 public class MusicList {
 	
@@ -40,12 +49,19 @@ public class MusicList {
 		this.stackpane = stackpane;
 		this.mainBox = mainBox;
 		
-		
-		
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ipls = (IPlayListService) reg.lookup("playlist");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
-	
+	private Registry reg;
+	private IPlayListService ipls;
 	private ObservableList<JFXCheckBox> cbnList;
 	private ObservableList<JFXButton> btnPlayList;
 	private ObservableList<JFXButton> btnAddList;
@@ -53,13 +69,24 @@ public class MusicList {
 	private ObservableList<JFXButton> btnMovieList;
 	private StackPane stackpane;
 	private VBox mainBox;
+	private MusicPlayerController mpc;
 	
 	// 재생 버튼 클릭시 이벤트
 	private void btnPlayClick() {
 		for (int i = 0; i < btnPlayList.size(); i++) {
 			btnPlayList.get(i).setOnAction(e->{
 				JFXButton btn_PlayMy = (JFXButton) e.getSource();
-				System.out.println(btn_PlayMy.getId());
+				
+				PlayListVO vo = new PlayListVO();
+				vo.setMus_no(btn_PlayMy.getId());
+				vo.setMem_id(LoginSession.session.getMem_id());
+				playListInsert(vo);
+				
+				if (MusicMainController.musicplayer.isShowing()) {
+					mpc = MusicMainController.playerLoad.getController();
+					mpc.reFresh();
+					mpc.selectIndex();
+				}
 			});
 		}
 	}
@@ -69,8 +96,25 @@ public class MusicList {
 		for (int i = 0; i < btnAddList.size(); i++) {
 			btnAddList.get(i).setOnAction(e->{
 				JFXButton btn_AddMy = (JFXButton) e.getSource();
-				System.out.println(btn_AddMy.getId());
+				
+				PlayListVO vo = new PlayListVO();
+				vo.setMus_no(btn_AddMy.getId());
+				vo.setMem_id(LoginSession.session.getMem_id());
+				playListInsert(vo);
+				
+				if (MusicMainController.musicplayer.isShowing()) {
+					mpc = MusicMainController.playerLoad.getController();
+					mpc.reFresh();
+				}
 			});
+		}
+	}
+	
+	private void playListInsert(PlayListVO vo) {
+		try {
+			ipls.playlistInsert(vo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
 	}
 	
