@@ -29,7 +29,17 @@
          <children>
             <AnchorPane fx:id="menu" prefHeight="160.0" prefWidth="1005.0">
                <children>
-                  <FontAwesomeIcon fx:id="icon_firstPage" iconName="APPLE" layoutX="106.0" layoutY="117.0" onMouseClicked="#firstPage" size="2cm">
+                  <VBox layoutX="86.0" layoutY="55.0" prefHeight="90.0" prefWidth="90.0">
+                     <children>
+                        <ImageView fx:id="logo_imgView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <StackPane layoutX="86.0" layoutY="55.0" prefHeight="90.0" prefWidth="90.0">
+                     <children>
+                        <JFXButton onMouseClicked="#firstPage" prefHeight="90.0" prefWidth="90.0" text=" " />
+                     </children>
+                  </StackPane>
+                  <FontAwesomeIcon iconName="APPLE" layoutX="24.0" layoutY="141.0" size="2cm" visible="false">
                      <fill>
                         <LinearGradient endX="1.0" endY="1.0" startX="0.6333333333333333" startY="0.1523809523809524">
                            <stops>
@@ -455,12 +465,12 @@
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label text="당신의 오늘은 그대와 나" textFill="WHITE">
+                                                            <Label text="오늘은 그대와 나태한" textFill="WHITE">
                                                                <font>
                                                                   <Font size="24.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label text="태한 하루 보내기" textFill="WHITE">
+                                                            <Label text="하루 보내기" textFill="WHITE">
                                                                <font>
                                                                   <Font size="24.0" />
                                                                </font>
