@@ -16,50 +16,39 @@
 	</select>
 
 
+	<!-- 추천앨범 등록 쿼리 -->
+		<insert id="insertRecommendAlbum" parameterClass="RecommendAlbumVO">
+			insert into RECOMMEND_ALBUM(
+										RCM_ALB_NO,
+										RCM_ALB_NAME,
+										RCM_CONTENT,
+										MEM_ID,
+										RCM_ALB_IMAGE
+			)
+			values(			
+										seq_rcm_alb_no.nextval,
+										#rcm_alb_name#,
+										#rcm_content#,
+										#mem_id#,
+										#rcm_alb_image#
+			)
+	</insert>
 
-	<!-- 검색용 쿼리 -->
-	<select id="searchList" resultClass="albumVO"
-		parameterClass="albumVO">
-
-
-		SELECT a.ALB_NO
-		, a.ALB_NAME
-		, a.ALB_IMAGE
-		, b.SING_NAME
-		, to_char(a.ALB_SALEDATE, 'yyyy/mm/dd') as ALB_SALEDATE
-		, a.ALB_SALE_ENTER
-		FROM ALBUM a, SINGER b
-		WHERE a.SING_NO = b.SING_NO
-		<isNotEmpty property="alb_name" prepend="and">
-			a.ALB_NAME like '%' || #alb_name# || '%'
-		</isNotEmpty>
-		<isNotEmpty property="sing_name" prepend="and">
-			b.sing_name like '%' || #sing_name# || '%'
-		</isNotEmpty>
+	<!-- Sequence조회 -->
+	<select id="selectSequence" resultClass="String">
+		select to_char(seq_rcm_alb_no.currval) FROM DUAL
 	</select>
-
-	<!-- 앨범정보등록 쿼리 -->
-	<insert id="insertAlbum" parameterClass="albumVO">
-		<selectKey resultClass="String" keyProperty="alb_no">
-			select SEQ_ALB_NO.nextval
-			from dual
-		</selectKey>
-		insert into ALBUM (ALB_NO,
-		ALB_NAME,
-		ALB_SALEDATE,
-		ALB_IMAGE,
-		ALB_INTRO,
-		ALB_SALE_ENTER,
-		ALB_ENTERTAIN,
-		SING_NO)
-		values (#alb_no#,
-		#alb_name#,
-		#alb_saledate#,
-		#alb_image#,
-		#alb_intro#,
-		#alb_sale_enter#,
-		#alb_entertain#,
-		#sing_no#)
+	
+<!-- 추천앨범리스트 등록 쿼리 -->
+		<insert id="insertRecommendAlbumMusic" parameterClass="java.util.HashMap">
+			insert into RECOMMEND_ALBUM_LIST(
+												MUS_NO,
+												RCM_ALB_NO
+									)
+									 values(			
+												#musicNo#,
+												#sequence#
+			)
 	</insert>
 
 	<select id="albumDetailInfo" resultClass="albumVO"

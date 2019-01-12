@@ -3,6 +3,7 @@ package kr.or.ddit.clap.service.recommend;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.dao.recommend.RecommendDaoImpl;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
@@ -46,6 +47,28 @@ public class RecommendServiceImpl extends UnicastRemoteObject implements IRecomm
 	@Override
 	public int selectAlbumListCnt(String RcmAlbNo) throws RemoteException {
 		return recommendDao.selectAlbumListCnt(RcmAlbNo);
+	}
+
+
+
+	@Override
+	public int insertRecommendAlbum(RecommendAlbumVO rVO) throws RemoteException {
+		return recommendDao.insertRecommendAlbum(rVO);
+	}
+
+
+
+	@Override
+	public String selectSequence() throws RemoteException {
+		// TODO Auto-generated method stub
+		return recommendDao.selectSequence();
+	}
+
+
+
+	@Override
+	public int insertRecommendAlbumMusic(Map<String,String> map) throws RemoteException {
+		return recommendDao.insertRecommendAlbumMusic(map);
 	}
 	
 }
