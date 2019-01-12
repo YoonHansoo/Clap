@@ -104,14 +104,14 @@
                </font>
             </Label>
             <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_singer" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
+            <JFXTreeTableView fx:id="tbl_Member" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
                <columns>
                   <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
-                  <TreeTableColumn fx:id="col_singerImg" prefWidth="163.6666259765625" text="Image" />
-                  <TreeTableColumn fx:id="col_singerName" prefWidth="148.0" text="이름" />
-                  <TreeTableColumn fx:id="col_singerActType" prefWidth="154.0" text="아이디" />
-                  <TreeTableColumn fx:id="col_singerDebutEra" prefWidth="181.0" text="가입일" />
-                  <TreeTableColumn fx:id="col_singerEra" prefWidth="67.0" text="탈퇴여부" />
+                  <TreeTableColumn fx:id="col_MemImg" prefWidth="163.6666259765625" text="Image" />
+                  <TreeTableColumn fx:id="col_MemName" prefWidth="148.0" text="이름" />
+                  <TreeTableColumn fx:id="col_MemId" prefWidth="154.0" text="아이디" />
+                  <TreeTableColumn fx:id="col_MemIndate" prefWidth="181.0" text="가입일" />
+                  <TreeTableColumn fx:id="col_MemdelTF" prefWidth="67.0" text="탈퇴여부" />
                </columns>
             </JFXTreeTableView>
             <JFXComboBox fx:id="combo_search" layoutX="465.0" layoutY="636.0" promptText="이름" />

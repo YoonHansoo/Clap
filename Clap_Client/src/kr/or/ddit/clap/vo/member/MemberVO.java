@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializable{
-   
    private String mem_id;
    private String mem_pw;
    private String mem_name;
@@ -107,9 +106,15 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
       this.mem_blacklist_tf = mem_blacklist_tf;
    }
    public String getMem_del_tf() {
+	   
       return mem_del_tf;
    }
    public void setMem_del_tf(String mem_del_tf) {
+	   if (mem_del_tf.equals("t") ) {
+		   this.mem_del_tf = this.mem_del_tf + ("○");
+	   }else {
+		   this.mem_del_tf = this.mem_del_tf + ("X");
+	   }
       this.mem_del_tf = mem_del_tf;
    }
    public String getMem_black_cnt() {
