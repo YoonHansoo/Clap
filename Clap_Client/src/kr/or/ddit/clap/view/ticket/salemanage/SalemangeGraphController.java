@@ -188,10 +188,17 @@ public class SalemangeGraphController implements Initializable{
 			switch (combo_Chart.getValue()) {
 
 			case "총 매출":
-				chartProd();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("bar.fxml"));// init실행됨
+				Parent barcharta= loader.load(); 
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(barcharta);
+			
 				break;
 			case "연령별 매출":
-				multichart();
+				FXMLLoader loader1 = new FXMLLoader(getClass().getResource("graph.fxml"));// init실행됨
+				Parent charts= loader1.load(); 
+				main.getChildren().removeAll();
+				main.getChildren().setAll(charts);
 				break;
 			default:
 				break;
