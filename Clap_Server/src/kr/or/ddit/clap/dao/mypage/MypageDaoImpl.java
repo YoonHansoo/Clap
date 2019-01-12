@@ -129,6 +129,20 @@ public class MypageDaoImpl implements IMypageDao{
 		return cnt;
 	}
 
+	@Override
+	public List<MemberVO> selectAll() {
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			
+			list = smc.queryForList("musicreview.selectAll");
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 	
 	
 	}

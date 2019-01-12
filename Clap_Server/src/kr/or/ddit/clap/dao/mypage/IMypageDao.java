@@ -15,10 +15,11 @@ import kr.or.ddit.clap.vo.singer.SingerVO;
  * @author hyuns현지
  *
  */
-
 public interface IMypageDao {
 
 	public MemberVO select(MemberVO vo);
+	
+	public List<MemberVO> selectAll();
 	
 	public int  updateTel(MemberVO vo);
 	

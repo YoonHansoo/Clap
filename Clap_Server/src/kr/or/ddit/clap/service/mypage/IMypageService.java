@@ -27,7 +27,8 @@ public interface IMypageService  extends Remote {
 	public int  updateInfo(MemberVO vo) throws RemoteException;
 	
 	public int  updateImage(MemberVO vo) throws RemoteException;
-	
+
+	public List<MemberVO>  selectAll() throws RemoteException;
 	
 	
 }

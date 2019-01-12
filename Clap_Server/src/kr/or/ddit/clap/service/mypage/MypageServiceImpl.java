@@ -65,6 +65,11 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.updateImage(vo);
 	}
 
+	@Override
+	public List<MemberVO> selectAll() throws RemoteException {
+		return mypageDao.selectAll();
+	}
+
 	
 
 	
