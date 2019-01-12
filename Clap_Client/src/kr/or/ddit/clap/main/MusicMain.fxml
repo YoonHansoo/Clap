@@ -80,7 +80,7 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <JFXTextField layoutX="200.0" layoutY="91.0" prefColumnCount="50" prefWidth="500.0" unFocusColor="#9c0000">
+                  <JFXTextField fx:id="txt_search" layoutX="200.0" layoutY="91.0" prefColumnCount="50" prefWidth="500.0" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>

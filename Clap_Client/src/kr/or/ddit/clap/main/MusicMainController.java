@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +53,7 @@ public class MusicMainController implements Initializable {
 
 	@FXML public JFXButton btn_goforward;
 	@FXML public JFXButton btn_goback;
+	@FXML  JFXTextField txt_search;
 	
 	
 	
@@ -135,7 +136,18 @@ public class MusicMainController implements Initializable {
 				img = new Image(ls.session.getMem_image());
 			}
 			mem_img.setImage(img);
-
+			
+			//검색버튼
+			try {
+				 List<String> hotKeyword = ils.selecthotkeyword();
+				 System.out.println("리스트 사이즈"+ hotKeyword.size());
+				 
+			} catch (RemoteException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			
 		}
 		
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
