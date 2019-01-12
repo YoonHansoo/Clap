@@ -6,12 +6,14 @@
 <sqlMap namespace="playlist">
 	
 	<select id="playlistselect" resultClass="playlistVO" parameterClass="String">
-	  select a.mus_title,
+	 select 
+	  		 a.mus_title,
 	         a.mus_lyrics,
 	         a.mus_file,
 	         a.mus_no,
 	         b.alb_image,
-	         c.sing_name
+	         c.sing_name,
+             d.play_no
 	    from music a, album b, singer c, playlist d
 	   where a.alb_no = b.alb_no
 	     and a.mus_no = d.mus_no
@@ -20,8 +22,18 @@
 	</select>
 	
 	<update id="playlistinsert" parameterClass="playlistVO">
-		insert into playlist (play_no, play_indate, mus_no, mem_id)
-             values (seq_play_no.nextval, sysdate, #mus_no#, #mem_id#)
+		merge into playlist
+		      using dual
+		      on (
+		          mus_no = #mus_no#
+		         )
+		      when matched then
+		        update set
+		            play_indate = sysdate
+		        where mus_no = #mus_no#
+		      when not matched then
+		        insert (play_no, play_indate, mus_no, mem_id)
+		         values (seq_play_no.nextval, sysdate, #mus_no#, #mem_id#)
 	</update>
 	
 	<delete id="playlistdelete" parameterClass="playlistVO">
