@@ -23,7 +23,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -183,7 +183,6 @@
                         <Font size="20.0" />
                      </font>
                   </JFXButton>
-                  <StackPane prefHeight="212.0" prefWidth="268.0" />
                   <VBox layoutX="99.0" layoutY="42.0" maxHeight="324.0" prefHeight="324.0" prefWidth="816.0">
                      <children>
                         <HBox minHeight="160.0" minWidth="816.0" prefHeight="0.0" prefWidth="373.0" spacing="4.0">
@@ -245,56 +244,81 @@
                         <TableColumn prefWidth="148.0" text="가수이름" />
                      </columns>
                   </TableView>
-                  <JFXTabPane layoutX="529.0" layoutY="380.0" maxHeight="398.0" maxWidth="398.0" minHeight="398.0" minWidth="398.0">
+                  <JFXTabPane layoutX="529.0" layoutY="409.0" maxHeight="398.0" maxWidth="398.0" minHeight="398.0" minWidth="398.0">
                      <tabs>
-                        <Tab text="Untitled Tab">
+                        <Tab text="     #1    ">
                           <content>
                             <AnchorPane fx:id="tab_pane1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fx:id="tab1" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
+                                       <children>
+                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
                           </content>
                         </Tab>
-                        <Tab text="Untitled Tab">
+                        <Tab text="    #2   ">
                            <content>
                               <AnchorPane fx:id="tab_pane2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fx:id="tab2" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
+                                       <children>
+                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="Untitled Tab">
+                        <Tab text="    #3   ">
                            <content>
                               <AnchorPane fx:id="tab_pane3" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fx:id="tab3" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
+                                       <children>
+                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="Untitled Tab">
+                        <Tab text="    #4   ">
                            <content>
                               <AnchorPane fx:id="tab_pane4" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fx:id="tab4" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
+                                       <children>
+                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="Untitled Tab">
+                        <Tab text="    #5    ">
                            <content>
                               <AnchorPane fx:id="tab_pane5" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
                                     <ImageView fx:id="tab5" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
+                                    <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
+                                       <children>
+                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </AnchorPane>
                            </content>
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <VBox layoutX="529.0" layoutY="375.0" prefHeight="42.0" prefWidth="398.0" style="-fx-background-color: white;">
+                  <VBox layoutX="529.0" layoutY="375.0" prefHeight="34.0" prefWidth="398.0" style="-fx-background-color: white;">
                      <children>
                         <Label text="에디터 추천 ">
                            <VBox.margin>

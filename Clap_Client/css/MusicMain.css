@@ -1,0 +1,29 @@
+* {
+  
+}
+
+.tab{
+	-fx-background-color: white;
+	
+}
+
+.tab-label{
+    -fx-font-family: "-윤고딕320";
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}
+
+.tab-header-background{
+	-fx-background-color: #090948;
+	
+}
+
+.tab{
+	-fx-background-color: #090948;
+	
+}
+
+.tab:selected{
+	-fx-border-width: 0 0 5 0;
+	-fx-border-color: #9c0000;
+}
