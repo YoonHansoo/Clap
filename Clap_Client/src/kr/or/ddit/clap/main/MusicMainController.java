@@ -167,11 +167,22 @@ public class MusicMainController implements Initializable {
 		new9.setImage(images[8]);
 		new10.setImage(images[9]);
 		
-		tab1.setImage(images[5]);
-		tab2.setImage(images[6]);
-		tab3.setImage(images[7]);
-		tab4.setImage(images[8]);
-		tab5.setImage(images[9]);
+		Image[] tab_img = new Image[5];
+//		for(int i=0; i<5; i++) {
+//			tab_img[i] = new Image(albumList.get(i).getAlb_image());
+//		}
+		
+		tab_img[0] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\everyd4y.JPG");
+		tab_img[1] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\Be There.JPG");
+		tab_img[2] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\마지막처럼.JPG");
+		tab_img[3] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\Full Album RED PLANET (Hidden Track).JPG");
+		tab_img[4] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\도깨비 OST Part 4 (tvN 금토드라마).JPG");
+		
+		tab1.setImage(tab_img[0]);
+		tab2.setImage(tab_img[1]);
+		tab3.setImage(tab_img[2]);
+		tab4.setImage(tab_img[3]);
+		tab5.setImage(tab_img[4]);
 		
 		
 		btn_new1.setOnAction(e->{
