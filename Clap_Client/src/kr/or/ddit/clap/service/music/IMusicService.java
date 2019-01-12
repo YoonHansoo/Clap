@@ -9,6 +9,7 @@ package kr.or.ddit.clap.service.music;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.vo.genre.GenreDetailVO;
 import kr.or.ddit.clap.vo.genre.GenreVO;
@@ -37,4 +38,6 @@ public interface IMusicService extends Remote {
 	public int updateMusicInfo(MusicVO vo) throws RemoteException;
 	
 	 public int deleteMusic(String musicNo) throws RemoteException;
+	 
+	public List<Map> newMusicSelete(String genre_no) throws RemoteException;
 }

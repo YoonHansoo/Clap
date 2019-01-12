@@ -388,7 +388,7 @@ public class MusicMainController implements Initializable {
 	
 	public void newMusicMenu_PageLoad() {
 		try {
-			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusicmenu/main/NewMusicMenu.fxml")); // 바뀔 화면을
+			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusic/main/NewMusicMenu.fxml")); // 바뀔 화면을
 																												// 가져옴
 			contents.getChildren().removeAll();	
 			contents.getChildren().setAll(page);

@@ -1,4 +1,4 @@
-package kr.or.ddit.clap.view.chartmenu.period;
+package kr.or.ddit.clap.view.newmusic.music;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,33 +8,20 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
@@ -48,47 +35,48 @@ import kr.or.ddit.clap.vo.music.PlayListVO;
  *
  */
 
-public class PeriodController implements Initializable{
+public class NewMusicController implements Initializable{
 
 	@FXML VBox mainBox;
 	@FXML JFXCheckBox cb_main;
-	@FXML JFXButton btn_Interior;
-	@FXML JFXButton btn_Foreign;
-	@FXML Label la_Date;
+	@FXML JFXButton btn_Song;
+	@FXML JFXButton btn_Pop;
+	@FXML JFXButton btn_Ost;
+	@FXML JFXButton btn_Other;
 	@FXML StackPane stackpane;
 	
-	
 	private Registry reg;
-	private IMusicHistoryService imhs;
+	private IMusicService ims;
 	private IPlayListService ipls;
 	private MusicList musicList;
-	private ObservableList<Map> interiorRank;
-	private ObservableList<Map> foreignRank;
+	private ObservableList<Map> songRank;
+	private ObservableList<Map> popRank;
+	private ObservableList<Map> ostRank;
+	private ObservableList<Map> otherRank;
 	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPlayList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
 	private MusicPlayerController mpc;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
-			imhs = (IMusicHistoryService) reg.lookup("history");
+			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
 								  btnMovieList, mainBox, stackpane);
 		
 		// 일간 조회 차트 
-		interiorChart();
+		songChart();
 	}
 	
 	// 메인 재생 버튼 이벤트
@@ -135,42 +123,74 @@ public class PeriodController implements Initializable{
 		return list;
 	}
 	
-	@FXML public void interiorChart() {
-		
+	// 가요장르
+	@FXML public void songChart() {
 		try {
-			Calendar cal = Calendar.getInstance();
-			String year = "";
-			year = ""+(cal.get(Calendar.YEAR)-1);
-			la_Date.setText(year);
-			year = (year.substring(year.length()-2, year.length()));
-			
-			interiorRank = FXCollections.observableArrayList(imhs.interiorSelect(year));
-			btn_Interior.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-			btn_Foreign.setStyle("-fx-background-color:#FFFFFF;");
+			songRank = FXCollections.observableArrayList(ims.newMusicSelete("1"));
+			btn_Song.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			musicList.musicList(interiorRank);
+			musicList.musicList(songRank);
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
 	}
-
-	@FXML public void foreignChart() {
-		
+	
+	// POP장르
+	@FXML public void popChart() {
 		try {
-			Calendar cal = Calendar.getInstance();
-			String year = "";
-			year = ""+(cal.get(Calendar.YEAR)-1);
-			la_Date.setText(year);
-			year = (year.substring(year.length()-2, year.length()));
-			foreignRank = FXCollections.observableArrayList(imhs.foreignSelect(year));
-			
-			btn_Interior.setStyle("-fx-background-color:#FFFFFF;");
-			btn_Foreign.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			popRank = FXCollections.observableArrayList(ims.newMusicSelete("2"));
+			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			musicList.musicList(foreignRank);
+			musicList.musicList(popRank);
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// OST장르
+	@FXML public void ostChart() {
+		try {
+			ostRank = FXCollections.observableArrayList(ims.newMusicSelete("3"));
+			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
+			cb_main.setSelected(false);
+			
+			musicList.musicList(ostRank);
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 그 외 장르
+	@FXML public void otherChart() {
+		try {
+			otherRank = FXCollections.observableArrayList(ims.newMusicSelete("4"));
+			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
+			btn_Other.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
+			cb_main.setSelected(false);
+			
+			Calendar cal = Calendar.getInstance();
+			String toDay = "";
+			toDay = cal.get(Calendar.YEAR)+"." + (cal.get(Calendar.MONTH)+1) + 
+					"." + cal.get(Calendar.DAY_OF_MONTH);
+			
+			musicList.musicList(otherRank);
+			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}

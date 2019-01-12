@@ -19,9 +19,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
+import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
+import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
+import kr.or.ddit.clap.vo.music.PlayListVO;
 
 /**
  * 
@@ -42,6 +47,7 @@ public class GenreController implements Initializable{
 	
 	private Registry reg;
 	private IMusicHistoryService imhs;
+	private IPlayListService ipls;
 	private MusicList musicList;
 	private ObservableList<Map> songRank;
 	private ObservableList<Map> popRank;
@@ -52,6 +58,7 @@ public class GenreController implements Initializable{
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
+	private MusicPlayerController mpc;
 	
 
 	@Override
@@ -59,6 +66,7 @@ public class GenreController implements Initializable{
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imhs = (IMusicHistoryService) reg.lookup("history");
+			ipls = (IPlayListService) reg.lookup("playlist");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -74,13 +82,13 @@ public class GenreController implements Initializable{
 	// 메인 재생 버튼 이벤트
 	@FXML public void btnMainPlay() {
 		ArrayList<String> list = musicCheckList();
-		System.out.println(list);
+		playListInsert(list,true);
 	}
 
 	// 메인 추가 버튼 이벤트
 	@FXML public void btnMainAdd() {
 		ArrayList<String> list = musicCheckList();
-		System.out.println(list);
+		playListInsert(list,false);
 	}
 
 	// 메인 담기 버튼 이벤트
@@ -204,6 +212,27 @@ public class GenreController implements Initializable{
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	private void playListInsert(ArrayList<String> list, boolean play) {
+		for (int i = 0; i < list.size(); i++) {
+			PlayListVO vo = new PlayListVO();
+			vo.setMus_no(list.get(i));
+			vo.setMem_id(LoginSession.session.getMem_id());
+			try {
+				ipls.playlistInsert(vo);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			
+			if (MusicMainController.musicplayer.isShowing()) {
+				mpc = MusicMainController.playerLoad.getController();
+				mpc.reFresh();
+				if(play) {
+					mpc.selectIndex();
+				}
+			}
 		}
 	}
 }

@@ -202,7 +202,7 @@ public class MusicList {
 					// 전날 순위에 대한 변동순위를 나타내는 Label
 					Label la_PreRank = new Label();
 					la_PreRank.setFont(Font.font("-윤고딕350", 12));
-					la_PreRank.setPrefWidth(26);
+					la_PreRank.setPrefWidth(30);
 					la_PreRank.setPrefHeight(23);
 					int beforRank = 0;
 					if(list.get(i).get("MUS_BEFOR_RANK") != null) {
