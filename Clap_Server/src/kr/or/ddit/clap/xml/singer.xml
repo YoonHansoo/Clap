@@ -8,6 +8,7 @@
     
     <select id="selectListAll" resultClass="singerVO">
           select sing_no,sing_name,sing_act_type, sing_act_era,sing_debut_era,sing_debut_mus,sing_image  from singer 
+          order by to_number(sing_NO) desc
     </select>
       
      <!-- 검색용 쿼리 -->

@@ -18,6 +18,7 @@
      where a.alb_no = b.alb_no
        and a.sing_no = c.sing_no
        and b.gen_detail_no = d.gen_detail_no
+       order by to_number(b.mus_NO) desc
 
 	</select>
 	
