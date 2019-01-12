@@ -446,6 +446,24 @@ public class MusicMainController implements Initializable {
 		
 	}
 	
+	public void recommendManage(ActionEvent event) { //추천앨범 관리를 클릭 했을 때. 
+		try {
+			Parent recommendManage = FXMLLoader.load(getClass().getResource("../view/recommend/album/RecommendAlbumList.fxml")); //바뀔 화면을 가져옴
+			
+			String temp_path = (getClass().getResource("../view/recommend/album/RecommendAlbumList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); //현재화면 절대경로
+			
+			gobackStack.goURL(path);  
+			
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(recommendManage);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	@FXML
 	public void musicPlayer(ActionEvent event) { // MusicPlayer를 클릭 했을 때.
 		if (!musicplayer.isShowing()) {

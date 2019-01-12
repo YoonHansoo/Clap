@@ -255,11 +255,7 @@ public class UpdateMusicController implements Initializable {
 			errMsg("Music File은 필수 입력 사항입니다.");
 			return;
 		}
-		if (txt_fileVideo.getText().isEmpty()) {
-			errMsg("Video File은 필수 입력 사항입니다.");
-			return;
-		}
-
+		
 		 
 		
 		
