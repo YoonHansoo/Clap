@@ -134,7 +134,7 @@ public class MypageDaoImpl implements IMypageDao{
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
 			
-			list = smc.queryForList("musicreview.selectAll");
+			list = smc.queryForList("mypage.selectAll");
 		
 		} catch (SQLException e) {
 			e.printStackTrace();
