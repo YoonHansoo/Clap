@@ -509,11 +509,6 @@ public class MusicMainController implements Initializable {
 	public void salesMange(ActionEvent event) { //매출관리 클릭시
 		   try {
 			   Parent salesManage = FXMLLoader.load(getClass().getResource("../view/ticket/salemanage/salesmanage.fxml")); //바뀔 화면을 가져옴
-			   
-			  /* String temp_path = (getClass().getResource("../view/album/album/ShowAlbumLIst.fxml")).getPath();
-				String path = temp_path.substring(1, temp_path.length()); //현재화면 절대경로
-				gobackStack.goURL(path);  */	
-			   
 			   contents.getChildren().removeAll();
 			   contents.getChildren().setAll(salesManage);
 			   
@@ -521,6 +516,17 @@ public class MusicMainController implements Initializable {
 			   e.printStackTrace();
 		   }
 		   
+	}
+	
+	public void  memManage(){
+		try {
+			   Parent salesManage = FXMLLoader.load(getClass().getResource("../view/member/manage/memmanage.fxml")); //바뀔 화면을 가져옴	
+			   contents.getChildren().removeAll();
+			   contents.getChildren().setAll(salesManage);
+			   
+		   } catch (IOException e) {
+			   e.printStackTrace();
+		   }
 	}
 	
 
