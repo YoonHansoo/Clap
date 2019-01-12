@@ -299,7 +299,7 @@ public class MusicMainController implements Initializable {
 	@FXML
 	public void join() throws IOException {
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join2.fxml"));
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(root);
 		} catch (IOException e) {
