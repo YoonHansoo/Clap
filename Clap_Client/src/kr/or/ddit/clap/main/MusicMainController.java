@@ -32,6 +32,7 @@ import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+import kr.or.ddit.clap.view.newmusic.main.newMusicMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
@@ -361,11 +362,17 @@ public class MusicMainController implements Initializable {
 		ChartMenuController.menuCount = 2;
 		chartMenu_PageLoad();
 	}
-
+	
 	@FXML
-	public void musicvideoPageChange(ActionEvent event) { // 차트메뉴에서 뮤직비디오차트 클릭 했을때 페이지 전환 이벤트
-		ChartMenuController.menuCount = 3;
-		chartMenu_PageLoad();
+	public void musicPageChange(ActionEvent event) { // 최신음악메뉴에서 곡차트 클릭 했을때 페이지 전환 이벤트
+		newMusicMenuController.menuCount = 0;
+		newMusicMenu_PageLoad();
+	}
+	
+	@FXML
+	public void albumPageChange(ActionEvent event) { // 최신은악메뉴에서 앨범차트 클릭 했을때 페이지 전환 이벤트
+		newMusicMenuController.menuCount = 1;
+		newMusicMenu_PageLoad();
 	}
 
 	public void chartMenu_PageLoad() {
@@ -373,6 +380,17 @@ public class MusicMainController implements Initializable {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); // 바뀔 화면을
 																											// 가져옴
 			contents.getChildren().removeAll();
+			contents.getChildren().setAll(page);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void newMusicMenu_PageLoad() {
+		try {
+			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusicmenu/main/newMusicMenu.fxml")); // 바뀔 화면을
+																												// 가져옴
+			contents.getChildren().removeAll();	
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
 			e.printStackTrace();
