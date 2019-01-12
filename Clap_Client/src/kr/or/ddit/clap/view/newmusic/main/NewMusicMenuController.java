@@ -17,7 +17,7 @@ import javafx.scene.layout.StackPane;
  *
  */
 
-public class newMusicMenuController implements Initializable{
+public class NewMusicMenuController implements Initializable{
 	
 	public static int menuCount = 0;
 	

@@ -32,7 +32,7 @@ import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
-import kr.or.ddit.clap.view.newmusic.main.newMusicMenuController;
+import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
@@ -365,13 +365,13 @@ public class MusicMainController implements Initializable {
 	
 	@FXML
 	public void musicPageChange(ActionEvent event) { // 최신음악메뉴에서 곡차트 클릭 했을때 페이지 전환 이벤트
-		newMusicMenuController.menuCount = 0;
+		NewMusicMenuController.menuCount = 0;
 		newMusicMenu_PageLoad();
 	}
 	
 	@FXML
 	public void albumPageChange(ActionEvent event) { // 최신은악메뉴에서 앨범차트 클릭 했을때 페이지 전환 이벤트
-		newMusicMenuController.menuCount = 1;
+		NewMusicMenuController.menuCount = 1;
 		newMusicMenu_PageLoad();
 	}
 
@@ -388,7 +388,7 @@ public class MusicMainController implements Initializable {
 	
 	public void newMusicMenu_PageLoad() {
 		try {
-			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusicmenu/main/newMusicMenu.fxml")); // 바뀔 화면을
+			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusicmenu/main/NewMusicMenu.fxml")); // 바뀔 화면을
 																												// 가져옴
 			contents.getChildren().removeAll();	
 			contents.getChildren().setAll(page);
