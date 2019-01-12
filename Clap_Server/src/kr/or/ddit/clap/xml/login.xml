@@ -14,6 +14,14 @@
 			mem_auth, mem_indate, mem_blacklist_tf, mem_del_tf, mem_black_cnt, mem_image, mem_intro 
 			from member where mem_id=#mem_id#
 	</select>
+	
+	<!-- 검색어기능 -->
+	<select id="selecthotkeyword" resultClass="String">
+			SELECT BEST_WORD
+     		 FROM BEST_SEARCH_WORD
+     		WHERE ROWNUM &lt; 11
+      		 ORDER BY BEST_WORD
+	</select>
 
 	<select id="idSearch" resultClass="memberVO" parameterClass="memberVO">
 			select mem_id from member

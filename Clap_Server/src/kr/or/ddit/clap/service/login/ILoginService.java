@@ -14,5 +14,7 @@ public interface ILoginService extends Remote{
 	public List<MemberVO> idSearch(MemberVO vo) throws RemoteException;
 	
 	public Boolean emailCheck(MemberVO vo) throws RemoteException;
+	
+	public List<String> selecthotkeyword() throws RemoteException;
 }
 

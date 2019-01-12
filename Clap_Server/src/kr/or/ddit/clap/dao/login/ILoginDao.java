@@ -12,4 +12,6 @@ public interface ILoginDao {
 	public List<MemberVO> idSearch(MemberVO vo);
 	
 	public Boolean emailCheck(MemberVO vo);
+	
+	public List<String> selecthotkeyword();
 }

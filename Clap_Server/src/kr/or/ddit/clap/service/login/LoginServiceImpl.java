@@ -73,5 +73,10 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 		}
 	}
 
+	@Override
+	public List<String> selecthotkeyword() throws RemoteException {
+		return loginDao.selecthotkeyword();
+	}
+
 
 }

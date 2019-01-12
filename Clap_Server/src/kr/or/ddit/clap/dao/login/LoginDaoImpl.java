@@ -89,6 +89,18 @@ public class LoginDaoImpl implements ILoginDao{
 		return emailCheck;
 	}
 
+	@Override
+	public List<String> selecthotkeyword() {
+		List<String> list = new ArrayList<String>();
+		try {
+			list = smc.queryForList("login.selecthotkeyword");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+		
+	}
+
 
 
 }
