@@ -33,6 +33,8 @@ import kr.or.ddit.clap.service.playlist.PlayListServiceImpl;
 import kr.or.ddit.clap.service.noticeboard.NoticeBoardServiceImpl;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.service.qna.QnaServiceImpl;
+import kr.or.ddit.clap.service.recommend.IRecommendService;
+import kr.or.ddit.clap.service.recommend.RecommendServiceImpl;
 import kr.or.ddit.clap.service.singer.ISingerReviewService;
 import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.service.singer.SingerReviewServiceImpl;
@@ -63,7 +65,7 @@ public class ServerMain {
 			IPlayListService ipls     = PlayListServiceImpl.getInstance();		// 플레이 리스트
 			IEventBoardService ies	  = EventBoardServiceImpl.getInstance();	// 이벤트
 			ITicketService its     	  = TicketServiceImpl.getInstance();		// 이용권
-
+			IRecommendService irs 	  = RecommendServiceImpl.getInstance();     //추천앨범
 
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
@@ -85,6 +87,7 @@ public class ServerMain {
 			reg.rebind("albreview", iars);
 			reg.rebind("singreview", isrs);
 			reg.rebind("eventboard", ies);
+			reg.rebind("recommend", irs); //추천앨범
 
 			reg.rebind("tick"
 					+ "et", its);

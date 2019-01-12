@@ -31,6 +31,9 @@
  	<typeAlias alias="ticketBuyVO" type ="kr.or.ddit.clap.vo.ticket.TicketBuyListVO"/>
  	<typeAlias alias="ticketVO" type ="kr.or.ddit.clap.vo.ticket.TicketVO"/>
 
+ 	<typeAlias alias="RecommendAlbumVO" type ="kr.or.ddit.clap.vo.recommend.RecommendAlbumVO"/>
+
+	
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">
@@ -58,6 +61,7 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/music.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/eventboard.xml"></sqlMap> 
 	<sqlMap resource="kr/or/ddit/clap/xml/ticket.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/recommend.xml"></sqlMap> 
 
 </sqlMapConfig>
 
