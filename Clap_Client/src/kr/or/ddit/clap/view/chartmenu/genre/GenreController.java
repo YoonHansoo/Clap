@@ -83,12 +83,16 @@ public class GenreController implements Initializable{
 	@FXML public void btnMainPlay() {
 		ArrayList<String> list = musicCheckList();
 		playListInsert(list,true);
+		cb_main.setSelected(false);
+		mainCheck();
 	}
 
 	// 메인 추가 버튼 이벤트
 	@FXML public void btnMainAdd() {
 		ArrayList<String> list = musicCheckList();
 		playListInsert(list,false);
+		cb_main.setSelected(false);
+		mainCheck();
 	}
 
 	// 메인 담기 버튼 이벤트
@@ -97,6 +101,8 @@ public class GenreController implements Initializable{
 		MyAlbumDialogController.mus_no.clear();
 		MyAlbumDialogController.mus_no = list;
 		musicList.myAlbumdialog();
+		cb_main.setSelected(false);
+		mainCheck();
 	}
 	
 	// 전체 선택 및 해제 메서드

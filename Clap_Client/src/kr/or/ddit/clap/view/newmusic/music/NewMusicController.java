@@ -16,9 +16,12 @@ import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.music.IMusicService;
@@ -59,6 +62,8 @@ public class NewMusicController implements Initializable{
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
 	private MusicPlayerController mpc;
+	private int itemsForPage;
+	private Pagination p_page;
 	
 
 	@Override
@@ -67,6 +72,7 @@ public class NewMusicController implements Initializable{
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
+			itemsForPage = 3;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -83,12 +89,16 @@ public class NewMusicController implements Initializable{
 	@FXML public void btnMainPlay() {
 		ArrayList<String> list = musicCheckList();
 		playListInsert(list,true);
+		cb_main.setSelected(false);
+		mainCheck();
 	}
 
 	// 메인 추가 버튼 이벤트
 	@FXML public void btnMainAdd() {
 		ArrayList<String> list = musicCheckList();
 		playListInsert(list,false);
+		cb_main.setSelected(false);
+		mainCheck();
 	}
 
 	// 메인 담기 버튼 이벤트
@@ -97,6 +107,8 @@ public class NewMusicController implements Initializable{
 		MyAlbumDialogController.mus_no.clear();
 		MyAlbumDialogController.mus_no = list;
 		musicList.myAlbumdialog();
+		cb_main.setSelected(false);
+		mainCheck();
 	}
 	
 	// 전체 선택 및 해제 메서드
@@ -133,7 +145,7 @@ public class NewMusicController implements Initializable{
 			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			musicList.musicList(songRank);
+			pageing(songRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -150,7 +162,7 @@ public class NewMusicController implements Initializable{
 			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			musicList.musicList(popRank);
+			pageing(popRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -167,7 +179,7 @@ public class NewMusicController implements Initializable{
 			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			musicList.musicList(ostRank);
+			pageing(ostRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -184,18 +196,18 @@ public class NewMusicController implements Initializable{
 			btn_Other.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			cb_main.setSelected(false);
 			
-			Calendar cal = Calendar.getInstance();
-			String toDay = "";
-			toDay = cal.get(Calendar.YEAR)+"." + (cal.get(Calendar.MONTH)+1) + 
-					"." + cal.get(Calendar.DAY_OF_MONTH);
-			
-			musicList.musicList(otherRank);
+			pageing(otherRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	public VBox createPage(int pageIndex, ObservableList<Map> list, int itemsForPage) {
+        int page = pageIndex * itemsForPage;
+        return musicList.pagenation(list,itemsForPage,page);
+    }
+
 	private void playListInsert(ArrayList<String> list, boolean play) {
 		for (int i = 0; i < list.size(); i++) {
 			PlayListVO vo = new PlayListVO();
@@ -216,4 +228,26 @@ public class NewMusicController implements Initializable{
 			}
 		}
 	}
+	
+	private void pageing(ObservableList<Map> list) {
+		
+		if (mainBox.getChildren().size() == 4) {
+			mainBox.getChildren().remove(3);
+		}
+		
+		if (list.size() == 0) return;
+		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
+		
+		p_page = new Pagination(totalPage, 0);
+		p_page.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage(pageIndex,list,itemsForPage);
+            }
+	    });
+		
+		mainBox.getChildren().addAll(p_page);
+	}
+	
+	
 }
