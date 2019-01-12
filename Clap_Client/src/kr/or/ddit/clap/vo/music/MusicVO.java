@@ -2,10 +2,14 @@ package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializable {
 
@@ -32,7 +36,34 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 	private String gen_name;
 	private ImageView imgView;
 	private String gen_detail_name;
+	private JFXButton btn;
+	private static int id;
 	
+		
+	
+	public JFXButton createButtonImg() {
+		this.btn = new JFXButton();
+		FontAwesomeIcon remove = new FontAwesomeIcon();
+		remove.setIconName("REMOVE");
+		remove.setFill(Color.valueOf("#9c0000"));
+		remove.setSize("20");
+		btn.setId(id+"");
+		id++;
+		btn.setGraphic(remove);
+		return btn;
+	}
+	
+	
+	public JFXButton getBtn() {
+		
+		return btn;
+	}
+
+	public void setBtn(JFXButton btn) {
+		
+		this.btn = btn;
+	}
+
 	public String getMus_mvfile() {
 		return mus_mvfile;
 	}

@@ -58,6 +58,7 @@ public class ShowRecommendAlbumController implements Initializable {
 			int likeCnt = 0;
 			int listCnt = 0;
 			
+			System.out.println("사이즈:"+ recommendList.size());
 			//PK
 			String RcmAlbNo = recommendList.get(i).getRcm_alb_no();
 			try {
@@ -153,10 +154,16 @@ public class ShowRecommendAlbumController implements Initializable {
 			vbox.getChildren().addAll(iv_Album, title, temp_hbox);
 			hbox.getChildren().add(vbox);
 
-			if (i % 2 == 0) {
-				main_vbox.getChildren().addAll(hbox);
+			
+			if(i % 2 == 0) {
+			main_vbox.getChildren().add(hbox);
+				
 			}
-
+			else if(i == recommendList.size()) {  // -------------
+				System.out.println("마지막");
+				main_vbox.getChildren().add(hbox);
+			}
+			
 		}
 
 	}
@@ -168,8 +175,12 @@ public class ShowRecommendAlbumController implements Initializable {
 		Parent insertRecommend;
 		try {
 			insertRecommend = loader.load();
-			contents.getChildren().removeAll();
-			contents.getChildren().setAll(insertRecommend);
+			
+			InsertRecommendAlbumController cotroller = loader.getController();
+			cotroller.givePane(contents); 
+			
+			main.getChildren().removeAll();
+			main.getChildren().setAll(insertRecommend);
 
 		} catch (IOException e) {
 			e.printStackTrace();

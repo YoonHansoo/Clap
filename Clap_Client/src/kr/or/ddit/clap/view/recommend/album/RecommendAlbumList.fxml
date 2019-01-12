@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.ShowRecommendAlbumController">
+<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1500.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.ShowRecommendAlbumController">
    <children>																														 
       <VBox layoutX="40.0" layoutY="53.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
          <children>
@@ -90,7 +90,7 @@
             </Label>
          </children>
       </VBox>
-      <AnchorPane fx:id="contents" layoutX="224.0" layoutY="-7.0" prefHeight="768.0" prefWidth="773.0">
+      <AnchorPane fx:id="main" layoutX="224.0" layoutY="-7.0" prefHeight="768.0" prefWidth="773.0">
          <children>
             <Line endX="634.0" layoutX="124.0" layoutY="86.0" startX="-100.0" stroke="#9c0000" />
             <JFXButton layoutX="643.0" layoutY="51.0" onAction="#InsertRecommendAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />

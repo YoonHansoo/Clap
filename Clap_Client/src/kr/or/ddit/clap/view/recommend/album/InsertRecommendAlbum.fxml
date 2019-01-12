@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.InsertRecommendAlbumController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" stylesheets="@../../../../../../../ChartMenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.InsertRecommendAlbumController">
    <children>
       <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="추천 앨범 등록">
          <font>
@@ -82,7 +82,7 @@
       <JFXButton />
       <JFXButton layoutX="509.0" layoutY="689.0" onAction="#insertRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
-      <JFXButton layoutX="494.0" layoutY="292.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  등록" textFill="WHITE">
+      <JFXButton layoutX="488.0" layoutY="292.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  등록" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="MUSIC" />
          </graphic>
@@ -92,12 +92,17 @@
       </JFXButton>
       <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0">
          <columns>
-            <TreeTableColumn fx:id="col_MusicName" prefWidth="160.0" text="곡" />
-            <TreeTableColumn fx:id="col_AlbName" prefWidth="198.0" text="앨범 " />
-            <TreeTableColumn fx:id="col_SingerName" prefWidth="201.0" text="아티스트" />
-            <TreeTableColumn fx:id="col_Deletebtn" prefWidth="156.0" text="지우기" />
+            <TreeTableColumn fx:id="col_MusicName" prefWidth="216.0" text="곡" />
+            <TreeTableColumn fx:id="col_AlbName" prefWidth="201.0" text="앨범 " />
+            <TreeTableColumn fx:id="col_SingerName" prefWidth="254.0" text="아티스트" />
+            <TreeTableColumn fx:id="col_Deletebtn" prefWidth="44.0" />
             <TreeTableColumn fx:id="col_MusicNo" minWidth="0.0" prefWidth="0.0" text="곡 번호" visible="false" />
          </columns>
       </JFXTreeTableView>
+      <Label fx:id="lable_cntMusic" alignment="TOP_RIGHT" layoutX="676.0" layoutY="658.0" prefHeight="15.0" prefWidth="70.0" text="0 곡 ">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
