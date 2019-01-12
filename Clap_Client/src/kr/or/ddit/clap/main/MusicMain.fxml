@@ -98,7 +98,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#top50PageChange" text="TOP50" />
                               <MenuItem mnemonicParsing="false" onAction="#genrePageChange" text="장르별" />
                               <MenuItem mnemonicParsing="false" onAction="#periodPageChange" text="시대별" />
-                              <MenuItem mnemonicParsing="false" onAction="#musicvideoPageChange" text="뮤직비디오" />
+                            
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="최신음악">
