@@ -38,4 +38,6 @@ public interface IMusicDao {
 	public int updateMusicInfo(MusicVO vo);
 
 	public int deleteMusic(String musicNo);
+	
+	public List<MusicVO> newMusicSelete(String genre_no);
 }
