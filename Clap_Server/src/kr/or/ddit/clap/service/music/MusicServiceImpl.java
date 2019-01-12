@@ -10,6 +10,7 @@ package kr.or.ddit.clap.service.music;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.dao.music.MusicDaoImpl;
 import kr.or.ddit.clap.vo.genre.GenreDetailVO;
@@ -97,9 +98,11 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 	}
 
 	@Override
-	public List<MusicVO> newMusicSelete(String genre_no) throws RemoteException {
+	public List<Map> newMusicSelete(String genre_no) throws RemoteException {
 		return musicDao.newMusicSelete(genre_no);
 	}
+
+	
 
 
 	

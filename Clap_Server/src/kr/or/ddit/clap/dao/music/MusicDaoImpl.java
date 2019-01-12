@@ -12,6 +12,7 @@ import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -209,8 +210,8 @@ public class MusicDaoImpl implements IMusicDao {
 	}
 
 	@Override
-	public List<MusicVO> newMusicSelete(String genre_no) {
-		List<MusicVO> list = new ArrayList<MusicVO>();
+	public List<Map> newMusicSelete(String genre_no) {
+		List<Map> list = new ArrayList<Map>();
 		try {
 
 			list = smc.queryForList("music.newmusicselete", genre_no);

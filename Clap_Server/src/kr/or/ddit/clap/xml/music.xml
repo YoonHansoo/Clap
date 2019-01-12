@@ -163,7 +163,7 @@
 	 			        	where MUS_NO=#mus_no#
 	 </update>
    
-   <select id="newmusicselete" resultClass="musicVO"  parameterClass="String">
+   <select id="newmusicselete" resultClass="java.util.HashMap"  parameterClass="String">
 		 select 
 		        a.mus_no,
 		        a.mus_title,

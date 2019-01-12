@@ -9,6 +9,7 @@ package kr.or.ddit.clap.dao.music;
 
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.vo.genre.GenreDetailVO;
 import kr.or.ddit.clap.vo.genre.GenreVO;
@@ -39,5 +40,5 @@ public interface IMusicDao {
 
 	public int deleteMusic(String musicNo);
 	
-	public List<MusicVO> newMusicSelete(String genre_no);
+	public List<Map> newMusicSelete(String genre_no);
 }
