@@ -21,6 +21,8 @@ public interface IMypageDao {
 	
 	public List<MemberVO> selectAll();
 	
+	public List<MemberVO> searchMemList(MemberVO vo);
+
 	public int  updateTel(MemberVO vo);
 	
 	public int  updateEmail(MemberVO vo);
@@ -34,5 +36,6 @@ public interface IMypageDao {
 	public int  updateImage(MemberVO vo);
 	
 
+	
 	
 }

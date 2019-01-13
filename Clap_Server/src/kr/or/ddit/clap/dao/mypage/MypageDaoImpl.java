@@ -143,6 +143,20 @@ public class MypageDaoImpl implements IMypageDao{
 		return list;
 	}
 
+	@Override
+	public List<MemberVO> searchMemList(MemberVO vo) {
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			
+			list = smc.queryForList("mypage.searchMemList",vo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 	
 	
 	}

@@ -88,6 +88,35 @@
 	</update>
 	
 	
+	<select id="searchMemList" resultClass="memberVO"  parameterClass="memberVO">
+		  select mem_id,
+		mem_pw,
+		mem_name,
+		mem_email,
+		mem_bir,
+
+		mem_gender,
+		mem_tel,
+		mem_grade,
+		mem_auth,
+		mem_indate,
+
+		mem_blacklist_tf,
+		mem_del_tf,
+		mem_black_cnt,
+		mem_image,
+		mem_intro
+            from member 
+       <dynamic prepend="where">
+          <isNotEmpty property="mem_name" prepend="and">
+             mem_name  like '%' || #mem_name# || '%'
+          </isNotEmpty>
+          <isNotEmpty property="mem_id" prepend="and">
+             mem_id  like '%' || #mem_id# || '%'
+          </isNotEmpty>   
+       </dynamic>       
+	</select>
+	
 
 </sqlMap>			
 
