@@ -14,5 +14,9 @@ public interface IEventBoardService extends Remote {
 	
 	public int insertEvent(EventBoardVO vo) throws RemoteException;
 	
+	public EventBoardVO eventDetailAll(String ContentNo) throws RemoteException;
+	
+	public int updateEvent(EventBoardVO vo) throws RemoteException;
+	
 
 }

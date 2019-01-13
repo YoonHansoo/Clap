@@ -103,7 +103,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="최신음악">
                            <items>
-                              <MenuItem mnemonicParsing="false" onAction="#musicPageChange" text="곡" />
+                              <!-- <MenuItem mnemonicParsing="false" onAction="#musicPageChange" text="곡" /> -->
                               <MenuItem mnemonicParsing="false" onAction="#albumPageChange" text="앨범" />
                            </items>
                         </Menu>
@@ -141,7 +141,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="이벤트">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="Event" />
+                              <MenuItem mnemonicParsing="false" onAction="#event" text="Event" />
                            </items>
                         </Menu>
                         <Menu fx:id="menu_admin" mnemonicParsing="false" text="관리자모드" visible="false">
@@ -153,7 +153,7 @@
                               <MenuItem mnemonicParsing="false" onAction="#musicManage" text="곡 관리" />
                               <MenuItem mnemonicParsing="false" text="장르 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#recommendManage" text="추천 관리" />
-                              <MenuItem mnemonicParsing="false" text="Event 관리" />
+                              <MenuItem mnemonicParsing="false" onAction="#eventManage" text="Event 관리" />
                               <MenuItem mnemonicParsing="false" text="이용권 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#salesMange" text="매출 관리" />
                            </items>

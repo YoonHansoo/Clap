@@ -13,21 +13,20 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
-import javax.mail.Session;
+import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.vo.support.QnaVO;
-import com.jfoenix.controls.JFXButton;
-import javafx.scene.layout.AnchorPane;
 
 public class QnaDetailContentController implements Initializable {
 	

@@ -44,4 +44,15 @@ public class EventBoardServiceImpl extends UnicastRemoteObject implements IEvent
 		return eventboarddao.insertEvent(vo);
 	}
 
+	@Override
+	public EventBoardVO eventDetailAll(String ContentNo) throws RemoteException {
+		return eventboarddao.eventDetailAll(ContentNo);
+	}
+
+	@Override
+	public int updateEvent(EventBoardVO vo) throws RemoteException {
+		return eventboarddao.updateEvent(vo);
+		
+	}
+
 }

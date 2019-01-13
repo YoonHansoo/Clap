@@ -6,6 +6,7 @@
  */
 package kr.or.ddit.clap.dao.eventboard;
 
+import java.rmi.RemoteException;
 import java.util.List;
 
 import kr.or.ddit.clap.vo.support.EventBoardVO;
@@ -17,5 +18,9 @@ public interface IEventBoardDao {
 	public List<EventBoardVO> searchList(EventBoardVO vo);
 	
 	public int insertEvent(EventBoardVO vo);
+	
+	public EventBoardVO eventDetailAll(String ContentNo) throws RemoteException;
+	
+	public int updateEvent(EventBoardVO vo);
 
 }

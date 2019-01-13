@@ -5,6 +5,8 @@
 <!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->
 <sqlMap namespace="eventboard">
 
+
+
 	 <select id="selectListAll" resultClass="EventBoardVO">
  		select
  				event_no,
@@ -15,6 +17,23 @@
 		  from
 			  	event_board 
 	 </select>
+	 
+	 <!-- 사용자에게 보여질 이벤트 상세 내용 -->
+	 <select id="eventDetailAll" resultClass="EventBoardVO" parameterClass="String">
+		 select
+ 				event_no,
+ 				event_title,
+ 				event_sdate,
+ 				event_edate,
+ 				event_image,
+				event_content
+		  from
+			  	event_board
+		 where  event_no = #String#
+	 </select>
+	 
+	 
+	 
 	 
 	 
 	  <!-- 검색용 쿼리  -->
@@ -63,6 +82,20 @@
 							 		)
 	 
 	 </insert>
+	 
+	 
+	 <!-- 글 업데이트 쿼리 -->
+	 <update id="updateEvent" parameterClass="EventBoardVO">
+	 				update event_board set
+	 										EVENT_TITLE    = #event_title#,
+											EVENT_SDATE    = #event_sdate#,
+											EVENT_EDATE    = #event_edate#,
+											EVENT_IMAGE    = #event_image#,
+											EVENT_CONTENT  = #event_content#,
+											MEM_ID 		   = #mem_id#
+									 where  EVENT_NO 	   = #event_no#
+									 
+	</update>
 	 
 	 
 	 

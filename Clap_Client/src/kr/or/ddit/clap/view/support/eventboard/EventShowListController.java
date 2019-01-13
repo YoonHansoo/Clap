@@ -36,10 +36,10 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.service.eventboard.IEventBoardService;
-import kr.or.ddit.clap.view.singer.singer.InsertSingerController;
 import kr.or.ddit.clap.vo.support.EventBoardVO;
 
 public class EventShowListController implements Initializable {
+	//관리자 페이지
 
 	@FXML
 	AnchorPane contents;
@@ -72,6 +72,8 @@ public class EventShowListController implements Initializable {
 	private IEventBoardService ies;
 	private ObservableList<EventBoardVO> eventList, currenteventList;
 	private int from, to, itemsForPage, totalPageCnt;
+	//public static String eventNo;
+	//public EventBoardVO eVO = null;
 	
 	
 	@Override
@@ -119,6 +121,7 @@ public class EventShowListController implements Initializable {
 		});
 		
 		
+		// 더블클릭
 		btn_Add.setOnMouseClicked(e -> {
 			
 			try {
@@ -144,19 +147,40 @@ public class EventShowListController implements Initializable {
 		
 		
 		
-		/*// 더블클릭
+		// 더블클릭
 		tbl_Event.setOnMouseClicked(e -> {
 			if (e.getClickCount()  > 1) {
-				String eventNo = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_no();
-				System.out.println("선택한 글 번호 : " + eventNo);
+				int index = tbl_Event.getSelectionModel().getSelectedIndex();
+				System.out.println("선택한 인덱스" + index);
+				EventBoardVO vo = eventList.get(index);
+				System.out.println("번호 : " + vo.getEvent_no());
+				String eventNo = vo.getEvent_no();
 				
 				try {
+					System.out.println("업데이트");
+					System.out.println("선택한 글 번호 : " + eventNo);
+				
 					//바뀔 화면(FXML)을 가져옴
+					EventContentUpdateController.eventNo = vo.getEvent_no(); //글 번호를 변수로 넘겨줌.
 					
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("EventContentUpdate.fxml"));
+					Parent eventUpdate = loader.load();
+					EventContentUpdateController controller = loader.getController();
+					controller.initData(vo); //eVO
+					
+					main.getChildren().removeAll();
+					main.getChildren().setAll(eventUpdate);
+					
+					
+					main.getChildren().removeAll();
+					main.getChildren().setAll(eventUpdate);
+					
+				} catch(IOException ee) {
+					ee.printStackTrace();
 				}
 			}
 			
-		});*/
+		});
 		
 		
 		

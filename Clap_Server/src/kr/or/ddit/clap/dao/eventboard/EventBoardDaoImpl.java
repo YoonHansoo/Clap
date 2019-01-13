@@ -8,6 +8,7 @@ package kr.or.ddit.clap.dao.eventboard;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,6 +87,33 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 			e.printStackTrace();
 			
 		}
+		return cnt;
+	}
+
+	@Override
+	public EventBoardVO eventDetailAll(String ContentNo) throws RemoteException {
+		
+		EventBoardVO eVO = new EventBoardVO();
+		//List<EventBoardVO> list = new ArrayList<EventBoardVO>();
+		try {
+			eVO = (EventBoardVO) smc.queryForObject("eventboard.eventDetailAll", ContentNo);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return eVO;
+	}
+
+	@Override
+	public int updateEvent(EventBoardVO vo) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.update("eventboard.updateEvent", vo);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return cnt;
 	}
 
