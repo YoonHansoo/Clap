@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.clap.dao.recommend.RecommendDaoImpl;
+import kr.or.ddit.clap.vo.music.MusicVO;
+import kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
 
 public class RecommendServiceImpl extends UnicastRemoteObject implements IRecommendService {
@@ -69,6 +71,41 @@ public class RecommendServiceImpl extends UnicastRemoteObject implements IRecomm
 	@Override
 	public int insertRecommendAlbumMusic(Map<String,String> map) throws RemoteException {
 		return recommendDao.insertRecommendAlbumMusic(map);
+	}
+
+
+
+	@Override
+	public RecommendAlbumVO selectRecommendAlbumDetail(String rcmAlbNo) throws RemoteException {
+		return recommendDao.selectRecommendAlbumDetail(rcmAlbNo);
+	}
+
+
+
+	@Override
+	public List<MusicVO> SelectRcmMusicList(String rcmAlbNo) throws RemoteException {
+		return recommendDao.SelectRcmMusicList(rcmAlbNo);
+	}
+
+
+
+	@Override
+	public int updateRcmAlbum(RecommendAlbumVO vo) throws RemoteException {
+		return recommendDao.updateRcmAlbum(vo);
+	}
+
+
+
+	@Override
+	public int deleteRcmMusic(String rcmAlbNo) throws RemoteException {
+		return recommendDao.deleteRcmMusic(rcmAlbNo);
+	}
+
+
+
+	@Override
+	public int deleteRecommendAlbum(String rcmAlbNo) throws RemoteException {
+		return recommendDao.deleteRecommendAlbum(rcmAlbNo);
 	}
 	
 }

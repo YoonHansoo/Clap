@@ -11,8 +11,8 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import kr.or.ddit.clap.vo.music.MusicVO;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
-import kr.or.ddit.clap.vo.singer.SingerVO;
 
 public class RecommendDaoImpl implements IRecommendDao {
 	private SqlMapClient smc;
@@ -117,6 +117,71 @@ public class RecommendDaoImpl implements IRecommendDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return cnt;
+	}
+
+	@Override
+	public RecommendAlbumVO selectRecommendAlbumDetail(String rcmAlbNo) {
+
+		RecommendAlbumVO rVO = new RecommendAlbumVO();
+		try {
+			
+			rVO = (RecommendAlbumVO) smc.queryForObject("recommend.selectRecommendAlbumDetail", rcmAlbNo);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return rVO;
+	}
+
+	@Override
+	public List<MusicVO> SelectRcmMusicList(String rcmAlbNo) {
+		
+		List<MusicVO> list = new ArrayList<MusicVO>();
+		
+		try {
+			list = smc.queryForList("recommend.SelectRcmMusicList", rcmAlbNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int updateRcmAlbum(RecommendAlbumVO vo) {
+		int cnt = 0;
+		try {
+		cnt = smc.update("recommend.updateRcmAlbum",vo);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
+
+	@Override
+	public int deleteRcmMusic(String rcmAlbNo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("recommend.deleteRcmMusic",rcmAlbNo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+	
+	}
+
+	@Override
+	public int deleteRecommendAlbum(String rcmAlbNo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("recommend.deleteRecommendAlbum",rcmAlbNo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
 		return cnt;
 	}
 

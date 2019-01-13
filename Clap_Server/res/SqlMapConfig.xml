@@ -32,6 +32,7 @@
  	<typeAlias alias="ticketVO" type ="kr.or.ddit.clap.vo.ticket.TicketVO"/>
 
  	<typeAlias alias="RecommendAlbumVO" type ="kr.or.ddit.clap.vo.recommend.RecommendAlbumVO"/>
+ 	<typeAlias alias="RecommendAlbumListVO" type ="kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO"/>
 
 	
 
