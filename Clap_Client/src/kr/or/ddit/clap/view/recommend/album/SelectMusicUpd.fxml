@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../ChartMenu.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.SelectMusicController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../ChartMenu.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.SelectMusicControllerUpd">
    <children>
       <Pagination fx:id="p_paging" layoutX="33.0" layoutY="96.0" prefHeight="430.0" prefWidth="541.0" style="-fx-background-color: #fff;" />
       <JFXTreeTableView fx:id="tbl_Music" layoutX="33.0" layoutY="116.0" prefHeight="362.0" prefWidth="527.0">

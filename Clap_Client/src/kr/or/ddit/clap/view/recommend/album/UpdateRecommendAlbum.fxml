@@ -15,9 +15,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" stylesheets="@../../../../../../../ChartMenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.InsertRecommendAlbumController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../ChartMenu.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.UpdateRecommendAlbumController">
    <children>
-      <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="추천 앨범 등록">
+      <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="268.0" text="추천 앨범 수정">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -70,8 +70,8 @@
             </VBox>
          </children>
       </HBox>
-      <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="293.0" layoutY="292.0" onAction="#btn_insertImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE">
+      <Line endX="625.0" layoutX="120.0" layoutY="375.0" startX="-92.0" stroke="#9c0000" />
+      <JFXButton layoutX="293.0" layoutY="331.0" onAction="#btn_changeImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 수정" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
          </graphic>
@@ -79,10 +79,9 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton />
-      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#insertRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
-      <JFXButton layoutX="488.0" layoutY="292.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE">
+      <JFXButton layoutX="488.0" layoutY="331.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="MUSIC" />
          </graphic>
@@ -90,7 +89,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0">
+      <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="397.0" prefHeight="259.0" prefWidth="718.0">
          <columns>
             <TreeTableColumn fx:id="col_MusicName" prefWidth="216.0" text="곡" />
             <TreeTableColumn fx:id="col_AlbName" prefWidth="201.0" text="앨범 " />
@@ -102,6 +101,19 @@
       <Label fx:id="lable_cntMusic" alignment="TOP_RIGHT" layoutX="676.0" layoutY="658.0" prefHeight="15.0" prefWidth="70.0" text="0 곡 ">
          <font>
             <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="304.0" layoutY="288.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
+         <graphic>
+            <FontAwesomeIcon fill="#9c0000" iconName="HEART" />
+         </graphic>
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_LikeCnt" layoutX="377.0" layoutY="288.0" prefWidth="200.0" text="???" textFill="#090c64">
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
          </font>
       </Label>
    </children>

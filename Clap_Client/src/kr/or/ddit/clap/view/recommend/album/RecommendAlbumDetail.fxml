@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +13,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" stylesheets="@../../../../../../../ChartMenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.InsertRecommendAlbumController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../ChartMenu.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.RecommendAlbumDetailController">
    <children>
-      <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="추천 앨범 등록">
+      <Label fx:id="labelrcmName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="추천 앨범 명">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -40,7 +38,11 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField fx:id="txt_rcmName" focusColor="#090948" maxWidth="242.0" minWidth="119.0" prefHeight="29.0" prefWidth="242.0" />
+                        <Label fx:id="labelrcmName2" prefHeight="30.0" prefWidth="89.0" text="Label">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <VBox.margin>
                         <Insets top="20.0" />
@@ -63,7 +65,7 @@
                   </HBox>
                   <HBox prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <TextArea fx:id="txt_rcmContents" prefHeight="104.0" prefWidth="324.0" />
+                        <Label fx:id="label_rcmContents" alignment="TOP_LEFT" prefHeight="101.0" prefWidth="457.0" text="Label" />
                      </children>
                   </HBox>
                </children>
@@ -71,31 +73,14 @@
          </children>
       </HBox>
       <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="293.0" layoutY="292.0" onAction="#btn_insertImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE">
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
-         </graphic>
-         <font>
-            <Font name="YDIYGO340" size="14.0" />
-         </font>
-      </JFXButton>
-      <JFXButton />
-      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#insertRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
-      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
-      <JFXButton layoutX="488.0" layoutY="292.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE">
-         <graphic>
-            <FontAwesomeIcon fill="WHITE" iconName="MUSIC" />
-         </graphic>
-         <font>
-            <Font name="YDIYGO340" size="14.0" />
-         </font>
-      </JFXButton>
+      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
+      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
       <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0">
          <columns>
             <TreeTableColumn fx:id="col_MusicName" prefWidth="216.0" text="곡" />
             <TreeTableColumn fx:id="col_AlbName" prefWidth="201.0" text="앨범 " />
-            <TreeTableColumn fx:id="col_SingerName" prefWidth="254.0" text="아티스트" />
-            <TreeTableColumn fx:id="col_Deletebtn" prefWidth="44.0" />
+            <TreeTableColumn fx:id="col_SingerName" prefWidth="298.0" text="아티스트" />
+            <TreeTableColumn fx:id="col_Deletebtn" minWidth="0.0" prefWidth="0.0" visible="false" />
             <TreeTableColumn fx:id="col_MusicNo" minWidth="0.0" prefWidth="0.0" text="곡 번호" visible="false" />
          </columns>
       </JFXTreeTableView>
@@ -104,5 +89,26 @@
             <Font size="16.0" />
          </font>
       </Label>
+      <Label layoutX="294.0" layoutY="278.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
+         <graphic>
+            <FontAwesomeIcon fill="#9c0000" iconName="HEART" />
+         </graphic>
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="label_LikeCnt" layoutX="367.0" layoutY="278.0" prefWidth="200.0" text="???" textFill="#090c64">
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="82.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
+         <graphic>
+            <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
+         </graphic>
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

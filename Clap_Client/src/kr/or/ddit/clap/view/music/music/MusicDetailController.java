@@ -87,7 +87,6 @@ public class MusicDetailController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMusicService) reg.lookup("music");
 			mVO = ims.selectMusicDetailInfo(musicNo);
-			System.out.println("뮤비파일"+mVO.getMus_mvfile());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
 			e.printStackTrace();

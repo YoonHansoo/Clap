@@ -5,7 +5,8 @@ import java.rmi.RemoteException;
 import java.util.List;
 import java.util.Map;
 
-import kr.or.ddit.clap.vo.album.AlbumVO;
+import kr.or.ddit.clap.vo.music.MusicVO;
+import kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
 
 public interface IRecommendService extends Remote {
@@ -25,11 +26,26 @@ public interface IRecommendService extends Remote {
 	public int insertRecommendAlbum(RecommendAlbumVO rVO) throws RemoteException;
 	
 	
+	//추천앨범 상세조회
+	public RecommendAlbumVO selectRecommendAlbumDetail(String rcmAlbNo) throws RemoteException;
+	
+	//추천앨범에 들어있는 곡 조회 
+	public List<MusicVO> SelectRcmMusicList(String rcmAlbNo) throws RemoteException;
 	
 	//현재 시퀀스를 조회하는 쿼리 추가
 	public String selectSequence() throws RemoteException;
 			
 	//추천앨범곡을 추가
 	public int insertRecommendAlbumMusic(Map<String, String> map) throws RemoteException;
+	
+	//추천앨범 수정
+	public int updateRcmAlbum(RecommendAlbumVO vo) throws RemoteException;
+	
+	//추천앨범에 속해있는 곡 전체삭제
+	public int deleteRcmMusic(String rcmAlbNo) throws RemoteException;
+	
+	//추천앨범 삭제
+	public int deleteRecommendAlbum(String rcmAlbNo) throws RemoteException;
+	
 	
 }

@@ -25,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import kr.or.ddit.clap.service.recommend.IRecommendService;
+import kr.or.ddit.clap.view.music.music.MusicDetailController;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
 
 public class ShowRecommendAlbumController implements Initializable {
@@ -41,6 +42,9 @@ public class ShowRecommendAlbumController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		
+		 
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
@@ -105,7 +109,48 @@ public class ShowRecommendAlbumController implements Initializable {
 
 			title.setOnMouseClicked(e -> {
 				// 화면전환 코드 작성
-
+				
+				System.out.println("더블클릭");
+				if (e.getClickCount()  > 1) {
+					Label obj_label=(Label)e.getSource();
+					
+					for(int j = 0; j<recommendList.size(); j++) {
+						
+						//앨범 이름이 같을 경우 잘못된 값이 들어갈 가능성이 있음 -> 앨범이름도 유효성을 걸어줘?
+						if(obj_label.getText().equals(recommendList.get(j).getRcm_alb_name())){
+							String rcmAlbNo = recommendList.get(j).getRcm_alb_no();
+							System.out.println("곡번호 :"+ rcmAlbNo );
+							System.out.println("이동");
+						
+						//화면전환	
+							RecommendAlbumDetailController.rcmAlbNo = rcmAlbNo;//곡 번호를 변수로 넘겨줌
+							
+							FXMLLoader loader = new FXMLLoader(getClass().getResource("RecommendAlbumDetail.fxml"));// init실행됨
+							Parent recommendAlbumDetail;
+							
+							try {
+								recommendAlbumDetail = loader.load();
+								
+								RecommendAlbumDetailController cotroller = loader.getController();
+								cotroller.givePane(contents); 
+								
+								main.getChildren().removeAll();
+								main.getChildren().setAll(recommendAlbumDetail);
+							} catch (IOException e1) {
+								e1.printStackTrace();
+							} 
+							
+							
+							
+						}
+					}
+					
+					
+					
+					
+					
+					
+				}
 			});
 
 			// title과 like를 담을 hbox

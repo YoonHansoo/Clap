@@ -139,7 +139,7 @@ public class InsertRecommendAlbumController implements Initializable {
 		}
 
 		if(musicList.size() < 0) {
-			errMsg("1개 이상 곡을 선택해야 합니다.");
+			errMsg("1개 이상 곡을 추가해야 합니다.");
 			return;
 		}
 		
@@ -150,6 +150,7 @@ public class InsertRecommendAlbumController implements Initializable {
 		rVO.setRcm_content(txt_rcmContents.getText());
 		rVO.setMem_id(LoginSession.session.getMem_id());
 		rVO.setRcm_alb_image(img_path);
+		
 		
 		 
 		try {

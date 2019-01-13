@@ -6,7 +6,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -34,10 +33,20 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 	private String alb_image;
 	private String sing_name;
 	private String gen_name;
+	private String rcm_alb_list_no;
+	public String getRcm_alb_list_no() {
+		return rcm_alb_list_no;
+	}
+
+
+	public void setRcm_alb_list_no(String rcm_alb_list_no) {
+		this.rcm_alb_list_no = rcm_alb_list_no;
+	}
+
 	private ImageView imgView;
 	private String gen_detail_name;
 	private JFXButton btn;
-	private static int id;
+	
 	
 		
 	
@@ -47,8 +56,9 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 		remove.setIconName("REMOVE");
 		remove.setFill(Color.valueOf("#9c0000"));
 		remove.setSize("20");
-		btn.setId(id+"");
-		id++;
+		btn.setId(mus_no);
+	//	btn.setId(id+"");
+		//id++;
 		btn.setGraphic(remove);
 		return btn;
 	}
