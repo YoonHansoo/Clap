@@ -110,11 +110,7 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
       return mem_del_tf;
    }
    public void setMem_del_tf(String mem_del_tf) {
-	   if (mem_del_tf.equals("t") ) {
-		   this.mem_del_tf = this.mem_del_tf + ("○");
-	   }else {
-		   this.mem_del_tf = this.mem_del_tf + ("X");
-	   }
+
       this.mem_del_tf = mem_del_tf;
    }
    public String getMem_black_cnt() {

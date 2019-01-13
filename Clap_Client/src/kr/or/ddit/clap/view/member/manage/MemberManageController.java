@@ -1,5 +1,6 @@
 package kr.or.ddit.clap.view.member.manage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -9,6 +10,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 import kr.or.ddit.clap.service.mypage.IMypageService;
+import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 import javafx.beans.property.SimpleObjectProperty;
@@ -16,16 +18,23 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.Parent;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class MemberManageController implements Initializable{
 	
@@ -43,6 +52,10 @@ public class MemberManageController implements Initializable{
 	@FXML TreeTableColumn<MemberVO,String> col_MemId;
 	@FXML TreeTableColumn<MemberVO,ImageView> col_MemImg;
 	@FXML TreeTableColumn<MemberVO,String> col_MemName;
+	@FXML JFXButton btn_search;
+	@FXML JFXTextField text_search;
+	@FXML AnchorPane contents;
+	@FXML AnchorPane main;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -54,6 +67,7 @@ public class MemberManageController implements Initializable{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		
 		
 		col_MemImg.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 
@@ -82,6 +96,14 @@ public class MemberManageController implements Initializable{
 				memList.get(i).setMem_del_tf("O");
 			}
 		}
+		
+		for (int i = 0; i < memList.size(); i++) {
+			if(memList.get(i).getMem_blacklist_tf().equals("f  ")) {
+				memList.get(i).setMem_image("https://cdn.pixabay.com/photo/2014/03/25/16/32/user-297330_960_720.png");
+			}else {
+				memList.get(i).setMem_image("https://st3.depositphotos.com/1915171/12736/v/950/depositphotos_127366466-stock-illustration-blacklist-sign-icon-user-not.jpg");
+			}
+		}
 		// 데이터 삽입
 		TreeItem<MemberVO> root = new RecursiveTreeItem<>(memList, RecursiveTreeObject::getChildren);
 		tbl_Member.setRoot(root);
@@ -94,6 +116,36 @@ public class MemberManageController implements Initializable{
 		combo_search.getItems().addAll("이름", "아이디");
 		combo_search.setValue(combo_search.getItems().get(0));
 
+		
+		btn_search.setOnAction(e ->{
+			search();
+		});
+		
+		tbl_Member.setOnMouseClicked(e ->{
+			if (e.getClickCount()  > 1) {
+				//int index = tbl_singer.getSelectionModel().getSelectedIndex();
+				String memid = tbl_Member.getSelectionModel().getSelectedItem().getValue().getMem_id();
+				
+				
+				try {
+					//바뀔 화면(FXML)을 가져옴
+					MemberDetailController.memid = memid;//가수번호를 변수로 넘겨줌
+					
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("memditail.fxml"));// init실행됨
+					Parent memetail= loader.load(); 
+					
+					MemberDetailController cotroller = loader.getController();
+					cotroller.givePane(contents); 
+					
+					main.getChildren().removeAll();
+					main.getChildren().setAll(memetail);
+					
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} 
+			}
+		});
 	}
 
 	private void paging() {
@@ -128,4 +180,35 @@ private ObservableList<MemberVO> getTableViewData(int from, int to) {
 		return currentMemList;
 	}
 
+//검색버튼 클릭
+		
+		
+
+
+private void search() {
+	try {
+		MemberVO vo = new MemberVO();
+		ObservableList<MemberVO> searchlist = FXCollections.observableArrayList();
+		switch (combo_search.getValue()) {
+		
+		case "이름":
+			vo.setMem_name(text_search.getText());
+			searchlist = FXCollections.observableArrayList(ims.searchMemList(vo));
+			break;
+		case "아이디":
+			vo.setMem_id(text_search.getText());
+			searchlist = FXCollections.observableArrayList(ims.searchMemList(vo));
+			break;
+			
+		default :
+			break;
+		} 
+		
+		memList = FXCollections.observableArrayList(searchlist); //검색조건에 맞는 리스트를 저장
+		paging();
+	}
+	catch (Exception e) {
+		e.printStackTrace();
+	}
+}
 }
