@@ -7,17 +7,14 @@
 
 package kr.or.ddit.clap.dao.music;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import kr.or.ddit.clap.main.DBUtil;
 import kr.or.ddit.clap.vo.genre.GenreDetailVO;
 import kr.or.ddit.clap.vo.genre.GenreVO;
 import kr.or.ddit.clap.vo.music.MusicVO;
@@ -28,15 +25,7 @@ public class MusicDaoImpl implements IMusicDao {
 	private static MusicDaoImpl dao; // Singleton 패턴
 
 	private MusicDaoImpl() {
-		Reader rd;
-		try {
-			rd = Resources.getResourceAsReader("SqlMapConfig.xml");
-			smc = SqlMapClientBuilder.buildSqlMapClient(rd);
-			rd.close();
-		} catch (IOException e) {
-			System.out.println("SqlMapClient객체 생성 실패!!");
-			e.printStackTrace();
-		}
+		smc = DBUtil.getConnection();
 	}
 
 	public static MusicDaoImpl getInstance() { // Singleton 패턴

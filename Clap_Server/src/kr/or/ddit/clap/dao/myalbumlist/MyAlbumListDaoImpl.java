@@ -7,24 +7,16 @@
 
 package kr.or.ddit.clap.dao.myalbumlist;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-import kr.or.ddit.clap.vo.member.LikeVO;
-import kr.or.ddit.clap.vo.music.MusicHistoryVO;
+import kr.or.ddit.clap.main.DBUtil;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumListVO;
-import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
-import kr.or.ddit.clap.vo.singer.SingerVO;
 
 /**
  * 
@@ -37,15 +29,7 @@ public class MyAlbumListDaoImpl implements IMyAlbumListDao{
 	private static MyAlbumListDaoImpl dao; // Singleton 패턴
 
 	private MyAlbumListDaoImpl() {
-		Reader rd;
-		try {
-			rd = Resources.getResourceAsReader("SqlMapConfig.xml");
-			smc = SqlMapClientBuilder.buildSqlMapClient(rd);
-			rd.close();
-		} catch (IOException e) {
-			System.out.println("SqlMapClient객체 생성 실패!!");
-			e.printStackTrace();
-		}
+		smc = DBUtil.getConnection();
 	}
 
 	public static MyAlbumListDaoImpl getInstance() { // Singleton 패턴

@@ -1,13 +1,10 @@
 package kr.or.ddit.clap.dao.join;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.sql.SQLException;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
+import kr.or.ddit.clap.main.DBUtil;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 public class JoinDaoImpl implements IJoinDao{
@@ -16,15 +13,7 @@ public class JoinDaoImpl implements IJoinDao{
 	private static JoinDaoImpl dao; // Singleton 패턴
 	
 	private JoinDaoImpl() {
-		Reader rd;
-		try {
-			rd = Resources.getResourceAsReader("SqlMapConfig.xml");
-			smc = SqlMapClientBuilder.buildSqlMapClient(rd);
-			rd.close();
-		} catch (IOException e) {
-			System.out.println("SqlMapClient객체 생성 실패!!");
-			e.printStackTrace();
-		}
+		smc = DBUtil.getConnection();
 	}
 	
 	public static JoinDaoImpl getInstance() { // Singleton 패턴
