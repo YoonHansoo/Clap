@@ -41,4 +41,6 @@ public interface IMusicDao {
 	public int deleteMusic(String musicNo);
 	
 	public List<Map> newMusicSelete(String genre_no);
+	
+	public List<Map> selectSinger(String sing_no);
 }

@@ -212,4 +212,18 @@ public class MusicDaoImpl implements IMusicDao {
 		return list;
 	}
 
+	@Override
+	public List<Map> selectSinger(String sing_no) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("music.selectSinger", sing_no);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }
