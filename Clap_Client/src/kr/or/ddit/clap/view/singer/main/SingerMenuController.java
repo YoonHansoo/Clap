@@ -23,7 +23,9 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
+import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.vo.album.AlbumVO;
+import kr.or.ddit.clap.vo.singer.SingerVO;
 
 /**
  * 
@@ -47,10 +49,12 @@ public class SingerMenuController implements Initializable{
 	public static String albumNo;// 파라미터로 받은 선택한 가수의 PK
 	private Registry reg;
 	private IAlbumService ias;
+	private ISingerService ssi;
 	private String temp_img_path = "";
 
 	// 파라미터로 넘기기 위해 전역으로 선언
 	public AlbumVO aVO = null;
+	public SingerVO sVO = null;
 	public String str_like_cnt;
 	public static AnchorPane contents;
 
@@ -66,6 +70,7 @@ public class SingerMenuController implements Initializable{
 	@FXML Label txt_intro;
 	
 	@FXML VBox box;
+	@FXML Label lb_singer;
 
 	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
 	// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
@@ -77,7 +82,7 @@ public class SingerMenuController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		tabPane.getSelectionModel().select(menuCount);
 		tabPane.setOnKeyPressed(e->{
 			box.setVisible(false);
@@ -109,6 +114,10 @@ public class SingerMenuController implements Initializable{
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ias = (IAlbumService) reg.lookup("album");
 			aVO = ias.albumDetailInfo(albumNo);
+			
+			ssi = (ISingerService) reg.lookup("singer");
+			sVO = ssi.singerDetailInfo(aVO.getSing_no());
+			
 			System.out.println(aVO.getSing_no());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
@@ -117,6 +126,11 @@ public class SingerMenuController implements Initializable{
 			e.printStackTrace();
 		}
 
+		lb_singer.setText(sVO.getSing_name());
+		lb_singer.setOnMouseClicked(e->{
+			tabPane.getSelectionModel().select(0);
+		});
+		
 		label_albumName1.setText(aVO.getAlb_name());
 		label_albumName2.setText(aVO.getAlb_name());
 		label_singerName.setText(aVO.getSing_name());

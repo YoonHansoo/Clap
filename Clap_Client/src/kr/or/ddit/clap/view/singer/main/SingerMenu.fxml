@@ -18,7 +18,7 @@
    <children>
       <VBox minHeight="448.0" prefWidth="1024.0" spacing="10.0">
          <children>
-            <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="139.0" styleClass="mainlabel" text="에디 킴">
+            <Label fx:id="lb_singer" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="200.0" styleClass="mainlabel" text="에디 킴">
                <font>
                   <Font size="25.0" />
                </font>

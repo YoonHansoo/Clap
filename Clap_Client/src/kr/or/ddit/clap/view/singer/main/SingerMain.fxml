@@ -162,9 +162,6 @@
          </font>
       </Label>
       <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="28.0" layoutY="384.0" prefHeight="296.0" prefWidth="718.0" text="아티스트 소개" wrapText="true" />
-      <JFXButton layoutX="509.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-<!--       <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" /> -->
-      <JFXButton layoutX="633.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
 <!--       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" /> -->
    </children>
 </AnchorPane>
