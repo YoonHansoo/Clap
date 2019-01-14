@@ -12,4 +12,6 @@ public interface ITicketDao {
 	public List<TicketBuyListVO> selectTickChart();
 	
 	public int insertTicketBuy(TicketBuyListVO vo);
+	
+	public List<TicketBuyListVO> buyfind(String id);
 }

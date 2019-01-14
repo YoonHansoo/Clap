@@ -70,4 +70,9 @@ public class TicketServiceImpl extends UnicastRemoteObject implements ITicketSer
 		return ticketDao.selectTickChart();
 	}
 
+	@Override
+	public List<TicketBuyListVO> buyfind(String id) throws RemoteException {
+		return ticketDao.buyfind(id);
+	}
+
 }

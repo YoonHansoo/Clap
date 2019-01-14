@@ -68,6 +68,11 @@
          and c.mem_id= a.mem_id
           group by  a.ticket_no,(EXTRACT (YEAR FROM SYSDATE) - EXTRACT(YEAR FROM to_date(MEM_BIR))+1)
 	</select>
+	
+	 <select id="buyfind" resultClass="ticketBuyVO" parameterClass="String">
+    	select mem_id from ticket_buy_list
+		where mem_id = #mem_id#
+    </select>
 
 </sqlMap>         
 

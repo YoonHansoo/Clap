@@ -21,4 +21,5 @@ public interface IMusicHistoryDao {
 	public List<MusicHistoryVO> selectNewLisMus(String id);
 	public List<MusicHistoryVO> selectManyLisMus(String id);
 	public List<MusicHistoryVO> selectManyIts(String id);
+	public int historyInsert (MusicHistoryVO vo);
 }

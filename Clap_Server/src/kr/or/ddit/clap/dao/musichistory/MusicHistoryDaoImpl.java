@@ -147,11 +147,12 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 	}
 	
 	public static void main(String[] args) {
-		Map day = new HashMap<String,String>();
+		MusicHistoryVO vo = new MusicHistoryVO();
+		vo.setMem_id("user1");
+		vo.setMus_no("10");
 		
-		day.put("monday", "18/12/24");
-		day.put("sunday", "18/12/30");
-		List<Map> list = new MusicHistoryDaoImpl().interiorSelect("18");
+		
+		new MusicHistoryDaoImpl().historyInsert(vo);
 		
 	}
 
@@ -195,6 +196,19 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		} 
 		
 		return list;
+	}
+
+	@Override
+	public int historyInsert(MusicHistoryVO vo) {
+		int cnt = 0;
+		try {
+	
+			cnt = smc.update("musichistory.historyinsert", vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 
 }

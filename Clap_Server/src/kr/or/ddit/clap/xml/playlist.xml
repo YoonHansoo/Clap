@@ -19,6 +19,7 @@
 	     and a.mus_no = d.mus_no
 	     and b.sing_no = c.sing_no
 	     and d.mem_id = #mem_id#
+	   order by d.play_no
 	</select>
 	
 	<update id="playlistinsert" parameterClass="playlistVO">
@@ -26,11 +27,12 @@
 		      using dual
 		      on (
 		          mus_no = #mus_no#
+                  and mem_id = #mem_id#
 		         )
 		      when matched then
 		        update set
 		            play_indate = sysdate
-		        where mus_no = #mus_no#
+		        where mus_no = '10'
 		      when not matched then
 		        insert (play_no, play_indate, mus_no, mem_id)
 		         values (seq_play_no.nextval, sysdate, #mus_no#, #mem_id#)

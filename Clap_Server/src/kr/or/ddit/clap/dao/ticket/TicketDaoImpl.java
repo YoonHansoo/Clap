@@ -108,4 +108,18 @@ public class TicketDaoImpl implements ITicketDao{
 		return list;
 	}
 
+	@Override
+	public List<TicketBuyListVO> buyfind(String id) {
+		List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
+		try {
+			
+			list = smc.queryForList("ticket.buyfind", id);
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return list;
+	}
+
 }
