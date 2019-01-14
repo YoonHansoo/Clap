@@ -16,7 +16,10 @@ import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import kr.or.ddit.clap.main.LoginSession;
@@ -81,14 +84,37 @@ public class GenreController implements Initializable{
 	
 	// 메인 재생 버튼 이벤트
 	@FXML public void btnMainPlay() {
+		if (LoginSession.session == null) {
+			return;
+		}
+		
 		ArrayList<String> list = musicCheckList();
 		playListInsert(list,true);
+		if (!MusicMainController.musicplayer.isShowing()) {
+			try {
+				MusicMainController.playerLoad = new FXMLLoader(getClass().getResource("../../musicplayer/MusicPlayer.fxml"));
+				AnchorPane root = MusicMainController.playerLoad.load();
+				Scene scene = new Scene(root);
+				MusicMainController.musicplayer.setTitle("MusicPlayer");
+				MusicMainController.musicplayer.setScene(scene);
+				MusicMainController.musicplayer.show();
+				mpc = MusicMainController.playerLoad.getController();
+				mpc.reFresh();
+				mpc.selectIndex();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
 		cb_main.setSelected(false);
 		mainCheck();
 	}
 
 	// 메인 추가 버튼 이벤트
 	@FXML public void btnMainAdd() {
+		if (LoginSession.session == null) {
+			return;
+		}
+		
 		ArrayList<String> list = musicCheckList();
 		playListInsert(list,false);
 		cb_main.setSelected(false);
@@ -97,6 +123,10 @@ public class GenreController implements Initializable{
 
 	// 메인 담기 버튼 이벤트
 	@FXML public void btnMainPut() {
+		if (LoginSession.session == null) {
+			return;
+		}
+		
 		ArrayList<String> list = musicCheckList();
 		MyAlbumDialogController.mus_no.clear();
 		MyAlbumDialogController.mus_no = list;

@@ -6,18 +6,25 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
+import kr.or.ddit.clap.service.ticket.ITicketService;
+import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
+import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,6 +37,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.paint.Color;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -64,15 +72,17 @@ public class MusicPlayerController implements Initializable{
 	@FXML JFXCheckBox btn_check;
 	@FXML JFXButton btn_add;
 	@FXML JFXButton btn_del;
+	@FXML Label label_loginid;
 
 
 	private Stage stage;
-	private MusicPlayer player;
-	private ObservableList<PlayListVO> playList;
+	public static MusicPlayer player;
+	public ObservableList<PlayListVO> playList;
 	private ObservableList<String> addMus_no;
 	private ObservableList<String> delMus_no;
 	private Registry reg;
 	private IPlayListService ipls;
+	private IMusicHistoryService imhs;
 	private boolean retweenFlag = false;
 	private boolean randomFlag = false;
 	private boolean refreshFlag = false;
@@ -81,6 +91,9 @@ public class MusicPlayerController implements Initializable{
 	private int mus_index;
 	private TreeItem<PlayListVO> playListRoot;
 	private MyAlbumListController mal;
+	private ITicketService its;
+	private List<TicketBuyListVO> buyticket;
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -88,6 +101,9 @@ public class MusicPlayerController implements Initializable{
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ipls = (IPlayListService) reg.lookup("playlist");
+			imhs = (IMusicHistoryService) reg.lookup("history");
+			its = (ITicketService) reg.lookup("ticket");
+			buyticket = its.buyfind(LoginSession.session.getMem_id());
 			playList = FXCollections.observableArrayList(ipls.playlistSelect(LoginSession.session.getMem_id()));
 			player = new MusicPlayer();
 			stage = MusicMainController.musicplayer;
@@ -96,6 +112,11 @@ public class MusicPlayerController implements Initializable{
 			addMus_no = FXCollections.observableArrayList();
 			delMus_no = FXCollections.observableArrayList();
 			t_playListTable.setPlaceholder(new Label(""));
+			String helloText = "님 환영합니다!!!";
+			if (buyticket.size() == 0) {
+				helloText = "님 이용권 결제를 하시면 전곡듣기가 가능합니다~";
+			}
+			label_loginid.setText(LoginSession.session.getMem_id() + helloText);
 		} catch (RemoteException e2) {
 			e2.printStackTrace();
 		} catch (NotBoundException e1) {
@@ -220,19 +241,34 @@ public class MusicPlayerController implements Initializable{
 			vo.setMem_id(LoginSession.session.getMem_id());
 			vo.setMus_no(delMus_no.get(i));
 			try {
-				ipls.playlistDelete(vo);
+				
 				if (player.mediaPlayer != null) {
 					player.mediaPlayer.stop();
+					player.mediaPlayer = null;
 					label_musicName.setText("재생 목록이 없습니다");
 					label_singerName.setText("듣고 싶은 곡을 선택해 보세요!");
 					imgview_album.setImage(null);
+					Label_nowTime.setText("00:00");
+					Label_finalTime.setText("00:00");
+					icon_play.setIconName("PLAY");
+					slider_time.setValue(0);
 				}
+				ipls.playlistDelete(vo);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 		}
 		btn_check.setSelected(false);
-		reFresh();
+		allCheck();
+		try {
+			playList = FXCollections.observableArrayList(ipls.playlistSelect(LoginSession.session.getMem_id()));
+			playListRoot = new RecursiveTreeItem<>(playList, RecursiveTreeObject::getChildren);
+			t_playListTable.setRoot(playListRoot);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@FXML public void allCheck() {
@@ -264,36 +300,51 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	public void ready(int index) {
-		player.setMedia(playList.get(index).getMus_file());
-		label_musicName.setText(playList.get(index).getMus_title());
-		label_singerName.setText(playList.get(index).getSing_name());
-		imgview_album.setImage(new Image(playList.get(index).getAlb_image()));
-		label_lyrics.setText(playList.get(index).getMus_lyrics());
-		player.mediaPlayer.setVolume(slider_volum.getValue()/100);
-		player.Ready(Label_nowTime, Label_finalTime, slider_time);
+		if (index >= 0) {
+			player.setMedia(playList.get(index).getMus_file());
+			label_musicName.setText(playList.get(index).getMus_title());
+			label_singerName.setText(playList.get(index).getSing_name());
+			imgview_album.setImage(new Image(playList.get(index).getAlb_image()));
+			label_lyrics.setText(playList.get(index).getMus_lyrics());
+			player.mediaPlayer.setVolume(slider_volum.getValue()/100);
+			player.Ready(Label_nowTime, Label_finalTime, slider_time);	
+		}
 	}
 	
 	public void close() {
-		stage.setOnCloseRequest(e -> { 
+		stage.setOnCloseRequest(e -> {
 			if (playList.size() != 0) {
 				if(player.mediaPlayer != null && player.getStatus() == Status.PLAYING ) {
 					player.stop();
+					player.mediaPlayer = null;
 				}
 			}
 		});
 	}
 	
+	
 	public void playListTableSelet() {
 		
 		t_playListTable.getSelectionModel().selectedIndexProperty().addListener((observable,oldValue,newValue) -> {
-			System.out.println("asdf");
 			if (refreshFlag && player.mediaPlayer != null) {
+				System.out.println("안들어가냐");
 				t_playListTable.getSelectionModel().select(mus_index);
 				refreshFlag=false;
 			}else {
-				mus_index = newValue.intValue();
-				ready(mus_index);
-				onPlay();
+				mus_index = t_playListTable.getSelectionModel().getSelectedIndex();
+				if (mus_index >= 0) {
+					ready(mus_index);
+					MusicHistoryVO vo = new MusicHistoryVO();
+					String mus_no = t_playListTable.getSelectionModel().getSelectedItem().getValue().getMus_no();
+					vo.setMus_no(mus_no);
+					vo.setMem_id(LoginSession.session.getMem_id());
+					try {
+						imhs.historyInsert(vo);
+					} catch (RemoteException e) {
+						e.printStackTrace();
+					}
+					onPlay();
+				}
 			}
 		});
 	}
@@ -372,7 +423,12 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	public void selectIndex() {
-		t_playListTable.getSelectionModel().select(playList.size()-1);
+		if (playList.size() == 0) {
+			t_playListTable.getSelectionModel().select(0);
+		}else {
+			t_playListTable.getSelectionModel().selectLast();
+		}
+		
 	}
 	
 	public void selectIndex(boolean forward) {
@@ -418,7 +474,5 @@ public class MusicPlayerController implements Initializable{
 			t_playListTable.getSelectionModel().select(index);
 		}
 	}
-
 	
-
 }

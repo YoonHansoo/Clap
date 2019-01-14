@@ -28,10 +28,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer.Status;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
@@ -88,6 +90,7 @@ public class MusicMainController implements Initializable {
 	private IAlbumService ias;
 	private Registry reg;
 	public static FXMLLoader playerLoad;
+	public static Stage movieStage = new Stage();
 	
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
@@ -307,6 +310,14 @@ public class MusicMainController implements Initializable {
 		ls.session = null;
 		System.out.println(ls.session);
 		firstPage();
+		if (musicplayer.isShowing()) {
+			MusicPlayerController mpc = MusicMainController.playerLoad.getController();
+			if(mpc.player.mediaPlayer != null) {
+				mpc.player.stop();
+				mpc.player.mediaPlayer = null;
+			}
+			musicplayer.close();
+		}
 	}
 
 	@FXML
@@ -511,17 +522,21 @@ public class MusicMainController implements Initializable {
 	
 	@FXML
 	public void musicPlayer(ActionEvent event) { // MusicPlayer를 클릭 했을 때.
-		if (!musicplayer.isShowing()) {
-			try {
-				playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
-				AnchorPane root = playerLoad.load();
-				Scene scene = new Scene(root);
-				musicplayer.setTitle("MusicPlayer");
-				musicplayer.setScene(scene);
-				musicplayer.show();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
+		if (LoginSession.session == null) {
+			return;
+		}else {
+			if (!musicplayer.isShowing()) {
+				try {
+					playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
+					AnchorPane root = playerLoad.load();
+					Scene scene = new Scene(root);
+					musicplayer.setTitle("MusicPlayer");
+					musicplayer.setScene(scene);
+					musicplayer.show();
+					
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

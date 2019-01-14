@@ -180,7 +180,7 @@
                <children>
                   <HBox alignment="CENTER" opacity="0.6" prefHeight="30.0" style="-fx-background-color: #090948;">
                      <children>
-                        <Label text="로그인을 해주세요" textFill="WHITE">
+                        <Label fx:id="label_loginid" text="로그인을 해주세요" textFill="WHITE">
                            <font>
                               <Font name="-윤고딕330" size="12.0" />
                            </font>

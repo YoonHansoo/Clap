@@ -14,23 +14,39 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
+import kr.or.ddit.clap.view.musicvideo.MusicVideoController;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 
 public class MusicList {
+	private Registry reg;
+	private IPlayListService ipls;
+	private ObservableList<JFXCheckBox> cbnList;
+	private ObservableList<JFXButton> btnPlayList;
+	private ObservableList<JFXButton> btnAddList;
+	private ObservableList<JFXButton> btnPutList;
+	private ObservableList<JFXButton> btnMovieList;
+	private StackPane stackpane;
+	private VBox mainBox;
+	private MusicPlayerController mpc;
+	private Stage stage = MusicMainController.movieStage;
 	
 	public MusicList() {
 		
@@ -60,19 +76,11 @@ public class MusicList {
 		
 	}
 	
-	private Registry reg;
-	private IPlayListService ipls;
-	private ObservableList<JFXCheckBox> cbnList;
-	private ObservableList<JFXButton> btnPlayList;
-	private ObservableList<JFXButton> btnAddList;
-	private ObservableList<JFXButton> btnPutList;
-	private ObservableList<JFXButton> btnMovieList;
-	private StackPane stackpane;
-	private VBox mainBox;
-	private MusicPlayerController mpc;
-	
 	// 재생 버튼 클릭시 이벤트
 	private void btnPlayClick() {
+		if (LoginSession.session == null) {
+			return;
+		}
 		for (int i = 0; i < btnPlayList.size(); i++) {
 			btnPlayList.get(i).setOnAction(e->{
 				JFXButton btn_PlayMy = (JFXButton) e.getSource();
@@ -82,17 +90,32 @@ public class MusicList {
 				vo.setMem_id(LoginSession.session.getMem_id());
 				playListInsert(vo);
 				
-				if (MusicMainController.musicplayer.isShowing()) {
-					mpc = MusicMainController.playerLoad.getController();
-					mpc.reFresh();
-					mpc.selectIndex();
+				if (!MusicMainController.musicplayer.isShowing()) {
+					try {
+						MusicMainController.playerLoad = new FXMLLoader(getClass().getResource("../../musicplayer/MusicPlayer.fxml"));
+						AnchorPane root = MusicMainController.playerLoad.load();
+						Scene scene = new Scene(root);
+						MusicMainController.musicplayer.setTitle("MusicPlayer");
+						MusicMainController.musicplayer.setScene(scene);
+						MusicMainController.musicplayer.show();
+						
+						
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				}
+				mpc = MusicMainController.playerLoad.getController();
+				mpc.reFresh();
+				mpc.selectIndex();
 			});
 		}
 	}
 	
 	// 추가 버튼 클릭시 이벤트
 	private void btnAddClick() {
+		if (LoginSession.session == null) {
+			return;
+		}
 		for (int i = 0; i < btnAddList.size(); i++) {
 			btnAddList.get(i).setOnAction(e->{
 				JFXButton btn_AddMy = (JFXButton) e.getSource();
@@ -120,6 +143,9 @@ public class MusicList {
 	
 	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
+		if (LoginSession.session == null) {
+			return;
+		}
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
 				JFXButton btn_PutMy = (JFXButton) e.getSource();
@@ -132,10 +158,36 @@ public class MusicList {
 	
 	// 뮤비 버튼 클릭시 이벤트
 	private void btnMovieClick() {
+		if (LoginSession.session == null) {
+			return;
+		}
 		for (int i = 0; i < btnMovieList.size(); i++) {
 			btnMovieList.get(i).setOnAction(e->{
 				JFXButton btn_MovieMy = (JFXButton) e.getSource();
-				System.out.println(btn_MovieMy.getId());
+				try {
+					if (stage.isShowing()) {
+						if (MusicVideoController.mediaPlayer.getStatus() == Status.PLAYING) {
+							MusicVideoController.mediaPlayer.stop();
+						}
+						stage.close();
+					}
+					MusicVideoController.path = btn_MovieMy.getId();
+					MusicVideoController.musName = btn_MovieMy.getAccessibleText();
+					MusicVideoController.singerName = btn_MovieMy.getAccessibleHelp();
+					AnchorPane pane = FXMLLoader.load(getClass().getResource("../../musicvideo/MusicVideo.fxml"));
+					Scene scene = new Scene(pane);
+					stage.setScene(scene);
+					stage.setTitle("MusicVideo");
+					stage.show();
+					
+					stage.setOnCloseRequest(e2->{
+						if (MusicVideoController.mediaPlayer.getStatus() == Status.PLAYING) {
+							MusicVideoController.mediaPlayer.stop();
+						}
+					});
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 			});
 		}
 	}
@@ -316,15 +368,21 @@ public class MusicList {
 					btn_Put.setGraphic(icon_Put);
 					btnPutList.add(btn_Put);
 				
-				// 담기 버튼
+				// 뮤비 버튼
 				JFXButton btn_Movie = new JFXButton();
 				btn_Movie.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Movie.setAlignment(Pos.CENTER_LEFT);
 				btn_Movie.setPrefWidth(30);
 				btn_Movie.setPrefHeight(46);
-				btn_Movie.setId(list.get(i).get("MUS_NO").toString());
-					
-					// 담기 아이콘
+				
+				if (list.get(i).get("MUS_MVFILE") == null) {
+					btn_Movie.setDisable(true);
+				}else {
+					btn_Movie.setId(list.get(i).get("MUS_MVFILE").toString());
+					btn_Movie.setAccessibleText(list.get(i).get("MUS_TITLE").toString());
+					btn_Movie.setAccessibleHelp(list.get(i).get("SING_NAME").toString());
+				}
+					// 뮤비 아이콘
 					FontAwesomeIcon icon_Movie = new FontAwesomeIcon();
 					icon_Movie.setIconName("VIMEO_SQUARE");
 					icon_Movie.setFill(Color.valueOf("#9c0000"));
@@ -404,42 +462,13 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					la_PreRank.setFont(Font.font("-윤고딕350", 12));
 					la_PreRank.setPrefWidth(30);
 					la_PreRank.setPrefHeight(23);
-					int beforRank = 0;
-					if(list.get(i).get("MUS_BEFOR_RANK") != null) {
-						beforRank = Integer.parseInt(list.get(i).get("MUS_BEFOR_RANK").toString());
-					}
-					int rank = i+1;
+					
 					String str_beforRank = "";
 					FontAwesomeIcon rankImg = new FontAwesomeIcon();
 					rankImg.setSize("15");
-					
-					
-					if (rank == beforRank) {
-						rankImg.setIconName("MINUS");
-						rankImg.setFill(Color.valueOf("#A4A4A4"));
-						la_PreRank.setGraphic(rankImg);
-						
-					} else if (rank <= beforRank) {
-						beforRank -= rank;
-						str_beforRank = Integer.toString(beforRank);
-						la_PreRank.setTextFill(Color.valueOf("#FE5C62"));
-						rankImg.setIconName("CARET_UP");
-						rankImg.setFill(Color.valueOf("#FE5C62"));
-						la_PreRank.setGraphic(rankImg);
-						
-					} else if (rank >= beforRank && beforRank != 0){
-						rank -= beforRank;
-						str_beforRank = Integer.toString(rank);
-						la_PreRank.setTextFill(Color.valueOf("#609ACF"));
-						rankImg.setIconName("CARET_DOWN");
-						rankImg.setFill(Color.valueOf("#609ACF"));
-						la_PreRank.setGraphic(rankImg);
-			
-					} else if (beforRank == 0){
-						str_beforRank = "new";
-						la_PreRank.setTextFill(Color.valueOf("#609ACF"));
-						
-					}
+					rankImg.setIconName("MINUS");
+					rankImg.setFill(Color.valueOf("#A4A4A4"));
+					la_PreRank.setGraphic(rankImg);
 					la_PreRank.setText(str_beforRank);
 				
 				// 앨범이미지를 표시하는 ImageView
@@ -516,15 +545,21 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					btn_Put.setGraphic(icon_Put);
 					btnPutList.add(btn_Put);
 				
-				// 담기 버튼
+				// 뮤비 버튼
 				JFXButton btn_Movie = new JFXButton();
 				btn_Movie.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Movie.setAlignment(Pos.CENTER_LEFT);
 				btn_Movie.setPrefWidth(30);
 				btn_Movie.setPrefHeight(46);
-				btn_Movie.setId(list.get(i).get("MUS_NO").toString());
+				if (list.get(i).get("MUS_MVFILE") == null) {
+					btn_Movie.setDisable(true);
+				}else {
+					btn_Movie.setId(list.get(i).get("MUS_MVFILE").toString());
+					btn_Movie.setAccessibleText(list.get(i).get("MUS_TITLE").toString());
+					btn_Movie.setAccessibleHelp(list.get(i).get("SING_NAME").toString());
+				}
 					
-					// 담기 아이콘
+					// 뮤비 아이콘
 					FontAwesomeIcon icon_Movie = new FontAwesomeIcon();
 					icon_Movie.setIconName("VIMEO_SQUARE");
 					icon_Movie.setFill(Color.valueOf("#9c0000"));
