@@ -150,7 +150,6 @@
                               <MenuItem fx:id="item_SigerManage" mnemonicParsing="false" onAction="#singerManage" text="가수 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#albumManage" text="앨범 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#musicManage" text="곡 관리" />
-                              <MenuItem mnemonicParsing="false" text="장르 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#recommendManage" text="추천 관리" />
                               <MenuItem mnemonicParsing="false" onAction="#eventManage" text="Event 관리" />
                               <MenuItem mnemonicParsing="false" text="이용권 관리" />
