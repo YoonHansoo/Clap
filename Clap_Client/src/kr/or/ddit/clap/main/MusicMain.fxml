@@ -115,13 +115,6 @@
                               <MenuItem mnemonicParsing="false" text="그 외 장르" />
                            </items>
                         </Menu>
-                        <Menu mnemonicParsing="false" text="음악보기">
-                           <items>
-                              <MenuItem mnemonicParsing="false" text="가수" />
-                              <MenuItem mnemonicParsing="false" text="앨범" />
-                              <MenuItem mnemonicParsing="false" text="곡" />
-                           </items>
-                        </Menu>
                         <Menu mnemonicParsing="false" text="추천">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#hotRcmList" text="추천" />
