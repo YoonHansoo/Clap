@@ -98,15 +98,13 @@ public class MusicList {
 						MusicMainController.musicplayer.setTitle("MusicPlayer");
 						MusicMainController.musicplayer.setScene(scene);
 						MusicMainController.musicplayer.show();
-						
-						
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					}
 				}
 				mpc = MusicMainController.playerLoad.getController();
 				mpc.reFresh();
-				mpc.selectIndex();
+				mpc.selectIndex(vo.getMus_no());
 			});
 		}
 	}

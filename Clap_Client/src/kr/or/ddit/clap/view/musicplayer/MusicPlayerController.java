@@ -93,6 +93,7 @@ public class MusicPlayerController implements Initializable{
 	private MyAlbumListController mal;
 	private ITicketService its;
 	private List<TicketBuyListVO> buyticket;
+	private String refreshMusNo;
 	
 	
 	@Override
@@ -241,22 +242,26 @@ public class MusicPlayerController implements Initializable{
 			vo.setMem_id(LoginSession.session.getMem_id());
 			vo.setMus_no(delMus_no.get(i));
 			try {
-				
-				if (player.mediaPlayer != null) {
-					player.mediaPlayer.stop();
-					player.mediaPlayer = null;
-					label_musicName.setText("재생 목록이 없습니다");
-					label_singerName.setText("듣고 싶은 곡을 선택해 보세요!");
-					imgview_album.setImage(null);
-					Label_nowTime.setText("00:00");
-					Label_finalTime.setText("00:00");
-					icon_play.setIconName("PLAY");
-					slider_time.setValue(0);
-				}
 				ipls.playlistDelete(vo);
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
+		}
+		if (player.mediaPlayer != null && playList.get(mus_index).getCheckbox1().isSelected()) {
+			player.mediaPlayer.stop();
+			player.mediaPlayer = null;
+			label_musicName.setText("재생 목록이 없습니다");
+			label_singerName.setText("듣고 싶은 곡을 선택해 보세요!");
+			imgview_album.setImage(null);
+			Label_nowTime.setText("00:00");
+			Label_finalTime.setText("00:00");
+			icon_play.setIconName("PLAY");
+			slider_time.setValue(0);
+		}else {
+			btn_check.setSelected(false);
+			allCheck();
+			reFresh();
+			return;
 		}
 		btn_check.setSelected(false);
 		allCheck();
@@ -265,7 +270,6 @@ public class MusicPlayerController implements Initializable{
 			playListRoot = new RecursiveTreeItem<>(playList, RecursiveTreeObject::getChildren);
 			t_playListTable.setRoot(playListRoot);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -327,11 +331,15 @@ public class MusicPlayerController implements Initializable{
 		
 		t_playListTable.getSelectionModel().selectedIndexProperty().addListener((observable,oldValue,newValue) -> {
 			if (refreshFlag && player.mediaPlayer != null) {
-				System.out.println("안들어가냐");
-				t_playListTable.getSelectionModel().select(mus_index);
+				for (int i = 0; i < playList.size(); i++) {
+					if (playList.get(i).getMus_no().equals(refreshMusNo)) {
+						t_playListTable.getSelectionModel().select(i);
+					}
+				}
 				refreshFlag=false;
 			}else {
 				mus_index = t_playListTable.getSelectionModel().getSelectedIndex();
+				refreshMusNo = t_playListTable.getSelectionModel().getModelItem(mus_index).getValue().getMus_no();
 				if (mus_index >= 0) {
 					ready(mus_index);
 					MusicHistoryVO vo = new MusicHistoryVO();
@@ -422,13 +430,32 @@ public class MusicPlayerController implements Initializable{
 		}
 	}
 	
+	public void selectIndex(String mus_no) {
+		int index = -1;
+		System.out.println(playList.size());
+		for (int i = 0; i < playList.size(); i++) {
+			if (playList.get(i).getMus_no().equals(mus_no) ) {
+				System.out.println(i);
+				index = i;
+			}
+		}
+
+		if (playList.size() == 0) {
+			t_playListTable.getSelectionModel().select(0);
+		}else if (index > -1) {
+			t_playListTable.getSelectionModel().select(index);
+		}else {
+			t_playListTable.getSelectionModel().select(playList.size()-1);
+		}
+	}
+	
 	public void selectIndex() {
+		
 		if (playList.size() == 0) {
 			t_playListTable.getSelectionModel().select(0);
 		}else {
-			t_playListTable.getSelectionModel().selectLast();
+			t_playListTable.getSelectionModel().select(playList.size()-1);
 		}
-		
 	}
 	
 	public void selectIndex(boolean forward) {
