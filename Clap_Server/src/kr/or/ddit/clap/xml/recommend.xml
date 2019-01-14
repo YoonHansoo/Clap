@@ -16,6 +16,8 @@
 		FROM RECOMMEND_ALBUM
 		order by to_number(RCM_ALB_NO) desc
 	</select>
+	
+
 
 
 	<!-- 추천앨범 등록 쿼리 -->
