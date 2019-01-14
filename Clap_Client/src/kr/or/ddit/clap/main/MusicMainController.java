@@ -28,13 +28,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.MediaPlayer.Status;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
+import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
@@ -94,7 +94,7 @@ public class MusicMainController implements Initializable {
 	
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -201,44 +201,50 @@ public class MusicMainController implements Initializable {
 		tab5.setImage(tab_img[4]);
 		
 		
+		
 		btn_new1.setOnAction(e->{
-			System.out.println("new1");
+			SingerMenuController.albumNo = albumList.get(0).getAlb_no(); // 가수번호를 변수로 넘겨줌
+			singerMenu();
 		});
 		btn_new2.setOnAction(e->{
-			System.out.println("new2");
+			SingerMenuController.albumNo = albumList.get(1).getAlb_no();
+			System.out.println(albumList.get(1).getAlb_no());
+			singerMenu();
 		});
 		btn_new3.setOnAction(e->{
-			System.out.println("new3");
+			SingerMenuController.albumNo = albumList.get(2).getAlb_no();
+			singerMenu();
 		});
 		btn_new4.setOnAction(e->{
-			System.out.println("new4");
+			SingerMenuController.albumNo = albumList.get(3).getAlb_no();
+			singerMenu();
 		});
 		btn_new5.setOnAction(e->{
-			System.out.println("new5");
+			SingerMenuController.albumNo = albumList.get(4).getAlb_no();
+			singerMenu();
 		});
 		
 		
 		btn_new6.setOnAction(e->{
-			System.out.println("new6");
+			SingerMenuController.albumNo = albumList.get(5).getAlb_no();
+			singerMenu();
 		});
 		btn_new7.setOnAction(e->{
-			System.out.println("new7");
+			SingerMenuController.albumNo = albumList.get(6).getAlb_no();
+			singerMenu();
 		});
 		btn_new8.setOnAction(e->{
-			System.out.println("new8");
+			SingerMenuController.albumNo = albumList.get(7).getAlb_no();
+			singerMenu();
 		});
 		btn_new9.setOnAction(e->{
-			System.out.println("new9");
+			SingerMenuController.albumNo = albumList.get(8).getAlb_no();
+			singerMenu();
 		});
 		btn_new10.setOnAction(e->{
-			System.out.println("new10");
+			SingerMenuController.albumNo = albumList.get(9).getAlb_no();
+			singerMenu();
 		});
-		
-		
-//		tab1.setOnAction(e->{
-//			System.out.println("new10");
-//		});
-		
 		
 	}
 	
@@ -410,6 +416,7 @@ public class MusicMainController implements Initializable {
 	}
 	
 	public void newMusicMenu_PageLoad() {
+
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusic/main/NewMusicMenu.fxml")); // 바뀔 화면을
 																												// 가져옴
@@ -420,6 +427,17 @@ public class MusicMainController implements Initializable {
 		}
 	}
 
+	public void singerMenu() {
+		SingerMenuController.menuCount = 1;
+		try {
+			Parent page = FXMLLoader.load(getClass().getResource("../view/singer/main/SingerMenu.fxml")); // 바뀔 화면을
+																											// 가져옴
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(page);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void firstPage() {
 		List<MemberVO> list = new ArrayList<MemberVO>();
