@@ -5,10 +5,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
 import kr.or.ddit.clap.dao.musicreview.MusicReviewDaoImpl;
-import kr.or.ddit.clap.dao.mypage.MypageDaoImpl;
-import kr.or.ddit.clap.service.mypage.IMypageService;
-import kr.or.ddit.clap.service.mypage.MypageServiceImpl;
-import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
 
 public class MusicReviewServiceImpl  extends UnicastRemoteObject implements IMusicReviewService  {
