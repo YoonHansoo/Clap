@@ -164,8 +164,16 @@
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_RIGHT" />
                      </graphic>
                   </JFXButton>
-                  <Label onMouseClicked="#message" layoutX="883.0" layoutY="61.0" prefHeight="0.0" prefWidth="38.0" text="11" />
-                  <FontAwesomeIcon fill="#090948" iconName="COMMENT_ALT" layoutX="874.0" layoutY="80.0" size="2.7em" text="" wrappingWidth="30.0" />
+                  <JFXButton onAction="#btn_message" layoutX="844.0" layoutY="39.0" prefHeight="48.0" prefWidth="93.0" text=" ">
+                     <graphic>
+                        <FontAwesomeIcon fill="#9c0000" iconName="COMMENT" size="2.3em" wrappingWidth="21.0" />
+                     </graphic>
+                  </JFXButton>
+                  <Label fx:id="la_messageCnt" layoutX="881.0" layoutY="52.0" text="11" textFill="WHITE">
+                     <font>
+                        <Font name="YDIYGO350" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">

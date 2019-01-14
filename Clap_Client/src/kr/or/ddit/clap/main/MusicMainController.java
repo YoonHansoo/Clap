@@ -32,6 +32,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
+import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
@@ -40,6 +41,7 @@ import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.view.singer.main.SingerMusicController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.support.MessageVO;
 
 /**
  * 메인화면의 fxml 컨트롤러.
@@ -79,6 +81,7 @@ public class MusicMainController implements Initializable {
 	@FXML VBox vbox, editorBox1, editorBox2, editorBox3, editorBox4, editorBox5;
 	@FXML Menu menu_admin;
 	@FXML Label lb_id;
+	@FXML Label la_messageCnt;
 	@FXML ImageView mem_img;
 	@FXML ImageView new1, new2, new3, new4, new5;
 	@FXML ImageView new6, new7, new8, new9, new10;
@@ -92,6 +95,7 @@ public class MusicMainController implements Initializable {
 	public static Stage musicplayer = new Stage();
 	private ILoginService ils;
 	private IAlbumService ias;
+	private IMessageService imsgs;
 	private Registry reg;
 	public static FXMLLoader playerLoad;
 	public static Stage movieStage = new Stage();
@@ -105,12 +109,27 @@ public class MusicMainController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
 			ias = (IAlbumService) reg.lookup("album");
+			imsgs = (IMessageService) reg.lookup("message");
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		
+		//메세지 갯수
+		MessageVO msgvo =new MessageVO();
+		msgvo.setMem_get_id(ls.session.getMem_id());
+		msgvo.setMsg_read_tf("f");
+		String cnt;
+		try {
+			cnt = imsgs.selectMessFCnt(msgvo);
+			la_messageCnt.setText(cnt); //갯수넣기
+		} catch (RemoteException e2) {
+			e2.printStackTrace();
+		}
+	
+		
 		
 		if (ls.session != null) {
 			System.out.println(ls.session.getMem_name());
@@ -702,7 +721,7 @@ public class MusicMainController implements Initializable {
 
 	}
 	
-	public void  message() {
+	public void  btn_message() {
 		try {
 			Parent msg = FXMLLoader.load(getClass().getResource("../view/message/mestable.fxml"));
 			Scene scene = new Scene(msg);

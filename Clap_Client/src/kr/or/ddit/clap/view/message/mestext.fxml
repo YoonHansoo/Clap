@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="main" fx:controller="kr.or.ddit.clap.view.message.MessageTextController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="508.0" prefWidth="578.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutX="14.0" layoutY="14.0" prefHeight="492.0" prefWidth="556.0">
          <children>
@@ -22,10 +22,10 @@
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="   TO." wrappingWidth="86.12109375">
                            <font>
-                              <Font name="YDIYGO350" size="24.0" />
+                              <Font  name="YDIYGO350" size="24.0" />
                            </font>
                         </Text>
-                        <JFXTextField maxWidth="217.0" minWidth="178.0" prefHeight="37.0" prefWidth="193.0" />
+                        <JFXTextField fx:id="textF_Userid" maxWidth="217.0" minWidth="178.0" prefHeight="37.0" prefWidth="193.0" />
                         <JFXButton prefHeight="44.0" prefWidth="69.0" text=" " />
                      </children>
                   </HBox>
@@ -36,13 +36,13 @@
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
                         </Label>
-                        <JFXTextField maxWidth="196.0" minWidth="172.0" prefHeight="29.0" prefWidth="196.0" />
+                        <JFXTextField fx:id="textF_Title" maxWidth="196.0" minWidth="172.0" prefHeight="29.0" prefWidth="196.0" />
                         <Label prefHeight="32.0" prefWidth="163.0" text="      보낸 날짜 ">
                            <font>
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="33.0" prefWidth="102.0" text="Label">
+                        <Label fx:id="la_SendDate" prefHeight="33.0" prefWidth="102.0" text="Label">
                            <font>
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
@@ -53,13 +53,13 @@
             </VBox>
             <AnchorPane prefHeight="386.0" prefWidth="553.0">
                <children>
-                  <TextArea layoutX="7.0" prefHeight="290.0" prefWidth="537.0" />
-                  <Button layoutX="194.0" layoutY="328.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
+                  <TextArea fx:id="textA_content" layoutX="7.0" prefHeight="290.0" prefWidth="537.0" />
+                  <Button onAction="#btn_Ok" layoutX="194.0" layoutY="328.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Button layoutX="293.0" layoutY="328.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
+                  <Button onAction="#btn_Cl" layoutX="293.0" layoutY="328.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
