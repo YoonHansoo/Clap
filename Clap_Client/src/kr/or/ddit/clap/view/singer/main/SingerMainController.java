@@ -122,7 +122,7 @@ public class SingerMainController implements Initializable{
 		// img_wideimg
 		System.out.println("크게보기 버튼클릭");
 		try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerImgWiderDialog.fxml"));
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("../singer/SingerImgWiderDialog.fxml"));
 			Stage stage = new Stage();
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
