@@ -40,7 +40,6 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 
 public class ShowAlbumLIstController implements Initializable {
 
@@ -159,7 +158,7 @@ public class ShowAlbumLIstController implements Initializable {
 				try {
 					//바뀔 화면(FXML)을 가져옴
 
-					AlbumDetailController.albumNo = albumNo;//가수번호를 변수로 넘겨줌
+					AlbumDetailController.albumNo = albumNo; // 가수번호를 변수로 넘겨줌
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("AlbumDetail.fxml"));// init실행됨
 					Parent albumDetail= loader.load(); 
