@@ -115,6 +115,22 @@
  <delete id="deleteAlbum" parameterClass="String">
 			delete from album where ALB_NO=#String#
 	 </delete>
+	 
+	  <!-- 최신앨범 조회 (진민규) -->
+	 <select id="newalbumselect" resultClass="java.util.HashMap">
+	       select 
+			       b.alb_no,
+			       b.alb_name,
+			       b.alb_indate,
+			       b.alb_image,
+			       (select count(mus_no) from music where b.alb_no = alb_no) as mus_count,
+			       c.sing_name
+			 from  music a, album b, singer c
+			where  a.alb_no = b.alb_no
+			  and  b.sing_no = c.sing_no
+			group  by b.alb_no, b.alb_name, b.alb_indate, b.alb_image, c.sing_name
+			order  by b.alb_indate desc
+	</select>
 </sqlMap>         
 
 

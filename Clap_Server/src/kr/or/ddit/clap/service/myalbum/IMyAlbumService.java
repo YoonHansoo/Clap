@@ -19,7 +19,6 @@ public interface IMyAlbumService  extends Remote {
 	
 	public List<MyAlbumVO> myAlbumSelect(String id) throws RemoteException;
 	public int myAlbumInsert(Map<String,String> myAlbum) throws RemoteException;
-	
 	public int deleteMyalb(MyAlbumVO vo)		throws RemoteException;
 	public int updateMyalb(MyAlbumVO vo) 	throws RemoteException;
 }

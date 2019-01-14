@@ -7,6 +7,7 @@
 
 package kr.or.ddit.clap.dao.album;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.vo.album.AlbumVO;
 
@@ -18,12 +19,13 @@ public interface IAlbumDao {
 	
 	public int insertAlbum(AlbumVO vo);
 	
-public AlbumVO albumDetailInfo(String albumNo);
+	public AlbumVO albumDetailInfo(String albumNo);
 
 	public int selectAlbumLikeCnt(String albumNo);
 	
 	public int updateAlbumInfo(AlbumVO vo);
 
-	
-	 public int deleteAlbum(String albumNo);
+	public int deleteAlbum(String albumNo);
+	 
+	public List<Map> newAlbumSelect();
 }

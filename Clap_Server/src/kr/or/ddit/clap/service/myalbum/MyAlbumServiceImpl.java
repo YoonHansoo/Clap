@@ -51,5 +51,4 @@ public class MyAlbumServiceImpl  extends UnicastRemoteObject implements IMyAlbum
 		return myalbumdao.updateMyalb(vo);
 	}
 
-
 }

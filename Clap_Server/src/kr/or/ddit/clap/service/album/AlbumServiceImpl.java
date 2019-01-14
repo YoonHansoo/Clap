@@ -10,6 +10,7 @@ package kr.or.ddit.clap.service.album;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.dao.album.AlbumDaoImpl;
 import kr.or.ddit.clap.vo.album.AlbumVO;
@@ -69,6 +70,11 @@ public class AlbumServiceImpl extends UnicastRemoteObject implements IAlbumServi
 	@Override
 	public int deleteAlbum(String albumNo) throws RemoteException {
 		return albumDao.deleteAlbum(albumNo);
+	}
+
+	@Override
+	public List<Map> newAlbumSelect() throws RemoteException {
+		return albumDao.newAlbumSelect();
 	}
 
 	

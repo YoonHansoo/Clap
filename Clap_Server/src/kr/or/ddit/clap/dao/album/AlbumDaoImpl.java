@@ -10,6 +10,7 @@ package kr.or.ddit.clap.dao.album;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -127,6 +128,22 @@ public class AlbumDaoImpl implements IAlbumDao {
 				e.printStackTrace();
 			} 
 			return cnt;
+		}
+
+		@Override
+		public List<Map> newAlbumSelect() {
+			
+			List<Map> list = new ArrayList<Map>();
+			try {
+
+				list = smc.queryForList("album.newalbumselect");
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return list;
+			
 		}
 
 }
