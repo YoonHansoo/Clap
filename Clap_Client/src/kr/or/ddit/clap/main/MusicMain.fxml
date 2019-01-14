@@ -164,7 +164,7 @@
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_RIGHT" />
                      </graphic>
                   </JFXButton>
-                  <Label layoutX="883.0" layoutY="61.0" prefHeight="0.0" prefWidth="38.0" text="11" />
+                  <Label onMouseClicked="#message" layoutX="883.0" layoutY="61.0" prefHeight="0.0" prefWidth="38.0" text="11" />
                   <FontAwesomeIcon fill="#090948" iconName="COMMENT_ALT" layoutX="874.0" layoutY="80.0" size="2.7em" text="" wrappingWidth="30.0" />
                </children>
             </AnchorPane>

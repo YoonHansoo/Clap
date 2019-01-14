@@ -690,5 +690,17 @@ public class MusicMainController implements Initializable {
 
 	}
 	
+	public void  message() {
+		try {
+			Parent msg = FXMLLoader.load(getClass().getResource("../view/message/mestable.fxml"));
+			Scene scene = new Scene(msg);
+			musicplayer.setTitle("Meaage");
+			musicplayer.setScene(scene);
+			musicplayer.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 }
