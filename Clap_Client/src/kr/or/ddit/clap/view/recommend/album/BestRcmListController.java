@@ -45,7 +45,7 @@ public class BestRcmListController implements Initializable {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
-			recommendList = FXCollections.observableArrayList(irs.selectAllRecommendAlbum());
+			recommendList = FXCollections.observableArrayList(irs.selectBestRecommendAlbum());
 			System.out.println(recommendList.size());
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -159,6 +159,16 @@ public class BestRcmListController implements Initializable {
 
 					}
 				});
+				//인기순위를 나타낼 Label
+				Label rank = new Label();
+				title.setFont(Font.font("-윤고딕350", 16));
+				title.setTextFill(Color.valueOf("#9c0000"));
+				title.setPrefWidth(308);
+				title.setPrefHeight(20);
+				title.setWrapText(true);
+				title.setPadding(new Insets(30, 0, 30, 15));
+				title.setText("인기 Top"+(i+1));
+				
 
 				// title과 like를 담을 hbox
 				HBox temp_hbox = new HBox();
@@ -203,7 +213,7 @@ public class BestRcmListController implements Initializable {
 				cntMusic.setGraphic(icon_cntMusic);
 
 				temp_hbox.getChildren().addAll(like, cntMusic);
-				vbox.getChildren().addAll(iv_Album, title, temp_hbox);
+				vbox.getChildren().addAll(rank, iv_Album, title, temp_hbox);
 				hbox.getChildren().add(vbox);
 
 				if (i % 2 == 0) {

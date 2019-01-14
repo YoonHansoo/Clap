@@ -10,16 +10,22 @@ public class RecommendAlbumVO implements Serializable{
 	private String rcm_content;
 	private String mem_id;
 	private String rcm_alb_image;
+	private String cnt;
 	
 	
 	
+	public String getCnt() {
+		return cnt;
+	}
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
+	}
 	public String getRcm_alb_image() {
 		return rcm_alb_image;
 	}
 	public void setRcm_alb_image(String rcm_alb_image) {
 		this.rcm_alb_image = rcm_alb_image;
 	}
-	
 	public String getRcm_alb_no() {
 		return rcm_alb_no;
 	}
