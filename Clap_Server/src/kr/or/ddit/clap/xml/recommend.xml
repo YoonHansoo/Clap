@@ -24,13 +24,13 @@ SELECT  a.RCM_ALB_NO,
                     a.RCM_ALB_NAME,
                     a.RCM_CONTENT,
                     a.RCM_ALB_IMAGE,
-                    b.cnt
+                to_number(nvl(b.cnt,0))
              FROM RECOMMEND_ALBUM a, (SELECT count(*) as cnt,
                                                     RCM_ALB_NO
                                         FROM RECOMMEND_LIKE
                                     group by RCM_ALB_NO) b                      
-                where a.RCM_ALB_NO = b.RCM_ALB_NO
-                order by  b.cnt desc , RCM_ALB_NO desc
+                where a.RCM_ALB_NO = b.RCM_ALB_NO(+)
+                order by   to_number(nvl(b.cnt,0)) desc , RCM_ALB_NO desc
 </select>
 
 	<!-- 추천앨범 등록 쿼리 -->
@@ -144,7 +144,8 @@ SELECT  a.RCM_ALB_NO,
 		a.RCM_ALB_LIST_NO,
 		b.MUS_TITLE,
 		c.ALB_NAME,
-		d.SING_NAME
+		d.SING_NAME,
+		c.alb_image
 		FROM RECOMMEND_ALBUM_LIST a, music b, album c,
 		singer d
 		where a.MUS_NO = b.MUS_NO
