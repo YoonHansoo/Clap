@@ -12,6 +12,9 @@ public interface IRecommendDao {
 	// 앨범 전체리스트 조회
 	public List<RecommendAlbumVO> selectAllRecommendAlbum();
 
+	//앨범 인기순 리스트 조회
+		public List<RecommendAlbumVO> selectBestRecommendAlbum();
+	
 	// 좋아요 수
 	public int selectAlbumLikeCnt(String RcmAlbNo);
 

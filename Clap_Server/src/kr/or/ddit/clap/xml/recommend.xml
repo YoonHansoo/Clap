@@ -17,8 +17,21 @@
 		order by to_number(RCM_ALB_NO) desc
 	</select>
 	
-
-
+<!-- 추천앨범 좋아요(인기)순 조회 --> 
+<select id="selectBestRecommendAlbum"
+		resultClass="RecommendAlbumVO">
+SELECT  a.RCM_ALB_NO,
+                    a.RCM_ALB_NAME,
+                    a.RCM_CONTENT,
+                    a.RCM_ALB_IMAGE,
+                    b.cnt
+             FROM RECOMMEND_ALBUM a, (SELECT count(*) as cnt,
+                                                    RCM_ALB_NO
+                                        FROM RECOMMEND_LIKE
+                                    group by RCM_ALB_NO) b                      
+                where a.RCM_ALB_NO = b.RCM_ALB_NO
+                order by  b.cnt desc , RCM_ALB_NO desc
+</select>
 
 	<!-- 추천앨범 등록 쿼리 -->
 	<insert id="insertRecommendAlbum"

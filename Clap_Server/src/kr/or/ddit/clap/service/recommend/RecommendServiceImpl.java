@@ -107,5 +107,13 @@ public class RecommendServiceImpl extends UnicastRemoteObject implements IRecomm
 	public int deleteRecommendAlbum(String rcmAlbNo) throws RemoteException {
 		return recommendDao.deleteRecommendAlbum(rcmAlbNo);
 	}
+
+
+
+	@Override
+	public List<RecommendAlbumVO> selectBestRecommendAlbum() throws RemoteException {
+		return recommendDao.selectBestRecommendAlbum();
+		
+	}
 	
 }

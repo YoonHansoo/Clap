@@ -5,36 +5,58 @@
 
 <sqlMapConfig>
 	<properties resource="SqlMapConfig.properties" />
-	
+
 	<settings cacheModelsEnabled="true" enhancementEnabled="true"
 		lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
 		maxTransactions="5" useStatementNamespaces="true" />
 
- 	<typeAlias alias="singerVO" type	   ="kr.or.ddit.clap.vo.singer.SingerVO"/>
- 	<typeAlias alias="musichistoryVO" type ="kr.or.ddit.clap.vo.music.MusicHistoryVO"/>
- 	<typeAlias alias="memberVO" type	   ="kr.or.ddit.clap.vo.member.MemberVO"/>
- 	<typeAlias alias="qnaVO" type		   ="kr.or.ddit.clap.vo.support.QnaVO"/>
- 	<typeAlias alias="musicReviewVO" type  ="kr.or.ddit.clap.vo.music.MusicReviewVO"/>
- 	<typeAlias alias="musicLikeVO" type	   ="kr.or.ddit.clap.vo.music.MusicLikeVO"/>
- 	<typeAlias alias="myalbumVO" type	   ="kr.or.ddit.clap.vo.myalbum.MyAlbumVO"/>
- 	<typeAlias alias="myalbumlistVO" type  ="kr.or.ddit.clap.vo.myalbum.MyAlbumListVO"/>
- 	<typeAlias alias="likeVO" type		   ="kr.or.ddit.clap.vo.member.LikeVO"/>
- 	<typeAlias alias="albumVO" type		   ="kr.or.ddit.clap.vo.album.AlbumVO"/>
- 	<typeAlias alias="NoticeBoardVO" type  ="kr.or.ddit.clap.vo.support.NoticeBoardVO"/>
- 	<typeAlias alias="playlistVO" type 	   ="kr.or.ddit.clap.vo.music.PlayListVO"/>
- 	<typeAlias alias="musicVO" type        ="kr.or.ddit.clap.vo.music.MusicVO"/>
- 	<typeAlias alias="albumReviewVO" type  ="kr.or.ddit.clap.vo.album.AlbumReviewVO"/>
- 	<typeAlias alias="singerReviewVO" type ="kr.or.ddit.clap.vo.singer.SingerReviewVO"/>
- 	<typeAlias alias="GenreVO" type ="kr.or.ddit.clap.vo.genre.GenreVO"/>
- 	<typeAlias alias="GenreDetailVO" type ="kr.or.ddit.clap.vo.genre.GenreDetailVO"/>
- 	<typeAlias alias="EventBoardVO" type   ="kr.or.ddit.clap.vo.support.EventBoardVO"/>
- 	<typeAlias alias="ticketBuyVO" type ="kr.or.ddit.clap.vo.ticket.TicketBuyListVO"/>
- 	<typeAlias alias="ticketVO" type ="kr.or.ddit.clap.vo.ticket.TicketVO"/>
+	<typeAlias alias="singerVO"
+		type="kr.or.ddit.clap.vo.singer.SingerVO" />
+	<typeAlias alias="musichistoryVO"
+		type="kr.or.ddit.clap.vo.music.MusicHistoryVO" />
+	<typeAlias alias="memberVO"
+		type="kr.or.ddit.clap.vo.member.MemberVO" />
+	<typeAlias alias="qnaVO"
+		type="kr.or.ddit.clap.vo.support.QnaVO" />
+	<typeAlias alias="musicReviewVO"
+		type="kr.or.ddit.clap.vo.music.MusicReviewVO" />
+	<typeAlias alias="musicLikeVO"
+		type="kr.or.ddit.clap.vo.music.MusicLikeVO" />
+	<typeAlias alias="myalbumVO"
+		type="kr.or.ddit.clap.vo.myalbum.MyAlbumVO" />
+	<typeAlias alias="myalbumlistVO"
+		type="kr.or.ddit.clap.vo.myalbum.MyAlbumListVO" />
+	<typeAlias alias="likeVO"
+		type="kr.or.ddit.clap.vo.member.LikeVO" />
+	<typeAlias alias="albumVO"
+		type="kr.or.ddit.clap.vo.album.AlbumVO" />
+	<typeAlias alias="NoticeBoardVO"
+		type="kr.or.ddit.clap.vo.support.NoticeBoardVO" />
+	<typeAlias alias="playlistVO"
+		type="kr.or.ddit.clap.vo.music.PlayListVO" />
+	<typeAlias alias="musicVO"
+		type="kr.or.ddit.clap.vo.music.MusicVO" />
+	<typeAlias alias="albumReviewVO"
+		type="kr.or.ddit.clap.vo.album.AlbumReviewVO" />
+	<typeAlias alias="singerReviewVO"
+		type="kr.or.ddit.clap.vo.singer.SingerReviewVO" />
+	<typeAlias alias="GenreVO"
+		type="kr.or.ddit.clap.vo.genre.GenreVO" />
+	<typeAlias alias="GenreDetailVO"
+		type="kr.or.ddit.clap.vo.genre.GenreDetailVO" />
+	<typeAlias alias="EventBoardVO"
+		type="kr.or.ddit.clap.vo.support.EventBoardVO" />
+	<typeAlias alias="ticketBuyVO"
+		type="kr.or.ddit.clap.vo.ticket.TicketBuyListVO" />
+	<typeAlias alias="ticketVO"
+		type="kr.or.ddit.clap.vo.ticket.TicketVO" />
 
- 	<typeAlias alias="RecommendAlbumVO" type ="kr.or.ddit.clap.vo.recommend.RecommendAlbumVO"/>
- 	<typeAlias alias="RecommendAlbumListVO" type ="kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO"/>
+	<typeAlias alias="RecommendAlbumVO"
+		type="kr.or.ddit.clap.vo.recommend.RecommendAlbumVO" />
+	<typeAlias alias="RecommendAlbumListVO"
+		type="kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO" />
 
-	
+
 
 	<transactionManager type="JDBC">
 		<dataSource type="SIMPLE">
@@ -42,27 +64,40 @@
 			<property name="JDBC.ConnectionURL" value="${url}" />
 			<property name="JDBC.Username" value="${username}" />
 			<property name="JDBC.Password" value="${password}" />
+
+			
+			<!-- Ibatis추가설정 OPTIONAL PROPERTIES BELOW -->
+			<property name="Pool.MaximumActiveConnections" value="2" />
+			<property name="Pool.MaximumIdelConnections" value="2" />
+			<property name="Pool.TimeToWait" value="10000" />
+			<property name="Pool.PingQuery" value="select * from dual" />
+			<property name="Pool.PingEnabled" value="false" />
+			<property name="Pool.PingConnectionsOlderThan" value="0" />
+			<property name="Pool.PingConnectionsNotUsedFor" value="0" />
+			<!-- Ibatis추가설정 OPTIONAL PROPERTIES BELOW -->
+			
+
 		</dataSource>
 	</transactionManager>
-	
+
 	<!-- <sqlMap resource="vo/board.xml"/> -->
-	<sqlMap resource="kr/or/ddit/clap/xml/singer.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/singer.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/musichistory.xml"></sqlMap>
-	<sqlMap resource="kr/or/ddit/clap/xml/login.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/qna.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/mypage.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/join.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/musicreview.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/like.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/login.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/qna.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/mypage.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/join.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/musicreview.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/like.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/myalbum.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/myalbumlist.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/album.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/notice.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/playlist.xml"></sqlMap>
-	<sqlMap resource="kr/or/ddit/clap/xml/music.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/eventboard.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/ticket.xml"></sqlMap> 
-	<sqlMap resource="kr/or/ddit/clap/xml/recommend.xml"></sqlMap> 
+	<sqlMap resource="kr/or/ddit/clap/xml/music.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/eventboard.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/ticket.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/recommend.xml"></sqlMap>
 
 </sqlMapConfig>
 

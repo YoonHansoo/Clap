@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.clap.vo.music.MusicVO;
-import kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
 
 public interface IRecommendService extends Remote {
@@ -14,6 +13,9 @@ public interface IRecommendService extends Remote {
 	
 	//앨범 전체리스트 조회
 	public List<RecommendAlbumVO> selectAllRecommendAlbum() throws RemoteException;
+
+	//앨범 인기순 리스트 조회
+	public List<RecommendAlbumVO> selectBestRecommendAlbum() throws RemoteException;
 	
 	//좋아요 수
 	public int selectAlbumLikeCnt(String RcmAlbNo) throws RemoteException;
@@ -47,5 +49,5 @@ public interface IRecommendService extends Remote {
 	//추천앨범 삭제
 	public int deleteRecommendAlbum(String rcmAlbNo) throws RemoteException;
 	
-	
+
 }

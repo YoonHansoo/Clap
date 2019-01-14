@@ -185,4 +185,18 @@ public class RecommendDaoImpl implements IRecommendDao {
 		return cnt;
 	}
 
+	@Override
+	public List<RecommendAlbumVO> selectBestRecommendAlbum() {
+		List<RecommendAlbumVO> list = new ArrayList<RecommendAlbumVO>();
+		try {
+
+			list = smc.queryForList("recommend.selectBestRecommendAlbum");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }
