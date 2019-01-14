@@ -15,6 +15,7 @@
 		, b.SING_NAME
 		, to_char(a.ALB_SALEDATE, 'yyyy/mm/dd') as ALB_SALEDATE
 		, a.ALB_SALE_ENTER
+		, a.sing_no
 		FROM ALBUM a, SINGER b
 		WHERE a.SING_NO = b.SING_NO
 		order by to_number(a.ALB_NO) desc
