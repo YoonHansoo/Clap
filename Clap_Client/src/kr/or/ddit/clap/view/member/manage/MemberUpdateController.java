@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.imageio.ImageIO;
 
@@ -213,6 +215,7 @@ public class MemberUpdateController implements Initializable{
 		MemberVO vo  =new MemberVO();
 		vo.setMem_name(textF_Memname2.getText());
 		
+		
 		AES256Util aes = null;
 		try {
 			aes = new AES256Util();
@@ -226,7 +229,12 @@ public class MemberUpdateController implements Initializable{
 		} catch (UnsupportedEncodingException | GeneralSecurityException e12) {
 			e12.printStackTrace();
 		}
-		
+		Pattern p = Pattern.compile("(^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[`~!@#$%^&*?]).{8,}$)");
+		Matcher m = p.matcher(textF_Mempw.getText());
+		if(!m.find()) {
+			errMsg("8~20자리의 영문 대/소문자, 숫자, 특수문자를 사용하세요 / 공백 사용 불가");
+			return;
+		}
 		vo.setMem_pw(NowencryptedPw);//암호화 시키기
 		vo.setMem_tel(textF_MemTel.getText());
 		vo.setMem_email(textF_MemEmail.getText());

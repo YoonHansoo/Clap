@@ -66,7 +66,7 @@ public class LikeItsController implements Initializable{
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 		col_No.setCellValueFactory(param -> new SimpleStringProperty("" + no++));
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
-		col_LikeIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getlike_date()));
+		col_LikeIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getlike_date().substring(0, 10)));
 		col_Checks.setCellValueFactory(param -> new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getChBox()));
 		col_Like.setCellValueFactory(param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getItsbtnLike()));
 

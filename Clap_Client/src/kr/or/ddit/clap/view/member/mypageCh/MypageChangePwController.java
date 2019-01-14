@@ -98,8 +98,8 @@ public class MypageChangePwController implements Initializable{
 				Pattern p = Pattern.compile("(^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[`~!@#$%^&*?]).{8,}$)");
 				Matcher m = p.matcher(textF_NewPw.getText());
 				if(!m.find()) {
-					System.out.println("qlqjs");
-					warning("변경하실 패스워드를 정확히 입력해주세요.", "");
+					warning("변경하실 패스워드를 형식에 맞게 입력해주세요.", "");
+					return;
 				}
 				
 				if(textF_NewPw.getText().equals(textF_NewPwCh.getText())) {

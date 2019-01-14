@@ -23,7 +23,7 @@
             <Font name="YDIYGO350" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="307.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6~20자리의 영문 대/소문자, 숫자, 특수문자를 사용하세요 / 공백 사용 불가" wrappingWidth="483.8203125">
+      <Text layoutX="307.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8~20자리의 영문 대/소문자, 숫자, 특수문자를 사용하세요 / 공백 사용 불가" wrappingWidth="483.8203125">
          <font>
             <Font size="14.0" />
          </font>
@@ -37,6 +37,6 @@
       <JFXPasswordField fx:id="textF_NewPw" layoutX="140.0" layoutY="242.0" maxWidth="167.0" minWidth="167.0" prefHeight="29.0" prefWidth="167.0" />
       <JFXPasswordField fx:id="textF_NewPwCh" layoutX="140.0" layoutY="162.0" maxWidth="167.0" minWidth="167.0" prefHeight="29.0" prefWidth="167.0" />
       <Button fx:id="btn_Ok" layoutX="268.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="확인" />
-      <Button  fx:id="btn_Cl" layoutX="394.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="취소" />
+      <Button fx:id="btn_Cl" layoutX="394.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="79.0" text="취소" />
    </children>
 </AnchorPane>

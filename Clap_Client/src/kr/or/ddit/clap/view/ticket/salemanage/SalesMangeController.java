@@ -6,6 +6,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
@@ -22,9 +25,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -70,10 +75,9 @@ public class SalesMangeController implements Initializable{
 		}
 		//콤보값 셋팅
 		combo_Ticket.getItems().addAll("1개월권","6개월권","1년권","전체");
-		combo_Ticket.setValue("=====");
-		
+		combo_Ticket.setValue("1개월권");
+
 		TicketBuyListVO vo =new TicketBuyListVO();
-		
 		try {
 			tickeylist = FXCollections.observableArrayList(its.selectTickBuyAllList(vo));
 		} catch (RemoteException e) {
@@ -95,7 +99,10 @@ public class SalesMangeController implements Initializable{
 
 	@FXML
 	public void btn_Search() { // 조회버튼 클릭시
-		// if(date_Start.ise)
+		 if(date_Start.getValue() ==null || date_End.getValue() ==null) {
+			 errMsg("날짜를 선택해 주세요");
+			 return;
+		 }
 		try {
 			TicketBuyListVO vo = new TicketBuyListVO();
 			vo.setTicket_buydate(date_Start.getValue().toString());
@@ -184,6 +191,12 @@ public class SalesMangeController implements Initializable{
 		
 		
 		
+	}public void errMsg(String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("");
+		errAlert.setHeaderText("");
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
 	}
 
 }

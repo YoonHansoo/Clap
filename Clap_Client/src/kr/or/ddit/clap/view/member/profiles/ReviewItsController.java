@@ -67,7 +67,7 @@ public class ReviewItsController implements Initializable{
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
 		col_Debu.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_debut_era()));
 		col_Reviewcon.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getsing_re_content()));
-		col_ReviwIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_re_indate()));
+		col_ReviwIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_re_indate().substring(0, 10)));
 		col_del.setCellValueFactory(param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getBtnDel()));
 	
 		String user_id = LoginSession.session.getMem_id();
