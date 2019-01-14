@@ -45,9 +45,9 @@ public class EventShowListController implements Initializable {
 	//관리자 페이지
 
 	@FXML
-	AnchorPane contents;
+	AnchorPane contents; // 왼쪽 메뉴바
 	@FXML
-	AnchorPane main;
+	AnchorPane main; // 오른쪽
 	@FXML
 	Pagination e_paging;
 	@FXML
@@ -63,6 +63,8 @@ public class EventShowListController implements Initializable {
 	@FXML
 	TreeTableColumn<EventBoardVO, ImageView> col_EventImage;
 	@FXML
+	TreeTableColumn<EventBoardVO, String> col_Content;
+	@FXML
 	JFXComboBox<String> combo_Search;
 	@FXML
 	JFXButton btn_Add;
@@ -77,8 +79,11 @@ public class EventShowListController implements Initializable {
 	private IEventBoardService ies;
 	private ObservableList<EventBoardVO> eventList, currenteventList;
 	private int from, to, itemsForPage, totalPageCnt;
+	/*public String str_EventTitle;
+	public String str_EventSDate;
+	public String str_EventEDate;*/
 	//public static String eventNo;
-	//public EventBoardVO eVO = null;
+	public EventBoardVO eVO = null;
 	
 	
 	@Override
@@ -112,6 +117,7 @@ public class EventShowListController implements Initializable {
 		col_EventTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_title()));
 		col_EventSDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_sdate()));
 		col_EventEDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_edate()));
+		col_Content.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_content()));
 		
 		try {
 			
@@ -162,37 +168,33 @@ public class EventShowListController implements Initializable {
 			
 		});
 		
-		
-		
-		
-		
 		// 더블클릭
 		tbl_Event.setOnMouseClicked(e -> {
 			if (e.getClickCount()  > 1) {
-				int index = tbl_Event.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스" + index);
-				EventBoardVO vo = eventList.get(index);
-				System.out.println("번호 : " + vo.getEvent_no());
-				String eventNo = vo.getEvent_no();
-				
+				String eventNo    = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_no();
+				String eventImg   = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_image();
+				String eventTitle = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_title();
+				String eventCont  = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_content();
+				String eventSdate = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_sdate();
+				String eventEdate = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_edate();
+				System.out.println("넘겨줄 정보 : "+eventNo + eventImg + eventTitle + eventCont + eventSdate + eventEdate);
+					
 				try {
-					System.out.println("업데이트");
-					System.out.println("선택한 글 번호 : " + eventNo);
-				
-					//바뀔 화면(FXML)을 가져옴
-					EventContentUpdateController.eventNo = vo.getEvent_no(); //글 번호를 변수로 넘겨줌.
+					
+					
+					//바뀔 화면(FXML)을 가져옴 eventNo, 
+					EventContentUpdateController.eventNo = eventNo; //글 번호를 변수로 넘겨줌.
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("EventContentUpdate.fxml"));
 					Parent eventUpdate = loader.load();
+					
 					EventContentUpdateController controller = loader.getController();
-					controller.initData(vo); //eVO
+					controller.initData(eventNo, eventImg, eventTitle, eventCont, eventSdate, eventEdate); //eVO
+					controller.givePane(contents); 
 					
 					main.getChildren().removeAll();
 					main.getChildren().setAll(eventUpdate);
 					
-					
-					main.getChildren().removeAll();
-					main.getChildren().setAll(eventUpdate);
 					
 				} catch(IOException ee) {
 					ee.printStackTrace();

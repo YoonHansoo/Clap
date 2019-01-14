@@ -24,9 +24,9 @@
          </tabs>
       </JFXTabPane>
       <Line endX="820.0" layoutX="92.0" layoutY="150.0" AnchorPane.leftAnchor="91.5" AnchorPane.topAnchor="149.5" />
-      <Text fx:id="Text_QnaType" layoutX="149.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="문의유형" />
+      <Text fx:id="Text_QnaType" layoutX="110.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="문의유형" />
       <Text fx:id="Text_QnaTitle" layoutX="232.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="문의 제목" />
-      <Text fx:id="Text_Date" layoutX="750.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="등록일" />
+      <Text fx:id="Text_Date" layoutX="775.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="등록일" />
       <Line endX="820.0" layoutX="101.0" layoutY="200.0" strokeWidth="0.5" AnchorPane.leftAnchor="91.5" />
       <TextFlow layoutX="147.0" layoutY="232.0" prefHeight="200.0" prefWidth="714.0">
          <children>
@@ -35,5 +35,6 @@
       </TextFlow>
       <JFXButton fx:id="btn_delete" layoutX="820.0" layoutY="578.0" text="삭  제" />
       <JFXButton fx:id="btn_update" layoutX="750.0" layoutY="578.0" text="수  정" />
+      <Text fx:id="Text_Id" layoutX="680.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
    </children>
 </AnchorPane>

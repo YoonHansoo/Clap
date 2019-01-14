@@ -22,5 +22,7 @@ public interface IEventBoardDao {
 	public EventBoardVO eventDetailAll(String ContentNo) throws RemoteException;
 	
 	public int updateEvent(EventBoardVO vo);
+	
+	public int deleteEvent(String ContentNo);
 
 }

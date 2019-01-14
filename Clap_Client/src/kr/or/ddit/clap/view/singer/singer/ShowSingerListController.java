@@ -149,7 +149,7 @@ public class ShowSingerListController implements Initializable {
 			if (e.getClickCount()  > 1) {
 				//int index = tbl_singer.getSelectionModel().getSelectedIndex();
 				String singNo = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_no();
-				System.out.println("선택한 가수번호: "+singNo);
+				System.out.println("선택한 가수번호: +"+singNo);
 				
 				
 				try {

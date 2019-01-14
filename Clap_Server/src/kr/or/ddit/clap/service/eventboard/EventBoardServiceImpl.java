@@ -29,13 +29,11 @@ public class EventBoardServiceImpl extends UnicastRemoteObject implements IEvent
 
 	@Override
 	public List<EventBoardVO> selectListAll() throws RemoteException {
-		
 		return eventboarddao.selectListAll();
 	}
 
 	@Override
 	public List<EventBoardVO> searchList(EventBoardVO vo) throws RemoteException {
-		
 		return eventboarddao.searchList(vo);
 	}
 
@@ -53,6 +51,11 @@ public class EventBoardServiceImpl extends UnicastRemoteObject implements IEvent
 	public int updateEvent(EventBoardVO vo) throws RemoteException {
 		return eventboarddao.updateEvent(vo);
 		
+	}
+
+	@Override
+	public int deleteEvent(String ContentNo) throws RemoteException {
+		return eventboarddao.deleteEvent(ContentNo);
 	}
 
 }

@@ -18,6 +18,7 @@ import java.util.ResourceBundle;
 import javax.imageio.ImageIO;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
@@ -51,9 +52,9 @@ public class EventContentInsertController implements Initializable {
 	@FXML
 	JFXTextField text_Title;
 	@FXML
-	JFXTextField text_Sdate;
+	JFXDatePicker date_Start;
 	@FXML
-	JFXTextField text_Edate;
+	JFXDatePicker date_End;
 	@FXML
 	Label label_Id;
 	@FXML
@@ -144,8 +145,7 @@ public class EventContentInsertController implements Initializable {
 		
 		btn_Insert.setOnAction(e -> {
 			
-			if(text_Title.getText().isEmpty() || text_Sdate.getText().isEmpty()
-					|| text_Edate.getText().isEmpty() || text_Content.getText().isEmpty() ) {
+			if(text_Title.getText().isEmpty() || text_Content.getText().isEmpty() ) {
 				errMsg("작업오류" , "빈 항목이 있습니다.");
 				return;
 			}
@@ -154,8 +154,8 @@ public class EventContentInsertController implements Initializable {
 			
 			eVO.setEvent_image(img_path);
 			eVO.setEvent_title(text_Title.getText());
-			eVO.setEvent_sdate(text_Sdate.getText());
-			eVO.setEvent_edate(text_Edate.getText());
+			eVO.setEvent_sdate(date_Start .getValue().toString());
+			eVO.setEvent_edate(date_End .getValue().toString());
 			eVO.setMem_id(LoginSession.session.getMem_id());
 			eVO.setEvent_content(text_Content.getText());
 			

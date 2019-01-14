@@ -14,7 +14,7 @@
 	 
 	 <select id="qnaDetailContent" resultClass="qnaVO" parameterClass="String">
          
-		  select qna_type, qna_title, qna_indate, qna_content from qna where qna_no = #String#
+		  select qna_type, qna_title, qna_indate, qna_content, mem_id from qna where qna_no = #String#
       </select>
 	 
 	 

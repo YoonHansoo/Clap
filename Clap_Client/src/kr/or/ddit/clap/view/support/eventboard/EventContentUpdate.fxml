@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
@@ -30,6 +31,26 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="번   호">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="label_no" text="번ㅎ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="7.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
                         <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="제       목">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
@@ -51,12 +72,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField fx:id="text_SDate" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
-                        <Label text="ex) 2019-01-01">
-                           <HBox.margin>
-                              <Insets top="10.0" />
-                           </HBox.margin>
-                        </Label>
+                        <JFXDatePicker fx:id="date_Start" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -69,12 +85,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField fx:id="text_EDate" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
-                        <Label text="ex) 2019-01-01">
-                           <HBox.margin>
-                              <Insets top="11.0" />
-                           </HBox.margin>
-                        </Label>
+                        <JFXDatePicker fx:id="date_End" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -122,7 +133,7 @@
       </Label>
       <JFXButton />
       <JFXButton fx:id="btn_update" layoutX="473.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-      <JFXButton fx:id="btn_cancel" layoutX="594.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
+      <JFXButton fx:id="btn_delete" layoutX="594.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
       <JFXTextArea fx:id="text_Content" layoutX="60.0" layoutY="398.0" maxWidth="653.0" minWidth="653.0" prefHeight="256.0" prefWidth="653.0" />
    </children>
 </AnchorPane>

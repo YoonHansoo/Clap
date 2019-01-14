@@ -6,16 +6,12 @@
  */
 package kr.or.ddit.clap.dao.eventboard;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
-import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
 import kr.or.ddit.clap.main.DBUtil;
 import kr.or.ddit.clap.vo.support.EventBoardVO;
@@ -103,6 +99,19 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		try {
 			cnt = smc.update("eventboard.updateEvent", vo);
 			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
+	@Override
+	public int deleteEvent(String ContentNo) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.delete("eventboard.deleteEvent", ContentNo);
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

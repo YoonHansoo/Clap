@@ -26,6 +26,8 @@ public class EventContentDetailController implements Initializable  {
 	private Registry reg;
 	private IEventBoardService ies;
 	private String temp_img_path = "";
+	public static AnchorPane contents;
+	public EventBoardVO eVO = null;
 	
 	@FXML
 	AnchorPane e_main;
@@ -36,17 +38,28 @@ public class EventContentDetailController implements Initializable  {
 	@FXML
 	Text Text_EventSDate;
 	@FXML
-	JFXButton btn_del;
-	@FXML
-	JFXButton btn_upd;
-	@FXML
 	Text Text_EventEDate;
 	@FXML
 	ImageView ImageView;
 	@FXML
 	Label lb_Content;
 	
-	public EventBoardVO eVO = null;
+	
+	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
+		// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
+		public void givePane(AnchorPane contents) {
+			this.contents = contents;
+			System.out.println("contents 적용완료");
+		}
+		
+		/*public void initData(String eventNo, String eventImg, String eventTitle, String eventCont, String eventSdate, String eventEdate) {
+			
+			
+			
+		}*/
+		
+		
+		
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -72,7 +85,6 @@ public class EventContentDetailController implements Initializable  {
 		//eVO.getEvent_no()로 받아야 함.
 		Text_EventTitle.setText(eVO.getEvent_title());
 		Text_EventSDate.setText(eVO.getEvent_sdate());
-		//fxml에서 SDate와 EDate 간격 넓히기 
 		Text_EventEDate.setText(eVO.getEvent_edate());
 		lb_Content.setText(eVO.getEvent_content());
 		

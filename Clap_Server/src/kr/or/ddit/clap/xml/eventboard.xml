@@ -13,7 +13,8 @@
  				event_title,
  				event_sdate,
  				event_edate,
- 				event_image
+ 				event_image,
+ 				event_content
 		  from
 			  	event_board 
 	 </select>
@@ -96,6 +97,14 @@
 									 where  EVENT_NO 	   = #event_no#
 									 
 	</update>
+	
+	
+	
+	
+	<!-- 삭제하는 쿼리 -->
+	<delete id="deleteEvent" parameterClass="String">
+			delete from event_board where EVENT_NO = #String#
+	</delete>
 	 
 	 
 	 

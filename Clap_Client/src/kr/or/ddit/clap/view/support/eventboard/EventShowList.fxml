@@ -28,11 +28,12 @@
             <Pagination fx:id="e_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
             <JFXTreeTableView fx:id="tbl_Event" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
                <columns>
-                  <TreeTableColumn fx:id="col_EventNo" prefWidth="54.0" text="번 호" />
-                  <TreeTableColumn fx:id="col_EventImage" prefWidth="154.0" text="Image" />
-                  <TreeTableColumn fx:id="col_EventTitle" prefWidth="328.0" text="제  목" />
-                  <TreeTableColumn fx:id="col_EventSDate" prefWidth="89.0" text="시작일" />
-                  <TreeTableColumn fx:id="col_EventEDate" prefWidth="89.0" text="종료일" />
+                  <TreeTableColumn fx:id="col_EventNo" prefWidth="41.0" text="번 호" />
+                  <TreeTableColumn fx:id="col_EventImage" prefWidth="174.0" text="Image" />
+                  <TreeTableColumn fx:id="col_EventTitle" prefWidth="218.0" text="제  목" />
+                  <TreeTableColumn fx:id="col_Content" prefWidth="124.0" text="내  용" />
+                  <TreeTableColumn fx:id="col_EventSDate" prefWidth="79.0" text="시작일" />
+                  <TreeTableColumn fx:id="col_EventEDate" prefWidth="79.0" text="종료일" />
                </columns>
             </JFXTreeTableView>
             <JFXComboBox fx:id="combo_Search" layoutX="465.0" layoutY="636.0" promptText="제목 명" />

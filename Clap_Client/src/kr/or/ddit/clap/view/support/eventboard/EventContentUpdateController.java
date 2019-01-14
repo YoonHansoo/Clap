@@ -8,11 +8,15 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import javax.imageio.ImageIO;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
@@ -23,6 +27,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -30,6 +35,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.eventboard.IEventBoardService;
 import kr.or.ddit.clap.vo.support.EventBoardVO;
 
@@ -42,9 +48,9 @@ public class EventContentUpdateController implements Initializable  {
 	@FXML
 	JFXTextField text_Title;
 	@FXML
-	JFXTextField text_SDate;
+	JFXDatePicker date_Start;
 	@FXML
-	JFXTextField text_EDate;
+	JFXDatePicker date_End;
 	@FXML
 	Label label_Id;
 	@FXML
@@ -52,25 +58,45 @@ public class EventContentUpdateController implements Initializable  {
 	@FXML
 	JFXButton btn_update;
 	@FXML
-	JFXButton btn_cancel;
+	JFXButton btn_delete;
 	@FXML
 	JFXTextArea text_Content;
+	@FXML
+	Label label_no;
 	
 	private FileChooser fileChooser;
 	private File filePath;
 	private String img_path;
 	private Registry reg;
 	private IEventBoardService ies;
+	private static AnchorPane contents;
 	public static String eventNo; // 파라미터로 받은 선택한 글 번호
+
+	//String d = today;
 	//public static AnchorPane contents;
 	
-	/*public void givePane(AnchorPane contents) {
+	public void givePane(AnchorPane contents) {
 		this.contents = contents;
 		System.out.println("contents 적용 완료");
-	}*/
+	}
 	
 	
-	public void initData(EventBoardVO eVO) {
+	// 전 화면에 있는 데이터를 그대로 가져와  세팅해주는 메서드 // 
+	public void initData(String eventNo, String eventImg, String eventTitle, String eventCont, String eventSdate, String eventEdate) {
+		
+		img_path = eventImg; //이미지경로를 전역에 저장
+		Image img = new Image(img_path); //이미지 객체등록
+		imgview_eventImg.setImage(img);
+		label_no.setText(eventNo);
+		text_Title.setText(eventTitle);
+		date_Start.setPromptText(eventSdate);
+		date_End.setPromptText(eventEdate);
+		text_Content.setText(eventCont);
+		label_Id.setText(LoginSession.session.getMem_id());
+		
+	}
+	
+	/*public void initData() {
 		System.out.println("initData");
 		
 		img_path = eVO.getEvent_image(); //이미지경로를 전역에 저장
@@ -78,13 +104,15 @@ public class EventContentUpdateController implements Initializable  {
 		imgview_eventImg.setImage(img);
 		
 		text_Title.setText(eVO.getEvent_title());
-		text_SDate.setText(eVO.getEvent_sdate());
-		text_EDate.setText(eVO.getEvent_edate());
-		label_Id.setText(eVO.getMem_id());
+		date_Start.setPromptText(eVO.getEvent_sdate());
+		date_End.setPromptText(eVO.getEvent_edate());
+		label_Id.setText(LoginSession.session.getMem_id());
 		text_Content.setText(eVO.getEvent_content());
 		
 		
-	}
+	}*/
+	
+	
 	
 	
 
@@ -105,7 +133,6 @@ public class EventContentUpdateController implements Initializable  {
 		
 		btn_updateImg.setOnAction(e -> {
 			
-			//에러 해결하기
 			Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
 			fileChooser = new FileChooser();
 			fileChooser.setTitle("Open image");
@@ -142,8 +169,7 @@ public class EventContentUpdateController implements Initializable  {
 		
 		btn_update.setOnAction(e -> {
 			
-			if(text_Title.getText().isEmpty() || text_SDate.getText().isEmpty() ||
-			   text_EDate.getText().isEmpty() || text_Content.getText().isEmpty()) {
+			if(text_Title.getText().isEmpty() || text_Content.getText().isEmpty()) {
 				
 				errMsg("작업오류", "빈 항목이 있습니다.");
 				return;
@@ -153,15 +179,13 @@ public class EventContentUpdateController implements Initializable  {
 			eVO.setEvent_no(eventNo);
 			eVO.setEvent_image(img_path);
 			eVO.setEvent_title(text_Title.getText());
-			eVO.setEvent_sdate(text_SDate.getText());
-			eVO.setEvent_edate(text_EDate.getText());
+			eVO.setEvent_sdate(date_Start.getValue().toString());
+			eVO.setEvent_edate(date_End.getValue().toString());
 			eVO.setEvent_content(text_Content.getText());
-			eVO.setMem_id(label_Id.getText());
+			eVO.setMem_id(LoginSession.session.getMem_id());
 			
 			try {
-				//이 부분 업데이트 안됨.
-				//Cause: java.sql.SQLDataException: ORA-01861: literal does not match format string
-				// Date쪽 부분 문제
+				
 				ies.updateEvent(eVO);
 				System.out.println("update 완료");
 				//업데이트 왜 안돼..
@@ -173,7 +197,7 @@ public class EventContentUpdateController implements Initializable  {
 			
 			Parent root1;
 			try {
-				root1 = FXMLLoader.load(getClass().getResource("EventShowList.fxml"));
+				root1 = FXMLLoader.load(getClass().getResource("EventClientShowList.fxml"));
 				main.getChildren().removeAll();
 				main.getChildren().setAll(root1);
 				
@@ -182,6 +206,24 @@ public class EventContentUpdateController implements Initializable  {
 			}
 			
 		});
+		
+		btn_delete.setOnMouseClicked(e -> {
+			
+			//Alert창을 출력해 정말 삭제할 지 물어봄
+			try {
+				if(0>alertConfrimDelete()) {
+					return;
+				}
+				int cnt = ies.deleteEvent(eventNo);
+				
+			} catch(RemoteException ee) {
+				ee.printStackTrace();
+			}
+			
+			
+		});
+		
+		
 		
 	}
 	
@@ -200,6 +242,36 @@ public class EventContentUpdateController implements Initializable  {
 		infoAlert.setHeaderText(headerText);
 		infoAlert.setContentText(msg);
 		infoAlert.showAndWait();
+	}
+	
+	//사용자가 확인을 누르면 1을 리턴 이외는 -1
+	public int alertConfrimDelete() {
+		Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
+	      
+	      alertConfirm.setTitle("CONFIRMATION");
+	      alertConfirm.setContentText("삭제하시면 복구가 불가능합니다.");
+	      
+	      // Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
+	      ButtonType confirmResult = alertConfirm.showAndWait().get();
+	      
+	      if (confirmResult == ButtonType.OK) {
+	         System.out.println("OK 버튼을 눌렀습니다.");
+	         
+	         Parent root1;
+				try {
+					root1 = FXMLLoader.load(getClass().getResource("EventClientShowList.fxml"));
+					main.getChildren().removeAll();
+					main.getChildren().setAll(root1);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+	         
+	         return 1;
+	      } else if (confirmResult == ButtonType.CANCEL) {
+	         System.out.println("취소 버튼을 눌렀습니다.");
+	         return -1;
+	      }
+	      return -1;
 	}
 	
 
