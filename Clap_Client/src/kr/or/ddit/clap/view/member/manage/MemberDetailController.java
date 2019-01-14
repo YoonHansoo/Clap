@@ -105,7 +105,7 @@ public class MemberDetailController implements Initializable{
 			mvo.setMem_blacklist_tf("O");
 		}
 		label_BlackTF  .setText(mvo.getMem_blacklist_tf());
-		txt_intro  .setText(mvo.getMem_intro());
+		txt_intro.setText(mvo.getMem_intro());
 		
 		if(mvo.getMem_gender().equals("f")) {
 			mvo.setMem_gender("여성");
@@ -156,7 +156,6 @@ public class MemberDetailController implements Initializable{
 
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("memupdate.fxml"));// initialize실행됨
 			Parent UpdateMember = loader.load();
-			MemberUpdateController cotroller = loader.getController();
 			main.getChildren().removeAll();
 			main.getChildren().setAll(UpdateMember);
 

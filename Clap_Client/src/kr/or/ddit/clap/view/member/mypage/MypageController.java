@@ -162,7 +162,7 @@ private MypageMyAlbListController iAC;
 		// 최근댓글테이블
 		col_ReviewCont.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getValue().getMus_re_content()));
-		col_ReviewDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate()));
+		col_ReviewDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate().substring(0, 10)));
 
 		// 최근많이 들은 아티스트이름넣기
 		col_MSno.setCellValueFactory(param -> new SimpleStringProperty("" + (no1++)));

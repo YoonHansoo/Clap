@@ -1,6 +1,5 @@
 package kr.or.ddit.clap.view.member.manage;
 
-import java.awt.TextArea;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -11,9 +10,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,25 +22,25 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
-import javafx.fxml.Initializable;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.view.join.AES256Util;
-import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.member.MemberVO;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 public class MemberUpdateController implements Initializable{
 	
@@ -73,6 +70,7 @@ public class MemberUpdateController implements Initializable{
 	@FXML JFXDatePicker  Date_Indate;
 	@FXML JFXComboBox  combo_DelTF;
 	@FXML JFXComboBox  combo_blackTF;
+	@FXML TextArea  txt_intro;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -116,7 +114,7 @@ public class MemberUpdateController implements Initializable{
 			e1.printStackTrace();
 		}
 		
-		
+		txt_intro.setText(mvo.getMem_intro());
 		textF_Mempw.setText(decryptedPw);
 		textF_Memname2.setText(mvo.getMem_name());
 		

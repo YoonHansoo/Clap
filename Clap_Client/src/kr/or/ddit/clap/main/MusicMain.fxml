@@ -151,7 +151,6 @@
                         </Menu>
                      </menus>
                   </MenuBar>
-                  <JFXButton layoutX="840.0" layoutY="52.0" onAction="#mypage" style="-fx-background-color: #090948;" text="마이페이지 테스" textFill="WHITE" />
                   <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
                   <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
                   <JFXButton layoutX="450.0" layoutY="19.0" onAction="#musicPlayer" style="-fx-background-color: #090948;" text="MusicPlayer" textFill="WHITE" />
@@ -165,6 +164,8 @@
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_RIGHT" />
                      </graphic>
                   </JFXButton>
+                  <Label layoutX="883.0" layoutY="61.0" prefHeight="0.0" prefWidth="38.0" text="11" />
+                  <FontAwesomeIcon fill="#090948" iconName="COMMENT_ALT" layoutX="874.0" layoutY="80.0" size="2.7em" text="" wrappingWidth="30.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
