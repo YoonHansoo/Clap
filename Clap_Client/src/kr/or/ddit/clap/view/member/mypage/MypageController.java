@@ -142,7 +142,7 @@ private MypageMyAlbListController iAC;
 		}
 
 		String user_id = LoginSession.session.getMem_id();
-		label_Id.setText(user_id); // 현재 로그인한 사용자 아이디 가져오기
+		label_Id.setText(user_id+" 님"); // 현재 로그인한 사용자 아이디 가져오기
 		MemberVO vo = new MemberVO();
 		vo.setMem_id(user_id);
 		MemberVO memvo = new MemberVO();

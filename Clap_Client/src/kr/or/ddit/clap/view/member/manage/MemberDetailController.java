@@ -12,11 +12,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.view.singer.singer.UpdateSingerController;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MemberDetailController implements Initializable{
@@ -42,7 +46,7 @@ public class MemberDetailController implements Initializable{
 	@FXML Label label_MemAuth;
 	@FXML Label label_MeminDate;
 	@FXML Label label_DelTF;
-	
+	private String temp_img_path = "";
 	
 	public void givePane(AnchorPane contents) {
 		this.contents = contents;
@@ -75,20 +79,47 @@ public class MemberDetailController implements Initializable{
 		
 		label_MemName1.setText(mvo.getMem_name());
 		label_MemName2.setText(mvo.getMem_name());
+		Image img = new Image(mvo.getMem_image());
+		temp_img_path = mvo.getMem_image(); // aVO.getSing_image()를 전역으로 쓰기위해
+		imgview_MemImg.setImage(img);
+		
 		label_Memid .setText(memid);
-		label_MeminDate.setText(mvo.getMem_indate());
+		label_MeminDate.setText(mvo.getMem_indate().substring(0, 10));
+		if(mvo.getMem_del_tf().equals("f")) {
+			mvo.setMem_del_tf("X");
+		}else {
+			mvo.setMem_del_tf("O");
+		}
 		label_DelTF.setText(mvo.getMem_del_tf());
 		
-		label_MemBir .setText(mvo.getMem_bir());
+		label_MemBir .setText(mvo.getMem_bir().substring(0, 10));
 		label_MemTel .setText(mvo.getMem_tel());
 		label_MemGrade .setText(mvo.getMem_grade());
 		label_MemEmail .setText(mvo.getMem_email());
 		
 		label_BlackCnt  .setText(mvo.getMem_black_cnt());
+		
+		if(mvo.getMem_blacklist_tf().equals("f")) {
+			mvo.setMem_blacklist_tf("X");
+		}else {
+			mvo.setMem_blacklist_tf("O");
+		}
 		label_BlackTF  .setText(mvo.getMem_blacklist_tf());
 		txt_intro  .setText(mvo.getMem_intro());
+		
+		if(mvo.getMem_gender().equals("f")) {
+			mvo.setMem_gender("여성");
+		}else {
+			mvo.setMem_gender("남성");
+		}
 		label_MemGender .setText(mvo.getMem_gender());
 		
+		
+		if(mvo.getMem_auth().equals("f")) {
+			mvo.setMem_auth("사용자");
+		}else {
+			mvo.setMem_auth("관리자");
+		}
 		label_MemAuth .setText(mvo.getMem_auth());
 		
 		
@@ -96,7 +127,28 @@ public class MemberDetailController implements Initializable{
 		
 	}
 	//이미지 크게 보기
-	@FXML public void wideView() {}
+	@FXML public void wideView() {
+		
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("memImagWiderDialog.fxml"));
+			Stage stage = new Stage();
+			Scene scene = new Scene(pane);
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			Stage primaryStage = (Stage) label_MemName1.getScene().getWindow();
+			stage.initOwner(primaryStage);
+			stage.setWidth(500);
+			stage.setHeight(600);
+
+			ImageView img_wideimg = (ImageView) pane.lookup("#img_wideimg");
+			Image temp_img = new Image(temp_img_path);
+			img_wideimg.setImage(temp_img);
+
+			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	@FXML public void updateMem() {
 		try {
 			// 바뀔 화면(FXML)을 가져옴

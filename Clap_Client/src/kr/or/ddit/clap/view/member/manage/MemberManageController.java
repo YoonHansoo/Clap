@@ -99,9 +99,9 @@ public class MemberManageController implements Initializable{
 		
 		for (int i = 0; i < memList.size(); i++) {
 			if(memList.get(i).getMem_blacklist_tf().equals("f  ")) {
-				memList.get(i).setMem_image("https://cdn.pixabay.com/photo/2014/03/25/16/32/user-297330_960_720.png");
+				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\userf.png");
 			}else {
-				memList.get(i).setMem_image("https://st3.depositphotos.com/1915171/12736/v/950/depositphotos_127366466-stock-illustration-blacklist-sign-icon-user-not.jpg");
+				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\usert.png");
 			}
 		}
 		// 데이터 삽입

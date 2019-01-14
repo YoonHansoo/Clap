@@ -9,6 +9,8 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.jfoenix.controls.JFXPasswordField;
 
@@ -93,6 +95,13 @@ public class MypageChangePwController implements Initializable{
 			//암호화하여 커밋
 			
 			if(NowencryptedPw.equals(vo2.getMem_pw())) {
+				Pattern p = Pattern.compile("(^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[`~!@#$%^&*?]).{8,}$)");
+				Matcher m = p.matcher(textF_NewPw.getText());
+				if(!m.find()) {
+					System.out.println("qlqjs");
+					warning("변경하실 패스워드를 정확히 입력해주세요.", "");
+				}
+				
 				if(textF_NewPw.getText().equals(textF_NewPwCh.getText())) {
 					
 					String encryptedPw = "";
@@ -129,21 +138,23 @@ public class MypageChangePwController implements Initializable{
 					} catch (RemoteException e) {
 						e.printStackTrace();
 					}
-				}else if(!textF_NewPw.getText().equals(textF_NewPwCh.getText())) {
-					warning("변경하실 패스워드를 정확히 입력해주세요.", "");
+					infoMsg("비밀번호 변경 완료", "");
+					textF_NowPw.clear();
+					textF_NewPw.clear();
+					textF_NewPwCh.clear();
 				}
 				
-				infoMsg("비밀번호 변경 완료", "");
-				textF_NowPw.clear();
-				textF_NewPw.clear();
-				textF_NewPwCh.clear();
+				
 			}else if(!textF_NowPw.getText().equals(vo2.getMem_pw())) {
 				warning("잘못된 패스워드를 입력하셨습니다.", "");
-				
+				return;
 			}else if(textF_NowPw.getText().isEmpty() || textF_NewPw.getText().isEmpty() || textF_NewPwCh.getText().isEmpty()) {
 				warning("작업 오류", "빈 항목이 있습니다.");
 				return;
-			}	
+			}	else if(!textF_NewPw.getText().equals(textF_NewPwCh.getText())) {
+				warning("변경하실 패스워드를 정확히 입력해주세요.", "");
+				return;
+			}
 		});//btn_ok
 		
 	btn_Cl.setOnAction(e2->{
@@ -160,6 +171,8 @@ public class MypageChangePwController implements Initializable{
 		}
 		});
 	}
+	
+	
 	
 	public void infoMsg(String headerText, String msg) {
 		Alert infoAlert = new Alert(AlertType.INFORMATION);

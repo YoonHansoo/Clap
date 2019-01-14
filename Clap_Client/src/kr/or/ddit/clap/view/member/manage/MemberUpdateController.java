@@ -1,6 +1,8 @@
 package kr.or.ddit.clap.view.member.manage;
 
 import java.awt.TextArea;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -14,27 +16,41 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import javax.imageio.ImageIO;
+
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.Initializable;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.view.join.AES256Util;
 import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class MemberUpdateController implements Initializable{
 	
 	private Registry reg;
 	private IMypageService ims;
+	
+	private FileChooser fileChooser;
+	private File filePath;
+	private String img_path;
 
 	public static String memid;
 	@FXML AnchorPane main;
@@ -90,17 +106,9 @@ public class MemberUpdateController implements Initializable{
 			e11.printStackTrace();
 		}
 		
-		String encryptedPw = ""; // 암호화된 pw
+		String decryptedPw = ""; // 복호화시킨  pw을 담음
 		try {
-			encryptedPw = aes.encrypt(mvo.getMem_pw());
-		} catch (UnsupportedEncodingException | GeneralSecurityException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		String decryptedPw = ""; // 복호화시킨 pw
-		try {
-			decryptedPw = aes.decrypt(encryptedPw);
+			decryptedPw = aes.decrypt(mvo.getMem_pw());
 		} catch (UnsupportedEncodingException | GeneralSecurityException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -109,29 +117,53 @@ public class MemberUpdateController implements Initializable{
 		
 		textF_Mempw.setText(decryptedPw);
 		textF_Memname2.setText(mvo.getMem_name());
+		
 			if(mvo.getMem_gender().equals("f")) {
 				mvo.setMem_gender("여성");
 			}else {
 				mvo.setMem_gender("남성");
 			}
-		
 		combo_Memgender.setValue(mvo.getMem_gender());
 		textF_MemTel.setText(mvo.getMem_tel());
 		
-	/*	
-		SimpleDateFormat dt = new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss"); 
-		Date date = dt.parse(mvo.getMem_bir()); 
-		Date_MemBir.setValue((mvo.getMem_bir());*/
+		String temp_bir = mvo.getMem_bir().substring(0, 10);
+		Date_MemBir.setValue(LocalDate.parse(temp_bir));
 		
-		
+		if(mvo.getMem_auth().equals("f")) {
+			mvo.setMem_auth("사용자");
+		}else {
+			mvo.setMem_auth("관리자");
+		}
 		combo_MemAuth.setValue(mvo.getMem_auth());
+	
 		combo_MemGrade.setValue(mvo.getMem_grade());
 		textF_MemEmail.setText(mvo.getMem_email());
-		//Date_Indate
+		String temp_indate = mvo.getMem_indate().substring(0, 10);
+		Date_Indate.setValue(LocalDate.parse(temp_indate));
+		
+		textF_Memname2.setText(mvo.getMem_name());
+		
+		
+		if(mvo.getMem_del_tf().equals("f")) {
+			mvo.setMem_del_tf("X");
+		}else {
+			mvo.setMem_del_tf("O");
+		}
 		combo_DelTF.setValue(mvo.getMem_del_tf());
+		
+		if(mvo.getMem_blacklist_tf().equals("f")) {
+			mvo.setMem_blacklist_tf("X");
+		}else {
+			mvo.setMem_blacklist_tf("O");
+		}
 		combo_blackTF.setValue(mvo.getMem_blacklist_tf());
 		//txt_intro.setText(mvo.getMem_intro());
+		
 		label_BlackCnt.setText(mvo.getMem_black_cnt());
+		
+		img_path = mvo.getMem_image();
+		Image img = new Image(img_path); //이미지 객체등록
+		imgview_MemImg.setImage(img);
 		
 		//콤보박스에 값넣기
 		combo_Memgender.getItems().add("여성");
@@ -147,7 +179,96 @@ public class MemberUpdateController implements Initializable{
 
 	}
 	
-	public void updateMem() {
+	public void updateMem() throws RemoteException {
+		if(textF_Mempw.getText().isEmpty()) {
+			errMsg("비밀번호은 필수 입력 사항입니다.");
+			return;
+		}
+		
+		if(textF_Memname2.getText().isEmpty()) {
+			errMsg("사용자이름은 필수 입력 사항입니다.");
+			return;
+		}
+		
+		if(textF_MemTel.getText().isEmpty()) {
+			errMsg("전화번호는 필수 입력 사항입니다.");
+			return;
+		}
+		
+		if((Date_MemBir.getValue()+"").isEmpty()) {
+			errMsg("생일은 필수 입력 사항입니다.");
+			return;
+		}
+		
+		if(textF_MemEmail.getText().isEmpty()) {
+			errMsg("이메일은 필수 입력 사항입니다.");
+			return;
+		}
+		
+		if((Date_Indate.getValue()+"").isEmpty()) {
+			errMsg("가입일자는 필수 입력 사항입니다.");
+			return;
+		}
+		
+		MemberVO vo  =new MemberVO();
+		vo.setMem_name(textF_Memname2.getText());
+		
+		AES256Util aes = null;
+		try {
+			aes = new AES256Util();
+		} catch (UnsupportedEncodingException e11) {
+			e11.printStackTrace();
+		}
+		
+		String NowencryptedPw = ""; // 암호화된 pw
+		try {
+			NowencryptedPw = aes.encrypt(textF_Mempw.getText());
+		} catch (UnsupportedEncodingException | GeneralSecurityException e12) {
+			e12.printStackTrace();
+		}
+		
+		vo.setMem_pw(NowencryptedPw);//암호화 시키기
+		vo.setMem_tel(textF_MemTel.getText());
+		vo.setMem_email(textF_MemEmail.getText());
+
+		if(combo_Memgender.getValue().equals("여성")) {
+			vo.setMem_gender("f");
+		}else {
+			vo.setMem_gender("m");
+		}
+		
+		if(combo_MemAuth.getValue().equals("사용자")) {
+			vo.setMem_auth("f");
+		}else {
+			vo.setMem_auth("t");
+		}
+	
+		if(combo_MemGrade.getValue().equals("일반")) {
+			vo.setMem_grade("일반");
+		}else {
+			vo.setMem_grade("vip");
+		}
+		
+		if(combo_DelTF.getValue().equals("O")) {
+			vo.setMem_del_tf("t");
+		}else {
+			vo.setMem_del_tf("f");
+		}
+		
+		if(combo_blackTF.getValue().equals("O")) {
+			vo.setMem_blacklist_tf("t");
+		}else {
+			vo.setMem_blacklist_tf("f");
+		}
+		vo.setMem_id(memid);
+		vo.setMem_image(img_path);
+		vo.setMem_indate(Date_Indate.getValue()+"");
+		vo.setMem_bir(Date_MemBir.getValue()+"");
+		vo.setMem_intro("테스트중");
+		int d=ims.updateAll(vo);
+		System.out.println(d);
+		cancel();
+		
 		
 	}
 	public void cancel() {
@@ -167,8 +288,48 @@ public class MemberUpdateController implements Initializable{
 		} 
 	}
 	
-	public void ChangeView() {
+	public void ChangeView(ActionEvent event) {
+		Stage stage =  (Stage) ((Node)event.getSource()).getScene().getWindow();
+		 fileChooser = new FileChooser();
+		 fileChooser.setTitle("Open image");
+		 
+		 //사용자의 디렉토리 보여줌
+		 //String userDirectoryString = System.getProperty("user.home") + "\\Pictures"; 기본위치
+		 String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg";
+		 
+		 System.out.println("userDirectoryString:" + userDirectoryString);
+		 File userDirectory = new File(userDirectoryString); 
+		 
+		 if(!userDirectory.canRead()) {
+			 userDirectory = new File("c:/");
+		 }
+		 
+		 fileChooser.setInitialDirectory(userDirectory);; 
+		 
+		 this.filePath = fileChooser.showOpenDialog(stage);
+		 
 		
+		 //이미지를 새로운 이미지로 바꿈
+		 try {
+			 BufferedImage bufferedImage = ImageIO.read(filePath);
+			 Image image =  SwingFXUtils.toFXImage(bufferedImage, null);
+			 imgview_MemImg.setImage(image);
+			 String str_filePath = "file:"+filePath;
+			// userDirectoryString = "file:\\\\Sem-pc\\공유폴더\\Clap\\img\\singer"; //화면 출력 시 절대경로로 이미지를 읽기위해서
+			 img_path = str_filePath;
+			 System.out.println(img_path);
+			 
+		 }catch (Exception e) {
+			 System.out.println("이미지를 선택하지 않았습니다.");
+		 }
+	}
+	
+	public void errMsg(String msg) {
+		Alert errAlert = new Alert(AlertType.ERROR);
+		errAlert.setTitle("유효성 검사");
+		errAlert.setHeaderText("유효성 검사");
+		errAlert.setContentText(msg);
+		errAlert.showAndWait();
 	}
 
 }
