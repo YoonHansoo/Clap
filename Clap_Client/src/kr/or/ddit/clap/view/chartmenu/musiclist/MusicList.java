@@ -79,7 +79,6 @@ public class MusicList {
 	public MusicList( ObservableList<JFXButton> btnAddList, VBox mainBox) {
 
 		super();
-		
 		this.btnAddList = btnAddList;
 		this.mainBox = mainBox;
 		
@@ -241,7 +240,7 @@ public class MusicList {
 			// 파란색 라인 HBox 
 			HBox h_Line = new HBox();
 			vbox.setMargin(h_Line, new Insets(0,0,0,90));
-			h_Line.setPrefWidth(710);
+			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
 			h_Line.setStyle("-fx-background-color: #090948;");
 			//h_Line.alignmentProperty("")
@@ -448,7 +447,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			// 파란색 라인 HBox 
 			HBox h_Line = new HBox();
 			vbox.setMargin(h_Line, new Insets(0,0,0,90));
-			h_Line.setPrefWidth(710);
+			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
 			h_Line.setStyle("-fx-background-color: #090948;");
 			//h_Line.alignmentProperty("")
@@ -608,91 +607,140 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 
 	public VBox albumList(ObservableList<Map> list, int itemsForPage, int page) {
 		VBox vbox = new VBox();
-		HBox h_Line = null;
-		HBox hbox = null;
+		btnAddList.clear();
 		
-		int size = Math.min(page + itemsForPage, list.size());
-		
-		for (int i = 0; i < size; i++) {
+		int size = Math.min(page + itemsForPage, list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0);
+		System.out.println(size);
+		for (int i = page; i < size; i++) {
 			
-			if (i % 2 == 0) {
-				// 파란색 라인 HBox 
-				h_Line = new HBox();
-				vbox.setMargin(h_Line, new Insets(0,0,0,90));
-				h_Line.setPrefWidth(710);
-				h_Line.setPrefHeight(3);
-				h_Line.setStyle("-fx-background-color: #090948;");	
-				
-				// 전체 HBox
-				hbox = new HBox();
-				hbox.setPadding(new Insets(10,10,10,10));
-				hbox.setSpacing(10);
-			}
+	
+			// 파란색 라인 HBox 
+			HBox h_Line = new HBox();
+			vbox.setMargin(h_Line, new Insets(0,0,0,120));
+			h_Line.setMaxWidth(710);
+			h_Line.setPrefHeight(3);
+			h_Line.setStyle("-fx-background-color: #090948;");	
+			
+			// 전체 HBox
+			HBox hbox = new HBox();
+			vbox.setMargin(hbox, new Insets(0,0,0,120));
+			hbox.setPadding(new Insets(10,10,10,10));
+			hbox.setSpacing(10);
+			
 			
 			// 앨범이미지를 표시하는 ImageView
 			ImageView iv_Album = new ImageView();
-			Image img_Path = new Image(list.get(i).get("ALB_IMAGE").toString());
+			Image img_Path = new Image(list.get(i*2).get("ALB_IMAGE").toString());
 			iv_Album.setImage(img_Path);
 			iv_Album.setFitWidth(130);
 			iv_Album.setFitHeight(130);
 			
 			// Vbox (앨범 상세 정보)
 			VBox v_album = new VBox();
-			v_album.setPrefWidth(200);
-			v_album.setPrefHeight(130);
-			v_album.setMaxWidth(200);
-			v_album.setMaxHeight(130);
+			v_album.setMinWidth(200);
+			v_album.setMinHeight(130);
 			v_album.setSpacing(5);
 				
-				Label label_albumName = new Label(list.get(i).get("ALB_NAME").toString());
+				Label label_albumName = new Label(list.get(i*2).get("ALB_NAME").toString());
 				label_albumName.setFont(Font.font("-윤고딕350", 18));
-				label_albumName.setPrefWidth(200);
 				label_albumName.setMaxWidth(200);
 				
-				Label label_singerName = new Label(list.get(i).get("ALB_NAME").toString());
+				Label label_singerName = new Label(list.get(i*2).get("SING_NAME").toString());
 				label_singerName.setFont(Font.font("-윤고딕330", 15));
-				label_singerName.setPrefWidth(200);
 				label_singerName.setMaxWidth(200);
 				
 				HBox h_albumDetail = new HBox();
-				h_albumDetail.setPrefWidth(200);
 				h_albumDetail.setMaxWidth(200);
-				h_albumDetail.setSpacing(80);
+				h_albumDetail.setSpacing(10);
 				
 					Label label_indate = new Label();
-					String date = list.get(i).get("ALB_SALEDATE").toString().substring(0,10);
+					String date = list.get(i*2).get("ALB_SALEDATE").toString().substring(0,10);
 					label_indate.setText(date);
 					label_indate.setFont(Font.font("-윤고딕310", 15));
 					
 					Label label_musCount = new Label();
-					label_musCount.setText(list.get(i).get("MUS_COUNT").toString() + "곡");
+					label_musCount.setText(list.get(i*2).get("MUS_COUNT").toString() + "곡");
 					label_musCount.setFont(Font.font("-윤고딕310", 15));
-				h_albumDetail.getChildren().addAll(label_indate, label_musCount);
+				
 					
 				// 추가 버튼
-				JFXButton btn_Put = new JFXButton();
-				btn_Put.setRipplerFill(Color.valueOf("#9c0000"));
-				btn_Put.setAlignment(Pos.CENTER_LEFT);
-				btn_Put.setPrefWidth(30);
-				btn_Put.setPrefHeight(30);
-				btn_Put.setAccessibleText(list.get(i).get("ALB_NO").toString());
+				JFXButton btn_Add = new JFXButton();
+				btn_Add.setRipplerFill(Color.valueOf("#9c0000"));
+				btn_Add.setAlignment(Pos.CENTER_LEFT);
+				btn_Add.setPrefWidth(30);
+				btn_Add.setPrefHeight(30);
+				btn_Add.setAccessibleText(list.get(i*2).get("ALB_NO").toString());
 					
 					// 추가 버튼
-					FontAwesomeIcon icon_Put = new FontAwesomeIcon();
-					icon_Put.setIconName("PLUS");
-					icon_Put.setFill(Color.valueOf("#9c0000"));
-					icon_Put.setSize("30");
-					btn_Put.setGraphic(icon_Put);
-					btnPutList.add(btn_Put);
+					FontAwesomeIcon icon_Add = new FontAwesomeIcon();
+					icon_Add.setIconName("PLUS");
+					icon_Add.setFill(Color.valueOf("#9c0000"));
+					icon_Add.setSize("30");
+					btn_Add.setGraphic(icon_Add);
+					btnAddList.add(btn_Add);
+					
+					h_albumDetail.getChildren().addAll(label_indate, label_musCount);
+					v_album.getChildren().addAll(label_albumName, label_singerName, h_albumDetail, btn_Add);	
+				hbox.getChildren().addAll(iv_Album, v_album);
 				
-			v_album.getChildren().addAll(label_albumName, label_singerName, h_albumDetail, btn_Put);	
-			hbox.getChildren().addAll(iv_Album, v_album);
+				if (i*2+1 < list.size()) {
+					// 앨범이미지를 표시하는 ImageView
+					ImageView iv_Album2 = new ImageView();
+					Image img_Path2 = new Image(list.get(i*2+1).get("ALB_IMAGE").toString());
+					iv_Album2.setImage(img_Path2);
+					iv_Album2.setFitWidth(130);
+					iv_Album2.setFitHeight(130);
+					
+					// Vbox (앨범 상세 정보)
+					VBox v_album2 = new VBox();
+					v_album2.setMinWidth(200);
+					v_album2.setMinHeight(130);
+					v_album2.setSpacing(5);
+						
+						Label label_albumName2 = new Label(list.get(i*2+1).get("ALB_NAME").toString());
+						label_albumName2.setFont(Font.font("-윤고딕350", 18));
+						label_albumName2.setMaxWidth(200);
+						
+						Label label_singerName2 = new Label(list.get(i*2+1).get("SING_NAME").toString());
+						label_singerName2.setFont(Font.font("-윤고딕330", 15));
+						label_singerName2.setMaxWidth(200);
+						
+						HBox h_albumDetail2 = new HBox();
+						h_albumDetail2.setMaxWidth(200);
+						h_albumDetail2.setSpacing(10);
+						
+							Label label_indate2 = new Label();
+							String date2 = list.get(i*2+1).get("ALB_SALEDATE").toString().substring(0,10);
+							label_indate2.setText(date);
+							label_indate2.setFont(Font.font("-윤고딕310", 15));
+							
+							Label label_musCount2 = new Label();
+							label_musCount2.setText(list.get(i*2+1).get("MUS_COUNT").toString() + "곡");
+							label_musCount2.setFont(Font.font("-윤고딕310", 15));
+							
+								
+							// 추가 버튼
+							JFXButton btn_Add2 = new JFXButton();
+							btn_Add2.setRipplerFill(Color.valueOf("#9c0000"));
+							btn_Add2.setAlignment(Pos.CENTER_LEFT);
+							btn_Add2.setPrefWidth(30);
+							btn_Add2.setPrefHeight(30);
+							btn_Add2.setAccessibleText(list.get(i*2+1).get("ALB_NO").toString());
+								
+								// 추가 버튼
+								FontAwesomeIcon icon_Add2 = new FontAwesomeIcon();
+								icon_Add2.setIconName("PLUS");
+								icon_Add2.setFill(Color.valueOf("#9c0000"));
+								icon_Add2.setSize("30");
+								btn_Add2.setGraphic(icon_Add2);
+								btnAddList.add(btn_Add2);
+						h_albumDetail2.getChildren().addAll(label_indate2, label_musCount2);
+						v_album2.getChildren().addAll(label_albumName2, label_singerName2, h_albumDetail2, btn_Add2);
+						hbox.getChildren().addAll(iv_Album2, v_album2);
+					}
+				
 			vbox.getChildren().addAll(h_Line, hbox);
 		}
-		
-		
-		mainBox.getChildren().addAll(vbox);
-		
 		return vbox;
 	}
 }

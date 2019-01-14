@@ -23,19 +23,19 @@
             </Label>
             <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="506.0" VBox.vgrow="SOMETIMES">
                <tabs>
-                  <Tab fx:id="tab_music" text="곡">
+                  <Tab fx:id="tab_music" text="앨범">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="1022.0">
                            <children>
-                              <StackPane fx:id="stackPane_music" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
+                              <StackPane fx:id="stackPane_album" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                            </children></AnchorPane>
                     </content>
                   </Tab>
-                  <Tab fx:id="tab_album" text="앨범">
+                  <Tab fx:id="tab_album" text="곡">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1024.0">
                            <children>
-                              <StackPane fx:id="stackPane_album" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
+                              <StackPane fx:id="stackPane_music" minHeight="0.0" minWidth="0.0" prefWidth="1022.0" />
                            </children></AnchorPane>
                      </content>
                   </Tab>

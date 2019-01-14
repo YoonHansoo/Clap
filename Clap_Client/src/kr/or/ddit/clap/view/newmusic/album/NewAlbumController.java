@@ -42,8 +42,8 @@ public class NewAlbumController implements Initializable{
 	private MusicPlayerController mpc;
 	private int itemsForPage;
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
+	private ObservableList<Map> list;
 	private Pagination p_page;
-
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -51,6 +51,8 @@ public class NewAlbumController implements Initializable{
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ias = (IAlbumService) reg.lookup("album");
 			ipls = (IPlayListService) reg.lookup("playlist");
+			list = FXCollections.observableArrayList(ias.newAlbumSelect());
+			System.out.println(list.size());
 			itemsForPage = 3;
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -58,28 +60,15 @@ public class NewAlbumController implements Initializable{
 			e.printStackTrace();
 		}
 		
-//		musicList =
-	}
-
-	@FXML public void songChart() {
+		musicList = new MusicList( btnAddList,mainBox);
+		pageing(list);
 		
-	}
-
-	@FXML public void popChart() {
-		
-	}
-
-	@FXML public void ostChart() {
-		
-	}
-
-	@FXML public void otherChart() {
 		
 	}
 	
 	public VBox createPage(int pageIndex, ObservableList<Map> list, int itemsForPage) {
         int page = pageIndex * itemsForPage;
-        return musicList.pagenation(list,itemsForPage,page);
+        return musicList.albumList(list, itemsForPage, page);
     }
 
 	private void playListInsert(ArrayList<String> list) {
@@ -102,7 +91,8 @@ public class NewAlbumController implements Initializable{
 		}
 		
 		if (list.size() == 0) return;
-		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
+		int size = (list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0);
+		int totalPage = (size / itemsForPage) + (size % itemsForPage > 0 ? 1 : 0);
 		
 		p_page = new Pagination(totalPage, 0);
 		p_page.setPageFactory(new Callback<Integer, Node>() {

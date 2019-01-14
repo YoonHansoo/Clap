@@ -34,13 +34,13 @@ public class NewMusicMenuController implements Initializable{
 		tabPane_main.getSelectionModel().select(menuCount);
 		
 		try {
-			StackPane pane = FXMLLoader.load(getClass().getResource("../music/NewMusic.fxml"));
-			stackPane_music.getChildren().removeAll();
-			stackPane_music.getChildren().setAll(pane);
-			
-			StackPane pane2 = FXMLLoader.load(getClass().getResource("../album/NewAlbum.fxml"));
+			StackPane pane = FXMLLoader.load(getClass().getResource("../album/NewAlbum.fxml"));
 			stackPane_album.getChildren().removeAll();
-			stackPane_album.getChildren().setAll(pane2);
+			stackPane_album.getChildren().setAll(pane);
+			
+			StackPane pane2 = FXMLLoader.load(getClass().getResource("../music/NewMusic.fxml"));
+			stackPane_music.getChildren().removeAll();
+			stackPane_music.getChildren().setAll(pane2);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
