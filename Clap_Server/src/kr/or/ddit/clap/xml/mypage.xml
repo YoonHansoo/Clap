@@ -117,6 +117,27 @@
        </dynamic>       
 	</select>
 	
+	<update id="updateAll" parameterClass="memberVO">
+		update member
+		set mem_pw=#mem_pw#,
+		mem_name=#mem_name#,
+		mem_email=#mem_email#,
+		mem_bir=#mem_bir#,
+		mem_gender=#mem_gender#,
+		
+		mem_tel=#mem_tel#,
+		mem_grade=#mem_grade#,
+		mem_auth=#mem_auth#,
+		mem_indate=#mem_indate#,
+		mem_blacklist_tf=#mem_blacklist_tf#,
+		
+		mem_del_tf=#mem_del_tf#,
+		mem_image=#mem_image#,
+		mem_intro=#mem_intro#
+		
+		where mem_id = #mem_id#
+	</update>
+	
 
 </sqlMap>			
 

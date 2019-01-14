@@ -75,6 +75,11 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.searchMemList(vo);
 	}
 
+	@Override
+	public int updateAll(MemberVO vo) throws RemoteException {
+		return mypageDao.updateAll(vo);
+	}
+
 	
 
 	

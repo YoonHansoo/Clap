@@ -32,5 +32,7 @@ public interface IMypageService  extends Remote {
 	
 	public List<MemberVO>  searchMemList(MemberVO vo) throws RemoteException;
 	
+	public int  updateAll(MemberVO vo) throws RemoteException;
+	
 	
 }
