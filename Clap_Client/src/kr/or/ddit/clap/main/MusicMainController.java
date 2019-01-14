@@ -367,7 +367,7 @@ public class MusicMainController implements Initializable {
 		// 로그인 후 회원정보버튼(btn_mem) 눌렀을때 마이페이지로 이동.
 
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/otherMember.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(root);
 		} catch (IOException e) {
