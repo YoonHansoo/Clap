@@ -29,7 +29,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -39,6 +42,7 @@ import kr.or.ddit.clap.view.album.album.InsertAlbumController;
 import kr.or.ddit.clap.view.album.album.SelectSingerController;
 import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
+import javafx.scene.layout.AnchorPane;
 
 public class SalesMangeController implements Initializable{
 	
@@ -60,6 +64,9 @@ public class SalesMangeController implements Initializable{
 	@FXML TreeTableColumn<TicketBuyListVO,String> col_Price;
 	@FXML TreeTableColumn<TicketBuyListVO,String> col_saleDate;
 	@FXML TreeTableColumn<TicketBuyListVO,String> col_BuyType;
+	@FXML AnchorPane contents;
+	@FXML ImageView imgeview;
+	@FXML Label session_id;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -73,6 +80,18 @@ public class SalesMangeController implements Initializable{
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
+		
+		// 관리자 이미지 넣기
+				LoginSession ls = new LoginSession();
+				Image img = null;
+				if (ls.session.getMem_image() == null) {
+					img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+				} else {
+					img = new Image(ls.session.getMem_image());
+				}
+				imgeview.setImage(img);
+				session_id.setText(ls.session.getMem_id());
+		
 		//콤보값 셋팅
 		combo_Ticket.getItems().addAll("1개월권","6개월권","1년권","전체");
 		combo_Ticket.setValue("1개월권");
@@ -198,5 +217,93 @@ public class SalesMangeController implements Initializable{
 		errAlert.setContentText(msg);
 		errAlert.showAndWait();
 	}
+
+	
+
+
+	//화면이동
+	@FXML public void MemManag() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../member/manage/memmanage.fxml"));// init실행됨
+			Parent member= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(member);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+	@FXML public void SingManag() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../singer/singer/ShowSingerList.fxml"));// init실행됨
+			Parent singer= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(singer);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	@FXML public void AlbManag() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../album/album/ShowAlbumLIst.fxml"));// init실행됨
+			Parent album= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(album);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+	@FXML public void MusManag() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../music/music/MusicList.fxml"));// init실행됨
+			Parent music= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(music);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+	@FXML public void Recommen() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../recommend/album/RecommendAlbumList.fxml"));// init실행됨
+			Parent recommend= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(recommend);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+	@FXML public void Event() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../support/eventboard/EventShowList.fxml"));// init실행됨
+			Parent event= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(event);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+
+
+	@FXML public void Sales() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("salesmanage.fxml"));// init실행됨
+			Parent sales= loader.load(); 
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(sales);
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
+
 
 }

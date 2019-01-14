@@ -308,7 +308,7 @@ public class ShowRecommendAlbumController implements Initializable {
 
 	@FXML public void Recommen() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../recommend/album/RecommendAlbumList.fxml"));// init실행됨
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RecommendAlbumList.fxml"));// init실행됨
 			Parent recommend= loader.load(); 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(recommend);
