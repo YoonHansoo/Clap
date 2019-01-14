@@ -29,12 +29,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.vo.music.MusicVO;
 
@@ -60,6 +63,8 @@ public class MusicListController implements Initializable {
 	@FXML JFXComboBox<String> combo_search;
 	@FXML TextField text_search;
 	@FXML Button btn_search;	
+	@FXML ImageView imgeview;
+	@FXML Label session_id;
 	
 	private Registry reg;
 	private IMusicService ims;
@@ -78,7 +83,18 @@ public class MusicListController implements Initializable {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		
+
+		// 관리자 이미지 넣기
+		LoginSession ls = new LoginSession();
+		Image img = null;
+		if (ls.session.getMem_image() == null) {
+			img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+		} else {
+			img = new Image(ls.session.getMem_image());
+		}
+		imgeview.setImage(img);
+		session_id.setText(ls.session.getMem_id());
+
 		col_musicImg
 				.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 		
@@ -248,4 +264,94 @@ public void InsertMusic() {
 	
 	
 }
+
+
+
+//화면이동
+@FXML public void MemManag() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../member/manage/memmanage.fxml"));// init실행됨
+		Parent member= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(member);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
+@FXML public void SingManag() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../singer/singer/ShowSingerList.fxml"));// init실행됨
+		Parent singer= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(singer);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
+@FXML public void AlbManag() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../album/album/ShowAlbumLIst.fxml"));// init실행됨
+		Parent album= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(album);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
+
+@FXML public void MusManag() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicList.fxml"));// init실행됨
+		Parent music= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(music);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
+@FXML public void Recommen() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../recommend/album/RecommendAlbumList.fxml"));// init실행됨
+		Parent recommend= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(recommend);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
+@FXML public void Event() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../support/eventboard/EventShowList.fxml"));// init실행됨
+		Parent event= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(event);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
+
+@FXML public void Sales() {
+	try {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../ticket/salemanage/salesmanage.fxml"));// init실행됨
+		Parent sales= loader.load(); 
+		contents.getChildren().removeAll();
+		contents.getChildren().setAll(sales);
+	} catch (IOException e1) {
+		e1.printStackTrace();
+	}
+}
+
+
 }

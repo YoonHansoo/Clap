@@ -46,7 +46,7 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <VBox layoutX="35.0" layoutY="63.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
+      <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
          <children>
             <AnchorPane prefHeight="212.0" prefWidth="191.0">
                <children>

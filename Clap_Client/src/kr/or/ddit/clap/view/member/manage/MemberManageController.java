@@ -232,7 +232,7 @@ private void search() {
 //화면이동
 @FXML public void MemManag() {
 	try {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../member/manage/memmanage.fxml"));// init실행됨
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("memmanage.fxml"));// init실행됨
 		Parent member= loader.load(); 
 		contents.getChildren().removeAll();
 		contents.getChildren().setAll(member);
@@ -256,7 +256,7 @@ private void search() {
 
 @FXML public void AlbManag() {
 	try {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowAlbumLIst.fxml"));// init실행됨
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../album/album/ShowAlbumLIst.fxml"));// init실행됨
 		Parent album= loader.load(); 
 		contents.getChildren().removeAll();
 		contents.getChildren().setAll(album);

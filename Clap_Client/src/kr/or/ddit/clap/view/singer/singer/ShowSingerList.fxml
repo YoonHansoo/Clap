@@ -17,90 +17,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.singer.ShowSingerListController">
-   <children>																														 
-      <VBox layoutX="40.0" layoutY="53.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="191.0">
-               <children>
-                  <ImageView fitHeight="122.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                         <!-- <Image url="../../../../../../../../img/people.png" /> --> 
-                     </image>
-                  </ImageView>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="15.0" prefWidth="48.0" text="관리자" textFill="WHITE">
-                           <font>
-                              <Font name="YDIYGO350" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="50.0" />
-                           </HBox.margin>
-                        </Label>
-                        <JFXButton style="-fx-background-color: #9c0000;" text="logout" textFill="WHITE">
-                           <font>
-                              <Font name="YDIYGO350" size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="250.0" text="회원 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="24.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="265.0" text="블랙리스트 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="260.0" text="가수 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="271.0" text="앨범 관리 " textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="296.0" text="곡 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="344.0" text="장르 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="370.0" text="추천 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="320.0" text="Event 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="267.0" text="이용권 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="41.0" prefWidth="303.0" text="매출 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </VBox>
+   <children>
       <AnchorPane fx:id="main" layoutX="234.0" layoutY="3.0" prefHeight="768.0" prefWidth="773.0">
          <children>
             <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="가수 관리">
@@ -131,5 +48,73 @@
             <JFXButton layoutX="622.0" layoutY="687.0" onAction="#InsertSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
          </children>
       </AnchorPane>
+      <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
+         <children>
+            <AnchorPane prefHeight="212.0" prefWidth="191.0">
+               <children>
+                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <VBox prefHeight="85.0" prefWidth="191.0">
+               <children>
+                  <HBox prefHeight="21.0" prefWidth="191.0">
+                     <children>
+                        <Label fx:id="session_id" prefHeight="15.0" prefWidth="48.0" text="관리자" textFill="WHITE">
+                           <font>
+                              <Font name="YDIYGO350" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="50.0" />
+                           </HBox.margin>
+                        </Label>
+                        <JFXButton style="-fx-background-color: #9c0000;" text="logout" textFill="WHITE">
+                           <font>
+                              <Font name="YDIYGO350" size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MemManag" prefHeight="41.0" prefWidth="250.0" text="회원 관리" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#SingManag" prefHeight="41.0" prefWidth="260.0" text="가수 관리" textFill="#9c0000">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#AlbManag" prefHeight="41.0" prefWidth="271.0" text="앨범 관리 " textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MusManag" prefHeight="41.0" prefWidth="296.0" text="곡 관리" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Recommen" prefHeight="41.0" prefWidth="370.0" text="추천 관리" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Event" prefHeight="41.0" prefWidth="320.0" text="Event 관리" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Sales" prefHeight="41.0" prefWidth="303.0" text="매출 관리" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
