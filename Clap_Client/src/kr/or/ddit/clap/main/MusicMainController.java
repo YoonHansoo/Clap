@@ -444,7 +444,51 @@ public class MusicMainController implements Initializable {
 		Stage primaryStage = (Stage) btn_login.getScene().getWindow();
 		primaryStage.setScene(scene);
 	}
-
+	
+	//추천
+	@FXML
+	public void hotRcmList(ActionEvent event) {
+		try {
+			Parent recommendManage = FXMLLoader.load(getClass().getResource("../view/recommend/album/HotRcmList.fxml")); //바뀔 화면을 가져옴
+			
+			String temp_path = (getClass().getResource("../view/recommend/album/HotRcmList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); //현재화면 절대경로
+			
+			gobackStack.goURL(path);  
+			
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(recommendManage);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	//베스트
+	@FXML
+	public void BestRcmList(ActionEvent event) {
+		try {
+			Parent recommendManage = FXMLLoader.load(getClass().getResource("../view/recommend/album/BestRcmList.fxml")); //바뀔 화면을 가져옴
+			
+			String temp_path = (getClass().getResource("../view/recommend/album/BestRcmList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); //현재화면 절대경로
+			
+			gobackStack.goURL(path);  
+			
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(recommendManage);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
 	@FXML
 	public void singerManage(ActionEvent event) { // 가수관리를 클릭 했을 때.
 		try {

@@ -398,6 +398,7 @@ public class MusicList {
 		if (mainBox.getChildren().size() == 4) {
 			mainBox.getChildren().remove(3);
 		}
+		//-----------------------
 		mainBox.getChildren().add(vbox);
 		
 		btnPlayClick();

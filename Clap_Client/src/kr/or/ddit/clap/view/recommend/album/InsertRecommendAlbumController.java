@@ -161,9 +161,9 @@ public class InsertRecommendAlbumController implements Initializable {
 			//추천앨범곡을 추가  (시퀀스와 곡 넘버)
 			for(int i  = 0; i<musicList.size(); i++) {
 				Map<String, String> RcmMusicMap = new HashMap<String, String>();
-				RcmMusicMap.put( "sequence", sequence);
+				RcmMusicMap.put( "rcmAlbNo", sequence);
 				RcmMusicMap.put( "musicNo",musicList.get(i).getMus_no());
-				System.out.println("시퀀스:"+sequence + "musicNo"+ musicList.get(i).getMus_no() );
+				System.out.println("rcmAlbNo:"+sequence + "musicNo"+ musicList.get(i).getMus_no() );
 				irs.insertRecommendAlbumMusic(RcmMusicMap);
 				System.out.println("추천앨범리스트 생성 성공");
 				

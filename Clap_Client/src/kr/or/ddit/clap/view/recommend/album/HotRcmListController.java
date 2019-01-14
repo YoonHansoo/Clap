@@ -25,10 +25,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import kr.or.ddit.clap.service.recommend.IRecommendService;
-import kr.or.ddit.clap.view.music.music.MusicDetailController;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
 
-public class ShowRecommendAlbumController implements Initializable {
+public class HotRcmListController implements Initializable {
 
 	private Registry reg;
 	private IRecommendService irs;
@@ -42,7 +41,7 @@ public class ShowRecommendAlbumController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
@@ -57,7 +56,7 @@ public class ShowRecommendAlbumController implements Initializable {
 		// 높이 조절
 
 		int contentsHeight = 800;
-		System.out.println("사이즈" + recommendList.size());
+
 		if (recommendList.size() <= 4) {
 			contents.setPrefHeight(contentsHeight);
 		}
@@ -70,23 +69,21 @@ public class ShowRecommendAlbumController implements Initializable {
 			contentsHeight = contentsHeight + (500 * temp_h);
 			System.out.println("높이" + contentsHeight);
 			contents.setPrefHeight(contentsHeight);
-		}
+
 			HBox hbox = null;
 
 			for (int i = 0; i < recommendList.size(); i++) {
 				int likeCnt = 0;
 				int listCnt = 0;
 
-				System.out.println("PK사이즈:" + recommendList.size());
+				System.out.println("사이즈:" + recommendList.size());
 				// PK
 				String RcmAlbNo = recommendList.get(i).getRcm_alb_no();
 				try {
 					// 좋아요 수 구하는 쿼리
 					likeCnt = irs.selectAlbumLikeCnt(RcmAlbNo);
-					System.out.println("likeCnt:" + likeCnt);
 					// 리스트의 개수구하는 쿼리
 					listCnt = irs.selectAlbumListCnt(RcmAlbNo);
-					System.out.println("listCnt:" + likeCnt);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
@@ -212,7 +209,7 @@ public class ShowRecommendAlbumController implements Initializable {
 				if (i % 2 == 0) {
 					main_vbox.getChildren().add(hbox);
 
-				} else if (i == recommendList.size()) { 
+				} else if (i == recommendList.size()) { // -------------
 					System.out.println("마지막");
 					main_vbox.getChildren().add(hbox);
 				}
@@ -220,7 +217,7 @@ public class ShowRecommendAlbumController implements Initializable {
 			}
 
 		}
-	
+	}
 
 	@FXML
 	public void InsertRecommendAlbum() {
