@@ -140,16 +140,6 @@ public class JoinController implements Initializable{
 		box.setLayoutY(0);
 		lb_next.setVisible(false);
 		
-		txtArea1.setOnScrollFinished(e->{
-			System.out.println(123);
-			check1.setDisable(false);
-		});
-		txtArea2.setOnScrollFinished(e->{
-			check2.setDisable(false);
-		});
-		txtArea2.setOnScrollStarted(e->{
-			System.out.println(11);
-		});
 		
 		
 		radio_m.setToggleGroup(group);

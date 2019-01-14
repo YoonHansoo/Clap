@@ -128,6 +128,7 @@ public class SingerMenuController implements Initializable{
 
 		lb_singer.setText(sVO.getSing_name());
 		lb_singer.setOnMouseClicked(e->{
+			box.setVisible(false);
 			tabPane.getSelectionModel().select(0);
 		});
 		

@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -36,6 +37,7 @@ import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
+import kr.or.ddit.clap.view.singer.main.SingerMusicController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
@@ -51,6 +53,7 @@ public class MusicMainController implements Initializable {
 	@FXML AnchorPane menu;
 	@FXML AnchorPane contents;
 	@FXML HBox mem_menu;
+	@FXML MenuBar bar;
 
 	@FXML public JFXButton btn_login;
 
@@ -121,8 +124,10 @@ public class MusicMainController implements Initializable {
 			System.out.println(ls.session.getMem_id() + ls.session.getMem_auth());
 			if (ls.session.getMem_auth().equals("t")) { // 관리자 일 때 관리자모드 버튼 활성화
 				menu_admin.setVisible(true);
+				bar.setLayoutX(205);
 			} else {
 				menu_admin.setVisible(false); // 일반사용자일경우( 관리자로 로그인 후 사용자로 로그인 했을 경우를 대비해서만들었음
+				bar.setLayoutX(241);
 			}
 			System.out.println("not null " + ls.session.getMem_id());
 			mem_menu.setVisible(true);
@@ -206,28 +211,31 @@ public class MusicMainController implements Initializable {
 		btn_new1.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(0).getAlb_no(); // 앨범번호를 변수로 넘겨줌
 			SingerMainController.singerNo = albumList.get(0).getSing_no(); // 가수번호를 변수로 넘겨줌
-			System.out.println(albumList.get(0).getSing_no());
+			SingerMusicController.singNo = albumList.get(0).getSing_no();
 			singerMenu();
 		});
 		btn_new2.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(1).getAlb_no();
 			SingerMainController.singerNo = albumList.get(1).getSing_no();
-			System.out.println(albumList.get(1).getAlb_no());
+			SingerMusicController.singNo = albumList.get(1).getSing_no();
 			singerMenu();
 		});
 		btn_new3.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(2).getAlb_no();
 			SingerMainController.singerNo = albumList.get(2).getSing_no();
+			SingerMusicController.singNo = albumList.get(2).getSing_no();
 			singerMenu();
 		});
 		btn_new4.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(3).getAlb_no();
 			SingerMainController.singerNo = albumList.get(3).getSing_no();
+			SingerMusicController.singNo = albumList.get(3).getSing_no();
 			singerMenu();
 		});
 		btn_new5.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(4).getAlb_no();
 			SingerMainController.singerNo = albumList.get(4).getSing_no();
+			SingerMusicController.singNo = albumList.get(4).getSing_no();
 			singerMenu();
 		});
 		
@@ -235,26 +243,31 @@ public class MusicMainController implements Initializable {
 		btn_new6.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(5).getAlb_no();
 			SingerMainController.singerNo = albumList.get(5).getSing_no();
+			SingerMusicController.singNo = albumList.get(5).getSing_no();
 			singerMenu();
 		});
 		btn_new7.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(6).getAlb_no();
 			SingerMainController.singerNo = albumList.get(6).getSing_no();
+			SingerMusicController.singNo = albumList.get(6).getSing_no();
 			singerMenu();
 		});
 		btn_new8.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(7).getAlb_no();
 			SingerMainController.singerNo = albumList.get(7).getSing_no();
+			SingerMusicController.singNo = albumList.get(7).getSing_no();
 			singerMenu();
 		});
 		btn_new9.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(8).getAlb_no();
 			SingerMainController.singerNo = albumList.get(8).getSing_no();
+			SingerMusicController.singNo = albumList.get(8).getSing_no();
 			singerMenu();
 		});
 		btn_new10.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(9).getAlb_no();
 			SingerMainController.singerNo = albumList.get(9).getSing_no();
+			SingerMusicController.singNo = albumList.get(9).getSing_no();
 			singerMenu();
 		});
 		

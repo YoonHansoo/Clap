@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="singerMusic" fx:controller="kr.or.ddit.clap.view.chartmenu.top50.Top50Controller" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="singerMusic" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMusicController">
    <children>
       <VBox fx:id="mainBox">
          <children>
@@ -20,30 +19,12 @@
                   <Insets left="30.0" />
                </padding>
                <children>
-                  <JFXButton fx:id="btn_ToDay" onAction="#toDayChart" prefWidth="50.0" ripplerFill="#9c0000" text="일간">
+                  <Label fx:id="lb_total" text="발매 곡 (총 12개)">
+                     <font>
+                        <Font name="YDIYGO330" size="13.0" />
+                     </font>
                      <HBox.margin>
                         <Insets left="45.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font name="-윤고딕330" size="12.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="btn_Week" onAction="#weekChart" prefWidth="50.0" ripplerFill="#9c0000" text="주간">
-                     <font>
-                        <Font name="-윤고딕330" size="12.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="btn_Month" onAction="#monthChart" prefWidth="50.0" ripplerFill="#9c0000" text="월간">
-                     <font>
-                        <Font name="-윤고딕330" size="12.0" />
-                     </font>
-                  </JFXButton>
-                  <Label fx:id="la_Date" text="Label">
-                     <font>
-                        <Font name="-윤고딕350" size="15.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="170.0" />
                      </HBox.margin>
                   </Label>
                </children>
