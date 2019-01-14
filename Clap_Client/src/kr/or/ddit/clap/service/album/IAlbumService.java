@@ -9,6 +9,7 @@ package kr.or.ddit.clap.service.album;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.vo.album.AlbumVO;
 
@@ -25,5 +26,7 @@ public interface IAlbumService extends Remote {
 	
 	public int updateAlbumInfo(AlbumVO vo) throws RemoteException;
 	
-	 public int deleteAlbum(String albumNo) throws RemoteException;
+	public int deleteAlbum(String albumNo) throws RemoteException;
+	
+	public List<Map> newAlbumSelect() throws RemoteException;
 }
