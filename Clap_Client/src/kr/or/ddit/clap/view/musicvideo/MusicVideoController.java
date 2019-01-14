@@ -4,17 +4,22 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.util.Duration;
+import kr.or.ddit.clap.main.MusicMainController;
 
 import com.jfoenix.controls.JFXSlider;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.scene.media.MediaView;
 import javafx.scene.layout.HBox;
+import com.jfoenix.controls.JFXButton;
+import javafx.scene.layout.VBox;
 
 public class MusicVideoController implements Initializable{
 
@@ -33,6 +38,8 @@ public class MusicVideoController implements Initializable{
 	public static String musName;
 	public static String singerName;
 	@FXML HBox hbox_info;
+	@FXML JFXButton btn_full;
+	@FXML VBox vbox_bar;
 	
 	
 
@@ -42,6 +49,7 @@ public class MusicVideoController implements Initializable{
 		mediaPlayer = new MediaPlayer(media);
 		view.setMediaPlayer(mediaPlayer);
 		view.setPreserveRatio(false);
+		slider_volum.setVisible(false);
 		Ready();
 		icon_play.setIconName("PAUSE");
 		label_musName.setText(musName+"-"+singerName);
@@ -118,6 +126,23 @@ public class MusicVideoController implements Initializable{
 
 	@FXML public void hboxClose() {
 		hbox_info.setVisible(false);
+	}
+
+	@FXML public void fullScreen() {
+		MusicMainController.movieStage.setFullScreen(true);
+		vbox_bar.setMinWidth(1920);
+		view.setFitWidth(1920);
+		view.setFitHeight(1080);
+		vbox_bar.setPadding(new Insets(430,0,0,530));
+		label_musName.setVisible(false);
+	}
+	
+	@FXML public void escEvent() {
+		view.setFitWidth(800);
+		view.setFitHeight(580);
+		vbox_bar.setMinWidth(880);
+		vbox_bar.setPadding(new Insets(0,0,0,0));
+		label_musName.setVisible(true);
 	}
 
 }

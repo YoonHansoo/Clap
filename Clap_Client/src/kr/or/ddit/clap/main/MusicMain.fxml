@@ -103,7 +103,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="최신음악">
                            <items>
-                              <!-- <MenuItem mnemonicParsing="false" onAction="#musicPageChange" text="곡" /> -->
+                              <MenuItem mnemonicParsing="false" onAction="#musicPageChange" text="곡" />
                               <MenuItem mnemonicParsing="false" onAction="#albumPageChange" text="앨범" />
                            </items>
                         </Menu>

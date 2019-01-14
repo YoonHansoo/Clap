@@ -16,7 +16,7 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="880.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.musicvideo.MusicVideoController">
+<AnchorPane onKeyPressed="#escEvent" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.musicvideo.MusicVideoController">
    <children>
       <StackPane prefHeight="690.0" prefWidth="880.0">
          <effect>
@@ -37,7 +37,7 @@
                </StackPane.margin></MediaView>
          </children>
       </StackPane>
-      <HBox prefHeight="690.0" prefWidth="880.0">
+      <HBox prefHeight="690.0">
          <children>
             <VBox alignment="TOP_CENTER" focusTraversable="true" prefHeight="586.0" prefWidth="880.0">
                <padding>
@@ -58,55 +58,67 @@
                         <Insets top="500.0" />
                      </VBox.margin>
                   </HBox>
-                  <JFXSlider fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0" visible="false">
-                     <VBox.margin>
-                        <Insets right="710.0" />
-                     </VBox.margin>
-                  </JFXSlider>
-                  <HBox alignment="CENTER_LEFT">
+                  <VBox fx:id="vbox_bar">
                      <children>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onPlay" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
-                           <graphic>
-                              <FontAwesomeIcon fx:id="icon_play" fill="WHITE" iconName="PLAY" size="30" />
-                           </graphic>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#volumClick" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
-                           <HBox.margin>
-                              <Insets left="15.0" />
-                           </HBox.margin>
-                           <graphic>
-                              <FontAwesomeIcon fill="WHITE" iconName="VOLUME_UP" size="30" />
-                           </graphic>
-                        </JFXButton>
-                        <Label fx:id="Label_nowTime" text="00:00" textFill="WHITE">
-                           <font>
-                              <Font name="-윤고딕350" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="30.0" />
-                           </HBox.margin>
-                        </Label>
-                        <JFXSlider fx:id="slider_time" maxWidth="640.0" prefWidth="640.0" value="0.0">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
+                        <JFXSlider fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0">
+                           <VBox.margin>
+                              <Insets left="70.0" />
+                           </VBox.margin>
                         </JFXSlider>
-                        <Label fx:id="Label_finalTime" text="00:00" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font name="-윤고딕350" size="12.0" />
-                           </font>
-                        </Label>
+                        <HBox alignment="CENTER_LEFT" prefWidth="880.0">
+                           <children>
+                              <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#onPlay" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                                 <graphic>
+                                    <FontAwesomeIcon fx:id="icon_play" fill="WHITE" iconName="PLAY" size="30" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                              <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#volumClick" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                                 <HBox.margin>
+                                    <Insets left="15.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" iconName="VOLUME_UP" size="30" />
+                                 </graphic>
+                              </JFXButton>
+                              <Label fx:id="Label_nowTime" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" prefWidth="40.0" text="00:00" textFill="WHITE">
+                                 <font>
+                                    <Font name="-윤고딕350" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="30.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <JFXSlider fx:id="slider_time" maxWidth="570.0" prefHeight="14.0" prefWidth="570.0" value="0.0">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </JFXSlider>
+                              <Label fx:id="Label_finalTime" alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" prefWidth="40.0" text="00:00" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="-윤고딕350" size="12.0" />
+                                 </font>
+                              </Label>
+                              <JFXButton fx:id="btn_full" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#fullScreen" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text=" ">
+                                 <graphic>
+                                    <FontAwesomeIcon fill="WHITE" iconName="ARROWS_ALT" size="30" />
+                                 </graphic>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </JFXButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="5.0" />
+                           </VBox.margin>
+                        </HBox>
                      </children>
-                     <VBox.margin>
-                        <Insets left="5.0" />
-                     </VBox.margin>
-                  </HBox>
+                  </VBox>
                </children>
                <HBox.margin>
                   <Insets />
