@@ -20,6 +20,7 @@ import javafx.scene.media.MediaView;
 import javafx.scene.layout.HBox;
 import com.jfoenix.controls.JFXButton;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.StackPane;
 
 public class MusicVideoController implements Initializable{
 
@@ -40,6 +41,7 @@ public class MusicVideoController implements Initializable{
 	@FXML HBox hbox_info;
 	@FXML JFXButton btn_full;
 	@FXML VBox vbox_bar;
+	@FXML StackPane stackpane;
 	
 	
 
@@ -52,7 +54,7 @@ public class MusicVideoController implements Initializable{
 		slider_volum.setVisible(false);
 		Ready();
 		icon_play.setIconName("PAUSE");
-		label_musName.setText(musName+"-"+singerName);
+		label_musName.setText(musName+" - "+singerName);
 		mediaPlayer.setAutoPlay(true);
 		sliederMove();
 	}
@@ -130,6 +132,7 @@ public class MusicVideoController implements Initializable{
 
 	@FXML public void fullScreen() {
 		MusicMainController.movieStage.setFullScreen(true);
+		stackpane.setMargin(view, new Insets(0,0,0,0));
 		vbox_bar.setMinWidth(1920);
 		view.setFitWidth(1920);
 		view.setFitHeight(1080);
@@ -138,8 +141,9 @@ public class MusicVideoController implements Initializable{
 	}
 	
 	@FXML public void escEvent() {
-		view.setFitWidth(800);
-		view.setFitHeight(580);
+		stackpane.setMargin(view, new Insets(39,0,0,0));
+		view.setFitWidth(880);
+		view.setFitHeight(648);
 		vbox_bar.setMinWidth(880);
 		vbox_bar.setPadding(new Insets(0,0,0,0));
 		label_musName.setVisible(true);

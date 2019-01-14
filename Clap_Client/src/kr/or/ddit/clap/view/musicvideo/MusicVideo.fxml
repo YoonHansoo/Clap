@@ -6,7 +6,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,24 +15,27 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onKeyPressed="#escEvent" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.musicvideo.MusicVideoController">
+<AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#escEvent" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.musicvideo.MusicVideoController">
    <children>
-      <StackPane prefHeight="690.0" prefWidth="880.0">
+      <StackPane fx:id="stackpane" prefHeight="690.0" prefWidth="880.0">
          <effect>
             <ColorAdjust contrast="-0.31" hue="-0.07" saturation="-0.24" />
          </effect>
          <children>
-            <ImageView fitHeight="687.0" fitWidth="880.0" pickOnBounds="true">
+            <ImageView fitHeight="40.0" fitWidth="880.0" pickOnBounds="true">
+               <StackPane.margin>
+                  <Insets bottom="650.0" />
+               </StackPane.margin>
                <image>
-                  <Image url="@../../../../../../../img/videoplayer.jpg" />
+                  <Image url="@../../../../../../../img/playermain.jpg" />
                </image>
                <effect>
-                  <MotionBlur angle="38.57" radius="63.0" />
+                  <ColorAdjust brightness="0.58" contrast="1.0" hue="0.05" saturation="0.35" />
                </effect>
             </ImageView>
-            <MediaView fx:id="view" fitHeight="580.0" fitWidth="800.0">
+            <MediaView fx:id="view" fitHeight="648.0" fitWidth="880.0">
                <StackPane.margin>
-                  <Insets bottom="15.0" />
+                  <Insets top="39.0" />
                </StackPane.margin></MediaView>
          </children>
       </StackPane>
@@ -48,10 +50,16 @@
                      <children>
                         <Label fx:id="label_musName" alignment="CENTER" prefHeight="21.0" prefWidth="867.0" text="곡 제목" textFill="WHITE">
                            <font>
-                              <Font name="YDIYGO330" size="18.0" />
+                              <Font name="-윤고딕330" size="18.0" />
                            </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
                         </Label>
                      </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <VBox.margin>

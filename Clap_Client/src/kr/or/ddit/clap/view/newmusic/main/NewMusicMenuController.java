@@ -28,8 +28,6 @@ public class NewMusicMenuController implements Initializable{
 	@FXML StackPane stackPane_music;
 	@FXML AnchorPane main;
 
-
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -40,9 +38,9 @@ public class NewMusicMenuController implements Initializable{
 			stackPane_music.getChildren().removeAll();
 			stackPane_music.getChildren().setAll(pane);
 			
-//			StackPane pane2 = FXMLLoader.load(getClass().getResource("../album/newAlbum.fxml"));
-//			stackPane_album.getChildren().removeAll();
-//			stackPane_album.getChildren().setAll(pane2);
+			StackPane pane2 = FXMLLoader.load(getClass().getResource("../album/NewAlbum.fxml"));
+			stackPane_album.getChildren().removeAll();
+			stackPane_album.getChildren().setAll(pane2);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

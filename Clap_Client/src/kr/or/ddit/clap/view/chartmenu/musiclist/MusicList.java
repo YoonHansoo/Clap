@@ -76,6 +76,24 @@ public class MusicList {
 		
 	}
 	
+	public MusicList( ObservableList<JFXButton> btnAddList, VBox mainBox) {
+
+		super();
+		
+		this.btnAddList = btnAddList;
+		this.mainBox = mainBox;
+		
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ipls = (IPlayListService) reg.lookup("playlist");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
 	// 재생 버튼 클릭시 이벤트
 	private void btnPlayClick() {
 		if (LoginSession.session == null) {
@@ -118,10 +136,16 @@ public class MusicList {
 			btnAddList.get(i).setOnAction(e->{
 				JFXButton btn_AddMy = (JFXButton) e.getSource();
 				
-				PlayListVO vo = new PlayListVO();
-				vo.setMus_no(btn_AddMy.getId());
-				vo.setMem_id(LoginSession.session.getMem_id());
-				playListInsert(vo);
+				if (btn_AddMy.getAccessibleText() != null) {
+					System.out.println("우와오아ㅗ앙");
+				}else {
+					PlayListVO vo = new PlayListVO();
+					vo.setMus_no(btn_AddMy.getId());
+					vo.setMem_id(LoginSession.session.getMem_id());
+					playListInsert(vo);
+				}
+				
+				
 				
 				if (MusicMainController.musicplayer.isShowing()) {
 					mpc = MusicMainController.playerLoad.getController();
@@ -580,5 +604,95 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 		
 		return vbox;
 		
+	}
+
+	public VBox albumList(ObservableList<Map> list, int itemsForPage, int page) {
+		VBox vbox = new VBox();
+		HBox h_Line = null;
+		HBox hbox = null;
+		
+		int size = Math.min(page + itemsForPage, list.size());
+		
+		for (int i = 0; i < size; i++) {
+			
+			if (i % 2 == 0) {
+				// 파란색 라인 HBox 
+				h_Line = new HBox();
+				vbox.setMargin(h_Line, new Insets(0,0,0,90));
+				h_Line.setPrefWidth(710);
+				h_Line.setPrefHeight(3);
+				h_Line.setStyle("-fx-background-color: #090948;");	
+				
+				// 전체 HBox
+				hbox = new HBox();
+				hbox.setPadding(new Insets(10,10,10,10));
+				hbox.setSpacing(10);
+			}
+			
+			// 앨범이미지를 표시하는 ImageView
+			ImageView iv_Album = new ImageView();
+			Image img_Path = new Image(list.get(i).get("ALB_IMAGE").toString());
+			iv_Album.setImage(img_Path);
+			iv_Album.setFitWidth(130);
+			iv_Album.setFitHeight(130);
+			
+			// Vbox (앨범 상세 정보)
+			VBox v_album = new VBox();
+			v_album.setPrefWidth(200);
+			v_album.setPrefHeight(130);
+			v_album.setMaxWidth(200);
+			v_album.setMaxHeight(130);
+			v_album.setSpacing(5);
+				
+				Label label_albumName = new Label(list.get(i).get("ALB_NAME").toString());
+				label_albumName.setFont(Font.font("-윤고딕350", 18));
+				label_albumName.setPrefWidth(200);
+				label_albumName.setMaxWidth(200);
+				
+				Label label_singerName = new Label(list.get(i).get("ALB_NAME").toString());
+				label_singerName.setFont(Font.font("-윤고딕330", 15));
+				label_singerName.setPrefWidth(200);
+				label_singerName.setMaxWidth(200);
+				
+				HBox h_albumDetail = new HBox();
+				h_albumDetail.setPrefWidth(200);
+				h_albumDetail.setMaxWidth(200);
+				h_albumDetail.setSpacing(80);
+				
+					Label label_indate = new Label();
+					String date = list.get(i).get("ALB_SALEDATE").toString().substring(0,10);
+					label_indate.setText(date);
+					label_indate.setFont(Font.font("-윤고딕310", 15));
+					
+					Label label_musCount = new Label();
+					label_musCount.setText(list.get(i).get("MUS_COUNT").toString() + "곡");
+					label_musCount.setFont(Font.font("-윤고딕310", 15));
+				h_albumDetail.getChildren().addAll(label_indate, label_musCount);
+					
+				// 추가 버튼
+				JFXButton btn_Put = new JFXButton();
+				btn_Put.setRipplerFill(Color.valueOf("#9c0000"));
+				btn_Put.setAlignment(Pos.CENTER_LEFT);
+				btn_Put.setPrefWidth(30);
+				btn_Put.setPrefHeight(30);
+				btn_Put.setAccessibleText(list.get(i).get("ALB_NO").toString());
+					
+					// 추가 버튼
+					FontAwesomeIcon icon_Put = new FontAwesomeIcon();
+					icon_Put.setIconName("PLUS");
+					icon_Put.setFill(Color.valueOf("#9c0000"));
+					icon_Put.setSize("30");
+					btn_Put.setGraphic(icon_Put);
+					btnPutList.add(btn_Put);
+				
+			v_album.getChildren().addAll(label_albumName, label_singerName, h_albumDetail, btn_Put);	
+			hbox.getChildren().addAll(iv_Album, v_album);
+			vbox.getChildren().addAll(h_Line, hbox);
+		}
+		
+		
+		mainBox.getChildren().addAll(vbox);
+		
+		return vbox;
 	}
 }
