@@ -48,6 +48,7 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.view.join.AES256Util;
+import kr.or.ddit.clap.view.ticket.ticket.TicketController;
 import kr.or.ddit.clap.vo.member.MemberVO;
 
 /**

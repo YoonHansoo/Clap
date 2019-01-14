@@ -250,6 +250,44 @@ public class TicketController implements Initializable{
 		
 		return result;
 	}
+	
+	/**
+	 * 회원 아이디를 넣으면 이용권 사용 여부를 알려주는 메서드.
+	 * @param id
+	 * @return 이용권 여부 T/F
+	 */
+	public boolean ticketCheck(String id) {
+		ITicketService its = null;
+		Registry reg;
+		
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			its = (ITicketService) reg.lookup("ticket");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		
+		List<TicketBuyListVO> list = new ArrayList<TicketBuyListVO>();
+		try {
+			list = its.selectList(id);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		if(list.size()==0) {
+			return false;
+		}else {
+			ticketDate = dateCheck(list);
+			
+			if(ticketDate[0].equals("no")) {
+				return false;
+			}else {
+				return true;
+			}
+		}
+	}
 
 	public void buyTicket() {
 		try {
