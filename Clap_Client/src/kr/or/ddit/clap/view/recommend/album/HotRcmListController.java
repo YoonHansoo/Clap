@@ -41,7 +41,7 @@ public class HotRcmListController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
@@ -56,7 +56,7 @@ public class HotRcmListController implements Initializable {
 		// 높이 조절
 
 		int contentsHeight = 800;
-
+		System.out.println("사이즈" + recommendList.size());
 		if (recommendList.size() <= 4) {
 			contents.setPrefHeight(contentsHeight);
 		}
@@ -69,21 +69,23 @@ public class HotRcmListController implements Initializable {
 			contentsHeight = contentsHeight + (500 * temp_h);
 			System.out.println("높이" + contentsHeight);
 			contents.setPrefHeight(contentsHeight);
-
+		}
 			HBox hbox = null;
 
 			for (int i = 0; i < recommendList.size(); i++) {
 				int likeCnt = 0;
 				int listCnt = 0;
 
-				System.out.println("사이즈:" + recommendList.size());
+				System.out.println("PK사이즈:" + recommendList.size());
 				// PK
 				String RcmAlbNo = recommendList.get(i).getRcm_alb_no();
 				try {
 					// 좋아요 수 구하는 쿼리
 					likeCnt = irs.selectAlbumLikeCnt(RcmAlbNo);
+					System.out.println("likeCnt:" + likeCnt);
 					// 리스트의 개수구하는 쿼리
 					listCnt = irs.selectAlbumListCnt(RcmAlbNo);
+					System.out.println("listCnt:" + likeCnt);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
@@ -100,7 +102,7 @@ public class HotRcmListController implements Initializable {
 				VBox vbox = new VBox();
 				vbox.setPrefWidth(358);
 				vbox.setPrefHeight(400);
-				vbox.setStyle("-fx-border-color:#090948;");
+				vbox.setStyle("-fx-border-color:#d3d3d3;");
 				hbox.setMargin(vbox, new Insets(0, 20, 0, 0));
 
 				// 앨범이미지를 표시하는 ImageView
@@ -137,19 +139,16 @@ public class HotRcmListController implements Initializable {
 								System.out.println("이동");
 
 								// 화면전환
-								RecommendAlbumDetailController.rcmAlbNo = rcmAlbNo;// 곡 번호를 변수로 넘겨줌
+								UserRcmDetailController.rcmAlbNo = rcmAlbNo;// 곡 번호를 변수로 넘겨줌
 
-								FXMLLoader loader = new FXMLLoader(getClass().getResource("RecommendAlbumDetail.fxml"));// init실행됨
-								Parent recommendAlbumDetail;
+								FXMLLoader loader = new FXMLLoader(getClass().getResource("UserRcmDetail.fxml"));// init실행됨
+								Parent userRcmDetailController;
 
 								try {
-									recommendAlbumDetail = loader.load();
+									userRcmDetailController = loader.load();
 
-									RecommendAlbumDetailController cotroller = loader.getController();
-									cotroller.givePane(contents);
-
-									main.getChildren().removeAll();
-									main.getChildren().setAll(recommendAlbumDetail);
+									contents.getChildren().removeAll();
+									contents.getChildren().setAll(userRcmDetailController);
 								} catch (IOException e1) {
 									e1.printStackTrace();
 								}
@@ -209,7 +208,7 @@ public class HotRcmListController implements Initializable {
 				if (i % 2 == 0) {
 					main_vbox.getChildren().add(hbox);
 
-				} else if (i == recommendList.size()) { // -------------
+				} else if (i == recommendList.size()) { 
 					System.out.println("마지막");
 					main_vbox.getChildren().add(hbox);
 				}
@@ -217,7 +216,7 @@ public class HotRcmListController implements Initializable {
 			}
 
 		}
-	}
+	
 
 	@FXML
 	public void InsertRecommendAlbum() {

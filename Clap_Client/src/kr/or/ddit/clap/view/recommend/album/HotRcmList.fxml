@@ -11,12 +11,12 @@
       <AnchorPane fx:id="main" layoutX="4.0" layoutY="-7.0" prefHeight="768.0" prefWidth="993.0">
          <children>
             <Line endX="844.0" endY="1.0" layoutX="125.0" layoutY="54.0" startX="-100.0" stroke="#9c0000" />
-            <Label layoutX="53.0" layoutY="8.0" prefHeight="51.0" prefWidth="298.0" text="추천">
+            <Label layoutX="53.0" layoutY="8.0" prefHeight="51.0" prefWidth="298.0" text="추천" AnchorPane.leftAnchor="102.0">
                <font>
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <VBox fx:id="main_vbox" layoutX="24.0" layoutY="53.0" prefHeight="72.0" prefWidth="946.0" spacing="10.0" />
+            <VBox fx:id="main_vbox" layoutX="102.0" layoutY="53.0" prefHeight="72.0" prefWidth="868.0" spacing="10.0" />
          </children>
       </AnchorPane>
    </children>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="main" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1005.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.UserRcmDetailController">
+   <children>
+      <Label fx:id="labelrcmName1" layoutX="26.0" layoutY="58.0" prefHeight="41.0" prefWidth="619.0" text="당신의 하루에 힘을 보태 줄게요 추천앨범 명" AnchorPane.leftAnchor="102.0">
+         <font>
+            <Font name="YDIYGO350" size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="20.0" layoutY="99.0" prefHeight="213.0" prefWidth="774.0" style="-fx-border-color: #090948;" AnchorPane.leftAnchor="102.0">
+         <children>
+            <ImageView fx:id="imgview_img" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true" x="86.0">
+               <HBox.margin>
+                  <Insets right="30.0" />
+               </HBox.margin></ImageView>
+            <VBox fx:id="main_vbox" prefHeight="165.0" prefWidth="470.0">
+               <children>
+                  <HBox prefHeight="25.0" prefWidth="451.0">
+                     <children>
+                        <JFXButton onAction="#btn_heart" text=" ">
+                           <graphic>
+                              <FontAwesomeIcon fill="#9c0000" iconName="HEART" size="1.5em" text="" />
+                           </graphic>
+                        </JFXButton>
+                        <Label fx:id="label_LikeCnt" prefHeight="28.0" prefWidth="75.0" text="???" textFill="#090c64">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXButton text=" ">
+                           <graphic>
+                              <FontAwesomeIcon fill="#9c0000" iconName="PLAY_CIRCLE" size="1.5em" text="" />
+                           </graphic>
+                        </JFXButton>
+                        <Label fx:id="lable_cntMusic" prefHeight="29.0" prefWidth="49.0" text="0 곡 ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="150.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Label layoutX="297.0" layoutY="278.0" prefHeight="21.0" prefWidth="34.0" style="-fx-background-color: #ffffff;">
+         <font>
+            <Font name="YDIYGO340" size="14.0" />
+         </font>
+      </Label>
+      <Line endX="681.0" layoutX="112.0" layoutY="52.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="102.0" />
+      <Label layoutX="28.0" layoutY="7.0" prefHeight="41.0" prefWidth="89.0" text="추천" AnchorPane.leftAnchor="102.0">
+         <font>
+            <Font name="YDIYGO330" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="403.0" layoutY="280.0" />
+      <Label fx:id="label_RcmContents" layoutX="20.0" layoutY="312.0" prefHeight="52.0" prefWidth="774.0" style="-fx-background-color: #090948;" text="오늘 하루도 힘차게!!!" textFill="WHITE" AnchorPane.leftAnchor="102.0">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font>
+      </Label>
+      <Line endX="683.0" layoutX="112.0" layoutY="386.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="102.0" />
+      <Label layoutX="20.0" layoutY="400.0" prefHeight="21.0" prefWidth="89.0" text="수록곡 " AnchorPane.leftAnchor="102.0">
+         <font>
+            <Font name="YDIYGO330" size="18.0" />
+         </font>
+      </Label>
+      <VBox fx:id="mainBox" alignment="CENTER_LEFT" layoutX="6.0" layoutY="421.0" AnchorPane.leftAnchor="102.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="1.0">
+               <children>
+                  <JFXCheckBox fx:id="cb_main" checkedColor="#9c0000" onAction="#mainCheck" prefHeight="35.0" prefWidth="39.0" text=" " />
+                  <JFXButton onAction="#btnMainPlay" ripplerFill="#9c0000" text="듣기">
+                     <graphic>
+                        <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="-윤고딕340" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#btnMainAdd" ripplerFill="#9c0000" text="추가">
+                     <graphic>
+                        <FontAwesomeIcon iconName="PLUS" size="20" />
+                     </graphic>
+                     <font>
+                        <Font name="-윤고딕330" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#btnMainPut" ripplerFill="#9c0000" text="담기">
+                     <graphic>
+                        <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
+                     </graphic>
+                     <font>
+                        <Font name="-윤고딕330" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label text="순위">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="70.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="곡정보">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="65.0" />
+                     </padding>
+                  </Label>
+                  <Label text="듣기">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                     <padding>
+                        <Insets left="300.0" />
+                     </padding>
+                  </Label>
+                  <Label text="추가">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="담기">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label text="뮤비">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="60.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+   <padding>
+      <Insets top="102.0" />
+   </padding>
+</AnchorPane>

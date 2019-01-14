@@ -41,7 +41,7 @@ public class BestRcmListController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
@@ -55,8 +55,8 @@ public class BestRcmListController implements Initializable {
 		
 		// 높이 조절
 
-		int contentsHeight = 800;
-
+		int contentsHeight = 900;
+		System.out.println("사이즈" + recommendList.size());
 		if (recommendList.size() <= 4) {
 			contents.setPrefHeight(contentsHeight);
 		}
@@ -69,21 +69,23 @@ public class BestRcmListController implements Initializable {
 			contentsHeight = contentsHeight + (500 * temp_h);
 			System.out.println("높이" + contentsHeight);
 			contents.setPrefHeight(contentsHeight);
-
+		}
 			HBox hbox = null;
 
 			for (int i = 0; i < recommendList.size(); i++) {
 				int likeCnt = 0;
 				int listCnt = 0;
 
-				System.out.println("사이즈:" + recommendList.size());
+				System.out.println("PK사이즈:" + recommendList.size());
 				// PK
 				String RcmAlbNo = recommendList.get(i).getRcm_alb_no();
 				try {
 					// 좋아요 수 구하는 쿼리
 					likeCnt = irs.selectAlbumLikeCnt(RcmAlbNo);
+					System.out.println("likeCnt:" + likeCnt);
 					// 리스트의 개수구하는 쿼리
 					listCnt = irs.selectAlbumListCnt(RcmAlbNo);
+					System.out.println("listCnt:" + likeCnt);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
@@ -100,7 +102,7 @@ public class BestRcmListController implements Initializable {
 				VBox vbox = new VBox();
 				vbox.setPrefWidth(358);
 				vbox.setPrefHeight(400);
-				vbox.setStyle("-fx-border-color:#090948;");
+				vbox.setStyle("-fx-border-color:#d3d3d3;");
 				hbox.setMargin(vbox, new Insets(0, 20, 0, 0));
 
 				// 앨범이미지를 표시하는 ImageView
@@ -118,7 +120,7 @@ public class BestRcmListController implements Initializable {
 				title.setPrefWidth(308);
 				title.setPrefHeight(40);
 				title.setWrapText(true);
-				title.setPadding(new Insets(30, 0, 30, 15));
+				title.setPadding(new Insets(10, 0, 30, 15));
 				title.setText(recommendList.get(i).getRcm_alb_name());
 
 				title.setOnMouseClicked(e -> {
@@ -137,19 +139,18 @@ public class BestRcmListController implements Initializable {
 								System.out.println("이동");
 
 								// 화면전환
-								RecommendAlbumDetailController.rcmAlbNo = rcmAlbNo;// 곡 번호를 변수로 넘겨줌
+								UserRcmDetailController.rcmAlbNo = rcmAlbNo;// 곡 번호를 변수로 넘겨줌
 
-								FXMLLoader loader = new FXMLLoader(getClass().getResource("RecommendAlbumDetail.fxml"));// init실행됨
-								Parent recommendAlbumDetail;
+								FXMLLoader loader = new FXMLLoader(getClass().getResource("UserRcmDetail.fxml"));// init실행됨
+								Parent userRcmDetailController;
 
 								try {
-									recommendAlbumDetail = loader.load();
+									userRcmDetailController = loader.load();
 
-									RecommendAlbumDetailController cotroller = loader.getController();
-									cotroller.givePane(contents);
+									UserRcmDetailController cotroller = loader.getController();
 
-									main.getChildren().removeAll();
-									main.getChildren().setAll(recommendAlbumDetail);
+									contents.getChildren().removeAll();
+									contents.getChildren().setAll(userRcmDetailController);
 								} catch (IOException e1) {
 									e1.printStackTrace();
 								}
@@ -159,16 +160,16 @@ public class BestRcmListController implements Initializable {
 
 					}
 				});
-				//인기순위를 나타낼 Label
+				//랭킹
 				Label rank = new Label();
-				title.setFont(Font.font("-윤고딕350", 16));
-				title.setTextFill(Color.valueOf("#9c0000"));
-				title.setPrefWidth(308);
-				title.setPrefHeight(20);
-				title.setWrapText(true);
-				title.setPadding(new Insets(30, 0, 30, 15));
-				title.setText("인기 Top"+(i+1));
-				
+				rank.setFont(Font.font("-윤고딕350", 18));
+				rank.setTextFill(Color.valueOf("#9c0000"));
+				rank.setPrefWidth(308);
+				rank.setPrefHeight(20);
+				rank.setWrapText(true);
+				rank.setPadding(new Insets(30, 0, 30, 15));
+				rank.setText("인기 TOP" + (i+1));
+
 
 				// title과 like를 담을 hbox
 				HBox temp_hbox = new HBox();
@@ -213,13 +214,13 @@ public class BestRcmListController implements Initializable {
 				cntMusic.setGraphic(icon_cntMusic);
 
 				temp_hbox.getChildren().addAll(like, cntMusic);
-				vbox.getChildren().addAll(rank, iv_Album, title, temp_hbox);
+				vbox.getChildren().addAll(iv_Album, rank,title, temp_hbox);
 				hbox.getChildren().add(vbox);
 
 				if (i % 2 == 0) {
 					main_vbox.getChildren().add(hbox);
 
-				} else if (i == recommendList.size()) { // -------------
+				} else if (i == recommendList.size()) { 
 					System.out.println("마지막");
 					main_vbox.getChildren().add(hbox);
 				}
@@ -227,7 +228,7 @@ public class BestRcmListController implements Initializable {
 			}
 
 		}
-	}
+	
 
 	@FXML
 	public void InsertRecommendAlbum() {

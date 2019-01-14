@@ -457,6 +457,8 @@ public class MusicMainController implements Initializable {
 																												// 가져옴
 			contents.getChildren().removeAll();	
 			contents.getChildren().setAll(page);
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
