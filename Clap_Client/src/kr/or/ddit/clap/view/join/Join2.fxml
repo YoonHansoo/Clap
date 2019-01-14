@@ -349,7 +349,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <JFXCheckBox fx:id="check1" checkedColor="#32b1f5" disable="true" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
+                              <JFXCheckBox fx:id="check1" checkedColor="#32b1f5" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -379,7 +379,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <JFXCheckBox fx:id="check2" checkedColor="#32b1f5" disable="true" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
+                              <JFXCheckBox fx:id="check2" checkedColor="#32b1f5" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
                            </children>
                         </HBox>
                      </children>
