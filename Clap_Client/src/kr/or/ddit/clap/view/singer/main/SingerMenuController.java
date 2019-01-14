@@ -104,6 +104,10 @@ public class SingerMenuController implements Initializable{
 			singerMusic.getChildren().removeAll();
 			singerMusic.getChildren().setAll(pane3);
 			
+//			StackPane pane_main = FXMLLoader.load(getClass().getResource("SingerMainMusic.fxml"));
+//			pane_main.setLayoutY(350);
+//			singerMain.getChildren().setAll(pane_main);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

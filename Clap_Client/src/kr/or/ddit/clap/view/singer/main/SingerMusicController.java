@@ -174,7 +174,7 @@ public class SingerMusicController implements Initializable{
 //			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
 //			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
-			lb_total.setText("총 "+songRank.size()+"개");
+			lb_total.setText("발매곡 (총 "+songRank.size()+"개)");
 			
 			pageing(songRank);
 			
