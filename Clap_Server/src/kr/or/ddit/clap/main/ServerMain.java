@@ -3,6 +3,8 @@ package kr.or.ddit.clap.main;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
+import kr.or.ddit.clap.dao.message.IMessageDao;
+import kr.or.ddit.clap.dao.message.MessageDaoImpl;
 import kr.or.ddit.clap.service.album.AlbumReviewServiceImpl;
 import kr.or.ddit.clap.service.album.AlbumServiceImpl;
 import kr.or.ddit.clap.service.album.IAlbumReviewService;
@@ -15,6 +17,8 @@ import kr.or.ddit.clap.service.like.ILikeService;
 import kr.or.ddit.clap.service.like.LikeServiceImpl;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.login.LoginServiceImpl;
+import kr.or.ddit.clap.service.message.IMessageService;
+import kr.or.ddit.clap.service.message.MessageServiceImpl;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.music.MusicServiceImpl;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
@@ -66,7 +70,8 @@ public class ServerMain {
 			IEventBoardService ies	  = EventBoardServiceImpl.getInstance();	// 이벤트
 			ITicketService its     	  = TicketServiceImpl.getInstance();		// 이용권
 			IRecommendService irs 	  = RecommendServiceImpl.getInstance();     //추천앨범
-
+			IMessageService imsgs	  = MessageServiceImpl.getInstance();		//메세지
+			
 			Registry reg = LocateRegistry.createRegistry(8888);
 			
 			reg.rebind("singer", ssi);
@@ -88,6 +93,7 @@ public class ServerMain {
 			reg.rebind("singreview", isrs);
 			reg.rebind("eventboard", ies);
 			reg.rebind("recommend", irs); //추천앨범
+			reg.rebind("message", imsgs); //추천앨범
 
 			reg.rebind("tick"
 					+ "et", its);

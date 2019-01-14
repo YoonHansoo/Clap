@@ -2,7 +2,11 @@ package kr.or.ddit.clap.vo.support;
 
 import java.io.Serializable;
 
-public class MessageVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import javafx.scene.image.ImageView;
+
+public class MessageVO extends RecursiveTreeObject<MessageVO>  implements Serializable{
 	
 	private String msg_no;
 	private String msg_send_date;
@@ -11,7 +15,23 @@ public class MessageVO implements Serializable{
 	private String msg_content;
 	private String mem_send_id;
 	private String mem_get_id;
+	private String msg_read_date;
+	private ImageView imageview;
 	
+	
+	
+	public String getMsg_read_date() {
+		return msg_read_date;
+	}
+	public void setMsg_read_date(String msg_read_date) {
+		this.msg_read_date = msg_read_date;
+	}
+	public ImageView getImageview() {
+		return imageview;
+	}
+	public void setImageview(ImageView imageview) {
+		this.imageview = imageview;
+	}
 	public String getMsg_no() {
 		return msg_no;
 	}

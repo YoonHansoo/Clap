@@ -55,7 +55,8 @@
 		type="kr.or.ddit.clap.vo.recommend.RecommendAlbumVO" />
 	<typeAlias alias="RecommendAlbumListVO"
 		type="kr.or.ddit.clap.vo.recommend.RecommendAlbumListVO" />
-
+	<typeAlias alias="messageVO"
+		type="kr.or.ddit.clap.vo.support.MessageVO" />
 
 
 	<transactionManager type="JDBC">
@@ -86,6 +87,7 @@
 	<sqlMap resource="kr/or/ddit/clap/xml/eventboard.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/ticket.xml"></sqlMap>
 	<sqlMap resource="kr/or/ddit/clap/xml/recommend.xml"></sqlMap>
+	<sqlMap resource="kr/or/ddit/clap/xml/message.xml"></sqlMap>
 
 </sqlMapConfig>
 
