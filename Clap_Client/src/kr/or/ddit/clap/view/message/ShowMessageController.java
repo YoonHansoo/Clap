@@ -72,12 +72,15 @@ public class ShowMessageController implements Initializable{
 		for (int i = 0; i < msgList.size(); i++) {
 			if(msgList.get(i).getMsg_read_tf().equals("f")) {
 			//이미지 넣어주기
-			/* ImageView img = new ImageView("https://image.shutterstock.com/image-vector/speech-bubble-message-icon-260nw-527527990.jpg");
+			 ImageView img = new ImageView("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\message.png");
 				 msgList.get(i).setImageview(img);
-				 msgList.get(i).getImageview().setFitWidth(80);
-				 msgList.get(i).getImageview().setFitHeight(100);*/
+				 msgList.get(i).getImageview().setFitWidth(50);
+				 msgList.get(i).getImageview().setFitHeight(50);
 			}else {
-				
+				ImageView img = new ImageView("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\open.png");
+				 msgList.get(i).setImageview(img);
+				 msgList.get(i).getImageview().setFitWidth(50);
+				 msgList.get(i).getImageview().setFitHeight(50);
 			}
 		}
 		col_imgeview.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImageview()));
@@ -103,7 +106,7 @@ public class ShowMessageController implements Initializable{
 		tbl_Message.setRoot(root);
 		tbl_Message.setShowRoot(false);
 
-		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+		itemsForPage = 5; // 한페이지 보여줄 항목 수 설정
 
 		paging();
 		

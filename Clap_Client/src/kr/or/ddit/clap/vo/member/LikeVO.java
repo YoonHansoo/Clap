@@ -1,27 +1,18 @@
 package kr.or.ddit.clap.vo.member;
 
 import java.io.Serializable;
-import java.rmi.NotBoundException;
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.util.List;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import kr.or.ddit.clap.main.LoginSession;
-import kr.or.ddit.clap.service.like.ILikeService;
-import kr.or.ddit.clap.view.member.profiles.LikeAlbController;
+import javafx.scene.paint.Color;
 
 public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable{
-	private Registry reg;
-	private ILikeService ilks;
+
 	
 	private String mus_no;
 	private String alb_no;
@@ -42,6 +33,26 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	private JFXButton rcmbtnLike;
 	
 	
+	public void createButtonImg1() {
+		if(mubtnLike ==null) {
+		this.mubtnLike = new JFXButton();
+		FontAwesomeIcon remove = new FontAwesomeIcon();
+		remove.setIconName("REMOVE");
+		remove.setFill(Color.valueOf("#9c0000"));
+		remove.setSize("20");
+		mubtnLike.setId(mus_no);
+		mubtnLike.setGraphic(remove);
+		}
+	}
+	public JFXButton getMubtnLike() {
+		createButtonImg1();
+		return mubtnLike;
+	}
+	public void setMubtnLike(JFXButton mubtnLike) {
+		this.mubtnLike = mubtnLike;
+	}
+
+	
 	
 	public String getSing_no() {
 		return sing_no;
@@ -49,38 +60,29 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	public void setSing_no(String sing_no) {
 		this.sing_no = sing_no;
 	}
-	public JFXButton getRcmbtnLike() {
-		this.rcmbtnLike= new JFXButton();
+	
+	
+	public void createButtonImg3() {
+		if(rcmbtnLike ==null) {
+		this.rcmbtnLike = new JFXButton();
+		FontAwesomeIcon remove = new FontAwesomeIcon();
+		remove.setIconName("REMOVE");
+		remove.setFill(Color.valueOf("#9c0000"));
+		remove.setSize("20");
 		rcmbtnLike.setId(rcm_alb_no);
-		rcmbtnLike.setText("추천♥");
-		rcmbtnLike.setPrefSize(90, 70);
-		rcmbtnLike.setOnAction(e2->{ 
-			
-			try {
-				reg = LocateRegistry.getRegistry("localhost", 8888);
-				ilks = (ILikeService) reg.lookup("like");
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			} catch (NotBoundException e) {
-				e.printStackTrace();
-			}
-			String user_id1 = LoginSession.session.getMem_id();
-			LikeVO vo1 = new LikeVO();
-			vo1.setMem_id(user_id1);
-			vo1.setRcm_alb_no(rcmbtnLike.getId());
-			try {
-			List<Integer> liset = FXCollections.observableArrayList(ilks.deleteRcmLike(vo1));
-			} catch (RemoteException e) {
-				System.out.println("에러");
-				e.printStackTrace();
-			}
-		
-		});
-		return this.rcmbtnLike;
+		rcmbtnLike.setGraphic(remove);
+		}
+	}
+	public JFXButton getRcmbtnLike() {
+		createButtonImg3();
+		return rcmbtnLike;
 		}
 	public void setRcmbtnLike(JFXButton rcmbtnLike) {
 		this.rcmbtnLike = rcmbtnLike;
 	}
+	
+	
+	
 	public String getRcm_alb_no() {
 		return rcm_alb_no;
 	}
@@ -94,71 +96,48 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		this.alb_no = alb_no;
 	}
 
-	public JFXButton getAlbbtnLike() {
-		this.albbtnLike= new JFXButton();
+
+	public void createButtonImg() {
+		if(albbtnLike ==null) {
+		this.albbtnLike = new JFXButton();
+		FontAwesomeIcon remove = new FontAwesomeIcon();
+		remove.setIconName("REMOVE");
+		remove.setFill(Color.valueOf("#9c0000"));
+		remove.setSize("20");
 		albbtnLike.setId(alb_no);
-		albbtnLike.setText("앨범♥");
-		albbtnLike.setPrefSize(90, 70);
-		albbtnLike.setOnAction(e2->{ 
-			
-			try {
-				reg = LocateRegistry.getRegistry("localhost", 8888);
-				ilks = (ILikeService) reg.lookup("like");
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			} catch (NotBoundException e) {
-				e.printStackTrace();
-			}
-			String user_id1 = LoginSession.session.getMem_id();
-			LikeVO vo1 = new LikeVO();
-			vo1.setMem_id(user_id1);
-			vo1.setAlb_no(albbtnLike.getId());
-			try {
-			int liset = ilks.deleteAlbLike(vo1);
-			} catch (RemoteException e) {
-				System.out.println("에러");
-				e.printStackTrace();
-			}
-			
-		});
-	
-		return this.albbtnLike;
+	//	btn.setId(id+"");
+		//id++;
+		albbtnLike.setGraphic(remove);
+		}
+	}
+	public JFXButton getAlbbtnLike() {
+		createButtonImg();
+		return albbtnLike;
 	}
 	public void setAlbbtnLike(JFXButton albbtnLike) {
 		this.albbtnLike = albbtnLike;
 	}
-	public JFXButton getItsbtnLike() {
-		this.itsbtnLike= new JFXButton();
+	
+	
+	public void createButtonImg2() {
+		if(itsbtnLike ==null) {
+		this.itsbtnLike = new JFXButton();
+		FontAwesomeIcon remove = new FontAwesomeIcon();
+		remove.setIconName("REMOVE");
+		remove.setFill(Color.valueOf("#9c0000"));
+		remove.setSize("20");
 		itsbtnLike.setId(sing_no);
-		itsbtnLike.setText("아티스트♥");
-		itsbtnLike.setPrefSize(170, 70);
-		itsbtnLike.setOnAction(e2->{ 
-			
-			try {
-				reg = LocateRegistry.getRegistry("localhost", 8888);
-				ilks = (ILikeService) reg.lookup("like");
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			} catch (NotBoundException e) {
-				e.printStackTrace();
-			}
-			String user_id1 = LoginSession.session.getMem_id();
-			LikeVO vo1 = new LikeVO();
-			vo1.setMem_id(user_id1);
-			vo1.setSing_no(itsbtnLike.getId());
-			try {
-			List<Integer> liset = FXCollections.observableArrayList(ilks.deleteSingLike(vo1));
-			} catch (RemoteException e) {
-				System.out.println("에러");
-				e.printStackTrace();
-			}
-		
-		});
-		return this.itsbtnLike;
+		itsbtnLike.setGraphic(remove);
+		}
+	}
+	public JFXButton getItsbtnLike() {
+		createButtonImg2();
+		return itsbtnLike;
 	}
 	public void setItsbtnLike(JFXButton itsbtnLike) {
 		this.itsbtnLike = itsbtnLike;
 	}
+	
 	public String getMus_no() {
 		return mus_no;
 	}
@@ -226,43 +205,6 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	}
 	public void setChBox(JFXCheckBox chBox) {
 		this.chBox = chBox;
-	}
-	public JFXButton getBtnLike() {
-		this.mubtnLike = new JFXButton();
-		mubtnLike.setId(mus_no);
-		
-		//FontAwesomeIcon iconName="PENCIL" />
-		mubtnLike.setText("곡♥");
-		mubtnLike.setPrefSize(90, 70);
-		mubtnLike.setOnAction(e2->{ 
-			
-			try {
-				reg = LocateRegistry.getRegistry("localhost", 8888);
-				ilks = (ILikeService) reg.lookup("like");
-			} catch (RemoteException e) {
-				e.printStackTrace();
-			} catch (NotBoundException e) {
-				e.printStackTrace();
-			}
-
-			
-			String user_id = LoginSession.session.getMem_id();
-			LikeVO vo = new LikeVO();
-			vo.setMem_id(user_id);
-			vo.setMus_no(mubtnLike.getId());
-			try {
-				ObservableList<Integer> cnt = FXCollections.observableArrayList(ilks.deleteMusLike(vo));
-			} catch (RemoteException e) {
-				System.out.println("에러");
-				e.printStackTrace();
-			}
-		
-		});
-		
-		return this.mubtnLike;
-	}
-	public void setBtnLike(JFXButton btnLike) {
-		this.mubtnLike = btnLike;
 	}
 	
 	

@@ -86,6 +86,47 @@ public class LikeItsController implements Initializable{
 		tbl_like.setRoot(root);
 		tbl_like.setShowRoot(false);
 
+		
+		if(likeList.size()>0) {
+		 for(int i=0; i<likeList.size(); i++) {
+			 System.out.println(likeList.size());
+
+			 
+			 tbl_like.getTreeItem(i).getValue().getItsbtnLike().setOnAction(e->{
+			
+				 System.out.println("남은 개수:"+likeList.size());
+				 JFXButton temp_btn = (JFXButton) e.getSource();
+				 
+				 for(int j =0; j<likeList.size(); j++) {
+					 System.out.println(temp_btn.getId());
+					 if(temp_btn.getId().equals(tbl_like.getTreeItem(j).getValue().getItsbtnLike().getId())) {
+						 
+						 
+						 
+						 likeList.remove(j);
+						 
+							LikeVO vo1 = new LikeVO();
+							vo1.setMem_id(user_id);
+							vo1.setAlb_no(temp_btn.getId());
+							try {
+							int liset = ilks.deleteAlbLike(vo1);
+							} catch (RemoteException e2) {
+								System.out.println("에러");
+								e2.printStackTrace();
+							}
+						 //다시 설정
+						 TreeItem<LikeVO> root1 = new RecursiveTreeItem<>(likeList, RecursiveTreeObject::getChildren);
+						 tbl_like.setRoot(root1);
+						 tbl_like.setShowRoot(false);
+						 
+						 return;
+					 }
+				 }
+			 });
+		 }
+		}
+		
+		
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
 		paging();

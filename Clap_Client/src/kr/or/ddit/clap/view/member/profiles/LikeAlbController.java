@@ -18,19 +18,22 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.like.ILikeService;
+import kr.or.ddit.clap.view.message.MessageTextController;
 import kr.or.ddit.clap.vo.member.LikeVO;
-import javafx.scene.layout.AnchorPane;
 
 public class LikeAlbController implements Initializable {
 
@@ -49,8 +52,9 @@ public class LikeAlbController implements Initializable {
 	@FXML TreeTableColumn<LikeVO, String> col_LikeIndate;
 	@FXML TreeTableColumn<LikeVO, String> col_Alb;
 	@FXML TreeTableColumn<LikeVO, JFXButton> col_Like;
-	private ObservableList<LikeVO> likeList, currentsingerList;
+	public ObservableList<LikeVO> likeList, currentsingerList;
 	private int from, to, itemsForPage, totalPageCnt;
+	public static Stage like = new Stage();
 	
 	@FXML Pagination p_Paging;
 	@FXML AnchorPane Head;
@@ -66,15 +70,17 @@ public class LikeAlbController implements Initializable {
 			e.printStackTrace();
 		}
 		
+		likeList = FXCollections.observableArrayList();
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 		col_No.setCellValueFactory(param -> new SimpleStringProperty("" + no++));
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
-		col_MusInfo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_title()));
+		//col_MusInfo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_title()));
 		col_Alb.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAlb_name()));
 		col_LikeIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getlike_date().substring(0, 10)));
 		col_Checks.setCellValueFactory(param -> new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getChBox()));
-		col_Like.setCellValueFactory(param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getAlbbtnLike()));
 
+		col_Like.setCellValueFactory(
+				param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getAlbbtnLike()));
 		
 		String user_id = LoginSession.session.getMem_id();
 		LikeVO vo = new LikeVO();
@@ -90,13 +96,86 @@ public class LikeAlbController implements Initializable {
 		TreeItem<LikeVO> root = new RecursiveTreeItem<>(likeList, RecursiveTreeObject::getChildren);
 		tbl_like.setRoot(root);
 		tbl_like.setShowRoot(false);
+		
+		
+		
+		
+		
+		
+		
+		if(likeList.size()>0) {
+		 for(int i=0; i<likeList.size(); i++) {
 
+			 tbl_like.getTreeItem(i).getValue().getAlbbtnLike().setOnAction(e->{
+				 JFXButton temp_btn = (JFXButton) e.getSource();
+				 
+				 for(int j =0; j<likeList.size(); j++) {
+					 System.out.println(temp_btn.getId());
+					 if(temp_btn.getId().equals(tbl_like.getTreeItem(j).getValue().getAlbbtnLike().getId())) {
+						 LikeVO vo1 = new LikeVO();
+							vo1.setMem_id(user_id);
+							vo1.setAlb_no(temp_btn.getId());
+							try {
+							int liset = ilks.deleteAlbLike(vo1);
+							} catch (RemoteException e2) {
+								System.out.println("에러");
+								e2.printStackTrace();
+							}
+								likeList.remove(j);
+					
+							
+						 //다시 설정
+						 TreeItem<LikeVO> root1 = new RecursiveTreeItem<>(likeList, RecursiveTreeObject::getChildren);
+						 tbl_like.setRoot(root1);
+						 tbl_like.setShowRoot(false);
+						 
+						 return;
+					 }
+				 }
+			 });
+		 }
+		}
+		
+		
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
 		paging();
 
 		
+		
+		
 	}
+	
+	 public void addMusic() {
+		 for(int i=0; i<likeList.size(); i++) {
+			 System.out.println("포문시작");
+			 
+			 tbl_like.getTreeItem(i).getValue().getAlbbtnLike().setOnAction(e->{
+			
+				 	
+				 JFXButton temp_btn = (JFXButton) e.getSource();
+				 
+				 for(int j =0; j<likeList.size(); j++) {
+					 
+					 if(temp_btn.getId().equals(tbl_like.getTreeItem(j).getValue().getAlbbtnLike().getId())) {
+						 likeList.remove(j);
+						// System.out.println("남은 개수:"+likeList.size());
+						 
+						 //다시 설정
+						 TreeItem<LikeVO> root1 = new RecursiveTreeItem<>(likeList, RecursiveTreeObject::getChildren);
+						 tbl_like.setRoot(root1);
+						 tbl_like.setShowRoot(false);
+						 
+						 return;
+					 }
+					
+					 
+					 
+				 }
+				 
+			 });
+		 }
+	 }
 	
 	private void paging() {
 		totalPageCnt = likeList.size() % itemsForPage == 0 ? likeList.size() / itemsForPage

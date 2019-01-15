@@ -281,7 +281,7 @@ public class InsertRecommendAlbumController implements Initializable {
 			 System.out.println("포문시작");
 			 
 			 tbl_music.getTreeItem(i).getValue().getBtn().setOnAction(e->{
-			
+					
 				 	
 				 Button temp_btn = (Button) e.getSource();
 				 

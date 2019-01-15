@@ -29,6 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
+import kr.or.ddit.clap.vo.singer.SingerReviewVO;
 
 public class ReviewMusController  implements Initializable{
 	private Registry reg;
@@ -85,6 +86,46 @@ public class ReviewMusController  implements Initializable{
 		tbl_Review.setRoot(root);
 		tbl_Review.setShowRoot(false);
 
+		if (reviewList.size() > 0) {
+			for (int i = 0; i < reviewList.size(); i++) {
+				System.out.println(reviewList.size());
+
+				// tbl_music.getTreeItem(i).getValue().getBtn().setOnAction(e->{
+				tbl_Review.getTreeItem(i).getValue().getBtnDel().setOnAction(e -> {
+
+					System.out.println("남은 개수:" + reviewList.size());
+					JFXButton temp_btn = (JFXButton) e.getSource();
+					if (reviewList.size() > 0) {
+						for (int j = 0; j < reviewList.size(); j++) {
+							System.out.println(temp_btn.getId());
+							if (temp_btn.getId().equals(tbl_Review.getTreeItem(j).getValue().getBtnDel().getId())) {
+								reviewList.remove(j);
+
+							
+								MusicReviewVO vo1 = new MusicReviewVO();
+								vo1.setMem_id(user_id);
+								vo1.setMus_re_no(temp_btn.getId());
+								try {
+								imrs.deleteMusReview(vo1);
+								} catch (RemoteException e2) {
+									System.out.println("에러");
+									e2.printStackTrace();
+								}
+
+								// 다시 설정
+								TreeItem<MusicReviewVO> root1 = new RecursiveTreeItem<>(reviewList,RecursiveTreeObject::getChildren);
+								tbl_Review.setRoot(root1);
+								tbl_Review.setShowRoot(false);
+
+								return;
+							}
+						}
+					}
+				});
+			}
+
+		}
+		
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
 		paging();

@@ -11,6 +11,7 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.album.IAlbumReviewService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.vo.album.AlbumReviewVO;
+import kr.or.ddit.clap.vo.member.LikeVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
 
 import java.net.URL;
@@ -82,11 +83,52 @@ public class ReviewAlbController  implements Initializable{
 				tbl_Review.setRoot(root);
 				tbl_Review.setShowRoot(false);
 
-				itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+				
+		if (reviewList.size() > 0) {
+			for (int i = 0; i < reviewList.size(); i++) {
+				System.out.println(reviewList.size());
 
-				paging();
+				// tbl_music.getTreeItem(i).getValue().getBtn().setOnAction(e->{
+				tbl_Review.getTreeItem(i).getValue().getBtnDel().setOnAction(e -> {
 
+					System.out.println("남은 개수:" + reviewList.size());
+					JFXButton temp_btn = (JFXButton) e.getSource();
+					if (reviewList.size() > 0) {
+						for (int j = 0; j < reviewList.size(); j++) {
+							System.out.println(temp_btn.getId());
+							if (temp_btn.getId().equals(tbl_Review.getTreeItem(j).getValue().getBtnDel().getId())) {
+								reviewList.remove(j);
+
+								AlbumReviewVO vo1 = new AlbumReviewVO();
+								vo1.setMem_id(user_id);
+								vo1.setAlb_re_no(temp_btn.getId());
+								try {
+									iars.deleteAlbReview(vo1);
+								} catch (RemoteException e2) {
+									System.out.println("에러");
+									e2.printStackTrace();
+								}
+
+								// 다시 설정
+								TreeItem<AlbumReviewVO> root1 = new RecursiveTreeItem<>(reviewList,
+										RecursiveTreeObject::getChildren);
+								tbl_Review.setRoot(root1);
+								tbl_Review.setShowRoot(false);
+
+								return;
+							}
+						}
+					}
+				});
 			}
+
+		}
+
+		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+
+		paging();
+
+	}
 
 	private void paging() {
 		totalPageCnt = reviewList.size() % itemsForPage == 0 ? reviewList.size() / itemsForPage
