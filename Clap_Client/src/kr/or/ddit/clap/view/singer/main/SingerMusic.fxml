@@ -131,4 +131,7 @@
          </padding>
       </VBox>
    </children>
+   <padding>
+      <Insets left="40.0" />
+   </padding>
 </StackPane>

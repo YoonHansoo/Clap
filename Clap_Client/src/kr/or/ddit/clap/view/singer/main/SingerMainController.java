@@ -62,7 +62,6 @@ public class SingerMainController implements Initializable{
 
 	@FXML Label label_singNo;
 	@FXML Label label_singerName1;
-	@FXML Label label_singerName2;
 	@FXML Label label_ActType;
 	@FXML Label label_ActEra;
 	@FXML Label label_DebutEra;
@@ -140,7 +139,7 @@ public class SingerMainController implements Initializable{
 		songChart();
 
 		label_singerName1.setText(sVO.getSing_name());
-		label_singerName2.setText(sVO.getSing_name());
+//		label_singerName2.setText(sVO.getSing_name());
 		label_ActType.setText(sVO.getSing_act_type());
 		label_ActEra.setText(sVO.getSing_act_era());
 		label_DebutEra.setText(sVO.getSing_debut_era());

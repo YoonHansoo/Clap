@@ -47,7 +47,7 @@ public class SingerMenuController implements Initializable{
 	@FXML StackPane singerAlbum;
 	@FXML StackPane singerMusic;
 	
-	public static String albumNo;// 파라미터로 받은 선택한 가수의 PK
+	public static String albumNo; // 파라미터로 받은 선택한 가수의 PK
 	private Registry reg;
 	private IAlbumService ias;
 	private ISingerService ssi;
@@ -61,7 +61,6 @@ public class SingerMenuController implements Initializable{
 
 	// @FXML Label label_singNo;
 	@FXML Label label_albumName1;
-	@FXML Label label_albumName2;
 	@FXML Label label_singerName;
 	@FXML Label label_saledate;
 	@FXML Label label_saleEnter;
@@ -84,26 +83,31 @@ public class SingerMenuController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		tabPane.getSelectionModel().select(menuCount);
-		tabPane.setOnKeyPressed(e->{
-			box.setVisible(false);
-		});
-		tabPane.setOnMouseClicked(e->{
-			box.setVisible(false);
-		});
-		
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
 			singerMain.getChildren().removeAll();
 			singerMain.getChildren().setAll(pane);
 			
-			AnchorPane pane2 = FXMLLoader.load(getClass().getResource("SingerAlbum.fxml"));
+			StackPane pane2 = FXMLLoader.load(getClass().getResource("SingerAlbum.fxml"));
+			pane2.setVisible(false);
 			singerAlbum.getChildren().removeAll();
 			singerAlbum.getChildren().setAll(pane2);
+			
 			
 			StackPane pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
 			singerMusic.getChildren().removeAll();
 			singerMusic.getChildren().setAll(pane3);
+			
+			
+			tabPane.getSelectionModel().select(menuCount);
+			tabPane.setOnKeyPressed(e->{
+				box.setVisible(false);
+				pane2.setVisible(true);				
+			});
+			tabPane.setOnMouseClicked(e->{
+				box.setVisible(false);
+				pane2.setVisible(true);
+			});
 			
 //			StackPane pane_main = FXMLLoader.load(getClass().getResource("SingerMainMusic.fxml"));
 //			pane_main.setLayoutY(350);
@@ -113,6 +117,7 @@ public class SingerMenuController implements Initializable{
 			e.printStackTrace();
 		}
 		System.out.println("앨범번호:" + albumNo);
+		
 
 		try {
 			// reg로 ISingerService객체를 받아옴
@@ -138,7 +143,7 @@ public class SingerMenuController implements Initializable{
 		});
 		
 		label_albumName1.setText(aVO.getAlb_name());
-		label_albumName2.setText(aVO.getAlb_name());
+//		label_albumName2.setText(aVO.getAlb_name());
 		label_singerName.setText(aVO.getSing_name());
 		label_saledate.setText(aVO.getAlb_saledate());
 		label_saleEnter.setText(aVO.getAlb_sale_enter());

@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="singerMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMainController">
    <children>
-      <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="가수이름">
+      <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="697.0" text="가수이름">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -27,14 +27,6 @@
                </HBox.margin></ImageView>
             <VBox prefHeight="165.0" prefWidth="470.0">
                <children>
-                  <Label fx:id="label_singerName2" prefHeight="41.0" prefWidth="256.0" text="가수이름">
-                     <font>
-                        <Font name="YDIYGO350" size="36.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets bottom="20.0" />
-                     </VBox.margin>
-                  </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="활동 유형">
@@ -144,6 +136,9 @@
                      </padding>
                   </HBox>
                </children>
+               <HBox.margin>
+                  <Insets bottom="30.0" top="15.0" />
+               </HBox.margin>
             </VBox>
          </children>
       </HBox>
