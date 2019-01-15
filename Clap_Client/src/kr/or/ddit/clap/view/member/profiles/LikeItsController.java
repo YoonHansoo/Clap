@@ -33,12 +33,10 @@ public class LikeItsController implements Initializable{
 
 	private Registry reg;
 	private ILikeService ilks;
-	private int no;
 
 	@FXML JFXCheckBox chbox_main;
 	@FXML JFXTreeTableView<LikeVO> tbl_like;
 	@FXML TreeTableColumn<LikeVO, JFXCheckBox> col_Checks;
-	@FXML TreeTableColumn<LikeVO, String> col_No;
 	@FXML TreeTableColumn<LikeVO, ImageView> col_Img;
 	@FXML TreeTableColumn<LikeVO, String> col_MusInfo;
 	@FXML TreeTableColumn<LikeVO, String> col_Its;
@@ -64,7 +62,6 @@ public class LikeItsController implements Initializable{
 		
 		
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
-		col_No.setCellValueFactory(param -> new SimpleStringProperty("" + no++));
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
 		col_LikeIndate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getlike_date().substring(0, 10)));
 		col_Checks.setCellValueFactory(param -> new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getChBox()));
@@ -170,8 +167,6 @@ public class LikeItsController implements Initializable{
 	// 전체 선택 및 해제 메서드
 		@FXML
 		public void mainCheck() {
-			no = 0;
-
 			if (chbox_main.isSelected()) {
 				for (int i = 0; i < likeList.size(); i++) {
 					likeList.get(i).getchBox1().setSelected(true);

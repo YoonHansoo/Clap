@@ -1,8 +1,6 @@
 package kr.or.ddit.clap.view.member.mypage;
 
-import java.io.IOException;
 import java.net.URL;
-import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -10,49 +8,29 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXCheckBox;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.cell.TextFieldTreeTableCell;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableColumn;
 import javafx.scene.control.TreeTableColumn.CellEditEvent;
-import javafx.scene.image.ImageView;
-import javafx.stage.Modality;
+import javafx.scene.control.cell.TextFieldTreeTableCell;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.util.Callback;
 import kr.or.ddit.clap.main.LoginSession;
-import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
-import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
-import kr.or.ddit.clap.service.mypage.IMypageService;
-import kr.or.ddit.clap.view.album.album.InsertAlbumController;
-import kr.or.ddit.clap.view.album.album.SelectSingerController;
-import kr.or.ddit.clap.view.singer.singer.InsertSingerController;
-import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
-import kr.or.ddit.clap.vo.singer.SingerVO;
-import javafx.scene.layout.AnchorPane;
 
 public class MypageMyAlbController implements Initializable{
 	private static String user_id = LoginSession.session.getMem_id();
@@ -61,7 +39,6 @@ public class MypageMyAlbController implements Initializable{
 	
 	@FXML JFXTreeTableView<MyAlbumVO> tbl_Myalb;
 	@FXML TreeTableColumn<MyAlbumVO,JFXCheckBox> col_Chbox;
-	@FXML TreeTableColumn<MyAlbumVO,String> col_No;
 	@FXML TreeTableColumn<MyAlbumVO,String> col_MyAlbname;
 	@FXML TreeTableColumn<MyAlbumVO,String> col_MusCount;
 	

@@ -66,7 +66,7 @@
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Label fx:id="textA_content" layoutX="22.0" layoutY="14.0" prefHeight="245.0" prefWidth="441.0" style="-fx-background-color: #ffffff; -fx-border-color: #090948;" text="Label" wrapText="true" />
+                  <Label fx:id="textA_content" alignment="TOP_LEFT" layoutX="22.0" layoutY="14.0" prefHeight="245.0" prefWidth="441.0" style="-fx-background-color: #ffffff; -fx-border-color: #090948;" text="Label" wrapText="true" />
                </children>
             </AnchorPane>
          </children>

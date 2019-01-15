@@ -7,25 +7,39 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="883.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageMyAlbController">
    <children>
-      <JFXTreeTableView fx:id="tbl_Myalb" layoutX="18.0" layoutY="69.0" prefHeight="679.0" prefWidth="564.0">
+      <JFXTreeTableView stylesheets="@../../../../../../../mypage.css" fx:id="tbl_Myalb" layoutX="18.0" layoutY="69.0" prefHeight="679.0" prefWidth="564.0">
          <columns>
             <TreeTableColumn fx:id="col_Chbox" prefWidth="58.0" text=" " />
-            <TreeTableColumn fx:id="col_No" prefWidth="63.0" text=" " />
-            <TreeTableColumn fx:id="col_MyAlbname" prefWidth="354.0" text="마이앨범 명" />
-            <TreeTableColumn fx:id="col_MusCount" prefWidth="88.0" text="곡" />
+            <TreeTableColumn fx:id="col_MyAlbname" prefWidth="415.0" text="마이앨범 명" />
+            <TreeTableColumn fx:id="col_MusCount" prefWidth="90.0" text="곡" />
          </columns>
       </JFXTreeTableView>
-      <Text layoutX="48.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범 편집 " />
-      <Button layoutX="74.0" layoutY="756.0" mnemonicParsing="false" onAction="#btn_edit" text="edit" />
-      <Button layoutX="147.0" layoutY="756.0" mnemonicParsing="false" onAction="#btn_del" text="delete" />
-      <JFXCheckBox fx:id="chbox_main" layoutX="18.0" layoutY="761.0" onAction="#mainCheck" text=" " />
+      <Button layoutX="55.0" layoutY="756.0" mnemonicParsing="false" onAction="#btn_del" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font></Button>
+      <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="11.0" layoutY="762.0" onAction="#mainCheck" text=" " />
       <JFXToolbar layoutX="415.0" layoutY="780.0" prefHeight="29.0" prefWidth="157.0" />
-      <Label fx:id="la_Muscount" layoutX="516.0" layoutY="766.0" text="선택" />
-      <Button onAction="#btn_Cl" layoutX="180.0" layoutY="807.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="90.0" text="취소" />
-      <Button   onAction="#btn_Ok" layoutX="309.0" layoutY="807.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="90.0" text="확인" />
+      <Label fx:id="la_Muscount" layoutX="476.0" layoutY="756.0" prefHeight="29.0" prefWidth="105.0" text="선택">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font></Label>
+      <Button layoutX="309.0" layoutY="807.0" mnemonicParsing="false" onAction="#btn_Cl" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font></Button>
+      <Button layoutX="195.0" layoutY="807.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font></Button>
+      <Label layoutX="-10.0" layoutY="-4.0" prefHeight="57.0" prefWidth="618.0" style="-fx-background-color: #090948;" text="   마이앨범 편집" textFill="WHITE">
+         <font>
+            <Font name="YDIYGO350" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

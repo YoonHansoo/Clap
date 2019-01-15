@@ -40,12 +40,10 @@ public class LikeAlbController implements Initializable {
 	private Registry reg;
 	private ILikeService ilks;
 	
-	private int no;
 	
 	@FXML JFXCheckBox chbox_main;
 	@FXML JFXTreeTableView<LikeVO> tbl_like;
 	@FXML TreeTableColumn<LikeVO, JFXCheckBox> col_Checks;
-	@FXML TreeTableColumn<LikeVO, String> col_No;
 	@FXML TreeTableColumn<LikeVO, ImageView> col_Img;
 	@FXML TreeTableColumn<LikeVO, String> col_MusInfo;
 	@FXML TreeTableColumn<LikeVO, String> col_Its;
@@ -72,7 +70,7 @@ public class LikeAlbController implements Initializable {
 		
 		likeList = FXCollections.observableArrayList();
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
-		col_No.setCellValueFactory(param -> new SimpleStringProperty("" + no++));
+		
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getSing_name()));
 		//col_MusInfo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMus_title()));
 		col_Alb.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAlb_name()));
@@ -214,7 +212,6 @@ public class LikeAlbController implements Initializable {
 	// 전체 선택 및 해제 메서드
 		@FXML
 		public void mainCheck() {
-			no = 0;
 
 			if (chbox_main.isSelected()) {
 				for (int i = 0; i < likeList.size(); i++) {
@@ -227,6 +224,12 @@ public class LikeAlbController implements Initializable {
 				}
 			}
 		}
+
+		@FXML public void btnMainPlay() {}
+
+		@FXML public void btnMainAdd() {}
+
+		@FXML public void btnMainPut() {}
 		
 		
 
