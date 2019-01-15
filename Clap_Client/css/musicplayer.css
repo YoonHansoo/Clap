@@ -1,5 +1,5 @@
 * {
-  	-fx-font-family: "-윤고딕330";
+  
 }
 .tab{
 	-fx-background-color: #cdcdcd;
@@ -14,12 +14,6 @@
 .tab-label{
     -fx-font-family: "-윤고딕320";
     -fx-font-size: 18;
-}
-
-.mainlabel{
-	 -fx-font-family: "-윤고딕350";
-	 -fx-font-size: 25;
-	 
 }
 
 .tree-table-row-cell:selected .tree-table-cell .label{
@@ -48,4 +42,8 @@
     -fx-background-color: white;
     -fx-border-color: white;
      -fx-font-family: "-윤고딕330";
+}
+
+.table-column {
+  -fx-alignment: CENTER-LEFT;
 }
