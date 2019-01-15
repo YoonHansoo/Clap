@@ -32,9 +32,9 @@
             <AnchorPane fx:id="contents" prefHeight="625.0" prefWidth="720.0">
                <children>
                   <JFXCheckBox fx:id="chbox_main" layoutX="29.0" layoutY="33.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " />
-                  <Button layoutX="91.0" layoutY="33.0" mnemonicParsing="false" text="듣기" />
+                  <Button onAction="#btnMainPlay" layoutX="91.0" layoutY="33.0" mnemonicParsing="false" text="듣기" />
                   <Button layoutX="169.0" layoutY="33.0" mnemonicParsing="false" text="추가" />
-                  <Button layoutX="231.0" layoutY="33.0" mnemonicParsing="false" text="담기" />
+                  <Button onAction="#btnMainPut" layoutX="231.0" layoutY="33.0" mnemonicParsing="false" text="담기" />
                   <JFXTreeTableView fx:id="tbl_like" layoutX="11.0" layoutY="87.0" prefHeight="400.0" prefWidth="704.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Checks" prefWidth="34.0" text="  " />

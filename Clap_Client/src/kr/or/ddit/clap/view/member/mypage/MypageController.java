@@ -657,6 +657,17 @@ private MypageMyAlbListController iAC;
 		}
 	}
 	
+	@FXML public void btn_ticketList() {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../../ticket/buylist/ticketbuylist.fxml"));
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(root);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 
 }

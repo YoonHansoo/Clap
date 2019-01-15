@@ -64,7 +64,7 @@
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
                      </font></Button>
-                  <Button layoutX="113.0" layoutY="173.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="127.0" style="-fx-background-color: #090948;" text="이용권내역" textFill="WHITE">
+                  <Button onAction="#btn_ticketList" layoutX="113.0" layoutY="173.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="127.0" style="-fx-background-color: #090948;" text="이용권내역" textFill="WHITE">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" iconName="BARCODE" size="2em" />
                      </graphic>

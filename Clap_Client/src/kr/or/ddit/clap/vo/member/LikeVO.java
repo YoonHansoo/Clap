@@ -194,9 +194,16 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	public void setImgView(ImageView imgView) {
 		this.imgView = imgView;
 	}
-	public JFXCheckBox getChBox() {
+	
+	
+	
+	public void createChbox() {
+		if(chBox ==null) {
 		this.chBox = new JFXCheckBox();
-		
+		}
+	}
+	public JFXCheckBox getChBox() {
+		createChbox();
 		return this.chBox;
 		
 	}
