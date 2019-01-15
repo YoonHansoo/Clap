@@ -8,7 +8,7 @@
 	 
 	 
 	 <select id="selectListAll" resultClass="qnaVO">
-	 		select qna_no, qna_indate, qna_title, qna_view_cnt from qna
+	 		select qna_no, qna_indate, qna_title, qna_view_cnt, mem_id from qna
 	 </select>
 	 
 	 

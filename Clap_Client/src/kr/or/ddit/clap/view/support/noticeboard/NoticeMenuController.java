@@ -48,10 +48,8 @@ public class NoticeMenuController implements Initializable {
 	
 	private Registry reg;
 	private INoticeBoardService ins;
-	//public NoticeBoardVO nVO = new NoticeBoardVO();
 	private ObservableList<NoticeBoardVO> ntcList, currentntcList;
 	private int from, to, itemsForPage, totalPageCnt;
-	//@FXML AnchorPane main;
 	
 	
 	
@@ -71,8 +69,6 @@ public class NoticeMenuController implements Initializable {
 		col_noticeTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_title()));
 		col_noticeDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_indate()));
 		col_noticeCnt.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_view_cnt()));
-		
-		
 		
 		
 		try {
@@ -96,16 +92,16 @@ public class NoticeMenuController implements Initializable {
 				//더블클릭
 				tbl_notice.setOnMouseClicked(e -> {
 					if (e.getClickCount() > 1) {
-						int index = tbl_notice.getSelectionModel().getSelectedIndex();
-						System.out.println("선택한 인덱스 : " + index);
-						NoticeBoardVO vo = ntcList.get(index);
-						System.out.println("번호:" + vo.getNotice_no());
-						String NoticeNo = vo.getNotice_no();
+						//int index = tbl_notice.getSelectionModel().getSelectedIndex();
+						//System.out.println("선택한 인덱스 : " + index);
+						//NoticeBoardVO vo = ntcList.get(index);
+						//System.out.println("번호:" + vo.getNotice_no());
+						String NoticeNo = tbl_notice.getSelectionModel().getSelectedItem().getValue().getNotice_no();
 						
 						try {
 							// 바뀔 화면(FXML)을 가져옴
-							NoticeBoardDetailContentController.NoticeNo = vo.getNotice_no();// 번호을 변수로 넘겨줌
-							System.out.println(vo.getNotice_no());
+							NoticeBoardDetailContentController.NoticeNo = NoticeNo;// 번호을 변수로 넘겨줌
+							System.out.println(NoticeNo);
 
 							FXMLLoader loader = new FXMLLoader(getClass().getResource("NoticeBoardDetailContent.fxml"));// init실행됨
 							Parent noticeDetail = loader.load();

@@ -29,9 +29,10 @@
       <JFXTreeTableView fx:id="tbl_qna" layoutX="78.0" layoutY="160.0" prefHeight="490.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="160.0">
          <columns>
             <TreeTableColumn fx:id="col_qnaNumber" prefWidth="103.0" text="번  호" />
-            <TreeTableColumn fx:id="col_qnaTitle" prefWidth="548.0" text="제  목" />
-            <TreeTableColumn fx:id="col_qnaDate" prefWidth="98.0" text="등록일" />
-            <TreeTableColumn fx:id="col_qnaViewCnt" prefWidth="100.0" text="조회수" />
+            <TreeTableColumn fx:id="col_qnaTitle" prefWidth="465.0" text="제  목" />
+            <TreeTableColumn fx:id="col_qnaId" prefWidth="96.0" text="작성자" />
+            <TreeTableColumn fx:id="col_qnaDate" prefWidth="116.0" text="등록일" />
+            <TreeTableColumn fx:id="col_qnaViewCnt" prefWidth="69.0" text="조회수" />
          </columns>
       </JFXTreeTableView>
       <JFXButton fx:id="btn_ins" layoutX="829.0" layoutY="127.0" text="문의 글 작성" />

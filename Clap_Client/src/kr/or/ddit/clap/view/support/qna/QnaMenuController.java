@@ -47,6 +47,8 @@ public class QnaMenuController implements Initializable {
 	@FXML
 	TreeTableColumn<QnaVO, String> col_qnaViewCnt;
 	@FXML
+	TreeTableColumn<QnaVO, String> col_qnaId;
+	@FXML
 	AnchorPane main;
 	@FXML
 	JFXButton btn_ins;
@@ -72,6 +74,7 @@ public class QnaMenuController implements Initializable {
 		col_qnaNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_no()));
 		col_qnaTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_title()));
 		col_qnaViewCnt.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_view_cnt()));
+		col_qnaId.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_id()));
 
 		try {
 			qnaList = FXCollections.observableArrayList(iqs.selectListAll());
@@ -94,16 +97,12 @@ public class QnaMenuController implements Initializable {
 		// 더블클릭
 		tbl_qna.setOnMouseClicked(e -> {
 			if (e.getClickCount() > 1) {
-				int index = tbl_qna.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : " + index);
-				QnaVO vo = qnaList.get(index);
-				System.out.println("번호:" + vo.getQna_no());
-				String ContentNo = vo.getQna_no();
+				String ContentNo = tbl_qna.getSelectionModel().getSelectedItem().getValue().getQna_no();
 
 				try {
 					// 바뀔 화면(FXML)을 가져옴
-					QnaDetailContentController.ContentNo = vo.getQna_no();// 번호을 변수로 넘겨줌
-					System.out.println(vo.getQna_no());
+					QnaDetailContentController.ContentNo = ContentNo;// 번호을 변수로 넘겨줌
+					System.out.println(ContentNo);
 
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaDetailContent.fxml"));// init실행됨
 					Parent qnaDetail = loader.load();

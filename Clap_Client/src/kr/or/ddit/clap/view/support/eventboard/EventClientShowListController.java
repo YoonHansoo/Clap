@@ -98,16 +98,16 @@ public class EventClientShowListController implements Initializable  {
 		// 더블클릭
 		tbl_Event.setOnMouseClicked(e -> {
 			if (e.getClickCount() > 1) {
-				int index = tbl_Event.getSelectionModel().getSelectedIndex();
-				System.out.println("선택한 인덱스 : " + index);
-				EventBoardVO vo = eventList.get(index);
-				System.out.println("번호:" + vo.getEvent_no());
-				String ContentNo = vo.getEvent_no();
+				//int index = tbl_Event.getSelectionModel().getSelectedIndex();
+				//System.out.println("선택한 인덱스 : " + index);
+				//EventBoardVO vo = eventList.get(index);
+				//System.out.println("번호:" + vo.getEvent_no());
+				String ContentNo = tbl_Event.getSelectionModel().getSelectedItem().getValue().getEvent_no();
 				
 				try {
 					// 바뀔 화면(FXML)을 가져옴
-					EventContentDetailController.ContentNo = vo.getEvent_no(); // 번호을 변수로 넘겨줌
-					System.out.println(vo.getEvent_no());
+					EventContentDetailController.ContentNo = ContentNo; // 번호을 변수로 넘겨줌
+					System.out.println(ContentNo);
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("EventContentDetail.fxml"));// init실행됨
 					Parent eventDetail = loader.load();

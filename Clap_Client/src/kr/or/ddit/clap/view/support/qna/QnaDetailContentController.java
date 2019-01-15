@@ -56,32 +56,7 @@ public class QnaDetailContentController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		
-		// 관리자 모드 - 삭제창
-		if(LoginSession.session.getMem_auth().equals("t")){
-			btn_delete.setVisible(true);
-			btn_update.setVisible(false);
-		} else {
-			btn_delete.setVisible(false);
-		}
-		if(LoginSession.session.getMem_auth().equals("f")) {
-			//수정, 삭제 버튼 구분하기
-			if(ls.session.getMem_id().equals(qVO.getMem_id())) {
-				//사용자일 때, 작성자인지 아닌지 구분해서 삭제, 수정 버튼 구분하기
-			}
-		}
-		/*//LoginSession.session.getMem_auth().equals("t")
-		if(LoginSession.session.getMem_auth().equals("f")) {
-			if(!(LoginSession.session.getMem_auth().equals(Text_Id))) {
-				
-			btn_delete.setVisible(false);
-			btn_update.setVisible(false);
-			}
-		}else {
-			
-		}*/
-		// 사용자 모드 - 수정창 만들기
-		
+		System.out.println(ls.session.getMem_id());
 		
 		try {
 			System.out.println(ContentNo);
@@ -105,7 +80,21 @@ public class QnaDetailContentController implements Initializable {
 		Text_Content.setText(qVO.getQna_content());
 		Text_Id.setText(qVO.getMem_id());
 		
-		
+		//btn_delete, btn_update : 관리자, 작성자 구분
+		if(LoginSession.session.getMem_auth().equals("t")){
+			btn_delete.setVisible(true);
+			btn_update.setVisible(false);
+		} else {
+			btn_delete.setVisible(false);
+			if(ls.session.getMem_id().equals(qVO.getMem_id())) {
+				btn_delete.setVisible(true);
+				btn_update.setVisible(true);
+			} else {
+				btn_delete.setVisible(false);
+				btn_update.setVisible(false);
+				
+			}
+		}
 		
 		
 		btn_delete.setOnMouseClicked(e -> {
@@ -117,7 +106,6 @@ public class QnaDetailContentController implements Initializable {
 				}
 				
 				int cnt = iqs.deleteQnaContent(ContentNo);
-				
 				
 				
 			} catch(RemoteException ee) {
@@ -144,7 +132,6 @@ public class QnaDetailContentController implements Initializable {
 				ee.printStackTrace();
 			}
 		});
-		
 		
 	}
 		
