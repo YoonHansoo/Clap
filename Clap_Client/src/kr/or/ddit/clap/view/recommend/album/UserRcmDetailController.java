@@ -24,9 +24,11 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.main.createReply;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.recommend.IRecommendService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
@@ -115,11 +117,6 @@ public class UserRcmDetailController implements Initializable {
 				//icon_heart.setFill(value);
 				icon_heart.setIconName("HEART");
 			}
-			
-			
-			
-
-	
 		} catch (Exception e) {
 		}
 		
@@ -128,6 +125,63 @@ public class UserRcmDetailController implements Initializable {
 		
 		//조회차트
 		songChart();
+		
+		
+		//댓글창 생성
+		createReply.creatReply(mainBox);
+		
+		//댓글조회
+		
+		for(int i =0; i<2; i++) {
+			
+			HBox hbox = new HBox();
+			hbox.setPrefWidth(731);
+			hbox.setPrefHeight(73);
+			
+			ImageView imgView = new ImageView();
+			Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\neo2.png");
+			imgView.setImage(img);
+			imgView.setFitWidth(63);
+			imgView.setFitHeight(48);
+			
+			VBox vbox = new VBox();
+		    vbox.setPrefWidth(653);
+		    vbox.setPrefHeight(73);
+		    
+		    HBox small_hbox = new HBox();
+		    small_hbox.setPrefWidth(533);
+		    small_hbox.setPrefHeight(30);
+		    
+		    Label label_id = new Label();
+		    label_id.setPrefWidth(54);
+		    label_id.setPrefHeight(15);
+		    label_id.setText("user1");
+		    
+		    Label label_date = new Label();
+		    label_id.setPrefWidth(75);
+		    label_id.setPrefHeight(15);
+		    label_date.setText("2018/01/15");
+		    
+		    JFXButton btn_report = new JFXButton();
+		    btn_report.setPrefWidth(27);
+		    btn_report.setPrefHeight(15);
+		    btn_report.setText("신고");
+		    
+		    Label label_contents = new Label();
+		    label_contents.setPrefWidth(598);
+		    label_contents.setPrefHeight(43);
+		    label_contents.setText("노래가 너무 좋아요");
+		    
+		    small_hbox.getChildren().addAll(label_id,label_date,btn_report);
+		    vbox.getChildren().addAll(small_hbox,label_contents);
+		    
+		    hbox.getChildren().addAll(imgView,vbox);
+		    
+		    mainBox.getChildren().add(hbox);
+		    
+		}
+	
+		
 	}
 
 	private void resetCnt() throws RemoteException {
@@ -178,66 +232,10 @@ public class UserRcmDetailController implements Initializable {
 			
 			musicList.musicList_VO(rcmAlbMusic);
 			
-			/*//댓글 창 생성 
-			 
-			HBox HboxReply = new HBox();
-			HboxReply.setPrefWidth(100);
-			HboxReply.setPrefHeight(20);
-			HboxReply.setPadding(new Insets(0,0,10,0));
-			//temp_hbox.setPadding(new Insets(5, 5, 5, 15));
-			//temp_hbox.setStyle("-fx-bordertop-color:#090948;");
-			//temp_hbox.setStyle("-fx-border-style : solid hidden hidden hidden;");
-			//vbox.setMargin(temp_hbox, new Insets(50, 0, 0, 0));
-			
-			// Title 곡 라벨 갯수
-			Label reply = new Label();
-			reply.setFont(Font.font("-윤고딕350", 14));
-			reply.setTextFill(Color.valueOf("#000"));
-			reply.setPrefWidth(40);
-			reply.setPrefHeight(40);
-			reply.setText("댓글");
-			
-			// Title 곡 라벨 갯수
-			Label replyCnt = new Label();
-			replyCnt.setFont(Font.font("-윤고딕350", 14));
-			replyCnt.setTextFill(Color.valueOf("#9c0000"));
-			replyCnt.setPrefWidth(40);
-			replyCnt.setPrefHeight(40);
-			replyCnt.setText("0개");
-			
-			//댓글창과 버튼을 담는 hbox 테두리 
-			HBox h_reply = new HBox();
-			h_reply.setPrefWidth(770);
-			h_reply.setPrefHeight(60);
-			h_reply.setStyle("-fx-border-color: #090948");
-			h_reply.setStyle("-fx-background-color: #f0f0f0");
-
-			//hbox
-			TextArea input_reply = new TextArea();
-			input_reply.setPrefWidth(660);
-			input_reply.setPromptText("명예회손, 개인정보 유출, 인격권 침해, 허위사실 유포 등은 이용약관 및 관련법률에 의해 제재를 받을 수 있습니다. 건전한 댓글문화 정착을 위해 이용에 주의를 부탁드립니다.");
-			input_reply.setWrapText(true);
-			input_reply.setEditable(true);
-
-			//댓글등록버튼
-			JFXButton btnReplyInsert = new JFXButton();
-			//vbox.setMargin(temp_hbox, new Insets(50, 0, 0, 0));
-			HBox.setMargin(btnReplyInsert,  new Insets(0, 0, 0, 10));
-			btnReplyInsert.setPrefWidth(130);
-			btnReplyInsert.setPrefHeight(60);
-			btnReplyInsert.setTextFill(Color.valueOf("#fff"));
-			btnReplyInsert.setStyle("-fx-background-color: #090948 ;");
-			btnReplyInsert.setText("댓글등록");
 			
 			
-			//세팅 
-			HboxReply.getChildren().addAll(reply,replyCnt);
-			h_reply.getChildren().addAll(input_reply,btnReplyInsert);
-			mainBox.getChildren().addAll(HboxReply, h_reply);
 			
 			
-			//댓글 불러오기
-			*/
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();

@@ -29,3 +29,7 @@
     -fx-border-color: white;
      -fx-font-family: "-윤고딕330";
 }
+
+ .table-column {
+  -fx-alignment: CENTER-RIGHT;
+}
