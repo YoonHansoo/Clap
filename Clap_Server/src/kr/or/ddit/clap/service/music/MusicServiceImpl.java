@@ -107,6 +107,11 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 		return musicDao.selectSinger(sing_no);
 	}
 
+	@Override
+	public List<String> albumMusNoSelect(String alb_no) throws RemoteException {
+		return musicDao.albumMusNoSelect(alb_no);
+	}
+
 	
 
 

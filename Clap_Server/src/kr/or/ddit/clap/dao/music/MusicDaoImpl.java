@@ -226,4 +226,18 @@ public class MusicDaoImpl implements IMusicDao {
 		return list;
 	}
 
+	@Override
+	public List<String> albumMusNoSelect(String alb_no) {
+		List<String> list = new ArrayList<String>();
+		try {
+
+			list = smc.queryForList("music.albummusnoselect", alb_no);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }

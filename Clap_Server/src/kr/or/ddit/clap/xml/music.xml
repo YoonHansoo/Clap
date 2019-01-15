@@ -189,14 +189,24 @@
 		        a.mus_befor_rank,
 		        a.mus_mvfile,
 		        b.alb_image,
-		        c.sing_name
+		        c.sing_name,
+		        a.alb_saledate
 		  from  music a, album b, singer c
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  c.sing_no = #sing_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name 
-		 order  by a.mus_indate desc
+		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name,a.alb_saledate
+		 order  by a.alb_saledate desc
 	</select>
+	
+	<select id="albummusnoselect" resultClass="String"  parameterClass="String">
+		 select mus_no
+		   from music
+		  where alb_no = #alb_no#
+		  order by mus_no desc
+	</select>
+	
+	
 </sqlMap>         
 
 
