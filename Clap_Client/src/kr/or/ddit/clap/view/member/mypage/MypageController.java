@@ -149,12 +149,18 @@ private MypageMyAlbListController iAC;
 		try {
 			memvo = ims.select(vo);
 			text_UserInfo.setText(memvo.getMem_intro());
+			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 		// 이미지 설정
+		if(memvo.getMem_image()==null) {
+				memvo.setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+			
+			
+		}
 		Image img = new Image(memvo.getMem_image());
 		temp_img_path = memvo.getMem_image(); // sVO.getSing_image()를 전역으로 쓰기위해
 		img_UserImg.setImage(img);
