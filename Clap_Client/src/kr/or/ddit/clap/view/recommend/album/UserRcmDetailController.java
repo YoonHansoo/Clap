@@ -6,28 +6,25 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Font;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
@@ -60,6 +57,7 @@ public class UserRcmDetailController implements Initializable {
 	VBox mainBox;
 	@FXML
 	JFXCheckBox cb_main;
+	@FXML FontAwesomeIcon icon_heart;
 	
 	private IPlayListService ipls;
 	public static String rcmAlbNo;
@@ -68,7 +66,7 @@ public class UserRcmDetailController implements Initializable {
 	private MusicList musicList;
 	public RecommendAlbumVO rVO;
 	private String temp_img_path = "";
-	
+	int yn = 0;
 	private ObservableList<MusicVO> rcmAlbMusic;
 	
 	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
@@ -77,6 +75,8 @@ public class UserRcmDetailController implements Initializable {
 	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
 	private MusicPlayerController mpc;
+	
+	Map<String, String> pMap = new HashMap<String, String>();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -100,23 +100,26 @@ public class UserRcmDetailController implements Initializable {
 			Image img = new Image(temp_img_path);
 			imgview_img.setImage(img);
 
-			// 좋아요 카운트 쿼리
-			System.out.println("추천앨범번호" + rcmAlbNo);
-			int likeCnt = irs.selectAlbumLikeCnt(rcmAlbNo);
-			System.out.println("likeCnt:" + likeCnt);
-			label_LikeCnt.setText(likeCnt+ "");
+			resetCnt();
 			
-			//리스트 수 
-			System.out.println("추천앨범번호" + rcmAlbNo);
-			int listCnt = irs.selectAlbumListCnt(rcmAlbNo);
-			System.out.println("listCnt:" + listCnt);
-			lable_cntMusic.setText(listCnt+"");
+			//세션아이디와 추천앨범번호를 매개변수로 좋아요를 눌렀는 지 확인하는 메서드
+			String id = LoginSession.session.getMem_id();
+			pMap.put("rcmAlbNo", rcmAlbNo);
+			pMap.put("id",id);
+			 yn = irs.checkHeartYN(pMap);
+			 //pMap.clear();
+			System.out.println(yn);
+			
+			icon_heart.setIconName("HEART_ALT"); //초기화 빈하트
+			if(yn>0) {
+				//icon_heart.setFill(value);
+				icon_heart.setIconName("HEART");
+			}
+			
+			
 			
 
-			// 추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리
-			/*musicList = (MusicList) FXCollections.observableArrayList(irs.SelectRcmMusicList(rcmAlbNo));
-			System.out.println("해당 추천앨범 곡 개수 :" + musicList.size());
-*/
+	
 		} catch (Exception e) {
 		}
 		
@@ -127,8 +130,42 @@ public class UserRcmDetailController implements Initializable {
 		songChart();
 	}
 
+	private void resetCnt() throws RemoteException {
+		// 좋아요 카운트 쿼리
+		int likeCnt = irs.selectAlbumLikeCnt(rcmAlbNo);
+		label_LikeCnt.setText(likeCnt+ "");
+		
+		//리스트 수 
+		int listCnt = irs.selectAlbumListCnt(rcmAlbNo);
+		lable_cntMusic.setText(listCnt+"");
+		
+		yn = irs.checkHeartYN(pMap);
+	}
+
 	@FXML
-	public void btn_heart() {
+	
+	public void btn_heart() throws RemoteException {
+		if(yn>0) //좋아요 취소일 때 
+		{
+			
+			//취소 메서드
+			System.out.println("취소메서드 클릭");
+			irs.deleteRcmLike(pMap);
+			resetCnt();
+			icon_heart.setIconName("HEART_ALT");
+			
+		}
+		else 
+		{
+			//추가 메서드
+			System.out.println("추가메서드 클릭");
+			irs.insertRcmLike(pMap);
+			resetCnt();
+			icon_heart.setIconName("HEART");
+		}
+		
+		
+		
 	}
 
 	@FXML
@@ -152,9 +189,6 @@ public class UserRcmDetailController implements Initializable {
 			//temp_hbox.setStyle("-fx-border-style : solid hidden hidden hidden;");
 			//vbox.setMargin(temp_hbox, new Insets(50, 0, 0, 0));
 			
-			
-			
-			
 			// Title 곡 라벨 갯수
 			Label reply = new Label();
 			reply.setFont(Font.font("-윤고딕350", 14));
@@ -163,7 +197,6 @@ public class UserRcmDetailController implements Initializable {
 			reply.setPrefHeight(40);
 			reply.setText("댓글");
 			
-			
 			// Title 곡 라벨 갯수
 			Label replyCnt = new Label();
 			replyCnt.setFont(Font.font("-윤고딕350", 14));
@@ -171,8 +204,6 @@ public class UserRcmDetailController implements Initializable {
 			replyCnt.setPrefWidth(40);
 			replyCnt.setPrefHeight(40);
 			replyCnt.setText("0개");
-
-		
 			
 			//댓글창과 버튼을 담는 hbox 테두리 
 			HBox h_reply = new HBox();
@@ -199,18 +230,13 @@ public class UserRcmDetailController implements Initializable {
 			btnReplyInsert.setText("댓글등록");
 			
 			
-			
-			
 			//세팅 
-			
 			HboxReply.getChildren().addAll(reply,replyCnt);
 			h_reply.getChildren().addAll(input_reply,btnReplyInsert);
 			mainBox.getChildren().addAll(HboxReply, h_reply);
 			
 			
-			
 			//댓글 불러오기
-			
 			*/
 			
 		} catch (RemoteException e) {

@@ -229,7 +229,7 @@ public class InsertMusicController implements Initializable {
 		// 사용자에 화면에 해당 디렉토리가 기본값으로 보여짐
 		// String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
 		// 기본위치
-		String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\mp3";
+		String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\music";
 
 		File userDirectory = new File(userDirectoryString);
 
@@ -242,7 +242,7 @@ public class InsertMusicController implements Initializable {
 
 		this.filePath = fileChooser.showOpenDialog(stage);
 
-		String str_filePath = "file:" + filePath;
+		String str_filePath =filePath+"";
 		System.out.println("파일경로:" + str_filePath);
 		
 		txt_file.setText(str_filePath);
@@ -258,7 +258,7 @@ public class InsertMusicController implements Initializable {
 		// 사용자에 화면에 해당 디렉토리가 기본값으로 보여짐
 		// String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
 		// 기본위치
-		String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\video";
+		String userDirectoryString = "\\\\\\\\Sem-pc\\\\공유폴더\\\\Clap\\\\img\\\\music";
 
 		File userDirectory = new File(userDirectoryString);
 
@@ -271,7 +271,7 @@ public class InsertMusicController implements Initializable {
 
 		this.filePath = fileChooser.showOpenDialog(stage);
 
-		String str_filePath = "file:" + filePath;
+		String str_filePath =filePath+"";
 		System.out.println("파일경로:" + str_filePath);
 		
 		txt_fileVideo.setText(str_filePath);
