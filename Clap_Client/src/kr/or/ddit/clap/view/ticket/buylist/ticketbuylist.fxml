@@ -42,14 +42,14 @@
                   </VBox>
                </children>
             </HBox>
-            <AnchorPane prefHeight="54.0" prefWidth="691.0">
+            <AnchorPane prefHeight="73.0" prefWidth="705.0">
                <children>
-                  <Button layoutX="520.0" layoutY="13.0" mnemonicParsing="false" onAction="#buyTicket" prefHeight="23.0" prefWidth="153.0" style="-fx-background-color: #090948;" text="음악감상 이용권구매" textFill="WHITE">
+                  <Button layoutX="538.0" layoutY="13.0" mnemonicParsing="false" onAction="#buyTicket" prefHeight="23.0" prefWidth="153.0" style="-fx-background-color: #090948;" text="음악감상 이용권구매" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
                      </font>
                   </Button>
-                  <Label layoutY="32.0" prefHeight="15.0" prefWidth="140.0" text="이용중인 이용권">
+                  <Label layoutY="18.0" prefHeight="15.0" prefWidth="140.0" text="이용중인 이용권">
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
                      </font>
@@ -69,20 +69,20 @@
                         <Font name="YDIYGO350" size="14.0" />
                      </font>
                   </Label>
-                  <Pagination fx:id="p_paging1" layoutX="-10.0" layoutY="-6.0" prefHeight="200.0" prefWidth="714.0" />
+                  <Pagination fx:id="p_paging1" layoutX="-14.0" layoutY="-18.0" prefHeight="213.0" prefWidth="714.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="262.0" prefWidth="700.0">
                <children>
                   <TreeTableView fx:id="tbl2_ticket" layoutX="-1.0" prefHeight="200.0" prefWidth="700.0">
                     <columns>
-                      <TreeTableColumn fx:id="col2_ticketname" prefWidth="167.0" text="이용권" />
-                      <TreeTableColumn fx:id="col2_tickettime" prefWidth="209.0" text="이용기간" />
-                        <TreeTableColumn fx:id="col2_ticketbuydate" prefWidth="187.0" text="결제일" />
-                        <TreeTableColumn fx:id="col2_buyType" prefWidth="136.0" text="결제방법" />
+                      <TreeTableColumn fx:id="col2_ticketname" prefWidth="302.0" text="이용권" />
+                      <TreeTableColumn fx:id="col2_tickettime" prefWidth="138.0" text="이용기간" />
+                        <TreeTableColumn fx:id="col2_ticketbuydate" prefWidth="153.0" text="결제일" />
+                        <TreeTableColumn fx:id="col2_buyType" prefWidth="106.0" text="결제방법" />
                     </columns>
                   </TreeTableView>
-                  <Pagination fx:id="p_paging2" layoutX="-9.0" layoutY="-7.0" prefHeight="251.0" prefWidth="714.0" />
+                  <Pagination fx:id="p_paging2" layoutX="-9.0" layoutY="-6.0" prefHeight="250.0" prefWidth="714.0" />
                </children>
             </AnchorPane>
          </children>

@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.message.ShowMessageController">
    <children>
-      <JFXTreeTableView fx:id="tbl_Message" layoutX="20.0" layoutY="106.0" prefHeight="317.0" prefWidth="600.0">
+      <JFXTreeTableView fx:id="tbl_Message" layoutX="20.0" layoutY="106.0" prefHeight="317.0" prefWidth="600.0" stylesheets="@../../../../../../mypage.css">
          <columns>
             <TreeTableColumn fx:id="col_imgeview" prefWidth="65.0" text=" " />
             <TreeTableColumn fx:id="col_title" prefWidth="156.0" text="제목" />
@@ -21,14 +21,24 @@
             <TreeTableColumn prefWidth="75.0" />
          </columns>
       </JFXTreeTableView>
-      <Label layoutX="20.0" layoutY="44.0" prefHeight="37.0" prefWidth="210.0" text="나의 쪽지함">
-         <font>
-            <Font name="YDIYGO350" size="24.0" />
-         </font>
-      </Label>
-      <FontAwesomeIcon iconName="ENVELOPE" layoutX="155.0" layoutY="75.0" size="3em" />
       <Pagination fx:id="p_paging" layoutX="10.0" layoutY="86.0" prefHeight="387.0" prefWidth="614.0" />
-      <Button onAction="#btn_Ok" layoutX="202.0" layoutY="483.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="66.0" text="확인" />
-      <Button layoutX="349.0" layoutY="483.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="66.0" text="삭제" />
+      <Button layoutX="237.0" layoutY="483.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="43.0" prefWidth="66.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font></Button>
+      <Button layoutX="322.0" layoutY="483.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="66.0" style="-fx-background-color: #090948;" text="삭제" textFill="WHITE">
+         <font>
+            <Font name="YDIYGO350" size="18.0" />
+         </font></Button>
+      <AnchorPane layoutX="-2.0" prefHeight="66.0" prefWidth="650.0" style="-fx-background-color: #090948;">
+         <children>
+            <Label layoutX="14.0" layoutY="15.0" prefHeight="37.0" prefWidth="210.0" text="나의 쪽지함" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="24.0" />
+               </font>
+            </Label>
+            <FontAwesomeIcon fill="WHITE" iconName="ENVELOPE" layoutX="138.0" layoutY="49.0" size="3em" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

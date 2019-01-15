@@ -37,10 +37,10 @@ public class MessageTextController implements Initializable{
 	public static Stage mes = new Stage();
 	
 	@FXML AnchorPane main;
-	@FXML JFXTextField textF_Userid;
-	@FXML JFXTextField textF_Title;
+	@FXML Label textF_Userid;
+	@FXML Label textF_Title;
 	@FXML Label la_SendDate;
-	@FXML TextArea textA_content;
+	@FXML Label textA_content;
 	
 	private ObservableList<MessageVO> msgList;
 	
@@ -66,7 +66,6 @@ public class MessageTextController implements Initializable{
 			e.printStackTrace();
 		}
 		//값셋팅
-		textF_Userid.setDisable(true);
 		textF_Userid.setText(user_id);
 		textA_content.setText(msgList.get(0).getMsg_content());
 		textF_Title.setText(msgList.get(0).getMsg_title());

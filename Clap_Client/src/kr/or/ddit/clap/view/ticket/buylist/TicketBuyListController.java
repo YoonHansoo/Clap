@@ -76,27 +76,141 @@ public class TicketBuyListController implements Initializable{
 	      la_Date.setText(arr[1]);
 	      la_Date2.setText(arr[2]);
 	      
-	      TicketBuyListVO vo =new TicketBuyListVO();
+	      
+	      //이용중인 이용권
 			try {
-				tickeylist1 = FXCollections.observableArrayList(its.selectTickBuyAllList(vo));
+				tickeylist1 = FXCollections.observableArrayList(its.selectBuyAllist(user_id));
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
 			
-		/*	for(int i=0; i< tickeylist1.size(); i++) {
-				if(tickeylist1.get(i).getTicket_no().)
-			}*/
-			//col1_ticketname.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().()));
-			col1_tickettime.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getPrice()));
+			for(int i=0; i< tickeylist1.size(); i++) {
+				if(tickeylist1.get(i).getTicket_no().equals("1") || tickeylist1.get(i).getTicket_no().equals("2")) {
+					tickeylist1.get(i).setTicket_no("무제한 음악감상 31일권");
+					tickeylist1.get(i).setTicket_buydate1("1개월");
+				}else if(tickeylist1.get(i).getTicket_no().equals("3") || tickeylist1.get(i).getTicket_no().equals("4")) {
+					tickeylist1.get(i).setTicket_no("무제한 음악감상 183일권");
+					tickeylist1.get(i).setTicket_buydate1("6개월");
+				}else if(tickeylist1.get(i).getTicket_no().equals("5") || tickeylist1.get(i).getTicket_no().equals("6")) {
+					tickeylist1.get(i).setTicket_no("무제한 음악감상 + VIP할인혜택 365일권");
+					tickeylist1.get(i).setTicket_buydate1("1년권");
+				}
+			}
+			col1_ticketname.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getTicket_no()));
+			col1_tickettime.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getTicket_buydate1()));
+			
 			TreeItem<TicketBuyListVO> root = new RecursiveTreeItem<>(tickeylist1, RecursiveTreeObject::getChildren);
 			tbl1_ticket.setRoot(root);
 			tbl1_ticket.setShowRoot(false);
 
 			itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+			paging1();
 			
+			
+			
+			
+			//이용권 구매내역
+			
+		
+			try {
+				tickeylist2 = FXCollections.observableArrayList(its.selectBuyAllist(user_id));
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			
+			for(int i=0; i< tickeylist2.size(); i++) {
+				if(tickeylist2.get(i).getTicket_no().equals("1") || tickeylist1.get(i).getTicket_no().equals("2")) {
+					tickeylist2.get(i).setTicket_no("무제한 음악감상 31일권");
+					tickeylist2.get(i).setTicket_buydate1("1개월");
+				}else if(tickeylist2.get(i).getTicket_no().equals("3") || tickeylist1.get(i).getTicket_no().equals("4")) {
+					tickeylist2.get(i).setTicket_no("무제한 음악감상 183일권");
+					tickeylist2.get(i).setTicket_buydate1("6개월");
+				}else if(tickeylist2.get(i).getTicket_no().equals("5") || tickeylist1.get(i).getTicket_no().equals("6")) {
+					tickeylist2.get(i).setTicket_no("무제한 음악감상 + VIP할인혜택 365일권");
+					tickeylist2.get(i).setTicket_buydate1("1년권");
+				}
+			}
+			col2_ticketname.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getTicket_no()));
+			col2_tickettime.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getTicket_buydate1()));
+			col2_ticketbuydate.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getTicket_buydate().substring(0, 10)));
+			col2_buyType.setCellValueFactory(param -> new SimpleObjectProperty<>(param.getValue().getValue().getTicket_buy_type()));
+			
+			TreeItem<TicketBuyListVO> root2 = new RecursiveTreeItem<>(tickeylist2, RecursiveTreeObject::getChildren);
+			tbl2_ticket.setRoot(root2);
+			tbl2_ticket.setShowRoot(false);
+
+			itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
+			paging2();
 	      
 	}
+	
+	private void paging1() {
+		totalPageCnt = tickeylist1.size() % itemsForPage == 0 ? tickeylist1.size() / itemsForPage
+				: tickeylist1.size() / itemsForPage + 1;
 
+		p_paging1.setPageCount(totalPageCnt); // 전체 페이지 수 설정
+
+		p_paging1.setPageFactory((Integer pageIndex) -> {
+
+			from = pageIndex * itemsForPage;
+			to = from + itemsForPage - 1;
+
+			TreeItem<TicketBuyListVO> root = new RecursiveTreeItem<>(getTableViewData(from, to),
+					RecursiveTreeObject::getChildren);
+			tbl1_ticket.setRoot(root);
+			tbl1_ticket.setShowRoot(false);
+			return tbl1_ticket;
+		});
+	}
+
+	// 페이징에 맞는 데이터를 가져옴
+	private ObservableList<TicketBuyListVO> getTableViewData(int from, int to) {
+
+		currenttickeylist1 = FXCollections.observableArrayList(); //
+		int totSize = tickeylist1.size();
+		for (int i = from; i <= to && i < totSize; i++) {
+
+			currenttickeylist1.add(tickeylist1.get(i));
+		}
+
+		return currenttickeylist1;
+	}
+
+	
+	private void paging2() {
+		totalPageCnt = tickeylist2.size() % itemsForPage == 0 ? tickeylist2.size() / itemsForPage
+				: tickeylist2.size() / itemsForPage + 1;
+
+		p_paging2.setPageCount(totalPageCnt); // 전체 페이지 수 설정
+
+		p_paging2.setPageFactory((Integer pageIndex) -> {
+
+			from = pageIndex * itemsForPage;
+			to = from + itemsForPage - 1;
+
+			TreeItem<TicketBuyListVO> root = new RecursiveTreeItem<>(getTableViewData2(from, to),
+					RecursiveTreeObject::getChildren);
+			tbl2_ticket.setRoot(root);
+			tbl2_ticket.setShowRoot(false);
+			return tbl2_ticket;
+		});
+	}
+
+	// 페이징에 맞는 데이터를 가져옴
+	private ObservableList<TicketBuyListVO> getTableViewData2(int from, int to) {
+
+		currenttickeylist2 = FXCollections.observableArrayList(); //
+		int totSize = tickeylist2.size();
+		for (int i = from; i <= to && i < totSize; i++) {
+
+			currenttickeylist2.add(tickeylist2.get(i));
+		}
+
+		return currenttickeylist2;
+	}
+	
+	
+	
 	@FXML public void buyTicket() {
 		try {
 		Parent root = FXMLLoader.load(getClass().getResource("../ticket/Ticket.fxml"));
