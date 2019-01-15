@@ -256,9 +256,10 @@ public class TicketController implements Initializable{
 	 * @param id
 	 * @return 이용권 여부 T/F
 	 */
-	public boolean ticketCheck(String id) {
+	public String[] ticketCheck(String id) {
 		ITicketService its = null;
 		Registry reg;
+		String[] arr_return = new String[3];
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -277,16 +278,19 @@ public class TicketController implements Initializable{
 		}
 		
 		if(list.size()==0) {
-			return false;
+			arr_return[0] = "f";
 		}else {
 			ticketDate = dateCheck(list);
+			arr_return[1] = ticketDate[0].substring(2, ticketDate[0].length());
+			arr_return[2] = ticketDate[1];
 			
 			if(ticketDate[0].equals("no")) {
-				return false;
+				arr_return[0] = "f";
 			}else {
-				return true;
+				arr_return[0] = "t";
 			}
 		}
+		return arr_return;
 	}
 
 	public void buyTicket() {
