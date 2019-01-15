@@ -34,6 +34,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
@@ -275,14 +276,13 @@ public class SingerMainController implements Initializable{
 		System.out.println("크게보기 버튼클릭");
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("../singer/SingerImgWiderDialog.fxml"));
-			Stage stage = new Stage();
+			Stage stage = new Stage(StageStyle.UTILITY);
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			Stage primaryStage = (Stage) label_singerName1.getScene().getWindow();
 			stage.initOwner(primaryStage);
-			stage.setWidth(500);
-			stage.setHeight(600);
+			stage.setResizable(false);
 
 			ImageView img_wideimg = (ImageView) pane.lookup("#img_wideimg");
 			Image temp_img = new Image(temp_img_path);

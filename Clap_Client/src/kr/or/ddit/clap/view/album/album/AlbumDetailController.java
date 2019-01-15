@@ -29,6 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 
@@ -123,14 +124,13 @@ public class AlbumDetailController implements Initializable {
 		System.out.println("크게보기 버튼클릭");
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("AlbummgWiderDialog.fxml"));
-			Stage stage = new Stage();
+			Stage stage = new Stage(StageStyle.UTILITY);
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			Stage primaryStage = (Stage) label_albumName1.getScene().getWindow();
 			stage.initOwner(primaryStage);
-			stage.setWidth(500);
-			stage.setHeight(600);
+			stage.setResizable(false);
 
 			ImageView img_wideimg = (ImageView) pane.lookup("#img_wideimg");
 			Image temp_img = new Image(temp_img_path);
