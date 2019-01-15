@@ -57,19 +57,21 @@
 }
 
 .pagination .toggle-button {
-	-fx-shape:"m74.63,72.21494l14.50002,-14.49994l14.49998,14.49994l-14.49998,14.50002l-14.50002,-14.50002z";
-	-fx-background-radius:3px;
+	
+	-fx-background-radius:15px;
 	-fx-background-color:white;
+	
 }
 
 .pagination .toggle-button:selected{
+	-fx-background-radius:15px;
 	-fx-background-color:#9c0000;
 }
 
 .pagination .button{
 	-fx-padding: 8 10 8 10px;
+	-fx-background-color:white;
 }
-
 
 
 
