@@ -171,13 +171,15 @@
 		        a.mus_mvfile,
 		        b.alb_image,
 		        b.alb_saledate,
+		        b.alb_no,
+		        c.sing_no,
 		        c.sing_name
 		  from  music a, album b, singer c, genre_detail d
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  a.gen_detail_no = d.gen_detail_no
            and  d.gen_no = #genre_no#
-		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name
+		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name,b.alb_no,c.sing_no
 		 order  by b.alb_saledate desc
 	</select>
 	
@@ -189,13 +191,15 @@
 		        a.mus_mvfile,
 		        b.alb_image,
 		        b.alb_saledate,
+		        b.alb_no,
+		        c.sing_no,
 		        c.sing_name
 		  from  music a, album b, singer c, genre_detail d
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  a.gen_detail_no = d.gen_detail_no
            and  d.gen_detail_no = #gen_detail_no#
-		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name
+		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name,b.alb_no,c.sing_no
 		 order  by b.alb_saledate desc
 	</select>
 	
