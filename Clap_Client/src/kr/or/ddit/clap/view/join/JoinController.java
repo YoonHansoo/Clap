@@ -100,7 +100,7 @@ public class JoinController implements Initializable{
 	@FXML JFXCheckBox check2;
 	
 	@FXML BorderPane pane;	
-	@FXML VBox box;	
+	@FXML VBox box, boxbox;	
 	
 	ToggleGroup group = new ToggleGroup();
 	
@@ -139,6 +139,8 @@ public class JoinController implements Initializable{
 		pane.setLayoutY(650);
 		box.setLayoutY(0);
 		lb_next.setVisible(false);
+		
+		boxbox.setVisible(false);
 		
 		
 		
@@ -852,17 +854,21 @@ public class JoinController implements Initializable{
 			}
 			
 			System.out.println(vo.getMem_id());
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
-			ScrollPane root = null;
-			try {
-				root = loader.load();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("../../main/MusicMain.fxml"));
+//			ScrollPane root = null;
+//			try {
+//				root = loader.load();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			
+//			Scene scene = new Scene(root);
+//			Stage primaryStage = (Stage) txt_id.getScene().getWindow();
+//			primaryStage.setScene(scene);
+			boxbox.setVisible(true);
+			box.setVisible(false);
+			pane.setVisible(false);
 			
-			Scene scene = new Scene(root);
-			Stage primaryStage = (Stage) txt_id.getScene().getWindow();
-			primaryStage.setScene(scene);
 		}
 
 	}

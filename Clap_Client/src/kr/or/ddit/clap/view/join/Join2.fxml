@@ -17,9 +17,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1200.0" minWidth="832.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="832.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
    <children>
-      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.2" prefWidth="832.0">
+      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
          <top>
             <VBox prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -30,7 +30,7 @@
                               <Insets />
                            </HBox.margin>
                         </FontAwesomeIcon>
-                        <Label text="Clap 회원가입">
+                        <Label text="CLAP 회원가입">
                            <font>
                               <Font name="D2Coding" size="22.0" />
                            </font>
@@ -423,6 +423,61 @@
          </children>
          <padding>
             <Insets top="15.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="boxbox" layoutX="120.0" layoutY="13.0" minHeight="620.0" minWidth="700.0" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <VBox prefHeight="61.0" prefWidth="600.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="35.0" prefWidth="600.0" spacing="5.0">
+                     <children>
+                        <FontAwesomeIcon iconName="USER_PLUS" size="27">
+                           <HBox.margin>
+                              <Insets top="8.0" />
+                           </HBox.margin>
+                        </FontAwesomeIcon>
+                        <Label text="CLAP 회원가입">
+                           <font>
+                              <Font name="YDIYGO350" size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="3.0" top="6.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Separator prefWidth="200.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="412.0" prefWidth="880.0" spacing="15.0">
+               <children>
+                  <FontAwesomeIcon fill="#090948" iconName="CHECK_CIRCLE" size="60" />
+                  <Label text="회원가입 완료!">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="CLAP에 오신 것을 환영합니다.">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="CLAP: 음악, 그리고 설레임">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="160.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="70.0" />
          </padding>
       </VBox>
    </children>
