@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -37,6 +38,8 @@ import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.musicvideo.MusicVideoController;
+import kr.or.ddit.clap.view.singer.main.SingerMainController;
+import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.vo.music.MusicVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 
@@ -78,6 +81,8 @@ public class MusicList {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		
 	}
@@ -111,6 +116,7 @@ public class MusicList {
 		super();
 		this.btnAddList = btnAddList;
 		this.mainBox = mainBox;
+		
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -363,6 +369,22 @@ public class MusicList {
 				iv_Album.setImage(img_Path);
 				iv_Album.setFitWidth(50);
 				iv_Album.setFitHeight(50);
+				iv_Album.setId(list.get(i).get("ALB_NO").toString());
+				iv_Album.setAccessibleText(list.get(i).get("SING_NO").toString());
+				iv_Album.setOnMouseClicked(e -> {
+					ImageView iv = (ImageView)e.getSource();
+					SingerMenuController.menuCount = 1;
+					SingerMenuController.albumNo = iv.getId();
+					SingerMainController.singerNo = iv.getAccessibleText();
+				  try {
+				         Parent page = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+				                                                                                 
+				         MusicMainController.secondPane.getChildren().removeAll();
+				         MusicMainController.secondPane.getChildren().setAll(page);
+				      } catch (IOException e1) {
+				         e1.printStackTrace();
+				      }
+				});
 					
 				// 곡제목 및 아티스트명을 담는 VBox
 				VBox v_MusicInfo = new VBox();
@@ -375,12 +397,44 @@ public class MusicList {
 					la_MusicName.setFont(Font.font("-윤고딕350", 12));
 					la_MusicName.setText(list.get(i).get("MUS_TITLE").toString());
 					la_MusicName.setPrefWidth(300);
+					la_MusicName.setId(list.get(i).get("ALB_NO").toString());
+					la_MusicName.setAccessibleText(list.get(i).get("SING_NO").toString());
+					la_MusicName.setOnMouseClicked(e -> {
+						Label la = (Label)e.getSource();
+						SingerMenuController.menuCount = 2;
+						SingerMenuController.albumNo = la.getId();
+						SingerMainController.singerNo = la.getAccessibleText();
+						  try {
+						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+						                                                                                 
+						         MusicMainController.secondPane.getChildren().removeAll();
+						         MusicMainController.secondPane.getChildren().setAll(pane);
+						      } catch (IOException e1) {
+						         e1.printStackTrace();
+						      }
+					});
 					
 					// 가수이름을 담당하는 라벨
 					Label la_SingerName = new Label();
 					la_SingerName.setFont(Font.font("-윤고딕330", 12));
 					la_SingerName.setText(list.get(i).get("SING_NAME").toString());
 					la_SingerName.setPrefWidth(300);
+					la_SingerName.setId(list.get(i).get("ALB_NO").toString());
+					la_SingerName.setAccessibleText(list.get(i).get("SING_NO").toString());
+					la_SingerName.setOnMouseClicked(e -> {
+						Label la = (Label)e.getSource();
+						SingerMenuController.menuCount = 0;
+						SingerMenuController.albumNo = la.getId();
+						SingerMainController.singerNo = la.getAccessibleText();
+						  try {
+						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+						                                                                                 
+						         MusicMainController.secondPane.getChildren().removeAll();
+						         MusicMainController.secondPane.getChildren().setAll(pane);
+						      } catch (IOException e1) {
+						         e1.printStackTrace();
+						      }
+					});
 						
 				// 듣기 버튼
 				JFXButton btn_Play = new JFXButton();
@@ -706,7 +760,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			vbox.setMargin(h_Table, new Insets(0,0,0,80));
 			h_Table.setAlignment(Pos.CENTER_LEFT);
 			h_Table.setPadding(new Insets(10,10,10,10));
-			h_Table.setSpacing(10);
+			h_Table.setSpacing(8);
 			
 				JFXCheckBox chb_Check = new JFXCheckBox();
 				chb_Check.setPrefWidth(30);
@@ -747,6 +801,22 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 				iv_Album.setImage(img_Path);
 				iv_Album.setFitWidth(50);
 				iv_Album.setFitHeight(50);
+				iv_Album.setId(list.get(i).get("ALB_NO").toString());
+				iv_Album.setAccessibleText(list.get(i).get("SING_NO").toString());
+				iv_Album.setOnMouseClicked(e -> {
+					ImageView iv = (ImageView)e.getSource();
+					SingerMenuController.menuCount = 1;
+					SingerMenuController.albumNo = iv.getId();
+					SingerMainController.singerNo = iv.getAccessibleText();
+					  try {
+					         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+					                                                                                 
+					         MusicMainController.secondPane.getChildren().removeAll();
+					         MusicMainController.secondPane.getChildren().setAll(pane);
+					      } catch (IOException e1) {
+					         e1.printStackTrace();
+					      }
+				});
 					
 				// 곡제목 및 아티스트명을 담는 VBox
 				VBox v_MusicInfo = new VBox();
@@ -759,16 +829,49 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					la_MusicName.setFont(Font.font("-윤고딕350", 12));
 					la_MusicName.setText(list.get(i).get("MUS_TITLE").toString());
 					la_MusicName.setPrefWidth(300);
+					la_MusicName.setId(list.get(i).get("ALB_NO").toString());
+					la_MusicName.setAccessibleText(list.get(i).get("SING_NO").toString());
+					la_MusicName.setOnMouseClicked(e -> {
+						Label la = (Label)e.getSource();
+						SingerMenuController.menuCount = 2;
+						SingerMenuController.albumNo = la.getId();
+						SingerMainController.singerNo = la.getAccessibleText();
+						  try {
+						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+						                                                                                 
+						         MusicMainController.secondPane.getChildren().removeAll();
+						         MusicMainController.secondPane.getChildren().setAll(pane);
+						      } catch (IOException e1) {
+						         e1.printStackTrace();
+						      }
+					});
+					
 					
 					// 가수이름을 담당하는 라벨
 					Label la_SingerName = new Label();
 					la_SingerName.setFont(Font.font("-윤고딕330", 12));
 					la_SingerName.setText(list.get(i).get("SING_NAME").toString());
 					la_SingerName.setPrefWidth(300);
+					la_SingerName.setId(list.get(i).get("ALB_NO").toString());
+					la_SingerName.setAccessibleText(list.get(i).get("SING_NO").toString());
+					la_SingerName.setOnMouseClicked(e -> {
+						Label la = (Label)e.getSource();
+						SingerMenuController.menuCount = 0;
+						SingerMenuController.albumNo = la.getId();
+						SingerMainController.singerNo = la.getAccessibleText();
+						  try {
+						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+						                                                                                 
+						         MusicMainController.secondPane.getChildren().removeAll();
+						         MusicMainController.secondPane.getChildren().setAll(pane);
+						      } catch (IOException e1) {
+						         e1.printStackTrace();
+						      }
+					});
 						
 				// 듣기 버튼
 				JFXButton btn_Play = new JFXButton();
-				h_Table.setMargin(btn_Play, new Insets(0,0,0,40));
+				h_Table.setMargin(btn_Play, new Insets(0,0,0,41));
 				btn_Play.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Play.setAlignment(Pos.CENTER_LEFT);
 				btn_Play.setPrefWidth(30);
@@ -882,6 +985,22 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			iv_Album.setImage(img_Path);
 			iv_Album.setFitWidth(130);
 			iv_Album.setFitHeight(130);
+			iv_Album.setId(list.get(i).get("ALB_NO").toString());
+			iv_Album.setAccessibleText(list.get(i*2).get("SING_NO").toString());
+			iv_Album.setOnMouseClicked(e -> {
+				ImageView iv = (ImageView)e.getSource();
+				SingerMenuController.menuCount = 1;
+				SingerMenuController.albumNo = iv.getId();
+				SingerMainController.singerNo = iv.getAccessibleText();
+				  try {
+				         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+				                                                                                 
+				         MusicMainController.secondPane.getChildren().removeAll();
+				         MusicMainController.secondPane.getChildren().setAll(pane);
+				      } catch (IOException e1) {
+				         e1.printStackTrace();
+				      }
+			});
 			
 			// Vbox (앨범 상세 정보)
 			VBox v_album = new VBox();
@@ -892,10 +1011,43 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 				Label label_albumName = new Label(list.get(i*2).get("ALB_NAME").toString());
 				label_albumName.setFont(Font.font("-윤고딕350", 18));
 				label_albumName.setMaxWidth(200);
+				label_albumName.setId(list.get(i*2).get("ALB_NO").toString());
+				label_albumName.setAccessibleText(list.get(i*2).get("SING_NO").toString());
+				label_albumName.setOnMouseClicked(e -> {
+					Label la = (Label)e.getSource();
+					SingerMenuController.menuCount = 1;
+					SingerMenuController.albumNo = la.getId();
+					SingerMainController.singerNo = la.getAccessibleText();
+					  try {
+					         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+					                                                                                 
+					         MusicMainController.secondPane.getChildren().removeAll();
+					         MusicMainController.secondPane.getChildren().setAll(pane);
+					      } catch (IOException e1) {
+					         e1.printStackTrace();
+					      }
+				});
 				
 				Label label_singerName = new Label(list.get(i*2).get("SING_NAME").toString());
 				label_singerName.setFont(Font.font("-윤고딕330", 15));
 				label_singerName.setMaxWidth(200);
+				label_singerName.setId(list.get(i*2).get("ALB_NO").toString());
+				label_singerName.setAccessibleText(list.get(i).get("SING_NO").toString());
+				label_singerName.setOnMouseClicked(e -> {
+					Label la = (Label)e.getSource();
+					SingerMenuController.menuCount = 0;
+					SingerMenuController.albumNo = la.getId();
+					SingerMainController.singerNo = la.getAccessibleText();
+					  try {
+					         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+					                                                                                 
+					         MusicMainController.secondPane.getChildren().removeAll();
+					         MusicMainController.secondPane.getChildren().setAll(pane);
+					      } catch (IOException e1) {
+					         e1.printStackTrace();
+					      }
+				});
+				
 				
 				HBox h_albumDetail = new HBox();
 				h_albumDetail.setMaxWidth(200);
@@ -938,6 +1090,22 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					iv_Album2.setImage(img_Path2);
 					iv_Album2.setFitWidth(130);
 					iv_Album2.setFitHeight(130);
+					iv_Album2.setId(list.get(i*2+1).get("ALB_NO").toString());
+					iv_Album2.setAccessibleText(list.get(i*2+1).get("SING_NO").toString());
+					iv_Album2.setOnMouseClicked(e -> {
+						ImageView iv = (ImageView)e.getSource();
+						SingerMenuController.menuCount = 1;
+						SingerMenuController.albumNo = iv.getId();
+						SingerMainController.singerNo = iv.getAccessibleText();
+						  try {
+						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+						                                                                                 
+						         MusicMainController.secondPane.getChildren().removeAll();
+						         MusicMainController.secondPane.getChildren().setAll(pane);
+						      } catch (IOException e1) {
+						         e1.printStackTrace();
+						      }
+					});
 					
 					// Vbox (앨범 상세 정보)
 					VBox v_album2 = new VBox();
@@ -948,10 +1116,42 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 						Label label_albumName2 = new Label(list.get(i*2+1).get("ALB_NAME").toString());
 						label_albumName2.setFont(Font.font("-윤고딕350", 18));
 						label_albumName2.setMaxWidth(200);
+						label_albumName2.setId(list.get(i*2+1).get("ALB_NO").toString());
+						label_albumName2.setAccessibleText(list.get(i*2+1).get("SING_NO").toString());
+						label_albumName2.setOnMouseClicked(e -> {
+							Label la = (Label)e.getSource();
+							SingerMenuController.menuCount = 1;
+							SingerMenuController.albumNo = la.getId();
+							SingerMainController.singerNo = la.getAccessibleText();
+							  try {
+							         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+							                                                                                 
+							         MusicMainController.secondPane.getChildren().removeAll();
+							         MusicMainController.secondPane.getChildren().setAll(pane);
+							      } catch (IOException e1) {
+							         e1.printStackTrace();
+							      }
+						});
 						
 						Label label_singerName2 = new Label(list.get(i*2+1).get("SING_NAME").toString());
 						label_singerName2.setFont(Font.font("-윤고딕330", 15));
 						label_singerName2.setMaxWidth(200);
+						label_singerName2.setId(list.get(i*2+1).get("ALB_NO").toString());
+						label_singerName2.setAccessibleText(list.get(i*2+1).get("SING_NO").toString());
+						label_singerName2.setOnMouseClicked(e -> {
+							Label la = (Label)e.getSource();
+							SingerMenuController.menuCount = 0;
+							SingerMenuController.albumNo = la.getId();
+							SingerMainController.singerNo = la.getAccessibleText();
+							  try {
+							         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
+							                                                                                 
+							         MusicMainController.secondPane.getChildren().removeAll();
+							         MusicMainController.secondPane.getChildren().setAll(pane);
+							      } catch (IOException e1) {
+							         e1.printStackTrace();
+							      }
+						});
 						
 						HBox h_albumDetail2 = new HBox();
 						h_albumDetail2.setMaxWidth(200);

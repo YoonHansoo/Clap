@@ -164,7 +164,7 @@ public class OtherController implements Initializable{
 	// 월드뮤직장르
 	@FXML public void worldChart() {
 		try {
-			worldRank = FXCollections.observableArrayList(ims.genreMusicSelete("5"));
+			worldRank = FXCollections.observableArrayList(ims.genreMusicSelete("13"));
 			btn_world.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_china.setStyle("-fx-background-color:#FFFFFF;");
 			btn_children.setStyle("-fx-background-color:#FFFFFF;");
@@ -181,7 +181,7 @@ public class OtherController implements Initializable{
 	// 중국음악장르
 	@FXML public void chinaChart() {
 		try {
-			chinaRank = FXCollections.observableArrayList(ims.genreMusicSelete("6"));
+			chinaRank = FXCollections.observableArrayList(ims.genreMusicSelete("14"));
 			btn_world.setStyle("-fx-background-color:#FFFFFF;");
 			btn_china.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_children.setStyle("-fx-background-color:#FFFFFF;");
@@ -199,7 +199,7 @@ public class OtherController implements Initializable{
 	// 동요장르
 	@FXML public void childrenChart() {
 		try {
-			childrenRank = FXCollections.observableArrayList(ims.genreMusicSelete("7"));
+			childrenRank = FXCollections.observableArrayList(ims.genreMusicSelete("15"));
 			btn_world.setStyle("-fx-background-color:#FFFFFF;");
 			btn_china.setStyle("-fx-background-color:#FFFFFF;");
 			btn_children.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
@@ -216,7 +216,7 @@ public class OtherController implements Initializable{
 	// 태교음악 장르
 	@FXML public void taegyoChart() {
 		try {
-			taegyoRank = FXCollections.observableArrayList(ims.genreMusicSelete("8"));
+			taegyoRank = FXCollections.observableArrayList(ims.genreMusicSelete("16"));
 			btn_world.setStyle("-fx-background-color:#FFFFFF;");
 			btn_china.setStyle("-fx-background-color:#FFFFFF;");
 			btn_children.setStyle("-fx-background-color:#FFFFFF;");

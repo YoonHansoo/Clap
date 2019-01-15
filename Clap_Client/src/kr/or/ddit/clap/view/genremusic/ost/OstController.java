@@ -164,7 +164,7 @@ public class OstController implements Initializable{
 	// 드라마장르
 	@FXML public void dramaChart() {
 		try {
-			dramaRank = FXCollections.observableArrayList(ims.genreMusicSelete("5"));
+			dramaRank = FXCollections.observableArrayList(ims.genreMusicSelete("9"));
 			btn_drama.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_korea.setStyle("-fx-background-color:#FFFFFF;");
 			btn_gobal.setStyle("-fx-background-color:#FFFFFF;");
@@ -181,7 +181,7 @@ public class OstController implements Initializable{
 	// 한국영화장르
 	@FXML public void koreaChart() {
 		try {
-			koreaRank = FXCollections.observableArrayList(ims.genreMusicSelete("6"));
+			koreaRank = FXCollections.observableArrayList(ims.genreMusicSelete("10"));
 			btn_drama.setStyle("-fx-background-color:#FFFFFF;");
 			btn_korea.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 			btn_gobal.setStyle("-fx-background-color:#FFFFFF;");
@@ -199,7 +199,7 @@ public class OstController implements Initializable{
 	// 해외영화장르
 	@FXML public void gobalChart() {
 		try {
-			gobalRank = FXCollections.observableArrayList(ims.genreMusicSelete("7"));
+			gobalRank = FXCollections.observableArrayList(ims.genreMusicSelete("11"));
 			btn_drama.setStyle("-fx-background-color:#FFFFFF;");
 			btn_korea.setStyle("-fx-background-color:#FFFFFF;");
 			btn_gobal.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
@@ -216,7 +216,7 @@ public class OstController implements Initializable{
 	// 뮤지컬 장르
 	@FXML public void musicalChart() {
 		try {
-			musicalRank = FXCollections.observableArrayList(ims.genreMusicSelete("8"));
+			musicalRank = FXCollections.observableArrayList(ims.genreMusicSelete("12"));
 			btn_drama.setStyle("-fx-background-color:#FFFFFF;");
 			btn_korea.setStyle("-fx-background-color:#FFFFFF;");
 			btn_gobal.setStyle("-fx-background-color:#FFFFFF;");

@@ -101,6 +101,7 @@ public class MusicMainController implements Initializable {
 	private Registry reg;
 	public static FXMLLoader playerLoad;
 	public static Stage movieStage = new Stage();
+	public static AnchorPane secondPane;
 	
 	
 	List<AlbumVO> albumList = new ArrayList<>();
@@ -114,6 +115,7 @@ public class MusicMainController implements Initializable {
 			ias = (IAlbumService) reg.lookup("album");
 			imsgs = (IMessageService) reg.lookup("message");
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
+			secondPane = contents;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
