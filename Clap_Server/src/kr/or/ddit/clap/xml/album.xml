@@ -132,6 +132,24 @@
 			group  by b.alb_no, b.alb_name, b.alb_indate, b.alb_image, b.alb_saledate, c.sing_name
 			order  by b.alb_saledate desc
 	</select>
+	
+	<!-- 특정 가수의 앨범 검색 -->
+	 <select id="singerAlbumSelect" resultClass="java.util.HashMap" parameterClass="albumVO">
+		select 
+		       b.alb_no,
+		       b.alb_name,
+		       b.alb_indate,
+		       b.alb_image,
+		       b.alb_saledate,
+		       (select count(mus_no) from music where b.alb_no = alb_no) as mus_count,
+		       c.sing_name
+		 from  music a, album b, singer c
+		where  a.alb_no = b.alb_no
+		  and  b.sing_no = c.sing_no
+		  and  c.sing_no = #sing_no#
+		group  by b.alb_no, b.alb_name, b.alb_indate, b.alb_image, b.alb_saledate, c.sing_name
+		order  by b.alb_saledate desc
+	</select>
 </sqlMap>         
 
 

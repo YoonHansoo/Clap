@@ -77,6 +77,11 @@ public class AlbumServiceImpl extends UnicastRemoteObject implements IAlbumServi
 		return albumDao.newAlbumSelect();
 	}
 
+	@Override
+	public List<Map> singerAlbumSelect(AlbumVO vo) throws RemoteException {
+		return albumDao.singerAlbumSelect(vo);
+	}
+
 	
 
 	

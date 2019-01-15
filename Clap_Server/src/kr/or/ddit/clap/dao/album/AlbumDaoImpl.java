@@ -146,4 +146,18 @@ public class AlbumDaoImpl implements IAlbumDao {
 			
 		}
 
+		@Override
+		public List<Map> singerAlbumSelect(AlbumVO vo) {
+			List<Map> list = new ArrayList<Map>();
+			try {
+
+				list = smc.queryForList("album.singerAlbumSelect", vo);
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			return list;
+		}
+
 }

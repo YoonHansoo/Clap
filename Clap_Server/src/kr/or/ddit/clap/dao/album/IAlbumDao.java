@@ -28,4 +28,6 @@ public interface IAlbumDao {
 	public int deleteAlbum(String albumNo);
 	 
 	public List<Map> newAlbumSelect();
+	
+	public List<Map> singerAlbumSelect(AlbumVO vo);
 }
