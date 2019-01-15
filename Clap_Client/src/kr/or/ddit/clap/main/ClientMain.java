@@ -37,7 +37,7 @@ public class ClientMain extends Application {
          reg = LocateRegistry.getRegistry("localhost", 8888);
          ils = (ILoginService) reg.lookup("login");
          
-         list = ils.select("hello9369");
+         list = ils.select("user1");
          ls.session = list.get(0);
       } catch (RemoteException e) {
          e.printStackTrace();
