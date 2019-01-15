@@ -140,7 +140,7 @@ public class BestRcmListController implements Initializable {
 
 								// 화면전환
 								UserRcmDetailController.rcmAlbNo = rcmAlbNo;// 곡 번호를 변수로 넘겨줌
-
+								System.out.println("넘겨주는 추천앨범번호:" + rcmAlbNo);
 								FXMLLoader loader = new FXMLLoader(getClass().getResource("UserRcmDetail.fxml"));// init실행됨
 								Parent userRcmDetailController;
 

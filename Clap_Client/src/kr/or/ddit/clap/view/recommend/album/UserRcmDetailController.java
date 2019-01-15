@@ -82,8 +82,7 @@ public class UserRcmDetailController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		System.out.println("추천앨범 클릭");
-
-		System.out.println("추천앨범번호:" + rcmAlbNo);
+		System.out.println("받은 추천앨범번호:" + rcmAlbNo);
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
@@ -102,14 +101,16 @@ public class UserRcmDetailController implements Initializable {
 			imgview_img.setImage(img);
 
 			// 좋아요 카운트 쿼리
+			System.out.println("추천앨범번호" + rcmAlbNo);
 			int likeCnt = irs.selectAlbumLikeCnt(rcmAlbNo);
-			label_LikeCnt.setText(likeCnt + "");
+			System.out.println("likeCnt:" + likeCnt);
+			label_LikeCnt.setText(likeCnt+ "");
 			
 			//리스트 수 
+			System.out.println("추천앨범번호" + rcmAlbNo);
 			int listCnt = irs.selectAlbumListCnt(rcmAlbNo);
-			lable_cntMusic.setText(likeCnt+"");
-			System.out.println("listCnt:" + likeCnt);
-			
+			System.out.println("listCnt:" + listCnt);
+			lable_cntMusic.setText(listCnt+"");
 			
 
 			// 추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리
@@ -140,7 +141,7 @@ public class UserRcmDetailController implements Initializable {
 			
 			musicList.musicList_VO(rcmAlbMusic);
 			
-			//댓글 창 생성 
+			/*//댓글 창 생성 
 			 
 			HBox HboxReply = new HBox();
 			HboxReply.setPrefWidth(100);
@@ -208,6 +209,9 @@ public class UserRcmDetailController implements Initializable {
 			
 			
 			
+			//댓글 불러오기
+			
+			*/
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
