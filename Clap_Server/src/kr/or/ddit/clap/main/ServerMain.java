@@ -95,8 +95,7 @@ public class ServerMain {
 			reg.rebind("recommend", irs); //추천앨범
 			reg.rebind("message", imsgs); //추천앨범
 
-			reg.rebind("tick"
-					+ "et", its);
+			reg.rebind("ticket", its);
 
 			
 			 System.out.println("clap server  is running...");

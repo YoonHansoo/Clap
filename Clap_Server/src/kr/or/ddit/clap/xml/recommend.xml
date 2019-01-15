@@ -17,6 +17,42 @@
 		order by to_number(RCM_ALB_NO) desc
 	</select>
 	
+	<!-- 좋아요를 눌렀는지 체크하는 조회쿼리 -->
+<select id="checkHeartYN" resultClass="int" parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM RECOMMEND_LIKE
+		WHERE
+		RCM_ALB_NO = #rcmAlbNo#
+        and MEM_ID = #id#
+	</select>
+	
+<!-- 	좋아요를 취소하는 쿼리 -->
+	<delete id="deleteRcmLike" parameterClass="java.util.HashMap">
+		delete from RECOMMEND_LIKE
+		WHERE
+		RCM_ALB_NO = #rcmAlbNo#
+        and MEM_ID = #id#
+	</delete>
+	
+	 <!-- 좋아요 증가하는 쿼리 -->
+		<insert id="insertRcmLike"
+		parameterClass="java.util.HashMap">
+		insert into RECOMMEND_LIKE(
+						MEM_ID,
+						RCM_ALB_NO,
+						RCM_LIKE_DATE
+		)
+						values(
+						#id#,
+						#rcmAlbNo#,
+						sysdate
+		)
+	</insert>
+	
+	
+	
+	
+	
 <!-- 추천앨범 좋아요(인기)순 조회 --> 
 <select id="selectBestRecommendAlbum"
 		resultClass="RecommendAlbumVO">
@@ -115,7 +151,6 @@ SELECT  a.RCM_ALB_NO,
 		where rcm_alb_list_no in(select rcm_alb_list_no
 		from recommend_album_list
 		where RCM_ALB_NO = #String#)
-
 	</delete>
 
 	<!-- 추천앨범 삭제 cascade -->
@@ -155,7 +190,6 @@ SELECT  a.RCM_ALB_NO,
 		and RCM_ALB_NO =#String#
 		order by RCM_ALB_LIST_NO
 	</select>
-
 
 </sqlMap>         
 

@@ -115,5 +115,25 @@ public class RecommendServiceImpl extends UnicastRemoteObject implements IRecomm
 		return recommendDao.selectBestRecommendAlbum();
 		
 	}
+
+
+
+	@Override
+	public int checkHeartYN(Map<String, String> map) throws RemoteException {
+		return recommendDao.checkHeartYN(map);
+	}
+
+
+
+	@Override
+	public int deleteRcmLike(Map<String, String> map) throws RemoteException {
+		return recommendDao.deleteRcmLike(map);
+	}
+
+
+
+	@Override
+	public int insertRcmLike(Map<String, String> map) throws RemoteException {
+		return recommendDao.insertRcmLike(map);	}
 	
 }

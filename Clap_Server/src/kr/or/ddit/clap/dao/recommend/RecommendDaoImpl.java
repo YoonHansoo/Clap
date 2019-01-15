@@ -190,4 +190,42 @@ public class RecommendDaoImpl implements IRecommendDao {
 		return list;
 	}
 
+	@Override
+	public int checkHeartYN(Map<String, String> map) {
+		int checkHeartYN = 0;
+
+		try {
+			checkHeartYN = (int) smc.queryForObject("recommend.checkHeartYN", map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return checkHeartYN;
+	}
+
+	@Override
+	public int deleteRcmLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("recommend.deleteRcmLike",map);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
+
+	@Override
+	public int insertRcmLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("recommend.insertRcmLike", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 }

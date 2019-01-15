@@ -10,6 +10,7 @@ package kr.or.ddit.clap.service.singer;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.dao.singer.SingerDaoImpl;
 import kr.or.ddit.clap.vo.singer.SingerVO;
@@ -70,6 +71,32 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 	@Override
 	public int deleteSinger(String singerNo) throws RemoteException {
 		return singerDao.deleteSinger(singerNo);
+	}
+
+	@Override
+	public int checkHeartYN(Map<String, String> map) throws RemoteException {
+		return singerDao.checkHeartYN(map);
+	}
+
+	@Override
+	public int deleteSingerLike(Map<String, String> map) throws RemoteException {
+		return singerDao.deleteSingerLike(map);
+	}
+
+	@Override
+	public int insertSingerLike(Map<String, String> map) throws RemoteException {
+		return singerDao.insertSingerLike(map);
+	}
+
+	@Override
+	public List<Map<String,String>> selectReply(String singerNo) throws RemoteException {
+		return singerDao.selectReply(singerNo);
+	}
+
+	@Override
+	public int insertReply(Map<String, String> map) throws RemoteException {
+		// TODO Auto-generated method stub
+		return singerDao.insertReply(map);
 	}
 
 	

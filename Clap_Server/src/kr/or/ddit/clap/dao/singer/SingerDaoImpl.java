@@ -10,6 +10,7 @@ package kr.or.ddit.clap.dao.singer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -126,6 +127,72 @@ public class SingerDaoImpl implements ISingerDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
+		return cnt;
+	}
+
+	@Override
+	public int checkHeartYN(Map<String, String> map) {
+		int checkHeartYN = 0;
+
+		try {
+			checkHeartYN = (int) smc.queryForObject("singer.checkHeartYN", map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return checkHeartYN;
+	}
+
+	@Override
+	public int deleteSingerLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("singer.deleteSingerLike",map);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
+
+	@Override
+	public int insertSingerLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("singer.insertSingerLike", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<Map<String,String>> selectReply(String singerNo){
+		List<Map<String,String>> list = new ArrayList<>();
+		
+		 try {
+			 list = smc.queryForList("singer.selectReply", singerNo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int insertReply(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("singer.insertReply", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return cnt;
 	}
 }
