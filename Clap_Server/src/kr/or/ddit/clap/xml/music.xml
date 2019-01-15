@@ -208,12 +208,14 @@
 		        a.mus_mvfile,
 		        b.alb_image,
 		        c.sing_name,
-		        b.alb_saledate
+		        b.alb_saledate,
+		        a.alb_no,
+				c.sing_no
 		  from  music a, album b, singer c
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  a.alb_no = #alb_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate
+		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate,a.alb_no,c.sing_no
 		 order  by b.alb_saledate desc
 	</select>
 	
@@ -226,12 +228,14 @@
 		        a.mus_mvfile,
 		        b.alb_image,
 		        c.sing_name,
-		        b.alb_saledate
+		        b.alb_saledate,
+		        b.alb_no,
+		        c.sing_no
 		  from  music a, album b, singer c
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  c.sing_no = #sing_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate
+		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate, c.sing_no, b.alb_no
 		 order  by b.alb_saledate desc
 	</select>
 	
