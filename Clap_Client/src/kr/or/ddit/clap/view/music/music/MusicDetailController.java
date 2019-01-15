@@ -16,6 +16,7 @@ import java.rmi.registry.Registry;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTextArea;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.vo.music.MusicVO;
 
@@ -65,7 +67,7 @@ public class MusicDetailController implements Initializable {
 	@FXML Label txt_time;
 	@FXML Label label_LikeCnt;
 	
-	@FXML Label txt_lyrics;
+	@FXML JFXTextArea txt_lyrics;
 	@FXML Label genreDetail;
 	@FXML Label label_albNO;
 	@FXML Label label_musNO;
@@ -97,7 +99,7 @@ public class MusicDetailController implements Initializable {
 		
 	
 		label_musicTitle.setText(mVO.getMus_title());
-		label_musicTitle2.setText(mVO.getMus_title());
+//		label_musicTitle2.setText(mVO.getMus_title());
 		Image img = new Image(mVO.getAlb_image());
 		temp_img_path = mVO.getAlb_image(); //전역으로 쓰기위해서
 		imgview_albumImg.setImage(img);
@@ -138,14 +140,13 @@ public class MusicDetailController implements Initializable {
 		System.out.println("크게보기 버튼클릭");
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("AlbummgWiderDialog.fxml"));
-			Stage stage = new Stage();
+			Stage stage = new Stage(StageStyle.UTILITY);
 			Scene scene = new Scene(pane);
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			Stage primaryStage = (Stage) label_musicTitle.getScene().getWindow();
 			stage.initOwner(primaryStage);
-			stage.setWidth(500);
-			stage.setHeight(600);
+			stage.setResizable(false);
 
 			ImageView img_wideimg = (ImageView) pane.lookup("#img_wideimg");
 			Image temp_img = new Image(temp_img_path);

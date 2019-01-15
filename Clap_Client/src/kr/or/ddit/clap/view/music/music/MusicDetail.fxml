@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +15,7 @@
 
 <AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.music.music.MusicDetailController">
    <children>
-      <Label fx:id="label_musicTitle" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="302.0" text="곡">
+      <Label fx:id="label_musicTitle" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="718.0" text="곡">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -27,18 +28,7 @@
                </HBox.margin></ImageView>
             <VBox prefHeight="165.0" prefWidth="470.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label fx:id="label_musicTitle2" prefHeight="42.0" prefWidth="347.0" style="-fx-background-color: #ffffff;" text="곡">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets bottom="3.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범">
@@ -190,7 +180,7 @@
                         </Label>
                      </children>
                      <padding>
-                        <Insets top="20.0" />
+                        <Insets top="10.0" />
                      </padding>
                   </HBox>
                </children>
@@ -205,26 +195,7 @@
       </Label>
       <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateMusic" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#deleteMusic" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
-      <Label layoutX="147.0" layoutY="342.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범번호">
-         <font>
-            <Font name="YDIYGO340" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="509.0" layoutY="350.0" prefHeight="18.0" prefWidth="116.0" style="-fx-background-color: #ffffff;" text="장르소분류류No">
-         <font>
-            <Font name="YDIYGO340" size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="147.0" layoutY="360.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="곡번호">
-         <font>
-            <Font name="YDIYGO340" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="genreDetail" layoutX="625.0" layoutY="347.0" text="Label" />
-      <Label fx:id="label_albNO" layoutX="225.0" layoutY="340.0" text="Label" />
-      <Label fx:id="label_musNO" layoutX="225.0" layoutY="362.0" text="Label" />
-      <Label fx:id="txt_lyrics" alignment="TOP_LEFT" layoutX="14.0" layoutY="403.0" prefHeight="275.0" prefWidth="734.0" text="Label" wrapText="true" />
-      <JFXButton layoutX="92.0" layoutY="286.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
+      <JFXButton layoutX="70.0" layoutY="286.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
          </graphic>
@@ -232,5 +203,40 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
+      <JFXTextArea fx:id="txt_lyrics" layoutX="15.0" layoutY="403.0" prefHeight="269.0" prefWidth="728.0" />
+      <VBox layoutX="460.0" layoutY="376.0" prefHeight="110.0" prefWidth="214.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="214.0">
+               <children>
+                  <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범번호">
+                     <font>
+                        <Font name="YDIYGO340" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_albNO" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="214.0">
+               <children>
+                  <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="곡번호">
+                     <font>
+                        <Font name="YDIYGO340" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label_musNO" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="32.0" prefWidth="214.0">
+               <children>
+                  <Label prefHeight="18.0" prefWidth="116.0" style="-fx-background-color: #ffffff;" text="장르소분류 No">
+                     <font>
+                        <Font name="YDIYGO340" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="genreDetail" text="Label" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>

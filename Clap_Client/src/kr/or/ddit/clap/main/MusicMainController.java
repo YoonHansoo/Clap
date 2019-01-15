@@ -174,7 +174,6 @@ public class MusicMainController implements Initializable {
 				 System.out.println("리스트 사이즈"+ hotKeyword.size());
 				 
 			} catch (RemoteException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			

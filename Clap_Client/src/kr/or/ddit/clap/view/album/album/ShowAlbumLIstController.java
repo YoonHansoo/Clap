@@ -166,6 +166,7 @@ public class ShowAlbumLIstController implements Initializable {
 					AlbumDetailController cotroller = loader.getController();
 					cotroller.givePane(contents); 
 					
+					albumDetail.setLayoutY(50);
 					main.getChildren().removeAll();
 					main.getChildren().setAll(albumDetail);
 					
