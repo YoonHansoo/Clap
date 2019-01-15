@@ -109,10 +109,10 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="장르음악">
                            <items>
-                              <MenuItem mnemonicParsing="false" text="가요" />
-                              <MenuItem mnemonicParsing="false" text="POP" />
-                              <MenuItem mnemonicParsing="false" text="OST" />
-                              <MenuItem mnemonicParsing="false" text="그 외 장르" />
+                              <MenuItem onAction="#songPageChange" mnemonicParsing="false" text="가요" />
+                              <MenuItem onAction="#popPageChange" mnemonicParsing="false" text="POP" />
+                              <MenuItem onAction="#ostPageChange" mnemonicParsing="false" text="OST" />
+                              <MenuItem onAction="#otherPageChange" mnemonicParsing="false" text="그 외 장르" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="추천">

@@ -34,6 +34,7 @@ import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
+import kr.or.ddit.clap.view.genremusic.main.GenreMusicMenuController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
@@ -456,6 +457,30 @@ public class MusicMainController implements Initializable {
 		NewMusicMenuController.menuCount = 1;
 		newMusicMenu_PageLoad();
 	}
+	
+	@FXML
+	public void songPageChange(ActionEvent event) { // 장르음악메뉴에서 가요차트 클릭 했을때 페이지 전환 이벤트
+		GenreMusicMenuController.menuCount = 0;
+		genreMusicMenu_PageLoad();
+	}
+	
+	@FXML
+	public void popPageChange(ActionEvent event) { // 장르음악메뉴에서 POP차트 클릭 했을때 페이지 전환 이벤트
+		GenreMusicMenuController.menuCount = 1;
+		genreMusicMenu_PageLoad();
+	}
+	
+	@FXML
+	public void ostPageChange(ActionEvent event) { // 장르음악메뉴에서 OST차트 클릭 했을때 페이지 전환 이벤트
+		GenreMusicMenuController.menuCount = 2;
+		genreMusicMenu_PageLoad();
+	}
+	
+	@FXML
+	public void otherPageChange(ActionEvent event) { // 장르음악메뉴에서 그 외 장르 차트 클릭 했을때 페이지 전환 이벤트
+		GenreMusicMenuController.menuCount = 3;
+		genreMusicMenu_PageLoad();
+	}
 
 	public void chartMenu_PageLoad() {
 		try {
@@ -475,8 +500,18 @@ public class MusicMainController implements Initializable {
 																												// 가져옴
 			contents.getChildren().removeAll();	
 			contents.getChildren().setAll(page);
-			
-			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void genreMusicMenu_PageLoad() {
+
+		try {
+			Parent page = FXMLLoader.load(getClass().getResource("../view/genremusic/main/GenreMusicMenu.fxml")); // 바뀔 화면을
+																												// 가져옴
+			contents.getChildren().removeAll();	
+			contents.getChildren().setAll(page);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
