@@ -42,6 +42,8 @@ public interface IMusicService extends Remote {
 	
 	public List<Map> selectSinger(String sing_no) throws RemoteException;
 	
+	public List<Map> selectAlbum(String alb_no) throws RemoteException;
+	
 	public List<String> albumMusNoSelect(String alb_no) throws RemoteException;
 	
 	public List<Map> genreMusicSelete (String gen_detail_no) throws RemoteException;

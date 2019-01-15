@@ -227,6 +227,20 @@ public class MusicDaoImpl implements IMusicDao {
 	}
 
 	@Override
+	public List<Map> selectAlbum(String alb_no) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("music.selectAlbum", alb_no);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
 	public List<String> albumMusNoSelect(String alb_no) {
 		List<String> list = new ArrayList<String>();
 		try {
@@ -253,5 +267,6 @@ public class MusicDaoImpl implements IMusicDao {
 
 		return list;
 	}
+
 
 }
