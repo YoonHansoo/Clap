@@ -160,21 +160,24 @@ public class MypageMyAlbController implements Initializable{
 	}
 
 	public void btn_Cl() {
+		
 		Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
 		dialogStage.close();
 	}
 
 	public void btn_Ok() {
 		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
-		if (index <= 0) {
+		if (index < 0) {
 
 			Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
 			dialogStage.close();
 			return;
 
 		}
-		String myAlbName = col_MyAlbname.getCellData(index).toString();
+		
 		String myAlbNo = myAlbList.get(index).getMyalb_no();
+		String myAlbName = col_MyAlbname.getCellData(index).toString();
+		
 
 		try {
 			myAlbList = FXCollections.observableArrayList(imas.myAlbumSelect(user_id));
@@ -186,8 +189,6 @@ public class MypageMyAlbController implements Initializable{
 					errMsg("앨범명을 입력해주세요");
 					return;
 				}
-				
-				
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
