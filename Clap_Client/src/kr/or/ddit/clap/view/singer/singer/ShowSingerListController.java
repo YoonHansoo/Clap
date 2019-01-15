@@ -131,7 +131,7 @@ public class ShowSingerListController implements Initializable {
 		tbl_singer.setRoot(root);
 		tbl_singer.setShowRoot(false);
 		
-		itemsForPage=10; // 한페이지 보여줄 항목 수 설정
+		itemsForPage=9; // 한페이지 보여줄 항목 수 설정
 		
 		paging();
 		

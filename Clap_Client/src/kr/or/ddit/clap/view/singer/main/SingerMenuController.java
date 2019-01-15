@@ -132,6 +132,13 @@ public class SingerMenuController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		if(menuCount != 1) {
+			box.setVisible(false);
+			mainBox.setVisible(false);
+			line_intro.setVisible(false);
+			lb_intro.setVisible(false);
+			txt_intro.setVisible(false);
+		}
 
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
@@ -143,11 +150,9 @@ public class SingerMenuController implements Initializable{
 			singerAlbum.getChildren().removeAll();
 			singerAlbum.getChildren().setAll(pane2);
 			
-			
 			StackPane pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
 			singerMusic.getChildren().removeAll();
 			singerMusic.getChildren().setAll(pane3);
-			
 			
 			tabPane.getSelectionModel().select(menuCount);
 			tabPane.setOnKeyPressed(e->{

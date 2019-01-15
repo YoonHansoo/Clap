@@ -52,7 +52,7 @@
                      </fill>
                   </FontAwesomeIcon>
                   <JFXButton fx:id="btn_join" layoutX="849.0" layoutY="133.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
-                  <JFXButton fx:id="btn_login" layoutX="790.0" layoutY="133.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
+                  <JFXButton fx:id="btn_login" layoutX="794.0" layoutY="133.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
                   <HBox fx:id="mem_menu" layoutX="748.0" layoutY="84.0" prefHeight="36.0" prefWidth="165.0">
                      <children>
                         <HBox alignment="TOP_CENTER" minHeight="36.0" onMouseClicked="#mypage" prefHeight="41.0" prefWidth="180.0" spacing="5.0">
@@ -89,7 +89,6 @@
                         <JFXButton fx:id="btn_mem" onAction="#mypage" prefHeight="41.0" prefWidth="180.0" text=" " textFill="WHITE" />
                      </children>
                   </StackPane>
-                  <JFXButton layoutX="145.0" layoutY="19.0" onAction="#buyTicket" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE" />
                   <MenuBar fx:id="bar" layoutX="237.0" layoutY="133.0" style="-fx-background-color: #090948; -fx-color: #000;">
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
@@ -153,7 +152,7 @@
                   </MenuBar>
                   <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
                   <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
-                  <JFXButton layoutX="450.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE">
+                  <JFXButton layoutX="247.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
                            <children>
@@ -186,6 +185,19 @@
                      </font>
                   </Label>
                   <Line endX="1024.0" endY="175.0" startY="175.0" stroke="#aeaeae" />
+                  <JFXButton layoutX="145.0" layoutY="19.0" maxHeight="23.0" onAction="#buyTicket" prefHeight="23.0" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE">
+                     <graphic>
+                        <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
+                           <children>
+                              <FontAwesomeIcon fill="WHITE" iconName="TICKET" size="15">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </FontAwesomeIcon>
+                           </children>
+                        </HBox>
+                     </graphic>
+                  </JFXButton>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">

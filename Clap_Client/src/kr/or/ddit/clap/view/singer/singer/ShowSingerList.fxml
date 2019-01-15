@@ -26,11 +26,11 @@
                </font>
             </Label>
             <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_singer" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
+            <JFXTreeTableView fx:id="tbl_singer" fixedCellSize="0.0" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
                <columns>
                   <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
-                  <TreeTableColumn fx:id="col_singerImg" prefWidth="163.6666259765625" text="Image" />
-                  <TreeTableColumn fx:id="col_singerName" prefWidth="140.33331298828125" text="이름" />
+                  <TreeTableColumn fx:id="col_singerImg" prefWidth="140.0" text="Image" />
+                  <TreeTableColumn fx:id="col_singerName" prefWidth="163.0" text="이름" />
                   <TreeTableColumn fx:id="col_singerActType" prefWidth="88.66668701171875" text="활동 유형" />
                   <TreeTableColumn fx:id="col_singerEra" prefWidth="81.0" text="활동 연대" />
                   <TreeTableColumn fx:id="col_singerDebutEra" prefWidth="83.33331298828125" text="데뷔 년도" />

@@ -94,7 +94,7 @@
                </font>
             </Label>
             <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_album" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
+            <JFXTreeTableView fx:id="tbl_album" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="720.0">
                <columns>
                   <TreeTableColumn fx:id="col_albumImg" prefWidth="172.0" text="Image" />
                   <TreeTableColumn fx:id="col_albumName" prefWidth="162.0" text="앨범 명" />
