@@ -240,4 +240,18 @@ public class MusicDaoImpl implements IMusicDao {
 		return list;
 	}
 
+	@Override
+	public List<Map> genreMusicSelete(String gen_detail_no) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("music.genremusicselete", gen_detail_no);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }

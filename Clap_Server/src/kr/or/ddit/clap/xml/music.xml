@@ -163,22 +163,40 @@
 	 			        	where MUS_NO=#mus_no#
 	 </update>
    
-   <select id="newmusicselete" resultClass="java.util.HashMap"  parameterClass="String">
-		 select 
+   <select id="newmusicselete" resultClass="java.util.HashMap"  parameterClass="String"> 
+		  select 
 		        a.mus_no,
 		        a.mus_title,
-                a.mus_indate,
 		        a.mus_befor_rank,
 		        a.mus_mvfile,
 		        b.alb_image,
+		        b.alb_saledate,
 		        c.sing_name
 		  from  music a, album b, singer c, genre_detail d
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  a.gen_detail_no = d.gen_detail_no
            and  d.gen_no = #genre_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name 
-		 order  by a.mus_indate desc
+		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name
+		 order  by b.alb_saledate desc
+	</select>
+	
+	<select id="genremusicselete" resultClass="java.util.HashMap"  parameterClass="String"> 
+		  select 
+		        a.mus_no,
+		        a.mus_title,
+		        a.mus_befor_rank,
+		        a.mus_mvfile,
+		        b.alb_image,
+		        b.alb_saledate,
+		        c.sing_name
+		  from  music a, album b, singer c, genre_detail d
+		 where  a.alb_no = b.alb_no
+		   and  b.sing_no = c.sing_no
+           and  a.gen_detail_no = d.gen_detail_no
+           and  d.gen_detail_no = #gen_detail_no#
+		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name
+		 order  by b.alb_saledate desc
 	</select>
 	
    <select id="selectSinger" resultClass="java.util.HashMap"  parameterClass="String">

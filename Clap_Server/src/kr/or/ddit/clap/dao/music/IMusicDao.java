@@ -45,4 +45,6 @@ public interface IMusicDao {
 	public List<Map> selectSinger(String sing_no);
 	
 	public List<String> albumMusNoSelect(String alb_no);
+	
+	public List<Map> genreMusicSelete (String gen_detail_no);
 }
