@@ -203,23 +203,23 @@
       <TextArea fx:id="txt_lyrics" layoutX="15.0" layoutY="413.0" prefHeight="246.0" prefWidth="734.0" wrapText="true" />
       <JFXButton layoutX="509.0" layoutY="689.0" onAction="#insertMusic" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
-      <Label layoutX="147.0" layoutY="342.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범번호">
+      <Label layoutX="147.0" layoutY="342.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범번호" visible="false">
          <font>
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="509.0" layoutY="350.0" prefHeight="18.0" prefWidth="116.0" style="-fx-background-color: #ffffff;" text="장르소분류류No">
+      <Label layoutX="509.0" layoutY="350.0" prefHeight="18.0" prefWidth="116.0" style="-fx-background-color: #ffffff;" text="장르소분류류No" visible="false">
          <font>
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="147.0" layoutY="360.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="곡번호">
+      <Label layoutX="147.0" layoutY="360.0" prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="곡번호" visible="false">
          <font>
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="genreDetail" layoutX="625.0" layoutY="347.0" text="Label" />
-      <Label fx:id="label_albNO" layoutX="225.0" layoutY="340.0" text="Label" />
-      <Label fx:id="label_musNO" layoutX="225.0" layoutY="362.0" text="Label" />
+      <Label fx:id="genreDetail" layoutX="625.0" layoutY="347.0" text="Label" visible="false" />
+      <Label fx:id="label_albNO" layoutX="225.0" layoutY="340.0" text="Label" visible="false" />
+      <Label fx:id="label_musNO" layoutX="225.0" layoutY="362.0" text="Label" visible="false" />
    </children>
 </AnchorPane>

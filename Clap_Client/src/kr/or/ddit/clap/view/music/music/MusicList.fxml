@@ -18,7 +18,7 @@
 
 <AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.music.music.MusicListController">
    <children>
-      <AnchorPane fx:id="main" layoutX="245.0" layoutY="-14.0" prefHeight="768.0" prefWidth="773.0">
+      <AnchorPane fx:id="main" layoutX="245.0" layoutY="4.0" prefHeight="750.0" prefWidth="773.0">
          <children>
             <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="곡 관리">
                <font>

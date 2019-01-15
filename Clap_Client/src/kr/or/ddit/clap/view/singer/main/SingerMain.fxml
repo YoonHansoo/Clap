@@ -114,21 +114,29 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="100.0">
                      <children>
-                        <Label prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
+                        <JFXButton onAction="#btn_heart" prefHeight="40.0" prefWidth="49.0" text=" ">
                            <graphic>
-                              <FontAwesomeIcon fill="#9c0000" iconName="HEART" />
+                              <FontAwesomeIcon fx:id="icon_heart" fill="#9c0000" iconName="HEART_ALT" size="1.5em" wrappingWidth="25.0" />
                            </graphic>
+                        </JFXButton>
+                        <Label prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
                         </Label>
                         <Label fx:id="label_LikeCnt" prefWidth="200.0" text="???" textFill="#090c64">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
+                           <padding>
+                              <Insets top="4.0" />
+                           </padding>
                         </Label>
                      </children>
                      <padding>
@@ -158,7 +166,7 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="28.0" layoutY="762.0" prefHeight="296.0" prefWidth="718.0" text="아티스트 소개" wrapText="true" />
+      <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="28.0" layoutY="762.0" prefHeight="296.0" prefWidth="718.0" style="-fx-border-color: #090948;" text="아티스트 소개" wrapText="true" />
       <VBox fx:id="mainBox" layoutX="-63.0" layoutY="340.0">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -277,6 +285,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
+      <VBox fx:id="reply_vbox" layoutX="28.0" layoutY="1058.0" prefHeight="200.0" prefWidth="718.0" />
 <!--       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" /> -->
    </children>
 </AnchorPane>

@@ -636,7 +636,6 @@
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="160.0" prefWidth="1005.0" />
-            <FontAwesomeIcon fill="#3d3dc6" iconName="SEARCH" size="2em" wrappingWidth="31.142857551574707" />
          </children>
       </VBox>
    </content>

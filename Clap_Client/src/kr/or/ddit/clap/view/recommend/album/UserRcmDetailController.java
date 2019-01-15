@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -26,6 +27,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.main.createReply;
@@ -102,6 +105,10 @@ public class UserRcmDetailController implements Initializable {
 			Image img = new Image(temp_img_path);
 			imgview_img.setImage(img);
 
+			//리스트 수 
+			int listCnt = irs.selectAlbumListCnt(rcmAlbNo);
+			lable_cntMusic.setText(listCnt+"");
+			
 			resetCnt();
 			
 			//세션아이디와 추천앨범번호를 매개변수로 좋아요를 눌렀는 지 확인하는 메서드
@@ -128,21 +135,22 @@ public class UserRcmDetailController implements Initializable {
 		
 		
 		//댓글창 생성
-		createReply.creatReply(mainBox);
+		//createReply.creatReply(mainBox);
 		
 		//댓글조회
-		
 		for(int i =0; i<2; i++) {
 			
 			HBox hbox = new HBox();
 			hbox.setPrefWidth(731);
 			hbox.setPrefHeight(73);
+			mainBox.setMargin(hbox, new Insets(20,0,0,0));
 			
 			ImageView imgView = new ImageView();
 			Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\neo2.png");
 			imgView.setImage(img);
-			imgView.setFitWidth(63);
-			imgView.setFitHeight(48);
+			imgView.setFitWidth(40);
+			imgView.setFitHeight(40);
+			hbox.setMargin(imgView, new Insets(0,10,0,0));
 			
 			VBox vbox = new VBox();
 		    vbox.setPrefWidth(653);
@@ -153,7 +161,7 @@ public class UserRcmDetailController implements Initializable {
 		    small_hbox.setPrefHeight(30);
 		    
 		    Label label_id = new Label();
-		    label_id.setPrefWidth(54);
+		    label_id.setPrefWidth(40);
 		    label_id.setPrefHeight(15);
 		    label_id.setText("user1");
 		    
@@ -163,21 +171,29 @@ public class UserRcmDetailController implements Initializable {
 		    label_date.setText("2018/01/15");
 		    
 		    JFXButton btn_report = new JFXButton();
-		    btn_report.setPrefWidth(27);
+		    btn_report.setPrefWidth(40);
 		    btn_report.setPrefHeight(15);
 		    btn_report.setText("신고");
+		    btn_report.setTextFill(Color.valueOf("#fff"));
+		    btn_report.setStyle("-fx-background-color: #9c0000;");
+		    small_hbox.setMargin(btn_report, new Insets(0,0,0,5));
 		    
 		    Label label_contents = new Label();
 		    label_contents.setPrefWidth(598);
 		    label_contents.setPrefHeight(43);
 		    label_contents.setText("노래가 너무 좋아요");
+	
+		    
+		    HBox h_Line = new HBox();
+			//vbox.setMargin(h_Line, new Insets(0,0,0,0));
+			h_Line.setPrefWidth(710);
+			h_Line.setPrefHeight(3);
+			h_Line.setStyle("-fx-background-color: #090948;");
 		    
 		    small_hbox.getChildren().addAll(label_id,label_date,btn_report);
 		    vbox.getChildren().addAll(small_hbox,label_contents);
-		    
 		    hbox.getChildren().addAll(imgView,vbox);
-		    
-		    mainBox.getChildren().add(hbox);
+		    mainBox.getChildren().addAll(hbox,h_Line);
 		    
 		}
 	
@@ -189,9 +205,7 @@ public class UserRcmDetailController implements Initializable {
 		int likeCnt = irs.selectAlbumLikeCnt(rcmAlbNo);
 		label_LikeCnt.setText(likeCnt+ "");
 		
-		//리스트 수 
-		int listCnt = irs.selectAlbumListCnt(rcmAlbNo);
-		lable_cntMusic.setText(listCnt+"");
+		
 		
 		yn = irs.checkHeartYN(pMap);
 	}
