@@ -35,7 +35,7 @@ public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implement
 		sigerName.setTextFill(Color.valueOf("#dcdcdc"));
 		
 		Label musicName = new Label(mus_title);
-		musicName.setFont(Font.font("-윤고딕330", 15));
+		musicName.setFont(Font.font("-윤고딕350", 14));
 		musicVbox.getChildren().addAll(musicName,sigerName);
 		return this.musicVbox;
 	}

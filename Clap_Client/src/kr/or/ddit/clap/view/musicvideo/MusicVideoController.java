@@ -150,5 +150,6 @@ public class MusicVideoController implements Initializable{
 		slider_volum.setVisible(true);
 		setVolum();
 	}
+	
 
 }

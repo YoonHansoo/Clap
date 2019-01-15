@@ -33,7 +33,7 @@ public class PlayListVO extends RecursiveTreeObject<PlayListVO> implements Seria
 		sigerName.setTextFill(Color.valueOf("#dcdcdc"));
 		
 		Label musicName = new Label(mus_title);
-		musicName.setFont(Font.font("-윤고딕330", 15));
+		musicName.setFont(Font.font("-윤고딕350", 15));
 		vbox.getChildren().addAll(musicName,sigerName);
 		return this.vbox;
 	}
