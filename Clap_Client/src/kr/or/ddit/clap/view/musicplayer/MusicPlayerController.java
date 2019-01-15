@@ -182,14 +182,7 @@ public class MusicPlayerController implements Initializable{
 		} 
 	}
 	
-	@FXML public void volumClick() {
-		if(!slider_volum.isVisible()) {
-			slider_volum.setVisible(true);
-			setVolum();
-		} else {
-			slider_volum.setVisible(false);
-		}
-	}
+	
 
 	@FXML public void lyricsClick() {
 		if(!scroll_lyrics.isVisible()) {
@@ -501,5 +494,21 @@ public class MusicPlayerController implements Initializable{
 			t_playListTable.getSelectionModel().select(index);
 		}
 	}
+
+	@FXML public void MouseExit() {
+		if (slider_volum.isVisible()) {
+			slider_volum.setVisible(false);
+		}
+	}
+
+	@FXML public void mouseEnter() {
+		slider_volum.setVisible(true);
+		setVolum();
+	}
+		
+		
+	
+
+
 	
 }

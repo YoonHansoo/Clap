@@ -68,7 +68,7 @@
                   </HBox>
                   <VBox fx:id="vbox_bar">
                      <children>
-                        <JFXSlider fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0">
+                        <JFXSlider onMouseExited="#MouseExit" fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0">
                            <VBox.margin>
                               <Insets left="70.0" />
                            </VBox.margin>
@@ -83,7 +83,7 @@
                                     <Insets left="10.0" />
                                  </HBox.margin>
                               </JFXButton>
-                              <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#volumClick" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                              <JFXButton onMouseEntered="#MouseEnter" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                                  <HBox.margin>
                                     <Insets left="15.0" />
                                  </HBox.margin>

@@ -42,8 +42,6 @@ public class MusicVideoController implements Initializable{
 	@FXML JFXButton btn_full;
 	@FXML VBox vbox_bar;
 	@FXML StackPane stackpane;
-	
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -98,14 +96,7 @@ public class MusicVideoController implements Initializable{
 		
 	}
 
-	@FXML public void volumClick() {
-		if(!slider_volum.isVisible()) {
-			slider_volum.setVisible(true);
-			setVolum();
-		} else {
-			slider_volum.setVisible(false);
-		}
-	}
+	
 	
 	public void setVolum() {
 		if (mediaPlayer != null) {
@@ -147,6 +138,17 @@ public class MusicVideoController implements Initializable{
 		vbox_bar.setMinWidth(880);
 		vbox_bar.setPadding(new Insets(0,0,0,0));
 		label_musName.setVisible(true);
+	}
+
+	@FXML public void MouseExit() {
+		if(slider_volum.isVisible()) {
+			slider_volum.setVisible(false);
+		}
+	}
+
+	@FXML public void MouseEnter() {
+		slider_volum.setVisible(true);
+		setVolum();
 	}
 
 }

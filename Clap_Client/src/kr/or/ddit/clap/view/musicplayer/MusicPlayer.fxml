@@ -103,7 +103,7 @@
                         <Insets left="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <JFXSlider fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0" visible="false">
+                  <JFXSlider onMouseExited="#MouseExit" fx:id="slider_volum" orientation="VERTICAL" prefHeight="46.0" prefWidth="14.0" visible="false">
                      <VBox.margin>
                         <Insets left="240.0" />
                      </VBox.margin>
@@ -153,7 +153,7 @@
                               <Insets left="28.0" />
                            </HBox.margin>
                         </JFXButton>
-                        <JFXButton maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#volumClick" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
+                        <JFXButton onMouseEntered="#mouseEnter"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" ripplerFill="WHITE" text="">
                            <graphic>
                               <FontAwesomeIcon fill="WHITE" iconName="VOLUME_UP" size="30" />
                            </graphic>
