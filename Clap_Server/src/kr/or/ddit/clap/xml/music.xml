@@ -208,13 +208,13 @@
 		        a.mus_mvfile,
 		        b.alb_image,
 		        c.sing_name,
-		        a.alb_saledate
+		        b.alb_saledate
 		  from  music a, album b, singer c
 		 where  a.alb_no = b.alb_no
 		   and  b.sing_no = c.sing_no
            and  c.sing_no = #sing_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name,a.alb_saledate
-		 order  by a.alb_saledate desc
+		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate
+		 order  by b.alb_saledate desc
 	</select>
 	
 	<select id="albummusnoselect" resultClass="String"  parameterClass="String">
