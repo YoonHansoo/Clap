@@ -10,4 +10,5 @@ public interface IMessageDao {
 	
 	public String selectMessFCnt(MessageVO vo);
 
+	public int updateMessage(MessageVO vo);
 }

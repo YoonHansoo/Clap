@@ -27,18 +27,17 @@
 	</delete>
 	 
 	 <select id="selectAlbLike"  resultClass="LikeVO" parameterClass="LikeVO" >
-	  select 	a.mem_id,
+	 select 	a.mem_id,
 				a.alb_no ,
 				a.alb_like_date as like_date,
 				d.sing_name,
-                b.mus_title,
 				d.sing_image,
 				c.alb_name
-         from album_like a, music b, album c , singer d
+         from album_like a, album c , singer d
          	where    a.alb_no = c.alb_no
-     			and  b.alb_no = c.alb_no
 				and  c.sing_no = d.sing_no
                 and  a.mem_id=#mem_id#
+
 	 </select>
 
 	<delete id="deleteAlbLike"  parameterClass="LikeVO">

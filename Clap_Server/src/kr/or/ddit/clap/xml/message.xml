@@ -4,33 +4,44 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="message">
 
-<select id="selectMessage" resultClass="messageVO" parameterClass="messageVO">
-				select msg_no,
-				msg_send_date,
-				msg_title,
-				msg_read_tf,
-				msg_content,
-				mem_send_id,
-				mem_get_id,
-				msg_read_date
-				from message
-				
-		<dynamic prepend="where">
-          <isNotEmpty property="mem_get_id" prepend="and">
-             mem_get_id  =#mem_get_id#
-          </isNotEmpty>
-          <isNotEmpty property="msg_no" prepend="and">
-             msg_no  = #msg_no#
-          </isNotEmpty>   
-       </dynamic>    
-</select>
+	<select id="selectMessage" resultClass="messageVO"
+		parameterClass="messageVO">
+		select msg_no,
+		msg_send_date,
+		msg_title,
+		msg_read_tf,
+		msg_content,
+		mem_send_id,
+		mem_get_id,
+		msg_read_date
+		from message
 
-<select id="selectMessFCnt" resultClass="String" parameterClass="messageVO">
-	select count(msg_read_tf)
+		<dynamic prepend="where">
+			<isNotEmpty property="mem_get_id" prepend="and">
+				mem_get_id =#mem_get_id#
+			</isNotEmpty>
+			<isNotEmpty property="msg_no" prepend="and">
+				msg_no = #msg_no#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="selectMessFCnt" resultClass="String"
+		parameterClass="messageVO">
+		select count(msg_read_tf)
 		from message
 		where msg_read_tf=#msg_read_tf#
-		and mem_get_id =#mem_get_id#
-</select>
-	
+		and
+		mem_get_id =#mem_get_id#
+	</select>
+
+	<update id="updateMessage" parameterClass="messageVO">
+		update message
+		set msg_read_date= #msg_read_date#,
+		    msg_read_tf = #msg_read_tf#
+		where msg_no=#msg_no#
+		
+	</update>
+
 
 </sqlMap>	

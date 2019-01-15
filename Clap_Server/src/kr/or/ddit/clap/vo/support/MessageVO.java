@@ -2,6 +2,7 @@ package kr.or.ddit.clap.vo.support;
 
 import java.io.Serializable;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.ImageView;
@@ -17,9 +18,19 @@ public class MessageVO extends RecursiveTreeObject<MessageVO>  implements Serial
 	private String mem_get_id;
 	private String msg_read_date;
 	private ImageView imageview;
+	private JFXCheckBox chBox;
 	
 	
 	
+	public JFXCheckBox getChBox() {
+		return chBox;
+	}
+	public JFXCheckBox getChBox1() {
+		return chBox;
+	}
+	public void setChBox(JFXCheckBox chBox) {
+		this.chBox = chBox;
+	}
 	public String getMsg_read_date() {
 		return msg_read_date;
 	}

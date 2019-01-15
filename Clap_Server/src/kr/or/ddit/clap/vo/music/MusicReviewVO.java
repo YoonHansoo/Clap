@@ -1,19 +1,16 @@
 package kr.or.ddit.clap.vo.music;
 
 import java.io.Serializable;
-import java.rmi.registry.Registry;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
+import javafx.scene.paint.Color;
 
 public class MusicReviewVO  extends RecursiveTreeObject<MusicReviewVO>  implements Serializable{
-	
-	private Registry reg;
-	private IMusicReviewService imrs;
 	
 	
 	private String mus_re_no;
@@ -66,8 +63,19 @@ public class MusicReviewVO  extends RecursiveTreeObject<MusicReviewVO>  implemen
 	public void setImgView(ImageView imgView) {
 		this.imgView = imgView;
 	}
+	public void createButtonImg() {
+		if(btnDel ==null) {
+		this.btnDel = new JFXButton();
+		FontAwesomeIcon remove = new FontAwesomeIcon();
+		remove.setIconName("REMOVE");
+		remove.setFill(Color.valueOf("#9c0000"));
+		remove.setSize("20");
+		btnDel.setId(mus_re_no);
+		btnDel.setGraphic(remove);
+		}
+	}
 	public JFXButton getBtnDel() {
-		this.btnDel= new JFXButton();
+		createButtonImg();
 		return this.btnDel;
 	}
 	public void setBtnDel(JFXButton btnDel) {

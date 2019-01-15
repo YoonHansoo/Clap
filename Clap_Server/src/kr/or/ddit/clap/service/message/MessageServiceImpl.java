@@ -34,4 +34,9 @@ public class MessageServiceImpl extends UnicastRemoteObject implements IMessageS
 	public String selectMessFCnt(MessageVO vo) throws RemoteException {
 		return msgDao.selectMessFCnt(vo);
 	}
+
+	@Override
+	public int updateMessage(MessageVO vo) throws RemoteException {
+		return msgDao.updateMessage(vo);
+	}
 }

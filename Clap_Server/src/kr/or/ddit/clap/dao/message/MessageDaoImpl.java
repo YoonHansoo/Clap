@@ -52,4 +52,16 @@ public class MessageDaoImpl implements IMessageDao{
 		} 
 		return list;
 	}
+
+	@Override
+	public int updateMessage(MessageVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("message.updateMessage",vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
 }
