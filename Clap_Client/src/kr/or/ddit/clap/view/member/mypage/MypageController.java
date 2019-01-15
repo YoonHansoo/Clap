@@ -315,7 +315,9 @@ private MypageMyAlbListController iAC;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-
+		if(memvo.getMem_image()==null) {
+			memvo.setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+	}
 		Image img = new Image(memvo.getMem_image());
 		img_path = memvo.getMem_image(); // sVO.getSing_image()를 전역으로 쓰기위해
 		ImageView imgview_UserImg = (ImageView) root.lookup("#imgview_UserImg");
