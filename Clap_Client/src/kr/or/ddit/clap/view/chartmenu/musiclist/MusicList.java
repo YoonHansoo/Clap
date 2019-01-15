@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDialog;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -31,6 +32,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
@@ -41,6 +43,7 @@ import kr.or.ddit.clap.vo.music.PlayListVO;
 public class MusicList {
 	private Registry reg;
 	private IPlayListService ipls;
+	private IMusicService ims;
 	private ObservableList<JFXCheckBox> cbnList;
 	private ObservableList<JFXButton> btnPlayList;
 	private ObservableList<JFXButton> btnAddList;
@@ -112,6 +115,7 @@ public class MusicList {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ipls = (IPlayListService) reg.lookup("playlist");
+			ims = (IMusicService) reg.lookup("music");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -163,7 +167,18 @@ public class MusicList {
 				JFXButton btn_AddMy = (JFXButton) e.getSource();
 				
 				if (btn_AddMy.getAccessibleText() != null) {
-					System.out.println("우와오아ㅗ앙");
+					try {
+						ObservableList<String> list = 
+								FXCollections.observableArrayList(ims.albumMusNoSelect(btn_AddMy.getAccessibleText()));
+						for (int j = 0; j < list.size(); j++) {
+							PlayListVO vo = new PlayListVO();
+							vo.setMus_no(list.get(j));
+							vo.setMem_id(LoginSession.session.getMem_id());
+							playListInsert(vo);
+						}
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
 				}else {
 					PlayListVO vo = new PlayListVO();
 					vo.setMus_no(btn_AddMy.getId());
@@ -842,7 +857,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 		VBox vbox = new VBox();
 		btnAddList.clear();
 		
-		int size = Math.min(page + itemsForPage, list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0);
+		int size = Math.min(page + itemsForPage, ((list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0)));
 		System.out.println(size);
 		for (int i = page; i < size; i++) {
 			
@@ -974,6 +989,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 				
 			vbox.getChildren().addAll(h_Line, hbox);
 		}
+		btnAddClick();
 		return vbox;
 	}
 }

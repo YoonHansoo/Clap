@@ -32,14 +32,15 @@ public interface IMusicService extends Remote {
 	
 	public int insertMusic(MusicVO vo) throws RemoteException;
 	
-	
 	public int selectMusicLikeCnt(String musicNo) throws RemoteException;
 	
 	public int updateMusicInfo(MusicVO vo) throws RemoteException;
 	
-	 public int deleteMusic(String musicNo) throws RemoteException;
+	public int deleteMusic(String musicNo) throws RemoteException;
 	 
 	public List<Map> newMusicSelete(String genre_no) throws RemoteException;
 	
 	public List<Map> selectSinger(String sing_no) throws RemoteException;
+	
+	public List<String> albumMusNoSelect(String alb_no) throws RemoteException;
 }
