@@ -75,4 +75,9 @@ public class TicketServiceImpl extends UnicastRemoteObject implements ITicketSer
 		return ticketDao.buyfind(id);
 	}
 
+	@Override
+	public List<TicketBuyListVO> selectBuyAllist(String id) throws RemoteException {
+		return ticketDao.selectBuyAllist(id);
+	}
+
 }

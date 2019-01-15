@@ -73,6 +73,25 @@
     	select mem_id from ticket_buy_list
 		where mem_id = #mem_id#
     </select>
+    
+    <select id="selectBuyAllist" resultClass="ticketBuyVO" parameterClass="String">
+    	
+    	  select
+    ticket_buy_no,
+    ticket_buydate,
+    card_account_no,
+    ticket_buy_type,
+    card_bank_name,
+    refund_date,
+    refund_tf,
+    account_holder,
+    ticket_no,
+    mem_id
+    from ticket_buy_list
+    where mem_id=#mem_id#
+         
+         
+    </select>
 
 </sqlMap>         
 
