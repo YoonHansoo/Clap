@@ -61,7 +61,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </ImageView>
-                              <Label fx:id="lb_id" alignment="CENTER" onMouseClicked="#mypage" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #090948; -fx-background-radius: 5;" text="ddddit님" textFill="WHITE">
+                              <Label fx:id="lb_id" alignment="CENTER" onMouseClicked="#mypage" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #090948; -fx-background-radius: 4;" text="ddddit님" textFill="WHITE">
                                  <font>
                                     <Font name="YDIYGO350" size="18.0" />
                                  </font>

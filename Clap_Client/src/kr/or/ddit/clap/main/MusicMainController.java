@@ -231,26 +231,31 @@ public class MusicMainController implements Initializable {
 		btn_new1.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(0).getAlb_no(); // 앨범번호를 변수로 넘겨줌
 			SingerMainController.singerNo = albumList.get(0).getSing_no(); // 가수번호를 변수로 넘겨줌
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new2.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(1).getAlb_no();
 			SingerMainController.singerNo = albumList.get(1).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new3.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(2).getAlb_no();
 			SingerMainController.singerNo = albumList.get(2).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new4.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(3).getAlb_no();
 			SingerMainController.singerNo = albumList.get(3).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new5.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(4).getAlb_no();
 			SingerMainController.singerNo = albumList.get(4).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		
@@ -258,26 +263,31 @@ public class MusicMainController implements Initializable {
 		btn_new6.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(5).getAlb_no();
 			SingerMainController.singerNo = albumList.get(5).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new7.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(6).getAlb_no();
 			SingerMainController.singerNo = albumList.get(6).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new8.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(7).getAlb_no();
 			SingerMainController.singerNo = albumList.get(7).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new9.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(8).getAlb_no();
 			SingerMainController.singerNo = albumList.get(8).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		btn_new10.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(9).getAlb_no();
 			SingerMainController.singerNo = albumList.get(9).getSing_no();
+			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
 		
@@ -501,7 +511,7 @@ public class MusicMainController implements Initializable {
 	}
 
 	public void singerMenu() {
-		SingerMenuController.menuCount = 1;
+
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/singer/main/SingerMenu.fxml")); // 바뀔 화면을
 																											// 가져옴
