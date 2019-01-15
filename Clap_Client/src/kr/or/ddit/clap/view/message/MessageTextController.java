@@ -1,5 +1,6 @@
 package kr.or.ddit.clap.view.message;
 
+import java.io.IOException;
 import java.net.URL;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -10,15 +11,19 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.vo.support.MessageVO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
 public class MessageTextController implements Initializable{
 
@@ -28,6 +33,8 @@ public class MessageTextController implements Initializable{
 	public static String msgno;
 	private AnchorPane contents;
 	private String  user_id =LoginSession.session.getMem_id();
+
+	public static Stage mes = new Stage();
 	
 	@FXML AnchorPane main;
 	@FXML JFXTextField textF_Userid;
@@ -39,7 +46,7 @@ public class MessageTextController implements Initializable{
 	
 	public void givePane(AnchorPane contents) {
 		this.contents = contents;
-	}
+	}	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -59,13 +66,26 @@ public class MessageTextController implements Initializable{
 			e.printStackTrace();
 		}
 		//값셋팅
+		textF_Userid.setDisable(true);
 		textF_Userid.setText(user_id);
 		textA_content.setText(msgList.get(0).getMsg_content());
 		textF_Title.setText(msgList.get(0).getMsg_title());
 		la_SendDate.setText(msgList.get(0).getMsg_send_date().substring(0, 10));
 	}
-	public void btn_Ok() {System.out.println("Ok");}
-	public void btn_Cl() {System.out.println("Cl");}
+	public void btn_Ok() throws IOException {
+		Stage dialogStage = (Stage) la_SendDate.getScene().getWindow();
+		dialogStage.close();
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("mestable.fxml"));// init실행됨
+		Parent messageText= loader.load(); 
+		Scene scene = new Scene(messageText);
+		
+		mes.setTitle("Meaage");
+		mes.setScene(scene);
+		mes.show();
+		
+		
+		}
 
 
 }

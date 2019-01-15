@@ -6,6 +6,8 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXTreeTableView;
@@ -20,14 +22,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.message.IMessageService;
-import kr.or.ddit.clap.view.member.manage.MemberDetailController;
 import kr.or.ddit.clap.vo.support.MessageVO;
 
 public class ShowMessageController implements Initializable{
@@ -46,7 +49,7 @@ public class ShowMessageController implements Initializable{
 	@FXML TreeTableColumn<MessageVO ,String> col_ReadDate;
 	@FXML Pagination p_paging;
 	@FXML AnchorPane contents; 
-	
+	public static Stage mes = new Stage();
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -68,11 +71,11 @@ public class ShowMessageController implements Initializable{
 		}
 		for (int i = 0; i < msgList.size(); i++) {
 			if(msgList.get(i).getMsg_read_tf().equals("f")) {
-				//이미지 넣어주기
-//				 ImageView img = new ImageView("https://image.shutterstock.com/image-vector/speech-bubble-message-icon-260nw-527527990.jpg");
-//				 msgList.get(i).setImageview(img);
-//				 msgList.get(i).getImageview().setFitWidth(80);
-//				 msgList.get(i).getImageview().setFitHeight(100);
+			//이미지 넣어주기
+			/* ImageView img = new ImageView("https://image.shutterstock.com/image-vector/speech-bubble-message-icon-260nw-527527990.jpg");
+				 msgList.get(i).setImageview(img);
+				 msgList.get(i).getImageview().setFitWidth(80);
+				 msgList.get(i).getImageview().setFitHeight(100);*/
 			}else {
 				
 			}
@@ -86,9 +89,16 @@ public class ShowMessageController implements Initializable{
 
 		col_SendDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMsg_send_date().substring(0, 10)));
 
-		col_ReadDate.setCellValueFactory(
-				param -> new SimpleStringProperty(param.getValue().getValue().getMsg_read_date()));
-
+		for (int i = 0; i < msgList.size(); i++) {
+			if(msgList.get(i).getMsg_read_date() != null) {
+				msgList.get(i).setMsg_read_date( msgList.get(i).getMsg_read_date().substring(0, 10));
+				}
+			}
+				col_ReadDate.setCellValueFactory(
+						param -> new SimpleStringProperty(param.getValue().getValue().getMsg_read_date()));
+				
+			
+		
 		TreeItem<MessageVO> root = new RecursiveTreeItem<>(msgList, RecursiveTreeObject::getChildren);
 		tbl_Message.setRoot(root);
 		tbl_Message.setShowRoot(false);
@@ -104,18 +114,37 @@ public class ShowMessageController implements Initializable{
 				//int index = tbl_Message.getSelectionModel().getSelectedIndex();
 				String msgno = tbl_Message.getSelectionModel().getSelectedItem().getValue().getMsg_no();
 				
+				MessageVO mvo  =new MessageVO();
+				//오늘 날짜 가져오기
+				Date now = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+				
+				mvo.setMsg_no(msgno);
+				mvo.setMsg_read_tf("t");
+				mvo.setMsg_read_date(sdf.format(now));
+				
 				try {
+					imsgs.updateMessage(mvo);
+				} catch (RemoteException e2) {
+					e2.printStackTrace();
+				}
+				
+				try {
+					Stage dialogStage = (Stage) p_paging.getScene().getWindow();
+					dialogStage.close();
 					//바뀔 화면(FXML)을 가져옴
 					MessageTextController.msgno = msgno;//가수번호를 변수로 넘겨줌
 					
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("mestext.fxml"));// init실행됨
 					Parent messageText= loader.load(); 
-					
+					Scene scene = new Scene(messageText);
 					MessageTextController cotroller = loader.getController();
 					cotroller.givePane(contents); 
 					
-					contents.getChildren().removeAll();
-					contents.getChildren().setAll(messageText);
+					mes.setTitle("Meaage");
+					mes.setScene(scene);
+					mes.show();
+					
 					
 					
 				} catch (IOException e1) {
@@ -157,5 +186,10 @@ private ObservableList<MessageVO> getTableViewData(int from, int to) {
 		return currentMsgList;
 	
 	}
+
+@FXML public void btn_Ok() {
+	Stage dialogStage = (Stage) p_paging.getScene().getWindow();
+	dialogStage.close();
+}
 
 }

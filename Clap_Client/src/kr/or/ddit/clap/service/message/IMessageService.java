@@ -9,4 +9,5 @@ import kr.or.ddit.clap.vo.support.MessageVO;
 public interface IMessageService extends Remote{
 	public List<MessageVO> selectMessage(MessageVO vo) throws RemoteException;
 	public String selectMessFCnt(MessageVO vo) throws RemoteException;
+	public int updateMessage(MessageVO vo) throws RemoteException;
 }

@@ -90,7 +90,7 @@ public class MusicMainController implements Initializable {
 	@FXML JFXButton btn_new1, btn_new2, btn_new3, btn_new4, btn_new5;
 	@FXML JFXButton btn_new6, btn_new7, btn_new8, btn_new9, btn_new10;
 	@FXML AnchorPane tab_pane1, tab_pane2, tab_pane3, tab_pane4, tab_pane5;
-	
+	@FXML JFXButton btn_msg;
 	LoginSession ls = new LoginSession();
 	public static Stage musicplayer = new Stage();
 	private ILoginService ils;
@@ -99,6 +99,7 @@ public class MusicMainController implements Initializable {
 	private Registry reg;
 	public static FXMLLoader playerLoad;
 	public static Stage movieStage = new Stage();
+	
 	
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
@@ -116,29 +117,27 @@ public class MusicMainController implements Initializable {
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		
-		//메세지 갯수
-		MessageVO msgvo =new MessageVO();
-		msgvo.setMem_get_id(ls.session.getMem_id());
-		msgvo.setMsg_read_tf("f");
-		String cnt;
-		try {
-			cnt = imsgs.selectMessFCnt(msgvo);
-			la_messageCnt.setText(cnt); //갯수넣기
-		} catch (RemoteException e2) {
-			e2.printStackTrace();
-		}
-	
-		
+
 		
 		if (ls.session != null) {
 			System.out.println(ls.session.getMem_name());
 			System.out.println(ls.session.getMem_auth());
+			MessageVO msgvo = new MessageVO();
+			msgvo.setMem_get_id(ls.session.getMem_id());
+			msgvo.setMsg_read_tf("f");
+			String cnt;
+			try {
+				cnt = imsgs.selectMessFCnt(msgvo);
+				la_messageCnt.setText(cnt); // 갯수넣기
+			} catch (RemoteException e2) {
+				e2.printStackTrace();
+			}
 		}
 		if (ls.session == null) {
 			mem_menu.setVisible(false);
 			btn_join.setVisible(true);
 			btn_login.setVisible(true);
+			btn_msg.setVisible(false);
 		} else {
 			System.out.println(ls.session.getMem_id() + ls.session.getMem_auth());
 			if (ls.session.getMem_auth().equals("t")) { // 관리자 일 때 관리자모드 버튼 활성화
