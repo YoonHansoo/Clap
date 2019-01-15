@@ -66,9 +66,6 @@ public class SingerMusicController implements Initializable{
 	private int itemsForPage;
 	private Pagination p_page;
 	
-	public static String singNo;
-	
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -168,7 +165,7 @@ public class SingerMusicController implements Initializable{
 	// 가요장르
 	@FXML public void songChart() {
 		try {
-			songRank = FXCollections.observableArrayList(ims.selectSinger(singNo));
+			songRank = FXCollections.observableArrayList(ims.selectSinger(SingerMainController.singerNo));
 //			btn_Song.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
 //			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
 //			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");

@@ -45,7 +45,7 @@ public class SingerAlbumController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			AlbumVO vo = new AlbumVO();
-			vo.setSing_no(SingerMainController.singNo);
+			vo.setSing_no(SingerMainController.singerNo);
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ias = (IAlbumService) reg.lookup("album");
 			list = FXCollections.observableArrayList(ias.singerAlbumSelect(vo));

@@ -140,6 +140,7 @@ public class MusicMainController implements Initializable {
 			btn_join.setVisible(true);
 			btn_login.setVisible(true);
 			btn_msg.setVisible(false);
+			btn_logout.setVisible(false);
 		} else {
 			System.out.println(ls.session.getMem_id() + ls.session.getMem_auth());
 			if (ls.session.getMem_auth().equals("t")) { // 관리자 일 때 관리자모드 버튼 활성화
@@ -149,6 +150,7 @@ public class MusicMainController implements Initializable {
 			}
 			System.out.println("not null " + ls.session.getMem_id());
 			mem_menu.setVisible(true);
+			btn_logout.setVisible(true);
 			btn_join.setVisible(false);
 			btn_login.setVisible(false);
 
@@ -229,36 +231,26 @@ public class MusicMainController implements Initializable {
 		btn_new1.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(0).getAlb_no(); // 앨범번호를 변수로 넘겨줌
 			SingerMainController.singerNo = albumList.get(0).getSing_no(); // 가수번호를 변수로 넘겨줌
-			SingerMusicController.singNo = albumList.get(0).getSing_no();
-			SingerMainController.singNo = albumList.get(0).getSing_no();
 			singerMenu();
 		});
 		btn_new2.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(1).getAlb_no();
 			SingerMainController.singerNo = albumList.get(1).getSing_no();
-			SingerMusicController.singNo = albumList.get(1).getSing_no();
-			SingerMainController.singNo = albumList.get(1).getSing_no();
 			singerMenu();
 		});
 		btn_new3.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(2).getAlb_no();
 			SingerMainController.singerNo = albumList.get(2).getSing_no();
-			SingerMusicController.singNo = albumList.get(2).getSing_no();
-			SingerMainController.singNo = albumList.get(2).getSing_no();
 			singerMenu();
 		});
 		btn_new4.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(3).getAlb_no();
 			SingerMainController.singerNo = albumList.get(3).getSing_no();
-			SingerMusicController.singNo = albumList.get(3).getSing_no();
-			SingerMainController.singNo = albumList.get(3).getSing_no();
 			singerMenu();
 		});
 		btn_new5.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(4).getAlb_no();
 			SingerMainController.singerNo = albumList.get(4).getSing_no();
-			SingerMusicController.singNo = albumList.get(4).getSing_no();
-			SingerMainController.singNo = albumList.get(4).getSing_no();
 			singerMenu();
 		});
 		
@@ -266,36 +258,26 @@ public class MusicMainController implements Initializable {
 		btn_new6.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(5).getAlb_no();
 			SingerMainController.singerNo = albumList.get(5).getSing_no();
-			SingerMusicController.singNo = albumList.get(5).getSing_no();
-			SingerMainController.singNo = albumList.get(5).getSing_no();
 			singerMenu();
 		});
 		btn_new7.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(6).getAlb_no();
 			SingerMainController.singerNo = albumList.get(6).getSing_no();
-			SingerMusicController.singNo = albumList.get(6).getSing_no();
-			SingerMainController.singNo = albumList.get(6).getSing_no();
 			singerMenu();
 		});
 		btn_new8.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(7).getAlb_no();
 			SingerMainController.singerNo = albumList.get(7).getSing_no();
-			SingerMusicController.singNo = albumList.get(7).getSing_no();
-			SingerMainController.singNo = albumList.get(7).getSing_no();
 			singerMenu();
 		});
 		btn_new9.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(8).getAlb_no();
 			SingerMainController.singerNo = albumList.get(8).getSing_no();
-			SingerMusicController.singNo = albumList.get(8).getSing_no();
-			SingerMainController.singNo = albumList.get(8).getSing_no();
 			singerMenu();
 		});
 		btn_new10.setOnAction(e->{
 			SingerMenuController.albumNo = albumList.get(9).getAlb_no();
 			SingerMainController.singerNo = albumList.get(9).getSing_no();
-			SingerMusicController.singNo = albumList.get(9).getSing_no();
-			SingerMainController.singNo = albumList.get(9).getSing_no();
 			singerMenu();
 		});
 		

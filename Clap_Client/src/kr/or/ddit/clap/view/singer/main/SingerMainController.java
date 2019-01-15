@@ -102,7 +102,6 @@ public class SingerMainController implements Initializable{
 	private int itemsForPage;
 	private Pagination p_page;
 	
-	public static String singNo;
 	
 	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
 	// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
@@ -249,7 +248,7 @@ public class SingerMainController implements Initializable{
 	// 가요장르
 	@FXML public void songChart() {
 		try {
-			songRank = FXCollections.observableArrayList(ims.selectSinger(singNo));
+			songRank = FXCollections.observableArrayList(ims.selectSinger(SingerMainController.singerNo));
 			cb_main.setSelected(false);
 			lb_total.setText("발매곡 (총 "+songRank.size()+"개)");
 			

@@ -105,6 +105,14 @@ public class LoginController implements Initializable{
 	public void login() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException{
 		AES256Util aes = new AES256Util();
 		
+		//test
+		TicketController tc = new TicketController();
+		String[] arr = tc.ticketCheck("유저 아이디");
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+		
+		
 		String encryptedPw = ""; // 암호화된 pw
 		encryptedPw = aes.encrypt(txt_pw.getText());
 		

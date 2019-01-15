@@ -29,6 +29,7 @@
          <children>
             <AnchorPane fx:id="menu" prefHeight="160.0" prefWidth="1005.0">
                <children>
+                  <JFXButton fx:id="btn_logout" layoutX="849.0" layoutY="133.0" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE" />
                   <VBox layoutX="86.0" layoutY="55.0" prefHeight="90.0" prefWidth="90.0">
                      <children>
                         <ImageView fx:id="logo_imgView" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
@@ -49,35 +50,27 @@
                         </LinearGradient>
                      </fill>
                   </FontAwesomeIcon>
-                  <JFXButton fx:id="btn_join" layoutX="903.0" layoutY="94.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
-                  <JFXButton fx:id="btn_login" layoutX="828.0" layoutY="94.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
-                  <HBox fx:id="mem_menu" layoutX="730.0" layoutY="84.0" prefHeight="23.0" prefWidth="249.0">
+                  <JFXButton fx:id="btn_join" layoutX="849.0" layoutY="133.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
+                  <JFXButton fx:id="btn_login" layoutX="790.0" layoutY="133.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
+                  <HBox fx:id="mem_menu" layoutX="748.0" layoutY="84.0" prefHeight="36.0" prefWidth="165.0">
                      <children>
-                        <JFXButton fx:id="btn_mem" onAction="#mypage" prefWidth="180.0" text=" " textFill="WHITE">
-                           <graphic>
-                              <HBox alignment="TOP_CENTER" onMouseClicked="#mypage" prefHeight="41.0" prefWidth="180.0" spacing="5.0">
-                                 <children>
-                                    <ImageView fx:id="mem_img" fitHeight="33.0" fitWidth="33.0" onMouseClicked="#mypage" pickOnBounds="true" preserveRatio="true">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin></ImageView>
-                                    <Label fx:id="lb_id" alignment="CENTER" onMouseClicked="#mypage" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #090948;" text="ddddit님" textFill="WHITE">
-                                       <font>
-                                          <Font name="YDIYGO350" size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="5.0" top="4.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </JFXButton>
-                        <JFXButton fx:id="btn_logout" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets top="9.0" />
-                           </HBox.margin>
-                        </JFXButton>
+                        <HBox alignment="TOP_CENTER" minHeight="36.0" onMouseClicked="#mypage" prefHeight="41.0" prefWidth="180.0" spacing="5.0">
+                           <children>
+                              <ImageView fx:id="mem_img" fitHeight="33.0" fitWidth="33.0" onMouseClicked="#mypage" pickOnBounds="true" preserveRatio="true">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </ImageView>
+                              <Label fx:id="lb_id" alignment="CENTER" onMouseClicked="#mypage" prefHeight="26.0" prefWidth="128.0" style="-fx-background-color: #090948; -fx-background-radius: 5;" text="ddddit님" textFill="WHITE">
+                                 <font>
+                                    <Font name="YDIYGO350" size="18.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="4.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
                      </children>
                   </HBox>
                   <JFXTextField fx:id="txt_search" layoutX="200.0" layoutY="91.0" prefColumnCount="50" prefWidth="500.0" unFocusColor="#9c0000">
@@ -90,6 +83,11 @@
                         </LinearGradient>
                      </focusColor>
                   </JFXTextField>
+                  <StackPane layoutX="748.0" layoutY="84.0" prefHeight="36.0" prefWidth="165.0">
+                     <children>
+                        <JFXButton fx:id="btn_mem" onAction="#mypage" prefHeight="41.0" prefWidth="180.0" text=" " textFill="WHITE" />
+                     </children>
+                  </StackPane>
                   <JFXButton layoutX="96.0" layoutY="19.0" onAction="#buyTicket" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE" />
                   <MenuBar fx:id="bar" layoutX="237.0" layoutY="133.0" style="-fx-background-color: #090948; -fx-color: #000;">
                      <menus>
@@ -164,12 +162,12 @@
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_RIGHT" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btn_msg" layoutX="844.0" layoutY="39.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" ">
+                  <JFXButton fx:id="btn_msg" layoutX="750.0" layoutY="39.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" ">
                      <graphic>
                         <FontAwesomeIcon fill="#9c0000" iconName="COMMENT" size="2.3em" wrappingWidth="21.0" />
                      </graphic>
                   </JFXButton>
-                  <Label fx:id="la_messageCnt" layoutX="881.0" layoutY="52.0" text="11" textFill="WHITE">
+                  <Label fx:id="la_messageCnt" layoutX="785.0" layoutY="52.0" text="11" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
