@@ -14,7 +14,7 @@
    <top>
       <VBox prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="clap 아이디 찾기">
+            <Label text="CLAP 아이디 찾기">
                <font>
                   <Font name="YDIYGO350" size="22.0" />
                </font>
@@ -22,7 +22,7 @@
                   <Insets bottom="17.0" left="15.0" />
                </VBox.margin>
             </Label>
-            <Separator prefWidth="200.0" />
+            <Separator maxWidth="515.0" prefWidth="200.0" />
          </children>
          <BorderPane.margin>
             <Insets top="10.0" />
@@ -95,7 +95,7 @@
                   </JFXButton>
                </children>
             </HBox>
-            <Label text="clap 비밀번호 찾기">
+            <Label text="CLAP 비밀번호 찾기">
                <font>
                   <Font name="YDIYGO350" size="22.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Insets bottom="17.0" left="15.0" top="50.0" />
                </VBox.margin>
             </Label>
-            <Separator prefWidth="200.0" />
+            <Separator maxWidth="515.0" prefWidth="200.0" />
             <VBox prefHeight="155.0" prefWidth="610.0">
                <children>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">

@@ -48,8 +48,8 @@ public class AlbumDetailController implements Initializable {
 	// @FXML Label label_singNo;
 	@FXML
 	Label label_albumName1;
-	@FXML
-	Label label_albumName2;
+//	@FXML
+//	Label label_albumName2;
 	@FXML
 	Label label_singerName;
 	@FXML
@@ -92,7 +92,7 @@ public class AlbumDetailController implements Initializable {
 		}
 
 		label_albumName1.setText(aVO.getAlb_name());
-		label_albumName2.setText(aVO.getAlb_name());
+//		label_albumName2.setText(aVO.getAlb_name());
 		label_singerName.setText(aVO.getSing_name());
 		label_saledate.setText(aVO.getAlb_saledate());
 		label_saleEnter.setText(aVO.getAlb_sale_enter());

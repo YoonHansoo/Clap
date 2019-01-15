@@ -29,4 +29,6 @@ public interface IAlbumService extends Remote {
 	public int deleteAlbum(String albumNo) throws RemoteException;
 	
 	public List<Map> newAlbumSelect() throws RemoteException;
+	
+	public List<Map> singerAlbumSelect(AlbumVO vo) throws RemoteException;
 }

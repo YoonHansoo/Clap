@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -289,7 +290,7 @@
             <Insets left="222.0" top="15.0" />
          </padding>
       </BorderPane>
-      <VBox fx:id="box" layoutY="150.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
                <top>
@@ -425,6 +426,8 @@
             <Insets top="15.0" />
          </padding>
       </VBox>
+      <StackPane fx:id="stack1" layoutX="223.0" layoutY="174.0" prefHeight="148.0" prefWidth="608.0" style="-fx-background-color: #e6f5ff;" />
+      <StackPane fx:id="stack2" layoutX="223.0" layoutY="439.0" prefHeight="148.0" prefWidth="608.0" style="-fx-background-color: #e6f5ff;" />
       <VBox fx:id="boxbox" layoutX="120.0" layoutY="13.0" minHeight="620.0" minWidth="700.0" prefHeight="200.0" prefWidth="100.0">
          <children>
             <VBox prefHeight="61.0" prefWidth="600.0" spacing="10.0">

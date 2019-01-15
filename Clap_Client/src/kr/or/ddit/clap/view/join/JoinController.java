@@ -50,7 +50,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -100,6 +104,7 @@ public class JoinController implements Initializable{
 	@FXML JFXCheckBox check2;
 	
 	@FXML BorderPane pane;	
+	@FXML StackPane stack1, stack2;	
 	@FXML VBox box, boxbox;	
 	
 	ToggleGroup group = new ToggleGroup();
@@ -141,7 +146,10 @@ public class JoinController implements Initializable{
 		lb_next.setVisible(false);
 		
 		boxbox.setVisible(false);
-		
+		check1.setDisable(true);
+		check2.setDisable(true);
+		stack1.setVisible(false);
+		stack2.setVisible(false);
 		
 		
 		radio_m.setToggleGroup(group);
@@ -581,7 +589,37 @@ public class JoinController implements Initializable{
 				"본 약관은 2018년 10월 16일부터 적용하고, 2017년 10월 19일부터 시행되던 종전의 약관은 본 "
 				+ "약관으로 대체합니다.");
 		
+		check1.selectedProperty().addListener((observable, oldValue, newValue) ->{
+			if(newValue == true) {
+//				System.out.println("...");
+//				txtArea1.setBackground(new Background(new BackgroundFill(Color.valueOf("#ccebff"), new CornerRadii(1), new Insets(1))));
+//				stack1.setVisible(true);
+			}else {
+//				txtArea1.setStyle("-fx-background-color: white;");				
+//				stack1.setVisible(false);
+			}
+			
+//			System.out.println(txtArea2.scrollTopProperty().intValue());
+		});
+
 		
+
+		txtArea1.scrollTopProperty().addListener(e->{
+			if(txtArea1.scrollTopProperty().intValue()==2932) {
+				check1.setDisable(false);
+			}else {
+				check1.setSelected(false);
+				check1.setDisable(true);				
+			}
+		});
+		txtArea2.scrollTopProperty().addListener(e->{
+			if(txtArea2.scrollTopProperty().intValue()==397) {
+				check2.setDisable(false);
+			}else {
+				check2.setSelected(false);
+				check2.setDisable(true);				
+			}
+		});
 		
 		txt_pw.setOnAction(e->{
 			pwCheck();

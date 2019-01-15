@@ -37,6 +37,7 @@ import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 import kr.or.ddit.clap.view.genremusic.main.GenreMusicMenuController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
+import kr.or.ddit.clap.view.singer.main.SingerAlbumController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.view.singer.main.SingerMusicController;
