@@ -95,6 +95,7 @@ public class BuyTicketController implements Initializable{
 		box.setLayoutY(620);
 		pane.setOpacity(1);
 		
+		
 		vo = new TicketBuyListVO();
 		vo.setMem_id(ls.session.getMem_id());
 		vo.setTicket_no(String.valueOf(tc.ticketInfo[4]));
@@ -186,6 +187,7 @@ public class BuyTicketController implements Initializable{
 			Label lblb1 = (Label) parent.lookup("#lblb1");
 			Label lblb2 = (Label) parent.lookup("#lblb2");
 			Label lb_card = (Label) parent.lookup("#lb_card");
+			Label lb_error = (Label) parent.lookup("#lb_error");
 			TextField txt1 = (TextField) parent.lookup("#txt1");
 			TextField txt2 = (TextField) parent.lookup("#txt2");
 			PasswordField txt3 = (PasswordField) parent.lookup("#txt3");
@@ -204,7 +206,27 @@ public class BuyTicketController implements Initializable{
 			vo.setTicket_buy_type(String.valueOf(group.getSelectedToggle().getUserData()));
 			
 			btn_okok.setOnAction(event->{
-				System.out.println(txt1.getText());
+				if(txt1.getText().length()<4) {
+					lb_error.setVisible(true);
+					txt1.requestFocus();
+					return;
+				}
+				if(txt2.getText().length()<4) {
+					lb_error.setVisible(true);
+					txt2.requestFocus();
+					return;
+				}
+				if(txt3.getText().length()<4) {
+					lb_error.setVisible(true);
+					txt3.requestFocus();
+					return;
+				}
+				if(txt4.getText().length()<4) {
+					lb_error.setVisible(true);
+					txt4.requestFocus();
+					return;
+				}
+				lb_error.setVisible(false);				
 				
 				progress.setOpacity(0);
 				childBox.setOpacity(1);
@@ -243,6 +265,10 @@ public class BuyTicketController implements Initializable{
 			
 			btn_cancel.setOnAction(event->{
 				dialog.close();
+			});
+			
+			dialog.setOnCloseRequest(e2->{
+				lb_error.setVisible(false);
 			});
 			
 			// 5. Scene 객체 생성해서 컨테이너 객체 추가하기
