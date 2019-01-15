@@ -55,3 +55,35 @@
 .button{
 	 -fx-font-family: "-윤고딕330";
 }
+
+
+
+.pagination{
+	-fx-base:black;
+}
+.pagination .toggle-button , .mypage .button{
+	-fx-background-radius:15px;
+	-fx-padding: 0px;
+}
+.pagination .button{
+	-fx-padding: 5 15 5 16px;
+}
+.pagination .label {
+	-fx-text-fill:white;
+}
+
+.pagination{
+	-fx-base:black;
+}
+.pagination .toggle-button , .mypage .button{
+	-fx-background-radius:15px;
+	-fx-padding: 0px;
+}
+.pagination .button{
+	-fx-padding: 5 15 5 16px;
+}
+.pagination .label {
+	-fx-text-fill:white;
+}
+
+

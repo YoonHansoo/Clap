@@ -487,7 +487,7 @@ public class MusicList {
 		for (int i = 0; i < list.size(); i++) {
 			// 파란색 라인 HBox 
 			HBox h_Line = new HBox();
-			vbox.setMargin(h_Line, new Insets(0,0,0,90));
+			vbox.setMargin(h_Line, new Insets(0,0,0,0));
 			h_Line.setPrefWidth(710);
 			h_Line.setPrefHeight(3);
 			h_Line.setStyle("-fx-background-color: #090948;");
@@ -496,7 +496,7 @@ public class MusicList {
 			
 			// 전체 HBox 
 			HBox h_Table = new HBox();
-			vbox.setMargin(h_Table, new Insets(0,0,0,80));
+			vbox.setMargin(h_Table, new Insets(0,0,0,0));
 			h_Table.setAlignment(Pos.CENTER_LEFT);
 			h_Table.setPadding(new Insets(10,10,10,10));
 			h_Table.setSpacing(10);
