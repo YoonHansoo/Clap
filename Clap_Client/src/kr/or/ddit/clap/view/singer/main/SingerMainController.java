@@ -250,10 +250,6 @@ public class SingerMainController implements Initializable{
 	@FXML public void songChart() {
 		try {
 			songRank = FXCollections.observableArrayList(ims.selectSinger(singNo));
-//			btn_Song.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-//			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			lb_total.setText("발매곡 (총 "+songRank.size()+"개)");
 			

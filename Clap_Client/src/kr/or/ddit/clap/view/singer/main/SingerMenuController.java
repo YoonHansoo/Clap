@@ -2,30 +2,50 @@ package kr.or.ddit.clap.view.singer.main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTabPane;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Callback;
+import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.album.IAlbumService;
+import kr.or.ddit.clap.service.music.IMusicService;
+import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.singer.ISingerService;
+import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
+import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
+import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
+import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
 /**
@@ -50,7 +70,7 @@ public class SingerMenuController implements Initializable{
 	public static String albumNo; // 파라미터로 받은 선택한 가수의 PK
 	private Registry reg;
 	private IAlbumService ias;
-	private ISingerService ssi;
+	private ISingerService iss;
 	private String temp_img_path = "";
 
 	// 파라미터로 넘기기 위해 전역으로 선언
@@ -71,6 +91,36 @@ public class SingerMenuController implements Initializable{
 	
 	@FXML VBox box;
 	@FXML Label lb_singer;
+	
+	@FXML VBox mainBox;
+	@FXML JFXCheckBox cb_main;
+	@FXML JFXButton btn_Song;
+	@FXML JFXButton btn_Pop;
+	@FXML JFXButton btn_Ost;
+	@FXML JFXButton btn_Other;
+	@FXML StackPane stackpane;
+	
+	@FXML Label lb_total;
+	@FXML Label lb_intro;
+	@FXML Line line_intro;
+	
+	
+	
+	private IMusicService ims;
+	private IPlayListService ipls;
+	private MusicList musicList;
+	private ObservableList<Map> songRank;
+	private ObservableList<Map> popRank;
+	private ObservableList<Map> ostRank;
+	private ObservableList<Map> otherRank;
+	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnPlayList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnPutList = FXCollections.observableArrayList();
+	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
+	private MusicPlayerController mpc;
+	private int itemsForPage;
+	private Pagination p_page;
 
 	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
 	// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
@@ -102,10 +152,18 @@ public class SingerMenuController implements Initializable{
 			tabPane.getSelectionModel().select(menuCount);
 			tabPane.setOnKeyPressed(e->{
 				box.setVisible(false);
+				mainBox.setVisible(false);
+				line_intro.setVisible(false);
+				lb_intro.setVisible(false);
+				txt_intro.setVisible(false);
 				pane2.setVisible(true);				
 			});
 			tabPane.setOnMouseClicked(e->{
 				box.setVisible(false);
+				mainBox.setVisible(false);
+				line_intro.setVisible(false);
+				lb_intro.setVisible(false);
+				txt_intro.setVisible(false);
 				pane2.setVisible(true);
 			});
 			
@@ -125,8 +183,8 @@ public class SingerMenuController implements Initializable{
 			ias = (IAlbumService) reg.lookup("album");
 			aVO = ias.albumDetailInfo(albumNo);
 			
-			ssi = (ISingerService) reg.lookup("singer");
-			sVO = ssi.singerDetailInfo(aVO.getSing_no());
+			iss = (ISingerService) reg.lookup("singer");
+			sVO = iss.singerDetailInfo(aVO.getSing_no());
 			
 			System.out.println(aVO.getSing_no());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
@@ -166,6 +224,26 @@ public class SingerMenuController implements Initializable{
 		// 좋아요는 다른 VO에서 가져와야함...
 		str_like_cnt = like_cnt + "";
 		label_LikeCnt.setText(str_like_cnt);
+		
+		
+		try {
+			// reg로 ISingerService객체를 받아옴
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			
+			ims = (IMusicService) reg.lookup("music");
+			ipls = (IPlayListService) reg.lookup("playlist");
+			itemsForPage = 8;
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
+		
+		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
+				  btnMovieList, mainBox, stackpane);
+
+		// 일간 조회 차트 
+		songChart();
 
 	}
 
@@ -193,84 +271,146 @@ public class SingerMenuController implements Initializable{
 		}
 	}
 
-//	// 수정화면으로 이동
-//	@FXML
-//	public void updateAlbum() {
-//
-//		try {
-//			// 바뀔 화면(FXML)을 가져옴
-//			UpdateAlbumController.albumNo = albumNo;// 가수번호를 변수로 넘겨줌
-//
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource("UpdateAlbum.fxml"));// initialize실행됨
-//			Parent UpdateAlbum = loader.load();
-//			UpdateAlbumController cotroller = loader.getController();
-//			cotroller.initData(aVO, str_like_cnt);
-//			main.getChildren().removeAll();
-//			main.getChildren().setAll(UpdateAlbum);
-//
-//		} catch (IOException e1) {
-//			e1.printStackTrace();
-//		}
-//
-//	}
+	// 메인 재생 버튼 이벤트
+	@FXML public void btnMainPlay() {
+		if (LoginSession.session == null) {
+			return;
+		}
+		
+		ArrayList<String> list = musicCheckList();
+		playListInsert(list,true);
+		if (!MusicMainController.musicplayer.isShowing()) {
+			try {
+				MusicMainController.playerLoad = new FXMLLoader(getClass().getResource("../../musicplayer/MusicPlayer.fxml"));
+				AnchorPane root = MusicMainController.playerLoad.load();
+				Scene scene = new Scene(root);
+				MusicMainController.musicplayer.setTitle("MusicPlayer");
+				MusicMainController.musicplayer.setScene(scene);
+				MusicMainController.musicplayer.show();
+				mpc = MusicMainController.playerLoad.getController();
+				mpc.reFresh();
+				mpc.selectIndex();
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		cb_main.setSelected(false);
+		mainCheck();
+	}
 
-//	@FXML
-//	public void deleteAlbum() {
-//
-//		// Alert창을 출력해 정말 삭제할 지 물어봄
-//		try { if(0>alertConfrimDelete()) 
-//		{ return; }
-//
-//		int cnt = ias.deleteAlbum(albumNo);
-//		System.out.println("삭제 여부:" + cnt);
-//		if (cnt >= 1) {
-//			System.out.println("삭제성공");
-//		}
-//
-//		else {
-//			System.out.println("삭제실패");
-//
-//		}
-//	}
-//	catch(RemoteException e)
-//	{
-//		e.printStackTrace();
-//	}
-//
-//	// 화면전환 
-//		FXMLLoader loader = new FXMLLoader(getClass().getResource("ShowAlbumLIst.fxml")); 
-//	Parent albumList;
-//		  try {
-//		  
-//			  albumList = loader.load(); //ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에 //현재 씬의
-//		//  VBox까지 모두 제거 후 ShowSingerList를 불러야함.
-//		  
-//		  contents.getChildren().removeAll(); // main.getChildren().removeAll();
-//		  contents.getChildren().setAll(albumList);
-//		  
-//		  } catch (IOException e) { e.printStackTrace(); }
-//		  
-//		  
-//		 
-//	}
+	// 메인 추가 버튼 이벤트
+	@FXML public void btnMainAdd() {
+		if (LoginSession.session == null) {
+			return;
+		}
+		
+		ArrayList<String> list = musicCheckList();
+		playListInsert(list,false);
+		cb_main.setSelected(false);
+		mainCheck();
+	}
 
-//	// 사용자가 확인을 누르면 1을 리턴 이외는 -1
-//	public int alertConfrimDelete() {
-//		Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
-//
-//		alertConfirm.setTitle("CONFIRMATION");
-//		alertConfirm.setContentText("정말로 삭제하시겠습니까?(해당 앨범 및 곡이 모두 삭제됩니다)");
-//
-//		// Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
-//		ButtonType confirmResult = alertConfirm.showAndWait().get();
-//
-//		if (confirmResult == ButtonType.OK) {
-//			System.out.println("OK 버튼을 눌렀습니다.");
-//			return 1;
-//		} else if (confirmResult == ButtonType.CANCEL) {
-//			System.out.println("취소 버튼을 눌렀습니다.");
-//			return -1;
-//		}
-//		return -1;
-//	}
+	// 메인 담기 버튼 이벤트
+	@FXML public void btnMainPut() {
+		if (LoginSession.session == null) {
+			return;
+		}
+		
+		ArrayList<String> list = musicCheckList();
+		MyAlbumDialogController.mus_no.clear();
+		MyAlbumDialogController.mus_no = list;
+		musicList.myAlbumdialog();
+		cb_main.setSelected(false);
+		mainCheck();
+	}
+	
+	// 전체 선택 및 해제 메서드
+	@FXML public void mainCheck() {
+		if (cb_main.isSelected()) {
+			for(int i = 0; i < cbnList.size(); i++) {
+				cbnList.get(i).setSelected(true);
+			}
+		} else {
+			for(int i = 0; i < cbnList.size(); i++) {
+				cbnList.get(i).setSelected(false);
+			}
+		}
+	}
+	
+	// 체크 박스 선택한 곡넘버 보내기
+	private ArrayList<String> musicCheckList() {
+		ArrayList<String> list = new ArrayList<>();
+		for (int i = 0; i < cbnList.size(); i++) {
+			if (cbnList.get(i).isSelected()) {
+				list.add(cbnList.get(i).getId());
+			}
+		}
+		return list;
+	}
+	
+	// 가요장르
+	@FXML public void songChart() {
+		try { // 앨범 번호로 찾기
+			songRank = FXCollections.observableArrayList(ims.selectAlbum(SingerMenuController.albumNo));
+			cb_main.setSelected(false);
+			lb_total.setText("수록곡 (총 "+songRank.size()+"개)");
+			
+			pageing(songRank);
+			
+			// 아티스트 소개 y좌표 설정
+			line_intro.setLayoutY(621 + (songRank.size()-1)*73);
+			lb_intro.setLayoutY(626 + (songRank.size()-1)*73);
+			txt_intro.setLayoutY(671 + (songRank.size()-1)*73);
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public VBox createPage(int pageIndex, ObservableList<Map> list, int itemsForPage) {
+        int page = pageIndex * itemsForPage;
+        return musicList.pagenation(list,itemsForPage,page);
+    }
+
+	private void playListInsert(ArrayList<String> list, boolean play) {
+		for (int i = 0; i < list.size(); i++) {
+			PlayListVO vo = new PlayListVO();
+			vo.setMus_no(list.get(i));
+			vo.setMem_id(LoginSession.session.getMem_id());
+			try {
+				ipls.playlistInsert(vo);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			
+			if (MusicMainController.musicplayer.isShowing()) {
+				mpc = MusicMainController.playerLoad.getController();
+				mpc.reFresh();
+				if(play) {
+					mpc.selectIndex();
+				}
+			}
+		}
+	}
+	
+	private void pageing(ObservableList<Map> list) {
+		
+		if (mainBox.getChildren().size() == 8) {
+			mainBox.getChildren().remove(7);
+		}
+		
+		if (list.size() == 0) return;
+		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
+		
+		p_page = new Pagination(totalPage, 0);
+		p_page.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage(pageIndex,list,itemsForPage);
+            }
+	    });
+		
+		mainBox.getChildren().addAll(p_page);
+	}
+	
 }
