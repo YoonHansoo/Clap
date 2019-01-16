@@ -219,10 +219,9 @@ public class MusicList {
 	         @Override 
 	         public void handle(MouseEvent e) { 
 	        	 
-	        	layoutX =  e.getX() - e.getSceneX()/2 ;
+	        	layoutX =  e.getX() - (1005/2 - 150);
 	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
-	        	System.out.println(layoutY);
-	        	System.out.println(mainBox.getHeight());
+	        	System.out.println(layoutX);
 	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.1)) { 
 	        		layoutY += -100;
 	        	}else {
