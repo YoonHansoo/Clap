@@ -123,12 +123,12 @@ public class TheNewMusController implements Initializable{
 
 			if (chbox_main.isSelected()) {
 				for (int i = 0; i < newMusList.size(); i++) {
-					newMusList.get(i).getChBox1().setSelected(true);
+					newMusList.get(i).getChBox().setSelected(true);
 				}
 
 			} else {
 				for (int i = 0; i < newMusList.size(); i++) {
-					newMusList.get(i).getChBox1().setSelected(false);
+					newMusList.get(i).getChBox().setSelected(false);
 				}
 			}
 		}

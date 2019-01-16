@@ -10,10 +10,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.profiles.ReviewMusController">
+<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="768.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.profiles.ReviewMusController">
    <children>
       <Line endX="629.0" layoutX="139.0" layoutY="208.0" startX="-139.0" strokeMiterLimit="20.0" />
-      <VBox prefHeight="883.0" prefWidth="720.0">
+      <VBox prefHeight="816.0" prefWidth="780.0">
          <children>
             <AnchorPane prefHeight="194.0" prefWidth="720.0">
                <children>
@@ -27,7 +27,7 @@
                   <Button layoutX="516.0" layoutY="89.0" mnemonicParsing="false" onAction="#btn_Its" prefHeight="65.0" prefWidth="223.0" style="-fx-background-color: #090948;" text="아티스트" textFill="WHITE" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contents" prefHeight="633.0" prefWidth="739.0">
+            <AnchorPane fx:id="contents" prefHeight="609.0" prefWidth="777.0">
                <children>
                   <JFXTreeTableView fx:id="tbl_Review" layoutX="11.0" layoutY="87.0" prefHeight="400.0" prefWidth="739.0">
                      <columns>

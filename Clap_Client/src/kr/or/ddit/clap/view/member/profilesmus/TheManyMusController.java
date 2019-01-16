@@ -121,12 +121,12 @@ public class TheManyMusController implements Initializable{
 
 			if (chbox_main.isSelected()) {
 				for (int i = 0; i < manyMusList.size(); i++) {
-					manyMusList.get(i).getChBox1().setSelected(true);
+					manyMusList.get(i).getChBox().setSelected(true);
 				}
 
 			} else {
 				for (int i = 0; i < manyMusList.size(); i++) {
-					manyMusList.get(i).getChBox1().setSelected(false);
+					manyMusList.get(i).getChBox().setSelected(false);
 				}
 			}
 		}

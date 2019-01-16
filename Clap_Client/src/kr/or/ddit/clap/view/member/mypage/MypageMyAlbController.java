@@ -127,7 +127,7 @@ public class MypageMyAlbController implements Initializable{
 	@FXML
 	public void btn_del() {
 		for (int i = 0; i < myAlbList.size(); i++) {
-			if (myAlbList.get(i).getchBox1().isSelected()) {
+			if (myAlbList.get(i).getChBox().isSelected()) {
 
 				String user_id = LoginSession.session.getMem_id();
 				MyAlbumVO vo = new MyAlbumVO();

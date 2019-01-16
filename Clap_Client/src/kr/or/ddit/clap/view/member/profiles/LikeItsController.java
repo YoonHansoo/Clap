@@ -169,12 +169,12 @@ public class LikeItsController implements Initializable{
 		public void mainCheck() {
 			if (chbox_main.isSelected()) {
 				for (int i = 0; i < likeList.size(); i++) {
-					likeList.get(i).getchBox1().setSelected(true);
+					likeList.get(i).getChBox().setSelected(true);
 				}
 
 			} else {
 				for (int i = 0; i < likeList.size(); i++) {
-					likeList.get(i).getchBox1().setSelected(false);
+					likeList.get(i).getChBox().setSelected(false);
 				}
 			}
 		}

@@ -48,9 +48,15 @@ public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implement
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
 	}
-	public JFXCheckBox getChBox() {
+	
+	public void createChbox() {
+		if(chBox ==null) {
 		this.chBox = new JFXCheckBox();
 		chBox.setCheckedColor(Color.valueOf("#9c0000"));
+		}
+	}
+	public JFXCheckBox getChBox() {
+		createChbox();
 		return this.chBox;
 	}
 	public JFXCheckBox getChBox1() {

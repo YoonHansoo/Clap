@@ -124,12 +124,12 @@ public class TheManyItsController implements Initializable{
 
 			if (chbox_main.isSelected()) {
 				for (int i = 0; i < manyItsList.size(); i++) {
-					manyItsList.get(i).getChBox1().setSelected(true);
+					manyItsList.get(i).getChBox().setSelected(true);
 				}
 
 			} else {
 				for (int i = 0; i < manyItsList.size(); i++) {
-					manyItsList.get(i).getChBox1().setSelected(false);
+					manyItsList.get(i).getChBox().setSelected(false);
 				}
 			}
 		}

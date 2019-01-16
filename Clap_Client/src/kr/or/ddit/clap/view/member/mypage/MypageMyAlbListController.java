@@ -131,12 +131,12 @@ public class MypageMyAlbListController implements Initializable{
 	public void mainCheck() {
 		if (chbox_main.isSelected()) {
 			for (int i = 0; i < myAlbList.size(); i++) {
-				myAlbList.get(i).getChBox1().setSelected(true);
+				myAlbList.get(i).getChBox().setSelected(true);
 			}
 
 		} else {
 			for (int i = 0; i < myAlbList.size(); i++) {
-				myAlbList.get(i).getChBox1().setSelected(false);
+				myAlbList.get(i).getChBox().setSelected(false);
 			}
 		}
 	}
@@ -144,7 +144,7 @@ public class MypageMyAlbListController implements Initializable{
 	@FXML
 	public void btn_Cl() {
 		for (int i = 0; i < myAlbList.size(); i++) {
-			if (myAlbList.get(i).getChBox1().isSelected()) {
+			if (myAlbList.get(i).getChBox().isSelected()) {
 				MyAlbumListVO vo = new MyAlbumListVO();
 				vo.setMus_no(myAlbList.get(i).getMus_no());
 				vo.setMyalb_no(myAlbNo);
