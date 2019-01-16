@@ -142,7 +142,7 @@ public class MusicMainController implements Initializable {
 	@FXML JFXButton btn_Pop;
 	@FXML JFXButton btn_Ost;
 	@FXML JFXButton btn_Other;
-	@FXML StackPane stackpane;
+	@FXML StackPane singerMusic;
 	
 	@FXML Label lb_total;
 	
@@ -186,7 +186,7 @@ public class MusicMainController implements Initializable {
 		}
 
 		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
-				btnMovieList, mainBox, stackpane);
+				btnMovieList, mainBox, singerMusic);
 		
 		// 실시간차트
 		songChart();

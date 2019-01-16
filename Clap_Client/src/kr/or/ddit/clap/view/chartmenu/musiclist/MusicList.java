@@ -91,7 +91,7 @@ public class MusicList {
 	        	}
 	         } 
 	     };  
-	     stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
+	     this.stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -151,18 +151,7 @@ public class MusicList {
 	        	}
 	         } 
 	     };  
-	     stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
-		
-		
-		try {
-			reg = LocateRegistry.getRegistry("localhost", 8888);
-			ipls = (IPlayListService) reg.lookup("playlist");
-			ims = (IMusicService) reg.lookup("music");
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
+	    
 	
 	}
 	
