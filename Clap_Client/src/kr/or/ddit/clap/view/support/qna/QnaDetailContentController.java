@@ -29,8 +29,10 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.vo.support.QnaVO;
+import kr.or.ddit.clap.vo.support.MessageVO;
 import kr.or.ddit.clap.vo.support.QnaReviewVO;
 import javafx.scene.control.TextArea;
 
@@ -39,6 +41,7 @@ public class QnaDetailContentController implements Initializable {
 	public static String ContentNo;
 	private Registry reg;
 	private IQnaService iqs;
+	private IMessageService imsgs;
 	@FXML
 	Text Text_QnaType;
 	@FXML
@@ -91,8 +94,8 @@ public class QnaDetailContentController implements Initializable {
 			//reg로 IQnaService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);  
 			iqs = (IQnaService) reg.lookup("qna");
-			qVO = iqs.qnaDetailContent(ContentNo);
-			System.out.println(qVO.getQna_no());
+			imsgs=(IMessageService) reg.lookup("message");
+			qVO = iqs.qnaDetailContent(ContentNo);System.out.println(qVO.getMem_id());
 			//파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
 			System.out.println(1);
@@ -197,7 +200,28 @@ public class QnaDetailContentController implements Initializable {
 					ee.printStackTrace();
 				}
 			}
+			
+			//댓글 등록시 글쓴 사용자에게 댓글 알림 가기 
+			if(text_QnaRe.getText().isEmpty()) {
+				errMsg("등록불가", "빈 항목이 있습니다.");
+				return;
+			} else {
+				MessageVO vo = new MessageVO();
+				vo.setMsg_title("댓글이 입력되었습니다.");
+		        vo.setMem_get_id(qVO.getMem_id());
+		        vo.setMsg_read_tf("f");
+				vo.setMem_send_id(LoginSession.session.getMem_id());
+				vo.setMsg_content(text_QnaRe.getText());
+				
+				try {
+					int msgCk = imsgs.insertMessage(vo);
+				} catch(RemoteException ee) {
+					ee.printStackTrace();
+				}
+			}
 		});
+		
+		
 		try {
 			review = iqs.selectListReviewAll(ContentNo);
 			System.out.println(review.size());

@@ -14,12 +14,14 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.fxml.Initializable;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.ticket.ITicketService;
+import kr.or.ddit.clap.view.member.mypage.MypageController;
 import kr.or.ddit.clap.view.ticket.ticket.TicketController;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 import kr.or.ddit.clap.vo.ticket.TicketVO;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,7 +37,8 @@ public class TicketBuyListController implements Initializable{
 	private static String user_id = LoginSession.session.getMem_id();
 	private Registry reg;
 	private ITicketService its;
-	
+
+	public MypageController mypc;
 	private ObservableList<TicketBuyListVO> tickeylist1, currenttickeylist1;
 	private ObservableList<TicketBuyListVO> tickeylist2, currenttickeylist2;
 	private int from, to, itemsForPage, totalPageCnt;
@@ -53,6 +56,10 @@ public class TicketBuyListController implements Initializable{
 	@FXML Pagination p_paging1;
 	@FXML Pagination p_paging2;
 	
+	public void setController(MypageController mypc) {
+		System.out.println("ddd");
+		this.mypc=mypc;
+	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
@@ -199,7 +206,7 @@ public class TicketBuyListController implements Initializable{
 	// 페이징에 맞는 데이터를 가져옴
 	private ObservableList<TicketBuyListVO> getTableViewData2(int from, int to) {
 
-		currenttickeylist2 = FXCollections.observableArrayList(); //
+		currenttickeylist2 = FXCollections.observableArrayList(); 
 		int totSize = tickeylist2.size();
 		for (int i = from; i <= to && i < totSize; i++) {
 
@@ -211,15 +218,8 @@ public class TicketBuyListController implements Initializable{
 	
 	
 	
-	@FXML public void buyTicket() {
-		try {
-		Parent root = FXMLLoader.load(getClass().getResource("../ticket/Ticket.fxml"));
-		contents.getChildren().removeAll();
-		contents.getChildren().setAll(root);
-
-	} catch (IOException e) {
-		e.printStackTrace();
-		}
+	@FXML public void buyTicket(ActionEvent event) {
+		mypc.chTicket();
 	}
 	
 

@@ -53,10 +53,10 @@ import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.view.join.AES256Util;
+import kr.or.ddit.clap.view.ticket.buylist.TicketBuyListController;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.music.MusicVO;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;;
 
 public class MypageController implements Initializable {
@@ -589,7 +589,7 @@ private MypageMyAlbListController iAC;
 
 		// Controller를 받아온다.
 		MypageMyAlbController cotroller = loader.getController();
-
+		
 		// Controller에 setcontroller메소드를 정의한다.
 		// 이 메소드는 this로 받은 자기자신객체를 Controller객체의 멤버변수로 set한다.
 		cotroller.setcontroller(this);
@@ -676,15 +676,39 @@ private MypageMyAlbListController iAC;
 		}
 	}
 	
-	@FXML public void btn_ticketList() {
+	@FXML public void btn_ticketList() { //구매내역 클릭
+		
+
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../../ticket/buylist/ticketbuylist.fxml"));
+			FXMLLoader loader2 = new FXMLLoader(getClass().getResource("../../ticket/buylist/ticketbuylist.fxml"));
+			Parent ticket = loader2.load();
+			TicketBuyListController cotrollerti = loader2.getController();
+			cotrollerti.setController(this);
 			contents.getChildren().removeAll();
-			contents.getChildren().setAll(root);
+			contents.getChildren().setAll(ticket);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//구매내역에서 이용권구매창으로 이동
+	public void chTicket() {
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("../../ticket/ticket/Ticket.fxml"));
+		Parent ChangeAlbMusic;
+		try {
+			ChangeAlbMusic = loader.load();
+			main.getChildren().removeAll();
+			main.getChildren().setAll(ChangeAlbMusic);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 	}
 	
 	 public void chAlbname (MyAlbumVO vo) {

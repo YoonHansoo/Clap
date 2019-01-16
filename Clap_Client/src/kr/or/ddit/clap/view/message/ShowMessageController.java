@@ -65,6 +65,53 @@ public class ShowMessageController implements Initializable{
 			e.printStackTrace();
 		}
 
+		mesTable();
+
+		// 두번클릭시
+		tbl_Message.setOnMouseClicked(e -> {
+			if (e.getClickCount() > 1) {
+				// int index = tbl_Message.getSelectionModel().getSelectedIndex();
+				String msgno = tbl_Message.getSelectionModel().getSelectedItem().getValue().getMsg_no();
+
+				MessageVO mvo = new MessageVO();
+				// 오늘 날짜 가져오기
+				Date now = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+
+				mvo.setMsg_no(msgno);
+				mvo.setMsg_read_tf("t");
+				mvo.setMsg_read_date(sdf.format(now));
+
+				try {
+					imsgs.updateMessage(mvo);
+				} catch (RemoteException e2) {
+					e2.printStackTrace();
+				}
+
+				try {
+					Stage dialogStage = (Stage) p_paging.getScene().getWindow();
+					dialogStage.close();
+					// 바뀔 화면(FXML)을 가져옴
+					MessageTextController.msgno = msgno;// 가수번호를 변수로 넘겨줌
+
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("mestext.fxml"));// init실행됨
+					Parent messageText = loader.load();
+					Scene scene = new Scene(messageText);
+					MessageTextController cotroller = loader.getController();
+					cotroller.givePane(contents);
+
+					mes.setTitle("Meaage");
+					mes.setScene(scene);
+					mes.show();
+
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	public void mesTable() {
 		MessageVO vo = new MessageVO();
 		vo.setMem_get_id(user_id);
 		try {
@@ -113,49 +160,6 @@ public class ShowMessageController implements Initializable{
 		itemsForPage = 5; // 한페이지 보여줄 항목 수 설정
 
 		paging();
-
-		// 두번클릭시
-		tbl_Message.setOnMouseClicked(e -> {
-			if (e.getClickCount() > 1) {
-				// int index = tbl_Message.getSelectionModel().getSelectedIndex();
-				String msgno = tbl_Message.getSelectionModel().getSelectedItem().getValue().getMsg_no();
-
-				MessageVO mvo = new MessageVO();
-				// 오늘 날짜 가져오기
-				Date now = new Date();
-				SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
-
-				mvo.setMsg_no(msgno);
-				mvo.setMsg_read_tf("t");
-				mvo.setMsg_read_date(sdf.format(now));
-
-				try {
-					imsgs.updateMessage(mvo);
-				} catch (RemoteException e2) {
-					e2.printStackTrace();
-				}
-
-				try {
-					Stage dialogStage = (Stage) p_paging.getScene().getWindow();
-					dialogStage.close();
-					// 바뀔 화면(FXML)을 가져옴
-					MessageTextController.msgno = msgno;// 가수번호를 변수로 넘겨줌
-
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("mestext.fxml"));// init실행됨
-					Parent messageText = loader.load();
-					Scene scene = new Scene(messageText);
-					MessageTextController cotroller = loader.getController();
-					cotroller.givePane(contents);
-
-					mes.setTitle("Meaage");
-					mes.setScene(scene);
-					mes.show();
-
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			}
-		});
 	}
 
 	private void paging() {
@@ -198,13 +202,15 @@ public class ShowMessageController implements Initializable{
 	}
 
 	@FXML
-	public void btn_Cl() {
+	public void btn_Cl() throws RemoteException {
 		// 전체 선택 및 해제 메서드
 				for (int i = 0; i < msgList.size(); i++) {
 					if(msgList.get(i).getChBox().isSelected()) {
 						String mesNO=msgList.get(i).getMsg_no();
+						imsgs.deleteMessage(mesNO);
 					}
 				}
+				mesTable();
 
 			} 
 			
