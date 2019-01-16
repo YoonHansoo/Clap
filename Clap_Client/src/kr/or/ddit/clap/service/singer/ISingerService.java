@@ -43,5 +43,8 @@ public interface ISingerService extends Remote {
 	//가수 댓글 등록
 	public int  insertReply (Map<String, String> map) throws RemoteException;
 	
+	//멤버 신고횟수 1 증가 
+	public int insertBlackCnt(String id) throws RemoteException;
+	
 	
 }

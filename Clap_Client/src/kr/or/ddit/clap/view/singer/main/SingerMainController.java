@@ -1,3 +1,7 @@
+/**
+ * 
+ * 윤한수
+ */
 package kr.or.ddit.clap.view.singer.main;
 
 import java.io.IOException;
@@ -25,9 +29,12 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -36,13 +43,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
-import kr.or.ddit.clap.main.createReply;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.singer.ISingerService;
@@ -50,7 +57,6 @@ import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 import kr.or.ddit.clap.view.member.mypage.OtherMypageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
-import kr.or.ddit.clap.view.singer.singer.UpdateSingerController;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
@@ -64,10 +70,9 @@ public class SingerMainController implements Initializable {
 	// 파라미터로 넘기기 위해 전역으로 선언
 	public SingerVO sVO = null;
 	public String str_like_cnt;
-	public static AnchorPane contents;
-	List<Map<String, String>> replyMap;
+	ObservableList<Map<String, String>> replyMap;
 	
-	
+
 	@FXML
 	Label label_singNo;
 	@FXML
@@ -120,9 +125,6 @@ public class SingerMainController implements Initializable {
 	private IPlayListService ipls;
 	private MusicList musicList;
 	private ObservableList<Map> songRank;
-	private ObservableList<Map> popRank;
-	private ObservableList<Map> ostRank;
-	private ObservableList<Map> otherRank;
 	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPlayList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnAddList = FXCollections.observableArrayList();
@@ -131,6 +133,7 @@ public class SingerMainController implements Initializable {
 	private MusicPlayerController mpc;
 	private int itemsForPage;
 	private Pagination p_page;
+	private Pagination p_page1;
 
 	@FXML
 	VBox reply_vbox;
@@ -139,16 +142,9 @@ public class SingerMainController implements Initializable {
 	@FXML
 	AnchorPane singerMain;
 
-	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
-	// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
-	public void givePane(AnchorPane contents) {
-		this.contents = contents;
-		System.out.println("contents 적용완료");
-	}
-	
 	public void setcontroller(AnchorPane main) {
 		this.main = main;
-		
+
 	}
 
 	@Override
@@ -178,7 +174,6 @@ public class SingerMainController implements Initializable {
 		songChart();
 
 		label_singerName1.setText(sVO.getSing_name());
-		// label_singerName2.setText(sVO.getSing_name());
 		label_ActType.setText(sVO.getSing_act_type());
 		label_ActEra.setText(sVO.getSing_act_era());
 		label_DebutEra.setText(sVO.getSing_debut_era());
@@ -217,46 +212,196 @@ public class SingerMainController implements Initializable {
 
 		}
 
-		// 댓글조회
+		
+	// 댓글조회
 		try {
 			System.out.println("singerNo:" + singerNo);
-			replyMap = iss.selectReply(singerNo);
+			replyMap = FXCollections.observableArrayList(iss.selectReply(singerNo));
 			System.out.println("리플사이즈:" + replyMap.size());
 			int size = replyMap.size();
-			// 댓글창 생성
-			createReply.creatReply(reply_vbox, size, iss, singerNo);
+
+			// 댓글 창 생성
+			HBox HboxReply = new HBox();
+			HboxReply.setPrefWidth(100);
+			HboxReply.setPrefHeight(20);
+			HboxReply.setPadding(new Insets(0, 0, 10, 0));
+
+			// 댓글 라벨생성
+			Label reply = new Label();
+			reply.setFont(Font.font("-윤고딕350", 14));
+			reply.setTextFill(Color.valueOf("#000"));
+			reply.setPrefWidth(40);
+			reply.setPrefHeight(40);
+			reply.setText("댓글");
+
+			// 갯수라벨 생성
+			Label replyCnt = new Label();
+			replyCnt.setFont(Font.font("-윤고딕350", 14));
+			replyCnt.setTextFill(Color.valueOf("#9c0000"));
+			replyCnt.setPrefWidth(40);
+			replyCnt.setPrefHeight(40);
+			replyCnt.setText(size + "개");
+
+			// 댓글창과 버튼을 담는 hbox 테두리
+			HBox h_reply = new HBox();
+			h_reply.setPrefWidth(770);
+			h_reply.setPrefHeight(60);
+			h_reply.setStyle("-fx-border-color: #090948");
+			h_reply.setStyle("-fx-background-color: #f0f0f0");
+
+			// TextArea
+			TextArea input_reply = new TextArea();
+			input_reply.setPrefWidth(660);
+			input_reply.setPromptText(
+					"명예회손, 개인정보 유출, 인격권 침해, 허위사실 유포 등은 이용약관 및 관련법률에 의해 제재를 받을 수 있습니다. 건전한 댓글문화 정착을 위해 이용에 주의를 부탁드립니다.");
+			input_reply.setWrapText(true);
+			input_reply.setEditable(true);
+			input_reply.setId("input_reply");
+
+			// 댓글등록버튼
+			JFXButton btnReplyInsert = new JFXButton();
+			// vbox.setMargin(temp_hbox, new Insets(50, 0, 0, 0));
+			HBox.setMargin(btnReplyInsert, new Insets(0, 0, 0, 10));
+			btnReplyInsert.setPrefWidth(130);
+			btnReplyInsert.setPrefHeight(60);
+			btnReplyInsert.setTextFill(Color.valueOf("#fff"));
+			btnReplyInsert.setStyle("-fx-background-color: #090948 ;");
+			btnReplyInsert.setText("댓글등록");
+
+			btnReplyInsert.setOnAction(e -> {
+
+				Map<String, String> rmap = new HashMap<>();
+				String contents = input_reply.getText();
+				String mem_id = LoginSession.session.getMem_id();
+				rmap.put("singerNo", singerNo);
+				rmap.put("contents", contents);
+				rmap.put("mem_id", mem_id);
+
+				try {
+					iss.insertReply(rmap);
+					System.out.println("댓글작성성공");
+					input_reply.setText("");
+
+					// 화면새로고침
+					for (int i = 0; i < 1000; i++) {
+						System.out.println("화면전환");
+					}
+					for (int i = 0; i < 2000000000; i++) {
+					}
+					for (int i = 0; i < 2000000000; i++) {
+
+					}
+					
+					// 화면새로고침
+				//	singerMain = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
+					
+					
+					FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerMain.fxml"));
+					Parent SingerMain = loader.load();
+					SingerMainController cotroller = loader.getController();
+					cotroller.setcontroller(main);
+					singerMain.getChildren().removeAll();
+					singerMain.getChildren().setAll(SingerMain);
+				 	
+				} catch (RemoteException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			});
+
+			// 세팅
+
+			HboxReply.getChildren().addAll(reply, replyCnt);
+			h_reply.getChildren().addAll(input_reply, btnReplyInsert);
+			reply_vbox.getChildren().addAll(HboxReply, h_reply);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		
+		System.out.println("댓글생성 for문 시작");
+		
+		
+		  pageing1(replyMap);
+	
+		
+		
+		
+	}
+	
+	//페이징처리
+	
+	public VBox createPage1(int pageIndex, ObservableList<Map<String,String>> list, int itemsForPage) {
+        int page = pageIndex * itemsForPage;
+        return pagenation(list,itemsForPage,page);
+    }
+	
+	//페이징 처리
+	
+private void pageing1(ObservableList<Map<String,String>> list) {
+	/*	
+		if (reply_vbox.getChildren().size() == 4) {
+			reply_vbox.getChildren().remove(3);
+		}*/
+		
+		if (list.size() == 0) return;
+		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
+		
+		p_page1 = new Pagination(totalPage, 0);
+		p_page1.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage1(pageIndex,list,itemsForPage);
+            }
+	    });
+		
+		reply_vbox.getChildren().addAll(p_page1);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
-		for (int i = 0; i < replyMap.size(); i++) {
-			System.out.println("포문시작");
+	//댓글창을 그려주는 메서드
+	public VBox pagenation(ObservableList<Map<String,String>> list, int itemsForPage, int page) {
+		//임시로 담아주는 객체
+		VBox temp_vbox = new VBox();
+		
+		int size = Math.min(page + itemsForPage, list.size());
+		for (int i = 0; i < size; i++) {
 			HBox hbox = new HBox();
 			hbox.setPrefWidth(731);
 			hbox.setPrefHeight(73);
 			reply_vbox.setMargin(hbox, new Insets(20, 0, 0, 0));
-			
+			System.out.println(i + "번 째 for문");
+
 			ImageView imgView = new ImageView();
 			Image image = new Image(replyMap.get(i).get("MEM_IMAGE").toString());
 			imgView.setImage(image);
 			imgView.setFitWidth(40);
 			imgView.setFitHeight(40);
-			// label_musCount.setText(list.get(i*2).get("MUS_COUNT").toString() + "곡");
 			imgView.setId(replyMap.get(i).get("SING_RE_NO").toString());
-
+			hbox.setMargin(imgView, new Insets(0, 10, 0, 0));
+			// 이미지 클릭했을 때
 			imgView.setOnMouseClicked(e -> {
 				ImageView temp_imgView = (ImageView) e.getSource();
 				for (int j = 0; j < replyMap.size(); j++) {
 					if (temp_imgView.getId().equals(replyMap.get(j).get("SING_RE_NO").toString())) {
-							
-						System.out.println("아이디값" + replyMap.get(j).get("MEM_ID").toString());
+
 						String id = replyMap.get(j).get("MEM_ID").toString();
 						System.out.println("화면전환");
-						
+
 						OtherMypageController.othermemid = id;
-						
-						FXMLLoader loader = new FXMLLoader(getClass().getResource("../../member/mypage/otherMember.fxml"));// initialize실행됨
+						FXMLLoader loader = new FXMLLoader(
+								getClass().getResource("../../member/mypage/otherMember.fxml"));// initialize실행됨
 						Parent otherMember;
 						try {
 							otherMember = loader.load();
@@ -269,10 +414,10 @@ public class SingerMainController implements Initializable {
 				}
 			});
 
-			hbox.setMargin(imgView, new Insets(0, 10, 0, 0));
 			VBox vbox = new VBox();
 			vbox.setPrefWidth(653);
 			vbox.setPrefHeight(73);
+			System.out.println(i + "번 째 for문에 v박스");
 
 			HBox small_hbox = new HBox();
 			small_hbox.setPrefWidth(533);
@@ -282,11 +427,13 @@ public class SingerMainController implements Initializable {
 			label_id.setPrefWidth(40);
 			label_id.setPrefHeight(15);
 			label_id.setText(replyMap.get(i).get("MEM_ID").toString());
+			System.out.println(i + "번 째 for문에 lable박스 멤버아이디" + replyMap.get(i).get("MEM_ID").toString());
 
 			Label label_date = new Label();
 			label_id.setPrefWidth(75);
 			label_id.setPrefHeight(15);
 			label_date.setText(replyMap.get(i).get("SING_RE_INDATE").toString());
+			System.out.println(i + "번 째 for문에 lable박스 날짜" + replyMap.get(i).get("SING_RE_INDATE").toString());
 
 			JFXButton btn_report = new JFXButton();
 			btn_report.setPrefWidth(40);
@@ -296,32 +443,80 @@ public class SingerMainController implements Initializable {
 			btn_report.setTextFill(Color.valueOf("#fff"));
 			btn_report.setStyle("-fx-background-color: #9c0000;");
 			small_hbox.setMargin(btn_report, new Insets(0, 0, 0, 5));
+			System.out.println(i + "번 째 for문에 버튼");
+
+			// 신고버튼 클릭했을 때
+			btn_report.setOnMouseClicked(e -> {
+				JFXButton temp_btn_report = (JFXButton) e.getSource();
+				for (int j = 0; j < replyMap.size(); j++) {
+					if (temp_btn_report.getId().equals(replyMap.get(j).get("SING_RE_NO").toString())) {
+
+						System.out.println("아이디값" + replyMap.get(j).get("MEM_ID").toString());
+						String id = replyMap.get(j).get("MEM_ID").toString();
+						System.out.println("alert 창");
+
+						int check = alertConfrimDelete(id);
+						// No
+						if (check == -1) {
+							return;
+						}
+
+						// Yes
+						try {
+							iss.insertBlackCnt(id);
+						} catch (RemoteException e1) {
+						}
+
+					}
+				}
+			});
+
+			// 삭제버튼 생성
+			JFXButton btn_delete = new JFXButton();
+			btn_delete.setPrefWidth(40);
+			btn_delete.setPrefHeight(15);
+			btn_delete.setText("삭제");
+			btn_delete.setId(replyMap.get(i).get("SING_RE_NO").toString());
+			btn_delete.setTextFill(Color.valueOf("#fff"));
+			btn_delete.setStyle("-fx-background-color: #9c0000;");
+
+			btn_delete.setId(replyMap.get(i).get("SING_RE_NO").toString());
+			small_hbox.setMargin(btn_delete, new Insets(0, 0, 0, 5));
+
+			btn_delete.setVisible(false); // 기본적으로 안보이게 설정
+
+			// 관리자 이거나 리플의 작성자와 세션의 값이 같으면 버튼을 보여준다.
+			if (LoginSession.session.getMem_auth().equals("t")
+					|| LoginSession.session.getMem_id().equals(replyMap.get(i).get("MEM_ID").toString())) {
+				btn_delete.setVisible(true);
+			}
+
+			// 삭제로직
 
 			Label label_contents = new Label();
 			label_contents.setPrefWidth(598);
 			label_contents.setPrefHeight(43);
 			label_contents.setText(replyMap.get(i).get("SING_RE_CONTENT").toString());
+			System.out.println(i + "번 째 for문에 label_contents" + replyMap.get(i).get("SING_RE_CONTENT").toString());
 
 			HBox h_Line = new HBox();
 			// vbox.setMargin(h_Line, new Insets(0,0,0,0));
 			h_Line.setPrefWidth(710);
-			h_Line.setPrefHeight(20);
+			h_Line.setPrefHeight(1);
 			h_Line.setStyle("-fx-background-color:#090948;");
+			System.out.println("h_Line");
 
-			small_hbox.getChildren().addAll(label_id, label_date, btn_report);
+			small_hbox.getChildren().addAll(label_id, label_date, btn_report, btn_delete);
 			vbox.getChildren().addAll(small_hbox, label_contents);
 			hbox.getChildren().addAll(imgView, vbox);
-			reply_vbox.getChildren().addAll(hbox, h_Line);
+			//reply_vbox.getChildren().addAll(hbox, h_Line);
 
+			
+			temp_vbox.getChildren().addAll(hbox,h_Line);
 		}
-
-		/*
-		 * //포문을 돌려서 각각의 행에 onclick메서드를 걸어준다 . for(int i=0; i<musicList.size(); i++) {
-		 * System.out.println("포문시작");
-		 * tbl_music.getTreeItem(i).getValue().getBtn().setOnAction(e->{ Button temp_btn
-		 * = (Button) e.getSource(); for(int i=0; i<replyMap.size(); i++) {
-		 * System.out.println("온클릭 포문 시작"); }
-		 */
+		
+		return temp_vbox;
+		
 	}
 
 	// 메인 재생 버튼 이벤트
@@ -488,6 +683,7 @@ public class SingerMainController implements Initializable {
 		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
 
 		p_page = new Pagination(totalPage, 0);
+		
 		p_page.setPageFactory(new Callback<Integer, Node>() {
 			@Override
 			public Node call(Integer pageIndex) {
@@ -517,6 +713,26 @@ public class SingerMainController implements Initializable {
 			icon_heart.setIconName("HEART");
 		}
 
+	}
+
+	// 경고 알림창
+	public int alertConfrimDelete(String id) {
+		Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
+
+		alertConfirm.setTitle("CONFIRMATION");
+		alertConfirm.setContentText("정말로 " + id + "님을 신고하시겠습니까?");
+
+		// Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
+		ButtonType confirmResult = alertConfirm.showAndWait().get();
+
+		if (confirmResult == ButtonType.OK) {
+			System.out.println("OK 버튼을 눌렀습니다.");
+			return 1;
+		} else if (confirmResult == ButtonType.CANCEL) {
+			System.out.println("취소 버튼을 눌렀습니다.");
+			return -1;
+		}
+		return -1;
 	}
 
 	private void resetCnt() throws RemoteException {

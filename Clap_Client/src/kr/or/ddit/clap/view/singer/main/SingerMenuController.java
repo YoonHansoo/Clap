@@ -125,12 +125,18 @@ public class SingerMenuController implements Initializable{
 	private int itemsForPage;
 	private Pagination p_page;
 
-	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
+/*	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
 	// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
 	public void givePane(AnchorPane contents) {
 		this.contents = contents;
 		System.out.println("contents 적용완료");
 	}
+*/	
+	public void setcontroller(AnchorPane main) {
+		this.main = main;
+
+	}
+	
 	
 
 	@Override

@@ -50,10 +50,8 @@ import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 import kr.or.ddit.clap.view.genremusic.main.GenreMusicMenuController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
-import kr.or.ddit.clap.view.singer.main.SingerAlbumController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
-import kr.or.ddit.clap.view.singer.main.SingerMusicController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
@@ -135,6 +133,7 @@ public class MusicMainController implements Initializable {
 
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
+	
 	
 	@FXML VBox mainBox;
 	@FXML JFXCheckBox cb_main;
