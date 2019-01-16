@@ -86,6 +86,13 @@
 		set mem_image=#mem_image# ,mem_intro=#mem_intro#
 		where mem_id = #mem_id#
 	</update>
+
+	<!-- 등급 바꾸기. 일반, vip	 -->
+	<update id="updateGrade" parameterClass="memberVO">
+		update member
+		set mem_grade=#mem_grade#
+		where mem_id = #mem_id#
+	</update>
 	
 	
 	<select id="searchMemList" resultClass="memberVO"  parameterClass="memberVO">

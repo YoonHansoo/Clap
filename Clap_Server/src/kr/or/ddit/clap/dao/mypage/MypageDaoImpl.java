@@ -156,6 +156,19 @@ public class MypageDaoImpl implements IMypageDao{
 		return cnt;
 	}
 
+	@Override
+	public int updateGrade(MemberVO vo) {
+		int cnt = 0;
+		try {
+	
+			cnt = smc.update("mypage.updateGrade", vo);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
 	
 	
 	}

@@ -37,6 +37,7 @@ public interface IMypageDao {
 	
 	public int  updateAll(MemberVO vo);
 
+	public int  updateGrade(MemberVO vo);
 	
 	
 }

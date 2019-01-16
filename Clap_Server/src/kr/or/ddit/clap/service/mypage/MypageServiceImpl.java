@@ -80,6 +80,11 @@ public class MypageServiceImpl   extends UnicastRemoteObject implements IMypageS
 		return mypageDao.updateAll(vo);
 	}
 
+	@Override
+	public int updateGrade(MemberVO vo) throws RemoteException {
+		return mypageDao.updateGrade(vo);
+	}
+
 	
 
 	

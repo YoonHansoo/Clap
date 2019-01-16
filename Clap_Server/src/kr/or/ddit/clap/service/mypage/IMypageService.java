@@ -34,5 +34,6 @@ public interface IMypageService  extends Remote {
 	
 	public int  updateAll(MemberVO vo) throws RemoteException;
 	
+	public int  updateGrade(MemberVO vo) throws RemoteException;
 	
 }
