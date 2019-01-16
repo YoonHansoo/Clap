@@ -26,6 +26,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
@@ -41,8 +42,10 @@ import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.singer.ISingerService;
+import kr.or.ddit.clap.view.album.album.SelectSingerController;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
+import kr.or.ddit.clap.view.member.mypage.OtherMypageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
@@ -141,9 +144,24 @@ public class SingerMenuController implements Initializable{
 		}
 
 		try {
-			AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
+			//AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
+			
+				/////
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerMain.fxml"));
+			Parent SingerMain= loader.load(); 
+			SingerMainController cotroller = loader.getController();
+			
+			cotroller.setcontroller(main);
+///
+				
 			singerMain.getChildren().removeAll();
-			singerMain.getChildren().setAll(pane);
+			singerMain.getChildren().setAll(SingerMain);
+			
+			
+			
+			
+			
 			
 			StackPane pane2 = FXMLLoader.load(getClass().getResource("SingerAlbum.fxml"));
 			pane2.setVisible(false);

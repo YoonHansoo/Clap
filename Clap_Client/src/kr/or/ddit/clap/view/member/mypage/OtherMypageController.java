@@ -30,12 +30,13 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.text.Text;
+import javafx.scene.layout.AnchorPane;
 
 public class OtherMypageController implements Initializable{
 
 	private Registry reg;
 	
-	private static String othermemid;
+	public static String othermemid;
 	
 	private IMypageService ims;
 	private IMusicReviewService imrs;
@@ -49,6 +50,7 @@ public class OtherMypageController implements Initializable{
 	@FXML Text text_UserInfo;
 	
 	private int no1,no2,no3 =0;
+	
 	
 	private ObservableList<MusicReviewVO> revList;
 	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review;
@@ -72,6 +74,8 @@ public class OtherMypageController implements Initializable{
 	@FXML TreeTableColumn<MusicHistoryVO,String> col_NMtitle;
 	@FXML TreeTableColumn<MusicHistoryVO,String> col_NMdate;
 
+	@FXML AnchorPane main;
+
 
 	
 	@Override
@@ -87,7 +91,7 @@ public class OtherMypageController implements Initializable{
 			e.printStackTrace();
 		}
 		
-		othermemid="user2";
+		
 		label_Id.setText(othermemid);	//아이디 넣기
 		MemberVO vo =  new MemberVO();
 		vo.setMem_id(othermemid);
@@ -99,6 +103,12 @@ public class OtherMypageController implements Initializable{
 			e.printStackTrace();
 		}
 		
+		
+		
+		
+		if(mvo.getMem_image()==null) {
+			mvo.setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+	   }
 		
 		//이미지 설정
 		Image img = new Image(mvo.getMem_image());

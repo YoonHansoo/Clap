@@ -23,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,7 +48,9 @@ import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
+import kr.or.ddit.clap.view.member.mypage.OtherMypageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
+import kr.or.ddit.clap.view.singer.singer.UpdateSingerController;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
@@ -63,6 +66,8 @@ public class SingerMainController implements Initializable {
 	public String str_like_cnt;
 	public static AnchorPane contents;
 	List<Map<String, String>> replyMap;
+	
+	
 	@FXML
 	Label label_singNo;
 	@FXML
@@ -139,6 +144,11 @@ public class SingerMainController implements Initializable {
 	public void givePane(AnchorPane contents) {
 		this.contents = contents;
 		System.out.println("contents 적용완료");
+	}
+	
+	public void setcontroller(AnchorPane main) {
+		this.main = main;
+		
 	}
 
 	@Override
@@ -242,7 +252,21 @@ public class SingerMainController implements Initializable {
 					if (temp_imgView.getId().equals(replyMap.get(j).get("SING_RE_NO").toString())) {
 							
 						System.out.println("아이디값" + replyMap.get(j).get("MEM_ID").toString());
+						String id = replyMap.get(j).get("MEM_ID").toString();
 						System.out.println("화면전환");
+						
+						OtherMypageController.othermemid = id;
+						
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../../member/mypage/otherMember.fxml"));// initialize실행됨
+						Parent otherMember;
+						try {
+							otherMember = loader.load();
+							main.getChildren().removeAll();
+							main.getChildren().setAll(otherMember);
+						} catch (IOException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
 					}
 				}
 			});
