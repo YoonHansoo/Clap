@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="1500.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -584,9 +584,9 @@
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <Line endX="938.0" endY="175.0" layoutY="227.0" startX="62.0" startY="175.0" stroke="#aeaeae" />
-                  <Label layoutX="72.0" layoutY="418.0" text="실시간 차트" />
-                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-60.0" layoutY="430.0" prefHeight="80.0" prefWidth="611.0">
+                  <Line endX="938.0" endY="175.0" layoutY="227.0" startX="51.0" startY="175.0" stroke="#aeaeae" />
+                  <Label layoutX="50.0" layoutY="418.0" text="실시간 차트" />
+                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-60.0" layoutY="452.0" prefHeight="80.0" prefWidth="611.0">
                      <children>
                         <VBox fx:id="mainBox" maxWidth="610.0" minWidth="600.0" prefHeight="80.0" prefWidth="580.0">
                            <children>
@@ -628,14 +628,14 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" maxWidth="500.0" minWidth="555.0" spacing="20.0">
+                              <HBox alignment="CENTER_LEFT" maxWidth="602.0" minWidth="555.0" prefHeight="15.0" prefWidth="602.0" spacing="20.0">
                                  <children>
                                     <Label text="순위">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="58.0" />
+                                          <Insets left="70.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label text="곡정보">
@@ -643,7 +643,7 @@
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="48.0" />
+                                          <Insets left="61.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label text="듣기">
@@ -667,7 +667,7 @@
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="5.0" />
+                                          <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label text="뮤비">
@@ -734,6 +734,13 @@
                         <Image url="@image.png" />
                      </image>
                   </ImageView>
+                  <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="277.0" startX="41.0" startY="175.0" />
+                  <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="1038.0" startX="41.0" startY="175.0" />
+                  <JFXButton layoutX="542.0" layoutY="991.0" prefHeight="223.0" prefWidth="398.0" style="-fx-background-color: #b8b8b8;" text="★  G    A    M    E  ★">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="160.0" prefWidth="1005.0" />
