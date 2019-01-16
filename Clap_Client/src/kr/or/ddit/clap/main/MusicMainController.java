@@ -42,6 +42,7 @@ import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.service.music.IMusicService;
+import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
@@ -126,6 +127,7 @@ public class MusicMainController implements Initializable {
 	public static Stage musicplayer = new Stage();
 	private ILoginService ils;
 	private IAlbumService ias;
+	private IMusicHistoryService imhs;
 	private IMessageService imsgs;
 	public static FXMLLoader playerLoad;
 	public static Stage movieStage = new Stage();
@@ -170,6 +172,7 @@ public class MusicMainController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
 			ias = (IAlbumService) reg.lookup("album");
+			imhs = (IMusicHistoryService) reg.lookup("history");
 			imsgs = (IMessageService) reg.lookup("message");
 			
 			ims = (IMusicService) reg.lookup("music");
@@ -536,11 +539,13 @@ public class MusicMainController implements Initializable {
 	// 가요장르
 	@FXML public void songChart() {
 		try {
-			songRank = FXCollections.observableArrayList(ims.selectSinger(SingerMainController.singerNo));
+			songRank = FXCollections.observableArrayList(imhs.toDaySelect());
+//			songRank = FXCollections.observableArrayList(imhs.toDaySelect());
 			cb_main.setSelected(false);
 //			lb_total.setText("발매곡 (총 "+songRank.size()+"개)");
 			
 			pageing(songRank);
+//			musicList.musicList(songRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();

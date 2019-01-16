@@ -270,10 +270,10 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <Label layoutX="92.0" layoutY="388.0" text="실시간 차트" />
-                  <StackPane fx:id="stackpane" layoutX="-50.0" layoutY="395.0" prefWidth="1022.0">
+                  <Label layoutX="72.0" layoutY="388.0" text="실시간 차트" />
+                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-50.0" layoutY="400.0" prefWidth="1022.0">
                      <children>
-                        <VBox fx:id="mainBox">
+                        <VBox fx:id="mainBox" maxWidth="300.0" minWidth="565.0" prefHeight="80.0" prefWidth="300.0">
                            <children>
                               <HBox alignment="CENTER_LEFT" spacing="1.0">
                                  <children>
@@ -313,31 +313,31 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" spacing="20.0">
+                              <HBox alignment="CENTER_LEFT" maxWidth="500.0" minWidth="555.0" spacing="20.0">
                                  <children>
-                                    <Label text="번호">
+                                    <Label text="순위">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="70.0" />
+                                          <Insets left="58.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label text="곡정보">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
-                                       <padding>
-                                          <Insets left="65.0" />
-                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="48.0" />
+                                       </HBox.margin>
                                     </Label>
                                     <Label text="듣기">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
-                                       <padding>
-                                          <Insets left="300.0" />
-                                       </padding>
+                                       <HBox.margin>
+                                          <Insets left="90.0" />
+                                       </HBox.margin>
                                     </Label>
                                     <Label text="추가">
                                        <font>
@@ -368,7 +368,7 @@
                                     <Insets left="60.0" />
                                  </padding>
                                  <VBox.margin>
-                                    <Insets bottom="10.0" />
+                                    <Insets />
                                  </VBox.margin>
                               </HBox>
                            </children>
@@ -378,7 +378,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <JFXTabPane layoutX="529.0" layoutY="409.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
+                  <JFXTabPane layoutX="549.0" layoutY="409.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
                      <tabs>
                         <Tab text="     #1     ">
                           <content>
@@ -692,7 +692,7 @@
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <VBox layoutX="529.0" layoutY="375.0" prefHeight="34.0" prefWidth="398.0" style="-fx-background-color: white;">
+                  <VBox layoutX="549.0" layoutY="375.0" prefHeight="34.0" prefWidth="398.0" style="-fx-background-color: white;">
                      <children>
                         <Label text="에디터 추천 ">
                            <VBox.margin>

@@ -227,7 +227,6 @@ public class SingerMainController implements Initializable {
 			createReply.creatReply(reply_vbox, size, iss, singerNo);
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -264,7 +263,6 @@ public class SingerMainController implements Initializable {
 							main.getChildren().removeAll();
 							main.getChildren().setAll(otherMember);
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					}
