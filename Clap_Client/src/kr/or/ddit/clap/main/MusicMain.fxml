@@ -179,7 +179,7 @@
                         <FontAwesomeIcon fill="#9c0000" iconName="COMMENT" size="2.3em" wrappingWidth="21.0" />
                      </graphic>
                   </JFXButton>
-                  <Label fx:id="la_messageCnt" layoutX="785.0" layoutY="52.0" text="11" textFill="WHITE">
+                  <Label fx:id="la_messageCnt" alignment="CENTER" layoutX="782.0" layoutY="52.0" prefHeight="21.0" prefWidth="26.0" text="1" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
