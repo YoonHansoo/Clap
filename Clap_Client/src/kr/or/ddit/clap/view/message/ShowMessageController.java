@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -47,61 +48,64 @@ public class ShowMessageController implements Initializable{
 	@FXML TreeTableColumn<MessageVO ,String> col_SendId;
 	@FXML TreeTableColumn<MessageVO ,String> col_SendDate;
 	@FXML TreeTableColumn<MessageVO ,String> col_ReadDate;
+	@FXML TreeTableColumn<MessageVO, JFXCheckBox> col_Check;
 	@FXML Pagination p_paging;
 	@FXML AnchorPane contents; 
 	public static Stage mes = new Stage();
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imsgs = (IMessageService) reg.lookup("message");
-			
+
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
 			e.printStackTrace();
 		}
-		
-		MessageVO vo  =new MessageVO();
+
+		MessageVO vo = new MessageVO();
 		vo.setMem_get_id(user_id);
 		try {
-			msgList=FXCollections.observableArrayList(imsgs.selectMessage(vo));
+			msgList = FXCollections.observableArrayList(imsgs.selectMessage(vo));
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 		for (int i = 0; i < msgList.size(); i++) {
-			if(msgList.get(i).getMsg_read_tf().equals("f")) {
-			//이미지 넣어주기
-			 ImageView img = new ImageView("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\message.png");
-				 msgList.get(i).setImageview(img);
-				 msgList.get(i).getImageview().setFitWidth(50);
-				 msgList.get(i).getImageview().setFitHeight(50);
-			}else {
+			if (msgList.get(i).getMsg_read_tf().equals("f")) {
+				// 이미지 넣어주기
+				ImageView img = new ImageView("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\message.png");
+				msgList.get(i).setImageview(img);
+				msgList.get(i).getImageview().setFitWidth(50);
+				msgList.get(i).getImageview().setFitHeight(50);
+			} else {
 				ImageView img = new ImageView("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\open.png");
-				 msgList.get(i).setImageview(img);
-				 msgList.get(i).getImageview().setFitWidth(50);
-				 msgList.get(i).getImageview().setFitHeight(50);
+				msgList.get(i).setImageview(img);
+				msgList.get(i).getImageview().setFitWidth(50);
+				msgList.get(i).getImageview().setFitHeight(50);
 			}
 		}
-		col_imgeview.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImageview()));
+		col_imgeview.setCellValueFactory(
+				param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImageview()));
 
 		col_title.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMsg_title()));
 
-		col_SendId
-				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_send_id()));
+		col_SendId.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_send_id()));
 
-		col_SendDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMsg_send_date().substring(0, 10)));
+		col_SendDate.setCellValueFactory(
+				param -> new SimpleStringProperty(param.getValue().getValue().getMsg_send_date().substring(0, 10)));
+		col_Check.setCellValueFactory(
+				param -> new SimpleObjectProperty<JFXCheckBox>(param.getValue().getValue().getChBox()));
 
 		for (int i = 0; i < msgList.size(); i++) {
-			if(msgList.get(i).getMsg_read_date() != null) {
-				msgList.get(i).setMsg_read_date( msgList.get(i).getMsg_read_date().substring(0, 10));
-				}
+			if (msgList.get(i).getMsg_read_date() != null) {
+				msgList.get(i).setMsg_read_date(msgList.get(i).getMsg_read_date().substring(0, 10));
 			}
-				col_ReadDate.setCellValueFactory(
-						param -> new SimpleStringProperty(param.getValue().getValue().getMsg_read_date()));
-				
-			
-		
+		}
+		col_ReadDate
+				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMsg_read_date()));
+
 		TreeItem<MessageVO> root = new RecursiveTreeItem<>(msgList, RecursiveTreeObject::getChildren);
 		tbl_Message.setRoot(root);
 		tbl_Message.setShowRoot(false);
@@ -109,50 +113,47 @@ public class ShowMessageController implements Initializable{
 		itemsForPage = 5; // 한페이지 보여줄 항목 수 설정
 
 		paging();
-		
-		
-		//두번클릭시
-		tbl_Message.setOnMouseClicked(e ->{
-			if (e.getClickCount()  > 1) {
-				//int index = tbl_Message.getSelectionModel().getSelectedIndex();
+
+		// 두번클릭시
+		tbl_Message.setOnMouseClicked(e -> {
+			if (e.getClickCount() > 1) {
+				// int index = tbl_Message.getSelectionModel().getSelectedIndex();
 				String msgno = tbl_Message.getSelectionModel().getSelectedItem().getValue().getMsg_no();
-				
-				MessageVO mvo  =new MessageVO();
-				//오늘 날짜 가져오기
+
+				MessageVO mvo = new MessageVO();
+				// 오늘 날짜 가져오기
 				Date now = new Date();
 				SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
-				
+
 				mvo.setMsg_no(msgno);
 				mvo.setMsg_read_tf("t");
 				mvo.setMsg_read_date(sdf.format(now));
-				
+
 				try {
 					imsgs.updateMessage(mvo);
 				} catch (RemoteException e2) {
 					e2.printStackTrace();
 				}
-				
+
 				try {
 					Stage dialogStage = (Stage) p_paging.getScene().getWindow();
 					dialogStage.close();
-					//바뀔 화면(FXML)을 가져옴
-					MessageTextController.msgno = msgno;//가수번호를 변수로 넘겨줌
-					
+					// 바뀔 화면(FXML)을 가져옴
+					MessageTextController.msgno = msgno;// 가수번호를 변수로 넘겨줌
+
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("mestext.fxml"));// init실행됨
-					Parent messageText= loader.load(); 
+					Parent messageText = loader.load();
 					Scene scene = new Scene(messageText);
 					MessageTextController cotroller = loader.getController();
-					cotroller.givePane(contents); 
-					
+					cotroller.givePane(contents);
+
 					mes.setTitle("Meaage");
 					mes.setScene(scene);
 					mes.show();
-					
-					
-					
+
 				} catch (IOException e1) {
 					e1.printStackTrace();
-				} 
+				}
 			}
 		});
 	}
@@ -160,39 +161,56 @@ public class ShowMessageController implements Initializable{
 	private void paging() {
 		totalPageCnt = msgList.size() % itemsForPage == 0 ? msgList.size() / itemsForPage
 				: msgList.size() / itemsForPage + 1;
-		
+
 		p_paging.setPageCount(totalPageCnt); // 전체 페이지 수 설정
-		
+
 		p_paging.setPageFactory((Integer pageIndex) -> {
-			
+
 			from = pageIndex * itemsForPage;
 			to = from + itemsForPage - 1;
-			
-			
-			TreeItem<MessageVO> root = new RecursiveTreeItem<>(getTableViewData(from, to), RecursiveTreeObject::getChildren);
+
+			TreeItem<MessageVO> root = new RecursiveTreeItem<>(getTableViewData(from, to),
+					RecursiveTreeObject::getChildren);
 			tbl_Message.setRoot(root);
 			tbl_Message.setShowRoot(false);
 			return tbl_Message;
 		});
 	}
-	
-	//페이징에 맞는 데이터를 가져옴
-private ObservableList<MessageVO> getTableViewData(int from, int to) {
-		
-	currentMsgList = FXCollections.observableArrayList(); //
+
+	// 페이징에 맞는 데이터를 가져옴
+	private ObservableList<MessageVO> getTableViewData(int from, int to) {
+
+		currentMsgList = FXCollections.observableArrayList(); //
 		int totSize = msgList.size();
 		for (int i = from; i <= to && i < totSize; i++) {
-			
+
 			currentMsgList.add(msgList.get(i));
 		}
-		
+
 		return currentMsgList;
-	
+
 	}
 
-@FXML public void btn_Ok() {
-	Stage dialogStage = (Stage) p_paging.getScene().getWindow();
-	dialogStage.close();
-}
+	@FXML
+	public void btn_Ok() {
+		Stage dialogStage = (Stage) p_paging.getScene().getWindow();
+		dialogStage.close();
+	}
+
+	@FXML
+	public void btn_Cl() {
+		// 전체 선택 및 해제 메서드
+				for (int i = 0; i < msgList.size(); i++) {
+					if(msgList.get(i).getChBox().isSelected()) {
+						String mesNO=msgList.get(i).getMsg_no();
+					}
+				}
+
+			} 
+			
+			
+		
+
+	}
 
 }
