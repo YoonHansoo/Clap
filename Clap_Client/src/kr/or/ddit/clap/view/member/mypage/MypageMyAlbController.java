@@ -178,14 +178,18 @@ public class MypageMyAlbController implements Initializable{
 		try {
 			int OK = imas.updateMyalb(vo);
 			if (OK > 0) {
-				warning("앨범명 변경 완료");
+				infoMsg("앨범명 변경 완료","");
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-
+		
+		
+	
+		
 		Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
 		dialogStage.close();
+		
 	}
 
 	public void infoMsg(String headerText, String msg) {
