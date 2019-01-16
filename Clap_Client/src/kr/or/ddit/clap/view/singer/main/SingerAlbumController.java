@@ -57,7 +57,7 @@ public class SingerAlbumController implements Initializable{
 			e.printStackTrace();
 		}
 		
-		musicList = new MusicList( btnAddList,mainBox);
+		musicList = new MusicList( btnAddList,mainBox,stackpane);
 		pageing(list);
 		
 		

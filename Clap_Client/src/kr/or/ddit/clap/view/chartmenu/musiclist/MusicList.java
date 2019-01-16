@@ -76,23 +76,6 @@ public class MusicList {
 		this.stackpane = stackpane;
 		this.mainBox = mainBox;
 		
-		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
-	         @Override 
-	         public void handle(MouseEvent e) { 
-	        	 
-	        	layoutX =  e.getX() - e.getSceneX()/2 ;
-	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
-	        	System.out.println(layoutY);
-	        	System.out.println(mainBox.getHeight());
-	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.75)) { 
-	        		layoutY += -100;
-	        	}else {
-	        		layoutY += 110;
-	        	}
-	         } 
-	     };  
-	     this.stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
-		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ipls = (IPlayListService) reg.lookup("playlist");
@@ -130,28 +113,22 @@ public class MusicList {
 		
 	}
 	
-	public MusicList( ObservableList<JFXButton> btnAddList, VBox mainBox) {
+	public MusicList( ObservableList<JFXButton> btnAddList, VBox mainBox, StackPane stackpane) {
 
 		super();
 		this.btnAddList = btnAddList;
 		this.mainBox = mainBox;
+		this.stackpane = stackpane;
 		
-		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
-	         @Override 
-	         public void handle(MouseEvent e) { 
-	        	 
-	        	layoutX =  e.getX() - e.getSceneX()/2 ;
-	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
-	        	System.out.println(layoutY);
-	        	System.out.println(mainBox.getHeight());
-	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.75)) { 
-	        		layoutY += -100;
-	        	}else {
-	        		layoutY += 110;
-	        	}
-	         } 
-	     };  
-	    
+		try {
+			reg = LocateRegistry.getRegistry("localhost", 8888);
+			ipls = (IPlayListService) reg.lookup("playlist");
+			ims = (IMusicService) reg.lookup("music");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 	
 	}
 	
@@ -237,6 +214,23 @@ public class MusicList {
 	
 	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
+		
+		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
+	         @Override 
+	         public void handle(MouseEvent e) { 
+	        	 
+	        	layoutX =  e.getX() - e.getSceneX()/2 ;
+	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
+	        	System.out.println(layoutY);
+	        	System.out.println(mainBox.getHeight());
+	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.1)) { 
+	        		layoutY += -100;
+	        	}else {
+	        		layoutY += 110;
+	        	}
+	         } 
+	     };  
+	     this.stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
 		
 		if (LoginSession.session == null) {
 			return;
