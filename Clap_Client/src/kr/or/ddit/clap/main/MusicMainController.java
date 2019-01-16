@@ -177,7 +177,7 @@ public class MusicMainController implements Initializable {
 			
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
-			itemsForPage = 8;
+			itemsForPage = 10;
 			
 			
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
@@ -539,13 +539,10 @@ public class MusicMainController implements Initializable {
 	// 가요장르
 	@FXML public void songChart() {
 		try {
-			songRank = FXCollections.observableArrayList(imhs.toDaySelect());
-//			songRank = FXCollections.observableArrayList(imhs.toDaySelect());
+			songRank = FXCollections.observableArrayList(imhs.top10Select());
 			cb_main.setSelected(false);
-//			lb_total.setText("발매곡 (총 "+songRank.size()+"개)");
 			
-			pageing(songRank);
-//			musicList.musicList(songRank);
+			musicList.musicList(songRank);
 			
 		} catch (RemoteException e) {
 			e.printStackTrace();
