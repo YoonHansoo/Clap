@@ -45,7 +45,7 @@ public class NoticeBoardUpdateController implements Initializable {
 	// 전 화면에 있는 데이터를 그대로 가져와  세팅해주는 메서드
 	public void initData(NoticeBoardVO nVO) {
 		System.out.println("Notice-initData");
-		
+		this.nVO= nVO;
 		Text_ntcTitle.setText(nVO.getNotice_title());
 		Text_ntcContent.setText(nVO.getNotice_content());
 		lb_id.setText(LoginSession.session.getMem_id());
@@ -78,6 +78,7 @@ public class NoticeBoardUpdateController implements Initializable {
 				nVO.setNotice_title(Text_ntcTitle.getText());
 				nVO.setNotice_content(Text_ntcContent.getText());
 				nVO.setMem_id(LoginSession.session.getMem_id());
+				nVO.setNotice_view_cnt(nVO.getNotice_view_cnt());
 				nVO.setNotice_no(NoticeNo);
 				
 				try {

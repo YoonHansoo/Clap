@@ -50,7 +50,9 @@
 	<!-- 댓글 등록 insert -->
 	<insert id="insertQnaReview" parameterClass="QnaReviewVO">
 	<!-- QNA_RE_NO 시퀀스 만들기 -->
-	
+	<selectKey resultClass="String" keyProperty="qna_re_no">
+			select SEQ_QNA_RE_NO.nextval from dual
+	</selectKey>
 		insert into qna_review
 				(QNA_RE_NO, QNA_RE_CONTENT, QNA_RE_INDATE, MEM_ID, QNA_NO)
 		values
@@ -60,12 +62,14 @@
 	
 	
 	
-	<!-- 댓글 select -->
-	<select id="selectListReviewAll" resultClass="QnaReviewVO">
+	<!-- 댓글 나타내기select -->
+	<select id="selectListReviewAll" resultClass="QnaReviewVO" parameterClass="String">
 			select
 					qna_re_no, qna_re_content, qna_re_indate, mem_id, qna_no
 			  from 
 			  		qna_review
+             where 
+             		qna_no = #String#
 	</select>
 	
 	

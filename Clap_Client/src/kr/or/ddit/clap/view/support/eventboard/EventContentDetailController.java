@@ -19,6 +19,7 @@ import com.jfoenix.controls.JFXButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 public class EventContentDetailController implements Initializable  {
 
@@ -43,6 +44,10 @@ public class EventContentDetailController implements Initializable  {
 	ImageView ImageView;
 	@FXML
 	Label lb_Content;
+	@FXML
+	TextArea text_cont;
+	@FXML
+	Text Text_ID;
 	
 	
 	// ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에
@@ -63,6 +68,8 @@ public class EventContentDetailController implements Initializable  {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+			text_cont.setDisable(true);
 		
 		try {
 			System.out.println("EventContentDetailController : "+ContentNo);
@@ -87,6 +94,7 @@ public class EventContentDetailController implements Initializable  {
 		Text_EventSDate.setText(eVO.getEvent_sdate());
 		Text_EventEDate.setText(eVO.getEvent_edate());
 		lb_Content.setText(eVO.getEvent_content());
+		Text_ID.setText(eVO.getMem_id());
 		
 		Image img = new Image(eVO.getEvent_image());
 		System.out.println("이미지 경로 : " + eVO.getEvent_image());

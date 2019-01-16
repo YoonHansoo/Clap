@@ -15,6 +15,7 @@ import kr.or.ddit.clap.dao.qna.QnaDaoImpl;
 import kr.or.ddit.clap.dao.singer.SingerDaoImpl;
 import kr.or.ddit.clap.service.singer.SingerServiceImpl;
 import kr.or.ddit.clap.vo.singer.SingerVO;
+import kr.or.ddit.clap.vo.support.QnaReviewVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
@@ -67,6 +68,16 @@ public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 	@Override
 	public int updateCount(String qna_no) throws RemoteException {
 		return qnaDao.updateCount(qna_no);
+	}
+
+	@Override
+	public int insertQnaReview(QnaReviewVO vo) throws RemoteException {
+		return qnaDao.insertQnaReview(vo);
+	}
+
+	@Override
+	public List<QnaReviewVO> selectListReviewAll(String qna_no) throws RemoteException {
+		return qnaDao.selectListReviewAll(qna_no);
 	}
 	
 

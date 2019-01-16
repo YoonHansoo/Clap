@@ -14,6 +14,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.clap.main.DBUtil;
+import kr.or.ddit.clap.vo.support.QnaReviewVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public class QnaDaoImpl implements IQnaDao{
@@ -113,6 +114,29 @@ public class QnaDaoImpl implements IQnaDao{
 		}
 		
 		return cnt;
+	}
+
+	@Override
+	public int insertQnaReview(QnaReviewVO vo) {
+		int cnt =0;
+		try {
+			Object obj = smc.insert("qna.insertQnaReview", vo);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<QnaReviewVO> selectListReviewAll(String qna_no) {
+		List<QnaReviewVO> list = new ArrayList<QnaReviewVO>();
+		//int cnt = 0;
+		try {
+			list = smc.queryForList("qna.selectListReviewAll", qna_no);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
 	}
 		
 		

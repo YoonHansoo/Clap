@@ -11,10 +11,13 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -68,15 +71,20 @@ public class QnaDetailContentController implements Initializable {
 	Label lb_Date;
 	@FXML
 	Label lb_Memid;
+	@FXML
+	TextArea text_cont;
 	
 	public QnaVO qVO = null;
 	public QnaReviewVO qrVO = new QnaReviewVO();
 	LoginSession ls = new LoginSession();
+	private List<QnaReviewVO> review;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		System.out.println(ls.session.getMem_id());
+		text_cont.setDisable(true);
+		
 		
 		try {
 			System.out.println(ContentNo);
@@ -104,8 +112,12 @@ public class QnaDetailContentController implements Initializable {
 		if(LoginSession.session.getMem_auth().equals("t")){
 			btn_delete.setVisible(true);
 			btn_update.setVisible(false);
+			text_QnaRe.setVisible(true);
+			btn_QnaRe.setVisible(true);
 		} else {
 			btn_delete.setVisible(false);
+			text_QnaRe.setVisible(false);
+			btn_QnaRe.setVisible(false);
 			if(ls.session.getMem_id().equals(qVO.getMem_id())) {
 				btn_delete.setVisible(true);
 				btn_update.setVisible(true);
@@ -133,6 +145,19 @@ public class QnaDetailContentController implements Initializable {
 				ee.printStackTrace();
 			}
 			
+			//화면이동 
+			Parent root1;
+			try {
+				root1 = FXMLLoader.load(getClass().getResource("QnaMenuList.fxml"));
+				main.getChildren().removeAll();
+				main.getChildren().setAll(root1);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+
+			
 		});
 		
 		
@@ -154,13 +179,51 @@ public class QnaDetailContentController implements Initializable {
 			}
 		});
 		
-		// 댓글 입력
-		// 시퀀스 만들기
+		
+		// 댓글 등록
 		btn_QnaRe.setOnMouseClicked(e -> {
-			qrVO.setQna_re_content(text_QnaRe.getText());
-			qrVO.setQna_no(ContentNo);
-			qrVO.setMem_id(LoginSession.session.getMem_id());
+			if(text_QnaRe.getText().isEmpty()) {
+				errMsg("등록불가", "빈 항목이 있습니다.");
+				return;
+			} else {
+				//qrVO.setQna_re_no(qna_re_no);
+				qrVO.setQna_re_content(text_QnaRe.getText());
+				qrVO.setQna_no(ContentNo);
+				qrVO.setMem_id(LoginSession.session.getMem_id());
+				
+				try {
+					int flag = iqs.insertQnaReview(qrVO);
+				} catch(RemoteException ee) {
+					ee.printStackTrace();
+				}
+			}
 		});
+		try {
+			review = iqs.selectListReviewAll(ContentNo);
+			System.out.println(review.size());
+			if(review.size()<=0) {
+				//reveiw가 없으면 댓글창을 없앰.
+				r_main.setVisible(false);
+			} else {
+				//댓글 가져오기
+				lb_qnaNo.setText(review.get(0).getQna_no());
+				lb_Content.setText(review.get(0).getQna_re_content());
+				lb_Qna_re_no.setText(review.get(0).getQna_re_no()); //
+				lb_Date.setText(review.get(0).getQna_re_indate()); //
+				lb_Memid.setText(review.get(0).getMem_id());
+				
+			}
+		} catch(RemoteException ee) {
+			ee.printStackTrace();
+		}
+		
+		
+				
+				
+				
+		
+		
+		
 		
 	}
 		
@@ -192,6 +255,22 @@ public class QnaDetailContentController implements Initializable {
 		         return -1;
 		      }
 		      return -1;
+		}
+		
+		public void errMsg(String headerText, String msg) {
+			Alert errAlert = new Alert(AlertType.ERROR);
+			errAlert.setTitle("오류");
+			errAlert.setHeaderText(headerText);
+			errAlert.setContentText(msg);
+			errAlert.showAndWait();
+		}
+		
+		public void infoMsg(String headerText, String msg) {
+			Alert infoAlert = new Alert(AlertType.INFORMATION);
+			infoAlert.setTitle("정보 확인");
+			infoAlert.setHeaderText(headerText);
+			infoAlert.setContentText(msg);
+			infoAlert.showAndWait();
 		}
 
 }

@@ -12,7 +12,7 @@
 
 	<select id="NoticeBoardDetailContent" resultClass="NoticeBoardVO" parameterClass="String">
          
-		  select notice_no, notice_indate, notice_title, notice_content, mem_id from notice_board where notice_no = #String#
+		  select notice_no, notice_indate, notice_title,notice_view_cnt, notice_content, mem_id from notice_board where notice_no = #String#
       </select>
 
 	<!-- 공지사항 글 등록 insert -->

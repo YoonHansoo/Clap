@@ -15,7 +15,8 @@
  				event_edate,
  				event_image,
  				event_content,
- 				event_view_cnt
+ 				event_view_cnt,
+ 				mem_id
 		  from
 			  	event_board 
 	 </select>
@@ -29,7 +30,8 @@
  				event_edate,
  				event_image,
 				event_content,
-				event_view_cnt
+				event_view_cnt,
+				mem_id
 		  from
 			  	event_board
 		 where  event_no = #String#

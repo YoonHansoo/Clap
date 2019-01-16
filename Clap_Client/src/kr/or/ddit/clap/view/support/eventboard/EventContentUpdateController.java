@@ -221,6 +221,17 @@ public class EventContentUpdateController implements Initializable  {
 			}
 			
 			
+			//화면이동 
+			Parent root1;
+			try {
+				root1 = FXMLLoader.load(getClass().getResource("EventShowList.fxml"));
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(root1);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
 		});
 		
 		

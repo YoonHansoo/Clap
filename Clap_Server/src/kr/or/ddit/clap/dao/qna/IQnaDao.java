@@ -9,6 +9,7 @@ package kr.or.ddit.clap.dao.qna;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import kr.or.ddit.clap.vo.support.QnaReviewVO;
 import kr.or.ddit.clap.vo.support.QnaVO;
 
 public interface IQnaDao {
@@ -26,4 +27,12 @@ public interface IQnaDao {
 	public int updateQna(QnaVO vo);
 	
 	public int updateCount(String qna_no); //조회수
+	
+	public int insertQnaReview(QnaReviewVO vo); //댓글 등록
+	
+	public List<QnaReviewVO> selectListReviewAll(String qna_no);
+	
+	
+	
+
 }

@@ -26,6 +26,7 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 import com.jfoenix.controls.JFXButton;
+import javafx.scene.control.TextArea;
 
 public class NoticeBoardDetailContentController implements Initializable {
 	
@@ -49,6 +50,8 @@ public class NoticeBoardDetailContentController implements Initializable {
 	JFXButton btn_upd;
 	@FXML
 	Text Text_NtcId;
+	@FXML
+	TextArea text_cont;
 	
 	
 	public NoticeBoardVO nVO;
@@ -57,6 +60,8 @@ public class NoticeBoardDetailContentController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		text_cont.setDisable(true);
 		
 		if(LoginSession.session.getMem_auth().equals("t")){
 			btn_del.setVisible(true);
@@ -106,6 +111,7 @@ public class NoticeBoardDetailContentController implements Initializable {
 				ee.printStackTrace();
 			}
 			
+			
 		});
 		
 		
@@ -117,7 +123,7 @@ public class NoticeBoardDetailContentController implements Initializable {
 				FXMLLoader loader = new FXMLLoader(getClass().getResource("NoticeBoardUpdate.fxml"));
 				Parent UpdateNotice = loader.load();
 				NoticeBoardUpdateController controller = loader.getController();
-				controller.initData(nVO);
+				controller.initData(nVO );
 				n_main.getChildren().removeAll();
 				n_main.getChildren().setAll(UpdateNotice);
 				
