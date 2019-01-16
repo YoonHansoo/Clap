@@ -99,6 +99,11 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 		return singerDao.insertReply(map);
 	}
 
+	@Override
+	public int insertBlackCnt(String id) throws RemoteException {
+		return singerDao.insertBlackCnt(id);
+	}
+
 	
 
 }

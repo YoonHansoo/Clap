@@ -181,6 +181,12 @@
 		)
 	</insert>
 
+<!-- 신고횟수 카운트 쿼리 -->
+<update id="insertBlackCnt" parameterClass="String">
+		 update member
+		set MEM_BLACK_CNT= MEM_BLACK_CNT+1
+		where mem_id =#String#
+	</update>
 
 </sqlMap>         
 

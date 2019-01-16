@@ -195,4 +195,16 @@ public class SingerDaoImpl implements ISingerDao {
 		}
 		return cnt;
 	}
+
+	@Override
+	public int insertBlackCnt(String id) {
+		int cnt = 0;
+		try {
+		cnt = smc.update("singer.insertBlackCnt",id);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
 }

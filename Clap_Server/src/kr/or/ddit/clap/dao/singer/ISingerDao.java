@@ -40,7 +40,10 @@ public interface ISingerDao {
 
 	// 가수 댓글 조회
 	public List<Map<String, String>> selectReply(String singerNo);
-	
-	//가수 댓글 등록
-		public int  insertReply (Map<String, String> map);
+
+	// 가수 댓글 등록
+	public int insertReply(Map<String, String> map);
+
+	// 멤버 신고횟수 1 증가
+	public int insertBlackCnt(String id);
 }
