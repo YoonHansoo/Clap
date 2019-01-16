@@ -98,7 +98,7 @@ public class LikeRcmController implements Initializable{
 							vo1.setMem_id(user_id);
 							vo1.setAlb_no(temp_btn.getId());
 							try {
-							int liset = ilks.deleteAlbLike(vo1);
+							int liset = ilks.deleteRcmLike(vo1);
 							} catch (RemoteException e2) {
 								System.out.println("에러");
 								e2.printStackTrace();

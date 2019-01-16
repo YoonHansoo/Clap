@@ -184,8 +184,7 @@ public class MypageMyAlbController implements Initializable{
 			e.printStackTrace();
 		}
 		
-		
-	
+		//여기서 메인 페이지에 적용시키기 
 		
 		Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
 		dialogStage.close();

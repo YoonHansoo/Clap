@@ -141,7 +141,7 @@ public class LikeController implements Initializable {
 							vo1.setMem_id(user_id);
 							vo1.setAlb_no(temp_btn.getId());
 							try {
-							int liset = ilks.deleteAlbLike(vo1);
+							int liset = ilks.deleteMusLike(vo1);
 							} catch (RemoteException e2) {
 								System.out.println("에러");
 								e2.printStackTrace();
@@ -292,6 +292,7 @@ public class LikeController implements Initializable {
 			for (int i = 0; i < likeList.size(); i++) {
 				if (likeList.get(i).getChBox().isSelected()) {
 					list.add(likeList.get(i).getChBox().getId());
+					System.out.println(list.get(i));
 				}
 			}
 			return list;

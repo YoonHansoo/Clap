@@ -200,6 +200,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	public void createChbox() {
 		if(chBox ==null) {
 		this.chBox = new JFXCheckBox();
+		chBox.setId(mus_no);
 		}
 	}
 	public JFXCheckBox getChBox() {
