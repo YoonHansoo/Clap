@@ -48,7 +48,6 @@ public class SingerMusicController implements Initializable{
 	@FXML Label lb_total;
 	
 	
-	
 	private Registry reg;
 	private IMusicService ims;
 	private IPlayListService ipls;
@@ -166,10 +165,6 @@ public class SingerMusicController implements Initializable{
 	@FXML public void songChart() {
 		try {
 			songRank = FXCollections.observableArrayList(ims.selectSinger(SingerMainController.singerNo));
-//			btn_Song.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-//			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
 			cb_main.setSelected(false);
 			lb_total.setText("발매곡 (총 "+songRank.size()+"개)");
 			
@@ -179,57 +174,6 @@ public class SingerMusicController implements Initializable{
 			e.printStackTrace();
 		}
 	}
-	
-//	// POP장르
-//	@FXML public void popChart() {
-//		try {
-//			popRank = FXCollections.observableArrayList(ims.newMusicSelete("2"));
-//			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Pop.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-//			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
-//			cb_main.setSelected(false);
-//			
-//			pageing(popRank);
-//			
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	// OST장르
-//	@FXML public void ostChart() {
-//		try {
-//			ostRank = FXCollections.observableArrayList(ims.newMusicSelete("3"));
-//			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Ost.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-//			btn_Other.setStyle("-fx-background-color:#FFFFFF;");
-//			cb_main.setSelected(false);
-//			
-//			pageing(ostRank);
-//			
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//
-//	// 그 외 장르
-//	@FXML public void otherChart() {
-//		try {
-//			otherRank = FXCollections.observableArrayList(ims.newMusicSelete("4"));
-//			btn_Song.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Pop.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Ost.setStyle("-fx-background-color:#FFFFFF;");
-//			btn_Other.setStyle("-fx-background-color:#9c0000;-fx-text-fill:#FFFFFF;");
-//			cb_main.setSelected(false);
-//			
-//			pageing(otherRank);
-//			
-//		} catch (RemoteException e) {
-//			e.printStackTrace();
-//		}
-//	}
 	
 	public VBox createPage(int pageIndex, ObservableList<Map> list, int itemsForPage) {
         int page = pageIndex * itemsForPage;
@@ -276,6 +220,5 @@ public class SingerMusicController implements Initializable{
 		
 		mainBox.getChildren().addAll(p_page);
 	}
-	
 	
 }

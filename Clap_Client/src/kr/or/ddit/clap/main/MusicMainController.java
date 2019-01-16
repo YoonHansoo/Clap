@@ -142,7 +142,7 @@ public class MusicMainController implements Initializable {
 	@FXML JFXButton btn_Pop;
 	@FXML JFXButton btn_Ost;
 	@FXML JFXButton btn_Other;
-	@FXML StackPane singerMusic;
+	@FXML StackPane stackpane;
 	
 	@FXML Label lb_total;
 	
@@ -185,8 +185,18 @@ public class MusicMainController implements Initializable {
 			e.printStackTrace();
 		}
 
+//		StackPane pane3 = null;
+//		try {
+//			pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
+//		} catch (IOException e3) {
+//			// TODO Auto-generated catch block
+//			e3.printStackTrace();
+//		}
+////		singerMusic.getChildren().removeAll();
+//		contents.getChildren().setAll(pane3);
+		
 		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
-				btnMovieList, mainBox, singerMusic);
+				btnMovieList, mainBox, stackpane);
 		
 		// 실시간차트
 		songChart();

@@ -271,7 +271,7 @@
                      </children>
                   </StackPane>
                   <Label layoutX="92.0" layoutY="388.0" text="실시간 차트" />
-                  <StackPane fx:id="singerMusic" layoutX="-50.0" layoutY="395.0" prefWidth="1022.0">
+                  <StackPane fx:id="stackpane" layoutX="-50.0" layoutY="395.0" prefWidth="1022.0">
                      <children>
                         <VBox fx:id="mainBox">
                            <children>
