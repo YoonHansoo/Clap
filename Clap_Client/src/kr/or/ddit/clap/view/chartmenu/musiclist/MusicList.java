@@ -221,7 +221,6 @@ public class MusicList {
 	        	 
 	        	layoutX =  e.getX() - (1005/2 - 150);
 	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
-	        	System.out.println(layoutX);
 	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.1)) { 
 	        		layoutY += -100;
 	        	}else {
@@ -287,8 +286,6 @@ public class MusicList {
 		try {
 			content = FXMLLoader.load(getClass().getResource("../dialog/MyAlbumDialog.fxml"));
 			JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
-			
-			System.out.println(layoutY);
 			dialog.setTranslateX(layoutX);
 			dialog.setTranslateY(layoutY);
 			dialog.setBackground(Background.EMPTY);
@@ -986,7 +983,6 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 		btnAddList.clear();
 		
 		int size = Math.min(page + itemsForPage, ((list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0)));
-		System.out.println(size);
 		for (int i = page; i < size; i++) {
 			
 	
