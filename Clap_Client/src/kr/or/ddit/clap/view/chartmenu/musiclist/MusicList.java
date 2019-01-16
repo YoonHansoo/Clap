@@ -1,6 +1,7 @@
 package kr.or.ddit.clap.view.chartmenu.musiclist;
 
 import java.io.IOException;
+import java.net.StandardProtocolFamily;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -14,6 +15,8 @@ import com.jfoenix.controls.JFXDialog;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -22,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.HBox;
@@ -56,6 +60,8 @@ public class MusicList {
 	private VBox mainBox;
 	private MusicPlayerController mpc;
 	private Stage stage = MusicMainController.movieStage;
+	private double layoutX;
+	private double layoutY;
 	
 	public MusicList() {
 		
@@ -212,14 +218,25 @@ public class MusicList {
 	
 	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
+		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
+	         @Override 
+	         public void handle(MouseEvent e) { 
+	        	 
+	        	layoutX =  e.getX() - e.getSceneX()/2 ;
+	        	layoutY = e.getY() - (mainBox.getHeight() / 2) + 110;
+	         } 
+	     };  
+	     stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
 		if (LoginSession.session == null) {
 			return;
 		}
 		for (int i = 0; i < btnPutList.size(); i++) {
 			btnPutList.get(i).setOnAction(e->{
+				
 				JFXButton btn_PutMy = (JFXButton) e.getSource();
 				MyAlbumDialogController.mus_no.clear();
 				MyAlbumDialogController.mus_no.add(btn_PutMy.getId());
+				
 				myAlbumdialog();
 			});
 		}
@@ -266,6 +283,10 @@ public class MusicList {
 		try {
 			content = FXMLLoader.load(getClass().getResource("../dialog/MyAlbumDialog.fxml"));
 			JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
+			
+			dialog.setTranslateX(layoutX);
+			dialog.setTranslateY(layoutY);
+			System.out.println(dialog.getTranslateY());
 			dialog.setBackground(Background.EMPTY);
 			dialog.show();
 			
