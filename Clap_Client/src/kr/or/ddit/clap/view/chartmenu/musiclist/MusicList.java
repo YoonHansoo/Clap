@@ -1,21 +1,17 @@
 package kr.or.ddit.clap.view.chartmenu.musiclist;
 
 import java.io.IOException;
-import java.net.StandardProtocolFamily;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.Map;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDialog;
-
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
@@ -80,6 +76,23 @@ public class MusicList {
 		this.stackpane = stackpane;
 		this.mainBox = mainBox;
 		
+		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
+	         @Override 
+	         public void handle(MouseEvent e) { 
+	        	 
+	        	layoutX =  e.getX() - e.getSceneX()/2 ;
+	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
+	        	System.out.println(layoutY);
+	        	System.out.println(mainBox.getHeight());
+	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.75)) { 
+	        		layoutY += -100;
+	        	}else {
+	        		layoutY += 110;
+	        	}
+	         } 
+	     };  
+	     stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
+		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ipls = (IPlayListService) reg.lookup("playlist");
@@ -122,6 +135,23 @@ public class MusicList {
 		super();
 		this.btnAddList = btnAddList;
 		this.mainBox = mainBox;
+		
+		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
+	         @Override 
+	         public void handle(MouseEvent e) { 
+	        	 
+	        	layoutX =  e.getX() - e.getSceneX()/2 ;
+	        	layoutY = e.getY() - (mainBox.getHeight() / 2);
+	        	System.out.println(layoutY);
+	        	System.out.println(mainBox.getHeight());
+	        	if (layoutY >= mainBox.getHeight() - (mainBox.getHeight() / 1.75)) { 
+	        		layoutY += -100;
+	        	}else {
+	        		layoutY += 110;
+	        	}
+	         } 
+	     };  
+	     stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
 		
 		
 		try {
@@ -218,15 +248,7 @@ public class MusicList {
 	
 	// 담기 버튼 클릭시 이벤트
 	private void btnPutClick() {
-		EventHandler<MouseEvent> eventHandler = new EventHandler<MouseEvent>() { 
-	         @Override 
-	         public void handle(MouseEvent e) { 
-	        	 
-	        	layoutX =  e.getX() - e.getSceneX()/2 ;
-	        	layoutY = e.getY() - (mainBox.getHeight() / 2) + 110;
-	         } 
-	     };  
-	     stackpane.addEventFilter(MouseEvent.MOUSE_MOVED, eventHandler); 
+		
 		if (LoginSession.session == null) {
 			return;
 		}
@@ -284,9 +306,9 @@ public class MusicList {
 			content = FXMLLoader.load(getClass().getResource("../dialog/MyAlbumDialog.fxml"));
 			JFXDialog dialog = new JFXDialog(stackpane, content, JFXDialog.DialogTransition.CENTER);
 			
+			System.out.println(layoutY);
 			dialog.setTranslateX(layoutX);
 			dialog.setTranslateY(layoutY);
-			System.out.println(dialog.getTranslateY());
 			dialog.setBackground(Background.EMPTY);
 			dialog.show();
 			
