@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextArea?>
@@ -156,7 +157,7 @@
                               <Insets top="4.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField fx:id="txt_bir" />
+                        <JFXDatePicker fx:id="picker" />
                         <Label fx:id="lb_bir" text="형식에 맞게 입력해주세요." visible="false">
                            <HBox.margin>
                               <Insets top="4.0" />
@@ -167,11 +168,6 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label text="생년월일 예) 99/03/03  |  휴대전화 예) 01012341234">
-                     <VBox.margin>
-                        <Insets left="120.0" />
-                     </VBox.margin>
-                  </Label>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
                         <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="휴대전화">
@@ -179,7 +175,7 @@
                               <Insets top="4.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField fx:id="txt_tel" />
+                        <JFXTextField fx:id="txt_tel" promptText="예) 01099887766" />
                         <Label fx:id="lb_tel" text="형식에 맞게 입력해주세요." visible="false">
                            <HBox.margin>
                               <Insets top="4.0" />
@@ -290,7 +286,7 @@
             <Insets left="222.0" top="15.0" />
          </padding>
       </BorderPane>
-      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0">
+      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0" visible="false">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
                <top>
@@ -339,7 +335,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <JFXTextArea fx:id="txtArea1" maxHeight="150.0" maxWidth="610.0" />
+                        <StackPane fx:id="stack1" prefHeight="148.0" prefWidth="608.0" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="15.0" prefWidth="171.0" text="이용약관에 동의합니다.">
@@ -369,7 +365,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <JFXTextArea fx:id="txtArea2" maxHeight="150.0" maxWidth="610.0" />
+                        <StackPane fx:id="stack2" prefHeight="148.0" prefWidth="608.0" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                            <children>
                               <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="18.0" prefWidth="255.0" text="개인정보 수집 및 이용에 동의합니다.">
@@ -426,9 +422,15 @@
             <Insets top="15.0" />
          </padding>
       </VBox>
-      <StackPane fx:id="stack1" layoutX="223.0" layoutY="174.0" prefHeight="148.0" prefWidth="608.0" style="-fx-background-color: #e6f5ff;" />
-      <StackPane fx:id="stack2" layoutX="223.0" layoutY="439.0" prefHeight="148.0" prefWidth="608.0" style="-fx-background-color: #e6f5ff;" />
-      <VBox fx:id="boxbox" layoutX="120.0" layoutY="13.0" minHeight="620.0" minWidth="700.0" prefHeight="200.0" prefWidth="100.0">
+      <StackPane fx:id="box_txt1" layoutX="223.0" layoutY="174.0" prefHeight="148.0" prefWidth="608.0" visible="false">
+         <children>
+            <JFXTextArea fx:id="txtArea1" maxHeight="150.0" maxWidth="610.0" />
+         </children></StackPane>
+      <StackPane fx:id="box_txt2" layoutX="223.0" layoutY="439.0" prefHeight="148.0" prefWidth="608.0" visible="false">
+         <children>
+            <JFXTextArea fx:id="txtArea2" maxHeight="150.0" maxWidth="610.0" />
+         </children></StackPane>
+      <VBox fx:id="boxbox" layoutX="120.0" layoutY="13.0" minHeight="620.0" minWidth="700.0" prefHeight="200.0" prefWidth="100.0" visible="false">
          <children>
             <VBox prefHeight="61.0" prefWidth="600.0" spacing="10.0">
                <children>
