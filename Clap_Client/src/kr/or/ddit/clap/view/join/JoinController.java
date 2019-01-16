@@ -17,6 +17,7 @@ import java.rmi.registry.Registry;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Properties;
@@ -34,6 +35,7 @@ import javax.mail.internet.MimeMessage;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -74,7 +76,8 @@ public class JoinController implements Initializable{
 	@FXML JFXTextField txt_id;
 	@FXML JFXPasswordField txt_pw;
 	@FXML JFXPasswordField txt_pwCheck;
-	@FXML JFXTextField txt_bir;
+//	@FXML JFXTextField txt_bir;
+	@FXML JFXDatePicker picker;
 	@FXML JFXTextField txt_tel;
 	@FXML JFXTextField txt_email;
 	@FXML JFXTextField txt_emailCheck;
@@ -104,7 +107,7 @@ public class JoinController implements Initializable{
 	@FXML JFXCheckBox check2;
 	
 	@FXML BorderPane pane;	
-	@FXML StackPane stack1, stack2;	
+	@FXML StackPane stack1, stack2, box_txt1, box_txt2;	
 	@FXML VBox box, boxbox;	
 	
 	ToggleGroup group = new ToggleGroup();
@@ -151,7 +154,6 @@ public class JoinController implements Initializable{
 		stack1.setVisible(false);
 		stack2.setVisible(false);
 		
-		
 		radio_m.setToggleGroup(group);
 		radio_m.setUserData("m");
 		radio_m.setSelected(true);
@@ -159,8 +161,14 @@ public class JoinController implements Initializable{
 		radio_f.setToggleGroup(group);
 		radio_f.setUserData("f");
 		
+		box_txt1.setVisible(true);
+		box_txt2.setVisible(true);
+		
 		txtArea1.setEditable(false);
 		txtArea2.setEditable(false);
+		
+		picker.setValue(LocalDate.of(1995, 1, 1));
+		
 		txtArea2.setText("회사는 회원 가입, 상담, 서비스 제공을 위하여 아래와 같이 최소한의 개인정보만을 수집하며,"
 				+ " 사상·신념, 가족 및 친인척관계, 학력(學歷)·병력(病歷), 기타 사회활동 경력 등 고객의 "
 				+ "권리·이익이나 사생활을 뚜렷하게 침해할 우려가 있는 개인정보를 수집하지 않습니다. 다만, 고객이 "
@@ -605,7 +613,7 @@ public class JoinController implements Initializable{
 		
 
 		txtArea1.scrollTopProperty().addListener(e->{
-			if(txtArea1.scrollTopProperty().intValue()==2932) {
+			if(txtArea1.scrollTopProperty().intValue()==2934) {
 				check1.setDisable(false);
 			}else {
 				check1.setSelected(false);
@@ -613,7 +621,7 @@ public class JoinController implements Initializable{
 			}
 		});
 		txtArea2.scrollTopProperty().addListener(e->{
-			if(txtArea2.scrollTopProperty().intValue()==397) {
+			if(txtArea2.scrollTopProperty().intValue()==399) {
 				check2.setDisable(false);
 			}else {
 				check2.setSelected(false);
@@ -629,9 +637,9 @@ public class JoinController implements Initializable{
 			pwEqualCheck();
 		});
 		
-		txt_bir.setOnAction(e->{
-			birCheck();
-		});
+//		txt_bir.setOnAction(e->{
+//			birCheck();
+//		});
 		
 		txt_tel.setOnAction(e->{
 			telCheck();
@@ -795,23 +803,23 @@ public class JoinController implements Initializable{
 			return;
 		}
 		
-		if(txt_bir.getText().equals("")) {
-			lb_ok.setVisible(true);
-			lb_ok.setText("생년월일을 입력해주세요.");
-			lb_ok.setTextFill(Color.RED);
-			txt_bir.requestFocus();
-			return;
-		}
+//		if(txt_bir.getText().equals("")) {
+//			lb_ok.setVisible(true);
+//			lb_ok.setText("생년월일을 입력해주세요.");
+//			lb_ok.setTextFill(Color.RED);
+//			txt_bir.requestFocus();
+//			return;
+//		}
 		
-		birCheck();
+//		birCheck();
 		
-		if(!birFlag) {
-			lb_ok.setVisible(true);
-			lb_ok.setText("생년월일을 확인해주세요.");
-			lb_ok.setTextFill(Color.RED);
-			txt_bir.requestFocus();
-			return;
-		}
+//		if(!birFlag) {
+//			lb_ok.setVisible(true);
+//			lb_ok.setText("생년월일을 확인해주세요.");
+//			lb_ok.setTextFill(Color.RED);
+//			txt_bir.requestFocus();
+//			return;
+//		}
 		
 		if (txt_tel.getText().equals("")) {
 			lb_ok.setVisible(true);
@@ -866,7 +874,14 @@ public class JoinController implements Initializable{
 			vo.setMem_pw(encryptedPw);
 			vo.setMem_name(txt_name.getText());
 			vo.setMem_email(txt_email.getText());
-			vo.setMem_bir(txt_bir.getText());
+			
+			String str = String.valueOf(picker.getValue());
+			String str1 = str.substring(2, 4);
+			String str2 = str.substring(5, 7);
+			String str3 = str.substring(8, 10);
+			String edit_str = str1+"/"+str2+"/"+str3;
+			System.out.println(edit_str);
+			vo.setMem_bir(edit_str);
 
 			vo.setMem_gender(gender);
 			vo.setMem_tel(txt_tel.getText());
@@ -876,6 +891,7 @@ public class JoinController implements Initializable{
 
 			vo.setMem_blacklist_tf("f");
 			vo.setMem_del_tf("f");
+			vo.setMem_black_cnt("0");
 			
 			// insert vo
 			try {
@@ -912,6 +928,9 @@ public class JoinController implements Initializable{
 	}
 	
 	public void idCheck() {
+		// test
+		System.out.println(picker.getValue());
+		
 		System.out.println("아이디중복확인");
 		// 유효성 검사 후 아이디 확인
 		Pattern p = Pattern.compile("(^[a-zA-Z0-9]{6,}$)");
@@ -997,32 +1016,32 @@ public class JoinController implements Initializable{
 		}
 	}
 	
-	public void birCheck() {
-		// 생년월일. 정규표현식 검사후 유효성 검사.
-		Pattern p = Pattern.compile("(^\\d{2}/\\d{2}/\\d{2}$)");
-		Matcher m = p.matcher(txt_bir.getText());
-		
-		if(!m.find()) {
-			lb_bir.setVisible(true);
-			lb_bir.setText("형식에 맞게 입력해주세요.");
-			lb_bir.setTextFill(Color.RED);
-			txt_bir.requestFocus();
-		}else {
-			// 유효성 검사.
-			boolean birCheck = dateCheck(txt_bir.getText(), "yy/MM/dd");
-			System.out.println(birCheck);
-			if(!birCheck) {
-				lb_bir.setVisible(true);
-				lb_bir.setText("생년월일을 다시 확인해주세요.");
-				lb_bir.setTextFill(Color.RED);
-				txt_bir.requestFocus();
-			}else if(birCheck){
-				birFlag = true;
-				lb_ok.setVisible(false);
-				lb_bir.setVisible(false);				
-			}
-		}
-	}
+//	public void birCheck() {
+//		// 생년월일. 정규표현식 검사후 유효성 검사.
+//		Pattern p = Pattern.compile("(^\\d{2}/\\d{2}/\\d{2}$)");
+//		Matcher m = p.matcher(txt_bir.getText());
+//		
+//		if(!m.find()) {
+//			lb_bir.setVisible(true);
+//			lb_bir.setText("형식에 맞게 입력해주세요.");
+//			lb_bir.setTextFill(Color.RED);
+//			txt_bir.requestFocus();
+//		}else {
+//			// 유효성 검사.
+//			boolean birCheck = dateCheck(txt_bir.getText(), "yy/MM/dd");
+//			System.out.println(birCheck);
+//			if(!birCheck) {
+//				lb_bir.setVisible(true);
+//				lb_bir.setText("생년월일을 다시 확인해주세요.");
+//				lb_bir.setTextFill(Color.RED);
+//				txt_bir.requestFocus();
+//			}else if(birCheck){
+//				birFlag = true;
+//				lb_ok.setVisible(false);
+//				lb_bir.setVisible(false);				
+//			}
+//		}
+//	}
 	
 	public boolean dateCheck(String date, String format) {
 		SimpleDateFormat dateFormatParser = new SimpleDateFormat(format, Locale.KOREA);
@@ -1207,6 +1226,8 @@ public class JoinController implements Initializable{
 			// 둘 다 체크되어있을때 진행.
 			pane.setVisible(true);
 			box.setVisible(false);
+			box_txt1.setVisible(false);
+			box_txt2.setVisible(false);
 			box.setLayoutY(650);
 			pane.setLayoutY(0);
 			
