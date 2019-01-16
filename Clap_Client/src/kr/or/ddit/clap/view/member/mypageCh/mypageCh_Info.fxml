@@ -83,7 +83,10 @@
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Text layoutX="24.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="표시의 항목은 필수 입력 항목입니다." />
+                  <Text layoutX="24.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="표시의 항목은 필수 입력 항목입니다.">
+                     <font>
+                        <Font name="YDIYGO330" size="12.0" />
+                     </font></Text>
                   <Text fill="#9c0000" layoutX="13.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Label layoutX="326.0" layoutY="246.0" text="\@">
                      <font>
@@ -94,7 +97,7 @@
                   <JFXTextField fx:id="em2" focusColor="#9c0000" layoutX="343.0" layoutY="240.0" maxWidth="188.0" minWidth="179.0" prefHeight="35.0" prefWidth="179.0" unFocusColor="#090948" />
                   <ComboBox fx:id="com_em" editable="true" layoutX="523.0" layoutY="243.0" prefHeight="29.0" prefWidth="186.0" />
                   <FontAwesomeIcon fill="#9c0000" iconName="EXCLAMATION_CIRCLE" layoutX="151.0" layoutY="148.0" size="1.7em" />
-                  <FontAwesomeIcon fill="WHITE" iconName="MOBILE" layoutX="550.0" layoutY="110.0" size="1.8em" />
+                  <FontAwesomeIcon fill="WHITE" iconName="MOBILE" layoutX="550.0" layoutY="110.0" size="2.3em" />
                   <Label alignment="TOP_LEFT" layoutX="192.0" layoutY="126.0" prefHeight="108.0" prefWidth="497.0" text="clap 뮤직 주요 공지사항 및 결제관련 정보일 경우, 정보 수신 동의 여부에 여부에 관계 없이 발송 됩니다. 아이디/비밀번호 찾기 또는 중요  알림을 받기 위해 사용할 휴대폰 번호를 정확하게 입력해 주세요." wrapText="true">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />

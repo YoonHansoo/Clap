@@ -71,8 +71,8 @@ public class SalemangeGraphController implements Initializable{
 			e.printStackTrace();
 		}
 
-		combo_Chart.getItems().addAll("총 매출","연령별 매출","상품별 매출");
-		combo_Chart.setValue("=====");
+		combo_Chart.getItems().addAll("총 매출","연령별 매출");
+		combo_Chart.setValue(combo_Chart.getItems().get(1));
 		multichart();
 	}
 
@@ -201,6 +201,7 @@ public class SalemangeGraphController implements Initializable{
 				main.getChildren().setAll(charts);
 				break;
 			default:
+			
 				break;
 			}
 

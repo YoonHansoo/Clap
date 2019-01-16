@@ -34,7 +34,6 @@ public class TheManyItsController implements Initializable{
 	@FXML JFXCheckBox chbox_main;
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManyIts;
 	@FXML TreeTableColumn<MusicHistoryVO, JFXCheckBox> col_Checks;
-	@FXML TreeTableColumn<MusicHistoryVO, String> col_No;
 	@FXML TreeTableColumn<MusicHistoryVO, ImageView> col_Img;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_Its;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_DebutDate;
@@ -58,7 +57,6 @@ public class TheManyItsController implements Initializable{
 			e.printStackTrace();
 		}
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImageView()));
-		//col_No.setCellValueFactory(param -> new SimpleStringProperty(index))));
 		col_Its.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 		col_DebutDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getHisto_indate()));
 		col_MusCount.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getHisto_no()));

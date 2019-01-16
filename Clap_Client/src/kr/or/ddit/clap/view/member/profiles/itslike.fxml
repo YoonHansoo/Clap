@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXCheckBox?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
-<?import javafx.scene.control.Button?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.profiles.LikeItsController">
    <children>
@@ -15,23 +17,43 @@
             <AnchorPane prefHeight="587.0" prefWidth="720.0">
                <children>
                   <JFXCheckBox fx:id="chbox_main" layoutX="29.0" layoutY="39.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " />
-                  <Button layoutX="91.0" layoutY="39.0" mnemonicParsing="false" text="듣기" />
-                  <Button layoutX="169.0" layoutY="39.0" mnemonicParsing="false" text="추가" />
-                  <Button layoutX="231.0" layoutY="39.0" mnemonicParsing="false" text="담기" />
                   <JFXTreeTableView fx:id="tbl_like" layoutX="11.0" layoutY="87.0" prefHeight="400.0" prefWidth="704.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Checks" prefWidth="41.0" text="  " />
-                        <TreeTableColumn fx:id="col_No" prefWidth="42.0" text="번호" />
-                        <TreeTableColumn fx:id="col_Img" prefWidth="138.0" text=" " />
-                        <TreeTableColumn fx:id="col_Its" prefWidth="187.0" text="아티스트" />
-                        <TreeTableColumn fx:id="col_LikeIndate" prefWidth="142.0" text="좋아요 한 날" />
-                        <TreeTableColumn fx:id="col_Like" prefWidth="153.0" text="좋아요" />
+                        <TreeTableColumn fx:id="col_Img" prefWidth="143.0" text=" " />
+                        <TreeTableColumn fx:id="col_Its" prefWidth="291.0" text="아티스트" />
+                        <TreeTableColumn fx:id="col_LikeIndate" prefWidth="150.0" text="좋아요 한 날" />
+                        <TreeTableColumn fx:id="col_Like" prefWidth="78.0" text="좋아요" />
                      </columns>
                   </JFXTreeTableView>
-                  <Pagination fx:id="p_Paging" layoutX="6.0" layoutY="75.0" prefHeight="529.0" prefWidth="714.0" />
+                  <Pagination fx:id="p_Paging" layoutX="6.0" layoutY="73.0" prefHeight="531.0" prefWidth="714.0" />
                </children>
             </AnchorPane>
          </children>
       </VBox>
+      <JFXButton layoutX="225.0" layoutY="64.0" ripplerFill="#9c0000" text="담기">
+         <graphic>
+            <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
+         </graphic>
+         <font>
+            <Font name="-윤고딕330" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="151.0" layoutY="64.0" ripplerFill="#9c0000" text="추가">
+         <graphic>
+            <FontAwesomeIcon iconName="PLUS" size="20" />
+         </graphic>
+         <font>
+            <Font name="-윤고딕330" size="12.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="82.0" layoutY="64.0" ripplerFill="#9c0000" text="듣기">
+         <graphic>
+            <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
+         </graphic>
+         <font>
+            <Font name="-윤고딕340" size="12.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

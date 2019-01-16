@@ -15,6 +15,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +34,7 @@ import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
 public class MypageMyAlbController implements Initializable{
+	
 	private static String user_id = LoginSession.session.getMem_id();
 	private Registry reg;
 	private IMyAlbumService imas;
@@ -42,17 +44,22 @@ public class MypageMyAlbController implements Initializable{
 	@FXML TreeTableColumn<MyAlbumVO,String> col_MyAlbname;
 	@FXML TreeTableColumn<MyAlbumVO,String> col_MusCount;
 	
+	public MypageController mypc;
 	static Stage myalb = new Stage(StageStyle.DECORATED);
 	String myAlbName;
 	String myAlbNo;
-	private int number;
 	private ObservableList<MyAlbumVO> myAlbList, currentsingerList;
 	@FXML JFXCheckBox chbox_main;
 	@FXML Label la_Muscount;
-	@FXML AnchorPane Head;
+	
+	public void setcontroller(MypageController mypc) {
+		this.mypc=mypc;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		la_Muscount.setVisible(false);
+		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imas = (IMyAlbumService) reg.lookup("myalbum");
@@ -73,13 +80,11 @@ public class MypageMyAlbController implements Initializable{
 			}
 		});
 		
-		
-
+	
 	}
 
 	public void myAlb() {
 		// 마이앨범
-	
 		try {
 			myAlbList = FXCollections.observableArrayList(imas.myAlbumSelect(user_id));
 		} catch (RemoteException e) {
@@ -94,46 +99,52 @@ public class MypageMyAlbController implements Initializable{
 		TreeItem<MyAlbumVO> root3 = new RecursiveTreeItem<>(myAlbList, RecursiveTreeObject::getChildren);
 		tbl_Myalb.setRoot(root3);
 		tbl_Myalb.setShowRoot(false);
+		
+		
 	}
 	
 	@FXML
 	public void mainCheck() {
 		if (chbox_main.isSelected()) {
 			for (int i = 0; i < myAlbList.size(); i++) {
-				myAlbList.get(i).getchBox1().setSelected(true);
+				myAlbList.get(i).getChBox().setSelected(true);
 			}
 
 		} else {
 			for (int i = 0; i < myAlbList.size(); i++) {
-				myAlbList.get(i).getchBox1().setSelected(false);
+				myAlbList.get(i).getChBox().setSelected(false);
 			}
 		}
 	}
 	
-	public void chBoxCount() {}
+	public void chBoxCount() {
+		
+	}
+	
 	@FXML public void btn_edit() {}
 	
 	
-	@FXML public void btn_del() {
-			for (int i = 0; i < myAlbList.size(); i++) {
-				if(myAlbList.get(i).getchBox1().isSelected()) {
-					
-					String user_id = LoginSession.session.getMem_id();
-					MyAlbumVO vo = new MyAlbumVO();
-					vo.setMem_id(user_id);
-					vo.setMyalb_no(myAlbList.get(i).getMyalb_no());
-					try {
-						 int ok=imas.deleteMyalb(vo);
-						 if(ok>0) {
-						 infoMsg("삭제 완료", "");
-						 }
-						 myAlb();
-					} catch (RemoteException e) {
-						e.printStackTrace();
+	@FXML
+	public void btn_del() {
+		for (int i = 0; i < myAlbList.size(); i++) {
+			if (myAlbList.get(i).getchBox1().isSelected()) {
+
+				String user_id = LoginSession.session.getMem_id();
+				MyAlbumVO vo = new MyAlbumVO();
+				vo.setMem_id(user_id);
+				vo.setMyalb_no(myAlbList.get(i).getMyalb_no());
+				try {
+					int ok = imas.deleteMyalb(vo);
+					if (ok > 0) {
+						infoMsg("삭제 완료", "");
 					}
+					myAlb();
+				} catch (RemoteException e) {
+					e.printStackTrace();
+				}
 			}
-			;
 		}
+		mypc.ref();
 	}
 
 	public void btn_Cl() {
@@ -142,7 +153,7 @@ public class MypageMyAlbController implements Initializable{
 		dialogStage.close();
 	}
 
-	public void btn_Ok() {
+	public void btn_Ok(ActionEvent event) {
 		int index = tbl_Myalb.getSelectionModel().getSelectedIndex();
 		if (index < 0) {
 
@@ -185,6 +196,7 @@ public class MypageMyAlbController implements Initializable{
 		}
 		
 		//여기서 메인 페이지에 적용시키기 
+		mypc.ref();
 		
 		Stage dialogStage = (Stage) chbox_main.getScene().getWindow();
 		dialogStage.close();
@@ -212,6 +224,9 @@ public class MypageMyAlbController implements Initializable{
 		alertWarning.setContentText(msg);
 		alertWarning.showAndWait();
 	}
+
+
+	
 
 }
 	

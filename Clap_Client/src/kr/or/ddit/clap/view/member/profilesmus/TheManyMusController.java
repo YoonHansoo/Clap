@@ -33,7 +33,6 @@ public class TheManyMusController implements Initializable{
 	@FXML JFXCheckBox chbox_main;
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_Manymus;
 	@FXML TreeTableColumn<MusicHistoryVO, JFXCheckBox> col_Checks;
-	@FXML TreeTableColumn col_No;
 	@FXML TreeTableColumn<MusicHistoryVO, ImageView> col_Img;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_Mus;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_Singer;
@@ -56,7 +55,6 @@ public class TheManyMusController implements Initializable{
 		}
 		
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImageView()));
-		//col_No.setCellValueFactory(param -> new SimpleStringProperty(index))));
 		col_Mus.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 		col_Singer.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 		col_MusCount.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getHisto_no()));

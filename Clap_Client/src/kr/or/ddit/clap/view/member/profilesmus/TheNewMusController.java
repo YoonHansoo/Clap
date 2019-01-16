@@ -32,7 +32,6 @@ public class TheNewMusController implements Initializable{
 	private IMusicHistoryService imhs;
 	@FXML JFXCheckBox chbox_main;
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_Newmus;
-	@FXML TreeTableColumn col_No;
 	@FXML TreeTableColumn<MusicHistoryVO, ImageView> col_Img;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_Mus;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_Singer;
@@ -57,7 +56,6 @@ public class TheNewMusController implements Initializable{
 		}
 		
 		col_Img.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImageView()));
-		//col_No.setCellValueFactory(param -> new SimpleStringProperty(index))));
 		col_Mus.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 		col_Singer.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 		col_MusCount.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getHisto_no()));

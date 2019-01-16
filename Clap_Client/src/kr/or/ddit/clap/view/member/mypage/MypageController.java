@@ -52,19 +52,15 @@ import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.musicreview.IMusicReviewService;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.mypage.IMypageService;
-import kr.or.ddit.clap.view.album.album.SelectSingerController;
 import kr.or.ddit.clap.view.join.AES256Util;
-import kr.or.ddit.clap.view.support.noticeboard.NoticeBoardDetailContentController;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.MusicReviewVO;
-import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
-import kr.or.ddit.clap.vo.support.NoticeBoardVO;;
+import kr.or.ddit.clap.vo.music.MusicVO;
+import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;;
 
 public class MypageController implements Initializable {
-	int no1 = 0;
-	int no2 = 0;
-	int no3 = 0;
+
 	static Stage mypageDialog = new Stage(StageStyle.DECORATED);
 	static Stage pwok = new Stage(StageStyle.DECORATED);
 	static Stage myalb = new Stage(StageStyle.DECORATED);
@@ -92,23 +88,20 @@ public class MypageController implements Initializable {
 	@FXML AnchorPane contents;
 	@FXML Text text_UserInfo;
 	@FXML AnchorPane InfoContents;
-	@FXML AnchorPane Head;
+	@FXML AnchorPane main;
 
 	@FXML JFXTreeTableView<MusicReviewVO> tbl_Review; // 리뷰
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewCont;
 	@FXML TreeTableColumn<MusicReviewVO, String> col_ReviewDate;
 
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManySigner; // 많이들은 아티스트
-	@FXML TreeTableColumn col_MSno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MSits;
 
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_ManyMusic; // 많이들은 곡
-	@FXML TreeTableColumn col_MMno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMits;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_MMtitle;
 
 	@FXML JFXTreeTableView<MusicHistoryVO> tbl_NewMusic; // 최근들은곡
-	@FXML TreeTableColumn col_NMno;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMits;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMtitle;
 	@FXML TreeTableColumn<MusicHistoryVO, String> col_NMdate;
@@ -171,16 +164,13 @@ private MypageMyAlbListController iAC;
 		col_ReviewDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate().substring(0, 10)));
 
 		// 최근많이 들은 아티스트이름넣기
-		col_MSno.setCellValueFactory(param -> new SimpleStringProperty("" + (no1++)));
 		col_MSits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 
 		// 최근많이 들은 곡
-		col_MMno.setCellValueFactory(param -> new SimpleStringProperty("" + (no2++)));
 		col_MMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 		col_MMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 
 		// 최근 감상곡
-		col_NMno.setCellValueFactory(param -> new SimpleStringProperty("" + (no3++)));
 		col_NMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 		col_NMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 		col_NMdate.setCellValueFactory(
@@ -526,10 +516,10 @@ private MypageMyAlbListController iAC;
 
 			try {
 				Parent root2 = FXMLLoader.load(getClass().getResource("Mypage.fxml"));
-				Head.getChildren().removeAll();
+				main.getChildren().removeAll();
 				InfoContents.getChildren().removeAll();
 				contents.getChildren().removeAll();
-				Head.getChildren().setAll(root2);
+				main.getChildren().setAll(root2);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -538,10 +528,10 @@ private MypageMyAlbListController iAC;
 		btn_SubCl.setOnAction(e1 -> {
 			try {
 				Parent root2 = FXMLLoader.load(getClass().getResource("Mypage.fxml"));
-				Head.getChildren().removeAll();
+				main.getChildren().removeAll();
 				InfoContents.getChildren().removeAll();
 				contents.getChildren().removeAll();
-				Head.getChildren().setAll(root2);
+				main.getChildren().setAll(root2);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -567,11 +557,11 @@ private MypageMyAlbListController iAC;
 		Parent mypage;
 		try {
 			mypage = loader.load();
-			Head.getChildren().removeAll();
+			main.getChildren().removeAll();
 			InfoContents.getChildren().removeAll();
 			contents.getChildren().removeAll();
 			contents.getChildren().removeAll();
-			Head.getChildren().setAll(mypage);
+			main.getChildren().setAll(mypage);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -593,12 +583,41 @@ private MypageMyAlbListController iAC;
 	}
 	
 	@FXML public void btn_MyalbCh(ActionEvent event) throws IOException { //마이앨범 편집 클릭시
-		Parent root = FXMLLoader.load(getClass().getResource("myalbCh.fxml"));
-		Scene scene = new Scene(root);
+		
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("myalbCh.fxml"));
+		Parent ChangeAlbMusic = loader.load();
+
+		// Controller를 받아온다.
+		MypageMyAlbController cotroller = loader.getController();
+
+		// Controller에 setcontroller메소드를 정의한다.
+		// 이 메소드는 this로 받은 자기자신객체를 Controller객체의 멤버변수로 set한다.
+		cotroller.setcontroller(this);
+		
+		Scene scene = new Scene(ChangeAlbMusic);
 		myalb.setTitle("모여서 각잡고 코딩 - clap");
 		myalb.setScene(scene);
 		myalb.show();
 		
+	
+		
+	}
+	
+	
+	public void ref()  {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("Mypage.fxml"));
+		Parent ChangeAlbMusic;
+		try {
+			ChangeAlbMusic = loader.load();
+
+			main.getChildren().removeAll();
+			main.getChildren().setAll(ChangeAlbMusic);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 	}
 
 	@FXML public void btn_ThrReview() {
@@ -668,6 +687,10 @@ private MypageMyAlbListController iAC;
 		}
 	}
 	
-	
+	 public void chAlbname (MyAlbumVO vo) {
+		 TreeItem<MyAlbumVO> root = new RecursiveTreeItem<>(myAlbList, RecursiveTreeObject::getChildren);
+		 tbl_Myalb.setRoot(root);
+		 tbl_Myalb.setShowRoot(false);
+	 }
 
 }

@@ -21,9 +21,14 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	private JFXCheckBox chBox;
 	
 	
-	
-	public JFXCheckBox getChBox() {
+	public void createChbox() {
+		if(chBox ==null) {
+			
 		this.chBox = new JFXCheckBox();
+		}
+	}
+	public JFXCheckBox getChBox() {
+		createChbox();
 		return chBox;
 	}
 	public JFXCheckBox getchBox1() {

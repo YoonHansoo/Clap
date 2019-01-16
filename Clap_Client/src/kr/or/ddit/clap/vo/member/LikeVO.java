@@ -206,7 +206,6 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	public JFXCheckBox getChBox() {
 		createChbox();
 		return this.chBox;
-		
 	}
 	public JFXCheckBox getchBox1() {
 		return this.chBox;
