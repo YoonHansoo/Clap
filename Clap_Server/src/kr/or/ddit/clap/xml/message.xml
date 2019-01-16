@@ -42,6 +42,34 @@
 		where msg_no=#msg_no#
 		
 	</update>
-
+	
+	<insert id="insertMessage" parameterClass="messageVO">
+		<selectKey resultClass="String" keyProperty="msg_no">
+			select
+			seq_msg_no.nextval
+			from dual
+		</selectKey>
+		insert into message ( 	msg_no,
+								msg_send_date,
+								msg_title,
+								msg_read_tf,
+								msg_content,
+								mem_send_id,
+								mem_get_id,
+								msg_read_date)
+			values (#msg_no#,
+					sysdate,
+					#msg_title#,
+					#msg_read_tf#,
+					#msg_content#,
+					#mem_send_id#,
+					#mem_get_id#,
+					#msg_read_date#	)
+	</insert>
+	
+	<delete id="deleteMessage" parameterClass="String">
+		delete  from message 
+		where msg_no = #msg_no#
+	</delete>
 
 </sqlMap>	

@@ -39,4 +39,14 @@ public class MessageServiceImpl extends UnicastRemoteObject implements IMessageS
 	public int updateMessage(MessageVO vo) throws RemoteException {
 		return msgDao.updateMessage(vo);
 	}
+
+	@Override
+	public int insertMessage(MessageVO vo) throws RemoteException {
+		return msgDao.insertMessage(vo);
+	}
+
+	@Override
+	public int deleteMessage(String no) throws RemoteException {
+		return msgDao.deleteMessage(no);
+	}
 }

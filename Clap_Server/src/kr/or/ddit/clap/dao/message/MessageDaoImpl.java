@@ -64,4 +64,30 @@ public class MessageDaoImpl implements IMessageDao{
 		}
 		return cnt;
 	}
+
+	@Override
+	public int insertMessage(MessageVO vo) {
+		int cnt = 0;
+		try {
+		Object obj = smc.insert("message.insertMessage", vo);
+		if(obj == null) { //쿼리수행이 성공적으로 끝남
+			cnt = 1;
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+	}
+
+	@Override
+	public int deleteMessage(String no) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("message.deleteMessage",no);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
 }
