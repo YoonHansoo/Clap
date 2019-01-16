@@ -12,6 +12,7 @@ import kr.or.ddit.clap.vo.music.MusicHistoryVO;
  */
 public interface IMusicHistoryDao {
 	public List<Map> toDaySelect();
+	public List<Map> top10Select();
 	public List<Map> genreSelect(String genre);
 	public List<Map> periodSelect(Map<String, String> day);
 	public List<Map> interiorSelect(String year);

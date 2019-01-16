@@ -98,4 +98,9 @@ public class MusicHistoryServiceImpl extends UnicastRemoteObject implements IMus
 		return musicHistoryDao.historyInsert(vo);
 	}
 
+	@Override
+	public List<Map> top10Select() throws RemoteException {
+		return musicHistoryDao.top10Select();
+	}
+
 }

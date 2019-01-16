@@ -198,4 +198,18 @@ public class MusicHistoryDaoImpl implements IMusicHistoryDao{
 		return cnt;
 	}
 
+	@Override
+	public List<Map> top10Select() {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("musichistory.top10select");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }
