@@ -37,7 +37,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		if(mubtnLike ==null) {
 		this.mubtnLike = new JFXButton();
 		FontAwesomeIcon remove = new FontAwesomeIcon();
-		remove.setIconName("REMOVE");
+		remove.setIconName("HEART");
 		remove.setFill(Color.valueOf("#9c0000"));
 		remove.setSize("20");
 		mubtnLike.setId(mus_no);
@@ -66,7 +66,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		if(rcmbtnLike ==null) {
 		this.rcmbtnLike = new JFXButton();
 		FontAwesomeIcon remove = new FontAwesomeIcon();
-		remove.setIconName("REMOVE");
+		remove.setIconName("HEART");
 		remove.setFill(Color.valueOf("#9c0000"));
 		remove.setSize("20");
 		rcmbtnLike.setId(rcm_alb_no);
@@ -101,7 +101,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		if(albbtnLike ==null) {
 		this.albbtnLike = new JFXButton();
 		FontAwesomeIcon remove = new FontAwesomeIcon();
-		remove.setIconName("REMOVE");
+		remove.setIconName("HEART");
 		remove.setFill(Color.valueOf("#9c0000"));
 		remove.setSize("20");
 		albbtnLike.setId(alb_no);
@@ -123,7 +123,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 		if(itsbtnLike ==null) {
 		this.itsbtnLike = new JFXButton();
 		FontAwesomeIcon remove = new FontAwesomeIcon();
-		remove.setIconName("REMOVE");
+		remove.setIconName("HEART");
 		remove.setFill(Color.valueOf("#9c0000"));
 		remove.setSize("20");
 		itsbtnLike.setId(sing_no);
@@ -200,6 +200,7 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	public void createChbox() {
 		if(chBox ==null) {
 		this.chBox = new JFXCheckBox();
+		chBox.setId(mus_no);
 		}
 	}
 	public JFXCheckBox getChBox() {
