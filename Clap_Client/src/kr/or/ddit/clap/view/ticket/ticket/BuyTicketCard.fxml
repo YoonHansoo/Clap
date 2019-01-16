@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXProgressBar?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -27,25 +28,26 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </padding>
                   </Label>
-                  <Label text="         ">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" top="10.0" />
-                     </padding>
-                  </Label>
-                  <Label fx:id="lb_card" text="NH농협은행">
-                     <font>
-                        <Font size="26.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" top="5.0" />
-                     </padding>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="51.0" prefWidth="245.0">
+                     <children>
+                        <FontAwesomeIcon iconName="CREDIT_CARD" size="30">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="20.0" right="7.0" />
+                           </HBox.margin>
+                        </FontAwesomeIcon>
+                        <Label fx:id="lb_card" prefHeight="46.0" prefWidth="170.0" text="NH농협은행">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="10.0" top="5.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

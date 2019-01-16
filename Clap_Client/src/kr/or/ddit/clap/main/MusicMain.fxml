@@ -73,7 +73,7 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <JFXTextField fx:id="txt_search" layoutX="200.0" layoutY="91.0" prefColumnCount="50" prefWidth="500.0" unFocusColor="#9c0000">
+                  <JFXTextField fx:id="txt_search" layoutX="230.0" layoutY="91.0" prefColumnCount="50" prefWidth="470.0" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -149,8 +149,8 @@
                         </Menu>
                      </menus>
                   </MenuBar>
-                  <JFXButton layoutX="721.0" layoutY="94.0" text=" " />
                   <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
+                  <JFXButton layoutX="700.0" layoutY="89.0" minHeight="35.0" minWidth="35.0" text=" " />
                   <JFXButton layoutX="247.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">

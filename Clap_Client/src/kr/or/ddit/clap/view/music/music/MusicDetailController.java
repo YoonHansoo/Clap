@@ -115,6 +115,7 @@ public class MusicDetailController implements Initializable {
 		
 		combo_genreDetail.setValue(mVO.getGen_detail_name()); 
 		txt_time.setText(mVO.getMus_time());  
+		txt_lyrics.setEditable(false);
 		txt_lyrics.setText(mVO.getMus_lyrics());
 		genreDetail.setText(mVO.getGen_detail_no()); 
 		label_albNO.setText(mVO.getAlb_no());  

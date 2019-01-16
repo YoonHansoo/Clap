@@ -814,7 +814,6 @@ public class MusicMainController implements Initializable {
 	}
 
 	public void singerMenu() {
-
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/singer/main/SingerMenu.fxml")); // 바뀔 화면을
 																											// 가져옴
