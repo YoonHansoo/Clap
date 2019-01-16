@@ -443,10 +443,13 @@ public class MusicMainController implements Initializable {
 			SingerMenuController.menuCount = 1;
 			singerMenu();
 		});
-		btn_new9.setOnAction(e -> {
+		btn_new9.setOnAction(e -> { // 수정중 - 곡 디테일
 			SingerMenuController.albumNo = albumList.get(8).getAlb_no();
 			SingerMainController.singerNo = albumList.get(8).getSing_no();
-			SingerMenuController.menuCount = 1;
+//			SingerMenuController.menuCount = 1;
+//			singerMenu();
+			SingerMenuController.menuCount = 2;
+			SingerMenuController.detailFlag = true;
 			singerMenu();
 		});
 		btn_new10.setOnAction(e -> {
