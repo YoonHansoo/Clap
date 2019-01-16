@@ -6,13 +6,13 @@
 <sqlMap namespace="notice">
 
 	 <select id="selectListAll" resultClass="NoticeBoardVO">
-	 		select notice_no, notice_title, notice_indate, notice_view_cnt from notice_board
+	 		select notice_no, notice_title, notice_indate, notice_view_cnt, mem_id from notice_board
 	 </select>
 
 
 	<select id="NoticeBoardDetailContent" resultClass="NoticeBoardVO" parameterClass="String">
          
-		  select notice_no, notice_indate, notice_title, notice_content from notice_board where notice_no = #String#
+		  select notice_no, notice_indate, notice_title, notice_content, mem_id from notice_board where notice_no = #String#
       </select>
 
 	<!-- 공지사항 글 등록 insert -->
@@ -31,7 +31,7 @@
                 sysdate,
                 #notice_title#,
                 #notice_content#,
-                0,
+                #notice_view_cnt#,
                 #mem_id#)
 		   
 	</insert>
@@ -43,9 +43,18 @@
                 notice_indate = sysdate,
                 notice_title = #notice_title#,
                 notice_content = #notice_content#,
-                notice_view_cnt = 0,
+                notice_view_cnt = #notice_view_cnt#,
                 mem_id = #mem_id#
             where notice_no=#notice_no#
+    </update>
+    
+    
+    <!-- 조회수 쿼리 -->
+    <update id="updateCount" parameterClass="String">
+    		update notice_board set
+    			   notice_view_cnt = notice_view_cnt +1 
+		     where notice_no = #String#
+    
     </update>
 			
 	

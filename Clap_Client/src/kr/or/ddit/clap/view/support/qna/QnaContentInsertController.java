@@ -87,6 +87,7 @@ public class QnaContentInsertController implements Initializable {
 				qVO.setQna_title(Text_QnaTitle.getText());
 				qVO.setQna_content(Text_QnaContent.getText());
 				qVO.setMem_id(LoginSession.session.getMem_id());
+				qVO.setQna_view_cnt("0");
 				
 				try {
 					int flag=iqs.insertQna(qVO);

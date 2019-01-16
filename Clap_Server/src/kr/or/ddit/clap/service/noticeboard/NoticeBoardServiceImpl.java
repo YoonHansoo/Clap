@@ -60,6 +60,11 @@ public class NoticeBoardServiceImpl extends UnicastRemoteObject implements INoti
 	public int updateNotice(NoticeBoardVO vo) throws RemoteException {
 		return noticeBoardDao.updateNotice(vo);
 	}
+
+	@Override
+	public int updateCount(String notice_no) throws RemoteException {
+		return noticeBoardDao.updateCount(notice_no);
+	}
 	
 	
 	

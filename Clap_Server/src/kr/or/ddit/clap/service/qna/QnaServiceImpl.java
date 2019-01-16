@@ -63,6 +63,11 @@ public class QnaServiceImpl extends UnicastRemoteObject implements IQnaService {
 	public int updateQna(QnaVO vo) throws RemoteException {
 		return qnaDao.updateQna(vo);
 	}
+
+	@Override
+	public int updateCount(String qna_no) throws RemoteException {
+		return qnaDao.updateCount(qna_no);
+	}
 	
 
 }

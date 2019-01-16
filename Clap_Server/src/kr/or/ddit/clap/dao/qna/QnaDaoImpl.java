@@ -101,6 +101,19 @@ public class QnaDaoImpl implements IQnaDao{
 		
 		return cnt;
 	}
+
+	@Override
+	public int updateCount(String qna_no) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.update("qna.updateCount", qna_no);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
 		
 		
 	}

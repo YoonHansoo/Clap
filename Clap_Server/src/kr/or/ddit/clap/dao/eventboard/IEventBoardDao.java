@@ -24,5 +24,7 @@ public interface IEventBoardDao {
 	public int updateEvent(EventBoardVO vo);
 	
 	public int deleteEvent(String ContentNo);
+	
+	public int updateCount(String ContentNo); //조회수
 
 }

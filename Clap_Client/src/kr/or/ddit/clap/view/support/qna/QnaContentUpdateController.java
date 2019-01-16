@@ -80,7 +80,8 @@ public class QnaContentUpdateController implements Initializable {
 		}
 		
 		
-		Com_Type.getItems().addAll("이용방법","벨/링","선물하기","이벤트","결제/요금제","음원오류","14세 미만 가입/승인","인증 문의","회원/로그인","다운로드","오류문의","개선사항","기타");
+		Com_Type.getItems().addAll("이용방법","벨/링","선물하기","이벤트","결제/요금제","음원오류",
+				"14세 미만 가입/승인","인증 문의","회원/로그인","다운로드","오류문의","개선사항","기타");
 		Com_Type.setValue("선택하세요");
 		
 		

@@ -102,7 +102,8 @@ public class QnaMenuController implements Initializable {
 				try {
 					// 바뀔 화면(FXML)을 가져옴
 					QnaDetailContentController.ContentNo = ContentNo;// 번호을 변수로 넘겨줌
-					System.out.println(ContentNo);
+					System.out.println("조회수 : " + ContentNo);
+					iqs.updateCount(ContentNo);
 
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaDetailContent.fxml"));// init실행됨
 					Parent qnaDetail = loader.load();

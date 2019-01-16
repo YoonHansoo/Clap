@@ -24,4 +24,6 @@ public interface IQnaDao {
 	public int deleteQnaContent(String qna_no);
 	
 	public int updateQna(QnaVO vo);
+	
+	public int updateCount(String qna_no); //조회수
 }

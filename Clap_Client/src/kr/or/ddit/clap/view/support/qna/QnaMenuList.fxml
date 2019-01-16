@@ -13,20 +13,20 @@
 
 <AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaMenuController">
    <children>
-      <Label layoutX="53.0" layoutY="34.0" text="고객센터" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="56.0">
+      <Label layoutX="53.0" layoutY="34.0" text="고객센터" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="832.5" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="YDIYGO350" size="30.0" />
          </font>
       </Label>
-      <Line endX="900.0" stroke="#0485ee" AnchorPane.leftAnchor="52.5" AnchorPane.topAnchor="95.5" />
-      <JFXTabPane prefWidth="500.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="53.0" AnchorPane.topAnchor="97.0">
+      <Line endX="900.0" stroke="#0485ee" strokeWidth="2.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="50.5" AnchorPane.topAnchor="60.0" />
+      <JFXTabPane layoutX="53.0" prefHeight="30.0" prefWidth="202.0" style="-fx-background-color: #ffffff;" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="750.0" AnchorPane.topAnchor="62.0">
          <tabs>
             <Tab text="문의사항" />
             <Tab text="1:1ChatBot" />
          </tabs>
       </JFXTabPane>
-      <Pagination fx:id="p_paging" layoutX="74.0" layoutY="126.0" prefHeight="552.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="190.0" />
-      <JFXTreeTableView fx:id="tbl_qna" layoutX="78.0" layoutY="160.0" prefHeight="490.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="160.0">
+      <Pagination fx:id="p_paging" layoutX="74.0" layoutY="126.0" prefHeight="474.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="154.0" />
+      <JFXTreeTableView fx:id="tbl_qna" layoutX="78.0" layoutY="160.0" prefHeight="400.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="130.0">
          <columns>
             <TreeTableColumn fx:id="col_qnaNumber" prefWidth="103.0" text="번  호" />
             <TreeTableColumn fx:id="col_qnaTitle" prefWidth="465.0" text="제  목" />
@@ -35,6 +35,6 @@
             <TreeTableColumn fx:id="col_qnaViewCnt" prefWidth="69.0" text="조회수" />
          </columns>
       </JFXTreeTableView>
-      <JFXButton fx:id="btn_ins" layoutX="829.0" layoutY="127.0" text="문의 글 작성" />
+      <JFXButton fx:id="btn_ins" layoutX="815.0" layoutY="628.0" text="문의 글 작성" AnchorPane.leftAnchor="823.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="632.0" />
    </children>
 </AnchorPane>

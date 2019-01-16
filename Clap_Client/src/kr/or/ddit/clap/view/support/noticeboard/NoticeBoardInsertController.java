@@ -65,6 +65,8 @@ public class NoticeBoardInsertController implements Initializable {
 				nVO.setNotice_title(Text_ntcTitle.getText());
 				nVO.setNotice_content(Text_ntcContent.getText());
 				nVO.setMem_id(LoginSession.session.getMem_id());
+				// 에러일 경우 , (0+"")
+				nVO.setNotice_view_cnt("0");
 				
 				
 				try {

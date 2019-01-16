@@ -119,4 +119,17 @@ public class EventBoardDaoImpl implements IEventBoardDao {
 		return cnt;
 	}
 
+	@Override
+	public int updateCount(String ContentNo) {
+		
+		int cnt = 0;
+		try {
+			cnt = smc.update("eventboard.updateCount", ContentNo);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return cnt;
+	}
+
 }

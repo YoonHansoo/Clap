@@ -12,27 +12,29 @@
 
 <AnchorPane fx:id="n_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.noticeboard.NoticeBoardDetailContentController">
    <children>
-      <Label layoutX="37.0" layoutY="29.0" text="공지사항">
+      <Label layoutX="37.0" layoutY="29.0" text="공지사항" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="832.5" AnchorPane.topAnchor="15.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <JFXTabPane layoutX="29.0" layoutY="73.0" prefHeight="30.0" prefWidth="422.0">
+      <JFXTabPane layoutX="53.0" layoutY="73.0" prefHeight="30.0" prefWidth="202.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="751.0" AnchorPane.topAnchor="62.0">
          <tabs>
             <Tab text="공지사항" />
          </tabs>
       </JFXTabPane>
-      <Line endX="800.0" layoutX="138.0" layoutY="129.0" startX="-100.0" />
-      <Line endX="800.0" layoutX="138.0" layoutY="174.0" startX="-100.0" />
-      <Text fx:id="Text_NtcNo" layoutX="84.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="번호" />
-      <Text fx:id="Text_NtcTitle" layoutX="213.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="제목" />
-      <Text fx:id="Text_NtcDate" layoutX="537.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="등록일" />
+      <Line endX="760.0" layoutX="173.0" layoutY="130.0" startX="-100.0" AnchorPane.leftAnchor="72.5" AnchorPane.rightAnchor="71.5" />
+      <Line endX="760.0" layoutX="138.0" layoutY="174.0" startX="-100.0" AnchorPane.leftAnchor="72.5" AnchorPane.rightAnchor="71.5" />
+      <Text fx:id="Text_NtcNo" layoutX="84.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="번호" AnchorPane.topAnchor="145.0" />
+      <Text fx:id="Text_NtcTitle" layoutX="213.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="제목" AnchorPane.topAnchor="145.0" />
+      <Text fx:id="Text_NtcDate" layoutX="537.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="등록일" AnchorPane.leftAnchor="800.0" AnchorPane.rightAnchor="145.0" AnchorPane.topAnchor="145.0" />
       <TextFlow layoutX="94.0" layoutY="236.0" prefHeight="200.0" prefWidth="798.0">
          <children>
             <Text fx:id="Text_NtcContent" strokeType="OUTSIDE" strokeWidth="0.0" text="내용" />
          </children>
       </TextFlow>
-      <JFXButton fx:id="btn_del" layoutX="870.0" layoutY="572.0" text="삭  제" />
-      <JFXButton fx:id="btn_upd" layoutX="815.0" layoutY="572.0" text="수  정" />
+      <JFXButton fx:id="btn_del" layoutX="861.0" layoutY="572.0" text="삭  제" />
+      <JFXButton fx:id="btn_upd" layoutX="806.0" layoutY="572.0" text="수  정" />
+      <Text fx:id="Text_NtcId" layoutX="427.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="작성자" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="145.0" />
+      <Line endX="900.0" stroke="#0485ee" strokeWidth="2.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="51.5" AnchorPane.topAnchor="60.0" />
    </children>
 </AnchorPane>

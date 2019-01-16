@@ -14,7 +14,8 @@
  				event_sdate,
  				event_edate,
  				event_image,
- 				event_content
+ 				event_content,
+ 				event_view_cnt
 		  from
 			  	event_board 
 	 </select>
@@ -27,7 +28,8 @@
  				event_sdate,
  				event_edate,
  				event_image,
-				event_content
+				event_content,
+				event_view_cnt
 		  from
 			  	event_board
 		 where  event_no = #String#
@@ -76,7 +78,7 @@
 							 		#event_title#,
 							 		#event_sdate#,
 							 		#event_edate#,
-							 		0,
+							 		#event_view_cnt#,
 							 		#event_image#,
 							 		#event_content#,
 							 		#mem_id#
@@ -97,6 +99,15 @@
 									 where  EVENT_NO 	   = #event_no#
 									 
 	</update>
+	
+	
+	<!-- 조회수 쿼리 -->
+    <update id="updateCount" parameterClass="String">
+    		update event_board set
+    			   event_view_cnt = event_view_cnt +1 
+		     where event_no = #String#
+    
+    </update>
 	
 	
 	

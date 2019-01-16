@@ -23,6 +23,8 @@ public interface INoticeBoardDao {
 	
 	public int updateNotice(NoticeBoardVO vo);
 	
+	public int updateCount(String notice_no); //조회수
+	
 	
 
 }

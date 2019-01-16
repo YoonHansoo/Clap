@@ -47,6 +47,8 @@ public class NoticeBoardDetailContentController implements Initializable {
 	JFXButton btn_del;
 	@FXML
 	JFXButton btn_upd;
+	@FXML
+	Text Text_NtcId;
 	
 	
 	public NoticeBoardVO nVO;
@@ -85,6 +87,7 @@ public class NoticeBoardDetailContentController implements Initializable {
 		Text_NtcTitle.setText(nVO.getNotice_title());
 		Text_NtcDate.setText(nVO.getNotice_indate());
 		Text_NtcContent.setText(nVO.getNotice_content());
+		Text_NtcId.setText(nVO.getMem_id());
 		
 		
 		btn_del.setOnMouseClicked(e -> {

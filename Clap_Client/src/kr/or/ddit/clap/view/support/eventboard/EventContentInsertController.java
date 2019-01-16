@@ -158,6 +158,8 @@ public class EventContentInsertController implements Initializable {
 			eVO.setEvent_edate(date_End .getValue().toString());
 			eVO.setMem_id(LoginSession.session.getMem_id());
 			eVO.setEvent_content(text_Content.getText());
+			// 글 등록 시 조회수를 0으로 맞춤
+			eVO.setEvent_view_cnt("0");
 			
 			try {
 				int flag = ies.insertEvent(eVO);

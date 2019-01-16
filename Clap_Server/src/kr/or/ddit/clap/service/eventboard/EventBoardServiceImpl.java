@@ -58,4 +58,9 @@ public class EventBoardServiceImpl extends UnicastRemoteObject implements IEvent
 		return eventboarddao.deleteEvent(ContentNo);
 	}
 
+	@Override
+	public int updateCount(String ContentNo) throws RemoteException {
+		return eventboarddao.updateCount(ContentNo);
+	}
+
 }

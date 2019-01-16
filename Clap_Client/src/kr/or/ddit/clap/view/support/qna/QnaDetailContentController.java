@@ -22,11 +22,14 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.qna.IQnaService;
 import kr.or.ddit.clap.vo.support.QnaVO;
+import kr.or.ddit.clap.vo.support.QnaReviewVO;
+import javafx.scene.control.TextArea;
 
 public class QnaDetailContentController implements Initializable {
 	
@@ -40,17 +43,34 @@ public class QnaDetailContentController implements Initializable {
 	@FXML
 	Text Text_Date;
 	@FXML
-	Text Text_Content;
-	@FXML
 	JFXButton btn_delete;
 	@FXML
 	AnchorPane main;
+	@FXML
+	AnchorPane r_main; //댓글창 전체
 	@FXML 
 	JFXButton btn_update;
 	@FXML
 	Text Text_Id;
+	@FXML
+	Label Text_Content;
+	@FXML
+	TextArea text_QnaRe; // 댓글 작성 TextArea
+	@FXML
+	JFXButton btn_QnaRe; // 댓글 버튼
+	@FXML
+	Label lb_qnaNo;
+	@FXML
+	Label lb_Content;
+	@FXML
+	Label lb_Qna_re_no;
+	@FXML
+	Label lb_Date;
+	@FXML
+	Label lb_Memid;
 	
 	public QnaVO qVO = null;
+	public QnaReviewVO qrVO = new QnaReviewVO();
 	LoginSession ls = new LoginSession();
 
 	@Override
@@ -95,6 +115,7 @@ public class QnaDetailContentController implements Initializable {
 				
 			}
 		}
+		// ***댓글 등록 버튼 사용자/ 관리자 구분하기***
 		
 		
 		btn_delete.setOnMouseClicked(e -> {
@@ -131,6 +152,14 @@ public class QnaDetailContentController implements Initializable {
 			} catch(IOException ee) {
 				ee.printStackTrace();
 			}
+		});
+		
+		// 댓글 입력
+		// 시퀀스 만들기
+		btn_QnaRe.setOnMouseClicked(e -> {
+			qrVO.setQna_re_content(text_QnaRe.getText());
+			qrVO.setQna_no(ContentNo);
+			qrVO.setMem_id(LoginSession.session.getMem_id());
 		});
 		
 	}
