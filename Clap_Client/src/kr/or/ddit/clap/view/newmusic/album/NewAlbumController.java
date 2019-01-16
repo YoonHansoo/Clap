@@ -44,7 +44,7 @@ public class NewAlbumController implements Initializable{
 			ias = (IAlbumService) reg.lookup("album");
 			list = FXCollections.observableArrayList(ias.newAlbumSelect());
 			System.out.println(list.size());
-			itemsForPage = 3;
+			itemsForPage = 5;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {

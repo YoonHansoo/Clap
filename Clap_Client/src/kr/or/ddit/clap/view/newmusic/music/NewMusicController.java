@@ -72,7 +72,7 @@ public class NewMusicController implements Initializable{
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
-			itemsForPage = 3;
+			itemsForPage = 5;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {

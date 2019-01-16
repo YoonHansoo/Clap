@@ -1032,7 +1032,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 				label_singerName.setFont(Font.font("-윤고딕330", 15));
 				label_singerName.setMaxWidth(200);
 				label_singerName.setId(list.get(i*2).get("ALB_NO").toString());
-				label_singerName.setAccessibleText(list.get(i).get("SING_NO").toString());
+				label_singerName.setAccessibleText(list.get(i*2).get("SING_NO").toString());
 				label_singerName.setOnMouseClicked(e -> {
 					Label la = (Label)e.getSource();
 					SingerMenuController.menuCount = 0;
