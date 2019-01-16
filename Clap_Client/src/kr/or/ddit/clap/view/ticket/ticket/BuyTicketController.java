@@ -45,8 +45,10 @@ import javafx.stage.StageStyle;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.login.ILoginService;
+import kr.or.ddit.clap.service.mypage.IMypageService;
 import kr.or.ddit.clap.service.ticket.ITicketService;
 import kr.or.ddit.clap.view.join.AES256Util;
+import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 
 public class BuyTicketController implements Initializable{
@@ -78,6 +80,7 @@ public class BuyTicketController implements Initializable{
 	TicketBuyListVO vo = new TicketBuyListVO();
 	LoginSession ls = new LoginSession();
 	private ITicketService its;
+	private IMypageService ms;
 	private Registry reg;
 	
 	@Override
@@ -85,6 +88,7 @@ public class BuyTicketController implements Initializable{
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			its = (ITicketService) reg.lookup("ticket");
+			ms = (IMypageService) reg.lookup("mypage");
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -255,6 +259,18 @@ public class BuyTicketController implements Initializable{
 				}
 				
 //				waitingNext(e); // 프로그레스바 띄우고 2초기다리기.
+				
+				// 1년권 구매한 경우 vip로 등급 바꾸기
+				if(Integer.valueOf(String.valueOf(tc.ticketInfo[4]))==5 || Integer.valueOf(String.valueOf(tc.ticketInfo[4]))==6) {
+					MemberVO mVO = ls.session;
+					mVO.setMem_grade("vip");
+					try {
+						ms.updateGrade(mVO);
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
+				}
+				
 				
 				dialog.close();
 				
