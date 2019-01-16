@@ -341,15 +341,15 @@ public class MusicList {
 					// 순위를 나타내는 Label
 					Label la_Rank = new Label();
 					la_Rank.setFont(Font.font("-윤고딕350", 18));
-					la_Rank.setPrefWidth(23);
-					la_Rank.setPrefHeight(23);
+					la_Rank.setMinWidth(23);
+					la_Rank.setMinHeight(23);
 					la_Rank.setText("" + (i+1));
 					
 					// 전날 순위에 대한 변동순위를 나타내는 Label
 					Label la_PreRank = new Label();
 					la_PreRank.setFont(Font.font("-윤고딕350", 12));
-					la_PreRank.setPrefWidth(30);
-					la_PreRank.setPrefHeight(23);
+					la_PreRank.setMinWidth(30);
+					la_PreRank.setMinHeight(23);
 					int beforRank = 0;
 					if(list.get(i).get("MUS_BEFOR_RANK") != null) {
 						beforRank = Integer.parseInt(list.get(i).get("MUS_BEFOR_RANK").toString());
