@@ -102,14 +102,9 @@ public class OtherMypageController implements Initializable{
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		
 		if(mvo.getMem_image()==null) {
 			mvo.setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
 	   }
-		
 		//이미지 설정
 		Image img = new Image(mvo.getMem_image());
 		temp_img_path = mvo.getMem_image(); // sVO.getSing_image()를 전역으로 쓰기위해
