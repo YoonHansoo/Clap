@@ -5,6 +5,8 @@ import java.io.Serializable;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.paint.Color;
+
 public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Serializable{
 	
 	private String myalb_no;
@@ -24,6 +26,7 @@ public class MyAlbumVO extends RecursiveTreeObject<MyAlbumVO> implements Seriali
 	public void createChbox() {
 		if(chBox ==null) {
 		this.chBox = new JFXCheckBox();
+		chBox.setCheckedColor(Color.valueOf("#9c0000"));
 		}
 	}
 	public JFXCheckBox getChBox() {

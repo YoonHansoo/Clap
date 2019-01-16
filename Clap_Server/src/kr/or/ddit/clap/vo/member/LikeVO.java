@@ -199,14 +199,15 @@ public class LikeVO  extends RecursiveTreeObject<LikeVO> implements Serializable
 	
 	public void createChbox() {
 		if(chBox ==null) {
+			
 		this.chBox = new JFXCheckBox();
+		chBox.setCheckedColor(Color.valueOf("#9c0000"));
 		chBox.setId(mus_no);
 		}
 	}
 	public JFXCheckBox getChBox() {
 		createChbox();
 		return this.chBox;
-		
 	}
 	public JFXCheckBox getchBox1() {
 		return this.chBox;

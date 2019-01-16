@@ -7,6 +7,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class MusicHistoryVO  extends RecursiveTreeObject<MusicHistoryVO> implements Serializable{
 	
@@ -42,8 +43,17 @@ public class MusicHistoryVO  extends RecursiveTreeObject<MusicHistoryVO> impleme
 	public void setImageView(ImageView imageView) {
 		this.imageView = imageView;
 	}
+	
+	
+	public void createChbox() {
+		if(chBox ==null) {
+		this.chBox = new JFXCheckBox();
+		chBox.setCheckedColor(Color.valueOf("#9c0000"));
+		chBox.setId(mus_no);
+		}
+	}
 	public JFXCheckBox getChBox() {
-		this.chBox =new JFXCheckBox();
+		createChbox();
 		return this.chBox;
 	}
 	

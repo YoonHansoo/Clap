@@ -35,7 +35,7 @@ public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implement
 		sigerName.setTextFill(Color.valueOf("#dcdcdc"));
 		
 		Label musicName = new Label(mus_title);
-		musicName.setFont(Font.font("-윤고딕330", 15));
+		musicName.setFont(Font.font("-윤고딕350", 14));
 		musicVbox.getChildren().addAll(musicName,sigerName);
 		return this.musicVbox;
 	}
@@ -48,9 +48,15 @@ public class MyAlbumListVO  extends RecursiveTreeObject<MyAlbumListVO> implement
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
 	}
-	public JFXCheckBox getChBox() {
+	
+	public void createChbox() {
+		if(chBox ==null) {
 		this.chBox = new JFXCheckBox();
 		chBox.setCheckedColor(Color.valueOf("#9c0000"));
+		}
+	}
+	public JFXCheckBox getChBox() {
+		createChbox();
 		return this.chBox;
 	}
 	public JFXCheckBox getChBox1() {
