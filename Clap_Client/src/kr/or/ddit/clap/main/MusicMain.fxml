@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="1000.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="1500.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -270,115 +270,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <Label layoutX="72.0" layoutY="388.0" text="실시간 차트" />
-                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-50.0" layoutY="400.0" prefWidth="1022.0">
-                     <children>
-                        <VBox fx:id="mainBox" maxWidth="300.0" minWidth="565.0" prefHeight="80.0" prefWidth="300.0">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" spacing="1.0">
-                                 <children>
-                                    <JFXCheckBox fx:id="cb_main" checkedColor="#9c0000" onAction="#mainCheck" prefHeight="35.0" prefWidth="39.0" text=" " />
-                                    <JFXButton onAction="#btnMainPlay" ripplerFill="#9c0000" text="듣기">
-                                       <graphic>
-                                          <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
-                                       </graphic>
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font name="-윤고딕340" size="12.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton onAction="#btnMainAdd" ripplerFill="#9c0000" text="추가">
-                                       <graphic>
-                                          <FontAwesomeIcon iconName="PLUS" size="20" />
-                                       </graphic>
-                                       <font>
-                                          <Font name="-윤고딕330" size="12.0" />
-                                       </font>
-                                    </JFXButton>
-                                    <JFXButton onAction="#btnMainPut" ripplerFill="#9c0000" text="담기">
-                                       <graphic>
-                                          <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
-                                       </graphic>
-                                       <font>
-                                          <Font name="-윤고딕330" size="12.0" />
-                                       </font>
-                                    </JFXButton>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="70.0" />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets left="20.0" />
-                                 </padding>
-                              </HBox>
-                              <HBox alignment="CENTER_LEFT" maxWidth="500.0" minWidth="555.0" spacing="20.0">
-                                 <children>
-                                    <Label text="순위">
-                                       <font>
-                                          <Font name="-윤고딕320" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="58.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label text="곡정보">
-                                       <font>
-                                          <Font name="-윤고딕320" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="48.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label text="듣기">
-                                       <font>
-                                          <Font name="-윤고딕320" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="90.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label text="추가">
-                                       <font>
-                                          <Font name="-윤고딕320" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label text="담기">
-                                       <font>
-                                          <Font name="-윤고딕320" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label text="뮤비">
-                                       <font>
-                                          <Font name="-윤고딕320" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="10.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <padding>
-                                    <Insets left="60.0" />
-                                 </padding>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </StackPane>
-                  <JFXTabPane layoutX="549.0" layoutY="409.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
+                  <JFXTabPane layoutX="542.0" layoutY="439.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
                      <tabs>
                         <Tab text="     #1     ">
                           <content>
@@ -692,7 +584,115 @@
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <VBox layoutX="549.0" layoutY="375.0" prefHeight="34.0" prefWidth="398.0" style="-fx-background-color: white;">
+                  <Label layoutX="72.0" layoutY="418.0" text="실시간 차트" />
+                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-50.0" layoutY="430.0" prefHeight="80.0" prefWidth="591.0">
+                     <children>
+                        <VBox fx:id="mainBox" maxWidth="580.0" minWidth="565.0" prefHeight="80.0" prefWidth="580.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" spacing="1.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="cb_main" checkedColor="#9c0000" onAction="#mainCheck" prefHeight="35.0" prefWidth="39.0" text=" " />
+                                    <JFXButton onAction="#btnMainPlay" ripplerFill="#9c0000" text="듣기">
+                                       <graphic>
+                                          <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="-윤고딕340" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton onAction="#btnMainAdd" ripplerFill="#9c0000" text="추가">
+                                       <graphic>
+                                          <FontAwesomeIcon iconName="PLUS" size="20" />
+                                       </graphic>
+                                       <font>
+                                          <Font name="-윤고딕330" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton onAction="#btnMainPut" ripplerFill="#9c0000" text="담기">
+                                       <graphic>
+                                          <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
+                                       </graphic>
+                                       <font>
+                                          <Font name="-윤고딕330" size="12.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="70.0" />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox alignment="CENTER_LEFT" maxWidth="500.0" minWidth="555.0" spacing="20.0">
+                                 <children>
+                                    <Label text="순위">
+                                       <font>
+                                          <Font name="-윤고딕320" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="58.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="곡정보">
+                                       <font>
+                                          <Font name="-윤고딕320" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="48.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="듣기">
+                                       <font>
+                                          <Font name="-윤고딕320" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="105.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="추가">
+                                       <font>
+                                          <Font name="-윤고딕320" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="담기">
+                                       <font>
+                                          <Font name="-윤고딕320" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label text="뮤비">
+                                       <font>
+                                          <Font name="-윤고딕320" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="10.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets left="60.0" />
+                                 </padding>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </StackPane>
+                  <VBox layoutX="542.0" layoutY="405.0" prefHeight="34.0" prefWidth="398.0" style="-fx-background-color: white;">
                      <children>
                         <Label text="에디터 추천 ">
                            <VBox.margin>
