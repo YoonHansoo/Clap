@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
 
 public class MessageVO extends RecursiveTreeObject<MessageVO>  implements Serializable{
 	
@@ -21,8 +22,14 @@ public class MessageVO extends RecursiveTreeObject<MessageVO>  implements Serial
 	private JFXCheckBox chBox;
 	
 	
-	
+	public void createChbox() {
+		if(chBox ==null) {
+		this.chBox = new JFXCheckBox();
+		chBox.setCheckedColor(Color.valueOf("#9c0000"));
+		}
+	}
 	public JFXCheckBox getChBox() {
+		createChbox();
 		return chBox;
 	}
 	public JFXCheckBox getChBox1() {
