@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../ChartMenu.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.UpdateRecommendAlbumController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../table.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.UpdateRecommendAlbumController">
    <children>
       <Label layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="268.0" text="추천 앨범 수정">
          <font>
