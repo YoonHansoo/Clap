@@ -1168,7 +1168,8 @@ public class MusicMainController implements Initializable {
 		try {
 			Parent event = FXMLLoader
 					.load(getClass().getResource("../view/support/eventboard/EventClientShowList.fxml"));
-			String temp_path = (getClass().getResource("../view/support/eventboard/EventClientShowList.fxml")).getPath();
+			String temp_path = (getClass().getResource("../view/support/eventboard/EventClientShowList.fxml"))
+					.getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 			GobackStack.goURL(path);
 			contents.getChildren().removeAll();

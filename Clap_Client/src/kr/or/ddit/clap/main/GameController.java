@@ -122,6 +122,7 @@ public class GameController implements Initializable{
 		media = new Media(new File(path).toURI().toString());
 		mediaPlayer = new MediaPlayer(media);
 		Ready(label_nowTime,slider_time);
+		mediaPlayer.setVolume(1.0);
 		mediaPlayer.play();
 	}
 	
