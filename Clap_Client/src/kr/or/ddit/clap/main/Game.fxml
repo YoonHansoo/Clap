@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="223.0" fx:id="anchorPane_main" prefWidth="398.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.GameController">
+<AnchorPane fx:id="anchorPane_main" prefHeight="223.0" prefWidth="398.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.GameController">
    <children>
       <StackPane fx:id="stackpane" style="-fx-background-color: #090948;">
          <children>
@@ -23,7 +23,7 @@
                         <Font name="-윤고딕350" size="15.0" />
                      </font>
                   </Label>
-                  <Label text="전주 3초를 듣고 노래 제목과 가수를 맞혀주세요!!!" textFill="WHITE">
+                  <Label text="전주 5초를 듣고 노래 제목과 가수를 맞혀주세요!!!" textFill="WHITE">
                      <font>
                         <Font name="-윤고딕330" size="12.0" />
                      </font>
