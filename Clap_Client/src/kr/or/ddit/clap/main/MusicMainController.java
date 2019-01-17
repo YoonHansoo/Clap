@@ -48,6 +48,7 @@ import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
+import kr.or.ddit.clap.service.recommend.IRecommendService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
@@ -61,6 +62,7 @@ import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
+import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
 import kr.or.ddit.clap.vo.support.MessageVO;
 
 /**
@@ -180,6 +182,7 @@ public class MusicMainController implements Initializable {
 	private Registry reg;
 	private IMusicService ims;
 	private IPlayListService ipls;
+	private IRecommendService irs;
 	private MusicList musicList;
 	private ObservableList<Map> songRank;
 	private ObservableList<Map> popRank;
@@ -193,9 +196,10 @@ public class MusicMainController implements Initializable {
 	private MusicPlayerController mpc;
 	private int itemsForPage;
 	private Pagination p_page;
-
+	
+	private ObservableList<RecommendAlbumVO> recommendList;
 	static Thread[] arr_thread = new Thread[1];
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if (arr_thread[0] != null) {
@@ -220,7 +224,10 @@ public class MusicMainController implements Initializable {
 			ipls = (IPlayListService) reg.lookup("playlist");
 			itemsForPage = 10;
 			game();
-
+			
+			irs = (IRecommendService) reg.lookup("recommend");
+			recommendList = FXCollections.observableArrayList(irs.selectAllRecommendAlbum());
+			
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
 			secondPane = contents;
 		} catch (RemoteException e) {
@@ -229,6 +236,26 @@ public class MusicMainController implements Initializable {
 			e.printStackTrace();
 		}
 
+		// 추천 앨범 출력하기
+		System.out.println("싸이즈 "+recommendList.size());
+		
+		
+		
+//		//좋아요 카운트 쿼리
+//		int likeCnt =  irs.selectAlbumLikeCnt(rcmAlbNo);
+//		label_LikeCnt.setText(likeCnt+"");
+//		
+//		
+//		//추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리
+//		musicList = FXCollections.observableArrayList(irs.SelectRcmMusicList(rcmAlbNo));
+//		System.out.println("해당 추천앨범 곡 개수 :"+musicList.size());
+//
+//		lable_cntMusic.setText(musicList.size()+"곡");
+		
+		
+		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
+				btnMovieList, mainBox, stackpane);
+		
 		// StackPane pane3 = null;
 		// try {
 		// pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
@@ -264,13 +291,11 @@ public class MusicMainController implements Initializable {
 			btn_msg.setVisible(false);
 			btn_logout.setVisible(false);
 		} else {
-			System.out.println(ls.session.getMem_id() + ls.session.getMem_auth());
 			if (ls.session.getMem_auth().equals("t")) { // 관리자 일 때 관리자모드 버튼 활성화
 				menu_admin.setVisible(true);
 			} else {
 				menu_admin.setVisible(false); // 일반사용자일경우( 관리자로 로그인 후 사용자로 로그인 했을 경우를 대비해서만들었음
 			}
-			System.out.println("not null " + ls.session.getMem_id());
 			mem_menu.setVisible(true);
 			btn_logout.setVisible(true);
 			btn_join.setVisible(false);
@@ -278,7 +303,6 @@ public class MusicMainController implements Initializable {
 
 			lb_id.setText(ls.session.getMem_id() + "님");
 
-			System.out.println("이미지");
 			Image img = null;
 			if (ls.session.getMem_image() == null) {
 				img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
@@ -301,7 +325,6 @@ public class MusicMainController implements Initializable {
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
 		try {
 			albumList = ias.selectListAll();
-			System.out.println(albumList.size());
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
