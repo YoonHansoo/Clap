@@ -20,6 +20,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
 import com.sun.javafx.scene.control.SelectedCellsMap;
+import com.sun.javafx.scene.traversal.SubSceneTraversalEngine;
 
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
@@ -73,8 +74,10 @@ public class SingerMenuController implements Initializable {
 	public static boolean detailFlag = false; // true면 뮤직 디테일 화면으로.
 	ObservableList<Map<String, String>> replyMap;
 	Map<String, String> pMap = new HashMap<String, String>();
+	Map<String, String> pMap_mus = new HashMap<String, String>();
 	int yn = 0;
-	
+	int yn2 = 0;
+
 	@FXML
 	JFXTabPane tabPane;
 	@FXML
@@ -206,6 +209,8 @@ public class SingerMenuController implements Initializable {
 	private Pagination p_page;
 	@FXML
 	FontAwesomeIcon icon_heart;
+	@FXML
+	FontAwesomeIcon icon_heart2;
 
 	/*
 	 * // ShowSingerList.fxml는 VBOX를 포함한 전부이기 때문에 // 현재 씬의 VBox까지 모두 제거 후
@@ -350,7 +355,8 @@ public class SingerMenuController implements Initializable {
 		label_albumName1.setText(aVO.getAlb_name());
 		// label_albumName2.setText(aVO.getAlb_name());
 		label_singerName.setText(aVO.getSing_name());
-		label_saledate.setText(aVO.getAlb_saledate());
+		String saledateEdit = aVO.getAlb_saledate().substring(0, 10);
+		label_saledate.setText(saledateEdit);
 		label_saleEnter.setText(aVO.getAlb_sale_enter());
 
 		label_entertain.setText(aVO.getAlb_entertain());
@@ -363,12 +369,8 @@ public class SingerMenuController implements Initializable {
 		// 좋아요 수를 가져오는 쿼리
 		int like_cnt = 0;
 		try {
-			like_cnt = 	ims.selectMusicLikeCnt(musicNo);
-		
-		
-			
-			
-			
+			like_cnt = ims.selectMusicLikeCnt(musicNo);
+
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
@@ -398,36 +400,48 @@ public class SingerMenuController implements Initializable {
 		txt_lyrics.setEditable(false);
 		txt_lyrics.setText(mVO.getMus_lyrics());
 
-		// 좋아요 수를 가져오는 쿼리
+		// 앨범 좋아요 수를 가져오는 쿼리
 		int like_cnt2 = 0;
 		try {
 			like_cnt2 = ias.selectAlbumLikeCnt(albumNo);
-			
-	
+			// 좋아요는 다른 VO에서 가져와야함...
+			str_like_cnt2 = like_cnt2 + "";
+			label_LikeCnt.setText(str_like_cnt2);
 
-		// 좋아요는 다른 VO에서 가져와야함...
-		str_like_cnt2 = like_cnt2 + "";
-		label_LikeCnt.setText(str_like_cnt2);
-		
-		// 세션아이디와 앨범번호를 매개변수로 좋아요를 눌렀는 지 확인하는 메서드
-		String id = LoginSession.session.getMem_id();
-		pMap.put("albNo", albumNo);
-		pMap.put("id", id);
-		System.out.println("albumNo:" + albumNo);
-		System.out.println("id:" + id);
-		System.out.println("첫번쨰" + albumNo);
+			// 세션아이디와 앨범번호를 매개변수로 좋아요를 눌렀는 지 확인하는 메서드
+			String id = LoginSession.session.getMem_id();
+			pMap.put("albNo", albumNo);
+			pMap.put("id", id);
+			System.out.println("albumNo:" + albumNo);
+			System.out.println("id:" + id);
+			System.out.println("첫번쨰" + albumNo);
 
-		yn = ias.checkHeartYN(pMap);
-		System.out.println("좋아요 갯수" + yn);
-		icon_heart.setIconName("HEART_ALT"); // 초기화 빈하트
-		if (yn > 0) {
-			icon_heart.setIconName("HEART");
-		}
+			yn = ias.checkHeartYN(pMap);
+			System.out.println("좋아요 갯수" + yn);
+			icon_heart.setIconName("HEART_ALT"); // 초기화 빈하트
+			if (yn > 0) {
+				icon_heart.setIconName("HEART");
+
+				// 곡 상세 좋아요 기능
+				int like_cnt3 = 0;
+				like_cnt3 = ims.selectMusicLikeCnt(musicNo);
+				String str_like_cnt3 = like_cnt3 + "";
+				label_LikeCnt2.setText(str_like_cnt3);
+				pMap_mus.put("musNo", musicNo);
+				pMap_mus.put("id", id);
+
+				yn2 = ims.checkHeartYN(pMap_mus);
+				System.out.println("좋아요 갯수" + yn2);
+				icon_heart2.setIconName("HEART_ALT"); // 초기화 빈하트
+				if (yn2 > 0) {
+					icon_heart2.setIconName("HEART");
+
+				}
+			}
 		} catch (RemoteException e) {
-	e.printStackTrace();
-}
-		
-		
+			e.printStackTrace();
+		}
+
 		try {
 			// reg로 ISingerService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -638,10 +652,9 @@ public class SingerMenuController implements Initializable {
 			resetCnt();
 			icon_heart.setIconName("HEART");
 		}
-		
+
 	}
 
-	
 	private void resetCnt() throws RemoteException {
 		// 좋아요 카운트 쿼리
 
@@ -649,6 +662,46 @@ public class SingerMenuController implements Initializable {
 		System.out.println("likecnt :" + likeCnt);
 		label_LikeCnt.setText(likeCnt + "");
 
-		yn = iss.checkHeartYN(pMap);
+		yn = ias.checkHeartYN(pMap);
+	}
+
+	private void resetCnt2() throws RemoteException {
+		// 좋아요 카운트 쿼리
+
+		int likeCnt = ims.selectMusicLikeCnt(musicNo);
+		System.out.println("likecnt :" + likeCnt);
+		label_LikeCnt2.setText(likeCnt + "");
+
+		yn2= ims.checkHeartYN(pMap_mus);
+	}
+
+	// 곡 상세용
+	@FXML
+	public void btn_heart2() {
+		if (yn2 > 0) // 좋아요 취소일 때
+		{
+			// 취소 메서드
+			try {
+				System.out.println("취소메서드 클릭");
+				ims.deleteMusicLike(pMap_mus);
+				resetCnt2();
+				icon_heart2.setIconName("HEART_ALT");
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+
+		} else {
+			// 추가 메서드
+			System.out.println(yn2);
+			System.out.println("추가메서드 클릭");
+			try {
+				ims.insertMusicLike(pMap_mus);
+				resetCnt2();
+				icon_heart2.setIconName("HEART");
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+		}
+
 	}
 }
