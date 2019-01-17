@@ -144,35 +144,39 @@ public class MusicMainController implements Initializable {
 
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
-	
-	
-	@FXML VBox mainBox;
-	@FXML JFXCheckBox cb_main;
-	
-	
-	@FXML JFXButton btn_Song;
-	@FXML JFXButton btn_Pop;
-	@FXML JFXButton btn_Ost;
-	@FXML JFXButton btn_Other;
-	@FXML StackPane stackpane;
-	
-	@FXML Label lb_total;
-	
-	
-	
-	//검색창 
+
 	@FXML
-	AnchorPane pane_search;  //전체페인
-	
+	VBox mainBox;
 	@FXML
-	AnchorPane pane_wordSerach; //작은페인 
-	
+	JFXCheckBox cb_main;
+
+	@FXML
+	JFXButton btn_Song;
+	@FXML
+	JFXButton btn_Pop;
+	@FXML
+	JFXButton btn_Ost;
+	@FXML
+	JFXButton btn_Other;
+	@FXML
+	StackPane stackpane;
+
+	@FXML
+	Label lb_total;
+
+	// 검색창
+	@FXML
+	AnchorPane pane_search; // 전체페인
+
+	@FXML
+	AnchorPane pane_wordSerach; // 작은페인
+
 	@FXML
 	JFXButton btn_bestWord;
-	
+
 	@FXML
 	JFXButton btn_newWord;
-	
+
 	private Registry reg;
 	private IMusicService ims;
 	private IPlayListService ipls;
@@ -189,64 +193,34 @@ public class MusicMainController implements Initializable {
 	private MusicPlayerController mpc;
 	private int itemsForPage;
 	private Pagination p_page;
-	
-	 static Thread[] arr_thread = new Thread[1];
-	
-	
+
+	static Thread[] arr_thread = new Thread[1];
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if(arr_thread[0]!= null) {
-			System.out.println("쓰레드삭제");
-			Thread temp_thread = arr_thread[0];
-			isStopped =true;
+		if (arr_thread[0] != null) {
+			System.out.println("쓰레드존재함");
+			arr_thread[0].interrupt();
 		}
-		System.out.println("thread_flag : "+thread_flag);
+		System.out.println("thread_flag : " + thread_flag);
 		tabpane.getSelectionModel().select(0);
-		if(!thread_flag) {
-			 Thread thread = new Thread(new Runnable() { // 익명클래스.
-					@Override
-					public void run() {
-	//					thread_flag = true;
-						isStopped = false;
-						while(!isStopped) {
-							try {
-								Thread.sleep(2000);		
-								current_index = tabpane.getSelectionModel().getSelectedIndex();
-								if(current_index==4) {
-									tabpane.getSelectionModel().select(0);
-								}else {
-									tabpane.getSelectionModel().select(current_index+1);										
-								}
-								System.out.println(current_index+1);			
-								
-								
-							} catch (InterruptedException e) {
-								e.printStackTrace();
-							}
-						}
-					}
-				});
-			arr_thread[0] = thread;
-			thread.setDaemon(true);
-			thread.start();		
-//			thread_flag = true;
-			System.out.println("check : " +thread_flag);
-		}
-		
-		
+
+		Thread1 thread = new Thread1();
+		thread.start();
+		arr_thread[0] = thread;
+	
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
 			ias = (IAlbumService) reg.lookup("album");
 			imhs = (IMusicHistoryService) reg.lookup("history");
 			imsgs = (IMessageService) reg.lookup("message");
-			
+
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
 			itemsForPage = 10;
 			game();
-			
-			
+
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
 			secondPane = contents;
 		} catch (RemoteException e) {
@@ -255,21 +229,20 @@ public class MusicMainController implements Initializable {
 			e.printStackTrace();
 		}
 
-//		StackPane pane3 = null;
-//		try {
-//			pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
-//		} catch (IOException e3) {
-//			e3.printStackTrace();
-//		}
-////		singerMusic.getChildren().removeAll();
-//		contents.getChildren().setAll(pane3);
-		
-		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
-				btnMovieList, mainBox, stackpane);
-		
+		// StackPane pane3 = null;
+		// try {
+		// pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
+		// } catch (IOException e3) {
+		// e3.printStackTrace();
+		// }
+		//// singerMusic.getChildren().removeAll();
+		// contents.getChildren().setAll(pane3);
+
+		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList, btnMovieList, mainBox, stackpane);
+
 		// 실시간차트
 		songChart();
-		
+
 		if (ls.session != null) {
 			System.out.println(ls.session.getMem_name());
 			System.out.println(ls.session.getMem_auth());
@@ -372,14 +345,12 @@ public class MusicMainController implements Initializable {
 		tab4.setImage(tab_img[3]);
 		tab5.setImage(tab_img[4]);
 
-		
-		
-		//이미지 hover시 효과 -------------윤한수
-		btn_new1.setOnMouseEntered(e -> {  //마우스가 들어갈 때 
+		// 이미지 hover시 효과 -------------윤한수
+		btn_new1.setOnMouseEntered(e -> { // 마우스가 들어갈 때
 			new1.setOpacity(0.5);
 		});
 
-		btn_new1.setOnMouseExited(e -> {//마우스가 나갈 때 
+		btn_new1.setOnMouseExited(e -> {// 마우스가 나갈 때
 			new1.setOpacity(1.0);
 		});
 
@@ -390,7 +361,7 @@ public class MusicMainController implements Initializable {
 		btn_new2.setOnMouseExited(e -> {
 			new2.setOpacity(1.0);
 		});
-		
+
 		btn_new3.setOnMouseEntered(e -> {
 			new3.setOpacity(0.5);
 		});
@@ -398,7 +369,7 @@ public class MusicMainController implements Initializable {
 		btn_new3.setOnMouseExited(e -> {
 			new3.setOpacity(1.0);
 		});
-		
+
 		btn_new4.setOnMouseEntered(e -> {
 			new4.setOpacity(0.5);
 		});
@@ -406,7 +377,7 @@ public class MusicMainController implements Initializable {
 		btn_new4.setOnMouseExited(e -> {
 			new4.setOpacity(1.0);
 		});
-		
+
 		btn_new5.setOnMouseEntered(e -> {
 			new5.setOpacity(0.5);
 		});
@@ -414,7 +385,7 @@ public class MusicMainController implements Initializable {
 		btn_new5.setOnMouseExited(e -> {
 			new5.setOpacity(1.0);
 		});
-		
+
 		btn_new6.setOnMouseEntered(e -> {
 			new6.setOpacity(0.5);
 		});
@@ -422,7 +393,7 @@ public class MusicMainController implements Initializable {
 		btn_new6.setOnMouseExited(e -> {
 			new6.setOpacity(1.0);
 		});
-		
+
 		btn_new7.setOnMouseEntered(e -> {
 			new7.setOpacity(0.5);
 		});
@@ -430,7 +401,7 @@ public class MusicMainController implements Initializable {
 		btn_new7.setOnMouseExited(e -> {
 			new7.setOpacity(1.0);
 		});
-		
+
 		btn_new8.setOnMouseEntered(e -> {
 			new8.setOpacity(0.5);
 		});
@@ -438,7 +409,7 @@ public class MusicMainController implements Initializable {
 		btn_new8.setOnMouseExited(e -> {
 			new8.setOpacity(1.0);
 		});
-		
+
 		btn_new9.setOnMouseEntered(e -> {
 			new9.setOpacity(0.5);
 		});
@@ -446,7 +417,7 @@ public class MusicMainController implements Initializable {
 		btn_new9.setOnMouseExited(e -> {
 			new9.setOpacity(1.0);
 		});
-		
+
 		btn_new10.setOnMouseEntered(e -> {
 			new10.setOpacity(0.5);
 		});
@@ -454,12 +425,9 @@ public class MusicMainController implements Initializable {
 		btn_new10.setOnMouseExited(e -> {
 			new10.setOpacity(1.0);
 		});
-		///이미지 효과 끝
+		/// 이미지 효과 끝
 		/////////////////////////
-		
-		
-		
-		
+
 		btn_new1.setOnAction(e -> {
 			SingerMenuController.albumNo = albumList.get(0).getAlb_no(); // 앨범번호를 변수로 넘겨줌
 			SingerMainController.singerNo = albumList.get(0).getSing_no(); // 가수번호를 변수로 넘겨줌
@@ -524,48 +492,51 @@ public class MusicMainController implements Initializable {
 		});
 
 	}
-	
-	
-	//검색창에 마우스를 올렸을 경우 발생하는 메서드
+
+	// 검색창에 마우스를 올렸을 경우 발생하는 메서드
 	public void searchEnteredMouse() {
 		pane_search.setVisible(true);
 	}
-	
-	//검색창에 마우스를 치웠을 경우 발생하는 메서드
+
+	// 검색창에 마우스를 치웠을 경우 발생하는 메서드
 	public void searchExitedMouse() {
 		pane_search.setVisible(false);
-	
+
 	}
-	//검색창에 마우스 올렸을 경우 발생하는 메서드
+
+	// 검색창에 마우스 올렸을 경우 발생하는 메서드
 	public void pane_searchMouseEnterd() {
 		pane_search.setVisible(true);
 	}
-	//검색창에 마우스 치웠을 경우 발생하는 메서드
+
+	// 검색창에 마우스 치웠을 경우 발생하는 메서드
 	public void pane_searchMouseExited() {
 		pane_search.setVisible(false);
 	}
-	
-	//인기검색어 버튼을 클릭했을 때
+
+	// 인기검색어 버튼을 클릭했을 때
 	public void btn_bestWord() {
-		
+
 	}
-	//최근검색어 버튼을 클릭했을 때
+
+	// 최근검색어 버튼을 클릭했을 때
 	public void btn_newWord() {
-		
+
 	}
-	
-	
+
 	// 메인 재생 버튼 이벤트
-	@FXML public void btnMainPlay() {
+	@FXML
+	public void btnMainPlay() {
 		if (LoginSession.session == null) {
 			return;
 		}
-		
+
 		ArrayList<String> list = musicCheckList();
-		playListInsert(list,true);
+		playListInsert(list, true);
 		if (!MusicMainController.musicplayer.isShowing()) {
 			try {
-				MusicMainController.playerLoad = new FXMLLoader(getClass().getResource("../../musicplayer/MusicPlayer.fxml"));
+				MusicMainController.playerLoad = new FXMLLoader(
+						getClass().getResource("../../musicplayer/MusicPlayer.fxml"));
 				AnchorPane root = MusicMainController.playerLoad.load();
 				Scene scene = new Scene(root);
 				MusicMainController.musicplayer.setTitle("MusicPlayer");
@@ -583,23 +554,25 @@ public class MusicMainController implements Initializable {
 	}
 
 	// 메인 추가 버튼 이벤트
-	@FXML public void btnMainAdd() {
+	@FXML
+	public void btnMainAdd() {
 		if (LoginSession.session == null) {
 			return;
 		}
-		
+
 		ArrayList<String> list = musicCheckList();
-		playListInsert(list,false);
+		playListInsert(list, false);
 		cb_main.setSelected(false);
 		mainCheck();
 	}
 
 	// 메인 담기 버튼 이벤트
-	@FXML public void btnMainPut() {
+	@FXML
+	public void btnMainPut() {
 		if (LoginSession.session == null) {
 			return;
 		}
-		
+
 		ArrayList<String> list = musicCheckList();
 		MyAlbumDialogController.mus_no.clear();
 		MyAlbumDialogController.mus_no = list;
@@ -607,20 +580,21 @@ public class MusicMainController implements Initializable {
 		cb_main.setSelected(false);
 		mainCheck();
 	}
-	
+
 	// 전체 선택 및 해제 메서드
-	@FXML public void mainCheck() {
+	@FXML
+	public void mainCheck() {
 		if (cb_main.isSelected()) {
-			for(int i = 0; i < cbnList.size(); i++) {
+			for (int i = 0; i < cbnList.size(); i++) {
 				cbnList.get(i).setSelected(true);
 			}
 		} else {
-			for(int i = 0; i < cbnList.size(); i++) {
+			for (int i = 0; i < cbnList.size(); i++) {
 				cbnList.get(i).setSelected(false);
 			}
 		}
 	}
-	
+
 	// 체크 박스 선택한 곡넘버 보내기
 	private ArrayList<String> musicCheckList() {
 		ArrayList<String> list = new ArrayList<>();
@@ -631,24 +605,25 @@ public class MusicMainController implements Initializable {
 		}
 		return list;
 	}
-	
+
 	// 가요장르
-	@FXML public void songChart() {
+	@FXML
+	public void songChart() {
 		try {
 			songRank = FXCollections.observableArrayList(imhs.top10Select());
 			cb_main.setSelected(false);
-			
+
 			musicList.musicList(songRank);
-			
+
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public VBox createPage(int pageIndex, ObservableList<Map> list, int itemsForPage) {
-        int page = pageIndex * itemsForPage;
-        return musicList.pagenation(list,itemsForPage,page);
-    }
+		int page = pageIndex * itemsForPage;
+		return musicList.pagenation(list, itemsForPage, page);
+	}
 
 	private void playListInsert(ArrayList<String> list, boolean play) {
 		for (int i = 0; i < list.size(); i++) {
@@ -660,37 +635,37 @@ public class MusicMainController implements Initializable {
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
-			
+
 			if (MusicMainController.musicplayer.isShowing()) {
 				mpc = MusicMainController.playerLoad.getController();
 				mpc.reFresh();
-				if(play) {
+				if (play) {
 					mpc.selectIndex();
 				}
 			}
 		}
 	}
-	
+
 	private void pageing(ObservableList<Map> list) {
-		
+
 		if (mainBox.getChildren().size() == 8) {
 			mainBox.getChildren().remove(7);
 		}
-		
-		if (list.size() == 0) return;
+
+		if (list.size() == 0)
+			return;
 		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
-		
+
 		p_page = new Pagination(totalPage, 0);
 		p_page.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                return createPage(pageIndex,list,itemsForPage);
-            }
-	    });
-		
+			@Override
+			public Node call(Integer pageIndex) {
+				return createPage(pageIndex, list, itemsForPage);
+			}
+		});
+
 		mainBox.getChildren().addAll(p_page);
 	}
-	
 
 	private void setNewList() {
 		newList = albumList;
@@ -713,8 +688,8 @@ public class MusicMainController implements Initializable {
 	@FXML
 	public void goBack(ActionEvent event) throws IOException {
 
-		gobackStack.goBack();
-		String path = gobackStack.printPage();
+		GobackStack.goBack();
+		String path = GobackStack.printPage();
 		System.out.println("경로:" + path);
 		URL fxmlURL = Paths.get(path).toUri().toURL(); // Stirng 값을 URL로 변환
 
@@ -729,8 +704,8 @@ public class MusicMainController implements Initializable {
 
 	@FXML
 	public void goforward(ActionEvent event) throws IOException {
-		gobackStack.goForward();
-		String path = gobackStack.printPage();
+		GobackStack.goForward();
+		String path = GobackStack.printPage();
 		System.out.println("goforawrd:" + path);
 		System.out.println("경로:" + path);
 		URL fxmlURL = Paths.get(path).toUri().toURL(); // Stirng 값을 URL로 변환
@@ -955,7 +930,7 @@ public class MusicMainController implements Initializable {
 			String temp_path = (getClass().getResource("../view/recommend/album/HotRcmList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 
-			gobackStack.goURL(path);
+			GobackStack.goURL(path);
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(recommendManage);
@@ -976,7 +951,7 @@ public class MusicMainController implements Initializable {
 			String temp_path = (getClass().getResource("../view/recommend/album/BestRcmList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 
-			gobackStack.goURL(path);
+			GobackStack.goURL(path);
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(recommendManage);
@@ -998,7 +973,7 @@ public class MusicMainController implements Initializable {
 			String path = temp_path.substring(1, temp_path.length());
 
 			// 현재화면의 fxml절대경로를 저장해야함
-			gobackStack.goURL(path);
+			GobackStack.goURL(path);
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(singerManage);
@@ -1018,7 +993,7 @@ public class MusicMainController implements Initializable {
 			String temp_path = (getClass().getResource("../view/album/album/ShowAlbumLIst.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 
-			gobackStack.goURL(path);
+			GobackStack.goURL(path);
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(albumManage);
@@ -1038,7 +1013,7 @@ public class MusicMainController implements Initializable {
 			String temp_path = (getClass().getResource("../view/music/music/MusicList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 
-			gobackStack.goURL(path);
+			GobackStack.goURL(path);
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(albumManage);
@@ -1057,7 +1032,7 @@ public class MusicMainController implements Initializable {
 			String temp_path = (getClass().getResource("../view/recommend/album/RecommendAlbumList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 
-			gobackStack.goURL(path);
+			GobackStack.goURL(path);
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(recommendManage);
@@ -1156,14 +1131,13 @@ public class MusicMainController implements Initializable {
 
 	}
 
-
-	public void btn_message() {//메세지
+	public void btn_message() {// 메세지
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/message/mestable.fxml"));
 			Parent messageCh = loader.load();
-			
+
 			ShowMessageController cotroller = loader.getController();
-			
+
 			cotroller.setController(this);
 			Scene scene = new Scene(messageCh);
 			musicplayer.setTitle("모여서 각잡고 코딩 - clap");
@@ -1173,8 +1147,10 @@ public class MusicMainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+
 	
-	public void refreshmenu()		{//화면 전화을 위해
+
+	public void refreshmenu() {// 화면 전화을 위해
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 		Parent refmain;
 		try {
@@ -1185,7 +1161,7 @@ public class MusicMainController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void game() {
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("Game.fxml"));
@@ -1196,4 +1172,35 @@ public class MusicMainController implements Initializable {
 		}
 	}
 
+	class Thread1 extends Thread {
+		@Override
+		public void run() {
+			try {
+				while (!Thread.interrupted()) {
+
+					System.out.println("인터럽트" + this.isInterrupted());
+					if (Thread.interrupted()) { // interrupt()메서드가 호출되면 true
+						System.out.println("인스턴스용 isInterrupted()");
+						break;
+					}
+					Thread.sleep(2000);
+					current_index = tabpane.getSelectionModel().getSelectedIndex();
+					if (current_index == 4) {
+						tabpane.getSelectionModel().select(0);
+					} else {
+						tabpane.getSelectionModel().select(current_index + 1);
+					}
+					System.out.println(current_index + 1);
+				}
+				arr_thread[0] = this;
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			System.out.println("자원 정리 중...");
+			System.out.println("실행종료.");
+		}
+	}
+	
+	
 }
+

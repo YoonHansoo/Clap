@@ -8,7 +8,7 @@ import java.util.Stack;
 
 
 //앞으로 가기 뒤로가기를 위한 클래스
-public class gobackStack {
+public class GobackStack {
 	public static Stack<String> back  = new Stack<String>();
 	public static Stack<String> forward  = new Stack<String>();
 	

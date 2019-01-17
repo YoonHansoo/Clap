@@ -21,7 +21,7 @@ import javafx.scene.text.Font;
 import kr.or.ddit.clap.service.singer.ISingerService;
 import kr.or.ddit.clap.view.member.mypage.OtherMypageController;
 
-public class createReply {
+public class CreateReply {
 	// 댓글 만들어주는 메서드
 	public static void creatReply(VBox reply_vbox, int size, ISingerService iss, String singerNo) {
 

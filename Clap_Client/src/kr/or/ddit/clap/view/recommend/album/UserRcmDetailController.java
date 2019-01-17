@@ -31,7 +31,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
-import kr.or.ddit.clap.main.createReply;
+import kr.or.ddit.clap.main.CreateReply;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.recommend.IRecommendService;
 import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
