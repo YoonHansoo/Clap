@@ -132,7 +132,6 @@
                         <Menu mnemonicParsing="false" text="이벤트">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#event" text="Event" />
-                              <MenuItem mnemonicParsing="false" onAction="#game" text="게임" />
                            </items>
                         </Menu>
                         <Menu fx:id="menu_admin" mnemonicParsing="false" text="관리자모드" visible="false">

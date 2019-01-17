@@ -1062,19 +1062,6 @@ public class MusicMainController implements Initializable {
 
 	}
 
-	@FXML
-	public void game() { // 이벤트
-
-		try {
-			Parent event = FXMLLoader
-					.load(getClass().getResource("../view/support/eventboard/EventClientShowList.fxml"));
-			contents.getChildren().removeAll();
-			contents.getChildren().setAll(event);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	public void btn_message() {
 		try {
