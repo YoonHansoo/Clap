@@ -10,15 +10,19 @@
 
 
 		SELECT a.ALB_NO
-		, a.ALB_NAME
+		,
+		a.ALB_NAME
 		, a.ALB_IMAGE
 		, b.SING_NAME
-		, to_char(a.ALB_SALEDATE, 'yyyy/mm/dd') as ALB_SALEDATE
+		, to_char(a.ALB_SALEDATE,
+		'yyyy/mm/dd') as ALB_SALEDATE
 		, a.ALB_SALE_ENTER
 		, a.sing_no
-		FROM ALBUM a, SINGER b
+		FROM ALBUM
+		a, SINGER b
 		WHERE a.SING_NO = b.SING_NO
-		order by to_number(a.ALB_NO) desc
+		order by to_number(a.ALB_NO)
+		desc
 
 	</select>
 
@@ -33,22 +37,27 @@
 		, a.ALB_NAME
 		, a.ALB_IMAGE
 		, b.SING_NAME
-		, to_char(a.ALB_SALEDATE, 'yyyy/mm/dd') as ALB_SALEDATE
-		, a.ALB_SALE_ENTER
+		,
+		to_char(a.ALB_SALEDATE, 'yyyy/mm/dd') as ALB_SALEDATE
+		,
+		a.ALB_SALE_ENTER
 		FROM ALBUM a, SINGER b
 		WHERE a.SING_NO = b.SING_NO
 		<isNotEmpty property="alb_name" prepend="and">
-			a.ALB_NAME like '%' || #alb_name# || '%'
+			a.ALB_NAME like '%'
+			|| #alb_name# || '%'
 		</isNotEmpty>
 		<isNotEmpty property="sing_name" prepend="and">
-			b.sing_name like '%' || #sing_name# || '%'
+			b.sing_name like
+			'%' || #sing_name# || '%'
 		</isNotEmpty>
 	</select>
 
 	<!-- 앨범정보등록 쿼리 -->
 	<insert id="insertAlbum" parameterClass="albumVO">
 		<selectKey resultClass="String" keyProperty="alb_no">
-			select SEQ_ALB_NO.nextval
+			select
+			SEQ_ALB_NO.nextval
 			from dual
 		</selectKey>
 		insert into ALBUM (ALB_NO,
@@ -73,85 +82,179 @@
 
 	<select id="albumDetailInfo" resultClass="albumVO"
 		parameterClass="String">
-		        select  a.ALB_NO,
-				a.ALB_NAME,
-				a.ALB_SALEDATE,
-				a.ALB_IMAGE,
-				a.ALB_INTRO,
-				a.ALB_SALE_ENTER,
-				a.ALB_ENTERTAIN,
-				b.SING_NAME,
-				a.SING_NO
-		  from ALBUM a, SINGER b
-		  WHERE a.SING_NO = b.SING_NO
-		    and a.ALB_NO =#String#
+		select a.ALB_NO,
+		a.ALB_NAME,
+		a.ALB_SALEDATE,
+		a.ALB_IMAGE,
+		a.ALB_INTRO,
+		a.ALB_SALE_ENTER,
+		a.ALB_ENTERTAIN,
+		b.SING_NAME,
+		a.SING_NO
+		from ALBUM a, SINGER b
+		WHERE a.SING_NO = b.SING_NO
+		and a.ALB_NO
+		=#String#
 	</select>
 
 	<!-- //좋이요 갯수 쿼리 -->
 	<select id="selectAlbumLikeCnt" resultClass="int"
 		parameterClass="String">
-		  select count(ALB_NO)
+		select count(ALB_NO)
 		from ALBUM_LIKE
-		where ALB_NO =#String#
+		where ALB_NO
+		=#String#
 	</select>
 
 
- <!-- 가수정보 수정 쿼리 -->
-   <update id="updateAlbumInfo" parameterClass="albumVO">
-	 		update album set 
-	 								ALB_NAME 		= #alb_name#,
-	 								ALB_SALEDATE 	= #alb_saledate#,
-	 								ALB_IMAGE 	= #alb_image#,
-	 								ALB_INTRO  = #alb_intro#,
-	 								ALB_SALE_ENTER 	= #alb_sale_enter#,
-	 								ALB_ENTERTAIN		= #alb_entertain#,
-	 								SING_NO	= #sing_no#
-	 			        	where ALB_NO=#alb_no#
-	 </update>
+	<!-- 가수정보 수정 쿼리 -->
+	<update id="updateAlbumInfo" parameterClass="albumVO">
+		update album set
+		ALB_NAME = #alb_name#,
+		ALB_SALEDATE = #alb_saledate#,
+		ALB_IMAGE =
+		#alb_image#,
+		ALB_INTRO = #alb_intro#,
+		ALB_SALE_ENTER = #alb_sale_enter#,
+		ALB_ENTERTAIN = #alb_entertain#,
+		SING_NO = #sing_no#
+		where
+		ALB_NO=#alb_no#
+	</update>
 
 
 
 
- <delete id="deleteAlbum" parameterClass="String">
-			delete from album where ALB_NO=#String#
-	 </delete>
-	 
-	  <!-- 최신앨범 조회 (진민규) -->
-	 <select id="newalbumselect" resultClass="java.util.HashMap">
-	       select 
-			       b.alb_no,
-			       b.alb_name,
-			       b.alb_indate,
-			       b.alb_image,
-		           c.sing_no,
-			       b.alb_saledate,
-			       (select count(mus_no) from music where b.alb_no = alb_no) as mus_count,
-			       c.sing_name
-			 from  music a, album b, singer c
-			where  a.alb_no = b.alb_no
-			  and  b.sing_no = c.sing_no
-			group  by b.alb_no, b.alb_name, b.alb_indate, b.alb_image, b.alb_saledate, c.sing_name,c.sing_no
-			order  by b.alb_saledate desc
+	<delete id="deleteAlbum" parameterClass="String">
+		delete from album where
+		ALB_NO=#String#
+	</delete>
+
+	<!-- 최신앨범 조회 (진민규) -->
+	<select id="newalbumselect" resultClass="java.util.HashMap">
+		select
+		b.alb_no,
+		b.alb_name,
+		b.alb_indate,
+		b.alb_image,
+		c.sing_no,
+		b.alb_saledate,
+		(select
+		count(mus_no) from music where b.alb_no = alb_no) as mus_count,
+		c.sing_name
+		from music a, album b, singer c
+		where a.alb_no = b.alb_no
+		and b.sing_no = c.sing_no
+		group by b.alb_no, b.alb_name, b.alb_indate,
+		b.alb_image, b.alb_saledate,
+		c.sing_name,c.sing_no
+		order by
+		b.alb_saledate desc
 	</select>
-	
+
 	<!-- 특정 가수의 앨범 검색 -->
-	 <select id="singerAlbumSelect" resultClass="java.util.HashMap" parameterClass="albumVO">
-		select 
-		       b.alb_no,
-		       b.alb_name,
-		       b.alb_indate,
-		       b.alb_image,
-		       b.alb_saledate,
-		       (select count(mus_no) from music where b.alb_no = alb_no) as mus_count,
-		       c.sing_name,
-		       c.sing_no
-		 from  music a, album b, singer c
-		where  a.alb_no = b.alb_no
-		  and  b.sing_no = c.sing_no
-		  and  c.sing_no = #sing_no#
-		group  by b.alb_no, b.alb_name, b.alb_indate, b.alb_image, b.alb_saledate, c.sing_name, c.sing_no
-		order  by b.alb_saledate desc
+	<select id="singerAlbumSelect" resultClass="java.util.HashMap"
+		parameterClass="albumVO">
+		select
+		b.alb_no,
+		b.alb_name,
+		b.alb_indate,
+		b.alb_image,
+		b.alb_saledate,
+		(select count(mus_no) from music where b.alb_no =
+		alb_no) as mus_count,
+		c.sing_name,
+		c.sing_no
+		from music a, album b,
+		singer c
+		where a.alb_no = b.alb_no
+		and b.sing_no = c.sing_no
+		and
+		c.sing_no = #sing_no#
+		group by b.alb_no, b.alb_name, b.alb_indate,
+		b.alb_image, b.alb_saledate, c.sing_name, c.sing_no
+		order by
+		b.alb_saledate desc
 	</select>
+
+	<!-- 좋아요를 눌렀는지 체크하는 조회쿼리 -->
+	<select id="checkHeartYN" resultClass="int"
+		parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM ALBUM_LIKE
+		WHERE
+		ALB_NO = #albNo#
+		and
+		MEM_ID = #id#
+	</select>
+
+	<!-- 좋아요를 취소하는 쿼리 -->
+	<delete id="deleteAlbLike" parameterClass="java.util.HashMap">
+		delete from ALBUM_LIKE
+		WHERE
+		ALB_NO = #albNo#
+		and MEM_ID = #id#
+	</delete>
+
+	<!-- 좋아요 증가하는 쿼리 -->
+	<insert id="insertAlbLike" parameterClass="java.util.HashMap">
+		insert into
+		ALBUM_LIKE(
+		MEM_ID,
+		ALB_NO,
+		ALB_LIKE_DATE
+		)
+		values(
+		#id#,
+		#albNo#,
+		sysdate
+		)
+	</insert>
+
+
+	<!-- 앨범댓글조회 쿼리 -->
+	<select id="selectAlbReply" resultClass="java.util.HashMap"
+		parameterClass="String">
+		select a.alb_re_no,
+		a.alb_re_content,
+		to_char(a.alb_re_indate) as alb_re_indate ,
+		a.mem_id,
+		a.alb_no,
+		b.mem_image
+		from ALBUM_REVIEW a , member b
+		where a.mem_id = b.mem_id
+		and
+		alb_no = #String#
+	</select>
+
+<!-- 앨범댓글작성 -->
+
+	<insert id="insertAlbReply" parameterClass="java.util.HashMap">
+		insert into
+		ALBUM_REVIEW(
+
+		ALB_RE_NO,
+		ALB_RE_CONTENT,
+		ALB_RE_INDATE,
+		MEM_ID,
+		ALB_NO
+		)
+		values(
+		seq_alb_re_no.nextval,
+		#contents#,
+		sysdate,
+		#mem_id#,
+		#albNo#
+		)
+	</insert>
+
+<!-- 앨범댓글을 삭제하는 쿼리 -->
+	<delete id="deleteAlbReply" parameterClass="String">
+		delete from
+		ALBUM_REVIEW
+		where ALB_RE_NO=#String#
+	</delete>
+
 </sqlMap>         
 
 

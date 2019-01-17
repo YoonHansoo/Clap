@@ -82,6 +82,36 @@ public class AlbumServiceImpl extends UnicastRemoteObject implements IAlbumServi
 		return albumDao.singerAlbumSelect(vo);
 	}
 
+	@Override
+	public int checkHeartYN(Map<String, String> map) throws RemoteException {
+		return albumDao.checkHeartYN(map);
+	}
+
+	@Override
+	public int deleteAlbLike(Map<String, String> map) throws RemoteException {
+		return albumDao.deleteAlbLike(map);
+	}
+
+	@Override
+	public int insertAlbLike(Map<String, String> map) throws RemoteException {
+		return albumDao.insertAlbLike(map);
+	}
+
+	@Override
+	public List<Map<String, String>> selectAlbReply(String singerNo) throws RemoteException {
+		return albumDao.selectAlbReply(singerNo);
+	}
+
+	@Override
+	public int insertAlbReply(Map<String, String> map) throws RemoteException {
+		return albumDao.insertAlbReply(map);
+	}
+
+	@Override
+	public int deleteAlbReply(String id) throws RemoteException {
+		return albumDao.deleteAlbReply(id);
+	}
+
 	
 
 	

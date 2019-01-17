@@ -7,250 +7,349 @@
 <sqlMap namespace="music">
 
 	<select id="selectListAll" resultClass="musicVO">
-		
-	    select a.ALB_IMAGE,
-           b.MUS_TITLE,
-           a.ALB_NAME,
-           c.SING_NAME,
-           d.GEN_DETAIL_NAME,
-           b.MUS_NO
-      from album a, music b, singer c, GENRE_DETAIL d
-     where a.alb_no = b.alb_no
-       and a.sing_no = c.sing_no
-       and b.gen_detail_no = d.gen_detail_no
-       order by to_number(b.mus_NO) desc
+
+		select a.ALB_IMAGE,
+		b.MUS_TITLE,
+		a.ALB_NAME,
+		c.SING_NAME,
+		d.GEN_DETAIL_NAME,
+		b.MUS_NO
+		from album a, music b, singer c, GENRE_DETAIL d
+		where a.alb_no = b.alb_no
+		and a.sing_no = c.sing_no
+		and b.gen_detail_no = d.gen_detail_no
+		order by to_number(b.mus_NO) desc
 
 	</select>
-	
+
 	<!-- 검색용 쿼리 -->
 	<select id="searchList" resultClass="musicVO"
 		parameterClass="musicVO">
 
-	    select a.ALB_IMAGE,
-           b.MUS_TITLE,
-           a.ALB_NAME,
-           c.SING_NAME,
-           d.GEN_DETAIL_NAME,
-           b.MUS_NO
-      from album a, music b, singer c, GENRE_DETAIL d
-     where a.alb_no = b.alb_no
-       and a.sing_no = c.sing_no
-       and b.gen_detail_no = d.gen_detail_no
+		select a.ALB_IMAGE,
+		b.MUS_TITLE,
+		a.ALB_NAME,
+		c.SING_NAME,
+		d.GEN_DETAIL_NAME,
+		b.MUS_NO
+		from album a, music b, singer c, GENRE_DETAIL d
+		where a.alb_no = b.alb_no
+		and a.sing_no = c.sing_no
+		and b.gen_detail_no = d.gen_detail_no
 		<isNotEmpty property="mus_title" prepend="and">
-			b.mus_title like '%' || #mus_title# || '%'
+			b.mus_title like
+			'%' || #mus_title# || '%'
 		</isNotEmpty>
 		<isNotEmpty property="alb_name" prepend="and">
-			a.alb_name like '%' || #alb_name# || '%'
+			a.alb_name like '%'
+			|| #alb_name# || '%'
 		</isNotEmpty>
 		<isNotEmpty property="sing_name" prepend="and">
-			c.sing_name like '%' || #sing_name# || '%'
+			c.sing_name like
+			'%' || #sing_name# || '%'
 		</isNotEmpty>
 	</select>
-	 
-	 
-	 <select id="showGenre" resultClass="GenreVO">
+
+
+	<select id="showGenre" resultClass="GenreVO">
 		select gen_no,
-       		gen_name
-  			from genre
+		gen_name
+		from genre
 	</select>
-	
+
 	<!-- 콤보박스에서 받은 장르 값으로 장르번호를 리턴 -->
-	 <select id="selectGenreNO" resultClass="String"  parameterClass="String">
+	<select id="selectGenreNO" resultClass="String"
+		parameterClass="String">
 		select gen_no
-  			from genre
-  		where gen_name = #String# 
+		from genre
+		where gen_name = #String#
 	</select>
-	
-	
-	 <select id="showGenreDetail" resultClass="GenreDetailVO"  parameterClass="String">
+
+
+	<select id="showGenreDetail" resultClass="GenreDetailVO"
+		parameterClass="String">
 		select GEN_DETAIL_NO,
-			   GEN_DETAIL_NAME
-  			from GENRE_DETAIL
-  		where GEN_NO = #String# 
+		GEN_DETAIL_NAME
+		from GENRE_DETAIL
+		where GEN_NO = #String#
 	</select>
-	
-	 <select id="selectGenreDetailNO" resultClass="String"  parameterClass="String">
+
+	<select id="selectGenreDetailNO" resultClass="String"
+		parameterClass="String">
 		select GEN_DETAIL_NO
-  			from GENRE_DETAIL
-  		where GEN_DETAIL_NAME = #String# 
+		from GENRE_DETAIL
+		where GEN_DETAIL_NAME = #String#
 	</select>
-	
-	
+
+
 	<insert id="insertMusic" parameterClass="MusicVO">
-			insert into MUSIC(
-						MUS_NO,
-						MUS_TITLE,
-						MUS_TIME,
-						MUS_FILE,
-						MUS_MUSWRITE_SON,
-						MUS_EDIT_SON,
-						MUS_WRITE_SON,
-						MUS_LYRICS,
-						ALB_NO,
-						GEN_DETAIL_NO,
-						MUS_MVFILE
-			)
-			values(			
-						seq_mus_no.nextval,
-						#mus_title#,
-						#mus_time#,
-						#mus_file#,
-						#mus_muswrite_son#,
-						#mus_edit_son#,
-						#mus_write_son#,
-						#mus_lyrics#,
-						#alb_no#,
-						#gen_detail_no#,
-						#mus_mvfile#
-			)
-			
+		insert into MUSIC(
+		MUS_NO,
+		MUS_TITLE,
+		MUS_TIME,
+		MUS_FILE,
+		MUS_MUSWRITE_SON,
+		MUS_EDIT_SON,
+		MUS_WRITE_SON,
+		MUS_LYRICS,
+		ALB_NO,
+		GEN_DETAIL_NO,
+		MUS_MVFILE
+		)
+		values(
+		seq_mus_no.nextval,
+		#mus_title#,
+		#mus_time#,
+		#mus_file#,
+		#mus_muswrite_son#,
+		#mus_edit_son#,
+		#mus_write_son#,
+		#mus_lyrics#,
+		#alb_no#,
+		#gen_detail_no#,
+		#mus_mvfile#
+		)
+
 	</insert>
-	
-  <!-- 곡 상세보기 클릭 정보를 조회하는 쿼리 -->
-  <select id="selectMusicDetailInfo" resultClass="musicVO" parameterClass="String">
-	    select 
-	       a.ALB_IMAGE,
-           b.MUS_TITLE,
-           a.ALB_NAME,
-           c.SING_NAME,
-           d.GEN_DETAIL_NAME,
-           b.MUS_MUSWRITE_SON,
-           b.MUS_EDIT_SON,
-           b.MUS_WRITE_SON,
-           b.MUS_LYRICS,
-           e.gen_name,
-           a.alb_no,
-           d.gen_Detail_no,
-           b.mus_time,
-           b.MUS_FILE,
-           b.MUS_MVFILE
-      from album a, music b, singer c, GENRE_DETAIL d, GENRE e
-     where a.alb_no = b.alb_no
-       and a.sing_no = c.sing_no
-       and b.gen_detail_no = d.gen_detail_no
-       and d.gen_no = e.gen_no
-       and b.mus_no=#String#
+
+	<!-- 곡 상세보기 클릭 정보를 조회하는 쿼리 -->
+	<select id="selectMusicDetailInfo" resultClass="musicVO"
+		parameterClass="String">
+		select
+		a.ALB_IMAGE,
+		b.MUS_TITLE,
+		a.ALB_NAME,
+		c.SING_NAME,
+		d.GEN_DETAIL_NAME,
+		b.MUS_MUSWRITE_SON,
+		b.MUS_EDIT_SON,
+		b.MUS_WRITE_SON,
+		b.MUS_LYRICS,
+		e.gen_name,
+		a.alb_no,
+		d.gen_Detail_no,
+		b.mus_time,
+		b.MUS_FILE,
+		b.MUS_MVFILE
+		from album a, music b, singer c, GENRE_DETAIL d, GENRE e
+		where a.alb_no = b.alb_no
+		and a.sing_no = c.sing_no
+		and b.gen_detail_no = d.gen_detail_no
+		and d.gen_no = e.gen_no
+		and b.mus_no=#String#
 
 	</select>
-  
-  <!-- 곡에 대한 좋아요 수 개수를 구하는 쿼리 -->
-	<select id="selectMusicLikeCnt" resultClass="int" parameterClass="String">
-		  select count(MUS_NO)
+
+	<!-- 곡에 대한 좋아요 수 개수를 구하는 쿼리 -->
+	<select id="selectMusicLikeCnt" resultClass="int"
+		parameterClass="String">
+		select count(MUS_NO)
 		from MUSIC_LIKE
 		where MUS_NO =#String#
 	</select>
-  
-  <!--  곡 정보를 삭제하는 쿼리 -->
- <delete id="deleteMusic" parameterClass="String">
-			delete from music where MUS_NO=#String#
-	 </delete>
-  
-  
-  <update id="updateMusicInfo" parameterClass="musicVO">
-	 							update music 
-	 							set 
-	 								MUS_TITLE 		= #mus_title#,
-	 								MUS_TIME 	= #mus_time#,
-	 								MUS_FILE 	= #mus_file#,
-	 								MUS_MUSWRITE_SON  = #mus_muswrite_son#,
-	 								MUS_EDIT_SON 	= #mus_edit_son#,
-	 								MUS_WRITE_SON		= #mus_write_son#,
-	 								MUS_LYRICS		= #mus_lyrics#,
-	 								ALB_NO		= #alb_no#,
-	 								GEN_DETAIL_NO		= #gen_detail_no#,
-	 								MUS_BEFOR_RANK		= #mus_befor_rank#,
-	 								MUS_MVFILE		= #mus_mvfile#
-	 			        	where MUS_NO=#mus_no#
-	 </update>
-   
-   <select id="newmusicselete" resultClass="java.util.HashMap"  parameterClass="String"> 
-		  select 
-		        a.mus_no,
-		        a.mus_title,
-		        a.mus_befor_rank,
-		        a.mus_mvfile,
-		        b.alb_image,
-		        b.alb_saledate,
-		        b.alb_no,
-		        c.sing_no,
-		        c.sing_name
-		  from  music a, album b, singer c, genre_detail d
-		 where  a.alb_no = b.alb_no
-		   and  b.sing_no = c.sing_no
-           and  a.gen_detail_no = d.gen_detail_no
-           and  d.gen_no = #genre_no#
-		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name,b.alb_no,c.sing_no
-		 order  by b.alb_saledate desc
+
+	<!-- 곡 정보를 삭제하는 쿼리 -->
+	<delete id="deleteMusic" parameterClass="String">
+		delete from music where MUS_NO=#String#
+	</delete>
+
+
+	<update id="updateMusicInfo" parameterClass="musicVO">
+		update music
+		set
+		MUS_TITLE = #mus_title#,
+		MUS_TIME = #mus_time#,
+		MUS_FILE = #mus_file#,
+		MUS_MUSWRITE_SON = #mus_muswrite_son#,
+		MUS_EDIT_SON = #mus_edit_son#,
+		MUS_WRITE_SON = #mus_write_son#,
+		MUS_LYRICS = #mus_lyrics#,
+		ALB_NO = #alb_no#,
+		GEN_DETAIL_NO = #gen_detail_no#,
+		MUS_BEFOR_RANK = #mus_befor_rank#,
+		MUS_MVFILE = #mus_mvfile#
+		where MUS_NO=#mus_no#
+	</update>
+
+	<select id="newmusicselete" resultClass="java.util.HashMap"
+		parameterClass="String">
+		select
+		a.mus_no,
+		a.mus_title,
+		a.mus_befor_rank,
+		a.mus_mvfile,
+		b.alb_image,
+		b.alb_saledate,
+		b.alb_no,
+		c.sing_no,
+		c.sing_name
+		from music a, album b, singer c, genre_detail d
+		where a.alb_no = b.alb_no
+		and b.sing_no = c.sing_no
+		and a.gen_detail_no = d.gen_detail_no
+		and d.gen_no = #genre_no#
+		group by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile,
+		b.alb_image, b.alb_saledate ,c.sing_name,b.alb_no,c.sing_no
+		order by b.alb_saledate desc
 	</select>
-	
-	<select id="genremusicselete" resultClass="java.util.HashMap"  parameterClass="String"> 
-		  select 
-		        a.mus_no,
-		        a.mus_title,
-		        a.mus_befor_rank,
-		        a.mus_mvfile,
-		        b.alb_image,
-		        b.alb_saledate,
-		        b.alb_no,
-		        c.sing_no,
-		        c.sing_name
-		  from  music a, album b, singer c, genre_detail d
-		 where  a.alb_no = b.alb_no
-		   and  b.sing_no = c.sing_no
-           and  a.gen_detail_no = d.gen_detail_no
-           and  d.gen_detail_no = #gen_detail_no#
-		 group  by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile, b.alb_image, b.alb_saledate ,c.sing_name,b.alb_no,c.sing_no
-		 order  by b.alb_saledate desc
+
+	<select id="genremusicselete" resultClass="java.util.HashMap"
+		parameterClass="String">
+		select
+		a.mus_no,
+		a.mus_title,
+		a.mus_befor_rank,
+		a.mus_mvfile,
+		b.alb_image,
+		b.alb_saledate,
+		b.alb_no,
+		c.sing_no,
+		c.sing_name
+		from music a, album b, singer c, genre_detail d
+		where a.alb_no = b.alb_no
+		and b.sing_no = c.sing_no
+		and a.gen_detail_no = d.gen_detail_no
+		and d.gen_detail_no = #gen_detail_no#
+		group by a.mus_no, a.mus_title, a.mus_befor_rank, a.mus_mvfile,
+		b.alb_image, b.alb_saledate ,c.sing_name,b.alb_no,c.sing_no
+		order by b.alb_saledate desc
 	</select>
-	
-   <select id="selectAlbum" resultClass="java.util.HashMap"  parameterClass="String">
-		 select 
-		        a.mus_no,
-		        a.mus_title,
-                a.mus_indate,
-		        a.mus_befor_rank,
-		        a.mus_mvfile,
-		        b.alb_image,
-		        c.sing_name,
-		        b.alb_saledate,
-		        a.alb_no,
-				c.sing_no
-		  from  music a, album b, singer c
-		 where  a.alb_no = b.alb_no
-		   and  b.sing_no = c.sing_no
-           and  a.alb_no = #alb_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate,a.alb_no,c.sing_no
-		 order  by b.alb_saledate desc
+
+	<select id="selectAlbum" resultClass="java.util.HashMap"
+		parameterClass="String">
+		select
+		a.mus_no,
+		a.mus_title,
+		a.mus_indate,
+		a.mus_befor_rank,
+		a.mus_mvfile,
+		b.alb_image,
+		c.sing_name,
+		b.alb_saledate,
+		a.alb_no,
+		c.sing_no
+		from music a, album b, singer c
+		where a.alb_no = b.alb_no
+		and b.sing_no = c.sing_no
+		and a.alb_no = #alb_no#
+		group by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank,
+		a.mus_mvfile, b.alb_image, c.sing_name,
+		b.alb_saledate,a.alb_no,c.sing_no
+		order by b.alb_saledate desc
 	</select>
-	
-   <select id="selectSinger" resultClass="java.util.HashMap"  parameterClass="String">
-		 select 
-		        a.mus_no,
-		        a.mus_title,
-                a.mus_indate,
-		        a.mus_befor_rank,
-		        a.mus_mvfile,
-		        b.alb_image,
-		        c.sing_name,
-		        b.alb_saledate,
-		        b.alb_no,
-		        c.sing_no
-		  from  music a, album b, singer c
-		 where  a.alb_no = b.alb_no
-		   and  b.sing_no = c.sing_no
-           and  c.sing_no = #sing_no#
-		 group  by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank, a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate, c.sing_no, b.alb_no
-		 order  by b.alb_saledate desc
+
+	<select id="selectSinger" resultClass="java.util.HashMap"
+		parameterClass="String">
+		select
+		a.mus_no,
+		a.mus_title,
+		a.mus_indate,
+		a.mus_befor_rank,
+		a.mus_mvfile,
+		b.alb_image,
+		c.sing_name,
+		b.alb_saledate,
+		b.alb_no,
+		c.sing_no
+		from music a, album b, singer c
+		where a.alb_no = b.alb_no
+		and b.sing_no = c.sing_no
+		and c.sing_no = #sing_no#
+		group by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank,
+		a.mus_mvfile, b.alb_image, c.sing_name, b.alb_saledate, c.sing_no,
+		b.alb_no
+		order by b.alb_saledate desc
 	</select>
-	
-	<select id="albummusnoselect" resultClass="String"  parameterClass="String">
-		 select mus_no
-		   from music
-		  where alb_no = #alb_no#
-		  order by mus_no desc
+
+	<select id="albummusnoselect" resultClass="String"
+		parameterClass="String">
+		select mus_no
+		from music
+		where alb_no = #alb_no#
+		order by mus_no desc
 	</select>
-	
-	
+
+
+	<!-- 좋아요를 눌렀는지 체크하는 조회쿼리 -->
+	<select id="checkHeartYN" resultClass="int"
+		parameterClass="java.util.HashMap">
+		SELECT COUNT(*)
+		FROM MUSIC_LIKE
+		WHERE
+		MUS_NO = #musNo#
+		and
+		MEM_ID = #id#
+	</select>
+
+	<!-- 좋아요를 취소하는 쿼리 -->
+	<delete id="deleteMusicLike" parameterClass="java.util.HashMap">
+		delete from
+		MUSIC_LIKE
+		WHERE
+		MUS_NO = #musNo#
+		and MEM_ID = #id#
+	</delete>
+
+	<!-- 좋아요 증가하는 쿼리 -->
+	<insert id="insertMusicLike" parameterClass="java.util.HashMap">
+		insert into
+		MUSIC_LIKE(
+		MEM_ID,
+		MUS_NO,
+		MUS_LIKE_DATE
+		)
+		values(
+		#id#,
+		#musNo#,
+		sysdate
+		)
+	</insert>
+
+	<!-- 곡댓글조회 쿼리 -->
+	<select id="selectMusReply" resultClass="java.util.HashMap"
+		parameterClass="String">
+		select a.MUS_RE_NO,
+		a.MUS_RE_CONTENT,
+		to_char(a.MUS_RE_INDATE) as mus_re_indate ,
+		a.mem_id,
+		a.MUS_NO,
+		b.mem_image
+		from MUSIC_REVIEW a , member b
+		where a.mem_id = b.mem_id
+		and
+		MUS_NO = #String#
+	</select>
+
+<!-- 곡댓글작성 -->
+
+	<insert id="insertMusReply" parameterClass="java.util.HashMap">
+		insert into
+		MUSIC_REVIEW(
+
+		MUS_RE_NO,
+		MUS_RE_CONTENT,
+		MUS_RE_INDATE,
+		MEM_ID,
+		MUS_NO
+		)
+		values(
+		seq_mus_re_no.nextval,
+		#contents#,
+		sysdate,
+		#mem_id#,
+		#musNo#
+		)
+	</insert>
+
+<!-- 곡댓글을 삭제하는 쿼리 -->
+	<delete id="deleteMusReply" parameterClass="String">
+		delete from
+		MUSIC_REVIEW
+		where MUS_RE_NO=#String#
+	</delete>
+
+
+
 </sqlMap>         
 
 

@@ -79,8 +79,6 @@ public class MusicDaoImpl implements IMusicDao {
 
 	}
 
-	
-
 	@Override
 	public int selectMusicLikeCnt(String MusicNo) {
 		int musicLikeCnt = 0;
@@ -134,9 +132,6 @@ public class MusicDaoImpl implements IMusicDao {
 		return list;
 	}
 
-
-	
-
 	@Override
 	public String selectGenreNO(String genreName) {
 
@@ -158,7 +153,7 @@ public class MusicDaoImpl implements IMusicDao {
 		List<GenreDetailVO> list = new ArrayList<GenreDetailVO>();
 		try {
 
-			list = smc.queryForList("music.showGenreDetail",genreNO);
+			list = smc.queryForList("music.showGenreDetail", genreNO);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -179,9 +174,7 @@ public class MusicDaoImpl implements IMusicDao {
 		}
 
 		return genreDetailNo;
-		
-		
-		
+
 	}
 
 	@Override
@@ -268,5 +261,82 @@ public class MusicDaoImpl implements IMusicDao {
 		return list;
 	}
 
+	@Override
+	public int checkHeartYN(Map<String, String> map) {
+		int checkHeartYN = 0;
+
+		try {
+			checkHeartYN = (int) smc.queryForObject("music.checkHeartYN", map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return checkHeartYN;
+	}
+
+	@Override
+	public int deleteMusicLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("music.deleteMusicLike", map);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int insertMusicLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("music.insertMusicLike", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<Map<String, String>> selectMusReply(String singerNo) {
+		List<Map<String, String>> list = new ArrayList<>();
+
+		try {
+			list = smc.queryForList("music.selectMusReply", singerNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public int insertMusReply(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("music.insertMusReply", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int deleteMusReply(String id) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("music.deleteMusReply", id);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+
+	}
 
 }

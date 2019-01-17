@@ -15,7 +15,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.clap.main.DBUtil;
-import kr.or.ddit.clap.vo.album.AlbumVO; 
+import kr.or.ddit.clap.vo.album.AlbumVO;
 
 public class AlbumDaoImpl implements IAlbumDao {
 
@@ -33,8 +33,7 @@ public class AlbumDaoImpl implements IAlbumDao {
 		return dao;
 	}
 
-
-	//가수목록 조회를 위한 쿼리문
+	// 가수목록 조회를 위한 쿼리문
 	public List<AlbumVO> selectListAll() {
 		List<AlbumVO> list = new ArrayList<AlbumVO>();
 		try {
@@ -47,117 +46,195 @@ public class AlbumDaoImpl implements IAlbumDao {
 
 		return list;
 	}
-	
-	//검색조건에 맞게 검색하는 쿼리문
-		@Override
-		public List<AlbumVO> searchList(AlbumVO vo) {
-			List<AlbumVO> list = new ArrayList<AlbumVO>();
-			try {
-				
-				list = smc.queryForList("album.searchList",vo);
-			
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			
-			return list;
+
+	// 검색조건에 맞게 검색하는 쿼리문
+	@Override
+	public List<AlbumVO> searchList(AlbumVO vo) {
+		List<AlbumVO> list = new ArrayList<AlbumVO>();
+		try {
+
+			list = smc.queryForList("album.searchList", vo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		public int insertAlbum(AlbumVO vo) {
-			int cnt = 0;
-			try {
+		return list;
+	}
+
+	@Override
+	public int insertAlbum(AlbumVO vo) {
+		int cnt = 0;
+		try {
 			Object obj = smc.insert("album.insertAlbum", vo);
-			if(obj == null) { //쿼리수행이 성공적으로 끝남
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
 				cnt = 1;
 			}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			return cnt;
-		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+
+	}
+
+	@Override
+	public AlbumVO albumDetailInfo(String albumNo) {
+		AlbumVO aVO = new AlbumVO();
+		try {
+
+			aVO = (AlbumVO) smc.queryForObject("album.albumDetailInfo", albumNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		public AlbumVO albumDetailInfo(String albumNo) {
-			AlbumVO aVO = new AlbumVO();
-			try {
-				
-				aVO = (AlbumVO) smc.queryForObject("album.albumDetailInfo", albumNo);
-			
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			
-			return aVO;
+		return aVO;
+	}
+
+	@Override
+	public int selectAlbumLikeCnt(String albumNo) {
+		int singerLikeCnt = 0;
+
+		try {
+			singerLikeCnt = (int) smc.queryForObject("album.selectAlbumLikeCnt", albumNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return singerLikeCnt;
+	}
+
+	@Override
+	public int updateAlbumInfo(AlbumVO vo) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("album.updateAlbumInfo", vo);
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return cnt;
+
+	}
+
+	@Override
+	public int deleteAlbum(String albumNo) {
+
+		int cnt = 0;
+		try {
+			cnt = smc.delete("album.deleteAlbum", albumNo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<Map> newAlbumSelect() {
+
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("album.newalbumselect");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		public int selectAlbumLikeCnt(String albumNo) {
-			int singerLikeCnt = 0;
-			
-			try {
-				singerLikeCnt = (int) smc.queryForObject("album.selectAlbumLikeCnt",albumNo);
-			} catch (SQLException e) {
-				e.printStackTrace();
+		return list;
+
+	}
+
+	@Override
+	public List<Map> singerAlbumSelect(AlbumVO vo) {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("album.singerAlbumSelect", vo);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
+	public int checkHeartYN(Map<String, String> map) {
+		int checkHeartYN = 0;
+
+		try {
+			checkHeartYN = (int) smc.queryForObject("album.checkHeartYN", map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return checkHeartYN;
+	}
+
+	@Override
+	public int deleteAlbLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("album.deleteAlbLike", map);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public int insertAlbLike(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("album.insertAlbLike", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
 			}
-			return singerLikeCnt;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
+	}
+
+	@Override
+	public List<Map<String, String>> selectAlbReply(String singerNo) {
+		List<Map<String, String>> list = new ArrayList<>();
+
+		try {
+			list = smc.queryForList("album.selectAlbReply", singerNo);
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
-		@Override
-		public int updateAlbumInfo(AlbumVO vo) {
-			int cnt = 0;
-			try {
-			cnt = smc.update("album.updateAlbumInfo",vo);
-			} catch (SQLException e) {
+		return list;
+	}
 
-				e.printStackTrace();
-			} 
-			return cnt;
-			
-		}
-
-		@Override
-		public int deleteAlbum(String albumNo) {
-			
-			int cnt = 0;
-			try {
-				cnt = smc.delete("album.deleteAlbum",albumNo);
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} 
-			return cnt;
-		}
-
-		@Override
-		public List<Map> newAlbumSelect() {
-			
-			List<Map> list = new ArrayList<Map>();
-			try {
-
-				list = smc.queryForList("album.newalbumselect");
-
-			} catch (SQLException e) {
-				e.printStackTrace();
+	@Override
+	public int insertAlbReply(Map<String, String> map) {
+		int cnt = 0;
+		try {
+			Object obj = smc.insert("album.insertAlbReply", map);
+			if (obj == null) { // 쿼리수행이 성공적으로 끝남
+				cnt = 1;
 			}
-
-			return list;
-			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return cnt;
+	}
 
-		@Override
-		public List<Map> singerAlbumSelect(AlbumVO vo) {
-			List<Map> list = new ArrayList<Map>();
-			try {
+	@Override
+	public int deleteAlbReply(String id) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("album.deleteAlbReply", id);
 
-				list = smc.queryForList("album.singerAlbumSelect", vo);
-
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-
-			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return cnt;
+
+	}
 
 }

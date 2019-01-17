@@ -45,4 +45,7 @@ public interface ISingerService extends Remote {
 
 	// 멤버 신고횟수 1 증가
 	public int insertBlackCnt(String id) throws RemoteException;
+	
+	//가수 댓글 삭제
+		public int deleteSigerReply(String id) throws RemoteException;
 }

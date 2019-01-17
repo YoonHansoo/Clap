@@ -46,4 +46,7 @@ public interface ISingerDao {
 
 	// 멤버 신고횟수 1 증가
 	public int insertBlackCnt(String id);
+
+	// 가수 댓글 삭제
+	public int deleteSigerReply(String id);
 }

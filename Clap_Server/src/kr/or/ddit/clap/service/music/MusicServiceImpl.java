@@ -122,6 +122,36 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 		return musicDao.selectAlbum(alb_no);
 	}
 
+	@Override
+	public int checkHeartYN(Map<String, String> map) throws RemoteException {
+		return musicDao.checkHeartYN(map);
+	}
+
+	@Override
+	public int deleteMusicLike(Map<String, String> map) throws RemoteException {
+		return musicDao.deleteMusicLike(map);
+	}
+
+	@Override
+	public int insertMusicLike(Map<String, String> map) throws RemoteException {
+		return musicDao.insertMusicLike(map);
+	}
+
+	@Override
+	public List<Map<String, String>> selectMusReply(String singerNo) throws RemoteException {
+		return musicDao.selectMusReply(singerNo);
+	}
+
+	@Override
+	public int insertMusReply(Map<String, String> map) throws RemoteException {
+		return musicDao.insertMusReply(map);
+	}
+
+	@Override
+	public int deleteMusReply(String id) throws RemoteException {
+		return musicDao.deleteMusReply(id);
+	}
+
 	
 
 

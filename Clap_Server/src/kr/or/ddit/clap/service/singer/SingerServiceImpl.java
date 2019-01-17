@@ -9,6 +9,7 @@ package kr.or.ddit.clap.service.singer;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.security.Signer;
 import java.util.List;
 import java.util.Map;
 
@@ -102,6 +103,11 @@ public class SingerServiceImpl extends UnicastRemoteObject implements ISingerSer
 	@Override
 	public int insertBlackCnt(String id) throws RemoteException {
 		return singerDao.insertBlackCnt(id);
+	}
+
+	@Override
+	public int deleteSigerReply(String id) throws RemoteException {
+		return singerDao.deleteSigerReply(id);
 	}
 
 	

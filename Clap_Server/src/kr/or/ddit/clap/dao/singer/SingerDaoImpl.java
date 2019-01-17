@@ -207,4 +207,17 @@ public class SingerDaoImpl implements ISingerDao {
 		} 
 		return cnt;
 	}
+
+	@Override
+	public int deleteSigerReply(String id) {
+		int cnt = 0;
+		try {
+			cnt = smc.delete("singer.deleteSigerReply",id);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return cnt;
+		
+	}
 }
