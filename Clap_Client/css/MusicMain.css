@@ -35,9 +35,14 @@
 	 
 }
 
+.button{
+	 -fx-font-family: "-윤고딕330";
+}
 
-
-
+.mainlabel{
+	 -fx-font-family: "-윤고딕350";
+	 
+}
 
 
 
