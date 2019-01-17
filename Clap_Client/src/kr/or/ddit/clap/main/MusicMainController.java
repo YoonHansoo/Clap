@@ -86,7 +86,7 @@ public class MusicMainController implements Initializable {
 	private boolean isStoped;
 
 	@FXML
-	public JFXButton btn_login, btn_test, btn_stop;
+	public JFXButton btn_login;
 
 	@FXML
 	public JFXButton btn_goforward;
@@ -200,12 +200,14 @@ public class MusicMainController implements Initializable {
 							Platform.runLater(new Runnable() { 
 								@Override
 								public void run() {
-								
-									 int current_index= tabpane.getSelectionModel().getSelectedIndex();
-									 System.out.println(current_index);
-									tabpane.getSelectionModel().select(current_index+1);
+									int current_index= tabpane.getSelectionModel().getSelectedIndex();
+									System.out.println(current_index);
+									if(current_index==4) {
+										tabpane.getSelectionModel().select(0);
+									}else {
+										tabpane.getSelectionModel().select(current_index+1);										
+									}
 									System.out.println(current_index+1);
-									
 								}
 							});
 							
@@ -511,45 +513,6 @@ public class MusicMainController implements Initializable {
 			singerMenu();
 		});
 
-	}
-	
-	int i = 0;
-	public void handleBtnStart(ActionEvent e) {
-		Thread thread = new Thread(new Runnable() { // 익명클래스.
-			@Override
-			public void run() {
-				isStoped = false;
-				while(!isStoped) {
-					try {
-						Thread.sleep(2000);
-						Platform.runLater(new Runnable() { 
-							@Override
-							public void run() {
-								if(i==4) {
-									i = 0;
-								}else {
-									i++;									
-								}
-								System.out.println(new Date());
-								System.out.println(tabpane.getSelectionModel().getSelectedIndex());
-								tabpane.getSelectionModel().select(i);
-								
-							}
-						});
-						
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-		});
-		
-		thread.setDaemon(true);
-		thread.start();
-	}
-	
-	public void handleBtnStop(ActionEvent e) {
-		isStoped = true;
 	}
 	
 	
