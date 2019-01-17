@@ -152,6 +152,11 @@ public class MusicServiceImpl extends UnicastRemoteObject implements IMusicServi
 		return musicDao.deleteMusReply(id);
 	}
 
+	@Override
+	public List<Map> gameSelect() throws RemoteException {
+		return musicDao.gameSelect();
+	}
+
 	
 
 

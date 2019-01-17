@@ -339,4 +339,18 @@ public class MusicDaoImpl implements IMusicDao {
 
 	}
 
+	@Override
+	public List<Map> gameSelect() {
+		List<Map> list = new ArrayList<Map>();
+		try {
+
+			list = smc.queryForList("music.gameselect");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 }

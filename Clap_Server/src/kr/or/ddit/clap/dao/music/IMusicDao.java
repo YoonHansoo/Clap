@@ -48,6 +48,8 @@ public interface IMusicDao {
 	public List<String> albumMusNoSelect(String alb_no);
 
 	public List<Map> genreMusicSelete(String gen_detail_no);
+	
+	public List<Map> gameSelect();
 
 	// 가수 좋아요 여부 채크
 	public int checkHeartYN(Map<String, String> map);
