@@ -252,19 +252,8 @@ public class MusicMainController implements Initializable {
 //
 //		lable_cntMusic.setText(musicList.size()+"곡");
 		
-		
-		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList,
-				btnMovieList, mainBox, stackpane);
-		
-		// StackPane pane3 = null;
-		// try {
-		// pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
-		// } catch (IOException e3) {
-		// e3.printStackTrace();
-		// }
-		//// singerMusic.getChildren().removeAll();
-		// contents.getChildren().setAll(pane3);
 
+		
 		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList, btnMovieList, mainBox, stackpane);
 
 		// 실시간차트
