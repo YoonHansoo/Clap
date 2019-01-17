@@ -146,17 +146,11 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="100.0">
                            <children>
-                              <Label prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
+                              <JFXButton onAction="#btn_heart" text=" ">
                                  <graphic>
-                                    <FontAwesomeIcon fill="#9c0000" iconName="HEART" />
+                                    <FontAwesomeIcon fx:id="icon_heart" fill="#9c0000" iconName="HEART_ALT" size="1.5em" />
                                  </graphic>
-                                 <font>
-                                    <Font name="YDIYGO340" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Label>
+                              </JFXButton>
                               <Label fx:id="label_LikeCnt" prefWidth="200.0" text="???" textFill="#090c64">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />

@@ -805,6 +805,12 @@ public class MusicMainController implements Initializable {
 		try {
 			Parent qna = FXMLLoader.load(getClass().getResource("../view/support/qna/QnaMenuList.fxml"));
 			
+			String temp_path = (getClass().getResource("../view/support/qna/QnaMenuList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+			GobackStack.goURL(path);
+			
+
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(qna);
 		} catch (IOException e) {
@@ -1197,7 +1203,7 @@ public class MusicMainController implements Initializable {
 			try {
 				while (!Thread.interrupted()) {
 
-					System.out.println("인터럽트" + this.isInterrupted());
+					//System.out.println("인터럽트" + this.isInterrupted());
 					if (Thread.interrupted()) { // interrupt()메서드가 호출되면 true
 						System.out.println("인스턴스용 isInterrupted()");
 						break;
@@ -1209,7 +1215,7 @@ public class MusicMainController implements Initializable {
 					} else {
 						tabpane.getSelectionModel().select(current_index + 1);
 					}
-					System.out.println(current_index + 1);
+				//	System.out.println(current_index + 1);
 				}
 				arr_thread[0] = this;
 			} catch (Exception e) {
