@@ -15,54 +15,47 @@
    <children>
       <VBox layoutX="9.0" prefHeight="618.0" prefWidth="618.0">
          <children>
-            <AnchorPane prefHeight="159.0" prefWidth="758.0">
+            <AnchorPane prefHeight="246.0" prefWidth="735.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Button fx:id="btn_Info" layoutX="-8.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="기본정보 변경" textFill="WHITE">
+                  <Button fx:id="btn_Info" layoutX="-8.0" layoutY="174.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="기본정보 변경" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Button fx:id="btn_PwCh" layoutX="240.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="비밀번호 변경" textFill="WHITE">
+                  <Button fx:id="btn_PwCh" layoutX="240.0" layoutY="174.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="비밀번호 변경" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Button fx:id="btn_JoinOut" layoutX="489.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="회원탈퇴" textFill="WHITE">
+                  <Button fx:id="btn_JoinOut" layoutX="489.0" layoutY="174.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="회원탈퇴" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Text layoutX="27.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내 정보">
+                  <Text layoutX="18.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내 정보">
                      <font>
                         <Font name="YDIYGO350" size="32.0" />
                      </font>
                   </Text>
-                  <Line endX="134.5" layoutX="95.0" layoutY="108.0" startX="-100.0" stroke="#f5ff3a" strokeWidth="2.0" />
-                  <Line endX="134.5" layoutX="93.0" layoutY="105.0" startX="-100.0" stroke="#9c0000" strokeWidth="3.0" />
-                  <Line endX="140.5" layoutX="338.0" layoutY="108.0" startX="-100.0" stroke="#f5ff3a" strokeWidth="2.0" />
-                  <Line endX="135.5" endY="0.085784912109375" layoutX="342.0" layoutY="105.0" startX="-100.41424560546875" startY="0.085784912109375" stroke="#9c0000" strokeWidth="3.0" />
-                  <Line endX="140.5" layoutX="587.0" layoutY="108.0" startX="-100.0" stroke="#f5ff3a" strokeWidth="2.0" />
-                  <Line endX="135.5" endY="0.085784912109375" layoutX="591.0" layoutY="105.0" startX="-100.41424560546875" startY="0.085784912109375" stroke="#9c0000" strokeWidth="3.0" />
-                  <Line endX="606.5" layoutX="141.0" layoutY="127.0" startX="-150.0" strokeMiterLimit="20.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contents" prefHeight="516.0" prefWidth="749.0">
+            <AnchorPane fx:id="contents" prefHeight="396.0" prefWidth="735.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Label layoutX="25.0" layoutY="87.0" text="휴대폰 번호">
+                  <Label layoutX="25.0" layoutY="89.0" text="휴대폰 번호">
                      <font>
-                        <Font name="YDIYGO330" size="24.0" />
+                        <Font name="YDIYGO330" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="29.0" layoutY="247.0" text="이메일 주소">
+                  <Label layoutX="29.0" layoutY="250.0" text="이메일 주소">
                      <font>
-                        <Font name="YDIYGO330" size="24.0" />
+                        <Font name="YDIYGO330" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="25.0" layoutY="33.0" text="아이디(ID)">
+                  <Label layoutX="28.0" layoutY="29.0" prefHeight="29.0" prefWidth="113.0" text="아이디(ID)">
                      <font>
-                        <Font name="YDIYGO330" size="24.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
                   <Text fill="#920000" layoutX="17.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Text fill="RED" layoutX="14.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Label fx:id="label_Id" layoutX="226.0" layoutY="39.0" text="Label">
+                  <Label fx:id="label_Id" layoutX="225.0" layoutY="29.0" text="Label">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Label>
@@ -70,7 +63,7 @@
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Label>
-                  <Label layoutX="339.0" layoutY="93.0" text="- ＊＊＊＊">
+                  <Label layoutX="333.0" layoutY="94.0" text="- ＊＊＊＊">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Label>
@@ -78,21 +71,21 @@
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Button fx:id="ok" layoutX="249.0" layoutY="360.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
+                  <Button fx:id="ok" layoutX="240.0" layoutY="316.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cl" layoutX="364.0" layoutY="360.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
+                  <Button fx:id="cl" layoutX="358.0" layoutY="316.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Text layoutX="29.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="표시의 항목은 필수 입력 항목입니다.">
+                  <Text layoutX="29.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="표시의 항목은 필수 입력 항목입니다.">
                      <font>
                         <Font name="YDIYGO330" size="12.0" />
                      </font></Text>
-                  <Text fill="#9c0000" layoutX="18.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="#9c0000" layoutX="17.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
                   <Label layoutX="335.0" layoutY="249.0" text="\@">
                      <font>
                         <Font size="18.0" />
@@ -108,6 +101,11 @@
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Label>
+                  <Line endX="1.5" endY="267.5" layoutX="157.0" layoutY="24.0" startX="1.5" startY="-6.0" />
+                  <Line endX="634.0" layoutX="101.0" layoutY="70.0" startX="-100.0" />
+                  <Line endX="647.0" layoutX="89.0" layoutY="237.0" startX="-100.0" />
+                  <Line endX="649.0" layoutX="89.0" layoutY="291.0" startX="-100.0" />
+                  <Line endX="593.0" layoutX="146.0" layoutY="17.0" startX="-150.0" strokeMiterLimit="20.0" />
                </children>
             </AnchorPane>
          </children>
