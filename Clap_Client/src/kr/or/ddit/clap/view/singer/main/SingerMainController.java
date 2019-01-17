@@ -71,7 +71,6 @@ public class SingerMainController implements Initializable {
 	public SingerVO sVO = null;
 	public String str_like_cnt;
 	ObservableList<Map<String, String>> replyMap;
-	
 
 	@FXML
 	Label label_singNo;
@@ -212,8 +211,7 @@ public class SingerMainController implements Initializable {
 
 		}
 
-		
-	// 댓글조회
+		// 댓글조회
 		try {
 			System.out.println("singerNo:" + singerNo);
 			replyMap = FXCollections.observableArrayList(iss.selectReply(singerNo));
@@ -291,18 +289,11 @@ public class SingerMainController implements Initializable {
 					for (int i = 0; i < 2000000000; i++) {
 
 					}
-					
+
 					// 화면새로고침
-				//	singerMain = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
-					
-					
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerMain.fxml"));
-					Parent SingerMain = loader.load();
-					SingerMainController cotroller = loader.getController();
-					cotroller.setcontroller(main);
-					singerMain.getChildren().removeAll();
-					singerMain.getChildren().setAll(SingerMain);
-				 	
+
+					refesh();
+
 				} catch (RemoteException e1) {
 					e1.printStackTrace();
 				} catch (IOException e1) {
@@ -319,62 +310,64 @@ public class SingerMainController implements Initializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+
 		System.out.println("댓글생성 for문 시작");
-		
-		
-		  pageing1(replyMap);
-	
-		
-		
-		
+
+		pageing1(replyMap);
+
 	}
-	
-	//페이징처리
-	
-	public VBox createPage1(int pageIndex, ObservableList<Map<String,String>> list, int itemsForPage) {
-        int page = pageIndex * itemsForPage;
-        return pagenation(list,itemsForPage,page);
-    }
-	
-	//페이징 처리
-	
-private void pageing1(ObservableList<Map<String,String>> list) {
-	/*	
-		if (reply_vbox.getChildren().size() == 4) {
-			reply_vbox.getChildren().remove(3);
-		}*/
-		
-		if (list.size() == 0) return;
+
+	// 화면을 새로고침하는 메서드
+	private void refesh() {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerMain.fxml"));
+			Parent SingerMain;
+			SingerMain = loader.load();
+			SingerMainController cotroller = loader.getController();
+			cotroller.setcontroller(main);
+			singerMain.getChildren().removeAll();
+			singerMain.getChildren().setAll(SingerMain);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 페이징처리
+
+	public VBox createPage1(int pageIndex, ObservableList<Map<String, String>> list, int itemsForPage) {
+		int page = pageIndex * itemsForPage;
+		return pagenation(list, itemsForPage, page);
+	}
+
+	// 페이징 처리
+
+	private void pageing1(ObservableList<Map<String, String>> list) {
+		/*
+		 * if (reply_vbox.getChildren().size() == 4) {
+		 * reply_vbox.getChildren().remove(3); }
+		 */
+
+		if (list.size() == 0)
+			return;
 		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
-		
+
 		p_page1 = new Pagination(totalPage, 0);
 		p_page1.setPageFactory(new Callback<Integer, Node>() {
-            @Override
-            public Node call(Integer pageIndex) {
-                return createPage1(pageIndex,list,itemsForPage);
-            }
-	    });
-		
+			@Override
+			public Node call(Integer pageIndex) {
+				return createPage1(pageIndex, list, itemsForPage);
+			}
+		});
+
 		reply_vbox.getChildren().addAll(p_page1);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	//댓글창을 그려주는 메서드
-	public VBox pagenation(ObservableList<Map<String,String>> list, int itemsForPage, int page) {
-		//임시로 담아주는 객체
+	// 댓글창을 그려주는 부분
+	///////////////////////////////////////////////////////////////////////
+	public VBox pagenation(ObservableList<Map<String, String>> list, int itemsForPage, int page) {
+		// 임시로 담아주는 객체
 		VBox temp_vbox = new VBox();
-		
+
 		int size = Math.min(page + itemsForPage, list.size());
 		for (int i = 0; i < size; i++) {
 			HBox hbox = new HBox();
@@ -389,7 +382,7 @@ private void pageing1(ObservableList<Map<String,String>> list) {
 			imgView.setFitWidth(40);
 			imgView.setFitHeight(40);
 			imgView.setId(replyMap.get(i).get("SING_RE_NO").toString());
-			hbox.setMargin(imgView, new Insets(0, 10, 0, 0));
+			hbox.setMargin(imgView, new Insets(0, 15, 0, 0));
 			// 이미지 클릭했을 때
 			imgView.setOnMouseClicked(e -> {
 				ImageView temp_imgView = (ImageView) e.getSource();
@@ -491,7 +484,34 @@ private void pageing1(ObservableList<Map<String,String>> list) {
 				btn_delete.setVisible(true);
 			}
 
-			// 삭제로직
+			// 댓글삭제로직
+			btn_delete.setOnMouseClicked(e -> {
+				JFXButton temp_btn_delete = (JFXButton) e.getSource();
+				for (int j = 0; j < replyMap.size(); j++) {
+					if (temp_btn_delete.getId().equals(replyMap.get(j).get("SING_RE_NO").toString())) {
+
+						String id = replyMap.get(j).get("SING_RE_NO").toString();
+
+						int check = alertConfrimDelete();
+						// No
+						if (check == -1) {
+							return;
+						}
+
+						// Yes
+						try {
+							iss.deleteSigerReply(id);
+							System.out.println("댓글삭제 성공");
+
+							refesh();
+						} catch (RemoteException e1) {
+							e1.printStackTrace();
+							System.out.println("댓글삭제 실패");
+						}
+
+					}
+				}
+			});
 
 			Label label_contents = new Label();
 			label_contents.setPrefWidth(598);
@@ -509,15 +529,16 @@ private void pageing1(ObservableList<Map<String,String>> list) {
 			small_hbox.getChildren().addAll(label_id, label_date, btn_report, btn_delete);
 			vbox.getChildren().addAll(small_hbox, label_contents);
 			hbox.getChildren().addAll(imgView, vbox);
-			//reply_vbox.getChildren().addAll(hbox, h_Line);
+			// reply_vbox.getChildren().addAll(hbox, h_Line);
 
-			
-			temp_vbox.getChildren().addAll(hbox,h_Line);
+			temp_vbox.getChildren().addAll(hbox, h_Line);
 		}
-		
+
 		return temp_vbox;
-		
+
 	}
+	// 보여주는 거 끝
+	///////////////////////////////////////////////////////////////////////
 
 	// 메인 재생 버튼 이벤트
 	@FXML
@@ -683,7 +704,7 @@ private void pageing1(ObservableList<Map<String,String>> list) {
 		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
 
 		p_page = new Pagination(totalPage, 0);
-		
+
 		p_page.setPageFactory(new Callback<Integer, Node>() {
 			@Override
 			public Node call(Integer pageIndex) {
@@ -720,7 +741,26 @@ private void pageing1(ObservableList<Map<String,String>> list) {
 		Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
 
 		alertConfirm.setTitle("CONFIRMATION");
-		alertConfirm.setContentText("정말로 " + id + "님을 신고하시겠습니까?");
+		alertConfirm.setContentText(id + "님을 신고하시겠습니까?");
+
+		// Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
+		ButtonType confirmResult = alertConfirm.showAndWait().get();
+
+		if (confirmResult == ButtonType.OK) {
+			System.out.println("OK 버튼을 눌렀습니다.");
+			return 1;
+		} else if (confirmResult == ButtonType.CANCEL) {
+			System.out.println("취소 버튼을 눌렀습니다.");
+			return -1;
+		}
+		return -1;
+	}
+
+	public int alertConfrimDelete() {
+		Alert alertConfirm = new Alert(AlertType.CONFIRMATION);
+
+		alertConfirm.setTitle("CONFIRMATION");
+		alertConfirm.setContentText("댓글을  삭제하시겠습니까?");
 
 		// Alert창을 보여주고 사용자가 누른 버튼 값 읽어오기
 		ButtonType confirmResult = alertConfirm.showAndWait().get();

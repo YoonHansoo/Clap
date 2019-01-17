@@ -148,6 +148,20 @@ public class MusicMainController implements Initializable {
 	@FXML Label lb_total;
 	
 	
+	
+	//검색창 
+	@FXML
+	AnchorPane pane_search;  //전체페인
+	
+	@FXML
+	AnchorPane pane_wordSerach; //작은페인 
+	
+	@FXML
+	JFXButton btn_bestWord;
+	
+	@FXML
+	JFXButton btn_newWord;
+	
 	private Registry reg;
 	private IMusicService ims;
 	private IPlayListService ipls;
@@ -256,7 +270,6 @@ public class MusicMainController implements Initializable {
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
 			}
-
 		}
 
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
@@ -457,6 +470,28 @@ public class MusicMainController implements Initializable {
 			singerMenu();
 		});
 
+	}
+	
+	
+	
+	//검색창에 마우스를 올렸을 경우 발생하는 메서드
+	public void searchEnteredMouse() {
+		pane_search.setVisible(true);
+	}
+	
+	//검색창에 마우스를 치웠을 경우 발생하는 메서드
+	public void searchExitedMouse() {
+		pane_search.setVisible(false);
+	
+	}
+	
+	//인기검색어 버튼을 클릭했을 때
+	public void btn_bestWord() {
+		
+	}
+	//최근검색어 버튼을 클릭했을 때
+	public void btn_newWord() {
+		
 	}
 	
 	// 메인 재생 버튼 이벤트

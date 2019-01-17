@@ -94,7 +94,8 @@ public class AlbumDetailController implements Initializable {
 		label_albumName1.setText(aVO.getAlb_name());
 //		label_albumName2.setText(aVO.getAlb_name());
 		label_singerName.setText(aVO.getSing_name());
-		label_saledate.setText(aVO.getAlb_saledate());
+		String temp_date = aVO.getAlb_saledate().substring(0, 10);
+		label_saledate.setText(temp_date);
 		label_saleEnter.setText(aVO.getAlb_sale_enter());
 
 		label_entertain.setText(aVO.getAlb_entertain());

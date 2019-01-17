@@ -89,29 +89,7 @@ public class MusicList {
 		
 	}
 	
-	//윤한수 작성 3번쨰 생성자 (다이얼로그창이 없을 때)
-	public MusicList( ObservableList<JFXCheckBox> cbnList, ObservableList<JFXButton> btnPlayList,
-			ObservableList<JFXButton> btnAddList, ObservableList<JFXButton> btnPutList,
-			ObservableList<JFXButton> btnMovieList, VBox mainBox) {
-		
-		super();
-		this.cbnList = cbnList;
-		this.btnPlayList = btnPlayList;
-		this.btnAddList = btnAddList;
-		this.btnPutList = btnPutList;
-		this.btnMovieList = btnMovieList;
-		this.mainBox = mainBox;
-		
-		try {
-			reg = LocateRegistry.getRegistry("localhost", 8888);
-			ipls = (IPlayListService) reg.lookup("playlist");
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 	
 	public MusicList( ObservableList<JFXButton> btnAddList, VBox mainBox, StackPane stackpane) {
 

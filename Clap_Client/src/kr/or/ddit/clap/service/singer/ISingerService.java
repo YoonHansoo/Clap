@@ -36,15 +36,17 @@ public interface ISingerService extends Remote {
 
 	// 가수 라이크 등록
 	public int insertSingerLike(Map<String, String> map) throws RemoteException;
-	
-	//가수 댓글 조회
-	public List<Map<String,String>> selectReply(String singerNo) throws RemoteException;
-	
-	//가수 댓글 등록
-	public int  insertReply (Map<String, String> map) throws RemoteException;
-	
-	//멤버 신고횟수 1 증가 
+
+	// 가수 댓글 조회
+	public List<Map<String, String>> selectReply(String singerNo) throws RemoteException;
+
+	// 가수 댓글 등록
+	public int insertReply(Map<String, String> map) throws RemoteException;
+
+	// 가수 댓글 삭제
+	public int deleteSigerReply(String id) throws RemoteException;
+
+	// 멤버 신고횟수 1 증가
 	public int insertBlackCnt(String id) throws RemoteException;
-	
-	
+
 }
