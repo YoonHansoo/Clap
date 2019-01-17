@@ -212,6 +212,7 @@ public class MusicMainController implements Initializable {
 		tabpane.getSelectionModel().select(0);
 
 		Thread1 thread = new Thread1();
+		thread.setDaemon(true);
 		thread.start();
 		arr_thread[0] = thread;
 	
