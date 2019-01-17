@@ -762,6 +762,9 @@ public class MusicMainController implements Initializable {
 	public void join() throws IOException {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/join/Join2.fxml"));
+			String temp_path = (getClass().getResource("../view/join/Join2.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(root);
 		} catch (IOException e) {
@@ -876,7 +879,9 @@ public class MusicMainController implements Initializable {
 	public void chartMenu_PageLoad() {
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); // 바뀔 화면을
-																											// 가져옴
+			String temp_path = (getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);																								// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -888,7 +893,9 @@ public class MusicMainController implements Initializable {
 
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusic/main/NewMusicMenu.fxml")); // 바뀔 화면을
-																												// 가져옴
+			String temp_path = (getClass().getResource("../view/newmusic/main/NewMusicMenu.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);																									// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -900,8 +907,9 @@ public class MusicMainController implements Initializable {
 
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/genremusic/main/GenreMusicMenu.fxml")); // 바뀔
-																													// 화면을
-																													// 가져옴
+			String temp_path = (getClass().getResource("../view/genremusic/main/GenreMusicMenu.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);																										// 화면을
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -912,7 +920,9 @@ public class MusicMainController implements Initializable {
 	public void singerMenu() {
 		try {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/singer/main/SingerMenu.fxml")); // 바뀔 화면을
-																											// 가져옴
+			String temp_path = (getClass().getResource("../view/singer/main/SingerMenu.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);																								// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -1094,6 +1104,9 @@ public class MusicMainController implements Initializable {
 
 		try {
 			Parent notice = FXMLLoader.load(getClass().getResource("../view/support/noticeboard/NoticeMenuList.fxml"));
+			String temp_path = (getClass().getResource("../view/support/noticeboard/NoticeMenuList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(notice);
 		} catch (IOException e) {
@@ -1106,6 +1119,9 @@ public class MusicMainController implements Initializable {
 		try {
 			Parent eventManage = FXMLLoader
 					.load(getClass().getResource("../view/support/eventboard/EventShowList.fxml")); // 바뀔 화면을 가져옴
+			String temp_path = (getClass().getResource("../view/support/eventboard/EventShowList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(eventManage);
 
@@ -1119,7 +1135,9 @@ public class MusicMainController implements Initializable {
 		try {
 			Parent salesManage = FXMLLoader.load(getClass().getResource("../view/ticket/salemanage/salesmanage.fxml")); // 바뀔
 																														// 화면을
-																														// 가져옴
+			String temp_path = (getClass().getResource("../view/ticket/salemanage/salesmanage.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);																											// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(salesManage);
 
@@ -1133,7 +1151,9 @@ public class MusicMainController implements Initializable {
 		try {
 			Parent salesManage = FXMLLoader.load(getClass().getResource("../view/member/manage/memmanage.fxml")); // 바뀔
 																													// 화면을
-																													// 가져옴
+			String temp_path = (getClass().getResource("../view/member/manage/memmanage.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);																										// 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(salesManage);
 
@@ -1148,6 +1168,9 @@ public class MusicMainController implements Initializable {
 		try {
 			Parent event = FXMLLoader
 					.load(getClass().getResource("../view/support/eventboard/EventClientShowList.fxml"));
+			String temp_path = (getClass().getResource("../view/support/eventboard/EventClientShowList.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(event);
 		} catch (IOException e) {
