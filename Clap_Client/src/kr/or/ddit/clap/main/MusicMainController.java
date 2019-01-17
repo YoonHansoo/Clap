@@ -83,7 +83,9 @@ public class MusicMainController implements Initializable {
 	MenuBar bar;
 	@FXML
 	TabPane tabpane;
-	private boolean isStoped;
+	private static boolean thread_flag;
+	private boolean isStopped;
+	static int current_index;
 
 	@FXML
 	public JFXButton btn_login;
@@ -187,41 +189,49 @@ public class MusicMainController implements Initializable {
 	private MusicPlayerController mpc;
 	private int itemsForPage;
 	private Pagination p_page;
-
+	
+	 static Thread[] arr_thread = new Thread[1];
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		Thread thread = new Thread(new Runnable() { // 익명클래스.
-				@Override
-				public void run() {
-					isStoped = false;
-					while(!isStoped) {
-						try {
-							Thread.sleep(2000);
-							Platform.runLater(new Runnable() { 
-								@Override
-								public void run() {
-									int current_index= tabpane.getSelectionModel().getSelectedIndex();
-									System.out.println(current_index);
-									if(current_index==4) {
-										tabpane.getSelectionModel().select(0);
-									}else {
-										tabpane.getSelectionModel().select(current_index+1);										
-									}
-									System.out.println(current_index+1);
+		if(arr_thread[0]!= null) {
+			System.out.println("쓰레드삭제");
+			Thread temp_thread = arr_thread[0];
+			isStopped =true;
+		}
+		System.out.println("thread_flag : "+thread_flag);
+		tabpane.getSelectionModel().select(0);
+		if(!thread_flag) {
+			 Thread thread = new Thread(new Runnable() { // 익명클래스.
+					@Override
+					public void run() {
+	//					thread_flag = true;
+						isStopped = false;
+						while(!isStopped) {
+							try {
+								Thread.sleep(2000);		
+								current_index = tabpane.getSelectionModel().getSelectedIndex();
+								if(current_index==4) {
+									tabpane.getSelectionModel().select(0);
+								}else {
+									tabpane.getSelectionModel().select(current_index+1);										
 								}
-							});
-							
-						} catch (InterruptedException e) {
-							e.printStackTrace();
+								System.out.println(current_index+1);			
+								
+								
+							} catch (InterruptedException e) {
+								e.printStackTrace();
+							}
 						}
 					}
-				}
-			});
-			
+				});
+			arr_thread[0] = thread;
 			thread.setDaemon(true);
-			thread.start();
-		
-			
+			thread.start();		
+//			thread_flag = true;
+			System.out.println("check : " +thread_flag);
+		}
 		
 		
 		try {
