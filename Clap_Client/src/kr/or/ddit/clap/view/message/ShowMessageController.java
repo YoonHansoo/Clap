@@ -31,7 +31,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
+import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.message.IMessageService;
+import kr.or.ddit.clap.view.member.mypage.MypageController;
 import kr.or.ddit.clap.vo.support.MessageVO;
 
 public class ShowMessageController implements Initializable{
@@ -51,7 +53,12 @@ public class ShowMessageController implements Initializable{
 	@FXML TreeTableColumn<MessageVO, JFXCheckBox> col_Check;
 	@FXML Pagination p_paging;
 	@FXML AnchorPane contents; 
+	public MusicMainController mn;
 	public static Stage mes = new Stage();
+	
+	public void setController(MusicMainController mn) {
+		this.mn=mn;
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -197,8 +204,13 @@ public class ShowMessageController implements Initializable{
 
 	@FXML
 	public void btn_Ok() {
+		
+
 		Stage dialogStage = (Stage) p_paging.getScene().getWindow();
 		dialogStage.close();
+		
+	//	mn.refreshmenu();
+		
 	}
 
 	@FXML

@@ -79,6 +79,11 @@ public class MemberDetailController implements Initializable{
 		
 		label_MemName1.setText(mvo.getMem_name());
 		label_MemName2.setText(mvo.getMem_name());
+		
+		if(mvo.getMem_image()==null) {
+			mvo.setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+	   }
+		
 		Image img = new Image(mvo.getMem_image());
 		temp_img_path = mvo.getMem_image(); // aVO.getSing_image()를 전역으로 쓰기위해
 		imgview_MemImg.setImage(img);
@@ -99,7 +104,7 @@ public class MemberDetailController implements Initializable{
 		
 		label_BlackCnt  .setText(mvo.getMem_black_cnt());
 		
-		if(mvo.getMem_blacklist_tf().equals("f")) {
+		if(mvo.getMem_blacklist_tf().equals("f") || mvo.getMem_blacklist_tf().equals("f  ")) {
 			mvo.setMem_blacklist_tf("X");
 		}else {
 			mvo.setMem_blacklist_tf("O");

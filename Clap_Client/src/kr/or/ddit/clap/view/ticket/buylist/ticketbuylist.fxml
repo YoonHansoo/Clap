@@ -34,8 +34,14 @@
                      <children>
                         <HBox prefHeight="206.0" prefWidth="807.0">
                            <children>
-                              <Label fx:id="la_Date" prefHeight="199.0" prefWidth="403.0" style="-fx-background-color: #ffffff;" text="   감상기간" />
-                              <Label fx:id="la_Date2" prefHeight="199.0" prefWidth="404.0" style="-fx-background-color: #ffffff;" text="잔여일" />
+                              <Label fx:id="la_Date" alignment="CENTER" prefHeight="199.0" prefWidth="403.0" style="-fx-background-color: #ffffff;" text="   감상기간">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font></Label>
+                              <Label fx:id="la_Date2" alignment="CENTER" prefHeight="199.0" prefWidth="404.0" style="-fx-background-color: #ffffff;" text="잔여일">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                      </children>

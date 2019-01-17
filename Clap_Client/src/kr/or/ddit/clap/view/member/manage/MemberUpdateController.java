@@ -151,7 +151,7 @@ public class MemberUpdateController implements Initializable{
 		}
 		combo_DelTF.setValue(mvo.getMem_del_tf());
 		
-		if(mvo.getMem_blacklist_tf().equals("f")) {
+		if(mvo.getMem_blacklist_tf().equals("f  ") ||mvo.getMem_blacklist_tf().equals("f")) {
 			mvo.setMem_blacklist_tf("X");
 		}else {
 			mvo.setMem_blacklist_tf("O");
@@ -160,6 +160,11 @@ public class MemberUpdateController implements Initializable{
 		//txt_intro.setText(mvo.getMem_intro());
 		
 		label_BlackCnt.setText(mvo.getMem_black_cnt());
+		
+		
+		if(mvo.getMem_image()==null) {
+			mvo.setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\icons8-person-64.png");
+	   }
 		
 		img_path = mvo.getMem_image();
 		Image img = new Image(img_path); //이미지 객체등록
@@ -270,7 +275,7 @@ public class MemberUpdateController implements Initializable{
 		vo.setMem_image(img_path);
 		vo.setMem_indate(Date_Indate.getValue()+"");
 		vo.setMem_bir(Date_MemBir.getValue()+"");
-		vo.setMem_intro("테스트중");
+		vo.setMem_intro(txt_intro.getText());
 		int d=ims.updateAll(vo);
 		System.out.println(d);
 		cancel();

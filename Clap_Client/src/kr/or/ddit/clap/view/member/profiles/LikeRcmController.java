@@ -86,17 +86,15 @@ public class LikeRcmController implements Initializable{
 			 // tbl_music.getTreeItem(i).getValue().getBtn().setOnAction(e->{
 			 tbl_like.getTreeItem(i).getValue().getRcmbtnLike().setOnAction(e->{
 			
-				 System.out.println("남은 개수:"+likeList.size());
 				 JFXButton temp_btn = (JFXButton) e.getSource();
 				 if(likeList.size()>0) {
 				 for(int j =0; j<likeList.size(); j++) {
-					 System.out.println(temp_btn.getId());
 					 if(temp_btn.getId().equals(tbl_like.getTreeItem(j).getValue().getRcmbtnLike().getId())) {
 						 likeList.remove(j);
 						 
 							LikeVO vo1 = new LikeVO();
 							vo1.setMem_id(user_id);
-							vo1.setAlb_no(temp_btn.getId());
+							vo1.setRcm_alb_no(temp_btn.getId());
 							try {
 							int liset = ilks.deleteRcmLike(vo1);
 							} catch (RemoteException e2) {

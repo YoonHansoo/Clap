@@ -91,11 +91,9 @@ public class LikeItsController implements Initializable{
 			 
 			 tbl_like.getTreeItem(i).getValue().getItsbtnLike().setOnAction(e->{
 			
-				 System.out.println("남은 개수:"+likeList.size());
 				 JFXButton temp_btn = (JFXButton) e.getSource();
 				 
 				 for(int j =0; j<likeList.size(); j++) {
-					 System.out.println(temp_btn.getId());
 					 if(temp_btn.getId().equals(tbl_like.getTreeItem(j).getValue().getItsbtnLike().getId())) {
 						 
 						 
@@ -104,7 +102,7 @@ public class LikeItsController implements Initializable{
 						 
 							LikeVO vo1 = new LikeVO();
 							vo1.setMem_id(user_id);
-							vo1.setAlb_no(temp_btn.getId());
+							vo1.setSing_no(temp_btn.getId());
 							try {
 							int liset = ilks.deleteSingLike(vo1);
 							} catch (RemoteException e2) {

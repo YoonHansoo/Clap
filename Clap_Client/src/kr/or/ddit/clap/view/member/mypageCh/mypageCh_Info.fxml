@@ -17,88 +17,93 @@
          <children>
             <AnchorPane prefHeight="159.0" prefWidth="758.0">
                <children>
-                  <Button fx:id="btn_Info" layoutX="-8.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="249.0" style="-fx-background-color: #090948;" text="기본정보 변경" textFill="WHITE">
+                  <Button fx:id="btn_Info" layoutX="-8.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="기본정보 변경" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Button fx:id="btn_PwCh" layoutX="240.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="249.0" style="-fx-background-color: #090948;" text="비밀번호 변경" textFill="WHITE">
+                  <Button fx:id="btn_PwCh" layoutX="240.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="비밀번호 변경" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Button fx:id="btn_JoinOut" layoutX="489.0" layoutY="68.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="249.0" style="-fx-background-color: #090948;" text="회원탈퇴" textFill="WHITE">
+                  <Button fx:id="btn_JoinOut" layoutX="489.0" layoutY="68.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="239.0" style="-fx-background-color: #090948;" text="회원탈퇴" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Line endX="526.0" layoutX="211.0" layoutY="68.0" startX="-218.5" />
                   <Text layoutX="27.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내 정보">
                      <font>
                         <Font name="YDIYGO350" size="32.0" />
                      </font>
                   </Text>
+                  <Line endX="134.5" layoutX="95.0" layoutY="108.0" startX="-100.0" stroke="#f5ff3a" strokeWidth="2.0" />
+                  <Line endX="134.5" layoutX="93.0" layoutY="105.0" startX="-100.0" stroke="#9c0000" strokeWidth="3.0" />
+                  <Line endX="140.5" layoutX="338.0" layoutY="108.0" startX="-100.0" stroke="#f5ff3a" strokeWidth="2.0" />
+                  <Line endX="135.5" endY="0.085784912109375" layoutX="342.0" layoutY="105.0" startX="-100.41424560546875" startY="0.085784912109375" stroke="#9c0000" strokeWidth="3.0" />
+                  <Line endX="140.5" layoutX="587.0" layoutY="108.0" startX="-100.0" stroke="#f5ff3a" strokeWidth="2.0" />
+                  <Line endX="135.5" endY="0.085784912109375" layoutX="591.0" layoutY="105.0" startX="-100.41424560546875" startY="0.085784912109375" stroke="#9c0000" strokeWidth="3.0" />
+                  <Line endX="606.5" layoutX="141.0" layoutY="127.0" startX="-150.0" strokeMiterLimit="20.0" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="contents" prefHeight="454.0" prefWidth="761.0">
+            <AnchorPane fx:id="contents" prefHeight="516.0" prefWidth="749.0">
                <children>
-                  <Label layoutX="20.0" layoutY="84.0" text="휴대폰 번호">
+                  <Label layoutX="25.0" layoutY="87.0" text="휴대폰 번호">
                      <font>
                         <Font name="YDIYGO330" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="24.0" layoutY="244.0" text="이메일 주소">
+                  <Label layoutX="29.0" layoutY="247.0" text="이메일 주소">
                      <font>
                         <Font name="YDIYGO330" size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="20.0" layoutY="30.0" text="아이디(ID)">
+                  <Label layoutX="25.0" layoutY="33.0" text="아이디(ID)">
                      <font>
                         <Font name="YDIYGO330" size="24.0" />
                      </font>
                   </Label>
-                  <Text fill="#920000" layoutX="12.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Text fill="RED" layoutX="9.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Line endX="606.5" layoutX="129.0" layoutY="-2.0" startX="-150.0" strokeMiterLimit="20.0" />
-                  <Label fx:id="label_Id" layoutX="221.0" layoutY="36.0" text="Label">
+                  <Text fill="#920000" layoutX="17.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Text fill="RED" layoutX="14.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Label fx:id="label_Id" layoutX="226.0" layoutY="39.0" text="Label">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Label>
-                  <Label fx:id="label_Tel" layoutX="221.0" layoutY="90.0" text="Label">
+                  <Label fx:id="label_Tel" layoutX="226.0" layoutY="93.0" text="Label">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Label>
-                  <Label layoutX="334.0" layoutY="88.0" text="- ＊＊＊＊">
+                  <Label layoutX="339.0" layoutY="93.0" text="- ＊＊＊＊">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Label>
-                  <Button layoutX="447.0" layoutY="82.0" mnemonicParsing="false" onAction="#btn_telCh" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #090948;" text="변경하기  " textFill="WHITE">
+                  <Button layoutX="452.0" layoutY="85.0" mnemonicParsing="false" onAction="#btn_telCh" prefHeight="34.0" prefWidth="127.0" style="-fx-background-color: #090948;" text="변경하기  " textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font></Button>
-                  <Button fx:id="ok" layoutX="236.0" layoutY="357.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" text="확인">
+                  <Button fx:id="ok" layoutX="249.0" layoutY="360.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="cl" layoutX="351.0" layoutY="357.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" text="취소">
+                  <Button fx:id="cl" layoutX="364.0" layoutY="360.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="89.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Button>
-                  <Text layoutX="24.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="표시의 항목은 필수 입력 항목입니다.">
+                  <Text layoutX="29.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="표시의 항목은 필수 입력 항목입니다.">
                      <font>
                         <Font name="YDIYGO330" size="12.0" />
                      </font></Text>
-                  <Text fill="#9c0000" layoutX="13.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
-                  <Label layoutX="326.0" layoutY="246.0" text="\@">
+                  <Text fill="#9c0000" layoutX="18.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*" />
+                  <Label layoutX="335.0" layoutY="249.0" text="\@">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <JFXTextField fx:id="em1" focusColor="#9c0000" layoutX="151.0" layoutY="239.0" maxWidth="188.0" minWidth="179.0" prefHeight="35.0" prefWidth="179.0" unFocusColor="#090948" />
-                  <JFXTextField fx:id="em2" focusColor="#9c0000" layoutX="343.0" layoutY="240.0" maxWidth="188.0" minWidth="179.0" prefHeight="35.0" prefWidth="179.0" unFocusColor="#090948" />
-                  <ComboBox fx:id="com_em" editable="true" layoutX="523.0" layoutY="243.0" prefHeight="29.0" prefWidth="186.0" />
-                  <FontAwesomeIcon fill="#9c0000" iconName="EXCLAMATION_CIRCLE" layoutX="151.0" layoutY="148.0" size="1.7em" />
-                  <FontAwesomeIcon fill="WHITE" iconName="MOBILE" layoutX="550.0" layoutY="110.0" size="2.3em" />
-                  <Label alignment="TOP_LEFT" layoutX="192.0" layoutY="126.0" prefHeight="108.0" prefWidth="497.0" text="clap 뮤직 주요 공지사항 및 결제관련 정보일 경우, 정보 수신 동의 여부에 여부에 관계 없이 발송 됩니다. 아이디/비밀번호 찾기 또는 중요  알림을 받기 위해 사용할 휴대폰 번호를 정확하게 입력해 주세요." wrapText="true">
+                  <JFXTextField fx:id="em1" focusColor="#9c0000" layoutX="160.0" layoutY="242.0" maxWidth="188.0" minWidth="179.0" prefHeight="35.0" prefWidth="179.0" unFocusColor="#090948" />
+                  <JFXTextField fx:id="em2" focusColor="#9c0000" layoutX="352.0" layoutY="243.0" maxWidth="188.0" minWidth="179.0" prefHeight="35.0" prefWidth="179.0" unFocusColor="#090948" />
+                  <ComboBox fx:id="com_em" editable="true" layoutX="532.0" layoutY="246.0" prefHeight="29.0" prefWidth="186.0" />
+                  <FontAwesomeIcon fill="#9c0000" iconName="EXCLAMATION_CIRCLE" layoutX="173.0" layoutY="149.0" size="1.7em" />
+                  <FontAwesomeIcon fill="WHITE" iconName="MOBILE" layoutX="555.0" layoutY="113.0" size="2.3em" />
+                  <Label alignment="TOP_LEFT" layoutX="197.0" layoutY="129.0" prefHeight="108.0" prefWidth="497.0" text="clap 뮤직 주요 공지사항 및 결제관련 정보일 경우, 정보 수신 동의 여부에 여부에 관계 없이 발송 됩니다. 아이디/비밀번호 찾기 또는 중요  알림을 받기 위해 사용할 휴대폰 번호를 정확하게 입력해 주세요." wrapText="true">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>

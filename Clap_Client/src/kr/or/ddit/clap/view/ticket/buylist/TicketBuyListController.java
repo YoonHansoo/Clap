@@ -57,7 +57,6 @@ public class TicketBuyListController implements Initializable{
 	@FXML Pagination p_paging2;
 	
 	public void setController(MypageController mypc) {
-		System.out.println("ddd");
 		this.mypc=mypc;
 	}
 	@Override

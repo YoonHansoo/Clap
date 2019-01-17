@@ -25,8 +25,8 @@
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_Member" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="715.0">
+            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="636.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
+            <JFXTreeTableView fx:id="tbl_Member" layoutX="23.0" layoutY="96.0" prefHeight="532.0" prefWidth="715.0">
                <columns>
                   <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
                   <TreeTableColumn fx:id="col_MemImg" prefWidth="163.6666259765625" text="Image" />
@@ -36,14 +36,11 @@
                   <TreeTableColumn fx:id="col_MemdelTF" prefWidth="67.0" text="탈퇴여부" />
                </columns>
             </JFXTreeTableView>
-            <JFXComboBox fx:id="combo_search" layoutX="465.0" layoutY="636.0" promptText="이름" />
-            <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="554.0" layoutY="636.0" unFocusColor="#090948" />
+            <JFXComboBox fx:id="combo_search" layoutX="435.0" layoutY="61.0" prefHeight="23.0" prefWidth="78.0" promptText="이름" />
+            <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="531.0" layoutY="60.0" unFocusColor="#090948" />
             <Line endX="614.0" layoutX="124.0" layoutY="92.0" startX="-100.0" stroke="#ffff8d" />
-            <JFXButton fx:id="btn_search" layoutX="683.0" layoutY="627.0" prefHeight="42.0" prefWidth="61.0" text=" ">
-               <graphic>
-                  <FontAwesomeIcon iconName="SEARCH" text="" />
-               </graphic>
-            </JFXButton>
+            <JFXButton fx:id="btn_search" layoutX="663.0" layoutY="53.0" prefHeight="42.0" prefWidth="61.0" text=" " />
+            <FontAwesomeIcon iconName="SEARCH" layoutX="682.0" layoutY="78.0" text="" />
          </children>
       </AnchorPane>
       <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">

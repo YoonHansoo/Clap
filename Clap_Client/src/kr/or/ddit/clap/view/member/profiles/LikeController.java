@@ -125,27 +125,25 @@ public class LikeController implements Initializable {
 		
 		if(likeList.size()>0) {
 		 for(int i=0; i<likeList.size(); i++) {
-			 System.out.println(likeList.size());
 
 			 tbl_like.getTreeItem(i).getValue().getMubtnLike().setOnAction(e->{
 			
-				 System.out.println("남은 개수:"+likeList.size());
 				 JFXButton temp_btn = (JFXButton) e.getSource();
 				 
 				 for(int j =0; j<likeList.size(); j++) {
-					 System.out.println(temp_btn.getId());
 					 if(temp_btn.getId().equals(tbl_like.getTreeItem(j).getValue().getMubtnLike().getId())) {
-						 likeList.remove(j);
+					
 						 
 							LikeVO vo1 = new LikeVO();
 							vo1.setMem_id(user_id);
-							vo1.setAlb_no(temp_btn.getId());
+							vo1.setMus_no(temp_btn.getId());
 							try {
 							int liset = ilks.deleteMusLike(vo1);
 							} catch (RemoteException e2) {
 								System.out.println("에러");
 								e2.printStackTrace();
 							}
+							 likeList.remove(j);
 						 //다시 설정
 						 TreeItem<LikeVO> root1 = new RecursiveTreeItem<>(likeList, RecursiveTreeObject::getChildren);
 						 tbl_like.setRoot(root1);

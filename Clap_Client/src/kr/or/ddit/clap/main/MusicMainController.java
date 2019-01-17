@@ -48,6 +48,8 @@ import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 import kr.or.ddit.clap.view.genremusic.main.GenreMusicMenuController;
+import kr.or.ddit.clap.view.member.mypage.MypageMyAlbController;
+import kr.or.ddit.clap.view.message.ShowMessageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
@@ -1096,13 +1098,30 @@ public class MusicMainController implements Initializable {
 	}
 
 
-	public void btn_message() {
+	public void btn_message() {//메세지
 		try {
-			Parent msg = FXMLLoader.load(getClass().getResource("../view/message/mestable.fxml"));
-			Scene scene = new Scene(msg);
-			musicplayer.setTitle("Meaage");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/message/mestable.fxml"));
+			Parent messageCh = loader.load();
+			
+			ShowMessageController cotroller = loader.getController();
+			
+			cotroller.setController(this);
+			Scene scene = new Scene(messageCh);
+			musicplayer.setTitle("모여서 각잡고 코딩 - clap");
 			musicplayer.setScene(scene);
 			musicplayer.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void refreshmenu()		{//화면 전화을 위해
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
+		Parent refmain;
+		try {
+			refmain = loader.load();
+			menu.getChildren().removeAll();
+			menu.getChildren().setAll(refmain);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
