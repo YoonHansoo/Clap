@@ -70,26 +70,14 @@
                         </JFXButton>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT">
-                     <children>
-                        <Label fx:id="label_count" text="0/3" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                        <JFXButton fx:id="btn_next" ripplerFill="#9c0000" text="다음 문제" textFill="WHITE">
-                           <font>
-                              <Font name="-윤고딕330" size="12.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="120.0" />
-                           </HBox.margin>
-                        </JFXButton>
-                     </children>
+                  <Label fx:id="label_count" text="0/3" textFill="WHITE">
                      <VBox.margin>
-                        <Insets top="15.0" />
+                        <Insets top="10.0" />
                      </VBox.margin>
-                  </HBox>
+                     <font>
+                        <Font name="YDIYGO350" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </VBox>
          </children>

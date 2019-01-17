@@ -61,7 +61,7 @@ public class GameController implements Initializable{
 			its = (ITicketService) reg.lookup("ticket");
 			ims = (IMusicService) reg.lookup("music");
 			list = FXCollections.observableArrayList(ims.gameSelect());
-			
+			label_count.setText(count+"/3");
 			if (LoginSession.session != null) {
 				buyticket = its.buyfind(LoginSession.session.getMem_id());
 			}
@@ -151,17 +151,11 @@ public class GameController implements Initializable{
 			tf_singerName.setText("");
 		} else if (tf_musName.getText().equals(list.get(count).get("MUS_TITLE").toString()) &&
 			tf_singerName.getText().equals(list.get(count).get("SING_NAME").toString())) {
-			
-			
 			text = "정답입니다.";
 			tf_musName.setText("");
 			tf_singerName.setText("");
 			count++;
 			label_count.setText(count+"/3");
-			if(count == 3) {
-				System.out.println("상품주세요!!");
-				return;
-			}
 			
 		}
 		
@@ -175,6 +169,11 @@ public class GameController implements Initializable{
 		JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
 		dialog.setBackground(Background.EMPTY);
 		dialog.show();
+		
+		if(count == 3) {
+			System.out.println("상품주세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			return;
+		}
 		
 	}
 	
