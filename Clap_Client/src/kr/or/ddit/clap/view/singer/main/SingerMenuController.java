@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,7 +15,11 @@ import javafx.fxml.FXMLLoader;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextArea;
+import com.sun.javafx.scene.control.SelectedCellsMap;
+
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -30,6 +36,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
@@ -48,6 +55,7 @@ import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 import kr.or.ddit.clap.view.member.mypage.OtherMypageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
+import kr.or.ddit.clap.vo.music.MusicVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
@@ -60,6 +68,7 @@ import kr.or.ddit.clap.vo.singer.SingerVO;
 public class SingerMenuController implements Initializable{
 	
 	public static int menuCount = 0;
+	public static boolean detailFlag = false; // true면 뮤직 디테일 화면으로.
 	
 	@FXML JFXTabPane tabPane;
 	@FXML Tab tab_main;
@@ -71,7 +80,6 @@ public class SingerMenuController implements Initializable{
 	@FXML StackPane singerMusic;
 	
 	public static String albumNo; // 파라미터로 받은 선택한 가수의 PK
-	private Registry reg;
 	private IAlbumService ias;
 	private ISingerService iss;
 	private String temp_img_path = "";
@@ -95,7 +103,7 @@ public class SingerMenuController implements Initializable{
 	@FXML VBox box;
 	@FXML Label lb_singer;
 	
-	@FXML VBox mainBox;
+	@FXML VBox mainBox, musicBox;
 	@FXML JFXCheckBox cb_main;
 	@FXML JFXButton btn_Song;
 	@FXML JFXButton btn_Pop;
@@ -107,9 +115,39 @@ public class SingerMenuController implements Initializable{
 	@FXML Label lb_intro;
 	@FXML Line line_intro;
 	
-	
-	
+	public static String musicNo = "1060";// 파라미터로 받은 선택한 가수의 PK
+	private Registry reg;
 	private IMusicService ims;
+	private String temp_img_path2 = "";
+
+	// 파라미터로 넘기기 위해 전역으로 선언
+	public MusicVO mVO = null;
+	public String str_like_cnt2;
+//	public static AnchorPane contents;
+
+	// @FXML Label label_singNo;
+	
+//	@FXML
+//	AnchorPane main;
+	@FXML Label label_musicTitle;
+//	@FXML Label label_musicTitle2;
+	@FXML ImageView imgview_albumImg2;
+	@FXML Label txt_albName;
+	@FXML Label txt_singerName;
+	@FXML Label txt_write;
+	@FXML Label txt_edit;
+	@FXML Label txt_muswrite;
+	@FXML Label txt_file;
+	@FXML Label txt_fileVideo;
+	@FXML JFXComboBox<String> combo_genre;
+	@FXML JFXComboBox<String> combo_genreDetail;
+	@FXML Label txt_time;
+	@FXML Label label_LikeCnt2;
+	
+	@FXML JFXTextArea txt_lyrics;
+	
+	
+	
 	private IPlayListService ipls;
 	private MusicList musicList;
 	private ObservableList<Map> songRank;
@@ -137,18 +175,30 @@ public class SingerMenuController implements Initializable{
 
 	}
 	
-	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		if(menuCount != 1) {
+		if(menuCount == 0) {
+			
+		}else if(menuCount == 1) {
+			box.setVisible(true);
+			stackpane.setVisible(true);
+			line_intro.setVisible(true);
+			lb_intro.setVisible(true);
+			txt_intro.setVisible(true);
+			musicBox.setVisible(false);	
+			
+		}else if(menuCount == 2) {
 			box.setVisible(false);
-			mainBox.setVisible(false);
+			stackpane.setVisible(false);
 			line_intro.setVisible(false);
 			lb_intro.setVisible(false);
 			txt_intro.setVisible(false);
+			musicBox.setVisible(true);		
+			singerMusic.setVisible(false);
 		}
-
+		
+		
 		try {
 			//AnchorPane pane = FXMLLoader.load(getClass().getResource("SingerMain.fxml"));
 			
@@ -165,10 +215,6 @@ public class SingerMenuController implements Initializable{
 			singerMain.getChildren().setAll(SingerMain);
 			
 			
-			
-			
-			
-			
 			StackPane pane2 = FXMLLoader.load(getClass().getResource("SingerAlbum.fxml"));
 			pane2.setVisible(false);
 			singerAlbum.getChildren().removeAll();
@@ -178,22 +224,53 @@ public class SingerMenuController implements Initializable{
 			singerMusic.getChildren().removeAll();
 			singerMusic.getChildren().setAll(pane3);
 			
+//			if(SingerMenuController.detailFlag) {
+//				Parent pane = null;
+//				pane = FXMLLoader.load(getClass().getResource("SingerMusicDetail.fxml"));
+//				
+//				pane3.setVisible(false);	
+//				singerMusic.getChildren().setAll(pane);
+//			}
+			
 			tabPane.getSelectionModel().select(menuCount);
-			tabPane.setOnKeyPressed(e->{
-				box.setVisible(false);
-				mainBox.setVisible(false);
-				line_intro.setVisible(false);
-				lb_intro.setVisible(false);
-				txt_intro.setVisible(false);
-				pane2.setVisible(true);				
-			});
+			// selected tab 값을 가져와야됨.
+			tabPane.getSelectionModel().selectedItemProperty().addListener(
+				    new ChangeListener<Tab>() {
+				        @Override
+				        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+				            System.out.println(tabPane.getSelectionModel().getSelectedIndex());
+				            
+							box.setVisible(false);
+							mainBox.setVisible(false);
+							line_intro.setVisible(false);
+							lb_intro.setVisible(false);
+							txt_intro.setVisible(false);
+							pane2.setVisible(true);	
+							pane3.setVisible(true);	
+							
+							musicBox.setVisible(false);
+//							singerMusic.setVisible(false);
+							
+							if(tabPane.getSelectionModel().getSelectedIndex()==2) {
+//								pane3.setVisible(true);
+							}
+
+				        }
+				    }
+				);
+			
 			tabPane.setOnMouseClicked(e->{
+//				singerMusic.setVisible(false);
+//				singerMusic.getChildren().removeAll();
+//				singerMusic.getChildren().setAll(pane3);
 				box.setVisible(false);
-				mainBox.setVisible(false);
+				stackpane.setVisible(false);
 				line_intro.setVisible(false);
 				lb_intro.setVisible(false);
 				txt_intro.setVisible(false);
-				pane2.setVisible(true);
+				pane2.setVisible(true);	
+				musicBox.setVisible(false);
+				singerMusic.setVisible(true);
 			});
 			
 //			StackPane pane_main = FXMLLoader.load(getClass().getResource("SingerMainMusic.fxml"));
@@ -205,7 +282,7 @@ public class SingerMenuController implements Initializable{
 		}
 		System.out.println("앨범번호:" + albumNo);
 		
-
+		System.out.println("init: 곡 번호" + musicNo);
 		try {
 			// reg로 ISingerService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -214,6 +291,9 @@ public class SingerMenuController implements Initializable{
 			
 			iss = (ISingerService) reg.lookup("singer");
 			sVO = iss.singerDetailInfo(aVO.getSing_no());
+			
+			ims = (IMusicService) reg.lookup("music");
+			mVO = ims.selectMusicDetailInfo(musicNo);
 			
 			System.out.println(aVO.getSing_no());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
@@ -253,6 +333,40 @@ public class SingerMenuController implements Initializable{
 		// 좋아요는 다른 VO에서 가져와야함...
 		str_like_cnt = like_cnt + "";
 		label_LikeCnt.setText(str_like_cnt);
+		
+		
+		System.out.println(mVO.getMus_title());
+		label_musicTitle.setText(mVO.getMus_title());
+//		label_musicTitle2.setText(mVO.getMus_title());
+		Image img2 = new Image(mVO.getAlb_image());
+		temp_img_path2 = mVO.getAlb_image(); //전역으로 쓰기위해서
+		imgview_albumImg2.setImage(img2);
+		txt_albName.setText(mVO.getAlb_name());
+		txt_singerName.setText(mVO.getSing_name());
+
+		txt_write.setText(mVO.getMus_write_son());
+		txt_edit.setText(mVO.getMus_edit_son());
+		txt_muswrite.setText(mVO.getMus_muswrite_son());
+		txt_file.setText(mVO.getMus_file()); 
+		txt_fileVideo.setText(mVO.getMus_mvfile());
+		combo_genre.setValue(mVO.getGen_name());  
+		
+		combo_genreDetail.setValue(mVO.getGen_detail_name()); 
+		txt_time.setText(mVO.getMus_time());  
+		txt_lyrics.setEditable(false);
+		txt_lyrics.setText(mVO.getMus_lyrics());
+
+		// 좋아요 수를 가져오는 쿼리
+		int like_cnt2 = 0;
+		try {
+			like_cnt2 = ims.selectMusicLikeCnt(musicNo);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+
+		// 좋아요는 다른 VO에서 가져와야함...
+		str_like_cnt2 = like_cnt2 + "";
+		label_LikeCnt.setText(str_like_cnt2);
 		
 		
 		try {

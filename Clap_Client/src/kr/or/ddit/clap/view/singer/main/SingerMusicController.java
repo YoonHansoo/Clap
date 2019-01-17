@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
@@ -82,6 +83,8 @@ public class SingerMusicController implements Initializable{
 		
 		// 일간 조회 차트 
 		songChart();
+		
+
 	}
 	
 	// 메인 재생 버튼 이벤트
