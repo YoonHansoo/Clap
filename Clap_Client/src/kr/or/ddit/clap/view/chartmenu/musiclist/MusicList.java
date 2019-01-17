@@ -31,6 +31,7 @@ import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import kr.or.ddit.clap.main.GobackStack;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.music.IMusicService;
@@ -378,7 +379,12 @@ public class MusicList {
 					SingerMainController.singerNo = iv.getAccessibleText();
 				  try {
 				         Parent page = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-				                                                                                 
+				                                    
+				         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+						 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+						 GobackStack.goURL(path);
+				         
 				         MusicMainController.secondPane.getChildren().removeAll();
 				         MusicMainController.secondPane.getChildren().setAll(page);
 				      } catch (IOException e1) {
@@ -408,7 +414,12 @@ public class MusicList {
 						SingerMenuController.musicNo = la.getAccessibleHelp();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-						                                                                                 
+						         
+						         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+								 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+								 GobackStack.goURL(path);
+						         
 						         MusicMainController.secondPane.getChildren().removeAll();
 						         MusicMainController.secondPane.getChildren().setAll(pane);
 						      } catch (IOException e1) {
@@ -430,7 +441,12 @@ public class MusicList {
 						SingerMainController.singerNo = la.getAccessibleText();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-						                                                                                 
+						         
+						         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+								 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+								 GobackStack.goURL(path);
+						         
 						         MusicMainController.secondPane.getChildren().removeAll();
 						         MusicMainController.secondPane.getChildren().setAll(pane);
 						      } catch (IOException e1) {
@@ -812,7 +828,12 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					SingerMainController.singerNo = iv.getAccessibleText();
 					  try {
 					         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-					                                                                                 
+					         
+					         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+							 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+							 GobackStack.goURL(path);
+					         
 					         MusicMainController.secondPane.getChildren().removeAll();
 					         MusicMainController.secondPane.getChildren().setAll(pane);
 					      } catch (IOException e1) {
@@ -842,7 +863,12 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 						SingerMenuController.musicNo = la_MusicName.getAccessibleHelp();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-						                                                                                 
+						         
+						         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+								 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+								 GobackStack.goURL(path);
+						         
 						         MusicMainController.secondPane.getChildren().removeAll();
 						         MusicMainController.secondPane.getChildren().setAll(pane);
 						      } catch (IOException e1) {
@@ -865,7 +891,12 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 						SingerMainController.singerNo = la.getAccessibleText();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-						                                                                                 
+						         
+						         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+								 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+								 GobackStack.goURL(path);
+						         
 						         MusicMainController.secondPane.getChildren().removeAll();
 						         MusicMainController.secondPane.getChildren().setAll(pane);
 						      } catch (IOException e1) {
@@ -997,7 +1028,12 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 				SingerMainController.singerNo = iv.getAccessibleText();
 				  try {
 				         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-				                                                                                 
+				         
+				         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+						 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+						 GobackStack.goURL(path);
+				         
 				         MusicMainController.secondPane.getChildren().removeAll();
 				         MusicMainController.secondPane.getChildren().setAll(pane);
 				      } catch (IOException e1) {
@@ -1023,7 +1059,12 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					SingerMainController.singerNo = la.getAccessibleText();
 					  try {
 					         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-					                                                                                 
+					         
+					         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+							 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+							 GobackStack.goURL(path);
+					         
 					         MusicMainController.secondPane.getChildren().removeAll();
 					         MusicMainController.secondPane.getChildren().setAll(pane);
 					      } catch (IOException e1) {
@@ -1043,7 +1084,11 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					SingerMainController.singerNo = la.getAccessibleText();
 					  try {
 					         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-					                                                                                 
+					         
+					         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+							 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+							 GobackStack.goURL(path);
+					         
 					         MusicMainController.secondPane.getChildren().removeAll();
 					         MusicMainController.secondPane.getChildren().setAll(pane);
 					      } catch (IOException e1) {
@@ -1102,7 +1147,11 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 						SingerMainController.singerNo = iv.getAccessibleText();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-						                                                                                 
+						         
+						         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+								 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+								 GobackStack.goURL(path);
+						         
 						         MusicMainController.secondPane.getChildren().removeAll();
 						         MusicMainController.secondPane.getChildren().setAll(pane);
 						      } catch (IOException e1) {
@@ -1128,7 +1177,11 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 							SingerMainController.singerNo = la.getAccessibleText();
 							  try {
 							         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-							                                                                                 
+							         
+							         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+									 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+									 GobackStack.goURL(path);
+							         
 							         MusicMainController.secondPane.getChildren().removeAll();
 							         MusicMainController.secondPane.getChildren().setAll(pane);
 							      } catch (IOException e1) {
@@ -1148,7 +1201,11 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 							SingerMainController.singerNo = la.getAccessibleText();
 							  try {
 							         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
-							                                                                                 
+							         
+							         String temp_path = (getClass().getResource("../../singer/main/SingerMenu.fxml")).getPath();
+									 String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+									 GobackStack.goURL(path);
+							         
 							         MusicMainController.secondPane.getChildren().removeAll();
 							         MusicMainController.secondPane.getChildren().setAll(pane);
 							      } catch (IOException e1) {

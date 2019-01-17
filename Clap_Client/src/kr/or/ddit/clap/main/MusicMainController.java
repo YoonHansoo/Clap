@@ -775,6 +775,9 @@ public class MusicMainController implements Initializable {
 
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/member/mypage/Mypage.fxml"));
+			String temp_path = (getClass().getResource("../view/member/mypage/Mypage.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(root);
 		} catch (IOException e) {
@@ -786,6 +789,9 @@ public class MusicMainController implements Initializable {
 	public void buyTicket() throws IOException {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/ticket/ticket/Ticket.fxml"));
+			String temp_path = (getClass().getResource("../view/ticket/ticket/Ticket.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+			GobackStack.goURL(path);
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(root);
 		} catch (IOException e) {
@@ -798,6 +804,7 @@ public class MusicMainController implements Initializable {
 
 		try {
 			Parent qna = FXMLLoader.load(getClass().getResource("../view/support/qna/QnaMenuList.fxml"));
+			
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(qna);
 		} catch (IOException e) {
