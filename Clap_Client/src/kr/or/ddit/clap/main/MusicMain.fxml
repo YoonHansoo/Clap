@@ -730,7 +730,7 @@
                   <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="311.0" startX="41.0" startY="175.0" />
                   <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="1072.0" startX="41.0" startY="175.0" />
                   <AnchorPane fx:id="achorpane_game" layoutX="555.0" layoutY="1025.0" prefHeight="223.0" prefWidth="398.0" />
-                  <AnchorPane fx:id="pane_search" layoutX="237.0" layoutY="-60.0" prefHeight="283.0" prefWidth="258.0" style="-fx-background-color: #fff; -fx-border-color: #090948;" visible="false">
+                  <AnchorPane fx:id="pane_search" layoutX="237.0" layoutY="-60.0" onMouseEntered="#pane_searchMouseEnterd" onMouseExited="#pane_searchMouseExited" prefHeight="283.0" prefWidth="258.0" style="-fx-background-color: #fff; -fx-border-color: #090948;" visible="false">
                      <children>
                         <JFXButton fx:id="btn_bestWord" layoutY="1.0" onAction="#btn_bestWord" prefHeight="36.0" prefWidth="129.0" text="인기검색어" />
                         <JFXButton fx:id="btn_newWord" layoutX="129.0" layoutY="1.0" onAction="#btn_newWord" prefHeight="36.0" prefWidth="129.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d3d3d3;" text="인기검색어" />

@@ -23,7 +23,7 @@ public class AES256Util {
 	public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException {
 		AES256Util aes = new AES256Util();
 		System.out.println("암호화 하기.");
-		String pw1 = "1234"; // 입력 값
+		String pw1 = "1111"; // 입력 값
 		String pw2 = "ddit206";
 		
 		String encryptedPw1 = aes.encrypt(pw1); // 암호화된 값.

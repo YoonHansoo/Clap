@@ -190,12 +190,36 @@ public class MusicMainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// 쓰레드 test
-		btn_test.setOnAction(e->{
-			System.out.println(tabpane.getSelectionModel().getSelectedIndex());
-		});
-		btn_test.setOnAction(e->handleBtnStart(e));
-		btn_stop.setOnAction(e->handleBtnStop(e));
+		Thread thread = new Thread(new Runnable() { // 익명클래스.
+				@Override
+				public void run() {
+					isStoped = false;
+					while(!isStoped) {
+						try {
+							Thread.sleep(2000);
+							Platform.runLater(new Runnable() { 
+								@Override
+								public void run() {
+								
+									 int current_index= tabpane.getSelectionModel().getSelectedIndex();
+									 System.out.println(current_index);
+									tabpane.getSelectionModel().select(current_index+1);
+									System.out.println(current_index+1);
+									
+								}
+							});
+							
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			thread.setDaemon(true);
+			thread.start();
+		
+			
 		
 		
 		try {
@@ -539,6 +563,14 @@ public class MusicMainController implements Initializable {
 		pane_search.setVisible(false);
 	
 	}
+	//검색창에 마우스 올렸을 경우 발생하는 메서드
+	public void pane_searchMouseEnterd() {
+		pane_search.setVisible(true);
+	}
+	//검색창에 마우스 치웠을 경우 발생하는 메서드
+	public void pane_searchMouseExited() {
+		pane_search.setVisible(false);
+	}
 	
 	//인기검색어 버튼을 클릭했을 때
 	public void btn_bestWord() {
@@ -548,6 +580,7 @@ public class MusicMainController implements Initializable {
 	public void btn_newWord() {
 		
 	}
+	
 	
 	// 메인 재생 버튼 이벤트
 	@FXML public void btnMainPlay() {
