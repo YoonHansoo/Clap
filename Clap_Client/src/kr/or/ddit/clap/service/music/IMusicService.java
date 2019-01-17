@@ -47,6 +47,8 @@ public interface IMusicService extends Remote {
 	public List<String> albumMusNoSelect(String alb_no) throws RemoteException;
 
 	public List<Map> genreMusicSelete(String gen_detail_no) throws RemoteException;
+	
+	public List<Map> gameSelect() throws RemoteException;
 
 	// 가수 좋아요 여부 채크
 	public int checkHeartYN(Map<String, String> map) throws RemoteException;
@@ -56,7 +58,7 @@ public interface IMusicService extends Remote {
 
 	// 가수 라이크 등록
 	public int insertMusicLike(Map<String, String> map) throws RemoteException;
-	
+
 	// 가수 댓글 조회
 	public List<Map<String, String>> selectMusReply(String singerNo) throws RemoteException;
 
@@ -65,6 +67,5 @@ public interface IMusicService extends Remote {
 
 	// 가수 댓글 삭제
 	public int deleteMusReply(String id) throws RemoteException;
-	
 
 }

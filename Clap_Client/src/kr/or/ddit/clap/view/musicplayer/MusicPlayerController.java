@@ -404,7 +404,7 @@ public class MusicPlayerController implements Initializable{
 	}
 	
 	public void randomSuffle() {
-		
+		randomIndex = null;
 		if (randomIndex == null || player.mediaPlayer.getStatus() == Status.STOPPED) {
 			randomIndex = new int[playList.size()];
 			int temp;
