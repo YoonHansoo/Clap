@@ -7,7 +7,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -16,6 +18,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +33,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -77,9 +81,12 @@ public class MusicMainController implements Initializable {
 	HBox mem_menu;
 	@FXML
 	MenuBar bar;
+	@FXML
+	TabPane tabpane;
+	private boolean isStoped;
 
 	@FXML
-	public JFXButton btn_login;
+	public JFXButton btn_login, btn_test, btn_stop;
 
 	@FXML
 	public JFXButton btn_goforward;
@@ -183,6 +190,14 @@ public class MusicMainController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		// 쓰레드 test
+		btn_test.setOnAction(e->{
+			System.out.println(tabpane.getSelectionModel().getSelectedIndex());
+		});
+		btn_test.setOnAction(e->handleBtnStart(e));
+		btn_stop.setOnAction(e->handleBtnStop(e));
+		
+		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
@@ -474,6 +489,44 @@ public class MusicMainController implements Initializable {
 
 	}
 	
+	int i = 0;
+	public void handleBtnStart(ActionEvent e) {
+		Thread thread = new Thread(new Runnable() { // 익명클래스.
+			@Override
+			public void run() {
+				isStoped = false;
+				while(!isStoped) {
+					try {
+						Thread.sleep(2000);
+						Platform.runLater(new Runnable() { 
+							@Override
+							public void run() {
+								if(i==4) {
+									i = 0;
+								}else {
+									i++;									
+								}
+								System.out.println(new Date());
+								System.out.println(tabpane.getSelectionModel().getSelectedIndex());
+								tabpane.getSelectionModel().select(i);
+								
+							}
+						});
+						
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		});
+		
+		thread.setDaemon(true);
+		thread.start();
+	}
+	
+	public void handleBtnStop(ActionEvent e) {
+		isStoped = true;
+	}
 	
 	
 	//검색창에 마우스를 올렸을 경우 발생하는 메서드

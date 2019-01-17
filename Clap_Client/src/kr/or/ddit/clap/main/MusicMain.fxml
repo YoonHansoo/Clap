@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="1500.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -196,6 +196,8 @@
                         </HBox>
                      </graphic>
                   </JFXButton>
+                  <JFXButton fx:id="btn_test" layoutX="869.0" layoutY="44.0" prefHeight="23.0" prefWidth="82.0" text="test" />
+                  <JFXButton fx:id="btn_stop" layoutX="896.0" layoutY="19.0" prefHeight="23.0" prefWidth="82.0" text="stop" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" minHeight="448.0" prefWidth="1005.0">
@@ -261,7 +263,7 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <JFXTabPane layoutX="555.0" layoutY="484.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
+                  <JFXTabPane fx:id="tabpane" layoutX="555.0" layoutY="484.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
                      <tabs>
                         <Tab text="     #1     ">
                           <content>
