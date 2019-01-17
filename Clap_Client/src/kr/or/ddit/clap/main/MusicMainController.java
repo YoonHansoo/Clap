@@ -191,7 +191,6 @@ public class MusicMainController implements Initializable {
 //		try {
 //			pane3 = FXMLLoader.load(getClass().getResource("SingerMusic.fxml"));
 //		} catch (IOException e3) {
-//			// TODO Auto-generated catch block
 //			e3.printStackTrace();
 //		}
 ////		singerMusic.getChildren().removeAll();
@@ -446,10 +445,8 @@ public class MusicMainController implements Initializable {
 		btn_new9.setOnAction(e -> { // 수정중 - 곡 디테일
 			SingerMenuController.albumNo = albumList.get(8).getAlb_no();
 			SingerMainController.singerNo = albumList.get(8).getSing_no();
-//			SingerMenuController.menuCount = 1;
-//			singerMenu();
-			SingerMenuController.menuCount = 2;
-//			SingerMenuController.detailFlag = true;
+			SingerMenuController.menuCount = 1;
+			singerMenu();
 			singerMenu();
 		});
 		btn_new10.setOnAction(e -> {
