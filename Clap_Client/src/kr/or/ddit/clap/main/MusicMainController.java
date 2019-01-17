@@ -113,7 +113,9 @@ public class MusicMainController implements Initializable {
 	@FXML
 	Menu menu_admin;
 	@FXML
-	Label lb_id;
+	Label lb_id, lbb1, lbb2, lbb3, lbb4, lbb5, lbb6, lbb7, lbb8, lbb9, lbb10; // 추천음악 제목 라벨
+	@FXML
+	Label lbbb1, lbbb2, lbbb3, lbbb4, lbbb5, lbbb6, lbbb7, lbbb8, lbbb9, lbbb10; // 추천음악 좋아요/곡수 라벨
 	@FXML
 	Label la_messageCnt;
 	@FXML
@@ -239,14 +241,61 @@ public class MusicMainController implements Initializable {
 		// 추천 앨범 출력하기
 		System.out.println("싸이즈 "+recommendList.size());
 		
+		Image[] tab_img = new Image[5];
+		tab_img[0] = new Image(recommendList.get(0).getRcm_alb_image());
+		tab_img[1] = new Image(recommendList.get(1).getRcm_alb_image());
+		tab_img[2] = new Image(recommendList.get(2).getRcm_alb_image());
+		tab_img[3] = new Image(recommendList.get(3).getRcm_alb_image());
+		tab_img[4] = new Image(recommendList.get(4).getRcm_alb_image());
+
+		tab1.setImage(tab_img[0]);
+		tab2.setImage(tab_img[1]);
+		tab3.setImage(tab_img[2]);
+		tab4.setImage(tab_img[3]);
+		tab5.setImage(tab_img[4]);
 		
+		ArrayList<String> titleList = cut_title(recommendList);
+		lbb1.setText(titleList.get(0));
+		lbb2.setText(titleList.get(1));
+		lbb3.setText(titleList.get(2));
+		lbb4.setText(titleList.get(3));
+		lbb5.setText(titleList.get(4));
 		
-//		//좋아요 카운트 쿼리
-//		int likeCnt =  irs.selectAlbumLikeCnt(rcmAlbNo);
-//		label_LikeCnt.setText(likeCnt+"");
-//		
-//		
-//		//추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리
+		lbb6.setText(titleList.get(5));
+		lbb7.setText(titleList.get(6));
+		lbb8.setText(titleList.get(7));
+		lbb9.setText(titleList.get(8));
+		lbb10.setText(titleList.get(9));
+
+		//좋아요 카운트 쿼리
+		int likeCnt1 = 0;
+		int likeCnt3 = 0;
+		int likeCnt5 = 0;
+		int likeCnt7 = 0;
+		int likeCnt9 = 0;
+		int cntMusic2 = 0;
+		int cntMusic4 = 0;
+		int cntMusic6 = 0;
+		int cntMusic8 = 0;
+		int cntMusic10 = 0;
+		try {
+			likeCnt1 = irs.selectAlbumLikeCnt(recommendList.get(0).getRcm_alb_no());
+			likeCnt3 = irs.selectAlbumLikeCnt(recommendList.get(1).getRcm_alb_no());
+			likeCnt5 = irs.selectAlbumLikeCnt(recommendList.get(2).getRcm_alb_no());
+			likeCnt7 = irs.selectAlbumLikeCnt(recommendList.get(3).getRcm_alb_no());
+			likeCnt9 = irs.selectAlbumLikeCnt(recommendList.get(4).getRcm_alb_no());
+//			cntMusic10 = **숫자 가져오기
+			
+		} catch (RemoteException e3) {
+			e3.printStackTrace();
+		}
+		lbbb1.setText(likeCnt1+"");
+		lbbb3.setText(likeCnt3+"");
+		lbbb5.setText(likeCnt5+"");
+		lbbb7.setText(likeCnt7+"");
+		lbbb9.setText(likeCnt9+"");
+		
+//		//추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리 -> ** 추가하기
 //		musicList = FXCollections.observableArrayList(irs.SelectRcmMusicList(rcmAlbNo));
 //		System.out.println("해당 추천앨범 곡 개수 :"+musicList.size());
 //
@@ -260,8 +309,6 @@ public class MusicMainController implements Initializable {
 		songChart();
 
 		if (ls.session != null) {
-			System.out.println(ls.session.getMem_name());
-			System.out.println(ls.session.getMem_auth());
 			MessageVO msgvo = new MessageVO();
 			msgvo.setMem_get_id(ls.session.getMem_id());
 			msgvo.setMsg_read_tf("f");
@@ -339,23 +386,6 @@ public class MusicMainController implements Initializable {
 		new8.setImage(images[7]);
 		new9.setImage(images[8]);
 		new10.setImage(images[9]);
-
-		Image[] tab_img = new Image[5];
-		// for(int i=0; i<5; i++) {
-		// tab_img[i] = new Image(albumList.get(i).getAlb_image());
-		// }
-
-		tab_img[0] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\everyd4y.JPG");
-		tab_img[1] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\Be There.JPG");
-		tab_img[2] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\마지막처럼.JPG");
-		tab_img[3] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\Full Album RED PLANET (Hidden Track).JPG");
-		tab_img[4] = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\album\\도깨비 OST Part 4 (tvN 금토드라마).JPG");
-
-		tab1.setImage(tab_img[0]);
-		tab2.setImage(tab_img[1]);
-		tab3.setImage(tab_img[2]);
-		tab4.setImage(tab_img[3]);
-		tab5.setImage(tab_img[4]);
 
 		// 이미지 hover시 효과 -------------윤한수
 		btn_new1.setOnMouseEntered(e -> { // 마우스가 들어갈 때
@@ -503,6 +533,24 @@ public class MusicMainController implements Initializable {
 			singerMenu();
 		});
 
+	}
+
+	private ArrayList<String> cut_title(ObservableList<RecommendAlbumVO> list) {
+		ArrayList<String> titleList = new ArrayList<>();
+		String str1 = "";
+		String str2 = "";
+		for(int i=0; i<5; i++) {
+			if(list.get(i).getRcm_alb_name().length()<13) {
+				str1 = list.get(i).getRcm_alb_name();
+				str2 = "";
+			}else {
+				str1 = list.get(i).getRcm_alb_name().substring(0, 12);
+				str2 = list.get(i).getRcm_alb_name().substring(13, list.get(i).getRcm_alb_name().length());				
+			}
+			titleList.add(str1);
+			titleList.add(str2);
+		}
+		return titleList;
 	}
 
 	// 검색창에 마우스를 올렸을 경우 발생하는 메서드
