@@ -31,7 +31,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="앨범">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -44,7 +44,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="아티스트">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="아티스트">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -57,7 +57,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="작곡가">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="작곡가">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -70,7 +70,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="편곡자">
+                        <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="편곡자">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -83,7 +83,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="작사">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="작사">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -97,7 +97,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="Music File">
+                        <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="Music File">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -110,7 +110,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="Video File">
+                        <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="Video File">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -123,7 +123,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="장르">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="장르">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -136,7 +136,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="장르상세">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="장르상세">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -149,7 +149,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="재생시간 ">
+                        <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="재생시간 ">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -162,7 +162,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="100.0">
                      <children>
-                        <Label prefWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
+                        <Label minWidth="85.0" style="-fx-background-color: #ffffff;" text="좋아요">
                            <graphic>
                               <FontAwesomeIcon fill="#9c0000" iconName="HEART" />
                            </graphic>
