@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXSlider;
 import com.jfoenix.controls.JFXTextField;
 
@@ -17,22 +18,31 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Background;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.ticket.ITicketService;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 public class GameController implements Initializable{
 	
 	@FXML JFXButton btn_play;
 	@FXML JFXButton btn_true;
+	@FXML JFXButton btn_next;
 	@FXML JFXTextField tf_musName;
 	@FXML JFXTextField tf_singerName;
 	@FXML JFXSlider slider_time;
 	@FXML Label label_nowTime;
+	@FXML Label label_count;
+	@FXML AnchorPane anchorPane_main;
+	@FXML StackPane stackpane;
 	
 	public  MediaPlayer mediaPlayer;
 	private Media media;
@@ -42,6 +52,7 @@ public class GameController implements Initializable{
 	private List<TicketBuyListVO> buyticket;
 	private ObservableList<Map> list;
 	private static int count = 0;
+	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -98,6 +109,7 @@ public class GameController implements Initializable{
 					Label_nowTime.setText(String.format("%02d:%02d",minutes,seconds));
 					double nowTime = mediaPlayer.getCurrentTime().toSeconds() / 
 					                 mediaPlayer.getTotalDuration().toSeconds() * 100;
+					slider_time.setValue(nowTime);
 				}
 			});
 		});
@@ -114,7 +126,7 @@ public class GameController implements Initializable{
 	}
 	
 	public void suffle() {
-		for (int i = 0; i < list.size() * 3; i++) {
+		for (int i = 0; i < list.size() * 10; i++) {
 			int math = (int)(Math.random() * list.size());
 			Map temp = list.get(math);
 			list.remove(math);
@@ -125,19 +137,44 @@ public class GameController implements Initializable{
 	@FXML public void playClick() {
 		if (count < 3) {
 			setMedia(list.get(count).get("MUS_FILE").toString());
-			count++;
 		}
 		
 	}
 	
 	@FXML public void check() {
-		if (tf_musName.getText().equals(list.get(count).get("MUS_TITLE").toString())) {
-			System.out.println("곡제목이 공백이거나 틀렸습니다.");
+		String text = "";
+
+		if (!tf_musName.getText().equals(list.get(count).get("MUS_TITLE").toString()) &&
+			!tf_singerName.getText().equals(list.get(count).get("SING_NAME").toString())) {
+			text = "공백이거나 틀렸습니다.";
+			tf_musName.setText("");
+			tf_singerName.setText("");
+		} else if (tf_musName.getText().equals(list.get(count).get("MUS_TITLE").toString()) &&
+			tf_singerName.getText().equals(list.get(count).get("SING_NAME").toString())) {
+			
+			
+			text = "정답입니다.";
+			tf_musName.setText("");
+			tf_singerName.setText("");
+			count++;
+			label_count.setText(count+"/3");
+			if(count == 3) {
+				System.out.println("상품주세요!!");
+				return;
+			}
+			
 		}
 		
-		if (tf_singerName.getText().equals(list.get(count).get("SING_NAME").toString())) {
-			System.out.println("가수이름이 공백이거나 틀렸습니다.");
-		}
+		Label label = new Label(text);
+		label.setPrefWidth(300);
+		label.setPrefHeight(80);
+		label.setAlignment(Pos.CENTER);
+		label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
+		
+		
+		JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
+		dialog.setBackground(Background.EMPTY);
+		dialog.show();
 		
 	}
 	

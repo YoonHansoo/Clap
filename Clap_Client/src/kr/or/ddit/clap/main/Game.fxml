@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="223.0" prefWidth="398.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.GameController">
+<AnchorPane prefHeight="223.0" fx:id="anchorPane_main" prefWidth="398.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.GameController">
    <children>
-      <StackPane style="-fx-background-color: #090948;">
+      <StackPane fx:id="stackpane" style="-fx-background-color: #090948;">
          <children>
             <VBox alignment="CENTER" prefHeight="222.0" prefWidth="397.0">
                <children>
