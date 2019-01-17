@@ -131,8 +131,12 @@ public class GameController implements Initializable{
 	}
 	
 	@FXML public void check() {
-		if (tf_musName.getText().equals(list.get(count).get("MUS_NAME").toString())) {
-			System.out.println("우오아");
+		if (tf_musName.getText().equals(list.get(count).get("MUS_TITLE").toString())) {
+			System.out.println("곡제목이 공백이거나 틀렸습니다.");
+		}
+		
+		if (tf_singerName.getText().equals(list.get(count).get("SING_NAME").toString())) {
+			System.out.println("가수이름이 공백이거나 틀렸습니다.");
 		}
 		
 	}
