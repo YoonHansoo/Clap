@@ -735,11 +735,7 @@
                   </ImageView>
                   <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="277.0" startX="41.0" startY="175.0" />
                   <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="1038.0" startX="41.0" startY="175.0" />
-                  <JFXButton layoutX="542.0" layoutY="991.0" prefHeight="223.0" prefWidth="398.0" style="-fx-background-color: #b8b8b8;" text="★  G    A    M    E  ★">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </JFXButton>
+                  <AnchorPane fx:id="achorpane_game" layoutX="542.0" layoutY="991.0" prefHeight="223.0" prefWidth="398.0" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="160.0" prefWidth="1005.0" />

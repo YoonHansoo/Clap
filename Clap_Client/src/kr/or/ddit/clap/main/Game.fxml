@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.effect.MotionBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="223.0" prefWidth="398.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.GameController">
+   <children>
+      <StackPane>
+         <children>
+            <ImageView fitHeight="222.0" fitWidth="397.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../../../../img/game.jpg" />
+               </image>
+               <effect>
+                  <MotionBlur angle="9.38" radius="30.0">
+                     <input>
+                        <ColorAdjust brightness="0.25" contrast="0.21" hue="0.11" saturation="0.23" />
+                     </input>
+                  </MotionBlur>
+               </effect>
+            </ImageView>
+         </children>
+      </StackPane>
+      <VBox alignment="CENTER" prefHeight="222.0" prefWidth="397.0">
+         <children>
+            <Label text="노래 맞추기">
+               <font>
+                  <Font name="-윤고딕350" size="15.0" />
+               </font>
+            </Label>
+            <Label text="전주 3초를 듣고 노래 제목과 가수를 맞혀주세요!!!">
+               <font>
+                  <Font name="-윤고딕330" size="12.0" />
+               </font>
+            </Label>
+            <Label text="노래제목과 가수를 입력하시고 정답 버튼을 눌러주세요~">
+               <font>
+                  <Font name="-윤고딕330" size="13.0" />
+               </font>
+            </Label>
+            <Label text="상품은 OOO입니다.">
+               <font>
+                  <Font name="-윤고딕330" size="12.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <JFXButton fx:id="btn_play" ripplerFill="#9c0000" text="">
+                     <graphic>
+                        <FontAwesomeIcon fill="#090948" iconName="PLAY" size="25" />
+                     </graphic>
+                  </JFXButton>
+                  <JFXSlider fx:id="slider_time" style="-fx-background-inner-background: black;" />
+                  <Label fx:id="label_endTime" text="00:00" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label text="노래">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="tf_musName" focusColor="#9c0000" />
+                  <Label text="가수">
+                     <font>
+                        <Font name="-윤고딕320" size="12.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="tf_singerName" focusColor="#9c0000" />
+                  <JFXButton fx:id="btn_true" ripplerFill="#9c0000" text="정답">
+                     <font>
+                        <Font name="-윤고딕330" size="12.0" />
+                     </font></JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -118,7 +118,7 @@ public class MusicMainController implements Initializable {
 	@FXML
 	JFXButton btn_new6, btn_new7, btn_new8, btn_new9, btn_new10;
 	@FXML
-	AnchorPane tab_pane1, tab_pane2, tab_pane3, tab_pane4, tab_pane5;
+	AnchorPane tab_pane1, tab_pane2, tab_pane3, tab_pane4, tab_pane5, achorpane_game;
 	@FXML
 	JFXButton btn_msg;
 	LoginSession ls = new LoginSession();
@@ -177,6 +177,7 @@ public class MusicMainController implements Initializable {
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
 			itemsForPage = 10;
+			game();
 			
 			
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
@@ -1067,6 +1068,16 @@ public class MusicMainController implements Initializable {
 			musicplayer.setTitle("Meaage");
 			musicplayer.setScene(scene);
 			musicplayer.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void game() {
+		try {
+			AnchorPane pane = FXMLLoader.load(getClass().getResource("Game.fxml"));
+			achorpane_game.getChildren().removeAll();
+			achorpane_game.getChildren().setAll(pane);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

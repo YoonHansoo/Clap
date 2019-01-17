@@ -421,11 +421,13 @@ public class MusicList {
 					la_MusicName.setPrefWidth(300);
 					la_MusicName.setId(list.get(i).get("ALB_NO").toString());
 					la_MusicName.setAccessibleText(list.get(i).get("SING_NO").toString());
+					la_MusicName.setAccessibleHelp((list.get(i).get("MUS_NO").toString()));
 					la_MusicName.setOnMouseClicked(e -> {
 						Label la = (Label)e.getSource();
 						SingerMenuController.menuCount = 2;
 						SingerMenuController.albumNo = la.getId();
 						SingerMainController.singerNo = la.getAccessibleText();
+						SingerMenuController.musicNo = la.getAccessibleHelp();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
 						                                                                                 
@@ -853,11 +855,13 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 					la_MusicName.setPrefWidth(300);
 					la_MusicName.setId(list.get(i).get("ALB_NO").toString());
 					la_MusicName.setAccessibleText(list.get(i).get("SING_NO").toString());
+					la_MusicName.setAccessibleHelp((list.get(i).get("MUS_NO").toString()));
 					la_MusicName.setOnMouseClicked(e -> {
 						Label la = (Label)e.getSource();
 						SingerMenuController.menuCount = 2;
 						SingerMenuController.albumNo = la.getId();
 						SingerMainController.singerNo = la.getAccessibleText();
+						SingerMenuController.musicNo = la_MusicName.getAccessibleHelp();
 						  try {
 						         Parent pane = FXMLLoader.load(getClass().getResource("../../singer/main/SingerMenu.fxml")); 
 						                                                                                 
