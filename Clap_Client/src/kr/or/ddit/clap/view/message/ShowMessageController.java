@@ -36,28 +36,37 @@ import kr.or.ddit.clap.service.message.IMessageService;
 import kr.or.ddit.clap.view.member.mypage.MypageController;
 import kr.or.ddit.clap.vo.support.MessageVO;
 
-public class ShowMessageController implements Initializable{
+public class ShowMessageController implements Initializable {
 
 	private Registry reg;
 	private IMessageService imsgs;
-	private String  user_id =LoginSession.session.getMem_id();
-	
+	private String user_id = LoginSession.session.getMem_id();
+
 	private ObservableList<MessageVO> msgList, currentMsgList;
 	private int from, to, itemsForPage, totalPageCnt;
-	@FXML JFXTreeTableView<MessageVO> tbl_Message;
-	@FXML TreeTableColumn<MessageVO,ImageView> col_imgeview;
-	@FXML TreeTableColumn<MessageVO ,String> col_title;
-	@FXML TreeTableColumn<MessageVO ,String> col_SendId;
-	@FXML TreeTableColumn<MessageVO ,String> col_SendDate;
-	@FXML TreeTableColumn<MessageVO ,String> col_ReadDate;
-	@FXML TreeTableColumn<MessageVO, JFXCheckBox> col_Check;
-	@FXML Pagination p_paging;
-	@FXML AnchorPane contents; 
-	public MusicMainController mn;
+	@FXML
+	JFXTreeTableView<MessageVO> tbl_Message;
+	@FXML
+	TreeTableColumn<MessageVO, ImageView> col_imgeview;
+	@FXML
+	TreeTableColumn<MessageVO, String> col_title;
+	@FXML
+	TreeTableColumn<MessageVO, String> col_SendId;
+	@FXML
+	TreeTableColumn<MessageVO, String> col_SendDate;
+	@FXML
+	TreeTableColumn<MessageVO, String> col_ReadDate;
+	@FXML
+	TreeTableColumn<MessageVO, JFXCheckBox> col_Check;
+	@FXML
+	Pagination p_paging;
+	@FXML
+	AnchorPane contents;
+	public  static MusicMainController mn;
 	public static Stage mes = new Stage();
-	
-	public void setController(MusicMainController mn) {
-		this.mn=mn;
+
+	public  void setController(MusicMainController mn1) {
+		mn = mn1;
 	}
 
 	@Override
@@ -65,13 +74,9 @@ public class ShowMessageController implements Initializable{
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			imsgs = (IMessageService) reg.lookup("message");
-
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+e.printStackTrace();
 		}
-
 		mesTable();
 
 		// 두번클릭시
@@ -117,7 +122,7 @@ public class ShowMessageController implements Initializable{
 			}
 		});
 	}
-	
+
 	public void mesTable() {
 		MessageVO vo = new MessageVO();
 		vo.setMem_get_id(user_id);
@@ -203,32 +208,26 @@ public class ShowMessageController implements Initializable{
 	}
 
 	@FXML
-	public void btn_Ok() {
-		
-
+	public void btn_Ok() {		
 		Stage dialogStage = (Stage) p_paging.getScene().getWindow();
-		dialogStage.close();
+			dialogStage.close();
+
+			mn.firstPage();
 		
-	//	mn.refreshmenu();
 		
 	}
 
 	@FXML
 	public void btn_Cl() throws RemoteException {
 		// 전체 선택 및 해제 메서드
-				for (int i = 0; i < msgList.size(); i++) {
-					if(msgList.get(i).getChBox().isSelected()) {
-						String mesNO=msgList.get(i).getMsg_no();
-						imsgs.deleteMessage(mesNO);
-					}
-				}
-				mesTable();
+		for (int i = 0; i < msgList.size(); i++) {
+			if (msgList.get(i).getChBox().isSelected()) {
+				String mesNO = msgList.get(i).getMsg_no();
+				imsgs.deleteMessage(mesNO);
+			}
+		}
+		mesTable();
 
-			} 
-			
-			
-		
-
-	
+	}
 
 }

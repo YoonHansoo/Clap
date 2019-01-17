@@ -22,7 +22,7 @@
     -fx-table-cell-border-color: rgba(156, 0, 0, 0.76);
 }
 .jfx-button {
-	-fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.25) , 10, 0 , 5 , 5);
+	
 }
 .tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
     -fx-text-fill: white;
