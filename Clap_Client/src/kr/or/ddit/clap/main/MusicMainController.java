@@ -449,7 +449,7 @@ public class MusicMainController implements Initializable {
 //			SingerMenuController.menuCount = 1;
 //			singerMenu();
 			SingerMenuController.menuCount = 2;
-			SingerMenuController.detailFlag = true;
+//			SingerMenuController.detailFlag = true;
 			singerMenu();
 		});
 		btn_new10.setOnAction(e -> {
