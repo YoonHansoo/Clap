@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="1700.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -269,18 +269,11 @@
                                                       <VBox alignment="CENTER_LEFT" maxHeight="80.0" minHeight="80.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb1" text="당신의 내적 그루브와 감" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
                                                                <VBox.margin>
                                                                   <Insets />
                                                                </VBox.margin>
                                                             </Label>
-                                                            <Label fx:id="lbb2" text="성을 자극할 음악들" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <Label fx:id="lbb2" text="성을 자극할 음악들" textFill="WHITE" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -302,7 +295,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb1" text="33" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
@@ -311,7 +304,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb2" text="3곡" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                              </children>
                                           </HBox>
@@ -347,16 +340,8 @@
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb3" text="생각은 접어두고 잠시 쉬" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="lbb4" text="고싶은 그런 날." textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <Label fx:id="lbb3" text="생각은 접어두고 잠시 쉬" textFill="WHITE" />
+                                                            <Label fx:id="lbb4" text="고싶은 그런 날." textFill="WHITE" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -378,7 +363,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb3" text="33" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
@@ -387,7 +372,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb4" text="3곡" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                              </children>
                                           </HBox>
@@ -423,16 +408,8 @@
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb5" text="흥겨운 분위기를 위한 기" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="lbb6" text="분 UP 플레이!" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <Label fx:id="lbb5" text="흥겨운 분위기를 위한 기" textFill="WHITE" />
+                                                            <Label fx:id="lbb6" text="분 UP 플레이!" textFill="WHITE" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -454,7 +431,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb5" text="33" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
@@ -463,7 +440,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb6" text="3곡" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                              </children>
                                           </HBox>
@@ -499,16 +476,8 @@
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb7" text="오늘은 그대와 나태한" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="lbb8" text="하루 보내기" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <Label fx:id="lbb7" text="오늘은 그대와 나태한" textFill="WHITE" />
+                                                            <Label fx:id="lbb8" text="하루 보내기" textFill="WHITE" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -530,7 +499,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb7" text="33" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
@@ -539,7 +508,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb8" text="3곡" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                              </children>
                                           </HBox>
@@ -575,16 +544,8 @@
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb9" text="그대가 그립거나 그때가" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
-                                                            <Label fx:id="lbb10" text="그립거나" textFill="WHITE">
-                                                               <font>
-                                                                  <Font size="24.0" />
-                                                               </font>
-                                                            </Label>
+                                                            <Label fx:id="lbb9" text="그대가 그립거나 그때가" textFill="WHITE" />
+                                                            <Label fx:id="lbb10" text="그립거나" textFill="WHITE" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -606,7 +567,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb9" text="33" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
@@ -615,7 +576,7 @@
                                                 </FontAwesomeIcon>
                                                 <Label fx:id="lbbb10" text="3곡" textFill="WHITE">
                                                    <HBox.margin>
-                                                      <Insets bottom="15.0" />
+                                                      <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
                                              </children>
                                              <VBox.margin>
@@ -635,7 +596,7 @@
                   </JFXTabPane>
                   <Line endX="951.0" endY="175.0" layoutY="258.0" startX="51.0" startY="175.0" stroke="#aeaeae" />
                   <Label fx:id="lb_chart" layoutX="50.0" layoutY="443.0" text="실시간 차트" />
-                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-60.0" layoutY="486.0" prefHeight="80.0" prefWidth="611.0">
+                  <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-60.0" layoutY="486.0" prefWidth="611.0">
                      <children>
                         <VBox fx:id="mainBox" maxWidth="610.0" minWidth="600.0" prefHeight="80.0" prefWidth="580.0">
                            <children>
@@ -801,45 +762,45 @@
             </AnchorPane>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Label layoutX="28.0" layoutY="22.0" text="회사소개" AnchorPane.leftAnchor="28.0">
+                  <Label fx:id="lb_bottom1" layoutX="28.0" layoutY="22.0" text="회사소개" AnchorPane.leftAnchor="28.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="108.0" layoutY="22.0" text="이용약관" AnchorPane.rightAnchor="841.0">
+                  <Label fx:id="lb_bottom2" layoutX="108.0" layoutY="22.0" text="이용약관" AnchorPane.rightAnchor="841.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="188.0" layoutY="22.0" text="개인정보처리방침" AnchorPane.leftAnchor="188.0">
+                  <Label fx:id="lb_bottom3" layoutX="188.0" layoutY="22.0" text="개인정보처리방침" AnchorPane.leftAnchor="188.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="324.0" layoutY="22.0" text="청소년보호정책">
+                  <Label fx:id="lb_bottom4" layoutX="324.0" layoutY="22.0" text="청소년보호정책">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="447.0" layoutY="22.0" text="이메일주소무단수집거부" AnchorPane.topAnchor="22.0">
+                  <Label fx:id="lb_bottom5" layoutX="447.0" layoutY="22.0" text="이메일주소무단수집거부" AnchorPane.topAnchor="22.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="626.0" layoutY="22.0" text="서비스 이용문의" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="22.0">
+                  <Label fx:id="lb_bottom6" layoutX="626.0" layoutY="22.0" text="서비스 이용문의" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="22.0">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
                   <ImageView fx:id="image_logo" fitHeight="45.0" fitWidth="120.0" layoutX="29.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="61.0" />
-                  <Label layoutX="161.0" layoutY="58.0" text="대표이상 윤한수 | 진민규 | 박경훈 | 김현지 | 이한화" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="58.0" />
+                  <Label fx:id="lb_bottom7" layoutX="161.0" layoutY="58.0" text="대표이상 윤한수 | 진민규 | 박경훈 | 김현지 | 이한화" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="58.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="196.0" layoutY="20.0" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
-                  <Label layoutX="463.0" layoutY="58.0" text="대전광역시 중구 중앙로 76 영민빌딩 2" AnchorPane.topAnchor="58.0" />
-                  <Label layoutX="328.0" layoutY="75.0" text="사업자등록번호 314-82-04354" AnchorPane.leftAnchor="328.0" AnchorPane.topAnchor="75.0" />
-                  <Label layoutX="527.0" layoutY="75.0" text="통신판매일신고 2013-서울강남-01302" AnchorPane.topAnchor="75.0" />
-                  <Label layoutX="161.0" layoutY="75.0" text="개인정보관리책임자 본부장" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="75.0" />
-                  <Label layoutX="692.0" layoutY="56.0" text="문의전화 1577-5337" AnchorPane.bottomAnchor="156.0" AnchorPane.topAnchor="56.0" />
-                  <Label layoutX="161.0" layoutY="95.0" text="COPYRIGHTⓒGENIE MUSIC CORP ALL RIGHTS RESERVED." AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="161.0" />
+                  <Label fx:id="lb_bottom8" layoutX="463.0" layoutY="58.0" text="대전광역시 중구 중앙로 76 영민빌딩 2" AnchorPane.topAnchor="58.0" />
+                  <Label fx:id="lb_bottom9" layoutX="328.0" layoutY="75.0" text="사업자등록번호 314-82-04354" AnchorPane.leftAnchor="328.0" AnchorPane.topAnchor="75.0" />
+                  <Label fx:id="lb_bottom10" layoutX="527.0" layoutY="75.0" text="통신판매일신고 2013-서울강남-01302" AnchorPane.topAnchor="75.0" />
+                  <Label fx:id="lb_bottom11" layoutX="161.0" layoutY="75.0" text="개인정보관리책임자 본부장" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="75.0" />
+                  <Label fx:id="lb_bottom12" layoutX="692.0" layoutY="56.0" text="문의전화 1577-5337" AnchorPane.bottomAnchor="156.0" AnchorPane.topAnchor="56.0" />
+                  <Label fx:id="lb_bottom13" layoutX="161.0" layoutY="95.0" text="COPYRIGHTⓒGENIE MUSIC CORP ALL RIGHTS RESERVED." AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="161.0" />
                   <ImageView fx:id="image_footer" fitHeight="89.0" fitWidth="790.0" layoutX="28.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="187.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="276.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="411.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />

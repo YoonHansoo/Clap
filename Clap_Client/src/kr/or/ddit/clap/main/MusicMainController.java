@@ -122,6 +122,9 @@ public class MusicMainController implements Initializable {
 	@FXML
 	Label lb_id, lbb1, lbb2, lbb3, lbb4, lbb5, lbb6, lbb7, lbb8, lbb9, lbb10; // 추천음악 제목 라벨
 	@FXML
+	Label lb_bottom1, lb_bottom2, lb_bottom3, lb_bottom4, lb_bottom5, lb_bottom6, lb_bottom7, lb_bottom8, 
+		  lb_bottom9, lb_bottom10, lb_bottom11, lb_bottom12, lb_bottom13; // 맨아래쪽 회사 라벨
+	@FXML
 	Label lbbb1, lbbb2, lbbb3, lbbb4, lbbb5, lbbb6, lbbb7, lbbb8, lbbb9, lbbb10; // 추천음악 좋아요/곡수 라벨
 	@FXML
 	Label la_messageCnt, lb_chart, lb_editor;
