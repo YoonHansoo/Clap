@@ -2,7 +2,9 @@ package kr.or.ddit.clap.vo.search;
 
 import java.io.Serializable;
 
-public class BestSearchWordVO implements Serializable{
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+public class BestSearchWordVO extends RecursiveTreeObject<BestSearchWordVO> implements Serializable{
 	
 	private String best_word_no;
 	private String best_word_date;

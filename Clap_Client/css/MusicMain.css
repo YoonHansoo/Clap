@@ -47,5 +47,15 @@
 	 
 }
 
+.tree-table-row-cell:selected .tree-table-cell .label{
+    -fx-text-fill: white;
+}
+
+.tree-table-view .column-header{
+    -fx-background-color: white;
+    -fx-border-color: white;
+     -fx-font-family: "-윤고딕330";
+}
+
 
 

@@ -7,9 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -17,9 +15,9 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableView;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -36,6 +34,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -55,11 +54,9 @@ import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.main.ChartMenuController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 import kr.or.ddit.clap.view.genremusic.main.GenreMusicMenuController;
-import kr.or.ddit.clap.view.member.mypage.MypageMyAlbController;
 import kr.or.ddit.clap.view.message.ShowMessageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
-import kr.or.ddit.clap.view.recommend.album.RecommendAlbumDetailController;
 import kr.or.ddit.clap.view.recommend.album.UserRcmDetailController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
@@ -67,6 +64,7 @@ import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
+import kr.or.ddit.clap.vo.search.BestSearchWordVO;
 import kr.or.ddit.clap.vo.support.MessageVO;
 
 /**
@@ -90,8 +88,11 @@ public class MusicMainController implements Initializable {
 	@FXML
 	TabPane tabpane;
 	private static boolean thread_flag;
-	private boolean isStopped;
 	static int current_index;
+
+	@FXML
+	JFXTreeTableView<BestSearchWordVO> tbl_search;
+	TreeTableColumn<BestSearchWordVO, String> col_word;
 
 	@FXML
 	public JFXButton btn_login, btn_rec1, btn_rec2, btn_rec3, btn_rec4, btn_rec5; // 추천 앨범의 버튼
@@ -154,7 +155,7 @@ public class MusicMainController implements Initializable {
 	List<AlbumVO> newList = new ArrayList<>();
 
 	@FXML
-	StackPane mem_pane; 
+	StackPane mem_pane;
 	@FXML
 	FontAwesomeIcon icon_msg;
 	@FXML
@@ -212,10 +213,10 @@ public class MusicMainController implements Initializable {
 	private MusicPlayerController mpc;
 	private int itemsForPage;
 	private Pagination p_page;
-	
+
 	private ObservableList<RecommendAlbumVO> recommendList;
 	static Thread[] arr_thread = new Thread[1];
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if (arr_thread[0] != null) {
@@ -229,7 +230,7 @@ public class MusicMainController implements Initializable {
 		thread.setDaemon(true);
 		thread.start();
 		arr_thread[0] = thread;
-	
+
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ils = (ILoginService) reg.lookup("login");
@@ -241,10 +242,10 @@ public class MusicMainController implements Initializable {
 			ipls = (IPlayListService) reg.lookup("playlist");
 			itemsForPage = 10;
 			game();
-			
+
 			irs = (IRecommendService) reg.lookup("recommend");
 			recommendList = FXCollections.observableArrayList(irs.selectAllRecommendAlbum());
-			
+
 			playerLoad = new FXMLLoader(getClass().getResource("../view/musicplayer/MusicPlayer.fxml"));
 			secondPane = contents;
 		} catch (RemoteException e) {
@@ -254,8 +255,8 @@ public class MusicMainController implements Initializable {
 		}
 
 		// 추천 앨범 출력하기
-		System.out.println("싸이즈 "+recommendList.size());
-		
+		System.out.println("싸이즈 " + recommendList.size());
+
 		Image[] tab_img = new Image[5];
 		tab_img[0] = new Image(recommendList.get(0).getRcm_alb_image());
 		tab_img[1] = new Image(recommendList.get(1).getRcm_alb_image());
@@ -268,26 +269,26 @@ public class MusicMainController implements Initializable {
 		tab3.setImage(tab_img[2]);
 		tab4.setImage(tab_img[3]);
 		tab5.setImage(tab_img[4]);
-		
+
 		ArrayList<String> titleList = cut_title(recommendList);
-		lbb1.setPadding(new Insets(0, 0, 0, 0));		
-		lbb3.setPadding(new Insets(0, 0, 0, 0));		
-		lbb5.setPadding(new Insets(0, 0, 0, 0));		
-		lbb7.setPadding(new Insets(0, 0, 0, 0));		
-		lbb9.setPadding(new Insets(0, 0, 0, 0));		
-		if(recommendList.get(0).getRcm_alb_name().length() < 13) {
+		lbb1.setPadding(new Insets(0, 0, 0, 0));
+		lbb3.setPadding(new Insets(0, 0, 0, 0));
+		lbb5.setPadding(new Insets(0, 0, 0, 0));
+		lbb7.setPadding(new Insets(0, 0, 0, 0));
+		lbb9.setPadding(new Insets(0, 0, 0, 0));
+		if (recommendList.get(0).getRcm_alb_name().length() < 13) {
 			lbb1.setPadding(new Insets(40, 0, 0, 0));
 		}
-		if(recommendList.get(1).getRcm_alb_name().length() < 13) {
+		if (recommendList.get(1).getRcm_alb_name().length() < 13) {
 			lbb3.setPadding(new Insets(40, 0, 0, 0));
 		}
-		if(recommendList.get(2).getRcm_alb_name().length() < 13) {
+		if (recommendList.get(2).getRcm_alb_name().length() < 13) {
 			lbb5.setPadding(new Insets(40, 0, 0, 0));
 		}
-		if(recommendList.get(3).getRcm_alb_name().length() < 13) {
+		if (recommendList.get(3).getRcm_alb_name().length() < 13) {
 			lbb7.setPadding(new Insets(40, 0, 0, 0));
 		}
-		if(recommendList.get(4).getRcm_alb_name().length() < 13) {
+		if (recommendList.get(4).getRcm_alb_name().length() < 13) {
 			lbb9.setPadding(new Insets(40, 0, 0, 0));
 		}
 		lbb1.setText(titleList.get(0));
@@ -295,14 +296,14 @@ public class MusicMainController implements Initializable {
 		lbb3.setText(titleList.get(2));
 		lbb4.setText(titleList.get(3));
 		lbb5.setText(titleList.get(4));
-		
+
 		lbb6.setText(titleList.get(5));
 		lbb7.setText(titleList.get(6));
 		lbb8.setText(titleList.get(7));
 		lbb9.setText(titleList.get(8));
 		lbb10.setText(titleList.get(9));
 
-		//좋아요 카운트 쿼리
+		// 좋아요 카운트 쿼리
 		int likeCnt1 = 0;
 		int likeCnt3 = 0;
 		int likeCnt5 = 0;
@@ -319,32 +320,32 @@ public class MusicMainController implements Initializable {
 			likeCnt5 = irs.selectAlbumLikeCnt(recommendList.get(2).getRcm_alb_no());
 			likeCnt7 = irs.selectAlbumLikeCnt(recommendList.get(3).getRcm_alb_no());
 			likeCnt9 = irs.selectAlbumLikeCnt(recommendList.get(4).getRcm_alb_no());
-			cntMusic2 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
-					recommendList.get(0).getRcm_alb_no())).size();
-			cntMusic4 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
-					recommendList.get(1).getRcm_alb_no())).size();
-			cntMusic6 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
-					recommendList.get(2).getRcm_alb_no())).size();
-			cntMusic8 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
-					recommendList.get(3).getRcm_alb_no())).size();
-			cntMusic10 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
-					recommendList.get(4).getRcm_alb_no())).size();
-			
+			cntMusic2 = FXCollections.observableArrayList(irs.SelectRcmMusicList(recommendList.get(0).getRcm_alb_no()))
+					.size();
+			cntMusic4 = FXCollections.observableArrayList(irs.SelectRcmMusicList(recommendList.get(1).getRcm_alb_no()))
+					.size();
+			cntMusic6 = FXCollections.observableArrayList(irs.SelectRcmMusicList(recommendList.get(2).getRcm_alb_no()))
+					.size();
+			cntMusic8 = FXCollections.observableArrayList(irs.SelectRcmMusicList(recommendList.get(3).getRcm_alb_no()))
+					.size();
+			cntMusic10 = FXCollections.observableArrayList(irs.SelectRcmMusicList(recommendList.get(4).getRcm_alb_no()))
+					.size();
+
 		} catch (RemoteException e3) {
 			e3.printStackTrace();
 		}
-		lbbb1.setText(likeCnt1+"");
-		lbbb3.setText(likeCnt3+"");
-		lbbb5.setText(likeCnt5+"");
-		lbbb7.setText(likeCnt7+"");
-		lbbb9.setText(likeCnt9+"");
-		lbbb2.setText(cntMusic2+"곡");
-		lbbb4.setText(cntMusic4+"곡");
-		lbbb6.setText(cntMusic6+"곡");
-		lbbb8.setText(cntMusic8+"곡");
-		lbbb10.setText(cntMusic10+"곡");
-		
-		btn_rec1.setOnAction(e->{
+		lbbb1.setText(likeCnt1 + "");
+		lbbb3.setText(likeCnt3 + "");
+		lbbb5.setText(likeCnt5 + "");
+		lbbb7.setText(likeCnt7 + "");
+		lbbb9.setText(likeCnt9 + "");
+		lbbb2.setText(cntMusic2 + "곡");
+		lbbb4.setText(cntMusic4 + "곡");
+		lbbb6.setText(cntMusic6 + "곡");
+		lbbb8.setText(cntMusic8 + "곡");
+		lbbb10.setText(cntMusic10 + "곡");
+
+		btn_rec1.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
 			Parent recommendAlbumDetail;
@@ -360,64 +361,64 @@ public class MusicMainController implements Initializable {
 				e1.printStackTrace();
 			}
 		});
-		btn_rec2.setOnAction(e->{
+		btn_rec2.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(1).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
 			Parent recommendAlbumDetail;
 			try {
 				recommendAlbumDetail = loader.load();
-				
+
 				UserRcmDetailController cotroller = loader.getController();
 				cotroller.givePane(contents);
-				
+
 				contents.getChildren().removeAll();
 				contents.getChildren().setAll(recommendAlbumDetail);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		});
-		btn_rec3.setOnAction(e->{
+		btn_rec3.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(2).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
 			Parent recommendAlbumDetail;
 			try {
 				recommendAlbumDetail = loader.load();
-				
+
 				UserRcmDetailController cotroller = loader.getController();
 				cotroller.givePane(contents);
-				
+
 				contents.getChildren().removeAll();
 				contents.getChildren().setAll(recommendAlbumDetail);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		});
-		btn_rec4.setOnAction(e->{
+		btn_rec4.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(3).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
 			Parent recommendAlbumDetail;
 			try {
 				recommendAlbumDetail = loader.load();
-				
+
 				UserRcmDetailController cotroller = loader.getController();
 				cotroller.givePane(contents);
-				
+
 				contents.getChildren().removeAll();
 				contents.getChildren().setAll(recommendAlbumDetail);
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}
 		});
-		btn_rec5.setOnAction(e->{
+		btn_rec5.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(4).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
 			Parent recommendAlbumDetail;
 			try {
 				recommendAlbumDetail = loader.load();
-				
+
 				UserRcmDetailController cotroller = loader.getController();
 				cotroller.givePane(contents);
-				
+
 				contents.getChildren().removeAll();
 				contents.getChildren().setAll(recommendAlbumDetail);
 			} catch (IOException e1) {
@@ -425,9 +426,6 @@ public class MusicMainController implements Initializable {
 			}
 		});
 
-		
-
-		
 		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList, btnMovieList, mainBox, stackpane);
 
 		// 실시간차트
@@ -455,7 +453,6 @@ public class MusicMainController implements Initializable {
 			icon_msg.setVisible(false);
 			la_messageCnt.setVisible(false);
 
-			
 		} else {
 			if (ls.session.getMem_auth().equals("t")) { // 관리자 일 때 관리자모드 버튼 활성화
 				menu_admin.setVisible(true);
@@ -470,7 +467,6 @@ public class MusicMainController implements Initializable {
 			mem_pane.setVisible(true);
 			icon_msg.setVisible(true);
 			la_messageCnt.setVisible(true);
-			
 
 			lb_id.setText(ls.session.getMem_id() + "님");
 
@@ -484,13 +480,12 @@ public class MusicMainController implements Initializable {
 			mem_img.setImage(img);
 
 			// 검색버튼
-			try {
-				List<String> hotKeyword = ils.selecthotkeyword();
-				System.out.println("리스트 사이즈" + hotKeyword.size());
-
-			} catch (RemoteException e1) {
-				e1.printStackTrace();
-			}
+			/*
+			 * try { List<String> hotKeyword = ils.selecthotkeyword();
+			 * System.out.println("리스트 사이즈" + hotKeyword.size());
+			 * 
+			 * } catch (RemoteException e1) { e1.printStackTrace(); }
+			 */
 		}
 
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
@@ -502,9 +497,9 @@ public class MusicMainController implements Initializable {
 		// 최신순으로 10개 뽑는 메서드. -> 쿼리 이용하도록 수정.
 		// setNewList();
 
-		Image logo_img 	  = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\new logo170.png");
+		Image logo_img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\new logo170.png");
 		Image footer_logo = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\new logo170.png");
-		Image footer 	  = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\footerImage.png");
+		Image footer = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\footerImage.png");
 		logo_imgView.setImage(logo_img);
 		image_logo.setImage(footer_logo);
 		image_footer.setImage(footer);
@@ -678,13 +673,13 @@ public class MusicMainController implements Initializable {
 		ArrayList<String> titleList = new ArrayList<>();
 		String str1 = "";
 		String str2 = "";
-		for(int i=0; i<5; i++) {
-			if(list.get(i).getRcm_alb_name().length()<13) {
+		for (int i = 0; i < 5; i++) {
+			if (list.get(i).getRcm_alb_name().length() < 13) {
 				str1 = list.get(i).getRcm_alb_name();
 				str2 = "";
-			}else {
+			} else {
 				str1 = list.get(i).getRcm_alb_name().substring(0, 12);
-				str2 = list.get(i).getRcm_alb_name().substring(12, list.get(i).getRcm_alb_name().length());				
+				str2 = list.get(i).getRcm_alb_name().substring(12, list.get(i).getRcm_alb_name().length());
 			}
 			titleList.add(str1);
 			titleList.add(str2);
@@ -695,6 +690,7 @@ public class MusicMainController implements Initializable {
 	// 검색창에 마우스를 올렸을 경우 발생하는 메서드
 	public void searchEnteredMouse() {
 		pane_search.setVisible(true);
+
 	}
 
 	// 검색창에 마우스를 치웠을 경우 발생하는 메서드
@@ -715,11 +711,17 @@ public class MusicMainController implements Initializable {
 
 	// 인기검색어 버튼을 클릭했을 때
 	public void btn_bestWord() {
+		btn_bestWord.setStyle("-fx-background-color:#fff");
+
+		btn_newWord.setStyle("-fx-background-color:#f0f0f0");
 
 	}
 
 	// 최근검색어 버튼을 클릭했을 때
 	public void btn_newWord() {
+		btn_bestWord.setStyle("-fx-background-color:#f0f0f0");
+
+		btn_newWord.setStyle("-fx-background-color:#fff");
 
 	}
 
@@ -994,12 +996,11 @@ public class MusicMainController implements Initializable {
 
 		try {
 			Parent qna = FXMLLoader.load(getClass().getResource("../view/support/qna/QnaMenuList.fxml"));
-			
+
 			String temp_path = (getClass().getResource("../view/support/qna/QnaMenuList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
 
 			GobackStack.goURL(path);
-			
 
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(qna);
@@ -1068,7 +1069,7 @@ public class MusicMainController implements Initializable {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")); // 바뀔 화면을
 			String temp_path = (getClass().getResource("../view/chartmenu/main/ChartMenu.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
-			GobackStack.goURL(path);																								// 가져옴
+			GobackStack.goURL(path); // 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -1082,7 +1083,7 @@ public class MusicMainController implements Initializable {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/newmusic/main/NewMusicMenu.fxml")); // 바뀔 화면을
 			String temp_path = (getClass().getResource("../view/newmusic/main/NewMusicMenu.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
-			GobackStack.goURL(path);																									// 가져옴
+			GobackStack.goURL(path); // 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -1096,7 +1097,7 @@ public class MusicMainController implements Initializable {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/genremusic/main/GenreMusicMenu.fxml")); // 바뀔
 			String temp_path = (getClass().getResource("../view/genremusic/main/GenreMusicMenu.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
-			GobackStack.goURL(path);																										// 화면을
+			GobackStack.goURL(path); // 화면을
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -1109,7 +1110,7 @@ public class MusicMainController implements Initializable {
 			Parent page = FXMLLoader.load(getClass().getResource("../view/singer/main/SingerMenu.fxml")); // 바뀔 화면을
 			String temp_path = (getClass().getResource("../view/singer/main/SingerMenu.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
-			GobackStack.goURL(path);																								// 가져옴
+			GobackStack.goURL(path); // 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(page);
 		} catch (IOException e) {
@@ -1146,8 +1147,8 @@ public class MusicMainController implements Initializable {
 	public void hotRcmList(ActionEvent event) {
 		try {
 			Parent recommendManage = FXMLLoader.load(getClass().getResource("../view/recommend/album/HotRcmList.fxml")); // 바뀔
-																															// 화면을
-																															// 가져옴
+			// 화면을
+			// 가져옴
 
 			String temp_path = (getClass().getResource("../view/recommend/album/HotRcmList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
@@ -1209,8 +1210,8 @@ public class MusicMainController implements Initializable {
 	public void albumManage(ActionEvent event) { // 앨범관리를 클릭 했을 때.
 		try {
 			Parent albumManage = FXMLLoader.load(getClass().getResource("../view/album/album/ShowAlbumLIst.fxml")); // 바뀔
-																													// 화면을
-																													// 가져옴
+			// 화면을
+			// 가져옴
 
 			String temp_path = (getClass().getResource("../view/album/album/ShowAlbumLIst.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
@@ -1229,8 +1230,8 @@ public class MusicMainController implements Initializable {
 	public void musicManage(ActionEvent event) { // 곡 관리를 클릭 했을 때.
 		try {
 			Parent albumManage = FXMLLoader.load(getClass().getResource("../view/music/music/MusicList.fxml")); // 바뀔
-																												// 화면을
-																												// 가져옴
+			// 화면을
+			// 가져옴
 
 			String temp_path = (getClass().getResource("../view/music/music/MusicList.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
@@ -1321,10 +1322,10 @@ public class MusicMainController implements Initializable {
 	public void salesMange(ActionEvent event) { // 매출관리 클릭시
 		try {
 			Parent salesManage = FXMLLoader.load(getClass().getResource("../view/ticket/salemanage/salesmanage.fxml")); // 바뀔
-																														// 화면을
+			// 화면을
 			String temp_path = (getClass().getResource("../view/ticket/salemanage/salesmanage.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
-			GobackStack.goURL(path);																											// 가져옴
+			GobackStack.goURL(path); // 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(salesManage);
 
@@ -1337,10 +1338,10 @@ public class MusicMainController implements Initializable {
 	public void memManage() {
 		try {
 			Parent salesManage = FXMLLoader.load(getClass().getResource("../view/member/manage/memmanage.fxml")); // 바뀔
-																													// 화면을
+			// 화면을
 			String temp_path = (getClass().getResource("../view/member/manage/memmanage.fxml")).getPath();
 			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
-			GobackStack.goURL(path);																										// 가져옴
+			GobackStack.goURL(path); // 가져옴
 			contents.getChildren().removeAll();
 			contents.getChildren().setAll(salesManage);
 
@@ -1384,8 +1385,6 @@ public class MusicMainController implements Initializable {
 		}
 	}
 
-	
-
 	public void refreshmenu() {// 화면 전화을 위해
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("MusicMain.fxml"));
 		Parent refmain;
@@ -1414,7 +1413,7 @@ public class MusicMainController implements Initializable {
 			try {
 				while (!Thread.interrupted()) {
 
-					//System.out.println("인터럽트" + this.isInterrupted());
+					// System.out.println("인터럽트" + this.isInterrupted());
 					if (Thread.interrupted()) { // interrupt()메서드가 호출되면 true
 						System.out.println("인스턴스용 isInterrupted()");
 						break;
@@ -1426,7 +1425,7 @@ public class MusicMainController implements Initializable {
 					} else {
 						tabpane.getSelectionModel().select(current_index + 1);
 					}
-				//	System.out.println(current_index + 1);
+					// System.out.println(current_index + 1);
 				}
 				arr_thread[0] = this;
 			} catch (Exception e) {
@@ -1435,7 +1434,5 @@ public class MusicMainController implements Initializable {
 			System.out.println("실행종료.");
 		}
 	}
-	
-	
-}
 
+}
