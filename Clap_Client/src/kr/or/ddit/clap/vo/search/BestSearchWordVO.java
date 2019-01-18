@@ -30,3 +30,4 @@ public class BestSearchWordVO extends RecursiveTreeObject<BestSearchWordVO> impl
 	}
 	
 }
+    

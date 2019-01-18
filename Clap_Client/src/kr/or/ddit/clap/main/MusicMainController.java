@@ -16,8 +16,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -34,6 +37,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TabPane;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -90,8 +94,12 @@ public class MusicMainController implements Initializable {
 	private static boolean thread_flag;
 	static int current_index;
 
+	private ObservableList<BestSearchWordVO> bestSearchList;
+	
 	@FXML
 	JFXTreeTableView<BestSearchWordVO> tbl_search;
+	
+	@FXML
 	TreeTableColumn<BestSearchWordVO, String> col_word;
 
 	@FXML
@@ -186,8 +194,7 @@ public class MusicMainController implements Initializable {
 	@FXML
 	AnchorPane pane_search; // 전체페인
 
-	@FXML
-	AnchorPane pane_wordSerach; // 작은페인
+
 
 	@FXML
 	JFXButton btn_bestWord;
@@ -484,13 +491,28 @@ public class MusicMainController implements Initializable {
 			}
 			mem_img.setImage(img);
 
-			// 검색버튼
-			/*
-			 * try { List<String> hotKeyword = ils.selecthotkeyword();
-			 * System.out.println("리스트 사이즈" + hotKeyword.size());
-			 * 
-			 * } catch (RemoteException e1) { e1.printStackTrace(); }
-			 */
+			
+			// 검색어 
+			try {
+				
+				col_word.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getBest_word()));
+				bestSearchList = FXCollections.observableArrayList(ils.selecthotkeyword());
+
+				System.out.println(bestSearchList.size());
+				TreeItem<BestSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList, RecursiveTreeObject::getChildren);
+				tbl_search.setRoot(root);
+				tbl_search.setShowRoot(false);
+
+			} catch (RemoteException e1) {
+				e1.printStackTrace();
+			}
+			for(int i = 0; i< bestSearchList.size(); i++) {
+			tbl_search.setOnMouseEntered(e->{
+				  
+			});
+			}
+			
+			
 		}
 
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
