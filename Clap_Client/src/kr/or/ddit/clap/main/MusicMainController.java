@@ -344,12 +344,6 @@ public class MusicMainController implements Initializable {
 		lbbb8.setText(cntMusic8+"곡");
 		lbbb10.setText(cntMusic10+"곡");
 		
-//		//추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리 -> ** 추가하기
-//		musicList = FXCollections.observableArrayList(irs.SelectRcmMusicList(rcmAlbNo));
-//		System.out.println("해당 추천앨범 곡 개수 :"+musicList.size());
-//
-//		lable_cntMusic.setText(musicList.size()+"곡");
-		
 		btn_rec1.setOnAction(e->{
 			UserRcmDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
