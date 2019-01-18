@@ -561,7 +561,7 @@ public class MusicList {
 			// 파란색 라인 HBox 
 			HBox h_Line = new HBox();
 			vbox.setMargin(h_Line, new Insets(0,0,0,0));
-			h_Line.setPrefWidth(710);
+			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
 			h_Line.setStyle("-fx-background-color: #090948;");
 			//h_Line.alignmentProperty("")
