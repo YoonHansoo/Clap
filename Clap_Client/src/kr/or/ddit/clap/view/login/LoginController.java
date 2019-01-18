@@ -100,6 +100,14 @@ public class LoginController implements Initializable{
 		captchaKey = captchaKey();
 		captchaImage(captchaKey);
 		
+		txt_pw.setOnAction(e->{
+			try {
+				login();
+			} catch (UnsupportedEncodingException | GeneralSecurityException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
 	}
 
 	public void login() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException{
