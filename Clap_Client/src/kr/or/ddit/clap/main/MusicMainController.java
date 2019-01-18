@@ -18,6 +18,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXTextField;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -59,6 +60,7 @@ import kr.or.ddit.clap.view.message.ShowMessageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.view.recommend.album.RecommendAlbumDetailController;
+import kr.or.ddit.clap.view.recommend.album.UserRcmDetailController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
@@ -151,6 +153,10 @@ public class MusicMainController implements Initializable {
 	List<AlbumVO> albumList = new ArrayList<>();
 	List<AlbumVO> newList = new ArrayList<>();
 
+	@FXML
+	StackPane mem_pane; 
+	@FXML
+	FontAwesomeIcon icon_msg;
 	@FXML
 	VBox mainBox;
 	@FXML
@@ -345,35 +351,86 @@ public class MusicMainController implements Initializable {
 //		lable_cntMusic.setText(musicList.size()+"곡");
 		
 		btn_rec1.setOnAction(e->{
-			System.out.println("추천앨범1");
-//			RecommendAlbumDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
-//			FXMLLoader loader = new FXMLLoader(getClass().getResource("MainRecommend.fxml"));// init실행됨
-//			Parent recommendAlbumDetail;
-//
-//			try {
-//				recommendAlbumDetail = loader.load();
-//
-//				RecommendAlbumDetailController cotroller = loader.getController();
-//				cotroller.givePane(contents);
-//
-//				contents.getChildren().removeAll();
-//				contents.getChildren().setAll(recommendAlbumDetail);
-//			} catch (IOException e1) {
-//				e1.printStackTrace();
-//			}
+			UserRcmDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
+			Parent recommendAlbumDetail;
+			try {
+				recommendAlbumDetail = loader.load();
+
+				UserRcmDetailController cotroller = loader.getController();
+				cotroller.givePane(contents);
+
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(recommendAlbumDetail);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		});
 		btn_rec2.setOnAction(e->{
-			
+			UserRcmDetailController.rcmAlbNo = recommendList.get(1).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
+			Parent recommendAlbumDetail;
+			try {
+				recommendAlbumDetail = loader.load();
+				
+				UserRcmDetailController cotroller = loader.getController();
+				cotroller.givePane(contents);
+				
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(recommendAlbumDetail);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		});
 		btn_rec3.setOnAction(e->{
-			
+			UserRcmDetailController.rcmAlbNo = recommendList.get(2).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
+			Parent recommendAlbumDetail;
+			try {
+				recommendAlbumDetail = loader.load();
+				
+				UserRcmDetailController cotroller = loader.getController();
+				cotroller.givePane(contents);
+				
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(recommendAlbumDetail);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		});
 		btn_rec4.setOnAction(e->{
-			
+			UserRcmDetailController.rcmAlbNo = recommendList.get(3).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
+			Parent recommendAlbumDetail;
+			try {
+				recommendAlbumDetail = loader.load();
+				
+				UserRcmDetailController cotroller = loader.getController();
+				cotroller.givePane(contents);
+				
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(recommendAlbumDetail);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		});
 		btn_rec5.setOnAction(e->{
-			
+			UserRcmDetailController.rcmAlbNo = recommendList.get(4).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/recommend/album/UserRcmDetail.fxml"));// init실행됨
+			Parent recommendAlbumDetail;
+			try {
+				recommendAlbumDetail = loader.load();
+				
+				UserRcmDetailController cotroller = loader.getController();
+				cotroller.givePane(contents);
+				
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(recommendAlbumDetail);
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 		});
+
 		
 
 		
@@ -400,6 +457,11 @@ public class MusicMainController implements Initializable {
 			btn_login.setVisible(true);
 			btn_msg.setVisible(false);
 			btn_logout.setVisible(false);
+			mem_pane.setVisible(false);
+			icon_msg.setVisible(false);
+			la_messageCnt.setVisible(false);
+
+			
 		} else {
 			if (ls.session.getMem_auth().equals("t")) { // 관리자 일 때 관리자모드 버튼 활성화
 				menu_admin.setVisible(true);
@@ -407,9 +469,14 @@ public class MusicMainController implements Initializable {
 				menu_admin.setVisible(false); // 일반사용자일경우( 관리자로 로그인 후 사용자로 로그인 했을 경우를 대비해서만들었음
 			}
 			mem_menu.setVisible(true);
-			btn_logout.setVisible(true);
 			btn_join.setVisible(false);
 			btn_login.setVisible(false);
+			btn_msg.setVisible(true);
+			btn_logout.setVisible(true);
+			mem_pane.setVisible(true);
+			icon_msg.setVisible(true);
+			la_messageCnt.setVisible(true);
+			
 
 			lb_id.setText(ls.session.getMem_id() + "님");
 
