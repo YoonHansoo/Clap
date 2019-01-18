@@ -24,6 +24,9 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
    private String mem_black_cnt;
    private String mem_image;
    private String mem_intro;
+   private String mem_game;
+   
+   
    private ImageView imgView;
    
         
@@ -110,11 +113,7 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
       return mem_del_tf;
    }
    public void setMem_del_tf(String mem_del_tf) {
-	   if (mem_del_tf.equals("t") ) {
-		   this.mem_del_tf = this.mem_del_tf + ("○");
-	   }else {
-		   this.mem_del_tf = this.mem_del_tf + ("X");
-	   }
+
       this.mem_del_tf = mem_del_tf;
    }
    public String getMem_black_cnt() {
@@ -135,5 +134,11 @@ public class MemberVO extends RecursiveTreeObject<MemberVO> implements Serializa
    public void setMem_intro(String mem_intro) {
       this.mem_intro = mem_intro;
    }
+	public String getMem_game() {
+		return mem_game;
+	}
+	public void setMem_game(String mem_game) {
+		this.mem_game = mem_game;
+	}
    
 }
