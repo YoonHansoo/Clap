@@ -892,6 +892,7 @@ public class JoinController implements Initializable{
 			vo.setMem_blacklist_tf("f");
 			vo.setMem_del_tf("f");
 			vo.setMem_black_cnt("0");
+			vo.setMem_game("0");
 			
 			// insert vo
 			try {
