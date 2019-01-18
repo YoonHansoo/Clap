@@ -54,7 +54,7 @@
                               <FontAwesomeIcon fill="WHITE" iconName="PLAY" size="20" />
                            </graphic>
                            <HBox.margin>
-                              <Insets />
+                              <Insets top="10.0" />
                            </HBox.margin>
                            <padding>
                               <Insets left="10.0" />
@@ -63,7 +63,10 @@
                         <JFXSlider fx:id="slider_time" style="-fx-background-inner-background: black;">
                            <HBox.margin>
                               <Insets top="17.0" />
-                           </HBox.margin></JFXSlider>
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="4.0" />
+                           </padding></JFXSlider>
                         <Label fx:id="label_nowTime" text="00:00" textFill="WHITE">
                            <HBox.margin>
                               <Insets top="12.0" />
