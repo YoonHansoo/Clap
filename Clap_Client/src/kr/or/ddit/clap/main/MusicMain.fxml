@@ -30,12 +30,12 @@
             <AnchorPane fx:id="menu" prefHeight="170.0" prefWidth="1005.0">
                <children>
                   <JFXButton fx:id="btn_logout" layoutX="890.0" layoutY="133.0" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE" />
-                  <VBox layoutX="52.0" layoutY="73.0" prefHeight="73.0" prefWidth="170.0">
+                  <VBox layoutX="52.0" layoutY="86.0" prefHeight="73.0" prefWidth="170.0">
                      <children>
                         <ImageView fx:id="logo_imgView" fitHeight="73.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </VBox>
-                  <StackPane layoutX="52.0" layoutY="68.0" prefHeight="83.0" prefWidth="170.0">
+                  <StackPane layoutX="52.0" layoutY="80.0" prefHeight="83.0" prefWidth="170.0">
                      <children>
                         <JFXButton alignment="CENTER" onMouseClicked="#firstPage" prefHeight="83.0" prefWidth="170.0" text=" " />
                      </children>
