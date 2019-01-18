@@ -1,5 +1,5 @@
 * {
-  
+
 }
 
 .tab{
@@ -56,6 +56,50 @@
     -fx-border-color: white;
      -fx-font-family: "-윤고딕330";
 }
+
+#lb_chart, #lb_editor{
+	-fx-font-size: 17pt;
+	-fx-font-family: "-윤고딕350";
+}
+
+#lb_new{
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 20pt;
+}
+
+#lb_id{
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 14pt;
+}
+
+#txt_search{
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 14pt;
+}
+
+#bar{
+	-fx-font-family: "-윤고딕340";
+}
+
+#lb_chart1, #lb_chart2, #lb_chart3, #lb_chart4, #lb_chart5, #lb_chart6{
+	-fx-font-family: "-윤고딕340";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
