@@ -85,6 +85,20 @@
 	-fx-font-family: "-윤고딕340";
 }
 
+.tab-label{
+    -fx-font-family: "-윤고딕350";
+}
+
+#lbbb1, #lbbb2, #lbbb3, #lbbb4, #lbbb5, #lbbb6, #lbbb7, #lbbb8, #lbbb9, #lbbb10{
+	-fx-font-family: "-윤고딕340";
+	-fx-font-size: 14pt;
+}
+
+#lbb1, #lbb2, #lbb3, #lbb4, #lbb5, #lbb6, #lbb7, #lbb8, #lbb9, #lbb10{
+	-fx-font-family: "-윤고딕330";
+	-fx-font-size: 20pt;
+}
+
 
 
 
