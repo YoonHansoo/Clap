@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -25,6 +26,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
+import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.ticket.ITicketService;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
@@ -48,10 +50,12 @@ public class GameController implements Initializable{
 	private Media media;
 	private Registry reg;
 	private ITicketService its;
+	private ILoginService ils;
 	private IMusicService ims;
 	private List<TicketBuyListVO> buyticket;
 	private ObservableList<Map> list;
-	private static int count = 0;
+	private int count = 0;
+	private String loginID = "";
 	
 	
 	@Override
@@ -60,10 +64,18 @@ public class GameController implements Initializable{
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			its = (ITicketService) reg.lookup("ticket");
 			ims = (IMusicService) reg.lookup("music");
+			ils = (ILoginService) reg.lookup("login");
 			list = FXCollections.observableArrayList(ims.gameSelect());
-			label_count.setText(count+"/3");
 			if (LoginSession.session != null) {
-				buyticket = its.buyfind(LoginSession.session.getMem_id());
+				loginID = LoginSession.session.getMem_id();
+				count = Integer.parseInt(ils.gameMember(loginID).get(0));
+				buyticket = its.buyfind(loginID);
+			}
+			
+			if (count >= 3) {
+				label_count.setText("3/3");
+			}else {
+				label_count.setText(count+"/3");
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -139,7 +151,6 @@ public class GameController implements Initializable{
 		if (count < 3) {
 			setMedia(list.get(count).get("MUS_FILE").toString());
 		}
-		
 	}
 	
 	@FXML public void check() {
@@ -156,24 +167,59 @@ public class GameController implements Initializable{
 			tf_musName.setText("");
 			tf_singerName.setText("");
 			count++;
+			
+			try {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("mem_id", loginID);
+				map.put("mem_game", count+"");
+				ils.gameUpdate(map);
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
 			label_count.setText(count+"/3");
 			
 		}
 		
-		Label label = new Label(text);
-		label.setPrefWidth(300);
-		label.setPrefHeight(80);
-		label.setAlignment(Pos.CENTER);
-		label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
-		
-		
-		JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
-		dialog.setBackground(Background.EMPTY);
-		dialog.show();
-		
 		if(count == 3) {
-			System.out.println("상품주세요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			return;
+			try {
+				Map<String, String> map = new HashMap<String, String>();
+				map.put("mem_id", loginID);
+				map.put("mem_game", "4");
+				ils.gameUpdate(map);
+				count++;
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			}
+			
+			Label label = new Label("이용권 1일을 보내드렸습니다.");
+			label.setPrefWidth(300);
+			label.setPrefHeight(80);
+			label.setAlignment(Pos.CENTER);
+			label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
+			
+			JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
+			dialog.setBackground(Background.EMPTY);
+			dialog.show();
+		}else if (count == 4){
+			Label label = new Label("이미 참여하였습니다");
+			label.setPrefWidth(300);
+			label.setPrefHeight(80);
+			label.setAlignment(Pos.CENTER);
+			label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
+			
+			JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
+			dialog.setBackground(Background.EMPTY);
+			dialog.show();
+		}else {
+			Label label = new Label(text);
+			label.setPrefWidth(300);
+			label.setPrefHeight(80);
+			label.setAlignment(Pos.CENTER);
+			label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
+			
+			JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
+			dialog.setBackground(Background.EMPTY);
+			dialog.show();
 		}
 		
 	}

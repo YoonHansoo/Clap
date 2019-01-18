@@ -332,6 +332,9 @@ public class MusicPlayerController implements Initializable{
 				refreshFlag=false;
 			}else {
 				mus_index = t_playListTable.getSelectionModel().getSelectedIndex();
+				if(mus_index == -1) {
+					return;
+				}
 				refreshMusNo = t_playListTable.getSelectionModel().getModelItem(mus_index).getValue().getMus_no();
 				if (mus_index >= 0) {
 					ready(mus_index);
