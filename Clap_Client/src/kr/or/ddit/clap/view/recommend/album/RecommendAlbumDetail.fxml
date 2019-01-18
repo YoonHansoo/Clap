@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" stylesheets="@../../../../../../../ChartMenu.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.RecommendAlbumDetailController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" stylesheets="@../../../../../../../ChartMenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.RecommendAlbumDetailController">
    <children>
-      <Label fx:id="labelrcmName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="214.0" text="추천 앨범 명">
+      <Label fx:id="labelrcmName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="718.0" text="추천 앨범 명">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -38,7 +38,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="labelrcmName2" prefHeight="30.0" prefWidth="89.0" text="Label">
+                        <Label fx:id="labelrcmName2" prefHeight="30.0" prefWidth="366.0" text="Label">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -55,7 +55,7 @@
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets bottom="3.0" />
+                              <Insets bottom="10.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -102,7 +102,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </Label>
-      <JFXButton layoutX="82.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
+      <JFXButton layoutX="70.0" layoutY="281.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
          </graphic>

@@ -84,6 +84,12 @@ public class UserRcmDetailController implements Initializable {
 	
 	Map<String, String> pMap = new HashMap<String, String>();
 	@FXML StackPane stackpane;
+	private AnchorPane contents;
+	
+	public void givePane(AnchorPane contents) {
+		this.contents = contents;
+		System.out.println("contents 적용완료");
+	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

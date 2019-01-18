@@ -16,7 +16,7 @@
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <VBox fx:id="main_vbox" layoutX="102.0" layoutY="53.0" prefHeight="72.0" prefWidth="868.0" spacing="10.0" />
+            <VBox fx:id="main_vbox" layoutX="102.0" layoutY="83.0" prefHeight="72.0" prefWidth="868.0" spacing="10.0" />
          </children>
       </AnchorPane>
    </children>

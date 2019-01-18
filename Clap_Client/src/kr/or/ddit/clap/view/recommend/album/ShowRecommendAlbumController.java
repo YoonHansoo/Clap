@@ -126,7 +126,7 @@ public class ShowRecommendAlbumController implements Initializable {
 				iv_Album.setImage(img_Path);
 				iv_Album.setFitWidth(358);
 				iv_Album.setFitHeight(250);
-				iv_Album.setOpacity(0.6);
+				iv_Album.setOpacity(0.75);
 
 				// Title 라벨
 				Label title = new Label();

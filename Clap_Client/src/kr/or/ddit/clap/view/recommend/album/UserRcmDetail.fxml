@@ -70,6 +70,9 @@
          <font>
             <Font name="YDIYGO350" size="18.0" />
          </font>
+         <padding>
+            <Insets left="25.0" />
+         </padding>
       </Label>
       <Line endX="683.0" layoutX="112.0" layoutY="386.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="102.0" />
       <Label layoutX="20.0" layoutY="400.0" prefHeight="21.0" prefWidth="89.0" text="수록곡 " AnchorPane.leftAnchor="102.0">
@@ -173,13 +176,13 @@
                   </HBox>
                </children>
                <padding>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="10.0" left="25.0" top="10.0" />
                </padding>
             </VBox>
          </children>
       </StackPane>
    </children>
    <padding>
-      <Insets top="102.0" />
+      <Insets top="120.0" />
    </padding>
 </AnchorPane>
