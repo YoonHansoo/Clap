@@ -37,19 +37,9 @@
                   </VBox>
                   <StackPane layoutX="77.0" layoutY="48.0" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <JFXButton onMouseClicked="#firstPage" prefHeight="120.0" prefWidth="120.0" text=" " />
+                        <JFXButton alignment="CENTER" onMouseClicked="#firstPage" prefHeight="120.0" prefWidth="142.0" text=" " />
                      </children>
                   </StackPane>
-                  <FontAwesomeIcon iconName="APPLE" layoutX="24.0" layoutY="141.0" size="2cm" visible="false">
-                     <fill>
-                        <LinearGradient endX="1.0" endY="1.0" startX="0.6333333333333333" startY="0.1523809523809524">
-                           <stops>
-                              <Stop color="#555b3d" />
-                              <Stop color="RED" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </fill>
-                  </FontAwesomeIcon>
                   <JFXButton fx:id="btn_join" layoutX="890.0" layoutY="133.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
                   <JFXButton fx:id="btn_login" layoutX="836.0" layoutY="133.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
                   <HBox fx:id="mem_menu" layoutX="788.0" layoutY="84.0" prefHeight="36.0" prefWidth="165.0">
@@ -777,7 +767,59 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="160.0" prefWidth="1005.0" />
+            <AnchorPane fx:id="footer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="28.0" layoutY="22.0" text="회사소개" AnchorPane.leftAnchor="28.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="108.0" layoutY="22.0" text="이용약관" AnchorPane.rightAnchor="841.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="188.0" layoutY="22.0" text="개인정보처리방침" AnchorPane.leftAnchor="188.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="324.0" layoutY="22.0" text="청소년보호정책">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="447.0" layoutY="22.0" text="이메일주소무단수집거부" AnchorPane.topAnchor="22.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="626.0" layoutY="22.0" text="서비스 이용문의" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="22.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="image_logo" fitHeight="45.0" fitWidth="133.0" layoutX="28.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="61.0" />
+                  <Label layoutX="189.0" layoutY="61.0" text="대표이상 윤한수" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="61.0" />
+                  <Line endX="-100.0" endY="19.0" layoutX="196.0" layoutY="20.0" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
+                  <Label layoutX="298.0" layoutY="61.0" text="대전광역시 중구 중앙로 76 영민빌딩 2" AnchorPane.topAnchor="61.0" />
+                  <Label layoutX="528.0" layoutY="61.0" text="사업자등록번호 314-82-04354" AnchorPane.leftAnchor="528.0" AnchorPane.topAnchor="61.0" />
+                  <Label layoutX="727.0" layoutY="61.0" text="통신판매일신고 2013-서울강남-01302" AnchorPane.topAnchor="61.0" />
+                  <Label layoutX="189.0" layoutY="91.0" text="개인정보관리책임자 박경훈 본부장" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="188.0" />
+                  <Label layoutX="391.0" layoutY="91.0" text="문의전화 1577-5337" AnchorPane.bottomAnchor="124.0" />
+                  <Label layoutX="536.0" layoutY="91.0" text="COPYRIGHTⓒGENIE MUSIC CORP ALL RIGHTS RESERVED." AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="528.0" />
+                  <ImageView fx:id="image_footer" fitHeight="89.0" fitWidth="688.0" layoutX="28.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="289.0" />
+                  <Line endX="-100.0" endY="19.0" layoutX="276.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
+                  <Line endX="-100.0" endY="19.0" layoutX="411.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
+                  <Line endX="-100.0" endY="19.0" layoutX="535.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
+                  <Line endX="-100.0" endY="19.0" layoutX="714.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
+                  <Line endX="-100.0" endY="19.0" layoutX="386.0" layoutY="56.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.topAnchor="62.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="619.0" layoutY="56.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.rightAnchor="487.5" AnchorPane.topAnchor="62.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="816.0" layoutY="56.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.topAnchor="62.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="483.0" layoutY="86.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="124.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="617.0" layoutY="86.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="124.5" AnchorPane.rightAnchor="487.5" />
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </content>
