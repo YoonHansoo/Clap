@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -68,7 +69,7 @@ import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.recommend.RecommendAlbumVO;
-import kr.or.ddit.clap.vo.search.BestSearchWordVO;
+import kr.or.ddit.clap.vo.search.NewSearchWordVO;
 import kr.or.ddit.clap.vo.support.MessageVO;
 
 /**
@@ -94,13 +95,13 @@ public class MusicMainController implements Initializable {
 	private static boolean thread_flag;
 	static int current_index;
 
-	private ObservableList<BestSearchWordVO> bestSearchList;
-	
+	private ObservableList<NewSearchWordVO> bestSearchList;
+
 	@FXML
-	JFXTreeTableView<BestSearchWordVO> tbl_search;
-	
+	JFXTreeTableView<NewSearchWordVO> tbl_search;
+
 	@FXML
-	TreeTableColumn<BestSearchWordVO, String> col_word;
+	TreeTableColumn<NewSearchWordVO, String> col_word;
 
 	@FXML
 	public JFXButton btn_login, btn_rec1, btn_rec2, btn_rec3, btn_rec4, btn_rec5; // 추천 앨범의 버튼
@@ -130,8 +131,8 @@ public class MusicMainController implements Initializable {
 	@FXML
 	Label lb_id, lbb1, lbb2, lbb3, lbb4, lbb5, lbb6, lbb7, lbb8, lbb9, lbb10; // 추천음악 제목 라벨
 	@FXML
-	Label lb_bottom1, lb_bottom2, lb_bottom3, lb_bottom4, lb_bottom5, lb_bottom6, lb_bottom7, lb_bottom8, 
-		  lb_bottom9, lb_bottom10, lb_bottom11, lb_bottom12, lb_bottom13; // 맨아래쪽 회사 라벨
+	Label lb_bottom1, lb_bottom2, lb_bottom3, lb_bottom4, lb_bottom5, lb_bottom6, lb_bottom7, lb_bottom8, lb_bottom9,
+			lb_bottom10, lb_bottom11, lb_bottom12, lb_bottom13; // 맨아래쪽 회사 라벨
 	@FXML
 	Label lbbb1, lbbb2, lbbb3, lbbb4, lbbb5, lbbb6, lbbb7, lbbb8, lbbb9, lbbb10; // 추천음악 좋아요/곡수 라벨
 	@FXML
@@ -193,8 +194,6 @@ public class MusicMainController implements Initializable {
 	// 검색창
 	@FXML
 	AnchorPane pane_search; // 전체페인
-
-
 
 	@FXML
 	JFXButton btn_bestWord;
@@ -491,28 +490,30 @@ public class MusicMainController implements Initializable {
 			}
 			mem_img.setImage(img);
 
-			
-			// 검색어 
+			// 검색어
 			try {
-				
-				col_word.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getBest_word()));
+
+				col_word.setCellValueFactory(
+						param -> new SimpleStringProperty(param.getValue().getValue().getNew_word()));
 				bestSearchList = FXCollections.observableArrayList(ils.selecthotkeyword());
 
 				System.out.println(bestSearchList.size());
-//				TreeItem<BestSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList, RecursiveTreeObject::getChildren);
-//				tbl_search.setRoot(root);
-//				tbl_search.setShowRoot(false);
+
+				TreeItem<NewSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList,
+						RecursiveTreeObject::getChildren);
+				tbl_search.setRoot(root);
+				tbl_search.setShowRoot(false);
+
 
 			} catch (RemoteException e1) {
 				e1.printStackTrace();
 			}
-			for(int i = 0; i< bestSearchList.size(); i++) {
-			tbl_search.setOnMouseEntered(e->{
-				  
-			});
+			for (int i = 0; i < bestSearchList.size(); i++) {
+				tbl_search.setOnMouseEntered(e -> {
+
+				});
 			}
-			
-			
+
 		}
 
 		// 최신음악에 앨범 목록에서 등록순으로 출력되도록.
@@ -694,6 +695,17 @@ public class MusicMainController implements Initializable {
 			singerMenu();
 		});
 
+		// 검색창 정보 더블클릭
+		tbl_search.setOnMouseClicked(e -> {
+
+			// int index = tbl_singer.getSelectionModel().getSelectedIndex();
+			String search_word = tbl_search.getSelectionModel().getSelectedItem().getValue().getNew_word();
+			System.out.println("선택한 단어 : +" + search_word);
+
+			txt_search.setText(search_word);
+
+		});
+
 	}
 
 	private ArrayList<String> cut_title(ObservableList<RecommendAlbumVO> list) {
@@ -712,6 +724,26 @@ public class MusicMainController implements Initializable {
 			titleList.add(str2);
 		}
 		return titleList;
+	}
+	
+	//검색창 클릭
+	public void searchClick() {
+		try {
+		String word= txt_search.getText();
+		String id = LoginSession.session.getMem_id();
+		
+		Map<String,String> pMap = new HashMap<>();
+		pMap.put("id", id);
+		pMap.put("word", word);
+		
+			ils.insertSearchWord(pMap);
+			System.out.println("검색어 입력완료");
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+				
+		
+		
 	}
 
 	// 검색창에 마우스를 올렸을 경우 발생하는 메서드
@@ -738,17 +770,46 @@ public class MusicMainController implements Initializable {
 
 	// 인기검색어 버튼을 클릭했을 때
 	public void btn_bestWord() {
+		try {
 		btn_bestWord.setStyle("-fx-background-color:#fff");
-
 		btn_newWord.setStyle("-fx-background-color:#f0f0f0");
+		
+			bestSearchList = FXCollections.observableArrayList(ils.selecthotkeyword());
+			System.out.println("최근검색어 갯수 : "+bestSearchList.size());
+			
+			TreeItem<NewSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList,
+					RecursiveTreeObject::getChildren);
+			tbl_search.setRoot(root);
+			tbl_search.setShowRoot(false);
+			
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	// 최근검색어 버튼을 클릭했을 때
 	public void btn_newWord() {
+		try {
 		btn_bestWord.setStyle("-fx-background-color:#f0f0f0");
-
 		btn_newWord.setStyle("-fx-background-color:#fff");
+		
+		String id = LoginSession.session.getMem_id();
+		System.out.println(id);
+				
+		bestSearchList = FXCollections.observableArrayList( ils.selectHistorykeyword(id));
+		System.out.println("최근검색어 갯수 : "+bestSearchList.size());
+
+		TreeItem<NewSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList,
+				RecursiveTreeObject::getChildren);
+		tbl_search.setRoot(root);
+		tbl_search.setShowRoot(false);
+		
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		
+		
 
 	}
 

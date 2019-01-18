@@ -138,7 +138,7 @@
                      </menus>
                   </MenuBar>
                   <FontAwesomeIcon iconName="SEARCH" layoutX="706.0" layoutY="100.0" size="1.5em" />
-                  <JFXButton layoutX="698.0" layoutY="77.0" minHeight="35.0" minWidth="35.0" text=" " />
+                  <JFXButton layoutX="698.0" layoutY="77.0" minHeight="35.0" minWidth="35.0" onAction="#searchClick" text=" " />
                   <JFXButton layoutX="837.0" layoutY="14.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text="  MusicPlayer " textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
@@ -747,11 +747,11 @@
                   <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="311.0" startX="41.0" startY="175.0" />
                   <Line endX="512.0" endY="175.0" layoutX="10.0" layoutY="1072.0" startX="41.0" startY="175.0" />
                   <AnchorPane fx:id="achorpane_game" layoutX="555.0" layoutY="1025.0" prefHeight="223.0" prefWidth="398.0" />
-                  <AnchorPane fx:id="pane_search" layoutX="280.0" layoutY="-77.0" onMouseEntered="#pane_searchMouseEnterd" onMouseExited="#pane_searchMouseExited" prefHeight="311.0" prefWidth="261.0" style="-fx-background-color: #fff; -fx-border-color: #090948;">
+                  <AnchorPane fx:id="pane_search" layoutX="275.0" layoutY="-65.0" onMouseEntered="#pane_searchMouseEnterd" onMouseExited="#pane_searchMouseExited" prefHeight="311.0" prefWidth="261.0" style="-fx-background-color: #fff; -fx-border-color: #090948;" visible="false">
                      <children>
                         <JFXButton fx:id="btn_bestWord" layoutX="2.0" layoutY="2.0" onAction="#btn_bestWord" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="인기검색어" />
                         <JFXButton fx:id="btn_newWord" layoutX="129.0" layoutY="2.0" onAction="#btn_newWord" prefHeight="34.0" prefWidth="129.0" style="-fx-background-color: #f0f0f0; -fx-border-color: #d3d3d3;" text="최근검색어" />
-                        <JFXTreeTableView fx:id="tbl_search" layoutX="1.0" layoutY="35.0" prefHeight="307.0" prefWidth="258.0">
+                        <JFXTreeTableView fx:id="tbl_search" layoutX="1.0" layoutY="35.0" prefHeight="307.0" prefWidth="255.0">
                            <columns>
                               <TreeTableColumn fx:id="col_word" prefWidth="257.0" text=" " />
                            </columns>
