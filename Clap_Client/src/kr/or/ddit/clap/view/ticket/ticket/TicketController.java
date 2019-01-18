@@ -58,10 +58,11 @@ public class TicketController implements Initializable{
 	static Object[] ticketInfo = new Object[5]; 
 	// [0]은 이용권 정보. [1]은 금액. [2]는 액수String. [3]은 이용권 t/f. [4]는 ticket_no (123456)
 	// 이용권 정보. 1개월 1, 6개월 2, 1년은 3.
+	
+	LoginSession ls = new LoginSession();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		LoginSession ls = new LoginSession();
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -231,6 +232,12 @@ public class TicketController implements Initializable{
 				finalEndTime += (endDateTime - nowTime);
 			}
 			
+		}
+		
+		// game 맞춘경우.
+		if(ls.session.getMem_game().equals("3")) {
+			// 하루는 몇초? -> 86400000
+			finalEndTime += 86400000l;
 		}
 		
 		finalEndTime += nowTime;
