@@ -192,40 +192,24 @@ public class GameController implements Initializable{
 			}
 			
 			Label label = new Label("이용권 1일을 보내드렸습니다.");
-			label.setPrefWidth(380);
-			label.setPrefHeight(80);
-			label.setAlignment(Pos.CENTER);
-			label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
-			
-			JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
-			dialog.setBackground(Background.EMPTY);
-			dialog.show();
-			
+			dialog(label);
 		}else if (count == 4){
 			Label label = new Label("이미 참여하였습니다");
-			label.setPrefWidth(300);
-			label.setPrefHeight(80);
-			label.setAlignment(Pos.CENTER);
-			label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
-			
-			JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
-			dialog.setBackground(Background.EMPTY);
-			dialog.show();
+			dialog(label);
 		}else {
 			Label label = new Label(text);
-			label.setPrefWidth(300);
-			label.setPrefHeight(80);
-			label.setAlignment(Pos.CENTER);
-			label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
-			
-			JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
-			dialog.setBackground(Background.EMPTY);
-			dialog.show();
+			dialog(label);
 		}
-		
 	}
 	
-	
-	
-	
+	public void dialog(Label label) {
+		label.setPrefWidth(380);
+		label.setPrefHeight(80);
+		label.setAlignment(Pos.CENTER);
+		label.setStyle("-fx-font-family: \"-윤고딕320\"; -fx-font-size: 24;");
+		
+		JFXDialog dialog = new JFXDialog(stackpane, label, JFXDialog.DialogTransition.CENTER);
+		dialog.setBackground(Background.EMPTY);
+		dialog.show();
+	}
 }
