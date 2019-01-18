@@ -44,7 +44,7 @@
                   </StackPane>
                   <JFXButton fx:id="btn_join" layoutX="889.0" layoutY="123.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
                   <JFXButton fx:id="btn_login" layoutX="835.0" layoutY="123.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
-                  <JFXTextField fx:id="txt_search" layoutX="268.0" layoutY="81.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
+                  <JFXTextField fx:id="txt_search" layoutX="266.0" layoutY="81.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -64,9 +64,6 @@
                                  </HBox.margin>
                               </ImageView>
                               <Label fx:id="lb_id" alignment="CENTER" onMouseClicked="#mypage" prefHeight="25.0" prefWidth="125.0" style="-fx-background-color: #090948; -fx-background-radius: 4;" text="ddddit님" textFill="WHITE">
-                                 <font>
-                                    <Font name="YDIYGO350" size="18.0" />
-                                 </font>
                                  <HBox.margin>
                                     <Insets left="8.0" top="9.0" />
                                  </HBox.margin>
@@ -191,11 +188,7 @@
                <children>
                   <JFXButton layoutX="189.0" layoutY="20.0" text="국외" visible="false" />
                   <JFXButton layoutX="150.0" layoutY="20.0" text="국내" visible="false" />
-                  <JFXButton layoutX="48.0" layoutY="7.0" text="최신음악">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </JFXButton>
+                  <Label fx:id="lb_new" layoutX="62.0" layoutY="14.0" text="최신음악" />
                   <VBox layoutX="52.0" layoutY="53.0" maxHeight="357.0" minHeight="357.0" prefHeight="324.0" prefWidth="900.0">
                      <children>
                         <HBox minHeight="176.0" minWidth="816.0" prefWidth="373.0" spacing="5.0">
@@ -559,7 +552,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="    #5    ">
+                        <Tab text="    #5   ">
                            <content>
                               <AnchorPane fx:id="tab_pane5" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -640,8 +633,8 @@
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <Line endX="951.0" endY="175.0" layoutY="261.0" startX="51.0" startY="175.0" stroke="#aeaeae" />
-                  <Label layoutX="50.0" layoutY="452.0" text="실시간 차트" />
+                  <Line endX="951.0" endY="175.0" layoutY="258.0" startX="51.0" startY="175.0" stroke="#aeaeae" />
+                  <Label fx:id="lb_chart" layoutX="50.0" layoutY="443.0" text="실시간 차트" />
                   <StackPane fx:id="stackpane" alignment="CENTER_LEFT" layoutX="-60.0" layoutY="486.0" prefHeight="80.0" prefWidth="611.0">
                      <children>
                         <VBox fx:id="mainBox" maxWidth="610.0" minWidth="600.0" prefHeight="80.0" prefWidth="580.0">
@@ -684,9 +677,9 @@
                                     <Insets left="20.0" />
                                  </padding>
                               </HBox>
-                              <HBox alignment="CENTER_LEFT" maxWidth="602.0" minWidth="555.0" prefHeight="15.0" prefWidth="602.0" spacing="20.0">
+                              <HBox fx:id="chart_box" alignment="CENTER_LEFT" maxWidth="602.0" minWidth="555.0" prefHeight="15.0" prefWidth="602.0" spacing="20.0">
                                  <children>
-                                    <Label text="순위">
+                                    <Label fx:id="lb_chart1" text="순위">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
@@ -694,7 +687,7 @@
                                           <Insets left="70.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label text="곡정보">
+                                    <Label fx:id="lb_chart2" text="곡정보">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
@@ -702,7 +695,7 @@
                                           <Insets left="61.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label text="듣기">
+                                    <Label fx:id="lb_chart3" text="듣기">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
@@ -710,7 +703,7 @@
                                           <Insets left="105.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label text="추가">
+                                    <Label fx:id="lb_chart4" text="추가">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
@@ -718,7 +711,7 @@
                                           <Insets left="5.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label text="담기">
+                                    <Label fx:id="lb_chart5" text="담기">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
@@ -726,7 +719,7 @@
                                           <Insets left="10.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label text="뮤비">
+                                    <Label fx:id="lb_chart6" text="뮤비">
                                        <font>
                                           <Font name="-윤고딕320" size="12.0" />
                                        </font>
@@ -751,9 +744,9 @@
                   </StackPane>
                   <VBox layoutX="555.0" layoutY="439.0" prefHeight="34.0" prefWidth="398.0" style="-fx-background-color: white;">
                      <children>
-                        <Label text="에디터 추천 ">
+                        <Label fx:id="lb_editor" text="에디터 추천 ">
                            <VBox.margin>
-                              <Insets top="15.0" />
+                              <Insets top="5.0" />
                            </VBox.margin>
                         </Label>
                      </children>

@@ -116,13 +116,15 @@ public class MusicMainController implements Initializable {
 	@FXML
 	VBox vbox, editorBox1, editorBox2, editorBox3, editorBox4, editorBox5;
 	@FXML
+	HBox chart_box;
+	@FXML
 	Menu menu_admin;
 	@FXML
 	Label lb_id, lbb1, lbb2, lbb3, lbb4, lbb5, lbb6, lbb7, lbb8, lbb9, lbb10; // 추천음악 제목 라벨
 	@FXML
 	Label lbbb1, lbbb2, lbbb3, lbbb4, lbbb5, lbbb6, lbbb7, lbbb8, lbbb9, lbbb10; // 추천음악 좋아요/곡수 라벨
 	@FXML
-	Label la_messageCnt;
+	Label la_messageCnt, lb_chart, lb_editor;
 	@FXML
 	ImageView mem_img;
 	@FXML
