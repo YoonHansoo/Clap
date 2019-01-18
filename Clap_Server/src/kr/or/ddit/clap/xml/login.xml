@@ -3,48 +3,65 @@
 			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="login">
-	
-	 <select id="idCheck" resultClass="int" parameterClass="String">
-	 		select count(mem_id) from member
-			where mem_id = #mem_id#
-	 </select>
-	   
-	<select id="select" resultClass="memberVO" parameterClass="String">
-			select mem_id, mem_pw, mem_name, mem_email, mem_bir, mem_gender, mem_tel, mem_grade, 
-			mem_auth, mem_indate, mem_blacklist_tf, mem_del_tf, mem_black_cnt, mem_image, mem_intro, mem_game 
-			from member where mem_id=#mem_id#
+
+	<select id="idCheck" resultClass="int" parameterClass="String">
+		select
+		count(mem_id) from member
+		where mem_id = #mem_id#
 	</select>
-	
+
+	<select id="select" resultClass="memberVO"
+		parameterClass="String">
+		select mem_id, mem_pw, mem_name, mem_email, mem_bir,
+		mem_gender, mem_tel,
+		mem_grade,
+		mem_auth, mem_indate, mem_blacklist_tf,
+		mem_del_tf, mem_black_cnt, mem_image,
+		mem_intro, mem_game
+		from member
+		where mem_id=#mem_id#
+	</select>
+
 	<!-- 검색어기능 -->
-	<select id="selecthotkeyword" resultClass="String">
-			SELECT BEST_WORD
-     		 FROM BEST_SEARCH_WORD
-     		WHERE ROWNUM &lt; 11
-      		 ORDER BY BEST_WORD
+	<select id="selecthotkeyword" resultClass="BestSearchWordVO">
+		SELECT to_char(b.BEST_WORD)
+		FROM (select count(BEST_WORD),
+		BEST_WORD
+		from
+		BEST_SEARCH_WORD
+		group by BEST_WORD
+		order by 1 desc) b
+		WHERE ROWNUM &lt; 11
+
 	</select>
 
-	<select id="idSearch" resultClass="memberVO" parameterClass="memberVO">
-			select mem_id from member
-			where mem_bir = #mem_bir#
-			and mem_tel = #mem_tel#
+	<select id="idSearch" resultClass="memberVO"
+		parameterClass="memberVO">
+		select mem_id from member
+		where mem_bir = #mem_bir#
+		and
+		mem_tel = #mem_tel#
 	</select>
 
-	<select id="emailCheck" resultClass="int" parameterClass="memberVO">
-	 		select count(mem_id) from member
-			where mem_id = #mem_id#
-			and mem_email = #mem_email#
+	<select id="emailCheck" resultClass="int"
+		parameterClass="memberVO">
+		select count(mem_id) from member
+		where mem_id = #mem_id#
+		and mem_email = #mem_email#
 	</select>
-	
-	<select id="gamemember" resultClass="String" parameterClass="String">
-	 		select mem_game from member
- 			 where mem_id = #mem_id#
+
+	<select id="gamemember" resultClass="String"
+		parameterClass="String">
+		select mem_game from member
+		where mem_id = #mem_id#
 	</select>
-	
+
 	<update id="gameupdate" parameterClass="java.util.HashMap">
-		update member set mem_game = #mem_game#
-                    where mem_id = #mem_id#
+		update member set
+		mem_game = #mem_game#
+		where mem_id = #mem_id#
 	</update>
-	
+
 </sqlMap>			
 
 

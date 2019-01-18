@@ -59,6 +59,9 @@
 		type="kr.or.ddit.clap.vo.support.MessageVO" />
 	<typeAlias alias="QnaReviewVO"
 		type="kr.or.ddit.clap.vo.support.QnaReviewVO" />
+		
+	<typeAlias alias="BestSearchWordVO"
+		type="kr.or.ddit.clap.vo.search.BestSearchWordVO" />
 
 
 	<transactionManager type="JDBC">

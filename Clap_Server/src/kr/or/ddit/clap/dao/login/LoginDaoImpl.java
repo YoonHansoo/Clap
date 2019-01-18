@@ -9,6 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.clap.main.DBUtil;
 import kr.or.ddit.clap.vo.member.MemberVO;
+import kr.or.ddit.clap.vo.search.BestSearchWordVO;
 
 public class LoginDaoImpl implements ILoginDao{
 
@@ -78,8 +79,8 @@ public class LoginDaoImpl implements ILoginDao{
 	}
 
 	@Override
-	public List<String> selecthotkeyword() {
-		List<String> list = new ArrayList<String>();
+	public List<BestSearchWordVO> selecthotkeyword() {
+		List<BestSearchWordVO> list = new ArrayList<BestSearchWordVO>();
 		try {
 			list = smc.queryForList("login.selecthotkeyword");
 		} catch (SQLException e) {
