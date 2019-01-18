@@ -26,12 +26,14 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.join.IJoinService;
 import kr.or.ddit.clap.service.login.ILoginService;
 import kr.or.ddit.clap.service.ticket.ITicketService;
+import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 import kr.or.ddit.clap.vo.ticket.TicketVO;
 
 public class TicketController implements Initializable{
 	
 	private ITicketService its;
+	private ILoginService ils;
 	private Registry reg;
 	
 	@FXML BorderPane pane;
@@ -63,10 +65,17 @@ public class TicketController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		List<MemberVO> list2 = new ArrayList<MemberVO>();
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			its = (ITicketService) reg.lookup("ticket");
+			
+			ils = (ILoginService) reg.lookup("login");
+			if (ls.session != null) {
+				list2 = ils.select(ls.session.getMem_id());
+				ls.session = list2.get(0);
+			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
