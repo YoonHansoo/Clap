@@ -22,18 +22,65 @@
 		where mem_id=#mem_id#
 	</select>
 
-	<!-- 검색어기능 -->
-	<select id="selecthotkeyword" resultClass="BestSearchWordVO">
-		SELECT to_char(b.BEST_WORD)
-		FROM (select count(BEST_WORD),
-		BEST_WORD
-		from
-		BEST_SEARCH_WORD
-		group by BEST_WORD
-		order by 1 desc) b
-		WHERE ROWNUM &lt; 11
+	<!-- 인기 검색어기능 -->
+	<select id="selecthotkeyword" resultClass="NewSearchWordVO">
+		SELECT
+		b.new_word
+		FROM
+		(
+		SELECT
+		COUNT(new_word),
+		new_word
+		FROM
+		new_search_word
+		GROUP BY
+		new_word
+		ORDER BY
+		1 DESC
+		) b
+		WHERE
+		ROWNUM &lt; 11
 
 	</select>
+
+	<!-- 최근 검색어기능 -->
+	<select id="selectHistorykeyword" resultClass="NewSearchWordVO"
+		parameterClass="String">
+		SELECT DISTINCT
+		( new_word )
+		FROM
+		(
+		SELECT
+		new_word
+		FROM
+		new_search_word
+		WHERE
+		mem_id = #String#
+		ORDER BY
+		new_word_no DESC
+		) b
+		where
+		ROWNUM &lt; 11
+	</select>
+
+	<!-- 검색어 인서트 -->
+	<insert id="insertSearchWord" parameterClass="java.util.HashMap">
+
+		insert into NEW_SEARCH_WORD
+		(NEW_WORD_NO,
+		NEW_WORD_DATE,
+		NEW_WORD,
+		MEM_ID)
+
+		values (
+		seq_new_word_no.nextval,
+		sysdate,
+		#word#,
+		#id#
+		)
+	</insert>
+
+
 
 	<select id="idSearch" resultClass="memberVO"
 		parameterClass="memberVO">

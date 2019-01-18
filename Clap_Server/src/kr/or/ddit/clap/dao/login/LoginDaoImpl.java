@@ -9,7 +9,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.clap.main.DBUtil;
 import kr.or.ddit.clap.vo.member.MemberVO;
-import kr.or.ddit.clap.vo.search.BestSearchWordVO;
+import kr.or.ddit.clap.vo.search.NewSearchWordVO;
 
 public class LoginDaoImpl implements ILoginDao{
 
@@ -79,8 +79,8 @@ public class LoginDaoImpl implements ILoginDao{
 	}
 
 	@Override
-	public List<BestSearchWordVO> selecthotkeyword() {
-		List<BestSearchWordVO> list = new ArrayList<BestSearchWordVO>();
+	public List<NewSearchWordVO> selecthotkeyword() {
+		List<NewSearchWordVO> list = new ArrayList<NewSearchWordVO>();
 		try {
 			list = smc.queryForList("login.selecthotkeyword");
 		} catch (SQLException e) {
@@ -109,6 +109,31 @@ public class LoginDaoImpl implements ILoginDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return cnt;
+	}
+
+	@Override
+	public List<NewSearchWordVO> selectHistorykeyword(String id) {
+		List<NewSearchWordVO> list = new ArrayList<NewSearchWordVO>();
+		try {
+			list = smc.queryForList("login.selectHistorykeyword",id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int insertSearchWord(Map<String, String> map) {
+		int cnt = 0;
+		try {
+		Object obj = smc.insert("login.insertSearchWord", map);
+		if(obj == null) { //쿼리수행이 성공적으로 끝남
+			cnt = 1;
+		}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
 		return cnt;
 	}
 

@@ -8,7 +8,7 @@ import java.util.Map;
 
 import kr.or.ddit.clap.dao.login.LoginDaoImpl;
 import kr.or.ddit.clap.vo.member.MemberVO;
-import kr.or.ddit.clap.vo.search.BestSearchWordVO;
+import kr.or.ddit.clap.vo.search.NewSearchWordVO;
 
 public class LoginServiceImpl extends UnicastRemoteObject implements ILoginService{
 
@@ -76,7 +76,7 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 	}
 
 	@Override
-	public List<BestSearchWordVO> selecthotkeyword() throws RemoteException {
+	public List<NewSearchWordVO> selecthotkeyword() throws RemoteException {
 		return loginDao.selecthotkeyword();
 	}
 
@@ -88,6 +88,16 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 	@Override
 	public int gameUpdate(Map map) throws RemoteException {
 		return loginDao.gameUpdate(map);
+	}
+
+	@Override
+	public List<NewSearchWordVO> selectHistorykeyword(String id) throws RemoteException {
+		return loginDao.selectHistorykeyword(id);
+	}
+
+	@Override
+	public int insertSearchWord(Map<String, String> map) throws RemoteException {
+		return loginDao.insertSearchWord(map);
 	}
 
 

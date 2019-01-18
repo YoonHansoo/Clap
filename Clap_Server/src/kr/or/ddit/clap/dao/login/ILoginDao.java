@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.ddit.clap.vo.member.MemberVO;
-import kr.or.ddit.clap.vo.search.BestSearchWordVO;
+import kr.or.ddit.clap.vo.search.NewSearchWordVO;
 
 public interface ILoginDao {
 	public Boolean idCheck(String id);
@@ -16,9 +16,13 @@ public interface ILoginDao {
 	
 	public Boolean emailCheck(MemberVO vo);
 	
-	public List<BestSearchWordVO> selecthotkeyword();
+	public List<NewSearchWordVO> selecthotkeyword();
+	
+	public List<NewSearchWordVO> selectHistorykeyword(String id);
 	
 	public List<String> gameMember(String mem_id);
 	
 	public int gameUpdate(Map map);
+	
+	public int insertSearchWord(Map<String,String> map);
 }
