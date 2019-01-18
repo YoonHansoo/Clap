@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.album.album.InsertAlbumController">
    <children>
@@ -91,13 +90,13 @@
             </VBox>
          </children>
       </HBox>
-      <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton fx:id="btn_insertImg" layoutX="77.0" layoutY="279.0" onAction="#btn_chageImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE" AnchorPane.leftAnchor="77.0">
+      <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" AnchorPane.topAnchor="330.5" />
+      <JFXButton fx:id="btn_insertImg" layoutX="77.0" layoutY="279.0" onAction="#btn_chageImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE" AnchorPane.leftAnchor="77.0" AnchorPane.topAnchor="279.0">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
          </graphic>
       </JFXButton>
-      <Label layoutX="26.0" layoutY="343.0" prefHeight="41.0" prefWidth="214.0" text="앨범 소개" AnchorPane.leftAnchor="26.0">
+      <Label layoutX="26.0" layoutY="343.0" prefHeight="41.0" prefWidth="214.0" text="앨범 소개" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="343.0">
       </Label>
       <TextArea fx:id="txt_intro" layoutX="26.0" layoutY="384.0" prefHeight="275.0" prefWidth="718.0" wrapText="true" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="29.0" />
       <JFXButton layoutX="497.0" layoutY="689.0" onAction="#insertAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />

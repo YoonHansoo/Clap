@@ -18,7 +18,7 @@
                   <Font name="YDIYGO350" size="25.0" />
                </font>
                <VBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="50.0" />
                </VBox.margin>
             </Label>
             <JFXTabPane fx:id="tabPane_main" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="253.0" VBox.vgrow="SOMETIMES">
