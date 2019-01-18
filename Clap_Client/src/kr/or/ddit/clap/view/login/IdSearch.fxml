@@ -12,12 +12,12 @@
    <top>
       <VBox prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label text="clap 아이디 찾기">
+            <Label text="CLAP : 아이디 찾기">
                <font>
                   <Font name="YDIYGO350" size="22.0" />
                </font>
                <VBox.margin>
-                  <Insets bottom="17.0" left="15.0" />
+                  <Insets bottom="15.0" left="15.0" top="5.0" />
                </VBox.margin>
             </Label>
             <Separator prefWidth="200.0" />

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="724.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.LoginController">
+<VBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="724.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.LoginController">
    <children>
       <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="100.0">
          <children>
@@ -20,28 +20,37 @@
                   <Insets left="5.0" right="10.0" top="9.0" />
                </HBox.margin>
             </FontAwesomeIcon>
-            <Label prefHeight="50.0" text="CLAP 로그인">
+            <Label prefHeight="50.0" text="CLAP : 로그인">
                <font>
-                  <Font name="D2Coding" size="22.0" />
+                  <Font size="23.0" />
                </font>
             </Label>
          </children>
          <VBox.margin>
-            <Insets left="100.0" />
+            <Insets left="81.0" />
          </VBox.margin>
       </HBox>
       <HBox prefHeight="74.0" prefWidth="200.0">
          <children>
             <VBox maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="284.0">
                <children>
-                  <JFXTextField fx:id="txt_id" />
-                  <JFXPasswordField fx:id="txt_pw" />
+                  <JFXTextField fx:id="txt_id" focusColor="#9c0000" unFocusColor="#090948">
+                     <VBox.margin>
+                        <Insets top="9.0" />
+                     </VBox.margin></JFXTextField>
+                  <JFXPasswordField fx:id="txt_pw" focusColor="#9c0000" unFocusColor="#090948">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin></JFXPasswordField>
                </children>
                <HBox.margin>
                   <Insets left="30.0" />
                </HBox.margin>
             </VBox>
-            <JFXButton fx:id="btn_login" onAction="#login" prefHeight="74.0" prefWidth="80.0" text="로그인" />
+            <JFXButton fx:id="btn_login" onAction="#login" prefHeight="74.0" prefWidth="80.0" text="로그인">
+               <font>
+                  <Font size="17.0" />
+               </font></JFXButton>
          </children>
          <VBox.margin>
             <Insets />
@@ -56,7 +65,7 @@
          <children>
             <JFXButton fx:id="btn_search" onAction="#search" text="아이디 / 비밀번호 찾기">
                <HBox.margin>
-                  <Insets left="26.0" />
+                  <Insets left="120.0" />
                </HBox.margin></JFXButton>
          </children>
          <VBox.margin>
