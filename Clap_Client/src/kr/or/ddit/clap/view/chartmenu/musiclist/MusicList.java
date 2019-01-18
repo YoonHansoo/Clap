@@ -291,7 +291,11 @@ public class MusicList {
 			vbox.setMargin(h_Line, new Insets(0,0,0,90));
 			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
-			h_Line.setStyle("-fx-background-color: #090948;");
+			if (i == 0) {
+				h_Line.setStyle("-fx-background-color: #090948;");
+			}else {
+				h_Line.setStyle("-fx-background-color: #e1e1ef;");
+			}
 			//h_Line.alignmentProperty("")
 			
 			
@@ -563,7 +567,11 @@ public class MusicList {
 			vbox.setMargin(h_Line, new Insets(0,0,0,0));
 			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
-			h_Line.setStyle("-fx-background-color: #090948;");
+			if (i == 0) {
+				h_Line.setStyle("-fx-background-color: #090948;");
+			}else {
+				h_Line.setStyle("-fx-background-color: #e1e1ef;");
+			}
 			//h_Line.alignmentProperty("")
 			
 			
@@ -770,7 +778,11 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			vbox.setMargin(h_Line, new Insets(0,0,0,90));
 			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
-			h_Line.setStyle("-fx-background-color: #090948;");
+			if (i == 0) {
+				h_Line.setStyle("-fx-background-color: #090948;");
+			}else {
+				h_Line.setStyle("-fx-background-color: #e1e1ef;");
+			}
 			//h_Line.alignmentProperty("")
 			
 			
@@ -1005,7 +1017,11 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			vbox.setMargin(h_Line, new Insets(0,0,0,120));
 			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
-			h_Line.setStyle("-fx-background-color: #090948;");	
+			if (i == 0) {
+				h_Line.setStyle("-fx-background-color: #090948;");
+			}else {
+				h_Line.setStyle("-fx-background-color: #e1e1ef;");
+			}	
 			
 			// 전체 HBox
 			HBox hbox = new HBox();
