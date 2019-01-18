@@ -235,7 +235,7 @@ public class TicketController implements Initializable{
 		}
 		
 		// game 맞춘경우.
-		if(ls.session.getMem_game().equals("3")) {
+		if(ls.session.getMem_game().equals("4")) {
 			// 하루는 몇초? -> 86400000
 			finalEndTime += 86400000l;
 		}
