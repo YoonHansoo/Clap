@@ -1,6 +1,4 @@
-* {
-  	-fx-font-family: "-윤고딕330";
-}
+
 
 .tree-table-row-cell:selected .tree-table-cell .label{
     -fx-text-fill: white;

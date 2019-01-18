@@ -22,7 +22,7 @@
          <children>
             <ImageView fx:id="imgview_MemImg" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
-                  <Insets right="30.0" />
+                  <Insets right="30.0" top="72.0" />
                </HBox.margin></ImageView>
             <VBox prefHeight="231.0" prefWidth="453.0">
                <children>
@@ -36,7 +36,7 @@
                   </Label>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="아이디">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="아 이 디">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -53,7 +53,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="성별">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="성  별">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -67,7 +67,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="생년월일">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="생년월일">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -84,7 +84,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="전화번호">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="전화번호">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -101,7 +101,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="권한">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="권  한">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -115,7 +115,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="등급">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="등  급">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -132,26 +132,12 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="이메일 ">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="이 메 일">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                         </Label>
-                        <Label fx:id="label_MemEmail" prefHeight="18.0" prefWidth="123.0" text="???">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="가입일">
-                           <font>
-                              <Font name="YDIYGO340" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="label_MeminDate" prefHeight="18.0" prefWidth="123.0" text="???">
+                        <Label fx:id="label_MemEmail" prefHeight="18.0" prefWidth="249.0" text="???">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -160,7 +146,21 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="105.0" style="-fx-background-color: #ffffff;" text="탈퇴여부">
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="가 입 일">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="label_MeminDate" prefHeight="18.0" prefWidth="108.0" text="???">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="탈퇴여부">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -174,7 +174,7 @@
                   </HBox>
                   <HBox prefHeight="20.0" prefWidth="453.0">
                      <children>
-                        <Label prefHeight="18.0" prefWidth="120.0" style="-fx-background-color: #ffffff;" text="신고횟수">
+                        <Label prefHeight="16.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="신고횟수">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -182,18 +182,19 @@
                               <Insets />
                            </HBox.margin>
                         </Label>
-                        <Label fx:id="label_BlackCnt" prefHeight="18.0" prefWidth="191.0" text="???">
+                        <Label fx:id="label_BlackCnt" prefHeight="18.0" prefWidth="88.0" text="???">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="18.0" prefWidth="156.0" style="-fx-background-color: #ffffff;" text="블랙리스트여부">
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="18.0" prefWidth="115.0" style="-fx-background-color: #ffffff;" text="블랙리스트여부">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets bottom="3.0" />
-                           </HBox.margin>
                         </Label>
                         <Label fx:id="label_BlackTF" prefWidth="200.0" text="???" textFill="#090c64">
                            <font>
@@ -201,16 +202,13 @@
                            </font>
                         </Label>
                      </children>
-                     <padding>
-                        <Insets top="20.0" />
-                     </padding>
                   </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <Line endX="625.0" layoutX="120.0" layoutY="408.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="82.0" layoutY="363.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
+      <Line endX="625.0" layoutX="120.0" layoutY="408.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="27.5" AnchorPane.rightAnchor="27.5" />
+      <JFXButton layoutX="91.0" layoutY="363.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
          </graphic>
@@ -218,12 +216,12 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <Label layoutX="26.0" layoutY="438.0" prefHeight="41.0" prefWidth="214.0" text="회원의 자기소개">
+      <Label layoutX="26.0" layoutY="438.0" prefHeight="41.0" prefWidth="214.0" text="회원의 자기소개" AnchorPane.leftAnchor="27.5">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="28.0" layoutY="479.0" prefHeight="196.0" prefWidth="718.0" text="아티스트 소개" wrapText="true" />
-      <JFXButton layoutX="630.0" layoutY="689.0" onAction="#updateMem" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
+      <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="28.0" layoutY="479.0" prefHeight="196.0" prefWidth="718.0" text="아티스트 소개" wrapText="true" AnchorPane.leftAnchor="27.5" />
+      <JFXButton layoutX="630.0" layoutY="689.0" onAction="#updateMem" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" AnchorPane.rightAnchor="27.5" />
    </children>
 </AnchorPane>

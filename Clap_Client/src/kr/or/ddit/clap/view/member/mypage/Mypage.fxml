@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="876.0" prefWidth="1011.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../../../../../mypage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageController">
@@ -23,66 +24,74 @@
          <children>
             <AnchorPane prefHeight="880.0" prefWidth="266.0" stylesheets="@../../../../../../../mypage.css">
                <children>
-                  <ImageView fx:id="img_UserImg" fitHeight="100.0" fitWidth="170.0" layoutX="13.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="img_UserImg" fitHeight="100.0" fitWidth="170.0" layoutX="46.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="46.0" AnchorPane.topAnchor="14.0">
                      <image>
                         <Image fx:id="img_User" url="@music_main/image.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="label_Id" alignment="CENTER" layoutX="152.0" layoutY="75.0" prefHeight="23.0" prefWidth="94.0" text="Label" />
-                  <JFXButton layoutX="150.0" layoutY="118.0" onAction="#btn_profch" text="프로필 수정 &gt;" />
-                  <Text fx:id="text1" layoutX="12.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필">
-                     
-                  </Text>
-                  <JFXTreeTableView fx:id="tbl_Myalb" layoutX="30.0" layoutY="376.0" prefHeight="125.0" prefWidth="216.0" stylesheets="@../../../../../../../mypage.css">
+                  <Label fx:id="label_Id" alignment="CENTER" layoutX="148.0" layoutY="42.0" prefHeight="23.0" prefWidth="94.0" text="Label" AnchorPane.leftAnchor="151.0" />
+                  <JFXButton layoutX="151.0" layoutY="84.0" onAction="#btn_profch" text="프로필 수정 &gt;" AnchorPane.leftAnchor="151.0" />
+                  <Text fx:id="text1" layoutX="52.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="프로필" AnchorPane.leftAnchor="46.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Text>
+                  <JFXTreeTableView fx:id="tbl_Myalb" layoutX="30.0" layoutY="332.0" prefHeight="125.0" prefWidth="207.0" stylesheets="@../../../../../../../mypage.css" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="20.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Myalb" prefWidth="215.0" />
                      </columns></JFXTreeTableView>
-                  <JFXButton layoutX="31.0" layoutY="269.0" onAction="#btn_like" text="- 좋아요" />
-                  <JFXButton layoutX="35.0" layoutY="294.0" onAction="#btn_riew" text="- 리뷰" />
-                  <JFXButton layoutX="26.0" layoutY="595.0" onAction="#btn_NewLisMus" text="- 최근감상곡" />
-                  <JFXButton layoutX="26.0" layoutY="627.0" onAction="#btn_ManyLisMus" text="- 많이 들은곡" />
-                  <JFXButton layoutX="26.0" layoutY="658.0" onAction="#btn_ManyLisIts" text="-많이 들은 아티스트" />
-                  <Button contentDisplay="RIGHT" layoutX="153.0" layoutY="334.0" mnemonicParsing="false" onAction="#btn_MyalbCh" prefHeight="33.0" prefWidth="96.0" style="-fx-background-color: #090948;" text="편집   " textFill="WHITE">
+                  <JFXButton layoutX="48.0" layoutY="203.0" onAction="#btn_like" text="- 좋아요" AnchorPane.leftAnchor="48.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXButton>
+                  <JFXButton layoutX="48.0" layoutY="229.0" onAction="#btn_riew" text="- 리뷰" AnchorPane.leftAnchor="48.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font></JFXButton>
+                  <JFXButton layoutX="48.0" layoutY="578.0" onAction="#btn_NewLisMus" text="- 최근 감상 곡" AnchorPane.leftAnchor="48.0" />
+                  <JFXButton layoutX="48.0" layoutY="601.0" onAction="#btn_ManyLisMus" text="- 많이 들은 곡" AnchorPane.leftAnchor="48.0" />
+                  <JFXButton layoutX="48.0" layoutY="624.0" onAction="#btn_ManyLisIts" text="- 많이 들은 아티스트" AnchorPane.leftAnchor="48.0" />
+                  <Button layoutX="181.0" layoutY="307.0" mnemonicParsing="false" onAction="#btn_MyalbCh" prefHeight="20.0" prefWidth="65.0" style="-fx-background-color: #090948;" text="편집   " textFill="WHITE">
                      </Button>
-                  <Pagination fx:id="p_Paging" layoutX="15.0" layoutY="371.0" prefHeight="175.0" prefWidth="239.0" />
-                  <Text fx:id="text2" layoutX="14.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범">
+                  <Pagination fx:id="p_Paging" layoutX="46.0" layoutY="332.0" prefHeight="166.0" prefWidth="200.0" AnchorPane.rightAnchor="20.0" />
+                  <Text fx:id="text2" layoutX="46.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="마이앨범" AnchorPane.leftAnchor="46.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font></Text>
+                  <Text fx:id="text3" layoutX="46.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="감상이력" AnchorPane.leftAnchor="46.0">
                     
                   </Text>
-                  <Text fx:id="text3" layoutX="8.0" layoutY="580.0" strokeType="OUTSIDE" strokeWidth="0.0" text="감상이력">
-                    
-                  </Text>
-                  <Button layoutX="6.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_my" prefHeight="44.0" prefWidth="127.0" style="-fx-background-color: #090948;" text="내 정보" textFill="WHITE">
+                  <Button layoutX="46.0" layoutY="125.0" mnemonicParsing="false" onAction="#btn_my" prefHeight="32.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="내 정보" textFill="WHITE" AnchorPane.leftAnchor="46.0">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" iconName="USER" size="2em" />
                      </graphic>
                      </Button>
-                  <Button layoutX="138.0" layoutY="173.0" mnemonicParsing="false" onAction="#btn_ticketList" prefHeight="44.0" prefWidth="127.0" style="-fx-background-color: #090948;" text="이용권내역" textFill="WHITE">
+                  <Button layoutX="148.0" layoutY="125.0" mnemonicParsing="false" onAction="#btn_ticketList" prefHeight="32.0" prefWidth="104.0" style="-fx-background-color: #090948;" text="이용권내역" textFill="WHITE" AnchorPane.rightAnchor="14.0">
                      <graphic>
                         <FontAwesomeIcon fill="WHITE" iconName="BARCODE" size="2em" />
                      </graphic>
                    </Button>
-                  <FontAwesomeIcon fill="#9c0000" iconName="HEART" layoutX="94.0" layoutY="287.0" size="1.2em" />
-                  <FontAwesomeIcon fill="WHITE" iconName="PENCIL_SQUARE_ALT" layoutX="218.0" layoutY="358.0" size="1.5em" />
+                  <FontAwesomeIcon fill="#9c0000" iconName="HEART" layoutX="108.0" layoutY="222.0" size="1.2em" />
+                  <FontAwesomeIcon fill="WHITE" iconName="PENCIL_SQUARE_ALT" layoutX="223.0" layoutY="325.0" size="1.5em" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" prefHeight="880.0" prefWidth="730.0" stylesheets="@../../../../../../../mypage.css">
                <children>
-                  <JFXButton layoutX="670.0" layoutY="175.0" onAction="#btn_TheMus" text="더보기" textFill="#030303" />
-                  <Text fx:id="text4" layoutX="52.0" layoutY="533.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰">
+                  <JFXButton layoutX="585.0" layoutY="111.0" onAction="#btn_TheMus" text="더보기" textFill="#030303" />
+                  <Text fx:id="text4" layoutX="37.0" layoutY="497.0" strokeType="OUTSIDE" strokeWidth="0.0" text="최근 나의 리뷰" AnchorPane.leftAnchor="37.0">
                     
                   </Text>
-                  <JFXTreeTableView fx:id="tbl_Review" layoutX="52.0" layoutY="550.0" prefHeight="212.0" prefWidth="615.0" stylesheets="@../../../../../../../mypage.css">
+                  <JFXTreeTableView fx:id="tbl_Review" layoutX="52.0" layoutY="550.0" prefHeight="212.0" prefWidth="615.0" stylesheets="@../../../../../../../mypage.css" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="508.0">
                      <columns>
                         <TreeTableColumn fx:id="col_ReviewCont" prefWidth="496.0" text="내용 " />
                         <TreeTableColumn fx:id="col_ReviewDate" prefWidth="117.0" text="등록 날짜" />
                      </columns>
                      </JFXTreeTableView>
-                  <Line endY="714.0" layoutX="23.0" layoutY="161.0" startY="-140.0" />
-                  <HBox layoutX="51.0" layoutY="126.0" prefHeight="33.0" prefWidth="615.0">
+                  <Line endY="600.0" layoutX="12.0" layoutY="161.0" opacity="0.5" startY="-140.0" stroke="#9c0000" AnchorPane.topAnchor="14.0" />
+                  <HBox layoutX="37.0" layoutY="48.0" prefHeight="46.0" prefWidth="550.0">
                      <children>
-                        <AnchorPane fx:id="InfoContents" prefHeight="44.0" prefWidth="632.0">
+                        <AnchorPane fx:id="InfoContents" prefHeight="44.0" prefWidth="550.0">
                            <children>
-                              <ToolBar layoutX="-4.0" prefHeight="46.0" prefWidth="619.0" style="-fx-background-color: #ffffff;">
+                              <ToolBar layoutX="-4.0" prefHeight="46.0" prefWidth="550.0" style="-fx-background-color: #ffffff;">
                                 <items>
                                     <Text fx:id="text_UserInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="text">
                                      
@@ -98,24 +107,23 @@
                         </AnchorPane>
                      </children>
                   </HBox>
-                  <Text fill="RED" layoutX="723.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
+                  <Text fill="RED" layoutX="638.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
                     
                   </Text>
-                  <JFXButton layoutX="671.0" layoutY="551.0" onAction="#btn_ThrReview" text="더보기" textFill="#030303" />
-                  <Text fill="RED" layoutX="725.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
+                  <JFXButton layoutX="588.0" layoutY="474.0" onAction="#btn_ThrReview" text="더보기" textFill="#030303" />
+                  <Text fill="RED" layoutX="642.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;">
                      
                   </Text>
-                  <JFXTabPane layoutX="47.0" layoutY="173.0">
+                  <JFXTabPane layoutX="47.0" layoutY="173.0" maxWidth="610.0" AnchorPane.leftAnchor="37.0" AnchorPane.topAnchor="135.0">
                      <tabs>
                         <Tab text="           많이 들은 곡    ">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0" stylesheets="@../../../../../../../mypage.css">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css">
                                  <children>
-                                    <JFXTreeTableView fx:id="tbl_ManyMusic" layoutX="-6.0" layoutY="-3.0" prefHeight="288.0" prefWidth="628.0" stylesheets="@../../../../../../../mypage.css">
+                                    <JFXTreeTableView fx:id="tbl_ManyMusic" prefHeight="288.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css">
                                        <columns>
-                                          <TreeTableColumn fx:id="col_MMno" minWidth="0.0" prefWidth="0.0" text="번호" />
-                                          <TreeTableColumn fx:id="col_MMits" prefWidth="166.0" text="아티스트 명 " />
-                                          <TreeTableColumn fx:id="col_MMtitle" prefWidth="461.0" text="곡" />
+                                          <TreeTableColumn fx:id="col_MMits" prefWidth="165.0" text="아티스트 명 " />
+                                          <TreeTableColumn fx:id="col_MMtitle" prefWidth="456.0" text="곡" />
                                        </columns>
                                     </JFXTreeTableView>
                                  </children>
@@ -124,14 +132,13 @@
                         </Tab>
                         <Tab text="       최근 감상 곡           ">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0" stylesheets="@../../../../../../../mypage.css">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="252.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css">
                                  <children>
-                                    <JFXTreeTableView fx:id="tbl_NewMusic" layoutX="-6.0" layoutY="-1.0" prefHeight="283.0" prefWidth="633.0" stylesheets="@../../../../../../../mypage.css">
+                                    <JFXTreeTableView fx:id="tbl_NewMusic" layoutX="-6.0" layoutY="-1.0" prefHeight="283.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css" AnchorPane.leftAnchor="0.0">
                                        <columns>
-                                          <TreeTableColumn fx:id="col_NMno" minWidth="0.0" prefWidth="0.0" text="번호" />
-                                          <TreeTableColumn fx:id="col_NMits" prefWidth="150.0" text="아티스트 명 " />
+                                          <TreeTableColumn fx:id="col_NMits" prefWidth="144.0" text="아티스트 명 " />
                                           <TreeTableColumn fx:id="col_NMtitle" prefWidth="325.0" text="곡" />
-                                          <TreeTableColumn fx:id="col_NMdate" prefWidth="157.0" text="감상 날짜" />
+                                          <TreeTableColumn fx:id="col_NMdate" prefWidth="148.0" text="감상 날짜" />
                                        </columns>
                                     </JFXTreeTableView>
                                  </children>
@@ -140,12 +147,11 @@
                         </Tab>
                         <Tab text="     많이 들은 아티스트    ">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="284.0" prefWidth="619.0" stylesheets="@../../../../../../../mypage.css">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css">
                                  <children>
-                                    <JFXTreeTableView fx:id="tbl_ManySigner" layoutX="-2.0" layoutY="-3.0" prefHeight="281.0" prefWidth="625.0" stylesheets="@../../../../../../../mypage.css">
+                                    <JFXTreeTableView fx:id="tbl_ManySigner" layoutX="18.0" layoutY="-3.0" prefHeight="280.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css" AnchorPane.leftAnchor="0.0">
                                        <columns>
-                                          <TreeTableColumn fx:id="col_MSno" minWidth="0.0" prefWidth="0.0" text="번호" />
-                                          <TreeTableColumn fx:id="col_MSits" prefWidth="624.0" text="아티스트" />
+                                          <TreeTableColumn fx:id="col_MSits" prefWidth="614.0" text="아티스트" />
                                        </columns>
                                     </JFXTreeTableView>
                                  </children>
@@ -154,7 +160,7 @@
                         </Tab>
                      </tabs>
                   </JFXTabPane>
-                  <Label fx:id="la_mypge" layoutX="47.0" layoutY="50.0" prefHeight="41.0" prefWidth="156.0" text="MyPage">
+                  <Label fx:id="la_mypge" layoutX="37.0" layoutY="7.0" prefHeight="41.0" prefWidth="156.0" text="MyPage" AnchorPane.leftAnchor="37.0">
                    
                   </Label>
                </children>

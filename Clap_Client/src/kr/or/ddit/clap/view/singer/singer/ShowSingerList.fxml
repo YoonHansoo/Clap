@@ -52,7 +52,7 @@
          <children>
             <AnchorPane prefHeight="212.0" prefWidth="191.0">
                <children>
-                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="48.0" />
                </children>
             </AnchorPane>
             <VBox prefHeight="85.0" prefWidth="191.0">
@@ -67,14 +67,6 @@
                               <Insets left="50.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXButton style="-fx-background-color: #9c0000;" text="logout" textFill="WHITE">
-                           <font>
-                              <Font name="YDIYGO350" size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </JFXButton>
                      </children>
                   </HBox>
                </children>

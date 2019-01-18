@@ -20,13 +20,13 @@
    <children>
       <AnchorPane fx:id="main" layoutX="234.0" layoutY="3.0" prefHeight="768.0" prefWidth="773.0">
          <children>
-            <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="회원 관리">
+            <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="회원 관리" AnchorPane.topAnchor="10.0">
                <font>
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="636.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_Member" layoutX="23.0" layoutY="96.0" prefHeight="532.0" prefWidth="715.0">
+            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="595.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
+            <JFXTreeTableView fx:id="tbl_Member" layoutX="23.0" layoutY="96.0" prefHeight="532.0" prefWidth="715.0" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="96.0">
                <columns>
                   <TreeTableColumn fx:id="col_singerNo" minWidth="0.0" prefWidth="0.0" text="가수번호" visible="false" />
                   <TreeTableColumn fx:id="col_MemImg" prefWidth="163.6666259765625" text="Image" />
@@ -36,18 +36,18 @@
                   <TreeTableColumn fx:id="col_MemdelTF" prefWidth="67.0" text="탈퇴여부" />
                </columns>
             </JFXTreeTableView>
-            <JFXComboBox fx:id="combo_search" layoutX="435.0" layoutY="61.0" prefHeight="23.0" prefWidth="78.0" promptText="이름" />
-            <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="531.0" layoutY="60.0" unFocusColor="#090948" />
+            <JFXComboBox fx:id="combo_search" layoutX="484.0" layoutY="65.0" prefHeight="23.0" prefWidth="78.0" promptText="이름" AnchorPane.leftAnchor="484.0" AnchorPane.topAnchor="65.0" />
+            <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="531.0" layoutY="60.0" prefColumnCount="10" unFocusColor="#090948" AnchorPane.leftAnchor="590.0" AnchorPane.topAnchor="65.0" />
             <Line endX="614.0" layoutX="124.0" layoutY="92.0" startX="-100.0" stroke="#ffff8d" />
-            <JFXButton fx:id="btn_search" layoutX="663.0" layoutY="53.0" prefHeight="42.0" prefWidth="61.0" text=" " />
-            <FontAwesomeIcon iconName="SEARCH" layoutX="682.0" layoutY="78.0" text="" />
+            <JFXButton fx:id="btn_search" layoutX="702.0" layoutY="67.0" prefHeight="29.0" prefWidth="36.0" text=" " />
+            <FontAwesomeIcon iconName="SEARCH" layoutX="715.0" layoutY="83.0" text="" />
          </children>
       </AnchorPane>
-      <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
+      <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;" AnchorPane.topAnchor="25.0">
          <children>
             <AnchorPane prefHeight="212.0" prefWidth="191.0">
                <children>
-                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="25.0" />
                </children>
             </AnchorPane>
             <VBox prefHeight="85.0" prefWidth="191.0">
@@ -59,17 +59,9 @@
                               <Font name="YDIYGO350" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets left="75.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXButton style="-fx-background-color: #9c0000;" text="logout" textFill="WHITE">
-                           <font>
-                              <Font name="YDIYGO350" size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </JFXButton>
                      </children>
                   </HBox>
                </children>
