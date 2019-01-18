@@ -374,7 +374,7 @@ public class MusicMainController implements Initializable {
 		// 최신순으로 10개 뽑는 메서드. -> 쿼리 이용하도록 수정.
 		// setNewList();
 
-		Image logo_img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\New.png");
+		Image logo_img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\new logo170.png");
 		logo_imgView.setImage(logo_img);
 
 		Image[] images = new Image[albumList.size()];
