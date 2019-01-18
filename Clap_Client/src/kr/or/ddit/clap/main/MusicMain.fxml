@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="1250.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -42,7 +42,7 @@
                   </StackPane>
                   <JFXButton fx:id="btn_join" layoutX="890.0" layoutY="116.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
                   <JFXButton fx:id="btn_login" layoutX="836.0" layoutY="116.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
-                  <JFXTextField fx:id="txt_search" layoutX="252.0" layoutY="74.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
+                  <JFXTextField fx:id="txt_search" layoutX="272.0" layoutY="74.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -52,9 +52,9 @@
                         </LinearGradient>
                      </focusColor>
                   </JFXTextField>
-                  <HBox fx:id="mem_menu" layoutX="788.0" layoutY="67.0" prefHeight="36.0" prefWidth="165.0">
+                  <HBox fx:id="mem_menu" layoutX="786.0" layoutY="79.0" prefHeight="40.0" prefWidth="165.0">
                      <children>
-                        <HBox alignment="TOP_CENTER" minHeight="36.0" onMouseClicked="#mypage" prefHeight="41.0" prefWidth="180.0" spacing="5.0">
+                        <HBox alignment="TOP_CENTER" minHeight="36.0" onMouseClicked="#mypage" prefHeight="40.0" prefWidth="180.0" spacing="5.0">
                            <children>
                               <ImageView fx:id="mem_img" fitHeight="33.0" fitWidth="33.0" onMouseClicked="#mypage" pickOnBounds="true" preserveRatio="true">
                                  <HBox.margin>
@@ -66,19 +66,19 @@
                                     <Font name="YDIYGO350" size="18.0" />
                                  </font>
                                  <HBox.margin>
-                                    <Insets left="5.0" top="4.0" />
+                                    <Insets left="5.0" top="8.0" />
                                  </HBox.margin>
                               </Label>
                            </children>
                         </HBox>
                      </children>
                   </HBox>
-                  <StackPane layoutX="788.0" layoutY="67.0" prefHeight="36.0" prefWidth="165.0">
+                  <StackPane layoutX="786.0" layoutY="78.0" prefHeight="36.0" prefWidth="165.0">
                      <children>
                         <JFXButton fx:id="btn_mem" onAction="#mypage" prefHeight="41.0" prefWidth="180.0" text=" " textFill="WHITE" />
                      </children>
                   </StackPane>
-                  <MenuBar fx:id="bar" layoutX="260.0" layoutY="116.0" style="-fx-background-color: #090948; -fx-color: #000;">
+                  <MenuBar fx:id="bar" layoutX="280.0" layoutY="116.0" style="-fx-background-color: #090948; -fx-color: #000;">
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
                            <items>
@@ -138,8 +138,8 @@
                         </Menu>
                      </menus>
                   </MenuBar>
-                  <FontAwesomeIcon iconName="SEARCH" layoutX="691.0" layoutY="93.0" size="1.5em" />
-                  <JFXButton layoutX="683.0" layoutY="70.0" minHeight="35.0" minWidth="35.0" text=" " />
+                  <FontAwesomeIcon iconName="SEARCH" layoutX="711.0" layoutY="93.0" size="1.5em" />
+                  <JFXButton layoutX="703.0" layoutY="70.0" minHeight="35.0" minWidth="35.0" text=" " />
                   <JFXButton layoutX="210.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
@@ -162,16 +162,13 @@
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_RIGHT" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btn_msg" layoutX="790.0" layoutY="22.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" ">
-                     <graphic>
-                        <FontAwesomeIcon fill="#9c0000" iconName="COMMENT" size="2.3em" wrappingWidth="21.0" />
-                     </graphic>
-                  </JFXButton>
-                  <Label fx:id="la_messageCnt" alignment="CENTER" layoutX="822.0" layoutY="35.0" prefHeight="21.0" prefWidth="26.0" text="1" textFill="WHITE">
+                  <FontAwesomeIcon fill="#9c0000" iconName="COMMENT" layoutX="819.0" layoutY="72.0" size="2.3em" wrappingWidth="21.0" />
+                  <Label fx:id="la_messageCnt" alignment="CENTER" layoutX="820.0" layoutY="51.0" prefHeight="21.0" prefWidth="26.0" text="1" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
                   </Label>
+                  <JFXButton fx:id="btn_msg" layoutX="788.0" layoutY="38.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" " />
                   <Line endX="1024.0" endY="175.0" startY="175.0" stroke="#aeaeae" />
                   <JFXButton layoutX="112.0" layoutY="19.0" maxHeight="23.0" onAction="#buyTicket" prefHeight="23.0" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE">
                      <graphic>
@@ -260,7 +257,7 @@
                                     <ImageView fx:id="tab1" fitHeight="398.0" fitWidth="398.0" opacity="0.8" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
-                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                          <JFXButton fx:id="btn_rec1" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
                                     <VBox fx:id="editorBox1" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
@@ -274,12 +271,15 @@
                                                             <Insets right="5.0" top="2.0" />
                                                          </HBox.margin>
                                                       </FontAwesomeIcon>
-                                                      <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
+                                                      <VBox alignment="CENTER_LEFT" maxHeight="80.0" minHeight="80.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb1" text="당신의 내적 그루브와 감" textFill="WHITE">
                                                                <font>
                                                                   <Font size="24.0" />
                                                                </font>
+                                                               <VBox.margin>
+                                                                  <Insets />
+                                                               </VBox.margin>
                                                             </Label>
                                                             <Label fx:id="lbb2" text="성을 자극할 음악들" textFill="WHITE">
                                                                <font>
@@ -288,7 +288,7 @@
                                                             </Label>
                                                          </children>
                                                          <HBox.margin>
-                                                            <Insets left="5.0" top="20.0" />
+                                                            <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </VBox>
                                                    </children>
@@ -330,7 +330,7 @@
                                     <ImageView fx:id="tab2" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
-                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                          <JFXButton fx:id="btn_rec2" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
                                     <VBox fx:id="editorBox11" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
@@ -341,7 +341,7 @@
                                                    <children>
                                                       <FontAwesomeIcon fill="WHITE" iconName="BED" size="60">
                                                          <HBox.margin>
-                                                            <Insets bottom="10.0" right="10.0" top="20.0" />
+                                                            <Insets bottom="10.0" right="10.0" top="10.0" />
                                                          </HBox.margin>
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
@@ -358,7 +358,7 @@
                                                             </Label>
                                                          </children>
                                                          <HBox.margin>
-                                                            <Insets left="5.0" top="20.0" />
+                                                            <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </VBox>
                                                    </children>
@@ -400,7 +400,7 @@
                                     <ImageView fx:id="tab3" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
-                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                          <JFXButton fx:id="btn_rec3" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
                                     <VBox fx:id="editorBox12" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
@@ -411,7 +411,7 @@
                                                    <children>
                                                       <FontAwesomeIcon fill="WHITE" iconName="CAR" size="52">
                                                          <HBox.margin>
-                                                            <Insets right="10.0" top="20.0" />
+                                                            <Insets right="10.0" top="10.0" />
                                                          </HBox.margin>
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
@@ -428,7 +428,7 @@
                                                             </Label>
                                                          </children>
                                                          <HBox.margin>
-                                                            <Insets left="5.0" top="20.0" />
+                                                            <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </VBox>
                                                    </children>
@@ -470,7 +470,7 @@
                                     <ImageView fx:id="tab4" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
-                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                          <JFXButton fx:id="btn_rec4" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
                                     <VBox fx:id="editorBox13" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
@@ -481,7 +481,7 @@
                                                    <children>
                                                       <FontAwesomeIcon fill="WHITE" iconName="REDDIT" size="54">
                                                          <HBox.margin>
-                                                            <Insets right="5.0" top="6.0" />
+                                                            <Insets bottom="5.0" right="5.0" />
                                                          </HBox.margin>
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
@@ -498,7 +498,7 @@
                                                             </Label>
                                                          </children>
                                                          <HBox.margin>
-                                                            <Insets left="5.0" top="20.0" />
+                                                            <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </VBox>
                                                    </children>
@@ -540,7 +540,7 @@
                                     <ImageView fx:id="tab5" fitHeight="398.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
-                                          <JFXButton minHeight="398.0" minWidth="398.0" text=" " />
+                                          <JFXButton fx:id="btn_rec5" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
                                     <VBox fx:id="editorBox14" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
@@ -551,7 +551,7 @@
                                                    <children>
                                                       <FontAwesomeIcon fill="WHITE" iconName="ANGELLIST" size="60">
                                                          <HBox.margin>
-                                                            <Insets right="10.0" top="20.0" />
+                                                            <Insets right="10.0" top="10.0" />
                                                          </HBox.margin>
                                                       </FontAwesomeIcon>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
@@ -568,7 +568,7 @@
                                                             </Label>
                                                          </children>
                                                          <HBox.margin>
-                                                            <Insets left="5.0" top="20.0" />
+                                                            <Insets left="5.0" />
                                                          </HBox.margin>
                                                       </VBox>
                                                    </children>

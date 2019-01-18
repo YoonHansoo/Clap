@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -90,7 +91,7 @@ public class MusicMainController implements Initializable {
 	static int current_index;
 
 	@FXML
-	public JFXButton btn_login;
+	public JFXButton btn_login, btn_rec1, btn_rec2, btn_rec3, btn_rec4, btn_rec5; // 추천 앨범의 버튼
 
 	@FXML
 	public JFXButton btn_goforward;
@@ -262,6 +263,26 @@ public class MusicMainController implements Initializable {
 		tab5.setImage(tab_img[4]);
 		
 		ArrayList<String> titleList = cut_title(recommendList);
+		lbb1.setPadding(new Insets(0, 0, 0, 0));		
+		lbb3.setPadding(new Insets(0, 0, 0, 0));		
+		lbb5.setPadding(new Insets(0, 0, 0, 0));		
+		lbb7.setPadding(new Insets(0, 0, 0, 0));		
+		lbb9.setPadding(new Insets(0, 0, 0, 0));		
+		if(recommendList.get(0).getRcm_alb_name().length() < 13) {
+			lbb1.setPadding(new Insets(40, 0, 0, 0));
+		}
+		if(recommendList.get(1).getRcm_alb_name().length() < 13) {
+			lbb3.setPadding(new Insets(40, 0, 0, 0));
+		}
+		if(recommendList.get(2).getRcm_alb_name().length() < 13) {
+			lbb5.setPadding(new Insets(40, 0, 0, 0));
+		}
+		if(recommendList.get(3).getRcm_alb_name().length() < 13) {
+			lbb7.setPadding(new Insets(40, 0, 0, 0));
+		}
+		if(recommendList.get(4).getRcm_alb_name().length() < 13) {
+			lbb9.setPadding(new Insets(40, 0, 0, 0));
+		}
 		lbb1.setText(titleList.get(0));
 		lbb2.setText(titleList.get(1));
 		lbb3.setText(titleList.get(2));
@@ -291,7 +312,8 @@ public class MusicMainController implements Initializable {
 			likeCnt5 = irs.selectAlbumLikeCnt(recommendList.get(2).getRcm_alb_no());
 			likeCnt7 = irs.selectAlbumLikeCnt(recommendList.get(3).getRcm_alb_no());
 			likeCnt9 = irs.selectAlbumLikeCnt(recommendList.get(4).getRcm_alb_no());
-//			cntMusic10 = **숫자 가져오기
+			cntMusic2 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
+					recommendList.get(0).getRcm_alb_no())).size();
 			
 		} catch (RemoteException e3) {
 			e3.printStackTrace();
@@ -307,6 +329,10 @@ public class MusicMainController implements Initializable {
 //		System.out.println("해당 추천앨범 곡 개수 :"+musicList.size());
 //
 //		lable_cntMusic.setText(musicList.size()+"곡");
+		
+		btn_rec1.setOnAction(e->{
+			System.out.println("추천앨범1");
+		});
 		
 
 		
@@ -552,7 +578,7 @@ public class MusicMainController implements Initializable {
 				str2 = "";
 			}else {
 				str1 = list.get(i).getRcm_alb_name().substring(0, 12);
-				str2 = list.get(i).getRcm_alb_name().substring(13, list.get(i).getRcm_alb_name().length());				
+				str2 = list.get(i).getRcm_alb_name().substring(12, list.get(i).getRcm_alb_name().length());				
 			}
 			titleList.add(str1);
 			titleList.add(str2);
@@ -1287,7 +1313,7 @@ public class MusicMainController implements Initializable {
 						System.out.println("인스턴스용 isInterrupted()");
 						break;
 					}
-					Thread.sleep(2000);
+					Thread.sleep(2500);
 					current_index = tabpane.getSelectionModel().getSelectedIndex();
 					if (current_index == 4) {
 						tabpane.getSelectionModel().select(0);
