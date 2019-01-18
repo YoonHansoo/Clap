@@ -3,6 +3,7 @@ package kr.or.ddit.clap.dao.login;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -86,6 +87,28 @@ public class LoginDaoImpl implements ILoginDao{
 		}
 		return list;
 		
+	}
+
+	@Override
+	public List<String> gameMember(String mem_id) {
+		List<String> list = new ArrayList<String>();
+		try {
+			list = smc.queryForList("login.gamemember", mem_id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public int gameUpdate(Map map) {
+		int cnt = 0;
+		try {
+			cnt = smc.update("login.gameupdate", map);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cnt;
 	}
 
 

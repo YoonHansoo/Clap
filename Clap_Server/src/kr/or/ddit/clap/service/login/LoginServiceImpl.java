@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.dao.login.LoginDaoImpl;
 import kr.or.ddit.clap.vo.member.MemberVO;
@@ -76,6 +77,16 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 	@Override
 	public List<String> selecthotkeyword() throws RemoteException {
 		return loginDao.selecthotkeyword();
+	}
+
+	@Override
+	public List<String> gameMember(String mem_id) throws RemoteException {
+		return loginDao.gameMember(mem_id);
+	}
+
+	@Override
+	public int gameUpdate(Map map) throws RemoteException {
+		return loginDao.gameUpdate(map);
 	}
 
 

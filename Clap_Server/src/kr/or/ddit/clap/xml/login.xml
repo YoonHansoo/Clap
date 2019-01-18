@@ -34,6 +34,17 @@
 			where mem_id = #mem_id#
 			and mem_email = #mem_email#
 	</select>
+	
+	<select id="gamemember" resultClass="String" parameterClass="String">
+	 		select mem_game from member
+ 			 where mem_id = #mem_id#
+	</select>
+	
+	<update id="gameupdate" parameterClass="java.util.HashMap">
+		update member set mem_game = #mem_game#
+                    where mem_id = #mem_id#
+	</update>
+	
 </sqlMap>			
 
 

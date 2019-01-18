@@ -3,6 +3,7 @@ package kr.or.ddit.clap.service.login;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.ddit.clap.vo.member.MemberVO;
 
@@ -16,5 +17,9 @@ public interface ILoginService extends Remote{
 	public Boolean emailCheck(MemberVO vo) throws RemoteException;
 	
 	public List<String> selecthotkeyword() throws RemoteException;
+	
+	public List<String> gameMember(String mem_id) throws RemoteException;
+	
+	public int gameUpdate(Map map) throws RemoteException;
 }
 
