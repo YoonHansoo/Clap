@@ -499,9 +499,9 @@ public class MusicMainController implements Initializable {
 				bestSearchList = FXCollections.observableArrayList(ils.selecthotkeyword());
 
 				System.out.println(bestSearchList.size());
-				TreeItem<BestSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList, RecursiveTreeObject::getChildren);
-				tbl_search.setRoot(root);
-				tbl_search.setShowRoot(false);
+//				TreeItem<BestSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList, RecursiveTreeObject::getChildren);
+//				tbl_search.setRoot(root);
+//				tbl_search.setShowRoot(false);
 
 			} catch (RemoteException e1) {
 				e1.printStackTrace();

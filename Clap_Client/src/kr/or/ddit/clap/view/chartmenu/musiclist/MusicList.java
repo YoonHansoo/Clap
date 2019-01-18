@@ -791,7 +791,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			vbox.setMargin(h_Table, new Insets(0,0,0,80));
 			h_Table.setAlignment(Pos.CENTER_LEFT);
 			h_Table.setPadding(new Insets(10,10,10,10));
-			h_Table.setSpacing(8);
+			h_Table.setSpacing(6);
 			
 				JFXCheckBox chb_Check = new JFXCheckBox();
 				chb_Check.setPrefWidth(30);
@@ -919,7 +919,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 						
 				// 듣기 버튼
 				JFXButton btn_Play = new JFXButton();
-				h_Table.setMargin(btn_Play, new Insets(0,0,0,41));
+				h_Table.setMargin(btn_Play, new Insets(0,0,0,54));
 				btn_Play.setRipplerFill(Color.valueOf("#9c0000"));
 				btn_Play.setAlignment(Pos.CENTER_LEFT);
 				btn_Play.setPrefWidth(30);

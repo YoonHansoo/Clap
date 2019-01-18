@@ -35,18 +35,6 @@
     
 }
 
-.button{
-    -fx-font-family: "-윤고딕350";
-}
-.button:clicked{
-    -fx-font-family: "-윤고딕350";
-}
-
-.mainlabel{
-    -fx-font-family: "-윤고딕350";
-    
-}
-
 .tree-table-row-cell:selected .tree-table-cell .label{
     -fx-text-fill: white;
 }

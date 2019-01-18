@@ -12,11 +12,11 @@
 
 <StackPane fx:id="stackpane" prefWidth="1022.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.chartmenu.period.PeriodController">
    <children>
-      <VBox fx:id="mainBox">
+      <VBox fx:id="mainBox" spacing="9.0">
          <children>
             <HBox alignment="CENTER_LEFT" spacing="5.0">
                <padding>
-                  <Insets left="30.0" />
+                  <Insets left="45.0" />
                </padding>
                <children>
                   <JFXButton fx:id="btn_Interior" onAction="#interiorChart" prefWidth="50.0" ripplerFill="#9c0000" text="국내">
@@ -24,12 +24,12 @@
                         <Insets left="45.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="-윤고딕330" size="12.0" />
+                        <Font name="-윤고딕330" size="15.0" />
                      </font>
                   </JFXButton>
                   <JFXButton fx:id="btn_Foreign" onAction="#foreignChart" prefWidth="50.0" ripplerFill="#9c0000" text="국외">
                      <font>
-                        <Font name="-윤고딕330" size="12.0" />
+                        <Font name="-윤고딕330" size="15.0" />
                      </font>
                   </JFXButton>
                   <Label fx:id="la_Date" text="Label">
@@ -37,7 +37,7 @@
                         <Font name="-윤고딕350" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="240.0" />
+                        <Insets left="230.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -53,7 +53,7 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="-윤고딕340" size="12.0" />
+                        <Font name="-윤고딕330" size="15.0" />
                      </font>
                   </JFXButton>
                   <JFXButton onAction="#btnMainAdd" ripplerFill="#9c0000" text="추가">
@@ -61,7 +61,7 @@
                         <FontAwesomeIcon iconName="PLUS" size="20" />
                      </graphic>
                      <font>
-                        <Font name="-윤고딕330" size="12.0" />
+                        <Font name="-윤고딕330" size="15.0" />
                      </font>
                   </JFXButton>
                   <JFXButton onAction="#btnMainPut" ripplerFill="#9c0000" text="담기">
@@ -69,7 +69,7 @@
                         <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
                      </graphic>
                      <font>
-                        <Font name="-윤고딕330" size="12.0" />
+                        <Font name="-윤고딕330" size="15.0" />
                      </font>
                   </JFXButton>
                </children>
@@ -84,7 +84,7 @@
                <children>
                   <Label text="순위">
                      <font>
-                        <Font name="-윤고딕320" size="12.0" />
+                        <Font name="-윤고딕320" size="15.0" />
                      </font>
                      <HBox.margin>
                         <Insets left="70.0" />
@@ -92,7 +92,7 @@
                   </Label>
                   <Label text="곡정보">
                      <font>
-                        <Font name="-윤고딕320" size="12.0" />
+                        <Font name="-윤고딕320" size="15.0" />
                      </font>
                      <padding>
                         <Insets left="65.0" />
@@ -100,34 +100,34 @@
                   </Label>
                   <Label text="듣기">
                      <font>
-                        <Font name="-윤고딕320" size="12.0" />
+                        <Font name="-윤고딕320" size="15.0" />
                      </font>
                      <padding>
-                        <Insets left="300.0" />
+                        <Insets left="290.0" />
                      </padding>
                   </Label>
                   <Label text="추가">
                      <font>
-                        <Font name="-윤고딕320" size="12.0" />
+                        <Font name="-윤고딕320" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="0.0" />
                      </HBox.margin>
                   </Label>
                   <Label text="담기">
                      <font>
-                        <Font name="-윤고딕320" size="12.0" />
+                        <Font name="-윤고딕320" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
                   <Label text="뮤비">
                      <font>
-                        <Font name="-윤고딕320" size="12.0" />
+                        <Font name="-윤고딕320" size="15.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="10.0" />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </Label>
                </children>
@@ -135,7 +135,7 @@
                   <Insets left="60.0" />
                </padding>
                <VBox.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="0.0" />
                </VBox.margin>
             </HBox>
          </children>
