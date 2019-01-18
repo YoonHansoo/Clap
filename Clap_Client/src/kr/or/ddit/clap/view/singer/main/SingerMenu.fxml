@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" minHeight="448.0" prefWidth="1024.0" stylesheets="@../../../../../../../SingerMenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMenuController">
+<AnchorPane fx:id="main" stylesheets="@../../../../../../../onlyPaging.css" minHeight="448.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMenuController">
    <children>
       <VBox layoutY="80.0" prefHeight="5.0" prefWidth="1024.0" style="-fx-background-color: white;" />
       <VBox minHeight="448.0" prefWidth="1024.0" spacing="10.0">
@@ -60,7 +60,7 @@
             </JFXTabPane>
          </children>
       </VBox>
-      <VBox fx:id="box" layoutX="140.0" layoutY="90.0" prefHeight="768.0" prefWidth="773.0" visible="false">
+      <VBox fx:id="box" layoutX="138.0" layoutY="107.0" prefHeight="768.0" prefWidth="773.0" visible="false">
          <children>
             <Label fx:id="label_albumName1" prefHeight="41.0" prefWidth="771.0" text="앨범 명">
                <font>
@@ -188,12 +188,12 @@
          </children>
       </VBox>
       <Line fx:id="line_intro" endX="625.0" layoutX="231.0" layoutY="700.0" startX="-92.0" stroke="#9c0000" visible="false" />
-      <Label fx:id="lb_intro" layoutX="140.0" layoutY="705.0" prefHeight="41.0" prefWidth="214.0" text="앨범 소개" visible="false">
+      <Label fx:id="lb_intro" layoutX="140.0" layoutY="705.0" prefHeight="41.0" prefWidth="304.0" text="앨범 소개" visible="false">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="138.0" layoutY="750.0" prefHeight="296.0" prefWidth="718.0" text=" 앨범 소개" visible="false" wrapText="true" />
+      <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="138.0" layoutY="750.0" prefHeight="296.0" prefWidth="718.0" style="-fx-border-color: #090948;" text=" 앨범 소개" visible="false" wrapText="true" />
       <StackPane fx:id="stackpane" layoutX="50.0" layoutY="405.0" visible="false">
          <children>
             <VBox fx:id="mainBox">
@@ -316,7 +316,7 @@
             </VBox>
          </children>
       </StackPane>
-      <VBox fx:id="musicBox" layoutX="140.0" layoutY="90.0" minHeight="768.0" minWidth="773.0" prefHeight="200.0" prefWidth="100.0" visible="false">
+      <VBox fx:id="musicBox" layoutX="140.0" layoutY="90.0" minHeight="735.0" minWidth="773.0" prefHeight="1055.0" prefWidth="773.0">
          <children>
             <Label fx:id="label_musicTitle" prefHeight="41.0" prefWidth="718.0" text="곡">
                <font>
@@ -511,10 +511,15 @@
                </font>
             </Label>
             <JFXTextArea fx:id="txt_lyrics" prefHeight="269.0" prefWidth="728.0" />
+            <VBox fx:id="reply_vbox2" prefHeight="308.0" prefWidth="733.0">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin></VBox>
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
+      <VBox fx:id="reply_vbox1" layoutX="139.0" layoutY="1055.0" prefHeight="200.0" prefWidth="704.0" />
    </children>
 </AnchorPane>

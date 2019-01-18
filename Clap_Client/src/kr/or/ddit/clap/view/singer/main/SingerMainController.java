@@ -342,10 +342,10 @@ public class SingerMainController implements Initializable {
 	// 페이징 처리
 
 	private void pageing1(ObservableList<Map<String, String>> list) {
-		
+
 		if (list.size() == 0)
 			return;
-	
+
 		int totalPage = (list.size() / itemsForPage) + (list.size() % itemsForPage > 0 ? 1 : 0);
 
 		p_page1 = new Pagination(totalPage, 0);
@@ -366,11 +366,12 @@ public class SingerMainController implements Initializable {
 		VBox temp_vbox = new VBox();
 
 		int size = Math.min(page + itemsForPage, list.size());
-		for (int i =page; i < size; i++) {
+		for (int i = page; i < size; i++) {
 			HBox hbox = new HBox();
 			hbox.setPrefWidth(731);
 			hbox.setPrefHeight(73);
-			reply_vbox.setMargin(hbox, new Insets(20, 0, 0, 0));
+
+			reply_vbox.setMargin(hbox, new Insets(15, 0, 0, 0));
 			System.out.println(i + "번 째 for문");
 
 			ImageView imgView = new ImageView();

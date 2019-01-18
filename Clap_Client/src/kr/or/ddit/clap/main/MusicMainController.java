@@ -1365,7 +1365,6 @@ public class MusicMainController implements Initializable {
 				}
 				arr_thread[0] = this;
 			} catch (Exception e) {
-				e.printStackTrace();
 			}
 			System.out.println("자원 정리 중...");
 			System.out.println("실행종료.");

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="singerMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMainController">
+<AnchorPane fx:id="singerMain"  maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMainController">
    <children>
       <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="697.0" text="가수이름">
          <font>
@@ -151,7 +151,7 @@
             </VBox>
          </children>
       </HBox>
-      <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
+      <Line endX="637.0" endY="-3.0517578125E-5" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
       <JFXButton layoutX="70.0" layoutY="288.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
 <!--       <JFXButton layoutX="82.0" layoutY="278.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE"> -->
          <graphic>
@@ -161,8 +161,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <Line fx:id="line_intro" endX="625.0" layoutX="120.0" layoutY="706.0" startX="-92.0" stroke="#9c0000" />
-      <Label fx:id="lb_intro" layoutX="26.0" layoutY="711.0" prefHeight="41.0" prefWidth="214.0" text="아티스트 소개">
+      <Label fx:id="lb_intro" layoutX="16.0" layoutY="715.0" prefHeight="41.0" prefWidth="214.0" text="아티스트 소개">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -290,7 +289,8 @@
             </VBox>
          </children>
       </StackPane>
-      <VBox fx:id="reply_vbox" layoutX="28.0" layoutY="1058.0" prefHeight="800.0" prefWidth="718.0" />
+      <VBox fx:id="reply_vbox" layoutX="14.0" layoutY="1078.0" prefHeight="800.0" prefWidth="718.0" />
+      <Line fx:id="line_intro" endX="637.0" endY="-3.0517578125E-5" layoutX="120.0" layoutY="706.0" startX="-92.0" stroke="#9c0000" />
 <!--       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" /> -->
    </children>
 </AnchorPane>
