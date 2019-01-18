@@ -1114,38 +1114,39 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 				});
 				
 				
+				Label label_indate = new Label();
+				String date = list.get(i*2).get("ALB_SALEDATE").toString().substring(0,10);
+				label_indate.setText(date);
+				label_indate.setFont(Font.font("-윤고딕310", 15));
+				
 				HBox h_albumDetail = new HBox();
+				h_albumDetail.setAlignment(Pos.CENTER_LEFT);
 				h_albumDetail.setMaxWidth(200);
 				h_albumDetail.setSpacing(10);
 				
-					Label label_indate = new Label();
-					String date = list.get(i*2).get("ALB_SALEDATE").toString().substring(0,10);
-					label_indate.setText(date);
-					label_indate.setFont(Font.font("-윤고딕310", 15));
-					
 					Label label_musCount = new Label();
 					label_musCount.setText(list.get(i*2).get("MUS_COUNT").toString() + "곡");
 					label_musCount.setFont(Font.font("-윤고딕310", 15));
 				
 					
-				// 추가 버튼
-				JFXButton btn_Add = new JFXButton();
-				btn_Add.setRipplerFill(Color.valueOf("#9c0000"));
-				btn_Add.setAlignment(Pos.CENTER_LEFT);
-				btn_Add.setPrefWidth(30);
-				btn_Add.setPrefHeight(30);
-				btn_Add.setAccessibleText(list.get(i*2).get("ALB_NO").toString());
+					// 추가 버튼
+					JFXButton btn_Add = new JFXButton();
+					btn_Add.setRipplerFill(Color.valueOf("#9c0000"));
+					btn_Add.setAlignment(Pos.CENTER_LEFT);
+					btn_Add.setPrefWidth(20);
+					btn_Add.setPrefHeight(20);
+					btn_Add.setAccessibleText(list.get(i*2).get("ALB_NO").toString());
 					
 					// 추가 버튼
 					FontAwesomeIcon icon_Add = new FontAwesomeIcon();
 					icon_Add.setIconName("PLUS");
 					icon_Add.setFill(Color.valueOf("#9c0000"));
-					icon_Add.setSize("30");
+					icon_Add.setSize("20");
 					btn_Add.setGraphic(icon_Add);
 					btnAddList.add(btn_Add);
 					
-					h_albumDetail.getChildren().addAll(label_indate, label_musCount);
-					v_album.getChildren().addAll(label_albumName, label_singerName, h_albumDetail, btn_Add);	
+					h_albumDetail.getChildren().addAll(label_musCount,btn_Add);
+					v_album.getChildren().addAll(label_albumName, label_singerName, label_indate, h_albumDetail);	
 				hbox.getChildren().addAll(iv_Album, v_album);
 				
 				if (i*2+1 < list.size()) {
@@ -1230,14 +1231,17 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 							      }
 						});
 						
-						HBox h_albumDetail2 = new HBox();
-						h_albumDetail2.setMaxWidth(200);
-						h_albumDetail2.setSpacing(10);
 						
-							Label label_indate2 = new Label();
-							String date2 = list.get(i*2+1).get("ALB_SALEDATE").toString().substring(0,10);
-							label_indate2.setText(date);
-							label_indate2.setFont(Font.font("-윤고딕310", 15));
+						
+						Label label_indate2 = new Label();
+						String date2 = list.get(i*2+1).get("ALB_SALEDATE").toString().substring(0,10);
+						label_indate2.setText(date);
+						label_indate2.setFont(Font.font("-윤고딕310", 15));
+							
+							HBox h_albumDetail2 = new HBox();
+							h_albumDetail2.setAlignment(Pos.CENTER_LEFT);
+							h_albumDetail2.setMaxWidth(200);
+							h_albumDetail2.setSpacing(10);
 							
 							Label label_musCount2 = new Label();
 							label_musCount2.setText(list.get(i*2+1).get("MUS_COUNT").toString() + "곡");
@@ -1248,19 +1252,19 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 							JFXButton btn_Add2 = new JFXButton();
 							btn_Add2.setRipplerFill(Color.valueOf("#9c0000"));
 							btn_Add2.setAlignment(Pos.CENTER_LEFT);
-							btn_Add2.setPrefWidth(30);
-							btn_Add2.setPrefHeight(30);
+							btn_Add2.setPrefWidth(20);
+							btn_Add2.setPrefHeight(20);
 							btn_Add2.setAccessibleText(list.get(i*2+1).get("ALB_NO").toString());
 								
 								// 추가 버튼
 								FontAwesomeIcon icon_Add2 = new FontAwesomeIcon();
 								icon_Add2.setIconName("PLUS");
 								icon_Add2.setFill(Color.valueOf("#9c0000"));
-								icon_Add2.setSize("30");
+								icon_Add2.setSize("20");
 								btn_Add2.setGraphic(icon_Add2);
 								btnAddList.add(btn_Add2);
-						h_albumDetail2.getChildren().addAll(label_indate2, label_musCount2);
-						v_album2.getChildren().addAll(label_albumName2, label_singerName2, h_albumDetail2, btn_Add2);
+						h_albumDetail2.getChildren().addAll(label_musCount2, btn_Add2);
+						v_album2.getChildren().addAll(label_albumName2, label_singerName2, label_indate2, h_albumDetail2);
 						hbox.getChildren().addAll(iv_Album2, v_album2);
 					}
 				
