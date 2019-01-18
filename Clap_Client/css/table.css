@@ -54,9 +54,6 @@
     -fx-font-family: "-윤고딕330";
 }
 
-.button{
-	 -fx-font-family: "-윤고딕330";
-}
 
 .pagination .toggle-button {
 	
@@ -73,4 +70,24 @@
 .pagination .button{
 	-fx-padding: 8 10 8 10px;
 	-fx-background-color:white;
+}
+
+#header_font {
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 35;
+}
+
+#left_label {
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 20;
+}
+
+#button_ins {
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 14;
+}
+
+#label_name {
+	-fx-font-family: "-윤고딕350";
+	-fx-font-size: 16;
 }

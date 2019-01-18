@@ -36,7 +36,10 @@
 }
 
 .button{
-	 -fx-font-family: "-윤고딕330";
+	 -fx-font-family: "-윤고딕350";
+}
+.button:clicked{
+	 -fx-font-family: "-윤고딕350";
 }
 
 .mainlabel{

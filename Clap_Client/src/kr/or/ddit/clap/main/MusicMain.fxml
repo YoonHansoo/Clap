@@ -138,9 +138,9 @@
                         </Menu>
                      </menus>
                   </MenuBar>
-                  <FontAwesomeIcon iconName="SEARCH" layoutX="711.0" layoutY="93.0" size="1.5em" />
-                  <JFXButton layoutX="703.0" layoutY="70.0" minHeight="35.0" minWidth="35.0" text=" " />
-                  <JFXButton layoutX="210.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE">
+                  <FontAwesomeIcon iconName="SEARCH" layoutX="711.0" layoutY="93.0" size="1.5em" AnchorPane.leftAnchor="697.0" />
+                  <JFXButton layoutX="703.0" layoutY="70.0" minHeight="35.0" minWidth="35.0" text=" " AnchorPane.leftAnchor="697.0" />
+                  <JFXButton layoutX="847.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE" AnchorPane.leftAnchor="847.0" AnchorPane.rightAnchor="71.0">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
                            <children>
@@ -170,7 +170,7 @@
                   </Label>
                   <JFXButton fx:id="btn_msg" layoutX="788.0" layoutY="38.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" " />
                   <Line endX="1024.0" endY="175.0" startY="175.0" stroke="#aeaeae" />
-                  <JFXButton layoutX="112.0" layoutY="19.0" maxHeight="23.0" onAction="#buyTicket" prefHeight="23.0" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE">
+                  <JFXButton layoutX="745.0" layoutY="19.0" maxHeight="23.0" onAction="#buyTicket" prefHeight="23.0" style="-fx-background-color: #090948;" text="이용권 구매" textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
                            <children>
@@ -800,57 +800,56 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="footer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Label layoutX="28.0" layoutY="22.0" text="회사소개" AnchorPane.leftAnchor="28.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
                   <Label layoutX="108.0" layoutY="22.0" text="이용약관" AnchorPane.rightAnchor="841.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
                   <Label layoutX="188.0" layoutY="22.0" text="개인정보처리방침" AnchorPane.leftAnchor="188.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
                   <Label layoutX="324.0" layoutY="22.0" text="청소년보호정책">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
                   <Label layoutX="447.0" layoutY="22.0" text="이메일주소무단수집거부" AnchorPane.topAnchor="22.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
                   <Label layoutX="626.0" layoutY="22.0" text="서비스 이용문의" AnchorPane.rightAnchor="276.0" AnchorPane.topAnchor="22.0">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="13.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="image_logo" fitHeight="45.0" fitWidth="133.0" layoutX="28.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="61.0" />
-                  <Label layoutX="189.0" layoutY="61.0" text="대표이상 윤한수" AnchorPane.leftAnchor="188.0" AnchorPane.topAnchor="61.0" />
+                  <ImageView fx:id="image_logo" fitHeight="45.0" fitWidth="120.0" layoutX="29.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="61.0" />
+                  <Label layoutX="161.0" layoutY="58.0" text="대표이상 윤한수 | 진민규 | 박경훈 | 김현지 | 이한화" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="58.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="196.0" layoutY="20.0" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
-                  <Label layoutX="298.0" layoutY="61.0" text="대전광역시 중구 중앙로 76 영민빌딩 2" AnchorPane.topAnchor="61.0" />
-                  <Label layoutX="528.0" layoutY="61.0" text="사업자등록번호 314-82-04354" AnchorPane.leftAnchor="528.0" AnchorPane.topAnchor="61.0" />
-                  <Label layoutX="727.0" layoutY="61.0" text="통신판매일신고 2013-서울강남-01302" AnchorPane.topAnchor="61.0" />
-                  <Label layoutX="189.0" layoutY="91.0" text="개인정보관리책임자 박경훈 본부장" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="188.0" />
-                  <Label layoutX="391.0" layoutY="91.0" text="문의전화 1577-5337" AnchorPane.bottomAnchor="124.0" />
-                  <Label layoutX="536.0" layoutY="91.0" text="COPYRIGHTⓒGENIE MUSIC CORP ALL RIGHTS RESERVED." AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="528.0" />
-                  <ImageView fx:id="image_footer" fitHeight="89.0" fitWidth="688.0" layoutX="28.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="289.0" />
+                  <Label layoutX="463.0" layoutY="58.0" text="대전광역시 중구 중앙로 76 영민빌딩 2" AnchorPane.topAnchor="58.0" />
+                  <Label layoutX="328.0" layoutY="75.0" text="사업자등록번호 314-82-04354" AnchorPane.leftAnchor="328.0" AnchorPane.topAnchor="75.0" />
+                  <Label layoutX="527.0" layoutY="75.0" text="통신판매일신고 2013-서울강남-01302" AnchorPane.topAnchor="75.0" />
+                  <Label layoutX="161.0" layoutY="75.0" text="개인정보관리책임자 본부장" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="75.0" />
+                  <Label layoutX="692.0" layoutY="56.0" text="문의전화 1577-5337" AnchorPane.bottomAnchor="156.0" AnchorPane.topAnchor="56.0" />
+                  <Label layoutX="161.0" layoutY="95.0" text="COPYRIGHTⓒGENIE MUSIC CORP ALL RIGHTS RESERVED." AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="161.0" />
+                  <ImageView fx:id="image_footer" fitHeight="89.0" fitWidth="790.0" layoutX="28.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="187.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="276.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="411.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="535.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="714.0" layoutY="19.5" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
-                  <Line endX="-100.0" endY="19.0" layoutX="386.0" layoutY="56.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.topAnchor="62.5" />
-                  <Line endX="-100.0" endY="19.0" layoutX="619.0" layoutY="56.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.rightAnchor="487.5" AnchorPane.topAnchor="62.5" />
-                  <Line endX="-100.0" endY="19.0" layoutX="816.0" layoutY="56.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.topAnchor="62.5" />
-                  <Line endX="-100.0" endY="19.0" layoutX="483.0" layoutY="86.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="124.5" />
-                  <Line endX="-100.0" endY="19.0" layoutX="617.0" layoutY="86.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="124.5" AnchorPane.rightAnchor="487.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="616.0" layoutY="70.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.topAnchor="76.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="783.0" layoutY="53.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.rightAnchor="321.5" AnchorPane.topAnchor="59.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="417.0" layoutY="70.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="140.5" AnchorPane.topAnchor="76.5" />
+                  <Line endX="-100.0" endY="19.0" layoutX="550.0" layoutY="53.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="157.5" AnchorPane.rightAnchor="554.5" AnchorPane.topAnchor="59.5" />
                </children>
             </AnchorPane>
          </children>

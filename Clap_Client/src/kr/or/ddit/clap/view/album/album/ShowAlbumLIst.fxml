@@ -14,87 +14,73 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="contents" stylesheets="@../../../../../../../table.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.album.album.ShowAlbumLIstController">
+<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../../../../../table.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.album.album.ShowAlbumLIstController">
    <children>																														 
-      <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="193.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;">
+      <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="189.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="25.0">
          <children>
-            <AnchorPane prefHeight="212.0" prefWidth="191.0">
+            <AnchorPane prefHeight="187.0" prefWidth="187.0">
                <children>
-                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imgeview" fitHeight="138.0" fitWidth="127.0" layoutX="32.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="25.0" />
                </children>
             </AnchorPane>
             <VBox prefHeight="85.0" prefWidth="191.0">
                <children>
                   <HBox prefHeight="21.0" prefWidth="191.0">
                      <children>
-                        <Label fx:id="session_id" prefHeight="15.0" prefWidth="48.0" text="관리자" textFill="WHITE">
-                           <font>
-                              <Font name="YDIYGO350" size="14.0" />
-                           </font>
+                        <Label id="label_name" fx:id="session_id" prefHeight="15.0" prefWidth="48.0" text="관리자" textFill="WHITE">
+                           
                            <HBox.margin>
-                              <Insets left="50.0" />
+                              <Insets left="75.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXButton style="-fx-background-color: #9c0000;" text="logout" textFill="WHITE">
-                           <font>
-                              <Font name="YDIYGO350" size="10.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </JFXButton>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MemManag" prefHeight="41.0" prefWidth="250.0" text="회원 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MemManag" prefHeight="41.0" prefWidth="250.0" text="회원 관리" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="-20.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#SingManag" prefHeight="41.0" prefWidth="260.0" text="가수 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#SingManag" prefHeight="41.0" prefWidth="260.0" text="가수 관리" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#AlbManag" prefHeight="41.0" prefWidth="271.0" text="앨범 관리 " textFill="#9c0000">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#AlbManag" prefHeight="41.0" prefWidth="271.0" text="앨범 관리 " textFill="#9c0000">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MusManag" prefHeight="41.0" prefWidth="296.0" text="곡 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MusManag" prefHeight="41.0" prefWidth="296.0" text="곡 관리" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Recommen" prefHeight="41.0" prefWidth="370.0" text="추천 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Recommen" prefHeight="41.0" prefWidth="370.0" text="추천 관리" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Event" prefHeight="41.0" prefWidth="320.0" text="Event 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Event" prefHeight="41.0" prefWidth="320.0" text="Event 관리" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Sales" prefHeight="41.0" prefWidth="303.0" text="매출 관리" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#Sales" prefHeight="41.0" prefWidth="303.0" text="매출 관리" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </Label>
          </children>
       </VBox>
       <AnchorPane fx:id="main" layoutX="234.0" layoutY="3.0" prefHeight="768.0" prefWidth="773.0">
          <children>
-            <Label layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="앨범 관리">
-               <font>
-                  <Font name="YDIYGO350" size="24.0" />
-               </font>
+            <Label id="header_font" layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="앨범 관리" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="11.0">
             </Label>
-            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="621.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_album" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="720.0">
+            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="96.0" prefHeight="594.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
+            <JFXTreeTableView fx:id="tbl_album" layoutX="23.0" layoutY="96.0" prefHeight="506.0" prefWidth="720.0" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="30.0">
                <columns>
                   <TreeTableColumn fx:id="col_albumImg" prefWidth="172.0" text="Image" />
                   <TreeTableColumn fx:id="col_albumName" prefWidth="162.0" text="앨범 명" />
@@ -104,15 +90,15 @@
                   <TreeTableColumn fx:id="col_albumNo" minWidth="0.0" prefWidth="0.0" text="앨범번호" visible="false" />
                </columns>
             </JFXTreeTableView>
-            <JFXComboBox fx:id="combo_search" layoutX="465.0" layoutY="636.0" promptText="앨범 명" />
-            <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="554.0" layoutY="636.0" unFocusColor="#090948" />
+            <JFXComboBox fx:id="combo_search" layoutX="465.0" layoutY="636.0" promptText="앨범 명" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="65.0" />
+            <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="554.0" layoutY="636.0" prefColumnCount="10" unFocusColor="#090948" AnchorPane.leftAnchor="590.0" AnchorPane.topAnchor="65.0" />
             <Line endX="614.0" layoutX="124.0" layoutY="92.0" startX="-100.0" stroke="#ffff8d" />
-            <JFXButton fx:id="btn_search" layoutX="680.0" layoutY="627.0" prefHeight="42.0" prefWidth="61.0" text=" ">
+            <JFXButton fx:id="btn_search" layoutX="680.0" layoutY="627.0" prefHeight="42.0" prefWidth="38.0" text=" " AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="57.0">
                <graphic>
                   <FontAwesomeIcon iconName="SEARCH" text="" />
                </graphic>
             </JFXButton>
-            <JFXButton layoutX="622.0" layoutY="687.0" onAction="#InsertAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+            <JFXButton id="button_ins" layoutX="622.0" layoutY="687.0" onAction="#InsertAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="675.0" />
          </children>
       </AnchorPane>
    </children>

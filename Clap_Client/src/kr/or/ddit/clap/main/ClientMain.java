@@ -41,7 +41,7 @@ public class ClientMain extends Application {
          ls.session = list.get(0);
       } catch (RemoteException e) {
          e.printStackTrace();
-      } catch (NotBoundException e) {
+      } catch (NotBoundException e) {	
          e.printStackTrace();
       }
       // 임시로그인 부분
