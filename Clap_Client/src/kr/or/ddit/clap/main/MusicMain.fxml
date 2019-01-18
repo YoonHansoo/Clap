@@ -29,20 +29,30 @@
          <children>
             <AnchorPane fx:id="menu" prefHeight="170.0" prefWidth="1005.0">
                <children>
-                  <JFXButton fx:id="btn_logout" layoutX="890.0" layoutY="133.0" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE" />
-                  <VBox layoutX="52.0" layoutY="86.0" prefHeight="73.0" prefWidth="170.0">
+                  <JFXButton fx:id="btn_logout" layoutX="890.0" layoutY="116.0" onAction="#logout" style="-fx-background-color: #090948;" text="로그아웃" textFill="WHITE" />
+                  <VBox layoutX="52.0" layoutY="69.0" prefHeight="73.0" prefWidth="170.0">
                      <children>
                         <ImageView fx:id="logo_imgView" fitHeight="73.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </VBox>
-                  <StackPane layoutX="52.0" layoutY="80.0" prefHeight="83.0" prefWidth="170.0">
+                  <StackPane layoutX="52.0" layoutY="63.0" prefHeight="83.0" prefWidth="170.0">
                      <children>
                         <JFXButton alignment="CENTER" onMouseClicked="#firstPage" prefHeight="83.0" prefWidth="170.0" text=" " />
                      </children>
                   </StackPane>
-                  <JFXButton fx:id="btn_join" layoutX="890.0" layoutY="133.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
-                  <JFXButton fx:id="btn_login" layoutX="836.0" layoutY="133.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
-                  <HBox fx:id="mem_menu" layoutX="788.0" layoutY="84.0" prefHeight="36.0" prefWidth="165.0">
+                  <JFXButton fx:id="btn_join" layoutX="890.0" layoutY="116.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
+                  <JFXButton fx:id="btn_login" layoutX="836.0" layoutY="116.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
+                  <JFXTextField fx:id="txt_search" layoutX="252.0" layoutY="74.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
+                     <focusColor>
+                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                           <stops>
+                              <Stop color="#e40377" />
+                              <Stop color="WHITE" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </focusColor>
+                  </JFXTextField>
+                  <HBox fx:id="mem_menu" layoutX="788.0" layoutY="67.0" prefHeight="36.0" prefWidth="165.0">
                      <children>
                         <HBox alignment="TOP_CENTER" minHeight="36.0" onMouseClicked="#mypage" prefHeight="41.0" prefWidth="180.0" spacing="5.0">
                            <children>
@@ -63,22 +73,12 @@
                         </HBox>
                      </children>
                   </HBox>
-                  <JFXTextField fx:id="txt_search" layoutX="230.0" layoutY="91.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="470.0" unFocusColor="#9c0000">
-                     <focusColor>
-                        <LinearGradient endX="1.0" endY="1.0" startX="1.0">
-                           <stops>
-                              <Stop color="#e40377" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </LinearGradient>
-                     </focusColor>
-                  </JFXTextField>
-                  <StackPane layoutX="788.0" layoutY="84.0" prefHeight="36.0" prefWidth="165.0">
+                  <StackPane layoutX="788.0" layoutY="67.0" prefHeight="36.0" prefWidth="165.0">
                      <children>
                         <JFXButton fx:id="btn_mem" onAction="#mypage" prefHeight="41.0" prefWidth="180.0" text=" " textFill="WHITE" />
                      </children>
                   </StackPane>
-                  <MenuBar fx:id="bar" layoutX="237.0" layoutY="133.0" style="-fx-background-color: #090948; -fx-color: #000;">
+                  <MenuBar fx:id="bar" layoutX="260.0" layoutY="116.0" style="-fx-background-color: #090948; -fx-color: #000;">
                      <menus>
                         <Menu mnemonicParsing="false" text="차트">
                            <items>
@@ -138,8 +138,8 @@
                         </Menu>
                      </menus>
                   </MenuBar>
-                  <FontAwesomeIcon iconName="SEARCH" layoutX="708.0" layoutY="112.0" size="1.5em" />
-                  <JFXButton layoutX="700.0" layoutY="89.0" minHeight="35.0" minWidth="35.0" text=" " />
+                  <FontAwesomeIcon iconName="SEARCH" layoutX="691.0" layoutY="93.0" size="1.5em" />
+                  <JFXButton layoutX="683.0" layoutY="70.0" minHeight="35.0" minWidth="35.0" text=" " />
                   <JFXButton layoutX="210.0" layoutY="19.0" maxHeight="23.0" onAction="#musicPlayer" prefHeight="23.0" style="-fx-background-color: #090948;" text=" MusicPlayer" textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
@@ -162,12 +162,12 @@
                         <FontAwesomeIcon fill="WHITE" iconName="ARROW_RIGHT" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="btn_msg" layoutX="790.0" layoutY="39.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" ">
+                  <JFXButton fx:id="btn_msg" layoutX="790.0" layoutY="22.0" onAction="#btn_message" prefHeight="48.0" prefWidth="93.0" text=" ">
                      <graphic>
                         <FontAwesomeIcon fill="#9c0000" iconName="COMMENT" size="2.3em" wrappingWidth="21.0" />
                      </graphic>
                   </JFXButton>
-                  <Label fx:id="la_messageCnt" alignment="CENTER" layoutX="822.0" layoutY="52.0" prefHeight="21.0" prefWidth="26.0" text="1" textFill="WHITE">
+                  <Label fx:id="la_messageCnt" alignment="CENTER" layoutX="822.0" layoutY="35.0" prefHeight="21.0" prefWidth="26.0" text="1" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO350" size="18.0" />
                      </font>
