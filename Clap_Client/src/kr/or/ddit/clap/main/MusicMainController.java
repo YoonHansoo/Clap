@@ -58,6 +58,7 @@ import kr.or.ddit.clap.view.member.mypage.MypageMyAlbController;
 import kr.or.ddit.clap.view.message.ShowMessageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
+import kr.or.ddit.clap.view.recommend.album.RecommendAlbumDetailController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
@@ -314,6 +315,14 @@ public class MusicMainController implements Initializable {
 			likeCnt9 = irs.selectAlbumLikeCnt(recommendList.get(4).getRcm_alb_no());
 			cntMusic2 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
 					recommendList.get(0).getRcm_alb_no())).size();
+			cntMusic4 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
+					recommendList.get(1).getRcm_alb_no())).size();
+			cntMusic6 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
+					recommendList.get(2).getRcm_alb_no())).size();
+			cntMusic8 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
+					recommendList.get(3).getRcm_alb_no())).size();
+			cntMusic10 = FXCollections.observableArrayList(irs.SelectRcmMusicList(
+					recommendList.get(4).getRcm_alb_no())).size();
 			
 		} catch (RemoteException e3) {
 			e3.printStackTrace();
@@ -323,6 +332,11 @@ public class MusicMainController implements Initializable {
 		lbbb5.setText(likeCnt5+"");
 		lbbb7.setText(likeCnt7+"");
 		lbbb9.setText(likeCnt9+"");
+		lbbb2.setText(cntMusic2+"곡");
+		lbbb4.setText(cntMusic4+"곡");
+		lbbb6.setText(cntMusic6+"곡");
+		lbbb8.setText(cntMusic8+"곡");
+		lbbb10.setText(cntMusic10+"곡");
 		
 //		//추천앨범no를 통해서 해당 추천앨법 곡을 가져오는 쿼리 -> ** 추가하기
 //		musicList = FXCollections.observableArrayList(irs.SelectRcmMusicList(rcmAlbNo));
@@ -332,6 +346,33 @@ public class MusicMainController implements Initializable {
 		
 		btn_rec1.setOnAction(e->{
 			System.out.println("추천앨범1");
+//			RecommendAlbumDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌
+//			FXMLLoader loader = new FXMLLoader(getClass().getResource("MainRecommend.fxml"));// init실행됨
+//			Parent recommendAlbumDetail;
+//
+//			try {
+//				recommendAlbumDetail = loader.load();
+//
+//				RecommendAlbumDetailController cotroller = loader.getController();
+//				cotroller.givePane(contents);
+//
+//				contents.getChildren().removeAll();
+//				contents.getChildren().setAll(recommendAlbumDetail);
+//			} catch (IOException e1) {
+//				e1.printStackTrace();
+//			}
+		});
+		btn_rec2.setOnAction(e->{
+			
+		});
+		btn_rec3.setOnAction(e->{
+			
+		});
+		btn_rec4.setOnAction(e->{
+			
+		});
+		btn_rec5.setOnAction(e->{
+			
 		});
 		
 

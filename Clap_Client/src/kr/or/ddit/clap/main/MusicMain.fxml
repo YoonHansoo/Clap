@@ -23,7 +23,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="1250.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -35,9 +35,9 @@
                         <ImageView fx:id="logo_imgView" fitHeight="73.0" fitWidth="170.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </VBox>
-                  <StackPane layoutX="52.0" layoutY="63.0" prefHeight="83.0" prefWidth="170.0">
+                  <StackPane layoutX="42.0" layoutY="56.0" prefHeight="97.0" prefWidth="190.0">
                      <children>
-                        <JFXButton alignment="CENTER" onMouseClicked="#firstPage" prefHeight="83.0" prefWidth="170.0" text=" " />
+                        <JFXButton alignment="CENTER" onMouseClicked="#firstPage" prefHeight="97.0" prefWidth="190.0" text=" " />
                      </children>
                   </StackPane>
                   <JFXButton fx:id="btn_join" layoutX="890.0" layoutY="116.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
@@ -302,16 +302,22 @@
                                              <children>
                                                 <FontAwesomeIcon fill="RED" iconName="HEART" size="25">
                                                    <HBox.margin>
-                                                      <Insets left="25.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb1" text="33" textFill="WHITE" />
+                                                <Label fx:id="lbbb1" text="33" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
-                                                      <Insets bottom="2.0" left="20.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb2" text="3곡" textFill="WHITE" />
+                                                <Label fx:id="lbbb2" text="3곡" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                              </children>
                                           </HBox>
                                        </children>
@@ -372,16 +378,22 @@
                                              <children>
                                                 <FontAwesomeIcon fill="RED" iconName="HEART" size="25">
                                                    <HBox.margin>
-                                                      <Insets left="25.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb3" text="33" textFill="WHITE" />
+                                                <Label fx:id="lbbb3" text="33" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
-                                                      <Insets bottom="2.0" left="20.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb4" text="3곡" textFill="WHITE" />
+                                                <Label fx:id="lbbb4" text="3곡" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                              </children>
                                           </HBox>
                                        </children>
@@ -442,16 +454,22 @@
                                              <children>
                                                 <FontAwesomeIcon fill="RED" iconName="HEART" size="25">
                                                    <HBox.margin>
-                                                      <Insets left="25.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb5" text="33" textFill="WHITE" />
+                                                <Label fx:id="lbbb5" text="33" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
-                                                      <Insets bottom="2.0" left="20.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb6" text="3곡" textFill="WHITE" />
+                                                <Label fx:id="lbbb6" text="3곡" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                              </children>
                                           </HBox>
                                        </children>
@@ -512,16 +530,22 @@
                                              <children>
                                                 <FontAwesomeIcon fill="RED" iconName="HEART" size="25">
                                                    <HBox.margin>
-                                                      <Insets left="25.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb7" text="33" textFill="WHITE" />
+                                                <Label fx:id="lbbb7" text="33" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
-                                                      <Insets bottom="2.0" left="20.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb8" text="3곡" textFill="WHITE" />
+                                                <Label fx:id="lbbb8" text="3곡" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                              </children>
                                           </HBox>
                                        </children>
@@ -582,17 +606,26 @@
                                              <children>
                                                 <FontAwesomeIcon fill="RED" iconName="HEART" size="25">
                                                    <HBox.margin>
-                                                      <Insets left="25.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb9" text="33" textFill="WHITE" />
+                                                <Label fx:id="lbbb9" text="33" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                                 <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="25">
                                                    <HBox.margin>
-                                                      <Insets bottom="2.0" left="20.0" />
+                                                      <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb10" text="3곡" textFill="WHITE" />
+                                                <Label fx:id="lbbb10" text="3곡" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets bottom="15.0" />
+                                                   </HBox.margin></Label>
                                              </children>
+                                             <VBox.margin>
+                                                <Insets />
+                                             </VBox.margin>
                                           </HBox>
                                        </children>
                                        <padding>
