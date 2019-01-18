@@ -225,6 +225,7 @@
 		where a.mem_id = b.mem_id
 		and
 		alb_no = #String#
+		order by a.alb_re_no desc
 	</select>
 
 <!-- 앨범댓글작성 -->

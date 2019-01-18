@@ -318,6 +318,7 @@
 		where a.mem_id = b.mem_id
 		and
 		MUS_NO = #String#
+		order by a.MUS_RE_NO desc
 	</select>
 
 <!-- 곡댓글작성 -->
