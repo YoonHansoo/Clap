@@ -158,7 +158,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <JFXButton fx:id="btn_emailCheck" onAction="#pwSearch" text="비밀번호 찾기">
+                        <JFXButton fx:id="btn_emailCheck" onAction="#pwSearch" text="비밀번호 찾기" visible="false">
                            <font>
                               <Font name="YDIYGO350" size="14.0" />
                            </font>
