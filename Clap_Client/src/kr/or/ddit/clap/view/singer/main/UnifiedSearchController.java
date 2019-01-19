@@ -170,9 +170,9 @@ public class UnifiedSearchController implements Initializable {
 
 			//앨범
 			AlbumVO vo = new AlbumVO();
-			vo.setSing_no(SingerMainController.singerNo);
+			vo.setSing_no(UnifiedSearchController.singerNo);
 			list = FXCollections.observableArrayList(ias.singerAlbumSelect(vo));
-			System.out.println(list.size());
+			System.out.println("앨범리스트 사이즈 " + list.size());
 			itemsForPage2 = 3;
 			
 			
@@ -238,25 +238,29 @@ public class UnifiedSearchController implements Initializable {
 
 private void pageing2(ObservableList<Map> list) {
 		
-		if (mainBox.getChildren().size() == 4) {
-			mainBox.getChildren().remove(3);
+		if (mainBox1.getChildren().size() == 4) {
+			mainBox1.getChildren().remove(3);
 		}
 		
 		if (list.size() == 0) return;
 		int size = (list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0);
 		int totalPage = size / itemsForPage + (size % itemsForPage > 0 ? 1 : 0);
 		
-		p_page = new Pagination(totalPage, 0);
-		p_page.setPageFactory(new Callback<Integer, Node>() {
+		p_page2 = new Pagination(totalPage, 0);
+		p_page2.setPageFactory(new Callback<Integer, Node>() {
             @Override
             public Node call(Integer pageIndex) {
-                return createPage(pageIndex,list,itemsForPage);
+                return createPage2(pageIndex,list,itemsForPage);
             }
 	    });
 		
-		mainBox.getChildren().addAll(p_page);
+		mainBox1.getChildren().addAll(p_page2);
 	}
 	
+public VBox createPage2(int pageIndex, ObservableList<Map> list, int itemsForPage) {
+    int page = pageIndex * itemsForPage;
+    return musicList2.albumList(list, itemsForPage, page);
+}
 	
 	
 	// 화면을 새로고침하는 메서드

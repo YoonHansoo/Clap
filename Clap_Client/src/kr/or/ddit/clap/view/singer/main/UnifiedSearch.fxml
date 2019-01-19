@@ -15,12 +15,12 @@
 
 <AnchorPane fx:id="singerMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="773.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.UnifiedSearchController">
    <children>
-      <Label fx:id="label_singerName1" layoutX="26.0" layoutY="26.0" prefHeight="41.0" prefWidth="697.0" text="검색결과">
+      <Label fx:id="label_singerName1" layoutX="231.0" layoutY="26.0" prefHeight="41.0" prefWidth="697.0" text="검색결과" AnchorPane.leftAnchor="231.0">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="15.0" layoutY="67.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;">
+      <HBox layoutX="159.0" layoutY="67.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;" AnchorPane.leftAnchor="159.0">
          <children>
             <ImageView fx:id="imgview_singImg" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
@@ -151,8 +151,8 @@
             </VBox>
          </children>
       </HBox>
-      <Line endX="637.0" endY="-3.0517578125E-5" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="70.0" layoutY="288.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE">
+      <Line endX="529.2929077148438" endY="-3.0517578125E-5" layoutX="276.0" layoutY="330.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="183.2928924560547" />
+      <JFXButton layoutX="70.0" layoutY="288.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE" AnchorPane.leftAnchor="225.0">
 <!--       <JFXButton layoutX="82.0" layoutY="278.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE"> -->
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
@@ -161,7 +161,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lb_intro" layoutX="16.0" layoutY="715.0" prefHeight="41.0" prefWidth="214.0" text="앨범">
+      <Label fx:id="lb_intro" layoutX="16.0" layoutY="715.0" prefHeight="41.0" prefWidth="214.0" text="앨범" AnchorPane.leftAnchor="180.0">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -285,12 +285,14 @@
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
+               <StackPane.margin>
+                  <Insets left="150.0" />
+               </StackPane.margin>
             </VBox>
          </children>
       </StackPane>
       <VBox fx:id="reply_vbox" layoutX="14.0" layoutY="1078.0" prefHeight="800.0" prefWidth="718.0" />
-      <Line fx:id="line_intro" endX="637.0" endY="-3.0517578125E-5" layoutX="120.0" layoutY="706.0" startX="-92.0" stroke="#9c0000" />
-      <StackPane fx:id="stackpane1" layoutX="5.0" layoutY="753.0" prefWidth="1022.0">
+      <StackPane fx:id="stackpane1" layoutX="5.0" layoutY="753.0" prefWidth="1022.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="800.0">
          <children>
             <VBox fx:id="mainBox1">
                <padding>
@@ -299,6 +301,10 @@
             </VBox>
          </children>
       </StackPane>
+      <Line fx:id="line_intro" endX="518.0" layoutX="288.0" layoutY="648.0" startX="-92.0" stroke="#9c0000" />
 <!--       <JFXButton layoutX="633.0" layoutY="689.0" onAction="#deleteSinger" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" /> -->
    </children>
+   <padding>
+      <Insets left="8.0" />
+   </padding>
 </AnchorPane>
