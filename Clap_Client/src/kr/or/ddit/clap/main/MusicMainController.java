@@ -206,6 +206,8 @@ public class MusicMainController implements Initializable {
 	ImageView image_footer;
 	@FXML
 	ImageView image_logo;
+	@FXML
+	FontAwesomeIcon icon1, icon2, icon3, icon4, icon5;
 
 	private Registry reg;
 	private IMusicService ims;
@@ -236,7 +238,7 @@ public class MusicMainController implements Initializable {
 		}
 		System.out.println("thread_flag : " + thread_flag);
 		tabpane.getSelectionModel().select(0);
-
+		
 		Thread1 thread = new Thread1();
 		thread.setDaemon(true);
 		thread.start();
@@ -355,6 +357,12 @@ public class MusicMainController implements Initializable {
 		lbbb6.setText(cntMusic6 + "곡");
 		lbbb8.setText(cntMusic8 + "곡");
 		lbbb10.setText(cntMusic10 + "곡");
+		
+		icon1.setIconName(recommendList.get(0).getRcm_icon());
+		icon2.setIconName(recommendList.get(1).getRcm_icon());
+		icon3.setIconName(recommendList.get(2).getRcm_icon());
+		icon4.setIconName(recommendList.get(3).getRcm_icon());
+		icon5.setIconName(recommendList.get(4).getRcm_icon());
 
 		btn_rec1.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌

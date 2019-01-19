@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="1700.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -259,13 +259,13 @@
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
-                                                <HBox alignment="CENTER_LEFT" minHeight="80.0" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox alignment="CENTER_LEFT" minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <FontAwesomeIcon fill="WHITE" iconName="GITHUB_ALT" size="60">
-                                                         <HBox.margin>
-                                                            <Insets right="5.0" top="2.0" />
-                                                         </HBox.margin>
-                                                      </FontAwesomeIcon>
+                                                      <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
+                                                         <children>
+                                                            <FontAwesomeIcon fx:id="icon1" fill="WHITE" iconName="GITHUB_ALT" size="60" />
+                                                         </children>
+                                                      </VBox>
                                                       <VBox alignment="CENTER_LEFT" maxHeight="80.0" minHeight="80.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb1" text="당신의 내적 그루브와 감" textFill="WHITE">
@@ -281,7 +281,7 @@
                                                       </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </HBox>
                                              </children>
@@ -331,13 +331,13 @@
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
-                                                <HBox minHeight="80.0" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <FontAwesomeIcon fill="WHITE" iconName="BED" size="60">
-                                                         <HBox.margin>
-                                                            <Insets bottom="10.0" right="10.0" top="10.0" />
-                                                         </HBox.margin>
-                                                      </FontAwesomeIcon>
+                                                      <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
+                                                         <children>
+                                                            <FontAwesomeIcon fx:id="icon2" fill="WHITE" iconName="BED" size="55" />
+                                                         </children>
+                                                      </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb3" text="생각은 접어두고 잠시 쉬" textFill="WHITE" />
@@ -349,7 +349,7 @@
                                                       </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </HBox>
                                              </children>
@@ -399,13 +399,13 @@
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
-                                                <HBox minHeight="80.0" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <FontAwesomeIcon fill="WHITE" iconName="CAR" size="52">
-                                                         <HBox.margin>
-                                                            <Insets right="10.0" top="10.0" />
-                                                         </HBox.margin>
-                                                      </FontAwesomeIcon>
+                                                      <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
+                                                         <children>
+                                                            <FontAwesomeIcon fx:id="icon3" fill="WHITE" iconName="CAR" size="55" />
+                                                         </children>
+                                                      </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb5" text="흥겨운 분위기를 위한 기" textFill="WHITE" />
@@ -417,7 +417,7 @@
                                                       </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </HBox>
                                              </children>
@@ -467,13 +467,13 @@
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
-                                                <HBox alignment="CENTER_LEFT" minHeight="80.0" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox alignment="CENTER_LEFT" minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <FontAwesomeIcon fill="WHITE" iconName="REDDIT" size="54">
-                                                         <HBox.margin>
-                                                            <Insets bottom="5.0" right="5.0" />
-                                                         </HBox.margin>
-                                                      </FontAwesomeIcon>
+                                                      <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
+                                                         <children>
+                                                            <FontAwesomeIcon fx:id="icon4" fill="WHITE" iconName="REDDIT" size="55" />
+                                                         </children>
+                                                      </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb7" text="오늘은 그대와 나태한" textFill="WHITE" />
@@ -485,7 +485,7 @@
                                                       </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </HBox>
                                              </children>
@@ -533,16 +533,19 @@
                                     </StackPane>
                                     <VBox fx:id="editorBox14" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
                                        <children>
-                                          <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
+                                          <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="398.0">
                                              <children>
-                                                <HBox minHeight="80.0" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <FontAwesomeIcon fill="WHITE" iconName="ANGELLIST" size="60">
+                                                      <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
+                                                         <children>
+                                                            <FontAwesomeIcon fx:id="icon5" fill="WHITE" iconName="ANGELLIST" size="60" />
+                                                         </children>
                                                          <HBox.margin>
-                                                            <Insets right="10.0" top="10.0" />
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" />
                                                          </HBox.margin>
-                                                      </FontAwesomeIcon>
-                                                      <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
+                                                      </VBox>
+                                                      <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="302.0" spacing="5.0">
                                                          <children>
                                                             <Label fx:id="lbb9" text="그대가 그립거나 그때가" textFill="WHITE" />
                                                             <Label fx:id="lbb10" text="그립거나" textFill="WHITE" />
@@ -553,7 +556,7 @@
                                                       </VBox>
                                                    </children>
                                                    <VBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </VBox.margin>
                                                 </HBox>
                                              </children>
@@ -772,7 +775,7 @@
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lb_bottom3" layoutX="188.0" layoutY="22.0" text="개인정보처리방침" AnchorPane.leftAnchor="188.0">
+                  <Label fx:id="lb_bottom3" layoutX="198.0" layoutY="22.0" text="개인정보처리방침" AnchorPane.leftAnchor="188.0">
                      <font>
                         <Font size="13.0" />
                      </font>
@@ -811,6 +814,9 @@
                   <Line endX="-100.0" endY="19.0" layoutX="417.0" layoutY="70.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="140.5" AnchorPane.topAnchor="76.5" />
                   <Line endX="-100.0" endY="19.0" layoutX="550.0" layoutY="53.0" startX="-100.0" startY="7.0" stroke="#a1a0a0" AnchorPane.bottomAnchor="157.5" AnchorPane.rightAnchor="554.5" AnchorPane.topAnchor="59.5" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="20.0" />
+               </VBox.margin>
             </AnchorPane>
          </children>
       </VBox>
