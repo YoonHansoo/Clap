@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@../../../../../../mypage.css" fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.message.ShowMessageController">
+<AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="635.0" stylesheets="@../../../../../../mypage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.message.ShowMessageController">
    <children>
-      <JFXTreeTableView fx:id="tbl_Message" layoutX="20.0" layoutY="106.0" prefHeight="317.0" prefWidth="600.0" stylesheets="@../../../../../../mypage.css">
+      <JFXTreeTableView fx:id="tbl_Message" layoutX="20.0" layoutY="106.0" prefHeight="317.0" prefWidth="600.0" stylesheets="@../../../../../../mypage.css" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="80.0">
          <columns>
             <TreeTableColumn fx:id="col_imgeview" prefWidth="65.0" text=" " />
             <TreeTableColumn fx:id="col_title" prefWidth="156.0" text="제목" />
@@ -21,23 +21,23 @@
             <TreeTableColumn fx:id="col_Check" prefWidth="75.0" />
          </columns>
       </JFXTreeTableView>
-      <Pagination fx:id="p_paging" layoutX="10.0" layoutY="86.0" prefHeight="387.0" prefWidth="614.0" />
-      <Button layoutX="237.0" layoutY="483.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="43.0" prefWidth="66.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
+      <Pagination fx:id="p_paging" layoutX="10.0" layoutY="78.0" prefHeight="371.0" prefWidth="614.0" />
+      <Button layoutX="253.0" layoutY="466.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
          <font>
-            <Font name="YDIYGO350" size="18.0" />
+            <Font name="YDIYGO350" size="16.0" />
          </font></Button>
-      <Button onAction="#btn_Cl" layoutX="322.0" layoutY="483.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="66.0" style="-fx-background-color: #090948;" text="삭제" textFill="WHITE">
+      <Button layoutX="315.0" layoutY="466.0" mnemonicParsing="false" onAction="#btn_Cl" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #090948;" text="삭제" textFill="WHITE">
          <font>
-            <Font name="YDIYGO350" size="18.0" />
+            <Font name="YDIYGO350" size="16.0" />
          </font></Button>
-      <AnchorPane layoutX="-2.0" prefHeight="66.0" prefWidth="650.0" style="-fx-background-color: #090948;">
+      <AnchorPane layoutY="14.0" prefHeight="50.0" prefWidth="635.0" style="-fx-background-color: #090948;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="14.0" layoutY="15.0" prefHeight="37.0" prefWidth="210.0" text="나의 쪽지함" textFill="WHITE">
+            <Label layoutX="68.0" layoutY="5.0" prefHeight="37.0" prefWidth="210.0" text="나의 쪽지함" textFill="WHITE">
                <font>
                   <Font name="YDIYGO350" size="24.0" />
                </font>
             </Label>
-            <FontAwesomeIcon fill="WHITE" iconName="ENVELOPE" layoutX="138.0" layoutY="49.0" size="3em" />
+            <FontAwesomeIcon fill="WHITE" iconName="ENVELOPE" layoutX="24.0" layoutY="35.0" size="2.5em" />
          </children>
       </AnchorPane>
    </children>
