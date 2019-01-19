@@ -243,7 +243,7 @@ public class InsertMusicController implements Initializable {
 		this.filePath = fileChooser.showOpenDialog(stage);
 
 		String str_filePath =filePath+"";
-		System.out.println("파일경로:" + str_filePath);
+		System.out.println("음악파일경로:" + str_filePath);
 		
 		txt_file.setText(str_filePath);
 		
@@ -272,10 +272,9 @@ public class InsertMusicController implements Initializable {
 		this.filePath = fileChooser.showOpenDialog(stage);
 
 		String str_filePath =filePath+"";
-		System.out.println("파일경로:" + str_filePath);
+		System.out.println("뮤비파일경로:" + str_filePath);
 		
 		txt_fileVideo.setText(str_filePath);
-		
 		}	
 	
 	@FXML
@@ -350,7 +349,7 @@ public class InsertMusicController implements Initializable {
 
 		mVO.setMus_title(txt_name.getText());
 		mVO.setMus_time(txt_time.getText());
-		mVO.setMus_file(txt_file.getText().substring(5, txt_file.getText().length()));
+		mVO.setMus_file(txt_file.getText());
 		mVO.setMus_mvfile(txt_fileVideo.getText());
 		mVO.setMus_muswrite_son(txt_write.getText());
 		mVO.setMus_edit_son(txt_edit.getText());
