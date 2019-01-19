@@ -255,7 +255,7 @@
                                           <JFXButton fx:id="btn_rec1" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
-                                    <VBox fx:id="editorBox1" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
+                                    <VBox fx:id="editorBox1" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: white;">
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
@@ -263,17 +263,17 @@
                                                    <children>
                                                       <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
                                                          <children>
-                                                            <FontAwesomeIcon fx:id="icon1" fill="WHITE" iconName="GITHUB_ALT" size="60" />
+                                                            <FontAwesomeIcon fx:id="icon1" fill="#090948" iconName="GITHUB_ALT" size="60" />
                                                          </children>
                                                       </VBox>
                                                       <VBox alignment="CENTER_LEFT" maxHeight="80.0" minHeight="80.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb1" text="당신의 내적 그루브와 감" textFill="WHITE">
+                                                            <Label fx:id="lbb1" text="당신의 내적 그루브와 감" textFill="#090948">
                                                                <VBox.margin>
                                                                   <Insets />
                                                                </VBox.margin>
                                                             </Label>
-                                                            <Label fx:id="lbb2" text="성을 자극할 음악들" textFill="WHITE" />
+                                                            <Label fx:id="lbb2" text="성을 자극할 음악들" textFill="#090948" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -293,7 +293,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb1" text="33" textFill="WHITE">
+                                                <Label fx:id="lbbb1" text="33" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -302,7 +302,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb2" text="3곡" textFill="WHITE">
+                                                <Label fx:id="lbbb2" text="3곡" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -327,7 +327,7 @@
                                           <JFXButton fx:id="btn_rec2" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
-                                    <VBox fx:id="editorBox11" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
+                                    <VBox fx:id="editorBox11" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: white;">
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
@@ -335,13 +335,13 @@
                                                    <children>
                                                       <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
                                                          <children>
-                                                            <FontAwesomeIcon fx:id="icon2" fill="WHITE" iconName="BED" size="55" />
+                                                            <FontAwesomeIcon fx:id="icon2" fill="#090948" iconName="BED" size="55" />
                                                          </children>
                                                       </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb3" text="생각은 접어두고 잠시 쉬" textFill="WHITE" />
-                                                            <Label fx:id="lbb4" text="고싶은 그런 날." textFill="WHITE" />
+                                                            <Label fx:id="lbb3" text="생각은 접어두고 잠시 쉬" textFill="#090948" />
+                                                            <Label fx:id="lbb4" text="고싶은 그런 날." textFill="#090948" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -361,7 +361,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb3" text="33" textFill="WHITE">
+                                                <Label fx:id="lbbb3" text="33" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -370,7 +370,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb4" text="3곡" textFill="WHITE">
+                                                <Label fx:id="lbbb4" text="3곡" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -395,7 +395,7 @@
                                           <JFXButton fx:id="btn_rec3" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
-                                    <VBox fx:id="editorBox12" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
+                                    <VBox fx:id="editorBox12" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: white;">
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
@@ -403,13 +403,13 @@
                                                    <children>
                                                       <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
                                                          <children>
-                                                            <FontAwesomeIcon fx:id="icon3" fill="WHITE" iconName="CAR" size="55" />
+                                                            <FontAwesomeIcon fx:id="icon3" fill="#090948" iconName="CAR" size="55" />
                                                          </children>
                                                       </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb5" text="흥겨운 분위기를 위한 기" textFill="WHITE" />
-                                                            <Label fx:id="lbb6" text="분 UP 플레이!" textFill="WHITE" />
+                                                            <Label fx:id="lbb5" text="흥겨운 분위기를 위한 기" textFill="#090948" />
+                                                            <Label fx:id="lbb6" text="분 UP 플레이!" textFill="#090948" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -429,7 +429,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb5" text="33" textFill="WHITE">
+                                                <Label fx:id="lbbb5" text="33" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -438,7 +438,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb6" text="3곡" textFill="WHITE">
+                                                <Label fx:id="lbbb6" text="3곡" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -463,7 +463,7 @@
                                           <JFXButton fx:id="btn_rec4" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
-                                    <VBox fx:id="editorBox13" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
+                                    <VBox fx:id="editorBox13" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: white;">
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="386.0">
                                              <children>
@@ -471,13 +471,13 @@
                                                    <children>
                                                       <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
                                                          <children>
-                                                            <FontAwesomeIcon fx:id="icon4" fill="WHITE" iconName="REDDIT" size="55" />
+                                                            <FontAwesomeIcon fx:id="icon4" fill="#090948" iconName="REDDIT" size="55" />
                                                          </children>
                                                       </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="200.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb7" text="오늘은 그대와 나태한" textFill="WHITE" />
-                                                            <Label fx:id="lbb8" text="하루 보내기" textFill="WHITE" />
+                                                            <Label fx:id="lbb7" text="오늘은 그대와 나태한" textFill="#090948" />
+                                                            <Label fx:id="lbb8" text="하루 보내기" textFill="#090948" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -497,7 +497,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb7" text="33" textFill="WHITE">
+                                                <Label fx:id="lbbb7" text="33" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -506,7 +506,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb8" text="3곡" textFill="WHITE">
+                                                <Label fx:id="lbbb8" text="3곡" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -535,7 +535,7 @@
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="398.0">
                                              <children>
-                                                <HBox minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox fx:id="rcm_box5" minHeight="80.0" minWidth="388.0" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
                                                       <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
                                                          <children>
