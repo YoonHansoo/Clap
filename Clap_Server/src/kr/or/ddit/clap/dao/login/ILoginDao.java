@@ -25,4 +25,6 @@ public interface ILoginDao {
 	public int gameUpdate(Map map);
 	
 	public int insertSearchWord(Map<String,String> map);
+	
+	public String selectSearchPK(String word);
 }

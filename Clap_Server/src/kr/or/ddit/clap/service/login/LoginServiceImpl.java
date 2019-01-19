@@ -100,5 +100,10 @@ public class LoginServiceImpl extends UnicastRemoteObject implements ILoginServi
 		return loginDao.insertSearchWord(map);
 	}
 
+	@Override
+	public String selectSearchPK(String word) throws RemoteException {
+		return loginDao.selectSearchPK(word);
+	}
+
 
 }

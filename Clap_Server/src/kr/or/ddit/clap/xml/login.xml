@@ -46,21 +46,25 @@
 	<!-- 최근 검색어기능 -->
 	<select id="selectHistorykeyword" resultClass="NewSearchWordVO"
 		parameterClass="String">
-		SELECT DISTINCT
-		( new_word )
+	SELECT 
+		 new_word ,
+           Max(new_word_no)
 		FROM
-		(
-		SELECT
-		new_word
-		FROM
-		new_search_word
-		WHERE
-		mem_id = #String#
-		ORDER BY
-		new_word_no DESC
-		) b
+                        (
+                        SELECT
+                        new_word,
+                           new_word_no
+                        FROM
+                        new_search_word
+                        WHERE
+                        mem_id = #String#
+                        ORDER BY
+                        new_word_no DESC
+                        ) b
 		where
 		ROWNUM &lt; 11
+        group by new_word
+        order by 2 desc
 	</select>
 
 	<!-- 검색어 인서트 -->
@@ -79,6 +83,24 @@
 		#id#
 		)
 	</insert>
+	
+	
+	
+<!-- 	검색어에 대한 PK값을 찾는 쿼리 -->
+<select id="selectSearchPK" resultClass="String"
+		parameterClass="String">
+	  SELECT SING_NO
+      FROM SINGER a
+     WHERE replace(SING_NAME,' ','') LIKE '%' || #String# || '%'
+     union
+         SELECT SING_NO
+      FROM SINGER a
+     WHERE SING_NAME LIKE '%' || #String# || '%'
+	</select>
+
+
+
+
 
 
 
