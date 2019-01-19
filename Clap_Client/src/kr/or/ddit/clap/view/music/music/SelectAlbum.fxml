@@ -10,10 +10,9 @@
 <?import javafx.scene.control.Pagination?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane layoutX="-1.0" style="-fx-background-color: #ffffff;"  stylesheets="@../../../../../../../table.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="610.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.music.music.SelectAlbumController">
+<AnchorPane layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="610.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../../../../../table.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.music.music.SelectAlbumController">
    <children>
       <JFXTreeTableView fx:id="tbl_album" layoutX="2.0" layoutY="106.0" prefHeight="354.0" prefWidth="605.0">
          <columns>
@@ -25,12 +24,11 @@
             <TreeTableColumn fx:id="col_albumNo" minWidth="0.0" prefWidth="0.0" text="앨범번호" visible="false" />
          </columns>
       </JFXTreeTableView>
-      <JFXComboBox fx:id="combo_search" layoutX="14.0" layoutY="64.0" promptText="앨범 명" />
-      <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="103.0" layoutY="63.0" unFocusColor="#090948" />
-      <Line endX="559.0" layoutX="51.0" layoutY="51.0" startX="-45.0" stroke="#9c0000" />
-      <JFXButton fx:id="btn_search" layoutX="242.0" layoutY="54.0" prefHeight="42.0" prefWidth="61.0" text=" ">
+      <JFXComboBox fx:id="combo_search" layoutX="335.0" layoutY="78.0" promptText="앨범 명" AnchorPane.leftAnchor="335.0" AnchorPane.topAnchor="78.0" />
+      <JFXTextField fx:id="text_search" focusColor="#090948" layoutX="424.0" layoutY="77.0" unFocusColor="#090948" AnchorPane.leftAnchor="424.0" AnchorPane.topAnchor="77.0" />
+      <JFXButton fx:id="btn_search" layoutX="550.0" layoutY="70.0" prefHeight="42.0" prefWidth="61.0" text=" ">
          <graphic>
-            <FontAwesomeIcon iconName="SEARCH" text="" />
+            <FontAwesomeIcon iconName="SEARCH" layoutX="550.0" layoutY="70.0" text="" />
          </graphic>
       </JFXButton>
       <Label layoutX="-5.0" layoutY="-2.0" prefHeight="53.0" prefWidth="623.0" style="-fx-background-color: #090948;" text="앨범 목록" textFill="WHITE">
@@ -41,6 +39,6 @@
             <Insets left="30.0" />
          </padding>
       </Label>
-      <Pagination fx:id="p_paging" layoutY="96.0" prefHeight="451.0" prefWidth="610.0" />
+      <Pagination fx:id="p_paging" layoutX="3.0" layoutY="107.0" prefHeight="400.0" prefWidth="605.0" />
    </children>
 </AnchorPane>
