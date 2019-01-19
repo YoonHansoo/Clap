@@ -10,16 +10,16 @@
 .tab-label{
     -fx-font-family: "-윤고딕320";
     -fx-font-size: 15;
-    -fx-text-fill: white;
+    -fx-text-fill: #090948;
 }
 
 .tab-header-background{
-   -fx-background-color: #090948;
+   -fx-background-color: white;
    
 }
 
 .tab{
-   -fx-background-color: #090948;
+   -fx-background-color: white;
    
 }
 

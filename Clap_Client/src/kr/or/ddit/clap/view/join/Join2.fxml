@@ -410,7 +410,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <JFXButton onAction="#nextPage" text="다음으로">
+                              <JFXButton onAction="#nextPage" style="-fx-background-color: #090948;" text="다음으로" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="10.0" top="20.0" />
                                  </HBox.margin>

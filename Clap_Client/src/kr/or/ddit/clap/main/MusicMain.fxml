@@ -25,7 +25,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="all" prefHeight="768.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
+<ScrollPane fx:id="all" prefHeight="1250.0" prefWidth="1024.0" stylesheets="@../../../../../MusicMain.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.main.MusicMainController">
    <content>
       <VBox fx:id="vbox" style="-fx-background-color: #fff;">
          <children>
@@ -243,9 +243,9 @@
                         </VBox>
                      </children>
                   </StackPane>
-                  <JFXTabPane fx:id="tabpane" layoutX="555.0" layoutY="484.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0">
+                  <JFXTabPane fx:id="tabpane" layoutX="555.0" layoutY="484.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0" style="-fx-border-color: #d3d3d3;">
                      <tabs>
-                        <Tab text="     #1     ">
+                        <Tab text="     #1    ">
                           <content>
                             <AnchorPane fx:id="tab_pane1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -531,7 +531,7 @@
                                           <JFXButton fx:id="btn_rec5" minHeight="398.0" minWidth="398.0" text=" " />
                                        </children>
                                     </StackPane>
-                                    <VBox fx:id="editorBox14" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: #090948;">
+                                    <VBox fx:id="editorBox14" alignment="CENTER_LEFT" layoutY="358.0" prefHeight="130.0" prefWidth="398.0" spacing="10.0" style="-fx-background-color: white;">
                                        <children>
                                           <VBox maxHeight="50.0" minHeight="80.0" prefHeight="50.0" prefWidth="398.0">
                                              <children>
@@ -539,7 +539,7 @@
                                                    <children>
                                                       <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0">
                                                          <children>
-                                                            <FontAwesomeIcon fx:id="icon5" fill="WHITE" iconName="ANGELLIST" size="60" />
+                                                            <FontAwesomeIcon fx:id="icon5" fill="#090948" iconName="ANGELLIST" size="60" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets bottom="5.0" left="5.0" right="5.0" />
@@ -547,8 +547,8 @@
                                                       </VBox>
                                                       <VBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="302.0" spacing="5.0">
                                                          <children>
-                                                            <Label fx:id="lbb9" text="그대가 그립거나 그때가" textFill="WHITE" />
-                                                            <Label fx:id="lbb10" text="그립거나" textFill="WHITE" />
+                                                            <Label fx:id="lbb9" text="그대가 그립거나 그때가" textFill="#090948" />
+                                                            <Label fx:id="lbb10" text="그립거나" textFill="#090948" />
                                                          </children>
                                                          <HBox.margin>
                                                             <Insets left="5.0" />
@@ -568,7 +568,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb9" text="33" textFill="WHITE">
+                                                <Label fx:id="lbbb9" text="33" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
@@ -577,7 +577,7 @@
                                                       <Insets bottom="15.0" left="25.0" />
                                                    </HBox.margin>
                                                 </FontAwesomeIcon>
-                                                <Label fx:id="lbbb10" text="3곡" textFill="WHITE">
+                                                <Label fx:id="lbbb10" text="3곡" textFill="#090948">
                                                    <HBox.margin>
                                                       <Insets bottom="16.0" />
                                                    </HBox.margin></Label>
