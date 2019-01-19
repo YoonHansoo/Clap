@@ -270,7 +270,7 @@ public class MusicMainController implements Initializable {
 		}
 
 		// 추천 앨범 출력하기
-		System.out.println("싸이즈 " + recommendList.size());
+//		System.out.println("싸이즈 " + recommendList.size());
 
 		Image[] tab_img = new Image[5];
 		tab_img[0] = new Image(recommendList.get(0).getRcm_alb_image());
