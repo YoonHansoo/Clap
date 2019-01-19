@@ -16,8 +16,8 @@
          <children>
             <AnchorPane prefHeight="587.0" prefWidth="720.0">
                <children>
-                  <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="13.0" layoutY="39.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " />
-                  <JFXTreeTableView fx:id="tbl_like" layoutX="11.0" layoutY="87.0" prefHeight="400.0" prefWidth="704.0" stylesheets="@../../../../../../../mypage.css">
+                  <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="13.0" layoutY="39.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " unCheckedColor="#090948" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="39.0" />
+                  <JFXTreeTableView fx:id="tbl_like" layoutX="11.0" layoutY="87.0" prefHeight="400.0" prefWidth="704.0" stylesheets="@../../../../../../../mypage.css" AnchorPane.leftAnchor="11.0" AnchorPane.topAnchor="87.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Checks" prefWidth="36.0" text="  " />
                         <TreeTableColumn fx:id="col_Img" prefWidth="136.0" text=" " />
@@ -27,7 +27,7 @@
                         <TreeTableColumn fx:id="col_Like" prefWidth="67.0" text="좋아요" />
                      </columns>
                   </JFXTreeTableView>
-                  <Pagination fx:id="p_Paging" layoutX="6.0" layoutY="78.0" prefHeight="526.0" prefWidth="714.0" />
+                  <Pagination fx:id="p_Paging" layoutX="11.0" layoutY="88.0" prefHeight="458.0" prefWidth="704.0" />
                   <JFXButton layoutX="51.0" layoutY="37.0" onAction="#btnMainPlay" ripplerFill="#9c0000" text="듣기" AnchorPane.topAnchor="37.0">
                      <graphic>
                         <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />

@@ -796,7 +796,7 @@
                      </font>
                   </Label>
                   <ImageView fx:id="image_logo" fitHeight="45.0" fitWidth="120.0" layoutX="29.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="61.0" />
-                  <Label fx:id="lb_bottom7" layoutX="161.0" layoutY="58.0" text="대표이상 윤한수 | 진민규 | 박경훈 | 김현지 | 이한화" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="58.0" />
+                  <Label fx:id="lb_bottom7" layoutX="161.0" layoutY="58.0" text="대표이사 윤한수 | 진민규 | 박경훈 | 김현지 | 이한화" AnchorPane.leftAnchor="161.0" AnchorPane.topAnchor="58.0" />
                   <Line endX="-100.0" endY="19.0" layoutX="196.0" layoutY="20.0" startX="-100.0" startY="3.0" stroke="#a1a0a0" AnchorPane.topAnchor="22.0" />
                   <Label fx:id="lb_bottom8" layoutX="463.0" layoutY="58.0" text="대전광역시 중구 중앙로 76 영민빌딩 2" AnchorPane.topAnchor="58.0" />
                   <Label fx:id="lb_bottom9" layoutX="328.0" layoutY="75.0" text="사업자등록번호 314-82-04354" AnchorPane.leftAnchor="328.0" AnchorPane.topAnchor="75.0" />
