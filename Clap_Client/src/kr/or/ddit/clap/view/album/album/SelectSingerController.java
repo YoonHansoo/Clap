@@ -132,6 +132,7 @@ public class SelectSingerController implements Initializable {
 				iAC.label_singName.setText(singName);
 				iAC.label_singerNO.setText(singNo);
 				
+				
 				//자식창 닫음
 				Stage dialogStage = (Stage) btn_search.getScene().getWindow();
 				dialogStage.close();

@@ -61,6 +61,7 @@ public class SingerAlbumController implements Initializable{
 		pageing(list);
 		
 		
+		
 	}
 	
 	public VBox createPage(int pageIndex, ObservableList<Map> list, int itemsForPage) {

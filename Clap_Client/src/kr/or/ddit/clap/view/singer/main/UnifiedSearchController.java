@@ -33,7 +33,6 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -42,13 +41,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
+import kr.or.ddit.clap.service.album.IAlbumService;
 import kr.or.ddit.clap.service.music.IMusicService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.singer.ISingerService;
@@ -56,6 +55,7 @@ import kr.or.ddit.clap.view.chartmenu.dialog.MyAlbumDialogController;
 import kr.or.ddit.clap.view.chartmenu.musiclist.MusicList;
 import kr.or.ddit.clap.view.member.mypage.OtherMypageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
+import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
@@ -122,6 +122,7 @@ public class UnifiedSearchController implements Initializable {
 	private IMusicService ims;
 	private IPlayListService ipls;
 	private MusicList musicList;
+	private MusicList musicList2;
 	private ObservableList<Map> songRank;
 	private ObservableList<JFXCheckBox> cbnList = FXCollections.observableArrayList();
 	private ObservableList<JFXButton> btnPlayList = FXCollections.observableArrayList();
@@ -132,7 +133,10 @@ public class UnifiedSearchController implements Initializable {
 	private int itemsForPage;
 	private Pagination p_page;
 	private Pagination p_page1;
-
+	private Pagination p_page2;
+	private IAlbumService ias;
+	private ObservableList<Map> list;
+	private int itemsForPage2;
 	@FXML
 	VBox reply_vbox;
 	@FXML
@@ -154,13 +158,24 @@ public class UnifiedSearchController implements Initializable {
 		System.out.println("가수번호:" + singerNo);
 
 		try {
+			
+			
 			// reg로 ISingerService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			iss = (ISingerService) reg.lookup("singer");
 			sVO = iss.singerDetailInfo(singerNo);
+			ias = (IAlbumService) reg.lookup("album");
 			System.out.println(sVO.getSing_no());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
 
+			//앨범
+			AlbumVO vo = new AlbumVO();
+			vo.setSing_no(SingerMainController.singerNo);
+			list = FXCollections.observableArrayList(ias.singerAlbumSelect(vo));
+			System.out.println(list.size());
+			itemsForPage2 = 3;
+			
+			
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
 			itemsForPage = 8;
@@ -171,7 +186,10 @@ public class UnifiedSearchController implements Initializable {
 		}
 
 		musicList = new MusicList(cbnList, btnPlayList, btnAddList, btnPutList, btnMovieList, mainBox, stackpane);
-
+		musicList2 = new MusicList( btnAddList,mainBox1,stackpane1);
+		
+		pageing2(list);
+		
 		// 일간 조회 차트
 		songChart();
 
@@ -218,6 +236,29 @@ public class UnifiedSearchController implements Initializable {
 	
 	}
 
+private void pageing2(ObservableList<Map> list) {
+		
+		if (mainBox.getChildren().size() == 4) {
+			mainBox.getChildren().remove(3);
+		}
+		
+		if (list.size() == 0) return;
+		int size = (list.size() / 2) + (list.size() % 2 > 0 ? 1 : 0);
+		int totalPage = size / itemsForPage + (size % itemsForPage > 0 ? 1 : 0);
+		
+		p_page = new Pagination(totalPage, 0);
+		p_page.setPageFactory(new Callback<Integer, Node>() {
+            @Override
+            public Node call(Integer pageIndex) {
+                return createPage(pageIndex,list,itemsForPage);
+            }
+	    });
+		
+		mainBox.getChildren().addAll(p_page);
+	}
+	
+	
+	
 	// 화면을 새로고침하는 메서드
 	private void refesh() {
 		try {

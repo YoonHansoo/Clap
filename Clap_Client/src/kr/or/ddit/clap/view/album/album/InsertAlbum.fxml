@@ -101,5 +101,6 @@
       <TextArea fx:id="txt_intro" layoutX="26.0" layoutY="384.0" prefHeight="275.0" prefWidth="718.0" wrapText="true" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="29.0" />
       <JFXButton layoutX="497.0" layoutY="689.0" onAction="#insertAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
       <JFXButton layoutX="623.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" AnchorPane.rightAnchor="39.0" />
+      <Label fx:id="label_singerNO" layoutX="598.0" layoutY="300.0" text="Label" visible="false" />
    </children>
 </AnchorPane>
