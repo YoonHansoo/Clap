@@ -11,6 +11,7 @@ public class RecommendAlbumVO implements Serializable{
 	private String mem_id;
 	private String rcm_alb_image;
 	private String cnt;
+	private String rcm_icon;
 	
 	
 	
@@ -55,6 +56,12 @@ public class RecommendAlbumVO implements Serializable{
 	}
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
+	}
+	public String getRcm_icon() {
+		return rcm_icon;
+	}
+	public void setRcm_icon(String rcm_icon) {
+		this.rcm_icon = rcm_icon;
 	}
 
 }
