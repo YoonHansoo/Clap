@@ -10,8 +10,8 @@
    <children>
       <AnchorPane fx:id="main" layoutX="4.0" layoutY="-7.0" prefHeight="768.0" prefWidth="993.0">
          <children>
-            <Line endX="844.0" endY="1.0" layoutX="124.0" layoutY="56.0" startX="-100.0" stroke="#9c0000" />
-            <Label layoutX="102.0" layoutY="8.0" prefHeight="51.0" prefWidth="249.0" text="인기" AnchorPane.leftAnchor="102.0">
+            <Line endX="775.0" endY="1.0" layoutX="124.0" layoutY="59.0" startX="-30.0" stroke="#9c0000" />
+            <Label layoutX="102.0" layoutY="8.0" prefHeight="51.0" prefWidth="249.0" text="인기" AnchorPane.leftAnchor="140.0">
                <font>
                   <Font name="YDIYGO350" size="24.0" />
                </font>

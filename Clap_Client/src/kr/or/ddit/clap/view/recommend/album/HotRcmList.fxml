@@ -10,8 +10,8 @@
    <children>
       <AnchorPane fx:id="main" layoutX="4.0" layoutY="-7.0" prefHeight="768.0" prefWidth="993.0">
          <children>
-            <Line endX="660.0" endY="1.0" layoutX="125.0" layoutY="54.0" startX="-100.0" startY="1.0000152587890625" stroke="#9c0000" AnchorPane.leftAnchor="100.0" />
-            <Label layoutX="53.0" layoutY="8.0" prefHeight="51.0" prefWidth="298.0" text="추천" AnchorPane.leftAnchor="60.0">
+            <Line endX="690.0" endY="1.0" layoutX="125.0" layoutY="58.0" startX="-100.0" startY="1.0000152587890625" stroke="#9c0000" AnchorPane.leftAnchor="100.0" />
+            <Label layoutX="66.0" layoutY="8.0" prefHeight="51.0" prefWidth="298.0" text="추천" AnchorPane.leftAnchor="135.0">
                <font>
                   <Font name="YDIYGO350" size="24.0" />
                </font>

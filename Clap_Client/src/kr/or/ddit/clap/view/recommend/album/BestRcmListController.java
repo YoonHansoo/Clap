@@ -97,7 +97,7 @@ public class BestRcmListController implements Initializable {
 					hbox = new HBox();
 					hbox.setPrefWidth(716);
 					hbox.setPrefHeight(500);
-					main_vbox.setMargin(hbox, new Insets(20, 0, 0, 35));
+					main_vbox.setMargin(hbox, new Insets(20, 0, 0, 30));
 				}
 
 				VBox vbox = new VBox();
@@ -113,7 +113,7 @@ public class BestRcmListController implements Initializable {
 				iv_Album.setImage(img_Path);
 				iv_Album.setFitWidth(358);
 				iv_Album.setFitHeight(250);
-				iv_Album.setOpacity(0.9);
+				iv_Album.setOpacity(0.75);
 
 				// Title 라벨
 				Label title = new Label();
