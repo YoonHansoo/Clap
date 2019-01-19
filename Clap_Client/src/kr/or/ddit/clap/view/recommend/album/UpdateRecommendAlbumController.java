@@ -20,6 +20,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -88,7 +89,15 @@ public class UpdateRecommendAlbumController implements Initializable {
 	public static String rcmAlbNo;
 	public ObservableList<MusicVO> musicList;
 	@FXML
-	VBox main_vbox;
+	VBox main_vbox, btn_box, icon_box;
+	@FXML
+	JFXButton btn_icon;
+	@FXML
+	VBox icon1, icon2, icon3, icon4, icon5, icon6, icon7, icon8, icon9, icon10;
+	@FXML
+	FontAwesomeIcon iicon1, iicon2, iicon3, iicon4, iicon5, iicon6, iicon7, iicon8, iicon9, iicon10, icon;
+	@FXML
+	JFXButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -140,8 +149,132 @@ public class UpdateRecommendAlbumController implements Initializable {
 		col_Deletebtn.setCellValueFactory(
 				param -> new SimpleObjectProperty<JFXButton>(param.getValue().getValue().getBtn()));
 
+//		txt_rcmName.setOnAction(e);
+		
+		
+		btn_icon.setOnAction(e->{
+			btn_box.setVisible(true);
+			icon_box.setVisible(true);
+		});
+		
+		btn1.setOnAction(e->{
+			icon.setIconName(iicon1.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn2.setOnAction(e->{
+			icon.setIconName(iicon2.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn3.setOnAction(e->{
+			icon.setIconName(iicon3.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn4.setOnAction(e->{
+			icon.setIconName(iicon4.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn5.setOnAction(e->{
+			icon.setIconName(iicon5.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn6.setOnAction(e->{
+			icon.setIconName(iicon6.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn7.setOnAction(e->{
+			icon.setIconName(iicon7.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn8.setOnAction(e->{
+			icon.setIconName(iicon8.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn9.setOnAction(e->{
+			icon.setIconName(iicon9.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
+		btn10.setOnAction(e->{
+			icon.setIconName(iicon10.getIconName());
+			icon_box.setVisible(false);
+			btn_box.setVisible(false);
+		});
 	}
 
+	public void select1() {
+		icon1.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select2() {
+		icon2.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select3() {
+		icon3.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select4() {
+		icon4.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select5() {
+		icon5.setStyle("-fx-background-color: #8e8ef1");
+	}
+	
+	
+	public void select6() {
+		icon6.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select7() {
+		icon7.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select8() {
+		icon8.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select9() {
+		icon9.setStyle("-fx-background-color: #8e8ef1");
+	}
+	public void select10() {
+		icon10.setStyle("-fx-background-color: #8e8ef1");
+	}
+	
+	
+	public void exit1() {
+		icon1.setStyle("-fx-background-color: #090948");
+	}
+	public void exit2() {
+		icon2.setStyle("-fx-background-color: #090948");
+	}
+	public void exit3() {
+		icon3.setStyle("-fx-background-color: #090948");
+	}
+	public void exit4() {
+		icon4.setStyle("-fx-background-color: #090948");
+	}
+	public void exit5() {
+		icon5.setStyle("-fx-background-color: #090948");
+	}
+	
+	public void exit6() {
+		icon6.setStyle("-fx-background-color: #090948");
+	}
+	public void exit7() {
+		icon7.setStyle("-fx-background-color: #090948");
+	}
+	public void exit8() {
+		icon8.setStyle("-fx-background-color: #090948");
+	}
+	public void exit9() {
+		icon9.setStyle("-fx-background-color: #090948");
+	}
+	public void exit10() {
+		icon10.setStyle("-fx-background-color: #090948");
+	}
+	
 	public void initData(RecommendAlbumVO vo, String str_like_cnt) {
 		img_path = vo.getRcm_alb_image();
 		Image img = new Image(img_path);
@@ -149,6 +282,7 @@ public class UpdateRecommendAlbumController implements Initializable {
 		txt_rcmName.setText(vo.getRcm_alb_name());
 		txt_rcmContents.setText(vo.getRcm_content());
 		label_LikeCnt.setText(str_like_cnt);
+		icon.setIconName(vo.getRcm_icon());
 	}
 
 	// 취소버튼
@@ -178,7 +312,8 @@ public class UpdateRecommendAlbumController implements Initializable {
 		rVO.setRcm_content(txt_rcmContents.getText());
 		rVO.setMem_id(LoginSession.session.getMem_id());
 		rVO.setRcm_alb_image(img_path);
-
+		rVO.setRcm_icon(icon.getIconName());
+		
 		try {
 
 			// 추천앨범을 업데이트

@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -59,6 +60,7 @@ public class RecommendAlbumDetailController implements Initializable {
 	@FXML Label lable_cntMusic;
 	@FXML Label label_LikeCnt;
 	@FXML AnchorPane contents;
+	@FXML FontAwesomeIcon icon;
 	private Registry reg;
 	private IRecommendService irs;
 	public static String rcmAlbNo; //추천앨범번호 pk값 
@@ -86,6 +88,7 @@ public class RecommendAlbumDetailController implements Initializable {
 			labelrcmName2.setText(rVO.getRcm_alb_name());
 			
 			label_rcmContents.setText(rVO.getRcm_content());
+			icon.setIconName(rVO.getRcm_icon());
 			
 			//이미지 세팅
 			temp_img_path = rVO.getRcm_alb_image();

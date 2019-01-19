@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -111,13 +112,14 @@ public class ShowRecommendAlbumController implements Initializable {
 					hbox = new HBox();
 					hbox.setPrefWidth(716);
 					hbox.setPrefHeight(500);
-					main_vbox.setMargin(hbox, new Insets(10, 0, 0, 0));
+					main_vbox.setMargin(hbox, new Insets(15, 0, 0, 0));
 				}
 
 				VBox vbox = new VBox();
 				vbox.setPrefWidth(358);
 				vbox.setPrefHeight(400);
-				vbox.setStyle("-fx-border-color:#090948;");
+				vbox.setStyle("-fx-border-color:#d3d3d3;");
+				vbox.setStyle("-fx-background-color:#090948;");
 				hbox.setMargin(vbox, new Insets(0, 20, 0, 0));
 
 				// 앨범이미지를 표시하는 ImageView
@@ -126,16 +128,16 @@ public class ShowRecommendAlbumController implements Initializable {
 				iv_Album.setImage(img_Path);
 				iv_Album.setFitWidth(358);
 				iv_Album.setFitHeight(250);
-				iv_Album.setOpacity(0.75);
+				iv_Album.setOpacity(0.9);
 
 				// Title 라벨
 				Label title = new Label();
-				title.setFont(Font.font("-윤고딕350", 18));
-				title.setTextFill(Color.valueOf("#000"));
-				title.setPrefWidth(308);
+				title.setFont(Font.font("-윤고딕340", 18));
+				title.setTextFill(Color.WHITE);
+				title.setPrefWidth(348);
 				title.setPrefHeight(40);
 				title.setWrapText(true);
-				title.setPadding(new Insets(30, 0, 30, 15));
+				title.setPadding(new Insets(5, 0, 5, 15));
 				title.setText(recommendList.get(i).getRcm_alb_name());
 
 				title.setOnMouseClicked(e -> {
@@ -176,6 +178,19 @@ public class ShowRecommendAlbumController implements Initializable {
 
 					}
 				});
+				
+				// title 위의 아이콘담는 박스
+				VBox icon_box = new VBox();
+				icon_box.setPrefWidth(50);
+				icon_box.setPrefHeight(50);
+				icon_box.setAlignment(Pos.CENTER_LEFT);
+				icon_box.setPadding(new Insets(10, 0, 10, 15));
+
+				// icon_box 안의 아이콘
+				FontAwesomeIcon icon = new FontAwesomeIcon();
+				icon.setIconName(recommendList.get(i).getRcm_icon());
+				icon.setSize("42");
+				icon.setFill(Color.WHITE);
 
 				// title과 like를 담을 hbox
 				HBox temp_hbox = new HBox();
@@ -184,12 +199,12 @@ public class ShowRecommendAlbumController implements Initializable {
 				temp_hbox.setPadding(new Insets(5, 5, 5, 15));
 				temp_hbox.setStyle("-fx-bordertop-color:#090948;");
 				temp_hbox.setStyle("-fx-border-style : solid hidden hidden hidden;");
-				vbox.setMargin(temp_hbox, new Insets(50, 0, 0, 0));
+				vbox.setMargin(temp_hbox, new Insets(20, 0, 0, 0));
 
 				// 좋아요 라벨
 				Label like = new Label();
-				like.setFont(Font.font("-윤고딕350", 14));
-				like.setTextFill(Color.valueOf("#000"));
+				like.setFont(Font.font("-윤고딕340", 14));
+				like.setTextFill(Color.WHITE);
 				like.setPrefWidth(308);
 				like.setPrefHeight(40);
 				// like.setPadding(new Insets(20,0,0,30));
@@ -199,14 +214,14 @@ public class ShowRecommendAlbumController implements Initializable {
 				// 좋아요 아이콘
 				FontAwesomeIcon icon_Like = new FontAwesomeIcon();
 				icon_Like.setIconName("HEART");
-				icon_Like.setFill(Color.valueOf("#9c0000"));
+				icon_Like.setFill(Color.RED);
 				icon_Like.setSize("20");
 				like.setGraphic(icon_Like);
 
 				// Title 곡 라벨 갯수
 				Label cntMusic = new Label();
-				cntMusic.setFont(Font.font("-윤고딕350", 14));
-				cntMusic.setTextFill(Color.valueOf("#000"));
+				cntMusic.setFont(Font.font("-윤고딕340", 14));
+				cntMusic.setTextFill(Color.WHITE);
 				cntMusic.setPrefWidth(308);
 				cntMusic.setPrefHeight(40);
 				// cntMusic.setPadding(new Insets(20,0,0,30));
@@ -215,12 +230,14 @@ public class ShowRecommendAlbumController implements Initializable {
 				// Title 좋아요 아이콘
 				FontAwesomeIcon icon_cntMusic = new FontAwesomeIcon();
 				icon_cntMusic.setIconName("PLAY_CIRCLE");
-				icon_cntMusic.setFill(Color.valueOf("#9c0000"));
+				icon_cntMusic.setFill(Color.valueOf("#04ff00"));
 				icon_cntMusic.setSize("20");
 				cntMusic.setGraphic(icon_cntMusic);
 
+				icon_box.getChildren().add(icon);
+				
 				temp_hbox.getChildren().addAll(like, cntMusic);
-				vbox.getChildren().addAll(iv_Album, title, temp_hbox);
+				vbox.getChildren().addAll(iv_Album, icon_box, title, temp_hbox);
 				hbox.getChildren().add(vbox);
 
 				if (i % 2 == 0) {

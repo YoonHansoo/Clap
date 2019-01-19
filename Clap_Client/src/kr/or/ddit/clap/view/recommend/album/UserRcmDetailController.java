@@ -63,7 +63,7 @@ public class UserRcmDetailController implements Initializable {
 	VBox mainBox;
 	@FXML
 	JFXCheckBox cb_main;
-	@FXML FontAwesomeIcon icon_heart;
+	@FXML FontAwesomeIcon icon_heart, icon;
 	
 	private IPlayListService ipls;
 	public static String rcmAlbNo;
@@ -107,6 +107,7 @@ public class UserRcmDetailController implements Initializable {
 			labelrcmName1.setText(rVO.getRcm_alb_name());
 
 			label_RcmContents.setText(rVO.getRcm_content());
+			icon.setIconName(rVO.getRcm_icon());
 
 			// 이미지 세팅
 			temp_img_path = rVO.getRcm_alb_image();

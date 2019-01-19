@@ -66,14 +66,6 @@
          </font>
       </Label>
       <Label layoutX="403.0" layoutY="280.0" />
-      <Label fx:id="label_RcmContents" layoutX="102.0" layoutY="312.0" prefHeight="35.0" prefWidth="774.0" style="-fx-background-color: #090948;" text="오늘 하루도 힘차게!!!" textFill="WHITE" AnchorPane.leftAnchor="102.0">
-         <font>
-            <Font name="YDIYGO350" size="18.0" />
-         </font>
-         <padding>
-            <Insets left="25.0" />
-         </padding>
-      </Label>
       <Line endX="683.0" layoutX="112.0" layoutY="386.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="102.0" />
       <Label layoutX="20.0" layoutY="400.0" prefHeight="21.0" prefWidth="89.0" text="수록곡 " AnchorPane.leftAnchor="102.0">
          <font>
@@ -181,6 +173,26 @@
             </VBox>
          </children>
       </StackPane>
+      <HBox layoutX="102.0" layoutY="312.0" prefHeight="35.0" prefWidth="774.0" style="-fx-background-color: #090948;">
+         <children>
+            <VBox alignment="CENTER" minWidth="35.0" prefHeight="35.0" prefWidth="35.0">
+               <children>
+                  <FontAwesomeIcon fx:id="icon" fill="WHITE" size="25" />
+               </children>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </VBox>
+            <Label fx:id="label_RcmContents" prefHeight="35.0" prefWidth="774.0" style="-fx-background-color: #090948;" text="오늘 하루도 힘차게!!!" textFill="WHITE">
+               <font>
+                  <Font name="YDIYGO350" size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
    </children>
    <padding>
       <Insets top="120.0" />

@@ -45,7 +45,31 @@
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox maxHeight="70.0" minHeight="80.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="30.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="앨범 아이콘">
+                           <font>
+                              <Font name="YDIYGO340" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                        </Label>
+                        <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                           <children>
+                              <FontAwesomeIcon fx:id="icon" fill="WHITE" iconName="ANGELLIST" size="60">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </FontAwesomeIcon>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
                   <HBox prefHeight="21.0" prefWidth="453.0">
@@ -60,12 +84,12 @@
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </HBox>
-                  <HBox prefHeight="150.0" prefWidth="200.0">
+                  <HBox minHeight="60.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="label_rcmContents" alignment="TOP_LEFT" prefHeight="101.0" prefWidth="457.0" text="Label" />
+                        <Label fx:id="label_rcmContents" alignment="TOP_LEFT" prefHeight="101.0" prefWidth="453.0" text="Label" />
                      </children>
                   </HBox>
                </children>
