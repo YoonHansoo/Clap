@@ -16,7 +16,7 @@
          <children>
             <AnchorPane prefHeight="587.0" prefWidth="720.0">
                <children>
-                  <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="29.0" layoutY="39.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " />
+                  <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="14.0" layoutY="39.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " />
                   <JFXTreeTableView fx:id="tbl_like" layoutX="11.0" layoutY="87.0" prefHeight="400.0" prefWidth="704.0">
                      <columns>
                         <TreeTableColumn fx:id="col_Checks" prefWidth="34.0" text="  " />
@@ -32,7 +32,7 @@
             </AnchorPane>
          </children>
       </VBox>
-      <JFXButton layoutX="228.0" layoutY="65.0" ripplerFill="#9c0000" text="담기">
+      <JFXButton layoutX="170.0" layoutY="65.0" ripplerFill="#9c0000" text="담기">
          <graphic>
             <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
          </graphic>
@@ -40,7 +40,7 @@
             <Font name="-윤고딕330" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="154.0" layoutY="65.0" ripplerFill="#9c0000" text="추가">
+      <JFXButton layoutX="111.0" layoutY="65.0" ripplerFill="#9c0000" text="추가">
          <graphic>
             <FontAwesomeIcon iconName="PLUS" size="20" />
          </graphic>
@@ -48,7 +48,7 @@
             <Font name="-윤고딕330" size="12.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="85.0" layoutY="65.0" ripplerFill="#9c0000" text="듣기">
+      <JFXButton layoutX="50.0" layoutY="65.0" ripplerFill="#9c0000" text="듣기">
          <graphic>
             <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
          </graphic>

@@ -12,19 +12,28 @@
 
 <AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="768.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.profiles.ReviewMusController">
    <children>
-      <Line endX="629.0" layoutX="139.0" layoutY="208.0" startX="-139.0" strokeMiterLimit="20.0" />
+      <Line endX="629.0" layoutX="139.0" layoutY="208.0" startX="-139.0" strokeMiterLimit="20.0" AnchorPane.topAnchor="120.0" />
       <VBox prefHeight="816.0" prefWidth="780.0">
          <children>
             <AnchorPane prefHeight="194.0" prefWidth="720.0">
                <children>
-                  <Button layoutX="38.0" layoutY="89.0" mnemonicParsing="false" onAction="#btn_mus" prefHeight="65.0" prefWidth="223.0" style="-fx-background-color: #090948;" text="곡" textFill="WHITE" />
+                  <Button layoutX="118.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_mus" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #090948;" text="곡" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                   <Text layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="리뷰">
                      <font>
                         <Font name="YDIYGO350" size="36.0" />
                      </font>
                   </Text>
-                  <Button layoutX="281.0" layoutY="89.0" mnemonicParsing="false" onAction="#btn_alb" prefHeight="65.0" prefWidth="223.0" style="-fx-background-color: #090948; -fx-border-color: #000000;" text="앨범" textFill="WHITE" />
-                  <Button layoutX="516.0" layoutY="89.0" mnemonicParsing="false" onAction="#btn_Its" prefHeight="65.0" prefWidth="223.0" style="-fx-background-color: #090948;" text="아티스트" textFill="WHITE" />
+                  <Button layoutX="241.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_alb" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #090948; -fx-border-color: #000000;" text="앨범" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
+                  <Button layoutX="364.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_Its" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: #090948;" text="아티스트" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Button>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="contents" prefHeight="609.0" prefWidth="777.0">
@@ -39,7 +48,7 @@
                         <TreeTableColumn fx:id="col_del" minWidth="0.0" prefWidth="39.0" text="삭제" />
                      </columns>
                   </JFXTreeTableView>
-                  <Pagination fx:id="p_Paging" layoutX="6.0" layoutY="45.0" prefHeight="564.0" prefWidth="752.0" />
+                  <Pagination fx:id="p_Paging" layoutX="11.0" layoutY="87.0" prefHeight="458.0" prefWidth="739.0" />
                </children>
             </AnchorPane>
          </children>
