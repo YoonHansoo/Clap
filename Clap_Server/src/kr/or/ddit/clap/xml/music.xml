@@ -357,7 +357,7 @@
 		  from music a, album b, singer c
 		 where a.alb_no = b.alb_no
 		   and b.sing_no = c.sing_no
-		   and a.mus_no like '%' || 400 || '%'
+		   and a.mus_no like '%' || 90 || '%'
 		 group by a.mus_title,a.mus_file,c.sing_name
 	</select>
 
