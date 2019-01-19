@@ -10,36 +10,34 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  stylesheets="@../../../../../../../mypage.css" fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageMyAlbListController">
+<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="728.0" stylesheets="@../../../../../../../mypage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageMyAlbListController">
    <children>
       <VBox layoutX="4.0" layoutY="2.0" prefHeight="894.0" prefWidth="720.0">
          <children>
             <AnchorPane prefHeight="587.0" prefWidth="720.0">
                <children>
-                  <JFXCheckBox fx:id="chbox_main" layoutX="28.0" layoutY="128.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " />
-                  <Button layoutX="90.0" layoutY="128.0" mnemonicParsing="false" text="듣기" />
-                  <Button layoutX="153.0" layoutY="129.0" mnemonicParsing="false" text="추가" />
-                  <Button layoutX="223.0" layoutY="129.0" mnemonicParsing="false" text="담기" />
-                  <JFXTreeTableView stylesheets="@../../../../../../../mypage.css" fx:id="tbl_MyAlbLists" layoutX="11.0" layoutY="184.0" prefHeight="400.0" prefWidth="704.0">
+                  <JFXCheckBox fx:id="chbox_main" layoutX="28.0" layoutY="127.0" onAction="#mainCheck" prefHeight="24.0" prefWidth="37.0" text=" " AnchorPane.leftAnchor="19.0" />
+                  <Button layoutX="61.0" layoutY="128.0" mnemonicParsing="false" text="듣기" AnchorPane.topAnchor="128.0" />
+                  <Button layoutX="103.0" layoutY="128.0" mnemonicParsing="false" text="추가" AnchorPane.topAnchor="128.0" />
+                  <Button layoutX="145.0" layoutY="128.0" mnemonicParsing="false" text="담기" AnchorPane.topAnchor="128.0" />
+                  <JFXTreeTableView fx:id="tbl_MyAlbLists" layoutX="11.0" layoutY="184.0" prefHeight="400.0" prefWidth="704.0" stylesheets="@../../../../../../../mypage.css">
                      <columns>
-                        <TreeTableColumn fx:id="col_Checks" prefWidth="41.0" text="  " />
-                        <TreeTableColumn fx:id="col_Img" prefWidth="170.0" />
-                        <TreeTableColumn fx:id="col_Mus" prefWidth="333.0" text="곡" />
-                        <TreeTableColumn fx:id="col_Its" prefWidth="159.0" text="가수명" />
+                        <TreeTableColumn fx:id="col_Mus" prefWidth="437.0" text="곡" />
+                        <TreeTableColumn fx:id="col_Its" prefWidth="266.0" text="가수명" />
                      </columns>
                   </JFXTreeTableView>
-                  <Pagination fx:id="p_Paging" layoutX="6.0" layoutY="166.0" prefHeight="516.0" prefWidth="714.0" />
-                  <Label layoutX="19.0" layoutY="32.0" prefHeight="42.0" prefWidth="323.0" text="마이앨범">
+                  <Pagination fx:id="p_Paging" layoutX="9.0" layoutY="185.0" prefHeight="447.0" prefWidth="704.0" />
+                  <Label layoutX="19.0" layoutY="32.0" prefHeight="42.0" prefWidth="323.0" text="마이앨범" AnchorPane.leftAnchor="19.0">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="la_MyAlbName" layoutX="31.0" layoutY="88.0" text="앨범명">
+                  <Label fx:id="la_MyAlbName" layoutX="31.0" layoutY="88.0" text="앨범명" AnchorPane.leftAnchor="19.0">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button onAction="#btn_Cl" layoutX="288.0" layoutY="128.0" mnemonicParsing="false" text="삭제" />
+                  <Button layoutX="187.0" layoutY="128.0" mnemonicParsing="false" onAction="#btn_Cl" text="삭제" AnchorPane.topAnchor="128.0" />
                </children>
             </AnchorPane>
          </children>

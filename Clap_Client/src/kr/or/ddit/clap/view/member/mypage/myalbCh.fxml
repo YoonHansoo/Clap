@@ -9,36 +9,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane  stylesheets="@../../../../../../../mypage.css" fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="883.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageMyAlbController">
+<AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="600.0" stylesheets="@../../../../../../../mypage.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.mypage.MypageMyAlbController">
    <children>
-      <JFXTreeTableView stylesheets="@../../../../../../../mypage.css" fx:id="tbl_Myalb" layoutX="18.0" layoutY="69.0" prefHeight="679.0" prefWidth="564.0">
+      <JFXTreeTableView fx:id="tbl_Myalb" layoutX="18.0" layoutY="69.0" prefHeight="679.0" prefWidth="564.0" stylesheets="@../../../../../../../mypage.css">
          <columns>
             <TreeTableColumn fx:id="col_Chbox" prefWidth="58.0" text=" " />
             <TreeTableColumn fx:id="col_MyAlbname" prefWidth="415.0" text="마이앨범 명" />
             <TreeTableColumn fx:id="col_MusCount" prefWidth="90.0" text="곡" />
          </columns>
       </JFXTreeTableView>
-      <Button layoutX="55.0" layoutY="756.0" mnemonicParsing="false" onAction="#btn_del" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE">
+      <Button layoutX="42.0" layoutY="754.0" mnemonicParsing="false" onAction="#btn_del" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE">
          <font>
-            <Font name="YDIYGO350" size="18.0" />
+            <Font name="YDIYGO350" size="12.0" />
          </font></Button>
-      <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="11.0" layoutY="762.0" onAction="#mainCheck" text=" " />
+      <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="11.0" layoutY="758.0" onAction="#mainCheck" text=" " />
       <JFXToolbar layoutX="415.0" layoutY="780.0" prefHeight="29.0" prefWidth="157.0" />
-      <Label fx:id="la_Muscount" layoutX="476.0" layoutY="756.0" prefHeight="29.0" prefWidth="105.0" text="선택">
+      <Label fx:id="la_Muscount" layoutX="476.0" layoutY="751.0" prefHeight="29.0" prefWidth="105.0" text="선택">
          <font>
-            <Font name="YDIYGO350" size="18.0" />
+            <Font name="YDIYGO350" size="17.0" />
          </font></Label>
-      <Button layoutX="309.0" layoutY="807.0" mnemonicParsing="false" onAction="#btn_Cl" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE">
+      <Button layoutX="298.0" layoutY="794.0" mnemonicParsing="false" onAction="#btn_Cl" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="취 소" textFill="WHITE">
          <font>
-            <Font name="YDIYGO350" size="18.0" />
+            <Font name="YDIYGO350" size="16.0" />
          </font></Button>
-      <Button layoutX="195.0" layoutY="807.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
+      <Button layoutX="225.0" layoutY="794.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="확 인" textFill="WHITE">
          <font>
-            <Font name="YDIYGO350" size="18.0" />
+            <Font name="YDIYGO350" size="16.0" />
          </font></Button>
-      <Label layoutX="-10.0" layoutY="-4.0" prefHeight="57.0" prefWidth="618.0" style="-fx-background-color: #090948;" text="   마이앨범 편집" textFill="WHITE">
+      <Label layoutX="59.0" layoutY="25.0" prefHeight="44.0" prefWidth="600.0" style="-fx-background-color: #090948;" text="   마이앨범 편집" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <font>
-            <Font name="YDIYGO350" size="24.0" />
+            <Font name="YDIYGO350" size="20.0" />
          </font>
       </Label>
    </children>
