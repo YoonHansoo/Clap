@@ -12,7 +12,8 @@
 		SELECT RCM_ALB_NO,
 		RCM_ALB_NAME,
 		RCM_CONTENT,
-		RCM_ALB_IMAGE
+		RCM_ALB_IMAGE,
+		rcm_icon
 		FROM RECOMMEND_ALBUM
 		order by to_number(RCM_ALB_NO) desc
 	</select>
@@ -60,7 +61,8 @@ SELECT  a.RCM_ALB_NO,
                     a.RCM_ALB_NAME,
                     a.RCM_CONTENT,
                     a.RCM_ALB_IMAGE,
-                to_number(nvl(b.cnt,0))
+                to_number(nvl(b.cnt,0)),
+                	a.rcm_icon
              FROM RECOMMEND_ALBUM a, (SELECT count(*) as cnt,
                                                     RCM_ALB_NO
                                         FROM RECOMMEND_LIKE
@@ -77,14 +79,16 @@ SELECT  a.RCM_ALB_NO,
 		RCM_ALB_NAME,
 		RCM_CONTENT,
 		MEM_ID,
-		RCM_ALB_IMAGE
+		RCM_ALB_IMAGE,
+		rcm_icon
 		)
 		values(
 		seq_rcm_alb_no.nextval,
 		#rcm_alb_name#,
 		#rcm_content#,
 		#mem_id#,
-		#rcm_alb_image#
+		#rcm_alb_image#,
+		#rcm_icon#
 		)
 	</insert>
 
@@ -136,7 +140,8 @@ SELECT  a.RCM_ALB_NO,
 		RCM_CONTENT =
 		#rcm_content#,
 		MEM_ID = #mem_id#,
-		RCM_ALB_IMAGE = #rcm_alb_image#
+		RCM_ALB_IMAGE = #rcm_alb_image#,
+		rcm_icon = #rcm_icon#
 		WHERE
 		RCM_ALB_NO = #rcm_alb_no#
 
@@ -167,7 +172,8 @@ SELECT  a.RCM_ALB_NO,
 		RCM_ALB_NAME,
 		RCM_CONTENT,
 		MEM_ID,
-		RCM_ALB_IMAGE
+		RCM_ALB_IMAGE,
+		rcm_icon
 		FROM RECOMMEND_ALBUM
 		WHERE RCM_ALB_NO = #String#
 	</select>
