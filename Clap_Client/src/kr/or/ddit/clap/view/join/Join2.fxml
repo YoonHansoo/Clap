@@ -19,9 +19,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="832.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="832.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../../../Join.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
    <children>
-      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
+      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0" visible="false">
          <top>
             <VBox prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -318,7 +318,7 @@
             <Insets left="222.0" top="15.0" />
          </padding>
       </BorderPane>
-      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0" visible="false">
+      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
                <top>
@@ -331,12 +331,9 @@
                                     <Insets left="5.0" />
                                  </HBox.margin>
                               </FontAwesomeIcon>
-                              <Label text="서비스 이용약관 동의">
-                                 <font>
-                                    <Font name="D2Coding" size="22.0" />
-                                 </font>
+                              <Label fx:id="lb1" text="서비스 이용약관 동의">
                                  <HBox.margin>
-                                    <Insets top="3.0" />
+                                    <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
                            </children>
@@ -351,32 +348,23 @@
                <center>
                   <VBox prefWidth="100.0" spacing="5.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label text="Clap 회원가입을 위해 이용약관 및 개인정보 수집 및 이용에 동의해 주세요.">
+                        <Label fx:id="lb2" text="Clap 회원가입을 위해 이용약관 및 개인정보 수집 및 이용에 동의해 주세요.">
                            <VBox.margin>
                               <Insets top="25.0" />
                            </VBox.margin>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
                         </Label>
-                        <Label text="이용약관 동의">
+                        <Label fx:id="lb3" text="이용약관 동의">
                            <VBox.margin>
                               <Insets top="30.0" />
                            </VBox.margin>
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
                         </Label>
                         <StackPane fx:id="stack1" prefHeight="148.0" prefWidth="608.0" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="15.0" prefWidth="171.0" text="이용약관에 동의합니다.">
+                              <Label fx:id="lb4" alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="15.0" prefWidth="171.0" text="이용약관에 동의합니다.">
                                  <HBox.margin>
                                     <Insets bottom="4.0" top="7.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
                               </Label>
                               <JFXCheckBox fx:id="check1" checkedColor="#32b1f5" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
                            </children>
@@ -384,29 +372,19 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <Label text="개인정보 수집 및 이용">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
+                        <Label fx:id="lb5" text="개인정보 수집 및 이용">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Label>
-                        <Label text="  - 개인정보 수집 및 이용에 대해 거부할 수 있으며, 동의 거부 시 회원가입이 제한됩니다.">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </Label>
+                        <Label fx:id="lb6" text="  - 개인정보 수집 및 이용에 대해 거부할 수 있으며, 동의 거부 시 회원가입이 제한됩니다." />
                         <StackPane fx:id="stack2" prefHeight="148.0" prefWidth="608.0" />
                         <HBox alignment="CENTER_RIGHT" prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                            <children>
-                              <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="18.0" prefWidth="255.0" text="개인정보 수집 및 이용에 동의합니다.">
+                              <Label fx:id="lb7" alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="18.0" prefWidth="255.0" text="개인정보 수집 및 이용에 동의합니다.">
                                  <HBox.margin>
                                     <Insets bottom="4.0" top="7.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
                               </Label>
                               <JFXCheckBox fx:id="check2" checkedColor="#32b1f5" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
                            </children>
