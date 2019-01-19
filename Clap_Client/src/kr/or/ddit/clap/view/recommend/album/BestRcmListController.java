@@ -103,8 +103,8 @@ public class BestRcmListController implements Initializable {
 				VBox vbox = new VBox();
 				vbox.setPrefWidth(358);
 				vbox.setPrefHeight(300);
-				vbox.setStyle("-fx-border-color:#d3d3d3;");
-				vbox.setStyle("-fx-background-color:#090948;");
+				vbox.setStyle("-fx-background-color:#9c0000;");
+				vbox.setStyle("-fx-border-color:#d3d3d3");
 				hbox.setMargin(vbox, new Insets(0, 20, 0, 0));
 
 				// 앨범이미지를 표시하는 ImageView
@@ -118,7 +118,7 @@ public class BestRcmListController implements Initializable {
 				// Title 라벨
 				Label title = new Label();
 				title.setFont(Font.font("-윤고딕340", 18));
-				title.setTextFill(Color.WHITE);
+				title.setTextFill(Color.valueOf("#090948"));
 				title.setPrefWidth(348);
 				title.setPrefHeight(20);
 				title.setWrapText(true);
@@ -164,8 +164,8 @@ public class BestRcmListController implements Initializable {
 				});
 				//랭킹
 				Label rank = new Label();
-				rank.setFont(Font.font("-윤고딕340", 18));
-				rank.setTextFill(Color.RED);
+				rank.setFont(Font.font("-윤고딕350", 18));
+				rank.setTextFill(Color.valueOf("#9c0000"));
 				rank.setPrefWidth(308);
 				rank.setPrefHeight(20);
 				rank.setWrapText(true);
@@ -183,7 +183,7 @@ public class BestRcmListController implements Initializable {
 				FontAwesomeIcon icon = new FontAwesomeIcon();
 				icon.setIconName(recommendList.get(i).getRcm_icon());
 				icon.setSize("42");
-				icon.setFill(Color.WHITE);
+				icon.setFill(Color.valueOf("#090948"));
 
 
 				// title과 like를 담을 hbox
@@ -191,14 +191,14 @@ public class BestRcmListController implements Initializable {
 				temp_hbox.setPrefWidth(308);
 				temp_hbox.setPrefHeight(20);
 				temp_hbox.setPadding(new Insets(5, 5, 5, 15));
-				temp_hbox.setStyle("-fx-border-color:white;");
-				temp_hbox.setStyle("-fx-border-style : solid hidden hidden hidden;");
+				temp_hbox.setStyle("-fx-border-color:#d3d3d3;");
+//				temp_hbox.setStyle("-fx-border-style : solid hidden hidden hidden;");
 				vbox.setMargin(temp_hbox, new Insets(30, 0, 0, 0));
 
 				// 좋아요 라벨
 				Label like = new Label();
 				like.setFont(Font.font("-윤고딕340", 14));
-				like.setTextFill(Color.WHITE);
+				like.setTextFill(Color.valueOf("#090948"));
 				like.setPrefWidth(308);
 				like.setPrefHeight(40);
 				// like.setPadding(new Insets(20,0,0,30));
@@ -215,7 +215,7 @@ public class BestRcmListController implements Initializable {
 				// Title 곡 라벨 갯수
 				Label cntMusic = new Label();
 				cntMusic.setFont(Font.font("-윤고딕340", 14));
-				cntMusic.setTextFill(Color.WHITE);
+				cntMusic.setTextFill(Color.valueOf("#090948"));
 				cntMusic.setPrefWidth(308);
 				cntMusic.setPrefHeight(40);
 				// cntMusic.setPadding(new Insets(20,0,0,30));
@@ -223,8 +223,8 @@ public class BestRcmListController implements Initializable {
 
 				// Title 좋아요 아이콘
 				FontAwesomeIcon icon_cntMusic = new FontAwesomeIcon();
-				icon_cntMusic.setIconName("PLAY_CIRCLE");
-				icon_cntMusic.setFill(Color.valueOf("#04ff00"));
+				icon_cntMusic.setIconName("MUSIC");
+				icon_cntMusic.setFill(Color.valueOf("#30cc00"));
 				icon_cntMusic.setSize("20");
 				cntMusic.setGraphic(icon_cntMusic);
 
