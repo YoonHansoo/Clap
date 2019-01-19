@@ -19,8 +19,8 @@
       <AnchorPane fx:id="main" layoutX="234.0" layoutY="3.0" prefHeight="768.0" prefWidth="773.0" AnchorPane.leftAnchor="234.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label id="header_font" layoutX="23.0" layoutY="49.0" prefHeight="51.0" prefWidth="298.0" text="매출 관리" AnchorPane.topAnchor="11.0" />
-            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="221.0" prefHeight="496.0" prefWidth="715.0" style="-fx-background-color: #fff;" />
-            <JFXTreeTableView fx:id="tbl_sales" layoutX="23.0" layoutY="220.0" prefHeight="382.0" prefWidth="715.0">
+            <Pagination fx:id="p_paging" layoutX="23.0" layoutY="221.0" prefHeight="496.0" prefWidth="715.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="23.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="195.0" />
+            <JFXTreeTableView fx:id="tbl_sales" layoutX="23.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="382.0" prefWidth="715.0">
                <columns>
                   <TreeTableColumn fx:id="col_Buyuser" prefWidth="153.0" text="구매자" />
                   <TreeTableColumn fx:id="col_saleDate" prefWidth="190.0" text="구매일수" />
@@ -35,7 +35,7 @@
                <font>
                   <Font size="36.0" />
                </font></Label>
-            <JFXComboBox fx:id="combo_Ticket" layoutX="162.0" layoutY="60.0" prefHeight="29.0" prefWidth="97.0" />
+            <JFXComboBox fx:id="combo_Ticket" layoutX="162.0" layoutY="60.0" prefHeight="29.0" prefWidth="104.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="90.0" />
             <JFXButton layoutX="626.0" layoutY="140.0" onAction="#btn_Search" text="&gt;" textFill="#9c0000">
                <graphic>
                   <Label text="조회" />
@@ -75,7 +75,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
-            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#AlbManag" prefHeight="41.0" prefWidth="271.0" text="앨범 관리 " textFill="WHITE">
+            <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#AlbManag" prefHeight="41.0" prefWidth="271.0" text=" 앨범 관리 " textFill="WHITE">
                <VBox.margin>
                   <Insets top="5.0" />
                </VBox.margin>
