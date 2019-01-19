@@ -1018,7 +1018,7 @@ public VBox pagenation(ObservableList<Map> list, int itemsForPage, int page) {
 			h_Line.setMaxWidth(710);
 			h_Line.setPrefHeight(3);
 			if (i%5 == 0) {
-				h_Line.setStyle("-fx-background-color: #090948;");
+				h_Line.setStyle("-fx-background-color: white;");
 			}else {
 				h_Line.setStyle("-fx-background-color: #e1e1ef;");
 			}	

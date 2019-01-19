@@ -15,7 +15,7 @@
          <children>
             <Label alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="139.0" styleClass="mainlabel" text="장르음악">
                <font>
-                  <Font name="YDIYGO350" size="25.0" />
+                  <Font name="-윤고딕350" size="25.0" />
                </font>
                <VBox.margin>
                   <Insets left="50.0" />
