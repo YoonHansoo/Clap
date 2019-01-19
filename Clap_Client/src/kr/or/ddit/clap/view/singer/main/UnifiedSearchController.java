@@ -12,7 +12,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -60,7 +59,7 @@ import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.vo.music.PlayListVO;
 import kr.or.ddit.clap.vo.singer.SingerVO;
 
-public class SingerMainController implements Initializable {
+public class UnifiedSearchController implements Initializable {
 
 	public static String singerNo;// 파라미터로 받은 선택한 가수의 PK
 	private Registry reg;
@@ -72,8 +71,6 @@ public class SingerMainController implements Initializable {
 	public String str_like_cnt;
 	ObservableList<Map<String, String>> replyMap;
 
-	
-	
 	@FXML
 	Label label_singNo;
 	@FXML
@@ -142,6 +139,10 @@ public class SingerMainController implements Initializable {
 	FontAwesomeIcon icon_heart;
 	@FXML
 	AnchorPane singerMain;
+	
+	
+	@FXML VBox mainBox1;
+	@FXML StackPane stackpane1;
 
 	public void setcontroller(AnchorPane main) {
 		this.main = main;
@@ -181,7 +182,7 @@ public class SingerMainController implements Initializable {
 
 		label_DebutMus.setText(sVO.getSing_debut_mus());
 		label_Nation.setText(sVO.getSing_nation());
-		txt_intro.setText(sVO.getSing_intro());
+		//txt_intro.setText(sVO.getSing_intro());
 
 		Image img = new Image(sVO.getSing_image());
 		System.out.println("이미지경로:" + sVO.getSing_image());
@@ -214,109 +215,7 @@ public class SingerMainController implements Initializable {
 		}
 
 		// 댓글조회
-		try {
-			System.out.println("singerNo:" + singerNo);
-			replyMap = FXCollections.observableArrayList(iss.selectReply(singerNo));
-			System.out.println("리플사이즈:" + replyMap.size());
-			int size = replyMap.size();
-
-			// 댓글 창 생성
-			HBox HboxReply = new HBox();
-			HboxReply.setPrefWidth(100);
-			HboxReply.setPrefHeight(20);
-			HboxReply.setPadding(new Insets(0, 0, 10, 0));
-
-			// 댓글 라벨생성
-			Label reply = new Label();
-			reply.setFont(Font.font("-윤고딕350", 14));
-			reply.setTextFill(Color.valueOf("#000"));
-			reply.setPrefWidth(40);
-			reply.setPrefHeight(40);
-			reply.setText("댓글");
-
-			// 갯수라벨 생성
-			Label replyCnt = new Label();
-			replyCnt.setFont(Font.font("-윤고딕350", 14));
-			replyCnt.setTextFill(Color.valueOf("#9c0000"));
-			replyCnt.setPrefWidth(40);
-			replyCnt.setPrefHeight(40);
-			replyCnt.setText(size + "개");
-
-			// 댓글창과 버튼을 담는 hbox 테두리
-			HBox h_reply = new HBox();
-			h_reply.setPrefWidth(770);
-			h_reply.setPrefHeight(60);
-			h_reply.setStyle("-fx-border-color: #090948");
-			h_reply.setStyle("-fx-background-color: #f0f0f0");
-
-			// TextArea
-			TextArea input_reply = new TextArea();
-			input_reply.setPrefWidth(660);
-			input_reply.setPromptText(
-					"명예회손, 개인정보 유출, 인격권 침해, 허위사실 유포 등은 이용약관 및 관련법률에 의해 제재를 받을 수 있습니다. 건전한 댓글문화 정착을 위해 이용에 주의를 부탁드립니다.");
-			input_reply.setWrapText(true);
-			input_reply.setEditable(true);
-			input_reply.setId("input_reply");
-
-			// 댓글등록버튼
-			JFXButton btnReplyInsert = new JFXButton();
-			// vbox.setMargin(temp_hbox, new Insets(50, 0, 0, 0));
-			HBox.setMargin(btnReplyInsert, new Insets(0, 0, 0, 10));
-			btnReplyInsert.setPrefWidth(130);
-			btnReplyInsert.setPrefHeight(60);
-			btnReplyInsert.setTextFill(Color.valueOf("#fff"));
-			btnReplyInsert.setStyle("-fx-background-color: #090948 ;");
-			btnReplyInsert.setText("댓글등록");
-
-			btnReplyInsert.setOnAction(e -> {
-
-				Map<String, String> rmap = new HashMap<>();
-				String contents = input_reply.getText();
-				String mem_id = LoginSession.session.getMem_id();
-				rmap.put("singerNo", singerNo);
-				rmap.put("contents", contents);
-				rmap.put("mem_id", mem_id);
-
-				try {
-					iss.insertReply(rmap);
-					System.out.println("댓글작성성공");
-					input_reply.setText("");
-
-					// 화면새로고침
-					for (int i = 0; i < 1000; i++) {
-						System.out.println("화면전환");
-					}
-					for (int i = 0; i < 2000000000; i++) {
-					}
-					for (int i = 0; i < 2000000000; i++) {
-
-					}
-
-					// 화면새로고침
-
-					refesh();
-
-				} catch (RemoteException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-			});
-
-			// 세팅
-
-			HboxReply.getChildren().addAll(reply, replyCnt);
-			h_reply.getChildren().addAll(input_reply, btnReplyInsert);
-			reply_vbox.getChildren().addAll(HboxReply, h_reply);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		System.out.println("댓글생성 for문 시작");
-
-		pageing1(replyMap);
-
+	
 	}
 
 	// 화면을 새로고침하는 메서드
@@ -325,7 +224,7 @@ public class SingerMainController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerMain.fxml"));
 			Parent SingerMain;
 			SingerMain = loader.load();
-			SingerMainController cotroller = loader.getController();
+			UnifiedSearchController cotroller = loader.getController();
 			cotroller.setcontroller(main);
 			singerMain.getChildren().removeAll();
 			singerMain.getChildren().setAll(SingerMain);
@@ -626,7 +525,7 @@ public class SingerMainController implements Initializable {
 	@FXML
 	public void songChart() {
 		try {
-			songRank = FXCollections.observableArrayList(ims.selectSinger(SingerMainController.singerNo));
+			songRank = FXCollections.observableArrayList(ims.selectSinger(UnifiedSearchController.singerNo));
 			cb_main.setSelected(false);
 			lb_total.setText("발매곡 (총 " + songRank.size() + "개)");
 
@@ -635,7 +534,7 @@ public class SingerMainController implements Initializable {
 			// 아티스트 소개 y좌표 설정
 			line_intro.setLayoutY(560 + (songRank.size() - 1) * 73);
 			lb_intro.setLayoutY(565 + (songRank.size() - 1) * 73);
-			txt_intro.setLayoutY(620 + (songRank.size() - 1) * 73);
+			//txt_intro.setLayoutY(620 + (songRank.size() - 1) * 73);
 			reply_vbox.setLayoutY(916 + (songRank.size() - 1) * 73);
 
 		} catch (RemoteException e) {

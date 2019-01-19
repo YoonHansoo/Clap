@@ -26,6 +26,10 @@ public interface ILoginService extends Remote{
 	public int gameUpdate(Map map) throws RemoteException;
 	
 	public int insertSearchWord(Map<String,String> map) throws RemoteException;
+	
+	public String selectSearchPK(String word) throws RemoteException;
+	
+	
 }
 
 

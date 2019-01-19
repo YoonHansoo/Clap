@@ -103,8 +103,8 @@ public class HotRcmListController implements Initializable {
 				VBox vbox = new VBox();
 				vbox.setPrefWidth(358);
 				vbox.setPrefHeight(300);
-				vbox.setStyle("-fx-border-color:#000000;");
-				vbox.setStyle("-fx-background-color:#090948;");
+				vbox.setStyle("-fx-background-color:#9c0000;");
+				vbox.setStyle("-fx-border-color:#d3d3d3");
 				hbox.setMargin(vbox, new Insets(0, 20, 0, 0));
 
 				// 앨범이미지를 표시하는 ImageView

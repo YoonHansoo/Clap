@@ -65,6 +65,8 @@ import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.view.recommend.album.UserRcmDetailController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
+import kr.or.ddit.clap.view.singer.main.UnifiedSearchController;
+import kr.or.ddit.clap.view.singer.singer.ShowSingerDetailController;
 import kr.or.ddit.clap.vo.album.AlbumVO;
 import kr.or.ddit.clap.vo.member.MemberVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
@@ -746,7 +748,36 @@ public class MusicMainController implements Initializable {
 		
 			ils.insertSearchWord(pMap);
 			System.out.println("검색어 입력완료");
+			
+			String singPK = ils.selectSearchPK(word);
+			
+			System.out.println(singPK);
+			
+			if(singPK == null) {
+				
+				//검색어가 없습니다 화면으로 전환
+			}
+		
+			UnifiedSearchController.singerNo = singPK;//가수번호를 변수로 넘겨줌
+		
+				Parent unifiedSearch = FXMLLoader.load(getClass().getResource("../view/singer/main/UnifiedSearch.fxml")); // 바뀔
+				// 화면을
+				// 가져옴
+
+				String temp_path = (getClass().getResource("../view/singer/main/UnifiedSearch.fxml")).getPath();
+				String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+				GobackStack.goURL(path);
+
+				contents.getChildren().removeAll();
+				contents.getChildren().setAll(unifiedSearch);
+
+			
+			
 		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 				
