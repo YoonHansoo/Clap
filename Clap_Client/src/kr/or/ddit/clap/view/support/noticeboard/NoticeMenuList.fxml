@@ -1,39 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
-<?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="d_main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../../../../../ChartMenu.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.noticeboard.NoticeMenuController">
    <children>
-      <Label layoutX="38.0" layoutY="49.0" text="공지사항" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="832.5" AnchorPane.topAnchor="15.0">
+      <Label layoutX="114.5" layoutY="15.0" text="공지사항" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font size="30.0" />
          </font>
       </Label>
-      <JFXTabPane layoutX="53.0" layoutY="121.0" prefHeight="30.0" prefWidth="202.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="751.0" AnchorPane.topAnchor="62.0">
-         <tabs>
-            <Tab text="공지사항" />
-         </tabs>
-      </JFXTabPane>
-      <Line endX="900.0" stroke="#0485ee" strokeWidth="2.0" AnchorPane.leftAnchor="52.5" AnchorPane.rightAnchor="50.5" AnchorPane.topAnchor="60.0" />
-      <JFXTreeTableView fx:id="tbl_notice" layoutX="208.0" layoutY="140.0" prefHeight="400.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="130.0">
+      <JFXTreeTableView fx:id="tbl_notice" layoutX="162.0" layoutY="140.0" prefHeight="400.0" prefWidth="766.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="80.0">
          <columns>
-            <TreeTableColumn fx:id="col_noticeNo" prefWidth="79.0" text="번호" />
-            <TreeTableColumn fx:id="col_noticeTitle" prefWidth="440.0" text="제목" />
-            <TreeTableColumn fx:id="col_noticeId" prefWidth="115.0" text="작성자" />
-            <TreeTableColumn fx:id="col_noticeDate" prefWidth="151.0" text="등록일" />
-            <TreeTableColumn fx:id="col_noticeCnt" prefWidth="64.0" text="조회수" />
+            <TreeTableColumn fx:id="col_noticeNo" prefWidth="57.0" text="번호" />
+            <TreeTableColumn fx:id="col_noticeTitle" prefWidth="365.0" text="제목" />
+            <TreeTableColumn fx:id="col_noticeId" prefWidth="140.0" text="작성자" />
+            <TreeTableColumn fx:id="col_noticeDate" minWidth="0.0" prefWidth="126.0" text="등록일" />
+            <TreeTableColumn fx:id="col_noticeCnt" prefWidth="77.0" text="조회수" />
          </columns>
       </JFXTreeTableView>
-      <Pagination fx:id="n_paging" layoutX="78.0" layoutY="154.0" prefHeight="474.0" prefWidth="850.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="154.0" />
-      <JFXButton fx:id="btn_add" layoutX="823.0" layoutY="632.0" text="작성하기" AnchorPane.leftAnchor="823.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="632.0" />
+      <Pagination fx:id="n_paging" layoutX="162.0" layoutY="21.0" prefHeight="452.0" prefWidth="766.0" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="80.0" />
+      <JFXButton fx:id="btn_add" layoutX="801.0" layoutY="533.0" text="작성하기" AnchorPane.leftAnchor="801.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="533.0" />
    </children>
 </AnchorPane>

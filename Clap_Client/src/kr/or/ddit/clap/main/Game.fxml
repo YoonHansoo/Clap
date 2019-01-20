@@ -26,7 +26,7 @@
                         <Insets bottom="15.0" top="-5.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="5초간 전주를 들으신 후, 노래 제목과 가수 이름을" textFill="WHITE">
+                  <Label text="5초간 전주를 들으시고, 노래 제목과 가수 이름을" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO330" size="14.0" />
                      </font>
@@ -34,7 +34,7 @@
                         <Insets bottom="3.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="입력하시고 확인 버튼을 눌러주세요~" textFill="WHITE">
+                  <Label text="입력하신 후 확인 버튼을 눌러주세요~" textFill="WHITE">
                      <font>
                         <Font name="YDIYGO330" size="14.0" />
                      </font>

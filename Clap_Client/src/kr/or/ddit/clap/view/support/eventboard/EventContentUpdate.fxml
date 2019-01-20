@@ -31,7 +31,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="번   호">
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="번       호">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -59,7 +59,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXTextField fx:id="text_Title" focusColor="#090948" maxWidth="119.0" minWidth="119.0" prefHeight="29.0" prefWidth="112.0" />
+                        <JFXTextField fx:id="text_Title" focusColor="#090948" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -132,8 +132,8 @@
          </font>
       </Label>
       <JFXButton />
-      <JFXButton fx:id="btn_update" layoutX="473.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-      <JFXButton fx:id="btn_delete" layoutX="594.0" layoutY="689.0" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
-      <JFXTextArea fx:id="text_Content" layoutX="60.0" layoutY="398.0" maxWidth="653.0" minWidth="653.0" prefHeight="256.0" prefWidth="653.0" />
+      <JFXButton fx:id="btn_update" layoutX="504.0" layoutY="662.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" AnchorPane.topAnchor="662.0" />
+      <JFXButton fx:id="btn_delete" layoutX="609.0" layoutY="662.0" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" AnchorPane.topAnchor="662.0" />
+      <JFXTextArea fx:id="text_Content" layoutX="43.0" layoutY="398.0" maxWidth="670.0" minWidth="653.0" prefHeight="256.0" prefWidth="670.0" />
    </children>
 </AnchorPane>
