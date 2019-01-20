@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="main" stylesheets="@../../../../../../../onlyPaging.css" minHeight="448.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMenuController">
+<AnchorPane fx:id="main" minHeight="448.0" prefWidth="1024.0" stylesheets="@../../../../../../../onlyPaging.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.SingerMenuController">
    <children>
       <VBox layoutY="80.0" prefHeight="5.0" prefWidth="1024.0" style="-fx-background-color: white;" />
       <VBox minHeight="448.0" prefWidth="1024.0" spacing="10.0">
@@ -335,7 +335,7 @@
                         <HBox prefHeight="100.0" prefWidth="200.0" />
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="앨범">
+                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="앨     범">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />
                                  </font>
@@ -361,7 +361,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="작곡가">
+                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="작 곡 가">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />
                                  </font>
@@ -374,7 +374,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="편곡자">
+                              <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="편 곡 자">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />
                                  </font>
@@ -387,7 +387,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="작사">
+                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="작     사">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />
                                  </font>
@@ -427,7 +427,7 @@
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="장르">
+                              <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="장     르">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />
                                  </font>
@@ -448,7 +448,7 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <JFXComboBox fx:id="combo_genreDetail" disable="true" prefHeight="23.0" prefWidth="111.0" />
+                              <JFXComboBox fx:id="combo_genreDetail" disable="true" prefHeight="23.0" prefWidth="113.0" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -509,8 +509,11 @@
                <font>
                   <Font name="YDIYGO350" size="24.0" />
                </font>
+               <VBox.margin>
+                  <Insets top="3.0" />
+               </VBox.margin>
             </Label>
-            <JFXTextArea fx:id="txt_lyrics" prefHeight="269.0" prefWidth="728.0" />
+            <JFXTextArea fx:id="txt_lyrics" maxWidth="719.0" minWidth="719.0" prefHeight="269.0" prefWidth="705.0" />
             <VBox fx:id="reply_vbox2" prefHeight="308.0" prefWidth="733.0">
                <VBox.margin>
                   <Insets top="15.0" />

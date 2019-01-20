@@ -64,7 +64,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="데뷔년도">
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="데뷔 년도">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -81,7 +81,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="데뷔곡">
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="데  뷔  곡">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
@@ -98,7 +98,7 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="국적">
+                        <Label prefHeight="15.0" prefWidth="85.0" style="-fx-background-color: #ffffff;" text="국      적">
                            <font>
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
