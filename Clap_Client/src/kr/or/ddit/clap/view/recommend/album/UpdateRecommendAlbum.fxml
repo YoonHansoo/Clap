@@ -65,6 +65,9 @@
                                  </VBox.margin>
                               </FontAwesomeIcon>
                            </children>
+                           <HBox.margin>
+                              <Insets left="9.0" />
+                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>
@@ -93,7 +96,7 @@
          </children>
       </HBox>
       <Line endX="625.0" layoutX="120.0" layoutY="375.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="293.0" layoutY="331.0" onAction="#btn_changeImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 수정" textFill="WHITE">
+      <JFXButton layoutX="348.0" layoutY="317.0" onAction="#btn_changeImg" prefHeight="28.0" prefWidth="110.0" style="-fx-background-color: #090948;" text="이미지 수정" textFill="WHITE" AnchorPane.topAnchor="317.0">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
          </graphic>
@@ -101,9 +104,9 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
-      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
-      <JFXButton layoutX="488.0" layoutY="331.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE">
+      <JFXButton layoutX="536.0" layoutY="689.0" onAction="#updateRcmAlbum" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+      <JFXButton layoutX="641.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
+      <JFXButton layoutX="463.0" layoutY="317.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="110.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE" AnchorPane.topAnchor="317.0">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="MUSIC" />
          </graphic>
@@ -240,9 +243,12 @@
             </HBox>
          </children>
       </VBox>
-      <StackPane layoutX="340.0" layoutY="99.0" prefHeight="80.0" prefWidth="80.0">
+      <StackPane layoutX="340.0" layoutY="99.0" prefHeight="80.0" prefWidth="80.0" AnchorPane.leftAnchor="390.0">
          <children>
-            <JFXButton fx:id="btn_icon" minHeight="80.0" minWidth="80.0" text="  " textFill="WHITE" />
+            <JFXButton fx:id="btn_icon" minHeight="80.0" minWidth="80.0" text="  " textFill="WHITE">
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin></JFXButton>
          </children>
       </StackPane>
       <VBox fx:id="btn_box" layoutX="335.0" layoutY="180.0" prefHeight="160.0" prefWidth="400.0" visible="false">

@@ -55,7 +55,7 @@
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets bottom="3.0" />
+                              <Insets top="-8.0" />
                            </HBox.margin>
                         </Label>
                         <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
@@ -79,7 +79,7 @@
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets bottom="10.0" />
+                              <Insets top="10.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -89,7 +89,10 @@
                   </HBox>
                   <HBox minHeight="60.0" prefHeight="60.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="label_rcmContents" alignment="TOP_LEFT" prefHeight="101.0" prefWidth="453.0" text="Label" />
+                        <Label fx:id="label_rcmContents" alignment="TOP_LEFT" prefHeight="101.0" prefWidth="453.0" text="Label">
+                           <HBox.margin>
+                              <Insets top="3.0" />
+                           </HBox.margin></Label>
                      </children>
                   </HBox>
                </children>
@@ -97,9 +100,9 @@
          </children>
       </HBox>
       <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#updateRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
-      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
-      <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0">
+      <JFXButton layoutX="535.0" layoutY="689.0" onAction="#updateRcmAlbum" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Update" textFill="WHITE" />
+      <JFXButton layoutX="640.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE" />
+      <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0" AnchorPane.rightAnchor="27.0">
          <columns>
             <TreeTableColumn fx:id="col_MusicName" prefWidth="216.0" text="곡" />
             <TreeTableColumn fx:id="col_AlbName" prefWidth="201.0" text="앨범 " />

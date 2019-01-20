@@ -23,7 +23,7 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="15.0" layoutY="67.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;">
+      <HBox layoutX="15.0" layoutY="67.0" prefHeight="211.0" prefWidth="718.0" style="border: #54b823;" AnchorPane.leftAnchor="30.0">
          <children>
             <ImageView fx:id="imgview_img" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
@@ -65,6 +65,9 @@
                                  </VBox.margin>
                               </FontAwesomeIcon>
                            </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
                         </VBox>
                      </children>
                   </HBox>
@@ -93,7 +96,7 @@
          </children>
       </HBox>
       <Line endX="625.0" layoutX="120.0" layoutY="331.0" startX="-92.0" stroke="#9c0000" />
-      <JFXButton layoutX="293.0" layoutY="292.0" onAction="#btn_insertImg" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE">
+      <JFXButton layoutX="348.0" layoutY="284.0" onAction="#btn_insertImg" prefHeight="28.0" prefWidth="125.0" style="-fx-background-color: #090948;" text="이미지 등록" textFill="WHITE" AnchorPane.topAnchor="284.0">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="IMAGE" />
          </graphic>
@@ -101,9 +104,9 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="509.0" layoutY="689.0" onAction="#insertRcmAlbum" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
-      <JFXButton layoutX="633.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" />
-      <JFXButton layoutX="488.0" layoutY="292.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="131.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE">
+      <JFXButton layoutX="537.0" layoutY="689.0" onAction="#insertRcmAlbum" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Insert" textFill="WHITE" />
+      <JFXButton layoutX="642.0" layoutY="689.0" onAction="#cancel" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #090948;" text="Cancel" textFill="WHITE" AnchorPane.rightAnchor="31.0" />
+      <JFXButton layoutX="478.0" layoutY="284.0" onAction="#btn_insertMusic" prefHeight="28.0" prefWidth="125.0" style="-fx-background-color: #090948;" text="곡  추가" textFill="WHITE" AnchorPane.topAnchor="284.0">
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="MUSIC" />
          </graphic>
@@ -111,7 +114,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0">
+      <JFXTreeTableView fx:id="tbl_music" layoutX="28.0" layoutY="354.0" prefHeight="294.0" prefWidth="718.0" AnchorPane.rightAnchor="27.0">
          <columns>
             <TreeTableColumn fx:id="col_MusicName" prefWidth="216.0" text="곡" />
             <TreeTableColumn fx:id="col_AlbName" prefWidth="201.0" text="앨범 " />
@@ -227,7 +230,7 @@
             </HBox>
          </children>
       </VBox>
-      <StackPane layoutX="381.0" layoutY="103.0" prefHeight="80.0" prefWidth="80.0">
+      <StackPane layoutX="381.0" layoutY="103.0" prefHeight="80.0" prefWidth="80.0" AnchorPane.leftAnchor="405.0">
          <children>
             <JFXButton fx:id="btn_icon" minHeight="80.0" minWidth="80.0" text="  " textFill="WHITE" />
          </children>
