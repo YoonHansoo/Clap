@@ -24,8 +24,8 @@
                   </FontAwesomeIcon>
                   <Label text="이용권 구매">
                      <font>
-                        <Font size="27.0" />
-                     </font>
+						<Font name="YDIYGO350" size="27.0" />
+					</font>
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
@@ -399,18 +399,18 @@
                      <children>
                         <Label text="· 이용권 사용기간은 1개월권이 31일, 6개월권은 183일, 12개월권은 365일입니다." textFill="#616161">
                            <font>
-                              <Font name="YDIYGO350" size="16.0" />
-                           </font>
+								<Font name="YDIYGO330" size="16.0" />
+							</font>
                         </Label>
                         <Label text="· 사용중인 이용권이 있을 경우 기존 이용기간에 구매하신 만큼의 기간이 추가됩니다." textFill="#616161">
                            <font>
-                              <Font name="YDIYGO320" size="16.0" />
-                           </font>
+								<Font name="YDIYGO330" size="16.0" />
+							</font>
                         </Label>
                         <Label text="· 12개월 이용권을 구매하시는 경우 회원 등급이 VIP로 조정되며 이용권 할인 혜택을 적용 받습니다." textFill="#616161">
                            <font>
-                              <Font name="YDIYGO330" size="16.0" />
-                           </font>
+								<Font name="YDIYGO330" size="16.0" />
+							</font>
                         </Label>
                      </children>
                   </VBox>

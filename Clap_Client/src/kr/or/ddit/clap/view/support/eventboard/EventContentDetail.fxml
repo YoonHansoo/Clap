@@ -13,11 +13,11 @@
       <TextArea fx:id="text_cont" layoutX="286.0" layoutY="227.0" prefHeight="330.0" prefWidth="640.0" style="-fx-border-style: solid; -fx-border-radius: 5;" AnchorPane.topAnchor="150.0" />
       <Label layoutX="37.0" layoutY="29.0" text="이벤트" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
          <font>
-            <Font size="30.0" />
-         </font>
+			<Font name="YDIYGO350" size="30.0" />
+		</font>
       </Label>
-      <Line endX="800.0" layoutX="138.0" layoutY="81.0" startX="-100.0" AnchorPane.topAnchor="80.5" />
-      <Line endX="800.0" layoutX="138.0" layoutY="126.0" startX="-100.0" AnchorPane.topAnchor="124.5" />
+      <Line endX="800.0" layoutX="138.0" layoutY="81.0" startX="-100.0" stroke="#9c0000" AnchorPane.topAnchor="80.5" />
+      <Line endX="800.0" layoutX="138.0" layoutY="126.0" startX="-100.0" stroke="#9c0000" AnchorPane.topAnchor="124.5" />
       <Text fx:id="Text_EventNo" layoutX="88.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="번호" />
       <Text fx:id="Text_EventTitle" layoutX="277.0" layoutY="108.59765625" strokeType="OUTSIDE" strokeWidth="0.0" text="제목" AnchorPane.topAnchor="96.59765625" />
       <Text fx:id="Text_EventSDate" layoutX="570.0" layoutY="107.59765625" strokeType="OUTSIDE" strokeWidth="0.0" text="시작일" AnchorPane.topAnchor="95.59765625" />

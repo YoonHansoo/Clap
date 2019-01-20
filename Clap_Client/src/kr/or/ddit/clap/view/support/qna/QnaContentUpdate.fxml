@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaContentUpdateController">
    <children>
-      <Label layoutX="59.0" layoutY="56.0" text="고객센터" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
+      <Label layoutX="59.0" layoutY="56.0" text="문의사항" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="YDIYGO350" size="30.0" />
          </font>
@@ -79,7 +79,7 @@
             </JFXTextArea>
          </children>
       </GridPane>
-      <JFXButton fx:id="btn_Upd" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="471.0" layoutY="473.0" text="수  정" textAlignment="CENTER" AnchorPane.leftAnchor="471.0" AnchorPane.topAnchor="473.0">
+      <JFXButton id="btn" fx:id="btn_Upd" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="471.0" layoutY="473.0" text="수  정" textAlignment="CENTER" AnchorPane.leftAnchor="471.0" AnchorPane.topAnchor="473.0">
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>

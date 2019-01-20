@@ -15,8 +15,8 @@
    <children>
       <Label layoutX="38.0" layoutY="49.0" text="공지사항" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
          <font>
-            <Font size="30.0" />
-         </font>
+			<Font name="YDIYGO350" size="30.0" />
+		</font>
       </Label>
       <GridPane layoutX="149.0" layoutY="86.0" prefHeight="418.0" prefWidth="674.0" AnchorPane.leftAnchor="149.0" AnchorPane.topAnchor="86.0">
         <columnConstraints>
@@ -59,7 +59,7 @@
             </Label>
          </children>
       </GridPane>
-      <JFXButton fx:id="btn_upd" layoutX="503.0" layoutY="540.0" text="수  정" AnchorPane.leftAnchor="503.0" AnchorPane.topAnchor="540.0">
+      <JFXButton id="btn" fx:id="btn_upd" layoutX="503.0" layoutY="540.0" text="수  정" AnchorPane.leftAnchor="503.0" AnchorPane.topAnchor="540.0">
          <font>
             <Font size="14.0" />
          </font>

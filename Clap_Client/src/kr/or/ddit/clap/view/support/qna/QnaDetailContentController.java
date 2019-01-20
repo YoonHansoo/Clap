@@ -114,7 +114,7 @@ public class QnaDetailContentController implements Initializable {
 		//btn_delete, btn_update : 관리자, 작성자 구분
 		if(LoginSession.session.getMem_auth().equals("t")){
 			btn_delete.setVisible(true);
-			btn_update.setVisible(false);
+			//btn_update.setVisible(false);
 			text_QnaRe.setVisible(true);
 			btn_QnaRe.setVisible(true);
 		} else {

@@ -2,8 +2,8 @@
   
 }
 
-#d_main{
-	-fx-background-color: #ffffff;
+#main{
+	-fx-background-color: white;
 }
 
 .tab{
@@ -17,14 +17,8 @@
 }
 
 .tab-label{
-    -fx-font-family: "-윤고딕320";
+    -fx-font-family: "-윤고딕350";
     -fx-font-size: 18;
-}
-
-.mainlabel{
-	 -fx-font-family: "-윤고딕350";
-	 -fx-font-size: 25;
-	 
 }
 
 .tab:selected{
@@ -52,9 +46,6 @@
     -fx-font-family: "-윤고딕330";
 }
 
-.button{
-	 -fx-font-family: "-윤고딕330";
-}
 
 .pagination .toggle-button {
 	
@@ -73,5 +64,9 @@
 	-fx-background-color:white;
 }
 
+#btn {
+	-fx-background-color: #090948;
+	-fx-text-fill: white;
+}
 
 

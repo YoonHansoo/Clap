@@ -14,7 +14,7 @@
 
 <AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="448.0" minWidth="-Infinity" prefHeight="768.0" prefWidth="1005.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.support.qna.QnaContentInsertController">
    <children>
-      <Label layoutX="59.0" layoutY="56.0" text="고객센터" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
+      <Label layoutX="59.0" layoutY="56.0" text="문의사항" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font name="YDIYGO350" size="30.0" />
          </font>
@@ -39,12 +39,12 @@
                </font>
             </Label>
             <ComboBox fx:id="Com_Type" prefHeight="23.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="아이디" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="아 이 디" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="연락처" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="연 락 처" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
@@ -55,19 +55,19 @@
                </font>
             </Label>
             <JFXTextField fx:id="Text_QnaMemTel" maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="이메일" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="이 메 일" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
             <JFXTextField fx:id="Text_QnaMemEmail" maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="제목" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="제  목" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
             </Label>
             <JFXTextField fx:id="Text_QnaTitle" maxWidth="382.0" minWidth="227.0" prefColumnCount="10" prefHeight="29.0" prefWidth="227.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Label alignment="CENTER" contentDisplay="CENTER" text="내용" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="내  용" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                <font>
                   <Font name="YDIYGO350" size="17.0" />
                </font>
@@ -79,7 +79,7 @@
             </JFXTextArea>
          </children>
       </GridPane>
-      <JFXButton fx:id="btn_Add" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="463.0" layoutY="467.0" text="등  록" textAlignment="CENTER" AnchorPane.leftAnchor="463.0" AnchorPane.topAnchor="467.0">
+      <JFXButton id="btn" fx:id="btn_Add" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="463.0" layoutY="467.0" text="등  록" textAlignment="CENTER" AnchorPane.leftAnchor="463.0" AnchorPane.topAnchor="467.0">
          <padding>
             <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
          </padding>

@@ -23,6 +23,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
+import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.service.noticeboard.INoticeBoardService;
 import kr.or.ddit.clap.vo.support.NoticeBoardVO;
 import com.jfoenix.controls.JFXButton;
@@ -57,6 +58,12 @@ public class NoticeMenuController implements Initializable {
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		if(LoginSession.session.getMem_auth().equals("t")){
+			btn_add.setVisible(true);
+		} else {
+			btn_add.setVisible(false);
+		}
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
