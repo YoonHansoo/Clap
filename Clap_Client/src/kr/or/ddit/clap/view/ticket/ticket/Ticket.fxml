@@ -50,18 +50,21 @@
                            <font>
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
+                           <padding>
+                              <Insets bottom="3.0" />
+                           </padding>
                         </Label>
                         <Label fx:id="lb_date3" layoutX="205.0" layoutY="24.0" text="사용중인 이용권이 없습니다." textFill="#090948">
                            <font>
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="496.0" layoutY="15.0" text="clap 이용권을 구매하시고">
+                        <Label layoutX="496.0" layoutY="15.0" text="CLAP music 이용권을 구매하시고">
                            <font>
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="496.0" layoutY="40.0" text="무제한 음악감상 혜택을 누리세요!">
+                        <Label layoutX="496.0" layoutY="40.0" text="무제한 음악 감상 혜택을 누리세요!">
                            <font>
                               <Font name="YDIYGO350" size="18.0" />
                            </font>
@@ -83,9 +86,9 @@
             </VBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #090948;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="147.0" style="-fx-background-color: #090948;">
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="147.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="1개월" textFill="WHITE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="1개월" textFill="#090948">
                            <font>
                               <Font name="YDIYGO350" size="24.0" />
                            </font>
@@ -95,7 +98,7 @@
                      <children>
                         <HBox alignment="CENTER_RIGHT" minWidth="93.0" prefHeight="100.0" prefWidth="93.0" style="-fx-background-color: #e1e1ea;">
                            <children>
-                              <FontAwesomeIcon fill="#1c1c6e" iconName="HEADPHONES" size="50">
+                              <FontAwesomeIcon fill="#090948" iconName="HEADPHONES" size="50">
                                  <HBox.margin>
                                     <Insets right="4.0" />
                                  </HBox.margin>
@@ -130,7 +133,7 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="25.0" />
+                                          <Insets left="16.0" />
                                        </HBox.margin>
                                     </Label>
                                     <JFXButton fx:id="btn_no1" text="구매하기">
@@ -144,13 +147,13 @@
                                  <children>
                                     <Label fx:id="lb1" style="-fx-border-color: #090948; -fx-border-radius: 6;" text="VIP" textFill="#9d9d9d">
                                        <font>
-                                          <Font name="YDIYGO350" size="18.0" />
+                                          <Font name="YDIYGO350" size="15.0" />
                                        </font>
                                        <padding>
-                                          <Insets bottom="4.0" left="10.0" right="10.0" top="4.0" />
+                                          <Insets bottom="4.0" left="8.0" right="8.0" top="2.0" />
                                        </padding>
                                        <HBox.margin>
-                                          <Insets left="40.0" />
+                                          <Insets left="50.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label fx:id="lb2" text="2,000원" textFill="#9d9d9d">
@@ -158,13 +161,16 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="15.0" />
+                                          <Insets left="5.0" top="-5.0" />
                                        </HBox.margin>
                                     </Label>
                                     <JFXButton fx:id="btn1" disable="true" text="구매하기">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets top="-5.0" />
+                                       </HBox.margin>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -178,9 +184,9 @@
                </VBox.margin></HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #090948;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="147.0" style="-fx-background-color: #090948; -fx-border-radius: 9;">
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="147.0" style="-fx-background-color: #ffffff; -fx-border-radius: 9;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="6개월" textFill="WHITE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="6개월" textFill="#090948">
                            <font>
                               <Font name="YDIYGO350" size="24.0" />
                            </font>
@@ -191,7 +197,7 @@
                      <children>
                         <HBox alignment="CENTER_RIGHT" minWidth="93.0" prefHeight="100.0" prefWidth="93.0" style="-fx-background-color: #e1e1ea;">
                            <children>
-                              <FontAwesomeIcon fill="#1c1c6e" iconName="HEADPHONES" size="50">
+                              <FontAwesomeIcon fill="#090948" iconName="HEADPHONES" size="50">
                                  <HBox.margin>
                                     <Insets right="4.0" />
                                  </HBox.margin>
@@ -226,7 +232,7 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="25.0" />
+                                          <Insets left="16.0" />
                                        </HBox.margin>
                                     </Label>
                                     <JFXButton fx:id="btn_no2" text="구매하기">
@@ -240,13 +246,13 @@
                                  <children>
                                     <Label fx:id="lb3" style="-fx-border-color: #090948; -fx-border-radius: 6;" text="VIP" textFill="#9d9d9d">
                                        <font>
-                                          <Font name="YDIYGO350" size="18.0" />
+                                          <Font name="YDIYGO350" size="15.0" />
                                        </font>
                                        <padding>
-                                          <Insets bottom="4.0" left="10.0" right="10.0" top="4.0" />
+                                          <Insets bottom="4.0" left="8.0" right="8.0" top="2.0" />
                                        </padding>
                                        <HBox.margin>
-                                          <Insets left="40.0" />
+                                          <Insets left="50.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label fx:id="lb4" text="4,000원" textFill="#9d9d9d">
@@ -254,13 +260,16 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="15.0" />
+                                          <Insets left="5.0" top="-5.0" />
                                        </HBox.margin>
                                     </Label>
                                     <JFXButton fx:id="btn2" disable="true" text="구매하기">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets top="-5.0" />
+                                       </HBox.margin>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -275,9 +284,9 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: #090948;">
                <children>
-                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="147.0" style="-fx-background-color: #090948; -fx-border-radius: 9;">
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="147.0" style="-fx-background-color: #ffffff; -fx-border-radius: 9;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" text="1년" textFill="WHITE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="12개월" textFill="#090948">
                            <font>
                               <Font name="YDIYGO350" size="24.0" />
                            </font>
@@ -288,14 +297,14 @@
                      <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="153.0" style="-fx-background-color: #e1e1ea;">
                            <children>
-                              <FontAwesomeIcon fill="#1c1c6e" iconName="HEADPHONES" size="50" />
+                              <FontAwesomeIcon fill="#090948" iconName="HEADPHONES" size="50" />
                            </children>
                         </HBox>
                         <VBox alignment="CENTER" minWidth="247.0" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <Label alignment="CENTER" minWidth="247.0" prefHeight="46.0" prefWidth="283.0" style="-fx-background-color: #e1e1ea;" text="무제한 음악감상">
                                  <font>
-                                    <Font name="YDIYGO350" size="24.0" />
+                                    <Font name="YDIYGO350" size="22.0" />
                                  </font>
                                  <VBox.margin>
                                     <Insets />
@@ -337,7 +346,7 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="25.0" />
+                                          <Insets left="16.0" />
                                        </HBox.margin>
                                     </Label>
                                     <JFXButton fx:id="btn_no3" text="구매하기">
@@ -349,15 +358,15 @@
                               </HBox>
                               <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Label fx:id="lb5" style="-fx-border-color: #090948; -fx-border-radius: 6;" text="VIP" textFill="#9d9d9d">
+                                    <Label fx:id="lb5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: #090948; -fx-border-radius: 6;" text="VIP" textFill="#9d9d9d">
                                        <font>
-                                          <Font name="YDIYGO350" size="18.0" />
+                                          <Font name="YDIYGO350" size="15.0" />
                                        </font>
                                        <padding>
-                                          <Insets bottom="4.0" left="10.0" right="10.0" top="4.0" />
+                                          <Insets bottom="4.0" left="8.0" right="8.0" top="2.0" />
                                        </padding>
                                        <HBox.margin>
-                                          <Insets left="40.0" />
+                                          <Insets left="50.0" />
                                        </HBox.margin>
                                     </Label>
                                     <Label fx:id="lb6" text="6,500원" textFill="#9d9d9d">
@@ -365,13 +374,16 @@
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="15.0" />
+                                          <Insets left="5.0" top="-5.0" />
                                        </HBox.margin>
                                     </Label>
                                     <JFXButton fx:id="btn3" disable="true" text="구매하기">
                                        <font>
                                           <Font name="YDIYGO350" size="18.0" />
                                        </font>
+                                       <HBox.margin>
+                                          <Insets top="-5.0" />
+                                       </HBox.margin>
                                     </JFXButton>
                                  </children>
                               </HBox>
@@ -385,19 +397,19 @@
                <children>
                   <VBox prefHeight="200.0" prefWidth="820.0" spacing="6.0">
                      <children>
-                        <Label text="· 이용권 사용기간은 1개월권이 31일, 6개월권은 183일, 1년권은 365일입니다." textFill="#616161">
+                        <Label text="· 이용권 사용기간은 1개월권이 31일, 6개월권은 183일, 12개월권은 365일입니다." textFill="#616161">
                            <font>
-                              <Font name="YDIYGO350" size="18.0" />
+                              <Font name="YDIYGO350" size="16.0" />
                            </font>
                         </Label>
-                        <Label text="· 사용중인 이용권이 있을경우 기존 이용기간에 구매하신 만큼의 기간이 추가됩니다." textFill="#616161">
+                        <Label text="· 사용중인 이용권이 있을 경우 기존 이용기간에 구매하신 만큼의 기간이 추가됩니다." textFill="#616161">
                            <font>
-                              <Font name="YDIYGO350" size="18.0" />
+                              <Font name="YDIYGO320" size="16.0" />
                            </font>
                         </Label>
-                        <Label text="· 1년 이용권을 구매하시는 경우 회원등급이 VIP로 조정되며 이용권 할인 혜택을 적용받습니다." textFill="#616161">
+                        <Label text="· 12개월 이용권을 구매하시는 경우 회원 등급이 VIP로 조정되며 이용권 할인 혜택을 적용 받습니다." textFill="#616161">
                            <font>
-                              <Font name="YDIYGO350" size="18.0" />
+                              <Font name="YDIYGO330" size="16.0" />
                            </font>
                         </Label>
                      </children>
