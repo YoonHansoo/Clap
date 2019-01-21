@@ -225,7 +225,7 @@ public class ShowRecommendAlbumController implements Initializable {
 				cntMusic.setPrefWidth(308);
 				cntMusic.setPrefHeight(40);
 				// cntMusic.setPadding(new Insets(20,0,0,30));
-				cntMusic.setText(listCnt + "곡");
+				cntMusic.setText(" "+listCnt + "곡");
 
 				// Title 좋아요 아이콘
 				FontAwesomeIcon icon_cntMusic = new FontAwesomeIcon();

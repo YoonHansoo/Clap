@@ -88,7 +88,7 @@
                                     <Font name="YDIYGO350" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lb4" layoutX="538.0" layoutY="93.0" text="→ 2019-02-09 (+31일)" textFill="#9c0000" AnchorPane.topAnchor="90.0">
+                              <Label fx:id="lb4" layoutX="538.0" layoutY="93.0" text="→ 2019-02-09 (+31일)" textFill="#00cc00" AnchorPane.topAnchor="90.0">
                                  <font>
                                     <Font name="YDIYGO350" size="18.0" />
                                  </font>
@@ -239,7 +239,7 @@
                                     </HBox>
                                     <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                                        <children>
-                                          <JFXButton fx:id="btn_ok" text="결제하기">
+                                          <JFXButton fx:id="btn_ok" style="-fx-background-color: #090948;" text="결제하기" textFill="WHITE">
                                              <font>
                                                 <Font name="YDIYGO350" size="20.0" />
                                              </font>
