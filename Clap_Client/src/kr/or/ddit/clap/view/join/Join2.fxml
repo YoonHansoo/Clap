@@ -21,7 +21,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="832.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../../../Join.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
    <children>
-      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0" visible="false">
+      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
          <top>
             <VBox prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -29,13 +29,10 @@
                      <children>
                         <FontAwesomeIcon fill="#090948" iconName="USER_PLUS" size="27">
                            <HBox.margin>
-                              <Insets />
+                              <Insets top="2.0" />
                            </HBox.margin>
                         </FontAwesomeIcon>
-                        <Label text="CLAP 회원가입">
-                           <font>
-                              <Font name="D2Coding" size="22.0" />
-                           </font>
+                        <Label fx:id="lb8" text="CLAP 회원가입">
                            <HBox.margin>
                               <Insets top="3.0" />
                            </HBox.margin>
@@ -57,19 +54,19 @@
                <children>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="아이디" textAlignment="RIGHT">
+                        <Label fx:id="lb9" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="아이디" textAlignment="RIGHT">
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXTextField fx:id="txt_id" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
-                        <JFXButton fx:id="btn_idCheck" onAction="#idCheck" text="중복 확인">
+                        <JFXButton fx:id="btn_idCheck" onAction="#idCheck" prefWidth="93.0" text="중복 확인">
                            <HBox.margin>
-                              <Insets left="-17.0" top="4.0" />
+                              <Insets left="-8.0" top="-1.0" />
                            </HBox.margin></JFXButton>
-                        <Label fx:id="lb_id" text="사용가능합니다." textFill="#00cc00" visible="false">
+                        <Label fx:id="lb_id" prefHeight="15.0" prefWidth="174.0" text="사용가능합니다." textFill="#00cc00" visible="false">
                            <HBox.margin>
-                              <Insets left="-15.0" top="8.0" />
+                              <Insets left="8.0" top="3.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -77,22 +74,22 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label text="아이디는 6자 이상부터 가능합니다.">
+                  <Label fx:id="lb19" text="아이디는 6자 이상부터 가능합니다.">
                      <VBox.margin>
                         <Insets left="120.0" />
                      </VBox.margin>
                   </Label>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호">
+                        <Label fx:id="lb10" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호">
                            <HBox.margin>
-                              <Insets top="11.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXPasswordField fx:id="txt_pw" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
                         <Label fx:id="lb_pw" text="규칙에 맞게 입력해주세요." textFill="RED" visible="false">
                            <HBox.margin>
-                              <Insets top="4.0" />
+                              <Insets left="5.0" top="-1.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -100,27 +97,27 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
-                  <Label text="비밀번호는 영어 대소문자, 숫자, 특수문자를">
+                  <Label fx:id="lb20" text="비밀번호는 영어 대소문자, 숫자, 특수문자를">
                      <VBox.margin>
                         <Insets left="124.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="1개이상 포함하여 8글자 이상이어야 합니다.">
+                  <Label fx:id="lb21" text="1개이상 포함하여 8글자 이상이어야 합니다.">
                      <VBox.margin>
                         <Insets left="124.0" top="3.0" />
                      </VBox.margin>
                   </Label>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호 확인">
+                        <Label fx:id="lb11" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="비밀번호 확인">
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXPasswordField fx:id="txt_pwCheck" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
                         <Label fx:id="lb_pwCheck" text="확인되었습니다." textFill="#00cc00" visible="false">
                            <HBox.margin>
-                              <Insets left="-15.0" top="8.0" />
+                              <Insets left="-5.0" top="3.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -130,9 +127,9 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이  름">
+                        <Label fx:id="lb12" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이  름">
                            <HBox.margin>
-                              <Insets top="10.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXTextField fx:id="txt_name" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
@@ -148,9 +145,9 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="성  별">
+                        <Label fx:id="lb13" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="성  별">
                            <HBox.margin>
-                              <Insets top="1.0" />
+                              <Insets />
                            </HBox.margin></Label>
                         <JFXRadioButton fx:id="radio_m" text="남" />
                         <JFXRadioButton fx:id="radio_f" text="여" />
@@ -166,15 +163,15 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="생년월일">
+                        <Label fx:id="lb14" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="생년월일">
                            <HBox.margin>
-                              <Insets top="9.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXDatePicker fx:id="picker" defaultColor="#090948" prefHeight="29.0" prefWidth="246.0" />
                         <Label fx:id="lb_bir" text="형식에 맞게 입력해주세요." visible="false">
                            <HBox.margin>
-                              <Insets top="4.0" />
+                              <Insets left="10.0" top="-1.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -184,15 +181,15 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="휴대전화">
+                        <Label fx:id="lb15" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="휴대전화">
                            <HBox.margin>
-                              <Insets top="9.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXTextField fx:id="txt_tel" focusColor="#9c0000" prefColumnCount="19" promptText="예) 01099887766" unFocusColor="#090948" />
                         <Label fx:id="lb_tel" text="형식에 맞게 입력해주세요." visible="false">
                            <HBox.margin>
-                              <Insets top="4.0" />
+                              <Insets left="10.0" top="-1.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -202,19 +199,19 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이메일">
+                        <Label fx:id="lb16" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="이메일">
                            <HBox.margin>
-                              <Insets top="9.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXTextField fx:id="txt_email" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
                         <JFXButton fx:id="btn_email" onAction="#emailCheck" text="메일 발송">
                            <HBox.margin>
-                              <Insets left="-15.0" top="6.0" />
+                              <Insets left="-5.0" top="1.0" />
                            </HBox.margin></JFXButton>
                         <Label fx:id="lb_email" text="인증되었습니다. or" textFill="#00cc00" visible="false">
                            <HBox.margin>
-                              <Insets left="-15.0" top="10.0" />
+                              <Insets left="-5.0" top="5.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -224,19 +221,19 @@
                   </HBox>
                   <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="인증코드">
+                        <Label fx:id="lb17" alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="인증코드">
                            <HBox.margin>
-                              <Insets top="9.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <JFXTextField fx:id="txt_emailCheck" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
                         <JFXButton fx:id="btn_emailCheck" onAction="#codeCheck" text="인증하기">
                            <HBox.margin>
-                              <Insets left="-15.0" top="4.0" />
+                              <Insets left="-15.0" top="-1.0" />
                            </HBox.margin></JFXButton>
                         <Label fx:id="lb_emailCheck" text="인증되었습니다. or" textFill="#00cc00" visible="false">
                            <HBox.margin>
-                              <Insets left="-15.0" top="8.0" />
+                              <Insets left="-5.0" top="3.0" />
                            </HBox.margin>
                         </Label>
                      </children>
@@ -246,15 +243,15 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="200.0" spacing="10.0">
                      <children>
-                        <Label alignment="CENTER_RIGHT" prefWidth="100.0" text="보안문자 입력">
+                        <Label fx:id="lb18" alignment="CENTER_RIGHT" prefWidth="100.0" text="보안문자 입력">
                            <HBox.margin>
-                              <Insets top="2.0" />
+                              <Insets top="3.0" />
                            </HBox.margin>
                         </Label>
                         <ImageView fx:id="img_captcha" fitHeight="90.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                         <JFXButton fx:id="btn_refresh" onAction="#imgRefresh" text="새로고침">
                            <HBox.margin>
-                              <Insets left="-5.0" />
+                              <Insets bottom="5.0" left="-5.0" />
                            </HBox.margin></JFXButton>
                      </children>
                      <VBox.margin>
@@ -271,7 +268,7 @@
                         <JFXTextField fx:id="txt_captcha" focusColor="#9c0000" prefColumnCount="19" unFocusColor="#090948" />
                         <JFXButton fx:id="btn_captcha" onAction="#captchaCheck" text="입력 확인">
                            <HBox.margin>
-                              <Insets left="-15.0" top="2.0" />
+                              <Insets left="-15.0" top="-3.0" />
                            </HBox.margin></JFXButton>
                         <VBox prefHeight="35.0" prefWidth="184.0">
                            <children>
@@ -282,7 +279,7 @@
                               <Label fx:id="lb_captcha2" text="확인되었습니다." visible="false" />
                            </children>
                            <HBox.margin>
-                              <Insets left="-15.0" />
+                              <Insets left="-5.0" top="-5.0" />
                            </HBox.margin>
                         </VBox>
                      </children>
@@ -318,7 +315,7 @@
             <Insets left="222.0" top="15.0" />
          </padding>
       </BorderPane>
-      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0">
+      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0" visible="false">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
                <top>
@@ -328,7 +325,7 @@
                            <children>
                               <FontAwesomeIcon fill="#090948" iconName="CHECK_SQUARE_ALT" size="33">
                                  <HBox.margin>
-                                    <Insets left="5.0" />
+                                    <Insets left="5.0" top="3.0" />
                                  </HBox.margin>
                               </FontAwesomeIcon>
                               <Label fx:id="lb1" text="서비스 이용약관 동의">

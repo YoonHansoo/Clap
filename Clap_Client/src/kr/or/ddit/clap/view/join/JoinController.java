@@ -123,6 +123,7 @@ public class JoinController implements Initializable{
 	File f = null; // captchaimg파일
 	String captchaImg = ""; // captcha img 파일이름.
 	SimpleDateFormat sdf = new SimpleDateFormat("yy/MM/dd");
+	SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
 	private boolean idFlag = false;
 	private boolean pwFlag2 = false; // 비밀번호 확인까지 완료되었는지 확인.
 	private boolean birFlag = false;
@@ -806,15 +807,14 @@ public class JoinController implements Initializable{
 //			return;
 //		}
 		
-//		birCheck();
+		birCheck();
 		
-//		if(!birFlag) {
-//			lb_ok.setVisible(true);
-//			lb_ok.setText("생년월일을 확인해주세요.");
-//			lb_ok.setTextFill(Color.RED);
-//			txt_bir.requestFocus();
-//			return;
-//		}
+		if(!birFlag) {
+			lb_ok.setVisible(true);
+			lb_ok.setText("생년월일을 확인해주세요.");
+			lb_ok.setTextFill(Color.RED);
+			return;
+		}
 		
 		if (txt_tel.getText().equals("")) {
 			lb_ok.setVisible(true);
@@ -1012,32 +1012,21 @@ public class JoinController implements Initializable{
 		}
 	}
 	
-//	public void birCheck() {
-//		// 생년월일. 정규표현식 검사후 유효성 검사.
-//		Pattern p = Pattern.compile("(^\\d{2}/\\d{2}/\\d{2}$)");
-//		Matcher m = p.matcher(txt_bir.getText());
-//		
-//		if(!m.find()) {
-//			lb_bir.setVisible(true);
-//			lb_bir.setText("형식에 맞게 입력해주세요.");
-//			lb_bir.setTextFill(Color.RED);
-//			txt_bir.requestFocus();
-//		}else {
-//			// 유효성 검사.
-//			boolean birCheck = dateCheck(txt_bir.getText(), "yy/MM/dd");
-//			System.out.println(birCheck);
-//			if(!birCheck) {
-//				lb_bir.setVisible(true);
-//				lb_bir.setText("생년월일을 다시 확인해주세요.");
-//				lb_bir.setTextFill(Color.RED);
-//				txt_bir.requestFocus();
-//			}else if(birCheck){
-//				birFlag = true;
-//				lb_ok.setVisible(false);
-//				lb_bir.setVisible(false);				
-//			}
-//		}
-//	}
+	public void birCheck() {
+		// 생년월일. 오늘 날짜보다 클 경우 birFlag -> false.
+		boolean dateFlag = false;
+		LocalDate currentDate = LocalDate.now();
+		dateFlag = picker.getValue().isBefore(currentDate);
+		
+		if(!dateFlag) {
+			lb_bir.setVisible(true);
+			lb_bir.setText("생년월일을 확인해주세요.");
+			lb_bir.setTextFill(Color.RED);
+		}else {
+			lb_bir.setVisible(false);
+			birFlag = true;
+		}
+	}
 	
 	public boolean dateCheck(String date, String format) {
 		SimpleDateFormat dateFormatParser = new SimpleDateFormat(format, Locale.KOREA);
@@ -1068,10 +1057,18 @@ public class JoinController implements Initializable{
 	
 	public void emailCheck() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException {
 		AES256Util aes = new AES256Util();
+		Pattern p = Pattern.compile("(^[a-zA-Z0-9]+@[a-zA-Z0-9]+$)");
+		Matcher m = p.matcher(txt_email.getText());
 		
 		if(txt_email.getText().equals("")) {
 			lb_email.setVisible(true);
 			lb_email.setText("메일주소을 입력해주세요.");
+			lb_email.setTextFill(Color.RED);
+			txt_email.requestFocus();
+			return;
+		}else if(!m.find()) {
+			lb_email.setVisible(true);
+			lb_email.setText("주소가 유효하지 않습니다.");
 			lb_email.setTextFill(Color.RED);
 			txt_email.requestFocus();
 			return;
@@ -1218,7 +1215,8 @@ public class JoinController implements Initializable{
 	}
 	
 	public void nextPage() {
-		if(check1.isSelected() && check2.isSelected()) {
+//		if(check1.isSelected() && check2.isSelected()) {
+		if(true) {
 			// 둘 다 체크되어있을때 진행.
 			pane.setVisible(true);
 			box.setVisible(false);
