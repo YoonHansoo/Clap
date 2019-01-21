@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.message.MessageTextController">
+<AnchorPane fx:id="main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="524.0" prefWidth="480.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.message.MessageTextController">
    <children>
       <VBox layoutX="-3.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="480.0" AnchorPane.leftAnchor="0.0">
          <children>
@@ -66,7 +66,7 @@
                   </Label>
                </children>
             </HBox>
-            <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="480.0">
+            <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="377.0" prefWidth="480.0" style="-fx-background-color: #ffffff;">
                <children>
                   <Button layoutX="208.0" layoutY="269.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="32.0" prefWidth="60.0" style="-fx-background-color: #090948;" text="확 인" textFill="WHITE">
                      <font>
