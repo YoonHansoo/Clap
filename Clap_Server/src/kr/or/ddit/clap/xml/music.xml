@@ -235,7 +235,8 @@
 		group by a.mus_no, a.mus_title, a.mus_indate, a.mus_befor_rank,
 		a.mus_mvfile, b.alb_image, c.sing_name,
 		b.alb_saledate,a.alb_no,c.sing_no
-		order by b.alb_saledate desc
+<!-- 		order by b.alb_saledate desc -->
+		order by to_number(a.mus_NO)
 	</select>
 
 	<select id="selectSinger" resultClass="java.util.HashMap"
