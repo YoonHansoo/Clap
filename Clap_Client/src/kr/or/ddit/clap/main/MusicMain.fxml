@@ -245,11 +245,11 @@
                   </StackPane>
                   <JFXTabPane fx:id="tabpane" layoutX="555.0" layoutY="484.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0" style="-fx-border-color: #d3d3d3;">
                      <tabs>
-                        <Tab text="     #1    ">
+                        <Tab fx:id="tab1" text="     #1    ">
                           <content>
                             <AnchorPane fx:id="tab_pane1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="tab1" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tabImg1" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
                                           <JFXButton fx:id="btn_rec1" minHeight="398.0" minWidth="398.0" text=" " />
@@ -317,11 +317,11 @@
                               </AnchorPane>
                           </content>
                         </Tab>
-                        <Tab text="   #2    ">
+                        <Tab fx:id="tab2" text="   #2    ">
                            <content>
                               <AnchorPane fx:id="tab_pane2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="tab2" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tabImg2" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
                                           <JFXButton fx:id="btn_rec2" minHeight="398.0" minWidth="398.0" text=" " />
@@ -385,11 +385,11 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="    #3   ">
+                        <Tab fx:id="tab3" text="    #3   ">
                            <content>
                               <AnchorPane fx:id="tab_pane3" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="tab3" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tabImg3" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
                                           <JFXButton fx:id="btn_rec3" minHeight="398.0" minWidth="398.0" text=" " />
@@ -453,11 +453,11 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="    #4   ">
+                        <Tab fx:id="tab4" text="    #4   ">
                            <content>
                               <AnchorPane fx:id="tab_pane4" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="tab4" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tabImg4" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
                                           <JFXButton fx:id="btn_rec4" minHeight="398.0" minWidth="398.0" text=" " />
@@ -521,11 +521,11 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="    #5   ">
+                        <Tab fx:id="tab5" text="    #5   ">
                            <content>
                               <AnchorPane fx:id="tab_pane5" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <ImageView fx:id="tab5" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="tabImg5" fitHeight="398.0" fitWidth="398.0" opacity="0.75" pickOnBounds="true" preserveRatio="true" />
                                     <StackPane minHeight="398.0" minWidth="398.0" prefHeight="212.0" prefWidth="268.0">
                                        <children>
                                           <JFXButton fx:id="btn_rec5" minHeight="398.0" minWidth="398.0" text=" " />

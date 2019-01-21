@@ -3,22 +3,23 @@
 }
 
 .tab{
-   -fx-background-color: white;
+   -fx-background-color: #090948;
    
 }
 
 .tab-label{
-    -fx-font-family: "-윤고딕320";
-    -fx-font-size: 15;
+    -fx-font-family: "-윤고딕330";
+    -fx-font-size: 18;
+    -fx-text-fill: white;
 }
 
 .tab-header-background{
-   -fx-background-color: white;
+   -fx-background-color: #090948;
    
 }
 
 .tab{
-   -fx-background-color: white;
+   -fx-background-color: #090948;
    
 }
 
@@ -146,6 +147,15 @@
 #lb_bottom1, #lb_bottom2, #lb_bottom3, #lb_bottom4, #lb_bottom5, #lb_bottom6, #lb_bottom7, #lb_bottom8,
  #lb_bottom9, #lb_bottom10, #lb_bottom11, #lb_bottom12, #lb_bottom13 {
    -fx-font-family: "-윤고딕330";
+}
+
+#tab1, #tab2, #tab3, #tab4, #tab5 {
+   -fx-font-family: "-윤고딕330";
+   -fx-text-fill: #090948;
+}
+#tab1-label{
+   -fx-font-family: "-윤고딕330";
+   -fx-text-fill: #090948;
 }
 
 

@@ -37,6 +37,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
@@ -98,6 +99,8 @@ public class UpdateRecommendAlbumController implements Initializable {
 	FontAwesomeIcon iicon1, iicon2, iicon3, iicon4, iicon5, iicon6, iicon7, iicon8, iicon9, iicon10, icon;
 	@FXML
 	JFXButton btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10;
+	@FXML
+	Tab tab1, tab2, tab3, tab4, tab5;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

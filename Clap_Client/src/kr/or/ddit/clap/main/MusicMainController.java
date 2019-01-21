@@ -147,7 +147,7 @@ public class MusicMainController implements Initializable {
 	@FXML
 	ImageView new6, new7, new8, new9, new10;
 	@FXML
-	ImageView tab1, tab2, tab3, tab4, tab5;
+	ImageView tabImg1, tabImg2, tabImg3, tabImg4, tabImg5;
 	@FXML
 	ImageView edit1, edit2, edit3, edit4, edit5, logo_imgView;
 	@FXML
@@ -280,11 +280,11 @@ public class MusicMainController implements Initializable {
 		tab_img[3] = new Image(recommendList.get(3).getRcm_alb_image());
 		tab_img[4] = new Image(recommendList.get(4).getRcm_alb_image());
 
-		tab1.setImage(tab_img[0]);
-		tab2.setImage(tab_img[1]);
-		tab3.setImage(tab_img[2]);
-		tab4.setImage(tab_img[3]);
-		tab5.setImage(tab_img[4]);
+		tabImg1.setImage(tab_img[0]);
+		tabImg2.setImage(tab_img[1]);
+		tabImg3.setImage(tab_img[2]);
+		tabImg4.setImage(tab_img[3]);
+		tabImg5.setImage(tab_img[4]);
 
 		ArrayList<String> titleList = cut_title(recommendList);
 		lbb1.setPadding(new Insets(0, 0, 0, 0));
