@@ -95,7 +95,7 @@ public class QnaDetailContentController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);  
 			iqs = (IQnaService) reg.lookup("qna");
 			imsgs=(IMessageService) reg.lookup("message");
-			qVO = iqs.qnaDetailContent(ContentNo);System.out.println(qVO.getMem_id());
+			qVO = iqs.qnaDetailContent(ContentNo);
 			//파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
 			System.out.println(1);
@@ -199,6 +199,18 @@ public class QnaDetailContentController implements Initializable {
 				} catch(RemoteException ee) {
 					ee.printStackTrace();
 				}
+				
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaDetailContent.fxml"));// init실행됨
+				Parent qnaDetail;
+				try {
+					qnaDetail = loader.load();
+					main.getChildren().removeAll();
+					main.getChildren().setAll(qnaDetail);
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 			
 			//댓글 등록시 글쓴 사용자에게 댓글 알림 가기 

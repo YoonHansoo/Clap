@@ -26,4 +26,5 @@ public interface IQnaService extends Remote {
 	
 	public List<QnaReviewVO> selectListReviewAll(String qna_no) throws RemoteException;
 
+	public List<QnaVO> selectQna(String id) throws RemoteException;
 }
