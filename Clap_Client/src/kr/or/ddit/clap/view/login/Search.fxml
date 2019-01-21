@@ -99,7 +99,7 @@
             </Label>
             <HBox alignment="CENTER" prefHeight="67.0" prefWidth="560.0" spacing="10.0">
                <children>
-                  <JFXButton onAction="#idSearch" text="아이디 찾기">
+                  <JFXButton id="btn" onAction="#idSearch" text="아이디 찾기">
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
                      </font>
@@ -170,7 +170,7 @@
                            <font>
                               <Font name="YDIYGO350" size="14.0" />
                            </font></JFXTextField>
-                        <JFXButton fx:id="btn_email" onAction="#emailCheck" text="메일 발송">
+                        <JFXButton id="btn" fx:id="btn_email" onAction="#emailCheck" text="메일 발송">
                            <font>
                               <Font name="YDIYGO350" size="14.0" />
                            </font>

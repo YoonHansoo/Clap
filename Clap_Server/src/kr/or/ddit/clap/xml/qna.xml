@@ -9,6 +9,7 @@
 
 	<select id="selectListAll" resultClass="qnaVO">
 		select qna_no, qna_indate, qna_title, qna_view_cnt, mem_id from qna
+		order by qna_indate desc
 
 
 	</select>

@@ -18,7 +18,8 @@
  				event_view_cnt,
  				mem_id
 		  from
-			  	event_board 
+			  	event_board
+			  	order by event_no desc
 	 </select>
 	 
 	 <!-- 사용자에게 보여질 이벤트 상세 내용 -->

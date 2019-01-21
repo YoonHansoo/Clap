@@ -19,13 +19,13 @@
       </Label>
       <Line endX="760.0" layoutX="173.0" layoutY="81.0" startX="-100.0" stroke="#9c0000" AnchorPane.leftAnchor="72.5" AnchorPane.rightAnchor="71.5" AnchorPane.topAnchor="80.5" />
       <Line endX="760.0" layoutX="173.0" layoutY="125.0" startX="-100.0" stroke="#9c0000" AnchorPane.leftAnchor="72.5" AnchorPane.rightAnchor="71.5" AnchorPane.topAnchor="124.5" />
-      <Text fx:id="Text_NtcNo" layoutX="84.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="번호" AnchorPane.topAnchor="96.0" />
-      <Text fx:id="Text_NtcTitle" layoutX="213.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="제목" AnchorPane.topAnchor="96.0" />
+      <Text fx:id="Text_NtcNo" layoutX="82.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="번호" />
+      <Text fx:id="Text_NtcTitle" layoutX="166.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="제목" AnchorPane.topAnchor="96.0" />
       <Text fx:id="Text_NtcDate" layoutX="800.0" layoutY="107.40234375" strokeType="OUTSIDE" strokeWidth="0.0" text="등록일" AnchorPane.leftAnchor="800.0" AnchorPane.rightAnchor="169.0" AnchorPane.topAnchor="96.0" />
-      <TextFlow layoutX="119.0" layoutY="170.0" prefHeight="220.0" prefWidth="760.0" AnchorPane.leftAnchor="119.0" />
+      <TextFlow layoutX="119.0" layoutY="170.0" prefHeight="220.0" prefWidth="760.0" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="170.0" />
       <JFXButton id="btn" fx:id="btn_del" layoutX="842.0" layoutY="418.0" text="삭  제" AnchorPane.topAnchor="418.0" />
       <JFXButton id="btn" fx:id="btn_upd" layoutX="790.0" layoutY="418.0" text="수  정" AnchorPane.topAnchor="418.0" />
-      <Text fx:id="Text_NtcId" layoutX="720.0" layoutY="107.40234375" strokeType="OUTSIDE" strokeWidth="0.0" text="작성자" AnchorPane.leftAnchor="720.0" AnchorPane.topAnchor="96.0" />
+      <Text fx:id="Text_NtcId" layoutX="645.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="작성자" AnchorPane.topAnchor="96.0" />
       <Text fx:id="Text_NtcContent" layoutX="125.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="내용" />
    </children>
 </AnchorPane>

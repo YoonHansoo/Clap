@@ -74,7 +74,7 @@ public class EventClientShowListController implements Initializable  {
 		col_EventNo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_no()));
 		col_EventImg.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 		col_EventTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_title()));
-		col_EventSDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_sdate()));
+		col_EventSDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_sdate().substring(0, 10)));
 		col_EventEDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_edate()));
 		col_EventCnt.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getEvent_view_cnt()));
 		

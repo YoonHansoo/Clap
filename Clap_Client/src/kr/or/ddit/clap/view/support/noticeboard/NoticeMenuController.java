@@ -76,7 +76,7 @@ public class NoticeMenuController implements Initializable {
 		
 		col_noticeNo.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_no()));
 		col_noticeTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_title()));
-		col_noticeDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_indate()));
+		col_noticeDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_indate().substring(0, 10)));
 		col_noticeCnt.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNotice_view_cnt()));
 		col_noticeId.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_id()));
 		
