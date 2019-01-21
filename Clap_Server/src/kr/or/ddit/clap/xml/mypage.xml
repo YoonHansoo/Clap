@@ -49,6 +49,7 @@
 		mem_image,
 		mem_intro
 		from member
+		order by mem_indate desc
 	</select>
 
 	<update id="updateTel" parameterClass="memberVO">

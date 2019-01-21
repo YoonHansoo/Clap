@@ -58,7 +58,7 @@
       </Label>
       <HBox prefHeight="23.0" prefWidth="200.0">
          <children>
-            <JFXButton fx:id="btn_search" onAction="#search" text="아이디 / 비밀번호 찾기">
+            <JFXButton id="btn" fx:id="btn_search" onAction="#search" text="아이디 / 비밀번호 찾기">
                <HBox.margin>
                   <Insets left="120.0" />
                </HBox.margin></JFXButton>

@@ -18,6 +18,12 @@
 	-fx-font-size: 18pt;
 }
 
+#btn {
+	-fx-background-color: #090948;
+	-fx-text-fill: white;
+	
+}
+
 
 
 

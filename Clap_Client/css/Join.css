@@ -37,7 +37,11 @@
    -fx-font-size: 21pt;
 }
 
-
+#btn {
+	-fx-background-color: #090948;
+	-fx-text-fill: white;
+	
+}
 
 
 
