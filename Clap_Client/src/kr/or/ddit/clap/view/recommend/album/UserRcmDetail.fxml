@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="main" maxWidth="-Infinity" minHeight="1500.0" minWidth="-Infinity" prefHeight="1500.0" prefWidth="1005.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.recommend.album.UserRcmDetailController">
    <children>
-      <Label fx:id="labelrcmName1" layoutX="26.0" layoutY="58.0" prefHeight="41.0" prefWidth="619.0" text="당신의 하루에 힘을 보태 줄게요 추천앨범 명" AnchorPane.leftAnchor="102.0">
+      <Label fx:id="labelrcmName1" layoutX="26.0" layoutY="58.0" prefHeight="41.0" prefWidth="619.0" text="당신의 하루에 힘을 보태 줄게요 추천앨범 명" textFill="#090948" AnchorPane.leftAnchor="102.0">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
@@ -26,8 +26,38 @@
                <HBox.margin>
                   <Insets right="30.0" />
                </HBox.margin></ImageView>
-            <VBox fx:id="main_vbox" prefHeight="165.0" prefWidth="470.0">
+            <VBox fx:id="main_vbox" prefHeight="211.0" prefWidth="491.0">
                <children>
+                  <HBox prefHeight="70.0" prefWidth="774.0">
+                     <children>
+                        <VBox alignment="CENTER" minWidth="35.0" prefHeight="35.0" prefWidth="65.0">
+                           <children>
+                              <FontAwesomeIcon fx:id="icon" fill="#090948" size="50" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="35.0" prefWidth="774.0">
+                     <children>
+                        <Label fx:id="label_RcmContents" prefHeight="35.0" prefWidth="774.0" text="오늘 하루도 힘차게!!!" textFill="#090948">
+                           <font>
+                              <Font name="YDIYGO350" size="20.0" />
+                           </font>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </HBox>
                   <HBox prefHeight="25.0" prefWidth="451.0">
                      <children>
                         <JFXButton onAction="#btn_heart" text=" ">
@@ -52,7 +82,7 @@
                         </Label>
                      </children>
                      <VBox.margin>
-                        <Insets top="150.0" />
+                        <Insets top="30.0" />
                      </VBox.margin>
                   </HBox>
                </children>
@@ -176,26 +206,6 @@
             </VBox>
          </children>
       </StackPane>
-      <HBox layoutX="102.0" layoutY="312.0" prefHeight="35.0" prefWidth="774.0" style="-fx-background-color: #090948;">
-         <children>
-            <VBox alignment="CENTER" minWidth="35.0" prefHeight="35.0" prefWidth="35.0">
-               <children>
-                  <FontAwesomeIcon fx:id="icon" fill="WHITE" size="25" />
-               </children>
-               <HBox.margin>
-                  <Insets left="30.0" />
-               </HBox.margin>
-            </VBox>
-            <Label fx:id="label_RcmContents" prefHeight="35.0" prefWidth="774.0" style="-fx-background-color: #090948;" text="오늘 하루도 힘차게!!!" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO350" size="18.0" />
-               </font>
-               <padding>
-                  <Insets left="5.0" />
-               </padding>
-            </Label>
-         </children>
-      </HBox>
    </children>
    <padding>
       <Insets top="120.0" />
