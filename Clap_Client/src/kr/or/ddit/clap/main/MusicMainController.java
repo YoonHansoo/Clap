@@ -367,7 +367,7 @@ public class MusicMainController implements Initializable {
 		icon4.setIconName(recommendList.get(3).getRcm_icon());
 		icon5.setIconName(recommendList.get(4).getRcm_icon());
 		
-		
+		tbl_search.setPlaceholder(new Label(" "));
 
 		btn_rec1.setOnAction(e -> {
 			UserRcmDetailController.rcmAlbNo = recommendList.get(0).getRcm_alb_no();// 곡 번호를 변수로 넘겨줌

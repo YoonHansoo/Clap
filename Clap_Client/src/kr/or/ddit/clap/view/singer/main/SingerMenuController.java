@@ -412,8 +412,8 @@ public class SingerMenuController implements Initializable {
 		txt_write.setText(mVO.getMus_write_son());
 		txt_edit.setText(mVO.getMus_edit_son());
 		txt_muswrite.setText(mVO.getMus_muswrite_son());
-		txt_file.setText(mVO.getMus_file());
-		txt_fileVideo.setText(mVO.getMus_mvfile());
+		//txt_file.setText(mVO.getMus_file());
+		//txt_fileVideo.setText(mVO.getMus_mvfile());
 		combo_genre.setValue(mVO.getGen_name());
 
 		combo_genreDetail.setValue(mVO.getGen_detail_name());

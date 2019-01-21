@@ -117,16 +117,16 @@ public class OtherMypageController implements Initializable{
 				col_ReviewDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getIndate().substring(0, 10)));
 
 				// 최근많이 들은 아티스트이름넣기
-				col_MSno.setCellValueFactory(param -> new SimpleStringProperty("" + (no1++)));
+				//col_MSno.setCellValueFactory(param -> new SimpleStringProperty("" + (no1++)));
 				col_MSits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 
 				// 최근많이 들은 곡
-				col_MMno.setCellValueFactory(param -> new SimpleStringProperty("" + (no2++)));
+			//	col_MMno.setCellValueFactory(param -> new SimpleStringProperty("" + (no2++)));
 				col_MMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 				col_MMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 
 				// 최근 감상곡
-				col_NMno.setCellValueFactory(param -> new SimpleStringProperty("" + (no3++)));
+			//	col_NMno.setCellValueFactory(param -> new SimpleStringProperty("" + (no3++)));
 				col_NMits.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getName()));
 				col_NMtitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTitle()));
 				col_NMdate.setCellValueFactory(

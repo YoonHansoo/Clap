@@ -398,33 +398,6 @@
                               <Label fx:id="txt_muswrite" text="Label" />
                            </children>
                         </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="Music File">
-                                 <font>
-                                    <Font name="YDIYGO340" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="3.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Label fx:id="txt_file" text="Label" />
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <Label minWidth="85.0" prefHeight="18.0" style="-fx-background-color: #ffffff;" text="Video File">
-                                 <font>
-                                    <Font name="YDIYGO340" size="14.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets bottom="3.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Label fx:id="txt_fileVideo" text="Label" />
-                           </children>
-                        </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Label minWidth="85.0" prefHeight="15.0" style="-fx-background-color: #ffffff;" text="장     르">
