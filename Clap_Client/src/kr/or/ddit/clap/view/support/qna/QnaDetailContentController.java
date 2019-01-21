@@ -200,16 +200,15 @@ public class QnaDetailContentController implements Initializable {
 					ee.printStackTrace();
 				}
 				
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("QnaDetailContent.fxml"));// init실행됨
-				Parent qnaDetail;
-				try {
-					qnaDetail = loader.load();
-					main.getChildren().removeAll();
-					main.getChildren().setAll(qnaDetail);
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+			
+				  Parent root1;
+					try {
+						root1 = FXMLLoader.load(getClass().getResource("QnaDetailContent.fxml"));
+						main.getChildren().removeAll();
+						main.getChildren().setAll(root1);
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					}
 				
 			}
 			
