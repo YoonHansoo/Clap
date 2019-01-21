@@ -21,12 +21,10 @@ public class EventBoardVO extends RecursiveTreeObject<EventBoardVO> implements S
 	
 	public ImageView getImgView() {
 		this.imgView = new ImageView();
-		//Image img = new Image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\noImg.png");
 		Image img = new Image(event_image);
 		imgView.setImage(img);
 		imgView.setFitWidth(120);
 		imgView.setFitHeight(50);
-		System.out.println("imgView생성");
 		return imgView;
 	}
 	public void setImgView(ImageView imgView) {

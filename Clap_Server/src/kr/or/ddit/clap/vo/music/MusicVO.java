@@ -57,8 +57,6 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 		remove.setFill(Color.valueOf("#9c0000"));
 		remove.setSize("20");
 		btn.setId(mus_no);
-	//	btn.setId(id+"");
-		//id++;
 		btn.setGraphic(remove);
 		return btn;
 	}
@@ -88,7 +86,6 @@ public class MusicVO extends RecursiveTreeObject<MusicVO> implements Serializabl
 		imgView.setImage(img);
 		imgView.setFitWidth(120);
 		imgView.setFitHeight(50);
-		System.out.println("imgView생성");
 		return imgView;
 	}
 
