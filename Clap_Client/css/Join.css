@@ -6,11 +6,11 @@
    -fx-font-family: "-윤고딕330";
    -fx-font-size: 22pt;
 }
-#lb2{
+#lb2, #btn_next{
    -fx-font-family: "-윤고딕330";
    -fx-font-size: 12pt;
 }
-#lb3, #lb4, #lb5, #lb6, #lb7{
+#lb3, #lb4, #lb5, #lb6, #lb7, #lb_next{
    -fx-font-family: "-윤고딕330";
    -fx-font-size: 11pt;
 }

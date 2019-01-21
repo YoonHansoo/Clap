@@ -388,6 +388,9 @@
                               </Label>
                               <JFXCheckBox fx:id="check2" checkedColor="#32b1f5" maxWidth="20.0" prefHeight="15.0" prefWidth="13.0" text=" " />
                            </children>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
@@ -406,19 +409,16 @@
                                  <HBox.margin>
                                     <Insets right="5.0" top="20.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
                               </Label>
-                              <JFXButton onAction="#nextPage" style="-fx-background-color: #090948;" text="다음으로" textFill="WHITE">
+                              <JFXButton fx:id="btn_next" onAction="#nextPage" style="-fx-background-color: #090948;" text="다음으로" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets right="10.0" top="20.0" />
                                  </HBox.margin>
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
                               </JFXButton>
                            </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>

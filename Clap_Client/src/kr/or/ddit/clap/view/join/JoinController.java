@@ -109,6 +109,7 @@ public class JoinController implements Initializable{
 	@FXML BorderPane pane;	
 	@FXML StackPane stack1, stack2, box_txt1, box_txt2;	
 	@FXML VBox box, boxbox;	
+	@FXML JFXButton btn_next;	
 	
 	ToggleGroup group = new ToggleGroup();
 	

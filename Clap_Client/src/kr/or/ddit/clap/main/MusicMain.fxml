@@ -42,9 +42,9 @@
                         <JFXButton alignment="CENTER" onMouseClicked="#firstPage" prefHeight="97.0" prefWidth="190.0" text=" " />
                      </children>
                   </StackPane>
-                  <JFXButton fx:id="btn_join" layoutX="880.0" layoutY="149.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" AnchorPane.rightAnchor="75.0" AnchorPane.topAnchor="123.0" />
-                  <JFXButton fx:id="btn_login" layoutX="830.0" layoutY="123.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
-                  <JFXTextField fx:id="txt_search" layoutX="265.0" layoutY="81.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
+                  <JFXButton fx:id="btn_join" layoutX="889.0" layoutY="123.0" onAction="#join" style="-fx-background-color: #090948;" text="회원가입" textFill="WHITE" />
+                  <JFXButton fx:id="btn_login" layoutX="833.0" layoutY="123.0" onAction="#login" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE" />
+                  <JFXTextField fx:id="txt_search" layoutX="266.0" layoutY="81.0" onMouseEntered="#searchEnteredMouse" onMouseExited="#searchExitedMouse" prefColumnCount="50" prefWidth="429.0" unFocusColor="#9c0000">
                      <focusColor>
                         <LinearGradient endX="1.0" endY="1.0" startX="1.0">
                            <stops>
@@ -245,7 +245,7 @@
                   </StackPane>
                   <JFXTabPane fx:id="tabpane" layoutX="555.0" layoutY="484.0" maxHeight="398.0" maxWidth="398.0" minHeight="518.0" minWidth="398.0" style="-fx-border-color: #d3d3d3;">
                      <tabs>
-                        <Tab fx:id="tab1" text="     #1    ">
+                        <Tab fx:id="tab1" text="   #1    ">
                           <content>
                             <AnchorPane fx:id="tab_pane1" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -317,7 +317,7 @@
                               </AnchorPane>
                           </content>
                         </Tab>
-                        <Tab fx:id="tab2" text="   #2    ">
+                        <Tab fx:id="tab2" text="  #2   ">
                            <content>
                               <AnchorPane fx:id="tab_pane2" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -385,7 +385,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab fx:id="tab3" text="    #3   ">
+                        <Tab fx:id="tab3" text="   #3   ">
                            <content>
                               <AnchorPane fx:id="tab_pane3" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -453,7 +453,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab fx:id="tab4" text="    #4   ">
+                        <Tab fx:id="tab4" text="   #4  ">
                            <content>
                               <AnchorPane fx:id="tab_pane4" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
@@ -521,7 +521,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab fx:id="tab5" text="    #5   ">
+                        <Tab fx:id="tab5" text="   #5  ">
                            <content>
                               <AnchorPane fx:id="tab_pane5" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
