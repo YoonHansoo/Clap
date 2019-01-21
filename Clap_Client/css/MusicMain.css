@@ -9,7 +9,7 @@
 
 .tab-label{
     -fx-font-family: "-윤고딕330";
-    -fx-font-size: 18;
+    -fx-font-size: 18.0;
     -fx-text-fill: white;
 }
 
@@ -24,13 +24,13 @@
 }
 
 .tab:selected{
-   -fx-border-width: 0 0 5 0;
+   -fx-border-width: 0.0 0.0 5.0 0.0;
    -fx-border-color: #9c0000;
 }
 
 .contentlabel{
     -fx-font-family: "-윤고딕350";
-    -fx-font-size: 18;
+    -fx-font-size: 18.0;
     -fx-font-weight: bold;
     
 }
@@ -45,8 +45,8 @@
      -fx-font-family: "-윤고딕330";
 }
 .tree-table-row-cell:hover .tree-table-cell{
-	-fx-background-color: rgba(156, 0, 0, 1);
-    -fx-table-cell-border-color: rgba(156, 0, 0, 1);
+	-fx-background-color: rgba(156.0, 0.0, 0.0, 1.0);
+    -fx-table-cell-border-color: rgba(156.0, 0.0, 0.0, 1.0);
     -fx-text-fill: white;
 }
 
@@ -55,8 +55,8 @@
 }
 
 .tree-table-row-cell:selected .tree-table-cell{
-	-fx-background-color: rgba(156, 0, 0, 1);
-    -fx-table-cell-border-color: rgba(156, 0, 0, 1);
+	-fx-background-color: rgba(156.0, 0.0, 0.0, 1.0);
+    -fx-table-cell-border-color: rgba(156.0, 0.0, 0.0, 1.0);
 }
 
 .tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell{
@@ -64,8 +64,8 @@
 }
 
 .tree-table-view:focused .tree-table-row-cell:selected {
-    -fx-background-color: rgba(156, 0, 0, 0.76);
-    -fx-table-cell-border-color: rgba(156, 0, 0, 0.76);
+    -fx-background-color: rgba(156.0, 0.0, 0.0, 0.76);
+    -fx-table-cell-border-color: rgba(156.0, 0.0, 0.0, 0.76);
     
 }
 .tree-table-row-cell{
@@ -94,6 +94,8 @@
 }
 .tree-table-row-cell{
 	-fx-font-family: "-윤고딕330";
+
+
 }
 
 .tree-table-view .column-header{
@@ -103,23 +105,23 @@
 }
 
 #lb_chart, #lb_editor{
-   -fx-font-size: 17pt;
+   -fx-font-size: 17.0pt;
    -fx-font-family: "-윤고딕350";
 }
 
 #lb_new{
    -fx-font-family: "-윤고딕350";
-   -fx-font-size: 20pt;
+   -fx-font-size: 20.0pt;
 }
 
 #lb_id{
    -fx-font-family: "-윤고딕350";
-   -fx-font-size: 14pt;
+   -fx-font-size: 14.0pt;
 }
 
 #txt_search{
    -fx-font-family: "-윤고딕350";
-   -fx-font-size: 14pt;
+   -fx-font-size: 14.0pt;
 }
 
 #bar{
@@ -136,12 +138,12 @@
 
 #lbbb1, #lbbb2, #lbbb3, #lbbb4, #lbbb5, #lbbb6, #lbbb7, #lbbb8, #lbbb9, #lbbb10{
    -fx-font-family: "-윤고딕340";
-   -fx-font-size: 14pt;
+   -fx-font-size: 14.0pt;
 }
 
 #lbb1, #lbb2, #lbb3, #lbb4, #lbb5, #lbb6, #lbb7, #lbb8, #lbb9, #lbb10{
    -fx-font-family: "-윤고딕330";
-   -fx-font-size: 20pt;
+   -fx-font-size: 20.0pt;
 }
 
 #lb_bottom1, #lb_bottom2, #lb_bottom3, #lb_bottom4, #lb_bottom5, #lb_bottom6, #lb_bottom7, #lb_bottom8,

@@ -848,7 +848,7 @@ public class MusicMainController implements Initializable {
 		tbl_search.setShowRoot(false);
 		
 		} catch (RemoteException e) {
-			e.printStackTrace();
+			System.out.println("로그인을 해주세요");
 		}
 		
 		
