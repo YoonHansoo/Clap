@@ -81,7 +81,7 @@ public class QnaMenuController implements Initializable {
 		
 		
 		
-		col_qnaDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_indate()));
+		col_qnaDate.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_indate().substring(0, 10)));
 		//col_qnaNumber.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_no()));
 		col_qnaTitle.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_title()));
 		col_qnaViewCnt.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getQna_view_cnt()));
