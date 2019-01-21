@@ -77,10 +77,8 @@ public class UpdateAlbumController implements Initializable {
 
 	// 전 화면에 있는 데이터를 그대로 가져와  세팅해주는 메서드
 	public void initData(AlbumVO aVO, String str_like_cnt) {
-		System.out.println("initData");
 		
 		label_singerNO.setText(aVO.getSing_no()); 
-		System.out.println("가수번호:"+ aVO.getSing_no());
 		img_path = aVO.getAlb_image(); //이미지경로를 전역에 저장
 		Image img = new Image(img_path); //이미지 객체등록
 		imgview_albumImg.setImage(img);
@@ -107,7 +105,6 @@ public class UpdateAlbumController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		System.out.println("앨범번호:" + albumNo);
 		
 	}
 
@@ -118,10 +115,8 @@ public class UpdateAlbumController implements Initializable {
 		 fileChooser.setTitle("Open image");
 		 
 		 //사용자의 디렉토리 보여줌
-		 //String userDirectoryString = System.getProperty("user.home") + "\\Pictures"; 기본위치
 		 String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\album";
 		 
-		 System.out.println("userDirectoryString:" + userDirectoryString);
 		 File userDirectory = new File(userDirectoryString); 
 		 
 		 if(!userDirectory.canRead()) {
@@ -138,14 +133,11 @@ public class UpdateAlbumController implements Initializable {
 			 BufferedImage bufferedImage = ImageIO.read(filePath);
 			 Image image =  SwingFXUtils.toFXImage(bufferedImage, null);
 			 imgview_albumImg.setImage(image);
-			 System.out.println("파일경로:" + filePath);
 			 String str_filePath = "file:"+filePath;
 			// userDirectoryString = "file:\\\\Sem-pc\\공유폴더\\Clap\\img\\singer"; //화면 출력 시 절대경로로 이미지를 읽기위해서
 			 img_path = str_filePath;
-			 System.out.println(img_path);
 			 
 		 }catch (Exception e) {
-			 System.out.println("이미지를 선택하지 않았습니다.");
 		 }
 	}
 
@@ -183,7 +175,6 @@ public class UpdateAlbumController implements Initializable {
 		
 		try {
 			ias.updateAlbumInfo(aVO);
-			System.out.println("앨범정보 변경 완료");
 		} catch (RemoteException e) {
 			
 			e.printStackTrace();
@@ -195,7 +186,6 @@ public class UpdateAlbumController implements Initializable {
 	
 	@FXML
 	public void btn_selectSinger() {
-		System.out.println("가수조회 버튼클릭");
 		try {
 		
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("selectSingerUpd.fxml"));

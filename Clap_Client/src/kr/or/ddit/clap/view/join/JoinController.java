@@ -600,15 +600,9 @@ public class JoinController implements Initializable{
 		
 		check1.selectedProperty().addListener((observable, oldValue, newValue) ->{
 			if(newValue == true) {
-//				System.out.println("...");
-//				txtArea1.setBackground(new Background(new BackgroundFill(Color.valueOf("#ccebff"), new CornerRadii(1), new Insets(1))));
-//				stack1.setVisible(true);
 			}else {
-//				txtArea1.setStyle("-fx-background-color: white;");				
-//				stack1.setVisible(false);
 			}
 			
-//			System.out.println(txtArea2.scrollTopProperty().intValue());
 		});
 
 		

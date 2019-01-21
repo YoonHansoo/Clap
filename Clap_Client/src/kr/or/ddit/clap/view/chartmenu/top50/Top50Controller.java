@@ -225,7 +225,6 @@ public class Top50Controller implements Initializable{
 			Calendar cal = Calendar.getInstance();
 			Calendar cal2 = Calendar.getInstance();
 			cal.add(Calendar.DATE, -7);
-			System.out.println(cal.get(Calendar.DAY_OF_MONTH));
 			int temp = 0; 
 			int beforeWeek = 0; // 지난주차
 			
@@ -240,7 +239,6 @@ public class Top50Controller implements Initializable{
 			// 몇주차 구하기
 			int count = 1;
 			cal2.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1);
-			System.out.println(cal2.get(Calendar.MONTH));
 			
 			while(cal2.get(Calendar.DAY_OF_WEEK) != 2 ) {
 				count++;

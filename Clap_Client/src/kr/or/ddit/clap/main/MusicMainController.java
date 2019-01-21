@@ -236,10 +236,8 @@ public class MusicMainController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		if (arr_thread[0] != null) {
-			System.out.println("쓰레드존재함");
 			arr_thread[0].interrupt();
 		}
-		System.out.println("thread_flag : " + thread_flag);
 		tabpane.getSelectionModel().select(0);
 		
 		Thread1 thread = new Thread1();
@@ -271,7 +269,6 @@ public class MusicMainController implements Initializable {
 		}
 
 		// 추천 앨범 출력하기
-//		System.out.println("싸이즈 " + recommendList.size());
 
 		Image[] tab_img = new Image[5];
 		tab_img[0] = new Image(recommendList.get(0).getRcm_alb_image());
@@ -510,7 +507,6 @@ public class MusicMainController implements Initializable {
 						param -> new SimpleStringProperty(param.getValue().getValue().getNew_word()));
 				bestSearchList = FXCollections.observableArrayList(ils.selecthotkeyword());
 
-				System.out.println(bestSearchList.size());
 
 				TreeItem<NewSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList,
 						RecursiveTreeObject::getChildren);
@@ -713,7 +709,6 @@ public class MusicMainController implements Initializable {
 
 			// int index = tbl_singer.getSelectionModel().getSelectedIndex();
 			String search_word = tbl_search.getSelectionModel().getSelectedItem().getValue().getNew_word();
-			System.out.println("선택한 단어 : +" + search_word);
 
 			txt_search.setText(search_word);
 
@@ -750,14 +745,11 @@ public class MusicMainController implements Initializable {
 		pMap.put("word", word);
 		
 			ils.insertSearchWord(pMap);
-			System.out.println("검색어 입력완료");
 			
 			String singPK = ils.selectSearchPK(word);
 			
-			System.out.println(singPK);
 			
 			if(singPK == null) {
-				System.out.println("검색어없구요"); 
 			NotfoundController.word = word;
 			Parent notfound = FXMLLoader.load(getClass().getResource("../view/singer/main/Notfound.fxml")); 
 				
@@ -828,7 +820,6 @@ public class MusicMainController implements Initializable {
 		btn_newWord.setStyle("-fx-background-color:#f0f0f0");
 		
 			bestSearchList = FXCollections.observableArrayList(ils.selecthotkeyword());
-			System.out.println("최근검색어 갯수 : "+bestSearchList.size());
 			
 			TreeItem<NewSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList,
 					RecursiveTreeObject::getChildren);
@@ -848,10 +839,8 @@ public class MusicMainController implements Initializable {
 		btn_newWord.setStyle("-fx-background-color:#fff");
 		
 		String id = LoginSession.session.getMem_id();
-		System.out.println(id);
 				
 		bestSearchList = FXCollections.observableArrayList( ils.selectHistorykeyword(id));
-		System.out.println("최근검색어 갯수 : "+bestSearchList.size());
 
 		TreeItem<NewSearchWordVO> root = new RecursiveTreeItem<>(bestSearchList,
 				RecursiveTreeObject::getChildren);
@@ -1032,12 +1021,10 @@ public class MusicMainController implements Initializable {
 
 		GobackStack.goBack();
 		String path = GobackStack.printPage();
-		System.out.println("경로:" + path);
 		URL fxmlURL = Paths.get(path).toUri().toURL(); // Stirng 값을 URL로 변환
 
 		Parent goback = FXMLLoader.load(fxmlURL); // 대입
 
-		System.out.println(path.substring(path.length() - 14, path.length()));
 
 		contents.getChildren().removeAll();
 		contents.getChildren().setAll(goback);
@@ -1048,8 +1035,6 @@ public class MusicMainController implements Initializable {
 	public void goforward(ActionEvent event) throws IOException {
 		GobackStack.goForward();
 		String path = GobackStack.printPage();
-		System.out.println("goforawrd:" + path);
-		System.out.println("경로:" + path);
 		URL fxmlURL = Paths.get(path).toUri().toURL(); // Stirng 값을 URL로 변환
 
 		Parent goback = FXMLLoader.load(fxmlURL); // 대입
@@ -1072,11 +1057,9 @@ public class MusicMainController implements Initializable {
 
 	@FXML
 	public void logout() throws IOException {
-		System.out.println("로그아웃처리");
 		ls.session = null;
 		menu_admin.setVisible(false);
 		bar.setLayoutX(241);
-		System.out.println(ls.session);
 		firstPage();
 		if (musicplayer.isShowing()) {
 			MusicPlayerController mpc = MusicMainController.playerLoad.getController();
@@ -1556,7 +1539,6 @@ public class MusicMainController implements Initializable {
 
 					// System.out.println("인터럽트" + this.isInterrupted());
 					if (Thread.interrupted()) { // interrupt()메서드가 호출되면 true
-						System.out.println("인스턴스용 isInterrupted()");
 						break;
 					}
 					Thread.sleep(2500);
@@ -1571,8 +1553,6 @@ public class MusicMainController implements Initializable {
 				arr_thread[0] = this;
 			} catch (Exception e) {
 			}
-			System.out.println("자원 정리 중...");
-			System.out.println("실행종료.");
 		}
 	}
 

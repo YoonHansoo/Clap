@@ -96,7 +96,6 @@ public class InsertAlbumController implements Initializable {
 	}
 
 	public void initData() {
-		System.out.println("initData");
 		img_path = "file:\\\\\\\\Sem-pc\\\\공유폴더\\\\Clap\\\\img\\\\noImg.png";// 처음 아무것도 선택하지 않았을 떄의 이미지
 		Image img = new Image(img_path);
 		imgview_albumImg.setImage(img);
@@ -119,7 +118,6 @@ public class InsertAlbumController implements Initializable {
 
 	@FXML
 	public void btn_selectSinger() {
-		System.out.println("가수조회 버튼클릭");
 		try {
 			/*FXMLLoader loader = new FXMLLoader(getClass().getResource("SingerDetail.fxml"));// init실행됨
 			Parent singerDetail= loader.load(); 
@@ -159,11 +157,9 @@ public class InsertAlbumController implements Initializable {
 		fileChooser.setTitle("Open image");
 
 		// 사용자에 화면에 해당 디렉토리가 기본값으로 보여짐
-		// String userDirectoryString = System.getProperty("user.home") + "\\Pictures";
 		// 기본위치
 		String userDirectoryString = "\\\\Sem-pc\\공유폴더\\Clap\\img\\album";
 
-		System.out.println("userDirectoryString:" + userDirectoryString);
 		File userDirectory = new File(userDirectoryString);
 
 		if (!userDirectory.canRead()) { // 예외시?
@@ -180,17 +176,13 @@ public class InsertAlbumController implements Initializable {
 			BufferedImage bufferedImage = ImageIO.read(filePath);
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 			imgview_albumImg.setImage(image);
-			System.out.println("파일경로:" + filePath);
 			String str_filePath = "file:" + filePath;
 			// userDirectoryString = "file:\\\\Sem-pc\\공유폴더\\Clap\\img\\singer"; //화면 출력 시
 			// 절대경로로 이미지를 읽기위해서
 			img_path = str_filePath;
-			System.out.println(img_path);
 
 		} catch (Exception e) {
-			// System.out.println(e.getMessage());
-			// e.printStackTrace();
-			System.out.println("이미지를 선택하지 않았습니다.");
+			 e.printStackTrace();
 		}
 	}
 
@@ -235,9 +227,7 @@ public class InsertAlbumController implements Initializable {
 		try {
 			int flag = ias.insertAlbum(aVO);
 			if (flag == 1) {
-				System.out.println("앨범등록 완료");
 			} else {
-				System.out.println("앨범등록 실패");
 			}
 		} catch (RemoteException e) {
 

@@ -107,7 +107,6 @@ public class MyAlbumDialogController implements Initializable{
 				myAlbum.put("name", tf_albumName.getText());
 				myAlbum.put("id", id);
 				int result = imas.myAlbumInsert(myAlbum);
-				System.out.println(result);
 				
 				albumList = FXCollections.observableArrayList(imas.myAlbumSelect(id));
 				root = new RecursiveTreeItem<>(albumList, RecursiveTreeObject::getChildren);

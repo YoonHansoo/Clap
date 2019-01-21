@@ -94,7 +94,6 @@ public class SelectSingerController implements Initializable {
 		try {
 			singerList = FXCollections.observableArrayList(iss.selectListAll());
 		} catch (RemoteException e) {
-			System.out.println("에러");
 			e.printStackTrace();
 		}
 		
@@ -121,8 +120,6 @@ public class SelectSingerController implements Initializable {
 			if (e.getClickCount()  > 1) {
 				String singNo = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_no();
 				String singName = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_name();
-				System.out.println("선택한 가수번호: "+singNo);
-				System.out.println("선택한 가수이름: "+singName);
 				
 			
 				

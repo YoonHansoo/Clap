@@ -119,11 +119,9 @@ public class ShowAlbumLIstController implements Initializable {
 		try {
 			albumList = FXCollections.observableArrayList(ias.selectListAll());
 		} catch (RemoteException e) {
-			System.out.println("에러");
 			e.getMessage();
 			e.printStackTrace();
 		}
-		System.out.println(albumList.size());
 		
 		//데이터 삽입
 		
@@ -148,12 +146,10 @@ public class ShowAlbumLIstController implements Initializable {
 		
 		//더블클릭
 		tbl_album.setOnMouseClicked(e ->{
-			System.out.println("dd");
 			if (e.getClickCount()  > 1) {
 				
 				
 				String albumNo = tbl_album.getSelectionModel().getSelectedItem().getValue().getAlb_no();
-				System.out.println("선택한 앨범번호: "+albumNo);
 				
 				try {
 					//바뀔 화면(FXML)을 가져옴

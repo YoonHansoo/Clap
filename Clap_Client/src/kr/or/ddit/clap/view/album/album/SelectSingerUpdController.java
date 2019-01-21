@@ -94,7 +94,6 @@ public class SelectSingerUpdController implements Initializable {
 		try {
 			singerList = FXCollections.observableArrayList(iss.selectListAll());
 		} catch (RemoteException e) {
-			System.out.println("에러");
 			e.printStackTrace();
 		}
 		
@@ -122,8 +121,6 @@ public class SelectSingerUpdController implements Initializable {
 				
 				String singNo = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_no();
 				String singName = tbl_singer.getSelectionModel().getSelectedItem().getValue().getSing_name();
-				System.out.println("선택한 가수번호: "+singNo);
-				System.out.println("선택한 가수이름: "+singName);
 				
 			
 				
@@ -134,7 +131,6 @@ public class SelectSingerUpdController implements Initializable {
 				
 				uAC.txt_singerName.setText(singName);
 				uAC.label_singerNO.setText(singNo);
-				System.out.println("label_singerNO"+singNo);
 				
 				//자식창 닫음
 				Stage dialogStage = (Stage) btn_search.getScene().getWindow();

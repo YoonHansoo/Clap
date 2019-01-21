@@ -47,7 +47,6 @@ public class BestRcmListController implements Initializable {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			irs = (IRecommendService) reg.lookup("recommend");
 			recommendList = FXCollections.observableArrayList(irs.selectBestRecommendAlbum());
-			System.out.println(recommendList.size());
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -57,18 +56,14 @@ public class BestRcmListController implements Initializable {
 		// 높이 조절
 
 		int contentsHeight = 900;
-		System.out.println("사이즈" + recommendList.size());
 		if (recommendList.size() <= 4) {
 			contents.setPrefHeight(contentsHeight);
 		}
 
 		else if (recommendList.size() > 4) {
-			System.out.println("리스트 갯수 증가");
 			int temp_h = ((recommendList.size() - 4) / 2 + (recommendList.size() - 4) % 2);
 
-			System.out.println(temp_h);
 			contentsHeight = contentsHeight + (500 * temp_h);
-			System.out.println("높이" + contentsHeight);
 			contents.setPrefHeight(contentsHeight);
 		}
 			HBox hbox = null;
@@ -77,21 +72,17 @@ public class BestRcmListController implements Initializable {
 				int likeCnt = 0;
 				int listCnt = 0;
 
-				System.out.println("PK사이즈:" + recommendList.size());
 				// PK
 				String RcmAlbNo = recommendList.get(i).getRcm_alb_no();
 				try {
 					// 좋아요 수 구하는 쿼리
 					likeCnt = irs.selectAlbumLikeCnt(RcmAlbNo);
-					System.out.println("likeCnt:" + likeCnt);
 					// 리스트의 개수구하는 쿼리
 					listCnt = irs.selectAlbumListCnt(RcmAlbNo);
-					System.out.println("listCnt:" + likeCnt);
 				} catch (RemoteException e) {
 					e.printStackTrace();
 				}
 
-				System.out.println("객체생성시작");
 				if (i % 2 == 0) {
 					// 큰 HBOX 생성
 					hbox = new HBox();
@@ -128,7 +119,6 @@ public class BestRcmListController implements Initializable {
 				title.setOnMouseClicked(e -> {
 					// 화면전환 코드 작성
 
-					System.out.println("더블클릭");
 					if (e.getClickCount() > 1) {
 						Label obj_label = (Label) e.getSource();
 
@@ -137,12 +127,9 @@ public class BestRcmListController implements Initializable {
 							// 앨범 이름이 같을 경우 잘못된 값이 들어갈 가능성이 있음 -> 앨범이름도 유효성을 걸어줘?
 							if (obj_label.getText().equals(recommendList.get(j).getRcm_alb_name())) {
 								String rcmAlbNo = recommendList.get(j).getRcm_alb_no();
-								System.out.println("곡번호 :" + rcmAlbNo);
-								System.out.println("이동");
 
 								// 화면전환
 								UserRcmDetailController.rcmAlbNo = rcmAlbNo;// 곡 번호를 변수로 넘겨줌
-								System.out.println("넘겨주는 추천앨범번호:" + rcmAlbNo);
 								FXMLLoader loader = new FXMLLoader(getClass().getResource("UserRcmDetail.fxml"));// init실행됨
 								Parent userRcmDetailController;
 
@@ -238,7 +225,6 @@ public class BestRcmListController implements Initializable {
 					main_vbox.getChildren().add(hbox);
 
 				} else if (i == recommendList.size()) { 
-					System.out.println("마지막");
 					main_vbox.getChildren().add(hbox);
 				}
 
@@ -249,7 +235,6 @@ public class BestRcmListController implements Initializable {
 
 	@FXML
 	public void InsertRecommendAlbum() {
-		System.out.println("버튼클릭");
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("InsertRecommendAlbum.fxml"));// init실행됨
 		Parent insertRecommend;
 		try {

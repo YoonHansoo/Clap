@@ -150,14 +150,12 @@ public class SingerMainController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("가수번호:" + singerNo);
 
 		try {
 			// reg로 ISingerService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			iss = (ISingerService) reg.lookup("singer");
 			sVO = iss.singerDetailInfo(singerNo);
-			System.out.println(sVO.getSing_no());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
 
 			ims = (IMusicService) reg.lookup("music");
@@ -184,7 +182,6 @@ public class SingerMainController implements Initializable {
 		txt_intro.setText(sVO.getSing_intro());
 
 		Image img = new Image(sVO.getSing_image());
-		System.out.println("이미지경로:" + sVO.getSing_image());
 
 		temp_img_path = sVO.getSing_image(); // sVO.getSing_image()를 전역으로 쓰기위해
 		imgview_singImg.setImage(img);
@@ -192,16 +189,12 @@ public class SingerMainController implements Initializable {
 		// 좋아요 수를 가져오는 쿼리
 		try {
 			int likeCnt = iss.selectSingerLikeCnt(singerNo);
-			System.out.println("likecnt :" + likeCnt);
 			label_LikeCnt.setText(likeCnt + "");
 
 			// 세션아이디와 가수번호를 매개변수로 좋아요를 눌렀는 지 확인하는 메서드
 			String id = LoginSession.session.getMem_id();
 			pMap.put("singerNo", singerNo);
 			pMap.put("id", id);
-			System.out.println("singerNo:" + singerNo);
-			System.out.println("id:" + id);
-			System.out.println("첫번쨰" + yn);
 
 			yn = iss.checkHeartYN(pMap);
 			icon_heart.setIconName("HEART_ALT"); // 초기화 빈하트
@@ -215,9 +208,7 @@ public class SingerMainController implements Initializable {
 
 		// 댓글조회
 		try {
-			System.out.println("singerNo:" + singerNo);
 			replyMap = FXCollections.observableArrayList(iss.selectReply(singerNo));
-			System.out.println("리플사이즈:" + replyMap.size());
 			int size = replyMap.size();
 
 			// 댓글 창 생성
@@ -279,12 +270,10 @@ public class SingerMainController implements Initializable {
 
 				try {
 					iss.insertReply(rmap);
-					System.out.println("댓글작성성공");
 					input_reply.setText("");
 
 					// 화면새로고침
 					for (int i = 0; i < 1000; i++) {
-						System.out.println("화면전환");
 					}
 					for (int i = 0; i < 2000000000; i++) {
 					}
@@ -313,7 +302,6 @@ public class SingerMainController implements Initializable {
 			e.printStackTrace();
 		}
 
-		System.out.println("댓글생성 for문 시작");
 
 		pageing1(replyMap);
 
@@ -374,7 +362,6 @@ public class SingerMainController implements Initializable {
 			hbox.setPrefHeight(73);
 
 			reply_vbox.setMargin(hbox, new Insets(15, 0, 0, 0));
-			System.out.println(i + "번 째 for문");
 
 			ImageView imgView = new ImageView();
 			Image image = new Image(replyMap.get(i).get("MEM_IMAGE").toString());
@@ -390,7 +377,6 @@ public class SingerMainController implements Initializable {
 					if (temp_imgView.getId().equals(replyMap.get(j).get("SING_RE_NO").toString())) {
 
 						String id = replyMap.get(j).get("MEM_ID").toString();
-						System.out.println("화면전환");
 
 						OtherMypageController.othermemid = id;
 						FXMLLoader loader = new FXMLLoader(
@@ -410,7 +396,6 @@ public class SingerMainController implements Initializable {
 			VBox vbox = new VBox();
 			vbox.setPrefWidth(653);
 			vbox.setPrefHeight(73);
-			System.out.println(i + "번 째 for문에 v박스");
 
 			HBox small_hbox = new HBox();
 			small_hbox.setPrefWidth(533);
@@ -420,13 +405,11 @@ public class SingerMainController implements Initializable {
 			label_id.setPrefWidth(40);
 			label_id.setPrefHeight(15);
 			label_id.setText(replyMap.get(i).get("MEM_ID").toString());
-			System.out.println(i + "번 째 for문에 lable박스 멤버아이디" + replyMap.get(i).get("MEM_ID").toString());
 
 			Label label_date = new Label();
 			label_id.setPrefWidth(75);
 			label_id.setPrefHeight(15);
 			label_date.setText(replyMap.get(i).get("SING_RE_INDATE").toString());
-			System.out.println(i + "번 째 for문에 lable박스 날짜" + replyMap.get(i).get("SING_RE_INDATE").toString());
 
 			JFXButton btn_report = new JFXButton();
 			btn_report.setPrefWidth(40);
@@ -436,7 +419,6 @@ public class SingerMainController implements Initializable {
 			btn_report.setTextFill(Color.valueOf("#fff"));
 			btn_report.setStyle("-fx-background-color: #9c0000;");
 			small_hbox.setMargin(btn_report, new Insets(0, 0, 0, 5));
-			System.out.println(i + "번 째 for문에 버튼");
 
 			// 신고버튼 클릭했을 때
 			btn_report.setOnMouseClicked(e -> {
@@ -444,9 +426,7 @@ public class SingerMainController implements Initializable {
 				for (int j = 0; j < replyMap.size(); j++) {
 					if (temp_btn_report.getId().equals(replyMap.get(j).get("SING_RE_NO").toString())) {
 
-						System.out.println("아이디값" + replyMap.get(j).get("MEM_ID").toString());
 						String id = replyMap.get(j).get("MEM_ID").toString();
-						System.out.println("alert 창");
 
 						int check = alertConfrimDelete(id);
 						// No
@@ -501,12 +481,10 @@ public class SingerMainController implements Initializable {
 						// Yes
 						try {
 							iss.deleteSigerReply(id);
-							System.out.println("댓글삭제 성공");
 
 							refesh();
 						} catch (RemoteException e1) {
 							e1.printStackTrace();
-							System.out.println("댓글삭제 실패");
 						}
 
 					}
@@ -517,14 +495,12 @@ public class SingerMainController implements Initializable {
 			label_contents.setPrefWidth(598);
 			label_contents.setPrefHeight(43);
 			label_contents.setText(replyMap.get(i).get("SING_RE_CONTENT").toString());
-			System.out.println(i + "번 째 for문에 label_contents" + replyMap.get(i).get("SING_RE_CONTENT").toString());
 
 			HBox h_Line = new HBox();
 			// vbox.setMargin(h_Line, new Insets(0,0,0,0));
 			h_Line.setPrefWidth(710);
 			h_Line.setPrefHeight(1);
 			h_Line.setStyle("-fx-background-color:#090948;");
-			System.out.println("h_Line");
 
 			small_hbox.getChildren().addAll(label_id, label_date, btn_report, btn_delete);
 			vbox.getChildren().addAll(small_hbox, label_contents);
@@ -646,7 +622,6 @@ public class SingerMainController implements Initializable {
 	@FXML
 	public void wideView() {
 		// img_wideimg
-		System.out.println("크게보기 버튼클릭");
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("../singer/SingerImgWiderDialog.fxml"));
 			Stage stage = new Stage(StageStyle.UTILITY);
@@ -720,15 +695,12 @@ public class SingerMainController implements Initializable {
 		if (yn > 0) // 좋아요 취소일 때
 		{
 			// 취소 메서드
-			System.out.println("취소메서드 클릭");
 			iss.deleteSingerLike(pMap);
 			resetCnt();
 			icon_heart.setIconName("HEART_ALT");
 
 		} else {
 			// 추가 메서드
-			System.out.println(yn);
-			System.out.println("추가메서드 클릭");
 			iss.insertSingerLike(pMap);
 			resetCnt();
 			icon_heart.setIconName("HEART");
@@ -747,10 +719,8 @@ public class SingerMainController implements Initializable {
 		ButtonType confirmResult = alertConfirm.showAndWait().get();
 
 		if (confirmResult == ButtonType.OK) {
-			System.out.println("OK 버튼을 눌렀습니다.");
 			return 1;
 		} else if (confirmResult == ButtonType.CANCEL) {
-			System.out.println("취소 버튼을 눌렀습니다.");
 			return -1;
 		}
 		return -1;
@@ -766,10 +736,8 @@ public class SingerMainController implements Initializable {
 		ButtonType confirmResult = alertConfirm.showAndWait().get();
 
 		if (confirmResult == ButtonType.OK) {
-			System.out.println("OK 버튼을 눌렀습니다.");
 			return 1;
 		} else if (confirmResult == ButtonType.CANCEL) {
-			System.out.println("취소 버튼을 눌렀습니다.");
 			return -1;
 		}
 		return -1;
@@ -779,7 +747,6 @@ public class SingerMainController implements Initializable {
 		// 좋아요 카운트 쿼리
 
 		int likeCnt = iss.selectSingerLikeCnt(singerNo);
-		System.out.println("likecnt :" + likeCnt);
 		label_LikeCnt.setText(likeCnt + "");
 
 		yn = iss.checkHeartYN(pMap);

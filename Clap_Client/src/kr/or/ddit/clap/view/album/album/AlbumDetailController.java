@@ -71,19 +71,16 @@ public class AlbumDetailController implements Initializable {
 	// 현재 씬의 VBox까지 모두 제거 후 ShowSingerList를 불러야함.
 	public void givePane(AnchorPane contents) {
 		this.contents = contents;
-		System.out.println("contents 적용완료");
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("앨범번호:" + albumNo);
 
 		try {
 			// reg로 ISingerService객체를 받아옴
 			reg = LocateRegistry.getRegistry("localhost", 8888);
 			ias = (IAlbumService) reg.lookup("album");
 			aVO = ias.albumDetailInfo(albumNo);
-			System.out.println(aVO.getSing_no());
 			// 파라미터로 받은 정보를 PK로 상세정보를 가져옴
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -122,7 +119,6 @@ public class AlbumDetailController implements Initializable {
 	@FXML
 	public void wideView() {
 		// img_wideimg
-		System.out.println("크게보기 버튼클릭");
 		try {
 			AnchorPane pane = FXMLLoader.load(getClass().getResource("AlbummgWiderDialog.fxml"));
 			Stage stage = new Stage(StageStyle.UTILITY);
@@ -172,13 +168,10 @@ public class AlbumDetailController implements Initializable {
 		{ return; }
 
 		int cnt = ias.deleteAlbum(albumNo);
-		System.out.println("삭제 여부:" + cnt);
 		if (cnt >= 1) {
-			System.out.println("삭제성공");
 		}
 
 		else {
-			System.out.println("삭제실패");
 
 		}
 	}
@@ -215,10 +208,8 @@ public class AlbumDetailController implements Initializable {
 		ButtonType confirmResult = alertConfirm.showAndWait().get();
 
 		if (confirmResult == ButtonType.OK) {
-			System.out.println("OK 버튼을 눌렀습니다.");
 			return 1;
 		} else if (confirmResult == ButtonType.CANCEL) {
-			System.out.println("취소 버튼을 눌렀습니다.");
 			return -1;
 		}
 		return -1;

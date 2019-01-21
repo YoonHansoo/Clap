@@ -27,7 +27,6 @@ public class AlbumVO extends RecursiveTreeObject<AlbumVO> implements Serializabl
 		imgView.setImage(img);
 		imgView.setFitWidth(120);
 		imgView.setFitHeight(50);
-		System.out.println("imgView생성");
 		return imgView;
 	}
 	public void setImgView(ImageView imgView) {
