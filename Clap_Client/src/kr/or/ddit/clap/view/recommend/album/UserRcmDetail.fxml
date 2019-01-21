@@ -20,7 +20,7 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="20.0" layoutY="99.0" prefHeight="213.0" prefWidth="774.0" style="-fx-border-color: #090948;" AnchorPane.leftAnchor="102.0">
+      <HBox layoutX="20.0" layoutY="99.0" prefHeight="213.0" prefWidth="774.0" style="-fx-border-color: #d3d3d3;" AnchorPane.leftAnchor="102.0">
          <children>
             <ImageView fx:id="imgview_img" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true" x="86.0">
                <HBox.margin>
@@ -32,7 +32,7 @@
                      <children>
                         <JFXButton onAction="#btn_heart" text=" ">
                            <graphic>
-                              <FontAwesomeIcon fx:id="icon_heart" fill="#9c0000" iconName="HEART_ALT" size="1.5em" />
+                              <FontAwesomeIcon fx:id="icon_heart" fill="RED" iconName="HEART_ALT" size="1.5em" />
                            </graphic>
                         </JFXButton>
                         <Label fx:id="label_LikeCnt" prefHeight="28.0" prefWidth="75.0" text="???" textFill="#090c64">
@@ -42,7 +42,7 @@
                         </Label>
                         <JFXButton text=" ">
                            <graphic>
-                              <FontAwesomeIcon fill="#9c0000" iconName="PLAY_CIRCLE" size="1.5em" text="" />
+                              <FontAwesomeIcon fill="#04ff00" iconName="MUSIC" size="1.5em" />
                            </graphic>
                         </JFXButton>
                         <Label fx:id="lable_cntMusic" prefHeight="29.0" prefWidth="49.0" text="0 곡 ">

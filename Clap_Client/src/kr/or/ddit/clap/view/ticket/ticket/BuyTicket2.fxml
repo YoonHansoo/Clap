@@ -106,7 +106,7 @@
                            </VBox.margin></Separator>
                      </children>
                   </VBox>
-                  <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="323.0" prefWidth="700.0">
+                  <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="333.0" prefWidth="700.0">
                      <children>
                         <Label text="결제 정보">
                            <font>
@@ -209,7 +209,7 @@
                                                 <Font name="YDIYGO350" size="18.0" />
                                              </font>
                                           </Label>
-                                          <JFXComboBox fx:id="combo1" minHeight="29.0" prefHeight="7.0" prefWidth="120.0">
+                                          <JFXComboBox fx:id="combo1" minHeight="29.0" prefHeight="7.0" prefWidth="120.0" style="-fx-font-family: YDIYGO350; -fx-font-size: 12pt;">
                                              <HBox.margin>
                                                 <Insets left="9.0" />
                                              </HBox.margin></JFXComboBox>
@@ -228,7 +228,7 @@
                                                 <Font name="YDIYGO350" size="18.0" />
                                              </font>
                                           </Label>
-                                          <JFXComboBox fx:id="combo2" minHeight="29.0" prefHeight="7.0" prefWidth="120.0">
+                                          <JFXComboBox fx:id="combo2" minHeight="29.0" prefHeight="7.0" prefWidth="120.0" style="-fx-font-family: YDIYGO350; -fx-font-size: 12pt;">
                                              <HBox.margin>
                                                 <Insets left="9.0" />
                                              </HBox.margin></JFXComboBox>
@@ -244,10 +244,13 @@
                                                 <Font name="YDIYGO350" size="20.0" />
                                              </font>
                                              <VBox.margin>
-                                                <Insets left="-80.0" />
+                                                <Insets left="-80.0" top="10.0" />
                                              </VBox.margin>
                                           </JFXButton>
                                        </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
                                     </VBox>
                                  </children>
                                  <VBox.margin>

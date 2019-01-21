@@ -23,7 +23,7 @@
          <children>
             <Label fx:id="lb_singer" alignment="BOTTOM_LEFT" contentDisplay="BOTTOM" prefHeight="40.0" prefWidth="820.0" styleClass="mainlabel" text="에디 킴">
                <font>
-                  <Font size="25.0" />
+                  <Font name="YDIYGO350" size="24.0" />
                </font>
                <VBox.margin>
                   <Insets left="100.0" />
@@ -59,7 +59,7 @@
             </JFXTabPane>
          </children>
       </VBox>
-      <VBox fx:id="box" layoutX="138.0" layoutY="107.0" prefHeight="768.0" prefWidth="773.0">
+      <VBox fx:id="box" layoutX="138.0" layoutY="107.0" prefHeight="768.0" prefWidth="773.0" visible="false">
          <children>
             <Label fx:id="label_albumName1" prefHeight="41.0" prefWidth="771.0" text="앨범 명">
                <font>
@@ -204,7 +204,10 @@
       <Label fx:id="txt_intro" alignment="TOP_LEFT" layoutX="138.0" layoutY="750.0" prefHeight="296.0" prefWidth="718.0" style="-fx-border-color: #d3d3d3;" text=" 앨범 소개" visible="false" wrapText="true">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding></Label>
+         </padding>
+         <font>
+            <Font name="YDIYGO330" size="13.0" />
+         </font></Label>
       <StackPane fx:id="stackpane" layoutX="50.0" layoutY="420.0" visible="false">
          <children>
             <VBox fx:id="mainBox">
@@ -327,7 +330,7 @@
             </VBox>
          </children>
       </StackPane>
-      <VBox fx:id="musicBox" layoutX="140.0" layoutY="90.0" minHeight="735.0" minWidth="773.0" prefHeight="1055.0" prefWidth="773.0" visible="false">
+      <VBox fx:id="musicBox" layoutX="140.0" layoutY="90.0" minHeight="735.0" minWidth="773.0" prefHeight="1055.0" prefWidth="773.0">
          <children>
             <Label fx:id="label_musicTitle" prefHeight="41.0" prefWidth="718.0" text="곡">
                <font>
@@ -354,7 +357,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="txt_albName" prefHeight="15.0" prefWidth="364.0" text="Label" />
+                              <Label fx:id="txt_albName" prefHeight="15.0" prefWidth="364.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -367,7 +373,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="txt_singerName" prefHeight="15.0" prefWidth="361.0" text="Label" />
+                              <Label fx:id="txt_singerName" prefHeight="15.0" prefWidth="361.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -380,7 +389,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="txt_write" prefHeight="15.0" prefWidth="357.0" text="Label" />
+                              <Label fx:id="txt_write" prefHeight="15.0" prefWidth="357.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -393,7 +405,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="txt_edit" prefHeight="15.0" prefWidth="354.0" text="Label" />
+                              <Label fx:id="txt_edit" prefHeight="15.0" prefWidth="354.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -406,7 +421,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="txt_muswrite" prefHeight="15.0" prefWidth="358.0" text="Label" />
+                              <Label fx:id="txt_muswrite" prefHeight="15.0" prefWidth="358.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -419,7 +437,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lb_genre" prefHeight="15.0" prefWidth="358.0" text="Label" />
+                              <Label fx:id="lb_genre" prefHeight="15.0" prefWidth="358.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -432,7 +453,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="lb_genreDetail" prefHeight="15.0" prefWidth="358.0" text="Label" />
+                              <Label fx:id="lb_genreDetail" prefHeight="15.0" prefWidth="358.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
@@ -445,7 +469,10 @@
                                     <Insets bottom="3.0" />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="txt_time" text="Label" />
+                              <Label fx:id="txt_time" prefHeight="15.0" prefWidth="102.0" text="Label">
+                                 <font>
+                                    <Font name="YDIYGO330" size="12.0" />
+                                 </font></Label>
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="100.0">
@@ -500,7 +527,10 @@
                   <Insets top="3.0" />
                </VBox.margin>
             </Label>
-            <JFXTextArea fx:id="txt_lyrics" maxWidth="719.0" minWidth="719.0" prefHeight="269.0" prefWidth="705.0" />
+            <JFXTextArea fx:id="txt_lyrics" maxWidth="719.0" minWidth="719.0" prefHeight="269.0" prefWidth="705.0">
+               <font>
+                  <Font name="YDIYGO330" size="13.0" />
+               </font></JFXTextArea>
             <VBox fx:id="reply_vbox2" prefHeight="308.0" prefWidth="733.0">
                <VBox.margin>
                   <Insets top="15.0" />
