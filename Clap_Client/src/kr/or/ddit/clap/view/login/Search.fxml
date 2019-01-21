@@ -56,7 +56,7 @@
                         <Insets top="9.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="YDIYGO350" size="14.0" />
+                        <Font name="YDIYGO350" size="12.0" />
                      </font></Label>
                </children>
                <VBox.margin>
