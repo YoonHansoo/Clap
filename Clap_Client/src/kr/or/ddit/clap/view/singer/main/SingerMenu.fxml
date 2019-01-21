@@ -452,7 +452,7 @@
                                     <Insets />
                                  </HBox.margin>
                               </Label>
-                              <Label fx:id="label_LikeCnt2" prefWidth="200.0" text="???" textFill="#090c64">
+                              <Label fx:id="label_LikeCnt2" prefWidth="200.0" textFill="#090c64">
                                  <font>
                                     <Font name="YDIYGO340" size="14.0" />
                                  </font>

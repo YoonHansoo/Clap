@@ -160,8 +160,15 @@
    -fx-text-fill: #090948;
 }
 
+.menu-item:focused {
+     -fx-background-color: #090948;
+}
 #btn_ticket, #btn_login, #btn_join, #btn_logout {
    -fx-font-family: "-윤고딕330";
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: white;
 }
 
 
@@ -179,3 +186,16 @@
 
 
 
+=======
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .r56408

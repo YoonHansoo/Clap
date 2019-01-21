@@ -78,7 +78,10 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="1.0">
                      <children>
-                        <JFXCheckBox fx:id="cb_main" checkedColor="#9c0000" onAction="#mainCheck" prefHeight="35.0" prefWidth="39.0" text=" " />
+                        <JFXCheckBox fx:id="cb_main" checkedColor="#9c0000" onAction="#mainCheck" prefHeight="35.0" prefWidth="39.0" text=" ">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></JFXCheckBox>
                         <JFXButton onAction="#btnMainPlay" ripplerFill="#9c0000" text="듣기">
                            <graphic>
                               <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />

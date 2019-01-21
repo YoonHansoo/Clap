@@ -20,7 +20,7 @@
             <Font name="YDIYGO350" size="24.0" />
          </font>
       </Label>
-      <HBox layoutX="159.0" layoutY="67.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;" AnchorPane.leftAnchor="159.0">
+      <HBox layoutX="159.0" layoutY="67.0" prefHeight="211.0" prefWidth="734.0" style="border: #54b823;" AnchorPane.leftAnchor="160.0">
          <children>
             <ImageView fx:id="imgview_singImg" fitHeight="211.0" fitWidth="251.0" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
@@ -152,7 +152,7 @@
          </children>
       </HBox>
       <Line endX="617.0" layoutX="276.0" layoutY="330.0" startX="-92.0" stroke="#9c0000" AnchorPane.leftAnchor="183.2928924560547" />
-      <JFXButton layoutX="70.0" layoutY="288.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE" AnchorPane.leftAnchor="225.0">
+      <JFXButton layoutX="232.0" layoutY="278.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE" AnchorPane.leftAnchor="232.0">
 <!--       <JFXButton layoutX="82.0" layoutY="278.0" onAction="#wideView" prefHeight="26.0" prefWidth="102.0" style="-fx-background-color: #090948;" text="크게보기" textFill="WHITE"> -->
          <graphic>
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" />
@@ -161,7 +161,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lb_intro" layoutX="239.0" layoutY="680.0" prefHeight="41.0" prefWidth="214.0" text="앨범" AnchorPane.leftAnchor="239.0">
+      <Label fx:id="lb_intro" layoutX="239.0" layoutY="680.0" prefHeight="41.0" prefWidth="214.0" text="앨범" AnchorPane.leftAnchor="160.0">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
