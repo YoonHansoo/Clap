@@ -1057,7 +1057,7 @@ public class JoinController implements Initializable{
 	
 	public void emailCheck() throws UnsupportedEncodingException, NoSuchAlgorithmException, GeneralSecurityException {
 		AES256Util aes = new AES256Util();
-		Pattern p = Pattern.compile("(^[a-zA-Z0-9]+@[a-zA-Z0-9]+$)");
+		Pattern p = Pattern.compile("(^[a-zA-Z0-9]+@[a-zA-Z0-9.]+$)");
 		Matcher m = p.matcher(txt_email.getText());
 		
 		if(txt_email.getText().equals("")) {
@@ -1161,8 +1161,8 @@ public class JoinController implements Initializable{
 			lb_captcha.setVisible(true);
 			lb_captcha2.setVisible(true);
 			lb_captcha.setPadding(new Insets(0));
-			lb_captcha.setText("보안문자가 일치하지 않습니다.");
-			lb_captcha2.setText("새로 입력해주세요.");
+			lb_captcha.setText("보안문자가 일치하지 않습");
+			lb_captcha2.setText("니다. 새로 입력해주세요.");
 			captchaFlag = false;
 			lb_captcha.setTextFill(Color.RED);
 			lb_captcha2.setTextFill(Color.RED);
