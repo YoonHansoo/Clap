@@ -25,6 +25,7 @@
 				 mem_id=#mem_id#
 			</isNotEmpty>
 		</dynamic>
+		 order by qna_indate desc
 	</select>
 	
 	
