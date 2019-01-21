@@ -271,7 +271,7 @@
             <Insets left="70.0" />
          </padding>
       </BorderPane>
-      <VBox fx:id="box" layoutY="620.0" minHeight="620.0" minWidth="950.0" opacity="0.0" prefHeight="200.0" prefWidth="100.0">
+      <VBox fx:id="box" layoutY="620.0" minHeight="620.0" minWidth="950.0" prefHeight="200.0" prefWidth="100.0">
          <children>
             <VBox prefHeight="61.0" prefWidth="600.0" spacing="10.0">
                <children>
@@ -298,17 +298,17 @@
                   <FontAwesomeIcon fill="#090948" iconName="CHECK_CIRCLE" size="60" />
                   <Label text="결제 완료!">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="YDIYGO350" size="24.0" />
                      </font>
                   </Label>
                   <Label text="구매해주셔서 감사합니다.">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="YDIYGO350" size="24.0" />
                      </font>
                   </Label>
                   <Label text="Clap: 음악, 그리고 설레임">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="YDIYGO350" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="160.0" />

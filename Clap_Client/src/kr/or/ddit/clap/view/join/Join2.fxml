@@ -20,7 +20,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="800.0" minWidth="832.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../../../../../../Join.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.join.JoinController">
    <children>
-      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0" visible="false">
+      <BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
          <top>
             <VBox prefHeight="47.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                <children>
@@ -317,7 +317,7 @@
             <Insets left="222.0" top="15.0" />
          </padding>
       </BorderPane>
-      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0">
+      <VBox fx:id="box" prefHeight="200.0" prefWidth="100.0" visible="false">
          <children>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="832.0">
                <top>

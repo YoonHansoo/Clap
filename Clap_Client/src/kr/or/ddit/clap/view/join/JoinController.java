@@ -1215,8 +1215,7 @@ public class JoinController implements Initializable{
 	}
 	
 	public void nextPage() {
-//		if(check1.isSelected() && check2.isSelected()) {
-		if(true) {
+		if(check1.isSelected() && check2.isSelected()) {
 			// 둘 다 체크되어있을때 진행.
 			pane.setVisible(true);
 			box.setVisible(false);

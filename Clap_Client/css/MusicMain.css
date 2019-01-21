@@ -160,7 +160,9 @@
    -fx-text-fill: #090948;
 }
 
-
+#btn_ticket, #btn_login, #btn_join, #btn_logout {
+   -fx-font-family: "-윤고딕330";
+}
 
 
 

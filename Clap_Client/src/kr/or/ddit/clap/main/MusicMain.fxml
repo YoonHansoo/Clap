@@ -167,7 +167,7 @@
                   </Label>
                   <JFXButton fx:id="btn_msg" layoutX="802.0" layoutY="58.0" onAction="#btn_message" prefHeight="32.0" prefWidth="53.0" text=" " />
                   <Line endX="1024.0" endY="170.0" startY="170.0" stroke="#aeaeae" />
-                  <JFXButton layoutX="112.0" layoutY="14.0" maxHeight="23.0" onAction="#buyTicket" prefHeight="23.0" style="-fx-background-color: #090948;" text=" 이용권 구매 " textFill="WHITE">
+                  <JFXButton fx:id="btn_ticket" layoutX="112.0" layoutY="14.0" maxHeight="23.0" onAction="#buyTicket" prefHeight="23.0" style="-fx-background-color: #090948;" text=" 이용권 구매 " textFill="WHITE">
                      <graphic>
                         <HBox alignment="CENTER" prefHeight="23.0" prefWidth="15.0">
                            <children>

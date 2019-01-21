@@ -9,30 +9,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<VBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="724.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.LoginController">
+<VBox fx:id="box" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="724.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../../../../Login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.LoginController">
    <children>
       <HBox maxWidth="200.0" prefHeight="50.0" prefWidth="100.0">
          <children>
             <FontAwesomeIcon iconName="USER" size="30">
                <HBox.margin>
-                  <Insets left="5.0" right="10.0" top="9.0" />
+                  <Insets left="5.0" right="10.0" top="11.0" />
                </HBox.margin>
             </FontAwesomeIcon>
-            <Label prefHeight="50.0" text="CLAP : 로그인">
-               <font>
-                  <Font name="YDIYGO330" size="23.0" />
-               </font>
-            </Label>
+            <Label fx:id="lb1" prefHeight="50.0" text="CLAP : 로그인" />
          </children>
          <VBox.margin>
-            <Insets left="81.0" />
+            <Insets bottom="10.0" left="81.0" />
          </VBox.margin>
       </HBox>
       <HBox prefHeight="74.0" prefWidth="200.0">
          <children>
-            <VBox maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="284.0">
+            <VBox maxWidth="1.7976931348623157E308" prefHeight="150.0" prefWidth="240.0">
                <children>
                   <JFXTextField fx:id="txt_id" focusColor="#9c0000" unFocusColor="#090948">
                      <VBox.margin>
@@ -48,9 +43,6 @@
                </HBox.margin>
             </VBox>
             <JFXButton fx:id="btn_login" onAction="#login" prefHeight="44.0" prefWidth="79.0" style="-fx-background-color: #090948;" text="로그인" textFill="WHITE">
-               <font>
-                  <Font name="YDIYGO330" size="14.0" />
-               </font>
                <HBox.margin>
                   <Insets left="10.0" top="20.0" />
                </HBox.margin></JFXButton>
@@ -61,7 +53,7 @@
       </HBox>
       <Label fx:id="lb_check" text="아이디 또는 비밀번호를 확인해주세요." textFill="RED" visible="false">
          <VBox.margin>
-            <Insets bottom="5.0" left="35.0" />
+            <Insets bottom="10.0" left="35.0" top="10.0" />
          </VBox.margin>
       </Label>
       <HBox prefHeight="23.0" prefWidth="200.0">
@@ -69,10 +61,7 @@
             <JFXButton fx:id="btn_search" onAction="#search" text="아이디 / 비밀번호 찾기">
                <HBox.margin>
                   <Insets left="120.0" />
-               </HBox.margin>
-               <font>
-                  <Font name="YDIYGO330" size="14.0" />
-               </font></JFXButton>
+               </HBox.margin></JFXButton>
          </children>
          <VBox.margin>
             <Insets />
@@ -80,13 +69,13 @@
       </HBox>
       <HBox fx:id="box1" alignment="CENTER_LEFT" prefHeight="29.0" prefWidth="200.0" spacing="10.0" visible="false">
          <children>
-            <Label alignment="CENTER_RIGHT" prefWidth="100.0" text="보안문자 입력">
+            <Label fx:id="lb2" alignment="CENTER_RIGHT" prefWidth="100.0" text="보안문자 입력">
                <HBox.margin>
                   <Insets left="8.0" top="4.0" />
                </HBox.margin>
             </Label>
             <ImageView fx:id="img_captcha" fitHeight="90.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <JFXButton fx:id="btn_refresh" onAction="#imgRefresh" text="새로고침" />
+            <JFXButton fx:id="btn_refresh" onAction="#imgRefresh" style="-fx-background-color: #090948;" text="새로고침" textFill="WHITE" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" top="5.0" />
@@ -94,13 +83,13 @@
       </HBox>
       <HBox fx:id="box2" prefHeight="35.0" prefWidth="200.0" spacing="10.0" visible="false">
          <children>
-            <Label alignment="CENTER_RIGHT" prefWidth="100.0" text=" ">
+            <Label fx:id="lb3" alignment="CENTER_RIGHT" prefWidth="100.0" text=" ">
                <HBox.margin>
                   <Insets top="4.0" />
                </HBox.margin>
             </Label>
             <JFXTextField fx:id="txt_captcha" prefWidth="138.0" />
-            <JFXButton fx:id="btn_captcha" onAction="#captchaCheck" text="입력 확인" />
+            <JFXButton fx:id="btn_captcha" onAction="#captchaCheck" style="-fx-background-color: #090948;" text="입력 확인" textFill="WHITE" />
          </children>
          <VBox.margin>
             <Insets top="5.0" />
