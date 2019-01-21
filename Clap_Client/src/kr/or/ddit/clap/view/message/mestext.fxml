@@ -42,7 +42,7 @@
                         </Label>
                         <Label fx:id="textF_Title" prefHeight="46.0" prefWidth="343.0" text="Label">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="YDIYGO320" size="20.0" />
                            </font>
                         </Label>
                      </children>
@@ -61,7 +61,7 @@
                   </Label>
                   <Label fx:id="la_SendDate" prefHeight="43.0" prefWidth="312.0" text="Label">
                      <font>
-                        <Font name="YDIYGO350" size="18.0" />
+                        <Font name="YDIYGO320" size="20.0" />
                      </font>
                   </Label>
                </children>

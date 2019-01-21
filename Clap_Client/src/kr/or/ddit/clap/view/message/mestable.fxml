@@ -14,14 +14,14 @@
       <JFXTreeTableView fx:id="tbl_Message" layoutX="20.0" layoutY="106.0" prefHeight="317.0" prefWidth="600.0" stylesheets="@../../../../../../mypage.css" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="80.0">
          <columns>
             <TreeTableColumn fx:id="col_imgeview" prefWidth="65.0" text=" " />
-            <TreeTableColumn fx:id="col_title" prefWidth="156.0" text="제목" />
-            <TreeTableColumn fx:id="col_SendId" prefWidth="89.0" text="보낸이" />
-            <TreeTableColumn fx:id="col_SendDate" prefWidth="133.0" text="보낸 날짜" />
-            <TreeTableColumn fx:id="col_ReadDate" prefWidth="101.0" text="읽은 날짜" />
-            <TreeTableColumn fx:id="col_Check" prefWidth="75.0" />
+            <TreeTableColumn fx:id="col_title" prefWidth="184.0" text="제목" />
+            <TreeTableColumn fx:id="col_SendId" prefWidth="78.0" text="보낸이" />
+            <TreeTableColumn fx:id="col_SendDate" prefWidth="124.0" text="보낸 날짜" />
+            <TreeTableColumn fx:id="col_ReadDate" prefWidth="89.0" text="읽은 날짜" />
+            <TreeTableColumn fx:id="col_Check" prefWidth="79.0" />
          </columns>
       </JFXTreeTableView>
-      <Pagination fx:id="p_paging" layoutX="10.0" layoutY="78.0" prefHeight="371.0" prefWidth="614.0" />
+      <Pagination fx:id="p_paging" layoutX="10.0" layoutY="67.0" prefHeight="382.0" prefWidth="614.0" />
       <Button layoutX="253.0" layoutY="466.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="30.0" prefWidth="60.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
          <font>
             <Font name="YDIYGO350" size="16.0" />
