@@ -72,7 +72,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXDatePicker fx:id="date_Start" />
+                        <JFXDatePicker fx:id="date_Start" defaultColor="#090948" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -85,7 +85,7 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <JFXDatePicker fx:id="date_End" />
+                        <JFXDatePicker fx:id="date_End" defaultColor="#090948" />
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
