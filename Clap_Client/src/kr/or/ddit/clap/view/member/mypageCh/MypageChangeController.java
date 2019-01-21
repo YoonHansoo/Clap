@@ -82,7 +82,7 @@ public class MypageChangeController implements Initializable {
 			e.printStackTrace();
 		}
 
-		label_Tel.setText(vo2.getMem_tel().substring(0, 3) + "-" + vo2.getMem_tel().substring(4, 8));
+		label_Tel.setText(vo2.getMem_tel().substring(0, 3) + " -    " + vo2.getMem_tel().substring(3, 7));
 		// 이메일 뿌주기
 		String[] str = vo2.getMem_email().split("@");
 		em1.setText(str[0]);
