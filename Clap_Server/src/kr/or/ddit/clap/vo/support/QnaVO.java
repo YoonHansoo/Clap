@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.scene.image.ImageView;
+
 public class QnaVO extends RecursiveTreeObject<QnaVO> implements Serializable{
 	
 	private String qna_no;
@@ -17,7 +19,16 @@ public class QnaVO extends RecursiveTreeObject<QnaVO> implements Serializable{
 	private String attach_file;
 	private String qna_content;
 	private String mem_id;
+	private ImageView imageview;
 	
+	
+	
+	public ImageView getImageview() {
+		return imageview;
+	}
+	public void setImageview(ImageView imageview) {
+		this.imageview = imageview;
+	}
 	public String getQna_no() {
 		return qna_no;
 	}

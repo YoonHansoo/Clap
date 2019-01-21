@@ -138,6 +138,20 @@ public class QnaDaoImpl implements IQnaDao{
 		}
 		return list;
 	}
+
+	@Override
+	public List<QnaVO> selectQna(String id) {
+		List<QnaVO> list = new ArrayList<QnaVO>();
+		try {
+
+			list = smc.queryForList("qna.selectQna",id);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
 		
 		
 	}

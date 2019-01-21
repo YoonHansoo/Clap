@@ -17,6 +17,7 @@ public interface IQnaDao {
 
 	public List<QnaVO> selectListAll();
 	
+	public List<QnaVO> selectQna(String id);
 	
 	public QnaVO qnaDetailContent(String ContentNo) throws RemoteException;
 	
