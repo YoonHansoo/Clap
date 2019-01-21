@@ -11,14 +11,14 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="570.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutY="-3.0" prefHeight="50.0" prefWidth="570.0" style="-fx-background-color: #4e4e4e;" text="    휴대폰 번호 변경" textFill="WHITE">
+      <Label layoutY="-3.0" prefHeight="50.0" prefWidth="570.0" style="-fx-background-color: #090948 #090948 #4e4e4e;" text="    휴대폰 번호 변경" textFill="WHITE">
          <font>
             <Font name="YDIYGO350" size="21.0" />
          </font>
       </Label>
       <AnchorPane layoutY="70.0" prefHeight="275.0" prefWidth="571.0" AnchorPane.leftAnchor="0.0">
          <children>
-            <Label layoutX="44.0" layoutY="22.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #d0d0d0;" text="  휴대폰 번호" textOverrun="CLIP" AnchorPane.leftAnchor="44.0">
+            <Label layoutX="44.0" layoutY="22.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #090948;" text="  휴대폰 번호" textFill="WHITE" textOverrun="CLIP" AnchorPane.leftAnchor="44.0">
                <font>
                   <Font name="YDIYGO340" size="20.0" />
                </font>
@@ -34,8 +34,8 @@
             <Text fill="#eb6464" layoutX="45.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="휴대폰번호 변경 시 기존 휴대폰으로 받았던 음원파일은 재생이 불가능하며," AnchorPane.leftAnchor="37.0" />
             <Text fill="#f80000" layoutX="29.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="＇" AnchorPane.leftAnchor="21.0" />
             <Text fill="#eb6464" layoutX="45.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="신규 휴대폰 번호로 저작권보호정책(DRM)이 적용된 음원파일을 재다운로드 받으셔야 합니다." AnchorPane.leftAnchor="37.0" />
-            <Button fx:id="btn_Ok" layoutX="214.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="확인" AnchorPane.topAnchor="228.0" />
-            <Button fx:id="btn_Cl" layoutX="293.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="취소" AnchorPane.topAnchor="228.0" />
+            <Button fx:id="btn_Ok" layoutX="206.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE" AnchorPane.topAnchor="228.0" />
+            <Button fx:id="btn_Cl" layoutX="285.0" layoutY="228.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE" AnchorPane.topAnchor="228.0" />
          </children>
       </AnchorPane>
    </children>

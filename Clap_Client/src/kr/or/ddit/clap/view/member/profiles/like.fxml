@@ -20,7 +20,7 @@
                <children>
                   <Button layoutX="117.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_mus" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="곡" textFill="WHITE" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="30.0">
                   </Button>
-                  <Text layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좋아요♥" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="30.2451171875">
+                  <Text fx:id="la_mypge" layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좋아요♥" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="30.2451171875">
                      
                   </Text>
                   <Button layoutX="303.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_Rcm" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="추 천" textFill="WHITE" AnchorPane.leftAnchor="303.0" AnchorPane.topAnchor="30.0">

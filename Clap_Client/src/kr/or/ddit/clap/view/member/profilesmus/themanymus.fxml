@@ -28,16 +28,14 @@
                      </columns>
                   </JFXTreeTableView>
                   <Pagination fx:id="p_Paging" layoutX="11.0" layoutY="159.0" prefHeight="451.0" prefWidth="704.0" />
-                  <Label layoutX="19.0" layoutY="32.0" text="많이 들은 곡" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="32.0">
+                  <Label fx:id="la_mypge" layoutX="19.0" layoutY="32.0" text="많이 들은 곡" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="32.0">
                      
                   </Label>
                   <JFXButton layoutX="57.0" layoutY="98.0" ripplerFill="#9c0000" text="듣기" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="98.0">
                      <graphic>
                         <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
                      </graphic>
-                     <font>
-                        <Font name="-윤고딕340" size="12.0" />
-                     </font>
+                   
                   </JFXButton>
                   <JFXButton layoutX="117.0" layoutY="98.0" ripplerFill="#9c0000" text="추가" AnchorPane.topAnchor="98.0">
                      <graphic>

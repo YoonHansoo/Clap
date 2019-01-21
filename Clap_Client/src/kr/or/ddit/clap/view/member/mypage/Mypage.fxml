@@ -130,7 +130,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="       최근 감상 곡           ">
+                        <Tab text="     최근 감상 곡">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="252.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css">
                                  <children>
@@ -145,7 +145,7 @@
                               </AnchorPane>
                            </content>
                         </Tab>
-                        <Tab text="     많이 들은 아티스트    ">
+                        <Tab text="     많이 들은 아티스트">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="610.0" stylesheets="@../../../../../../../mypage.css">
                                  <children>

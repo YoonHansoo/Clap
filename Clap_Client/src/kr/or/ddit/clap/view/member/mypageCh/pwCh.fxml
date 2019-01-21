@@ -36,8 +36,8 @@
       <JFXPasswordField fx:id="textF_NowPw" layoutX="257.0" layoutY="44.0" maxWidth="167.0" minWidth="167.0" prefHeight="29.0" prefWidth="167.0" />
       <JFXPasswordField fx:id="textF_NewPw" layoutX="253.0" layoutY="200.0" maxWidth="167.0" minWidth="167.0" prefHeight="29.0" prefWidth="167.0" AnchorPane.leftAnchor="253.0" AnchorPane.rightAnchor="130.0" />
       <JFXPasswordField fx:id="textF_NewPwCh" layoutX="257.0" layoutY="94.0" maxWidth="167.0" minWidth="167.0" prefHeight="29.0" prefWidth="167.0" AnchorPane.leftAnchor="257.0" AnchorPane.rightAnchor="126.0" />
-      <Button fx:id="btn_Ok" layoutX="207.0" layoutY="289.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" text="확인" />
-      <Button fx:id="btn_Cl" layoutX="275.0" layoutY="289.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" text="취소" />
+      <Button fx:id="btn_Ok" layoutX="207.0" layoutY="289.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #090948;" text="확인" textFill="WHITE" />
+      <Button fx:id="btn_Cl" layoutX="275.0" layoutY="289.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="65.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE" />
       <Text layoutX="207.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="공백 사용 불가" wrappingWidth="187.8203125" AnchorPane.leftAnchor="207.0">
          <font>
             <Font size="14.0" />

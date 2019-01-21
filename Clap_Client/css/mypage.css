@@ -9,13 +9,16 @@
 #text1, #text2,#text3,#text4,#text5{
 		-fx-font-size: 14pt;
 }
-#la_mypge{
+#la_mypge, #la_Date, #la_Date2{
 	-fx-font-size: 18pt;
 }
 #text_UserInfo{
 	-fx-font-size: 12pt;
 }
 
+#la_MyAlbName,#text{
+	-fx-font-size: 14pt;
+}
 
 .tree-table-row-cell:selected .tree-table-cell{
 	-fx-background-color: rgba(156, 0, 0, 0.76);

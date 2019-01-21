@@ -31,7 +31,7 @@
                      <children>
                         <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="170.0" prefWidth="807.0">
                            <children>
-                              <Label fx:id="la_Date" alignment="CENTER" prefHeight="170.0" prefWidth="403.0" style="-fx-background-color: #ffffff;" text="   감상기간">
+                              <Label  fx:id="la_Date" alignment="CENTER" prefHeight="170.0" prefWidth="403.0" style="-fx-background-color: #ffffff;" text="   감상기간">
                                 </Label>
                               <Label fx:id="la_Date2" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="170.0" prefWidth="404.0" style="-fx-background-color: #ffffff;" text="잔여일">
                                 </Label>

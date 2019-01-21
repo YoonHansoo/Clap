@@ -16,7 +16,7 @@
                <children>
                   <Button layoutX="118.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_mus" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="곡" textFill="WHITE" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="30.0">
                     </Button>
-                  <Text layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="리     뷰" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="30.0">
+                  <Text  fx:id="la_mypge" layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="리     뷰" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="30.0">
                      
                   </Text>
                   <Button layoutX="241.0" layoutY="25.0" mnemonicParsing="false" onAction="#btn_alb" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #090948; -fx-border-color: #000000;" text="앨 범" textFill="WHITE" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="30.0">

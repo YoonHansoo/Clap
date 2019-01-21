@@ -27,7 +27,7 @@
                      </columns>
                   </JFXTreeTableView>
                   <Pagination fx:id="p_Paging" layoutX="9.0" layoutY="179.0" prefHeight="453.0" prefWidth="704.0" />
-                  <Label layoutX="19.0" layoutY="32.0" prefHeight="42.0" prefWidth="323.0" text="마이앨범" AnchorPane.leftAnchor="19.0">
+                  <Label fx:id="la_Date" layoutX="19.0" layoutY="32.0" prefHeight="42.0" prefWidth="323.0" text="마이앨범" AnchorPane.leftAnchor="19.0">
                     
                   </Label>
                   <Label fx:id="la_MyAlbName" layoutX="31.0" layoutY="88.0" text="앨범명" AnchorPane.leftAnchor="19.0">

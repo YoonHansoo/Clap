@@ -29,7 +29,7 @@
                      </columns>
                   </JFXTreeTableView>
                   <Pagination fx:id="p_Paging" layoutX="11.0" layoutY="160.0" prefHeight="451.0" prefWidth="704.0" />
-                  <Label layoutX="19.0" layoutY="32.0" prefHeight="42.0" prefWidth="323.0" text="많이 들은 아티스트" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="32.0">
+                  <Label  fx:id="la_mypge" layoutX="19.0" layoutY="32.0" prefHeight="42.0" prefWidth="323.0" text="많이 들은 아티스트" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="32.0">
                    
                   </Label>
                </children>

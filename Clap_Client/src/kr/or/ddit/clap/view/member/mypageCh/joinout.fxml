@@ -18,7 +18,7 @@
       <Text layoutX="120.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="·" AnchorPane.leftAnchor="120.0" />
       <Text layoutX="126.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="·" AnchorPane.leftAnchor="120.0" />
       <CheckBox fx:id="combo_Check" layoutX="115.0" layoutY="254.0" mnemonicParsing="false" text="위의 내용을 모두 확인하였으며, 회원탈퇴 시 모든 정보가 복구 불가능함에 동의합니다." />
-      <Button fx:id="btn_Ok" layoutX="279.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="회원탈퇴" />
-      <Button fx:id="btn_Cl" layoutX="373.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="취소" />
+      <Button fx:id="btn_Ok" layoutX="279.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #090948;" text="회원탈퇴" textFill="WHITE" />
+      <Button fx:id="btn_Cl" layoutX="373.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #090948;" text="취소" textFill="WHITE" />
    </children>
 </AnchorPane>
