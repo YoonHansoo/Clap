@@ -18,7 +18,7 @@ public static String word;
 		
 		System.out.println("검색결과가 없습니다.");
 		
-		label_word.setText(word);
+		label_word.setText("'"+word+"'");
 		
 	}
 

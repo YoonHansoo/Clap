@@ -9,9 +9,9 @@
 
 <AnchorPane fx:id="contents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.singer.main.NotfoundController">
    <children>
-      <VBox layoutX="23.0" layoutY="31.0" prefHeight="94.0" prefWidth="877.0" style="-fx-border-color: #090948;" AnchorPane.leftAnchor="100.0">
+      <VBox layoutX="23.0" layoutY="31.0" prefHeight="94.0" prefWidth="789.0" style="-fx-border-color: #090948;" AnchorPane.leftAnchor="100.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="92.0" prefWidth="792.0">
                <children>
                   <Label fx:id="label_word" text="Label" textFill="#9c0000">
                      <HBox.margin>

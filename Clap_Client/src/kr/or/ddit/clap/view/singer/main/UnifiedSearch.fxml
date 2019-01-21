@@ -161,7 +161,7 @@
             <Font name="YDIYGO340" size="14.0" />
          </font>
       </JFXButton>
-      <Label fx:id="lb_intro" layoutX="191.0" layoutY="677.0" prefHeight="41.0" prefWidth="214.0" text="앨범" AnchorPane.leftAnchor="191.0">
+      <Label fx:id="lb_intro" layoutX="239.0" layoutY="680.0" prefHeight="41.0" prefWidth="214.0" text="앨범" AnchorPane.leftAnchor="239.0">
          <font>
             <Font name="YDIYGO350" size="24.0" />
          </font>
