@@ -317,7 +317,7 @@ public class SearchController implements Initializable{
 		// 임시비밀번호 생성. 암호화했을때 기호 +, /도 들어가네.
 		AES256Util aes = new AES256Util();
 		String ran = String.valueOf((int)(Math.random()*100)+1);
-		code = aes.encrypt(ran).substring(0, 6);
+		code = aes.encrypt(ran).substring(0, 8);
 		
 		String host = "smtp.naver.com";
 		final String user = "ykh1762@naver.com";
