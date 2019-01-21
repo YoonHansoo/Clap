@@ -147,6 +147,7 @@ public class UnifiedSearchController implements Initializable {
 	
 	@FXML VBox mainBox1;
 	@FXML StackPane stackpane1;
+	@FXML AnchorPane contents;
 
 	public void setcontroller(AnchorPane main) {
 		this.main = main;

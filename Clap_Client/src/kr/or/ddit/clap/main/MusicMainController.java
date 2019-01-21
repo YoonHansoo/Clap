@@ -63,6 +63,7 @@ import kr.or.ddit.clap.view.message.ShowMessageController;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.view.newmusic.main.NewMusicMenuController;
 import kr.or.ddit.clap.view.recommend.album.UserRcmDetailController;
+import kr.or.ddit.clap.view.singer.main.NotfoundController;
 import kr.or.ddit.clap.view.singer.main.SingerMainController;
 import kr.or.ddit.clap.view.singer.main.SingerMenuController;
 import kr.or.ddit.clap.view.singer.main.UnifiedSearchController;
@@ -756,7 +757,18 @@ public class MusicMainController implements Initializable {
 			System.out.println(singPK);
 			
 			if(singPK == null) {
+				System.out.println("검색어없구요"); 
+			NotfoundController.word = word;
+			Parent notfound = FXMLLoader.load(getClass().getResource("../view/singer/main/Notfound.fxml")); 
 				
+			String temp_path = (getClass().getResource("../view/singer/main/Notfound.fxml")).getPath();
+			String path = temp_path.substring(1, temp_path.length()); // 현재화면 절대경로
+
+			GobackStack.goURL(path);
+
+			contents.getChildren().removeAll();
+			contents.getChildren().setAll(notfound);
+			return;
 				//검색어가 없습니다 화면으로 전환
 			}
 		
