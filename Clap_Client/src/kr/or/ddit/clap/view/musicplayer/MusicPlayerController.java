@@ -13,18 +13,14 @@ import javafx.stage.Stage;
 import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.musichistory.IMusicHistoryService;
-import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.playlist.IPlayListService;
 import kr.or.ddit.clap.service.ticket.ITicketService;
 import kr.or.ddit.clap.vo.music.MusicHistoryVO;
 import kr.or.ddit.clap.vo.music.PlayListVO;
-import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 import kr.or.ddit.clap.vo.ticket.TicketBuyListVO;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,7 +33,6 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.paint.Color;
 import com.jfoenix.controls.JFXTreeTableView;
@@ -428,10 +423,8 @@ public class MusicPlayerController implements Initializable{
 	
 	public void selectIndex(String mus_no) {
 		int index = -1;
-		System.out.println(playList.size());
 		for (int i = 0; i < playList.size(); i++) {
 			if (playList.get(i).getMus_no().equals(mus_no) ) {
-				System.out.println(i);
 				index = i;
 			}
 		}
