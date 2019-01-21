@@ -59,11 +59,17 @@ public class NoticeMenuController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		if(LoginSession.session.getMem_auth().equals("t")){
-			btn_add.setVisible(true);
-		} else {
+		if(LoginSession.session!= null) {
+			if(LoginSession.session.getMem_auth().equals("t")){
+				btn_add.setVisible(true);
+			} else {
+				btn_add.setVisible(false);
+			}
+			
+		}else {
 			btn_add.setVisible(false);
 		}
+		
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
@@ -103,7 +109,7 @@ public class NoticeMenuController implements Initializable {
 				tbl_notice.setOnMouseClicked(e -> {
 					if (e.getClickCount() > 1) {
 						String NoticeNo = tbl_notice.getSelectionModel().getSelectedItem().getValue().getNotice_no();
-						System.out.println(":"+NoticeNo);
+						
 						try {
 							// 바뀔 화면(FXML)을 가져옴
 							NoticeBoardDetailContentController.NoticeNo = NoticeNo;// 번호을 변수로 넘겨줌

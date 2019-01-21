@@ -63,13 +63,23 @@ public class NoticeBoardDetailContentController implements Initializable {
 		
 		text_cont.setDisable(true);
 		
-		if(LoginSession.session.getMem_auth().equals("t")){
-			btn_del.setVisible(true);
-			btn_upd.setVisible(true);
-		} else {
+		if(LoginSession.session!= null) {
+			if(LoginSession.session.getMem_auth().equals("t")){
+				btn_del.setVisible(true);
+				btn_upd.setVisible(true);
+			} else {
+				btn_del.setVisible(false);
+				btn_upd.setVisible(false);
+			}
+			
+		}else {
 			btn_del.setVisible(false);
 			btn_upd.setVisible(false);
 		}
+		
+		
+		
+		
 		
 		
 		try {
