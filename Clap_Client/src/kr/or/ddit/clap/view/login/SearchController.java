@@ -143,7 +143,7 @@ public class SearchController implements Initializable{
 			list = ils.idSearch(vo);
 			if(list.size()==0) {
 				lb_id.setVisible(true);
-				lb_id.setText("정보에 맞는 아이디가 존재하지 않습니다.");
+				lb_id.setText("정보가 일치하지 않습니다.");
 				lb_id.setTextFill(Color.RED);
 				return;
 			}
@@ -354,7 +354,7 @@ public class SearchController implements Initializable{
 		}
 		
 		lb_pw.setVisible(true);
-		lb_pw.setText("임시 비밀번호가 메일로 발송되었습니다.");
+		lb_pw.setText("임시 비밀번호가 발송되었습니다.");
 		emailFlag = true;
 		lb_pw.setTextFill(Color.valueOf("#00cc00"));
 		txt_email.requestFocus();

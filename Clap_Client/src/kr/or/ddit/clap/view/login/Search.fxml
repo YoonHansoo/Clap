@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.SearchController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="560.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.login.SearchController">
    <top>
       <VBox prefHeight="42.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,11 +32,11 @@
    <center>
       <VBox prefHeight="329.0" prefWidth="560.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox prefHeight="0.0" prefWidth="600.0" spacing="10.0">
+            <HBox maxHeight="33.0" prefHeight="17.0" prefWidth="550.0" spacing="10.0">
                <children>
                   <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="100.0" text="생년월일">
                      <HBox.margin>
-                        <Insets top="38.0" />
+                        <Insets top="5.0" />
                      </HBox.margin>
                      <font>
                         <Font name="YDIYGO350" size="14.0" />
@@ -49,9 +49,9 @@
                         <Font name="YDIYGO350" size="14.0" />
                      </font>
                      <HBox.margin>
-                        <Insets top="30.0" />
+                        <Insets top="5.0" />
                      </HBox.margin></JFXTextField>
-                  <Label fx:id="lb_id" text="형식에 맞게 입력해주세요." visible="false">
+                  <Label fx:id="lb_id" prefHeight="17.0" prefWidth="237.0" text="형식에 맞게 입력해주세요." visible="false">
                      <HBox.margin>
                         <Insets top="9.0" />
                      </HBox.margin>
@@ -143,7 +143,7 @@
                            <font>
                               <Font name="YDIYGO350" size="14.0" />
                            </font></JFXTextField>
-                        <Label fx:id="lb_pw" text="사용가능합니다." textFill="#00cc00" visible="false">
+                        <Label fx:id="lb_pw" prefHeight="17.0" prefWidth="231.0" text="사용가능합니다." textFill="#00cc00" visible="false">
                            <HBox.margin>
                               <Insets top="4.0" />
                            </HBox.margin>
@@ -166,7 +166,7 @@
                               <Font name="YDIYGO350" size="14.0" />
                            </font>
                         </Label>
-                        <JFXTextField fx:id="txt_email" focusColor="#9c0000" prefColumnCount="14" unFocusColor="#090948">
+                        <JFXTextField fx:id="txt_email" focusColor="#9c0000" prefColumnCount="14" prefWidth="178.0" unFocusColor="#090948">
                            <font>
                               <Font name="YDIYGO350" size="14.0" />
                            </font></JFXTextField>
@@ -175,7 +175,7 @@
                               <Font name="YDIYGO350" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="-13.0" top="5.0" />
+                              <Insets top="5.0" />
                            </HBox.margin></JFXButton>
                      </children>
                      <VBox.margin>

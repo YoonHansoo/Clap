@@ -208,7 +208,7 @@
                            <HBox.margin>
                               <Insets left="-5.0" top="1.0" />
                            </HBox.margin></JFXButton>
-                        <Label fx:id="lb_email" prefHeight="15.0" prefWidth="184.0" text="인증되었습니다. or" textFill="#00cc00" visible="false">
+                        <Label fx:id="lb_email" prefHeight="15.0" prefWidth="219.0" text="인증되었습니다. or" textFill="#00cc00" visible="false">
                            <HBox.margin>
                               <Insets left="5.0" top="5.0" />
                            </HBox.margin>

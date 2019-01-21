@@ -40,9 +40,9 @@
                   <Font name="YDIYGO350" size="18.0" />
                </font>
             </Label>
-            <JFXButton fx:id="btn_ok" text="확인">
+            <JFXButton fx:id="btn_ok" style="-fx-background-color: #090948;" text="확인" textFill="WHITE">
                <font>
-                  <Font name="YDIYGO350" size="16.0" />
+                  <Font name="YDIYGO350" size="20.0" />
                </font>
                <VBox.margin>
                   <Insets top="30.0" />
