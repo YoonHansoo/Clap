@@ -115,7 +115,6 @@
                         <Menu mnemonicParsing="false" text="문의사항">
                            <items>
                               <MenuItem mnemonicParsing="false" onAction="#qna" text="문의사항" />
-                              <MenuItem mnemonicParsing="false" text="1:1ChatBot" />
                            </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="이벤트">

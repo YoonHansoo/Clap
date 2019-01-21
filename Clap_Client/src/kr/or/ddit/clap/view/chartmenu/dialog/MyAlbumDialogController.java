@@ -24,7 +24,6 @@ import kr.or.ddit.clap.main.LoginSession;
 import kr.or.ddit.clap.main.MusicMainController;
 import kr.or.ddit.clap.service.myalbum.IMyAlbumService;
 import kr.or.ddit.clap.service.myalbumlist.IMyAlbumListService;
-import kr.or.ddit.clap.view.musicplayer.MusicPlayer;
 import kr.or.ddit.clap.view.musicplayer.MusicPlayerController;
 import kr.or.ddit.clap.vo.myalbum.MyAlbumVO;
 
