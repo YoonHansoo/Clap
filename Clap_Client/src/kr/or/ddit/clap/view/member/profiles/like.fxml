@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane fx:id="Head" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kr.or.ddit.clap.view.member.profiles.LikeController">
@@ -18,17 +17,14 @@
          <children>
             <AnchorPane prefHeight="98.0" prefWidth="720.0">
                <children>
-                  <Button layoutX="117.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_mus" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="곡" textFill="WHITE" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="30.0">
+                  <Button  fx:id="btn_mus" layoutX="112.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_mus" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #090948;" text="곡" textFill="WHITE" AnchorPane.leftAnchor="112.0" AnchorPane.topAnchor="30.0">
                   </Button>
                   <Text fx:id="la_mypge" layoutX="26.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="좋아요♥" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="30.2451171875">
                      
                   </Text>
-                  <Button layoutX="303.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_Rcm" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="추 천" textFill="WHITE" AnchorPane.leftAnchor="303.0" AnchorPane.topAnchor="30.0">
+                  <Button fx:id="btn_Rcm" layoutX="303.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_Rcm" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="추 천" textFill="WHITE" AnchorPane.leftAnchor="303.0" AnchorPane.topAnchor="30.0">
                      </Button>
-                  <Button layoutX="210.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_alb" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #090948; -fx-border-color: #000000;" text="앨 범" textFill="WHITE" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="30.0">
-                     <font>
-                        <Font size="15.0" />
-                     </font></Button>
+                  <Button layoutX="210.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_alb" prefHeight="32.0" prefWidth="90.0" style="-fx-background-color: #090948;" text="앨 범" textFill="WHITE" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="30.0" />
                   <Button layoutX="397.0" layoutY="30.0" mnemonicParsing="false" onAction="#btn_Its" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #090948;" text="아티스트" textFill="WHITE" AnchorPane.topAnchor="30.0">
                      </Button>
                </children>

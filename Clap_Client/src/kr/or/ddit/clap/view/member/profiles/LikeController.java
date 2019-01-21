@@ -82,6 +82,8 @@ public class LikeController implements Initializable {
 	private ObservableList<JFXButton> btnMovieList = FXCollections.observableArrayList();
 	@FXML VBox mainBox;
 	@FXML StackPane stackpane;
+	@FXML Button btn_mus;
+	@FXML Button btn_Rcm;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {

@@ -19,9 +19,7 @@
       <AnchorPane layoutY="70.0" prefHeight="275.0" prefWidth="571.0" AnchorPane.leftAnchor="0.0">
          <children>
             <Label layoutX="44.0" layoutY="22.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="125.0" style="-fx-background-color: #090948;" text="  휴대폰 번호" textFill="WHITE" textOverrun="CLIP" AnchorPane.leftAnchor="44.0">
-               <font>
-                  <Font name="YDIYGO340" size="20.0" />
-               </font>
+              
             </Label>
             <Label layoutX="285.0" layoutY="10.0" prefHeight="59.0" prefWidth="12.0" text="-" AnchorPane.topAnchor="10.0" />
             <ComboBox fx:id="combo_tel" layoutX="179.0" layoutY="25.0" prefHeight="30.0" prefWidth="95.0" AnchorPane.topAnchor="25.0" />

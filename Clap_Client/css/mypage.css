@@ -6,7 +6,7 @@
 .tree-table-row-cell:selected .tree-table-cell .label{
     -fx-text-fill: white;
 }
-#text1, #text2,#text3,#text4,#text5{
+#text1, #text2,#text3,#text4,#text5,#label_Id{
 		-fx-font-size: 14pt;
 }
 #la_mypge, #la_Date, #la_Date2{
