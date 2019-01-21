@@ -11,7 +11,7 @@
 <?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -39,7 +39,7 @@
             <JFXComboBox fx:id="combo_Ticket" layoutX="113.0" layoutY="137.0" prefHeight="29.0" prefWidth="127.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="137.0" />
             <Label layoutX="24.0" layoutY="102.0" text="조회기간" />
             <JFXButton layoutX="620.0" layoutY="614.0" onAction="#graph" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Graph" textFill="WHITE" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="614.0" />
-            <JFXButton onAction="#btn_Search" layoutX="257.0" layoutY="137.0" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #090948;" text="조회    " textFill="WHITE" />
+            <JFXButton layoutX="257.0" layoutY="137.0" onAction="#btn_Search" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #090948;" text="조회    " textFill="WHITE" />
             <FontAwesomeIcon fill="WHITE" iconName="SEARCH" layoutX="313.0" layoutY="158.0" size="1.32em" wrappingWidth="13.142857551574707" />
          </children>
       </AnchorPane>
@@ -52,15 +52,11 @@
             </AnchorPane>
             <VBox prefHeight="85.0" prefWidth="191.0">
                <children>
-                  <HBox prefHeight="21.0" prefWidth="191.0">
-                     <children>
-                        <Label id="label_name" fx:id="session_id" prefHeight="15.0" prefWidth="48.0" text="관리자" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="75.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <Label id="label_name" fx:id="session_id" alignment="CENTER" prefHeight="15.0" prefWidth="247.0" text="관리자" textFill="WHITE" BorderPane.alignment="CENTER" />
+                     </top>
+                  </BorderPane>
                </children>
             </VBox>
             <Label id="left_label" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#MemManag" prefHeight="41.0" prefWidth="250.0" text="회원 관리" textFill="WHITE">
