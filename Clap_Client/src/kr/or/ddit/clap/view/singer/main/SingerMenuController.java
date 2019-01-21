@@ -163,7 +163,7 @@ public class SingerMenuController implements Initializable {
 	@FXML
 	Line line_intro;
 
-	public static String musicNo = "1060";// 파라미터로 받은 선택한 가수의 PK
+	public static String musicNo = "1084";// 파라미터로 받은 선택한 가수의 PK
 	private Registry reg;
 	private IMusicService ims;
 	private String temp_img_path2 = "";

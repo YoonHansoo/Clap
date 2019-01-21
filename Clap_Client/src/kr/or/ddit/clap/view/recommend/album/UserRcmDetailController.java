@@ -58,7 +58,7 @@ public class UserRcmDetailController implements Initializable {
 	@FXML
 	Label lable_cntMusic;
 	@FXML
-	Label label_RcmContents;
+	Label label_RcmContents, label_RcmContents2;
 	@FXML
 	VBox mainBox;
 	@FXML
@@ -106,7 +106,15 @@ public class UserRcmDetailController implements Initializable {
 			// 값 세팅
 			labelrcmName1.setText(rVO.getRcm_alb_name());
 
-			label_RcmContents.setText(rVO.getRcm_content());
+			if(rVO.getRcm_content().length()<28) {
+				label_RcmContents.setText(rVO.getRcm_content());				
+				label_RcmContents2.setText("");				
+			}else {
+				String str = rVO.getRcm_content().substring(0, 27);
+				String str2 = rVO.getRcm_content().substring(27, rVO.getRcm_content().length());
+				label_RcmContents.setText(str);				
+				label_RcmContents2.setText(str2);				
+			}
 			icon.setIconName(rVO.getRcm_icon());
 
 			// 이미지 세팅

@@ -31,6 +31,7 @@
 #btn_ok{
 	-fx-background-color: #090948;
 	-fx-text-fill: white;
+	-fx-font-size: 14pt;
 }
 #lb23, #lb24, #lb25{
    -fx-font-family: "-윤고딕330";
@@ -38,6 +39,7 @@
 }
 
 #btn {
+	 -fx-font-family: "-윤고딕330";
 	-fx-background-color: #090948;
 	-fx-text-fill: white;
 	

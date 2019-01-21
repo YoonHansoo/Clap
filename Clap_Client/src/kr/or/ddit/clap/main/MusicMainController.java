@@ -695,7 +695,6 @@ public class MusicMainController implements Initializable {
 			SingerMainController.singerNo = albumList.get(8).getSing_no();
 			SingerMenuController.menuCount = 1;
 			singerMenu();
-			singerMenu();
 		});
 		btn_new10.setOnAction(e -> {
 			SingerMenuController.albumNo = albumList.get(9).getAlb_no();
