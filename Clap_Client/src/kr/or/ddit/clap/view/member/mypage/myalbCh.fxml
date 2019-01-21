@@ -19,27 +19,17 @@
          </columns>
       </JFXTreeTableView>
       <Button layoutX="42.0" layoutY="754.0" mnemonicParsing="false" onAction="#btn_del" style="-fx-background-color: #090948;" text="Delete" textFill="WHITE">
-         <font>
-            <Font name="YDIYGO350" size="12.0" />
-         </font></Button>
+      </Button>
       <JFXCheckBox fx:id="chbox_main" checkedColor="#9c0000" layoutX="11.0" layoutY="758.0" onAction="#mainCheck" text=" " />
       <JFXToolbar layoutX="415.0" layoutY="780.0" prefHeight="29.0" prefWidth="157.0" />
       <Label fx:id="la_Muscount" layoutX="476.0" layoutY="751.0" prefHeight="29.0" prefWidth="105.0" text="선택">
-         <font>
-            <Font name="YDIYGO350" size="17.0" />
-         </font></Label>
+        </Label>
       <Button layoutX="298.0" layoutY="794.0" mnemonicParsing="false" onAction="#btn_Cl" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="취 소" textFill="WHITE">
-         <font>
-            <Font name="YDIYGO350" size="16.0" />
-         </font></Button>
+        </Button>
       <Button layoutX="225.0" layoutY="794.0" mnemonicParsing="false" onAction="#btn_Ok" prefHeight="20.0" prefWidth="70.0" style="-fx-background-color: #090948;" text="확 인" textFill="WHITE">
-         <font>
-            <Font name="YDIYGO350" size="16.0" />
-         </font></Button>
+         </Button>
       <Label layoutX="59.0" layoutY="25.0" prefHeight="44.0" prefWidth="600.0" style="-fx-background-color: #090948;" text="   마이앨범 편집" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <font>
-            <Font name="YDIYGO350" size="20.0" />
-         </font>
+         
       </Label>
    </children>
 </AnchorPane>

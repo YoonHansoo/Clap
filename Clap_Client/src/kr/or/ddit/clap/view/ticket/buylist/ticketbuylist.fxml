@@ -18,14 +18,10 @@
             <HBox prefHeight="45.0" prefWidth="807.0">
                <children>
                   <Label prefHeight="65.0" prefWidth="350.0" style="-fx-background-color: #090948;" text="                음악 감상 기간" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="YDIYGO350" size="22.0" />
-                     </font>
+                    
                   </Label>
                   <Label prefHeight="65.0" prefWidth="350.0" style="-fx-background-color: #090948;" text="             음악 감상 잔여일" textFill="WHITE">
-                     <font>
-                        <Font name="YDIYGO350" size="22.0" />
-                     </font>
+                   
                   </Label>
                </children>
             </HBox>
@@ -36,13 +32,9 @@
                         <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="170.0" prefWidth="807.0">
                            <children>
                               <Label fx:id="la_Date" alignment="CENTER" prefHeight="170.0" prefWidth="403.0" style="-fx-background-color: #ffffff;" text="   감상기간">
-                                 <font>
-                                    <Font size="36.0" />
-                                 </font></Label>
+                                </Label>
                               <Label fx:id="la_Date2" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="170.0" prefWidth="404.0" style="-fx-background-color: #ffffff;" text="잔여일">
-                                 <font>
-                                    <Font size="36.0" />
-                                 </font></Label>
+                                </Label>
                            </children>
                         </HBox>
                      </children>
@@ -55,14 +47,10 @@
             <AnchorPane prefHeight="73.0" prefWidth="705.0">
                <children>
                   <Button layoutX="538.0" layoutY="13.0" mnemonicParsing="false" onAction="#buyTicket" prefHeight="23.0" prefWidth="153.0" style="-fx-background-color: #090948;" text="음악감상 이용권구매" textFill="WHITE">
-                     <font>
-                        <Font name="YDIYGO350" size="14.0" />
-                     </font>
+                    
                   </Button>
                   <Label layoutY="18.0" prefHeight="15.0" prefWidth="140.0" text="이용중인 이용권">
-                     <font>
-                        <Font name="YDIYGO350" size="14.0" />
-                     </font>
+                  
                   </Label>
                </children>
             </AnchorPane>

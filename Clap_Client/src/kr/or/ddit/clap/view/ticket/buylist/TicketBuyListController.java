@@ -80,7 +80,12 @@ public class TicketBuyListController implements Initializable{
 	      System.out.println(arr[2]);
 	      
 	      la_Date.setText(arr[1]);
-	      la_Date2.setText(arr[2]+"일");
+	      if(arr[2]==null) {
+	    	  la_Date2.setText("0 일");
+	      }else {
+	    	  la_Date2.setText(arr[2]+"일");
+	      }
+	    
 	      
 	      
 	      //이용중인 이용권

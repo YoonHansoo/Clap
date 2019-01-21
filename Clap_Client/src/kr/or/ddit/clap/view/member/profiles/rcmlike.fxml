@@ -36,25 +36,19 @@
          <graphic>
             <FontAwesomeIcon iconName="FOLDER_ALT" size="20" />
          </graphic>
-         <font>
-            <Font name="-윤고딕330" size="12.0" />
-         </font>
+        
       </JFXButton>
       <JFXButton layoutX="115.0" layoutY="66.0" ripplerFill="#9c0000" text="추가" AnchorPane.topAnchor="66.0">
          <graphic>
             <FontAwesomeIcon iconName="PLUS" size="20" />
          </graphic>
-         <font>
-            <Font name="-윤고딕330" size="12.0" />
-         </font>
+        
       </JFXButton>
       <JFXButton layoutX="56.0" layoutY="65.0" ripplerFill="#9c0000" text="듣기" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="66.0">
          <graphic>
             <FontAwesomeIcon iconName="PLAY_CIRCLE_ALT" size="20" />
          </graphic>
-         <font>
-            <Font name="-윤고딕340" size="12.0" />
-         </font>
+        
       </JFXButton>
    </children>
 </AnchorPane>
