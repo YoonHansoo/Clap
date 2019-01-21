@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Pagination?>
@@ -29,20 +30,17 @@
                   <TreeTableColumn fx:id="col_BuyType" prefWidth="102.0" text="결제방법" />
                </columns>
             </JFXTreeTableView>
-            <JFXDatePicker fx:id="date_Start" defaultColor="#9c0000" layoutX="107.0" layoutY="136.0" />
-            <JFXDatePicker fx:id="date_End" defaultColor="#9c0000" layoutX="412.0" layoutY="136.0" />
-            <Label layoutX="321.0" layoutY="130.0" prefHeight="15.0" prefWidth="19.0" text="~">
+            <JFXDatePicker fx:id="date_Start" defaultColor="#9c0000" layoutX="107.0" layoutY="95.0" />
+            <JFXDatePicker fx:id="date_End" defaultColor="#9c0000" layoutX="412.0" layoutY="95.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="307.0" layoutY="89.0" prefHeight="42.0" prefWidth="68.0" text="~">
                <font>
                   <Font size="36.0" />
                </font></Label>
-            <JFXComboBox fx:id="combo_Ticket" layoutX="162.0" layoutY="60.0" prefHeight="29.0" prefWidth="104.0" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="90.0" />
-            <JFXButton layoutX="626.0" layoutY="140.0" onAction="#btn_Search" text="&gt;" textFill="#9c0000">
-               <graphic>
-                  <Label text="조회" />
-               </graphic>
-            </JFXButton>
-            <Label layoutX="24.0" layoutY="143.0" text="조회기간" />
+            <JFXComboBox fx:id="combo_Ticket" layoutX="113.0" layoutY="137.0" prefHeight="29.0" prefWidth="127.0" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="137.0" />
+            <Label layoutX="24.0" layoutY="102.0" text="조회기간" />
             <JFXButton layoutX="620.0" layoutY="614.0" onAction="#graph" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #090948;" text="Graph" textFill="WHITE" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="614.0" />
+            <JFXButton onAction="#btn_Search" layoutX="257.0" layoutY="137.0" prefHeight="30.0" prefWidth="81.0" style="-fx-background-color: #090948;" text="조회    " textFill="WHITE" />
+            <FontAwesomeIcon fill="WHITE" iconName="SEARCH" layoutX="313.0" layoutY="158.0" size="1.32em" wrappingWidth="13.142857551574707" />
          </children>
       </AnchorPane>
       <VBox layoutX="30.0" layoutY="75.0" prefHeight="668.0" prefWidth="189.0" style="-fx-border-color: #9c0000; -fx-background-color:#090948;" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="25.0">

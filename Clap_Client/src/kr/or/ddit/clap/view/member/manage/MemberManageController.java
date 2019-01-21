@@ -55,12 +55,14 @@ public class MemberManageController implements Initializable{
 	@FXML TreeTableColumn<MemberVO,String> col_MemId;
 	@FXML TreeTableColumn<MemberVO,ImageView> col_MemImg;
 	@FXML TreeTableColumn<MemberVO,String> col_MemName;
+	@FXML TreeTableColumn<MemberVO,String> col_MemCnt;
 	@FXML JFXButton btn_search;
 	@FXML JFXTextField text_search;
 	@FXML AnchorPane contents;
 	@FXML AnchorPane main;
 	@FXML ImageView imgeview;
 	@FXML Label session_id;
+	
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -84,18 +86,20 @@ public class MemberManageController implements Initializable{
 				}
 				imgeview.setImage(img);
 				session_id.setText(ls.session.getMem_id());
-		
+				
+			
 		col_MemImg.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 
 		col_MemdelTF.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_del_tf()));
 
 		col_MemIndate
-				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_indate()));
+				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_indate().substring(0, 10)));
 
 		col_MemId.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_id()));
 
 		col_MemName.setCellValueFactory(
 				param -> new SimpleStringProperty(param.getValue().getValue().getMem_name()));
+	
 
 		try {
 			memList = FXCollections.observableArrayList(ims.selectAll());
@@ -114,7 +118,7 @@ public class MemberManageController implements Initializable{
 		}
 		
 		for (int i = 0; i < memList.size(); i++) {
-			if(memList.get(i).getMem_blacklist_tf().equals("f  ")) {
+			if(memList.get(i).getMem_blacklist_tf().equals("f  ") || memList.get(i).getMem_blacklist_tf().equals("f")) {
 				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\userf.png");
 			}else {
 				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\usert.png");
@@ -124,6 +128,15 @@ public class MemberManageController implements Initializable{
 		TreeItem<MemberVO> root = new RecursiveTreeItem<>(memList, RecursiveTreeObject::getChildren);
 		tbl_Member.setRoot(root);
 		tbl_Member.setShowRoot(false);
+
+		
+		for(int i=0; i<memList.size(); i++) {
+			if(memList.get(i).getChildren()==null) {
+				memList.get(i).setMem_black_cnt("0");
+			}
+			
+		}
+		col_MemCnt.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_black_cnt()));
 
 		itemsForPage = 10; // 한페이지 보여줄 항목 수 설정
 
@@ -203,6 +216,7 @@ private ObservableList<MemberVO> getTableViewData(int from, int to) {
 
 private void search() {
 	try {
+		
 		MemberVO vo = new MemberVO();
 		ObservableList<MemberVO> searchlist = FXCollections.observableArrayList();
 		switch (combo_search.getValue()) {
@@ -221,6 +235,13 @@ private void search() {
 		} 
 		
 		memList = FXCollections.observableArrayList(searchlist); //검색조건에 맞는 리스트를 저장
+		for (int i = 0; i < memList.size(); i++) {
+			if(memList.get(i).getMem_blacklist_tf().equals("f  ") || memList.get(i).getMem_blacklist_tf().equals("f")) {
+				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\userf.png");
+			}else {
+				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\usert.png");
+			}
+		}
 		paging();
 	}
 	catch (Exception e) {
