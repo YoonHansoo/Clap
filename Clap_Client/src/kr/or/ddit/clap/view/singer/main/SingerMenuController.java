@@ -429,6 +429,10 @@ public class SingerMenuController implements Initializable {
 			str_like_cnt2 = like_cnt2 + "";
 			label_LikeCnt.setText(str_like_cnt2);
 
+			if(LoginSession.session == null) {
+				
+			}
+			else {
 			// 세션아이디와 앨범번호를 매개변수로 좋아요를 눌렀는 지 확인하는 메서드
 			String id = LoginSession.session.getMem_id();
 			pMap.put("albNo", albumNo);
@@ -456,8 +460,9 @@ public class SingerMenuController implements Initializable {
 				icon_heart2.setIconName("HEART_ALT"); // 초기화 빈하트
 				if (yn2 > 0) {
 					icon_heart2.setIconName("HEART");
-
+						
 				}
+			}
 			}
 		} catch (RemoteException e) {
 			e.printStackTrace();
