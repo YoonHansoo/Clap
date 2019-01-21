@@ -34,7 +34,7 @@ public class AES256Util {
 		System.out.println();
 		System.out.println("복호화 하기.");
 		String decryptedPw1 = aes.decrypt(encryptedPw1); // 복호화된 값.
-		String decryptedPw2 = aes.decrypt(encryptedPw2);
+		String decryptedPw2 = aes.decrypt("23");
 		System.out.println(decryptedPw1);
 		System.out.println(decryptedPw2);
 		

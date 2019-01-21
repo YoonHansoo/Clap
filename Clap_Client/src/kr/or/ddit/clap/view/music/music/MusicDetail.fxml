@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
@@ -42,7 +41,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_albName" text="Label">
+                        <Label fx:id="txt_albName" prefHeight="15.0" prefWidth="364.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -64,7 +63,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_singerName" text="Label">
+                        <Label fx:id="txt_singerName" prefHeight="15.0" prefWidth="361.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -86,7 +85,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_write" text="Label">
+                        <Label fx:id="txt_write" prefHeight="15.0" prefWidth="359.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -108,7 +107,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_edit" text="Label">
+                        <Label fx:id="txt_edit" prefHeight="15.0" prefWidth="360.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -130,7 +129,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_muswrite" text="Label">
+                        <Label fx:id="txt_muswrite" prefHeight="15.0" prefWidth="364.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -153,7 +152,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_file" text="Label">
+                        <Label fx:id="txt_file" prefHeight="15.0" prefWidth="358.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -175,7 +174,7 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="txt_fileVideo" text="Label">
+                        <Label fx:id="txt_fileVideo" prefHeight="15.0" prefWidth="361.0" text="Label">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin></Label>
@@ -191,13 +190,17 @@
                               <Font name="YDIYGO340" size="14.0" />
                            </font>
                            <HBox.margin>
-                              <Insets top="7.0" />
+                              <Insets top="5.0" />
                            </HBox.margin>
                            <padding>
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <JFXComboBox fx:id="combo_genre" disable="true" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="110.0" />
+                        <Label fx:id="lb_genre" prefHeight="15.0" prefWidth="361.0" text="Label">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                      <VBox.margin>
                         <Insets bottom="3.0" />
@@ -216,7 +219,11 @@
                               <Insets right="7.0" />
                            </padding>
                         </Label>
-                        <JFXComboBox fx:id="combo_genreDetail" disable="true" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="23.0" prefWidth="110.0" />
+                        <Label fx:id="lb_genreDetail" prefHeight="15.0" prefWidth="361.0" text="Label">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Label>
                      </children>
                      <VBox.margin>
                         <Insets bottom="3.0" />

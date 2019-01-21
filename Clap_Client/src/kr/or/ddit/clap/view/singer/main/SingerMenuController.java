@@ -468,7 +468,7 @@ public class SingerMenuController implements Initializable {
 
 			ims = (IMusicService) reg.lookup("music");
 			ipls = (IPlayListService) reg.lookup("playlist");
-			itemsForPage = 8;
+			itemsForPage = 5;
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (NotBoundException e) {
@@ -1302,8 +1302,8 @@ public class SingerMenuController implements Initializable {
 
 	private void pageing(ObservableList<Map> list) {
 
-		if (mainBox.getChildren().size() == 8) {
-			mainBox.getChildren().remove(7);
+		if (mainBox.getChildren().size() == 5) {
+			mainBox.getChildren().remove(4);
 		}
 
 		if (list.size() == 0)

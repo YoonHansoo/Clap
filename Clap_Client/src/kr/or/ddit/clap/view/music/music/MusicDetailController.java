@@ -62,8 +62,8 @@ public class MusicDetailController implements Initializable {
 	@FXML Label txt_muswrite;
 	@FXML Label txt_file;
 	@FXML Label txt_fileVideo;
-	@FXML JFXComboBox<String> combo_genre;
-	@FXML JFXComboBox<String> combo_genreDetail;
+	@FXML Label lb_genre;
+	@FXML Label lb_genreDetail;
 	@FXML Label txt_time;
 	@FXML Label label_LikeCnt;
 	
@@ -111,9 +111,9 @@ public class MusicDetailController implements Initializable {
 		txt_muswrite.setText(mVO.getMus_muswrite_son());
 		txt_file.setText(mVO.getMus_file()); 
 		txt_fileVideo.setText(mVO.getMus_mvfile());
-		combo_genre.setValue(mVO.getGen_name());  
+		lb_genre.setText(mVO.getGen_name());  
 		
-		combo_genreDetail.setValue(mVO.getGen_detail_name()); 
+		lb_genreDetail.setText(mVO.getGen_detail_name()); 
 		txt_time.setText(mVO.getMus_time());  
 		txt_lyrics.setEditable(false);
 		txt_lyrics.setText(mVO.getMus_lyrics());
