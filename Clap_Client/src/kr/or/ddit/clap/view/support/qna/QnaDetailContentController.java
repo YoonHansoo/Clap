@@ -218,7 +218,7 @@ public class QnaDetailContentController implements Initializable {
 				return;
 			} else {
 				MessageVO vo = new MessageVO();
-				vo.setMsg_title("댓글이 입력되었습니다.");
+				vo.setMsg_title("문의사항글에 답변이 달렸습니다.");
 		        vo.setMem_get_id(qVO.getMem_id());
 		        vo.setMsg_read_tf("f");
 				vo.setMem_send_id(LoginSession.session.getMem_id());
