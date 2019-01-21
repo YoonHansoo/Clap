@@ -57,9 +57,9 @@
                               <Insets bottom="3.0" />
                            </HBox.margin>
                         </Label>
-                        <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                        <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                            <children>
-                              <FontAwesomeIcon fx:id="icon" fill="WHITE" iconName="ANGELLIST" size="60">
+                              <FontAwesomeIcon fx:id="icon" fill="#090948" iconName="ANGELLIST" size="60">
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>
@@ -132,45 +132,45 @@
          <children>
             <HBox prefHeight="80.0" prefWidth="200.0">
                <children>
-                  <VBox fx:id="icon1" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948; -fx-background-insets: 0;">
+                  <VBox fx:id="icon1" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon1" fill="WHITE" iconName="GITHUB_ALT" size="55">
+                        <FontAwesomeIcon fx:id="iicon1" fill="#090948" iconName="GITHUB_ALT" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon2" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon2" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon2" fill="WHITE" iconName="BED" size="55">
+                        <FontAwesomeIcon fx:id="iicon2" fill="#090948" iconName="BED" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon3" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon3" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon3" fill="WHITE" iconName="CAR" size="55">
+                        <FontAwesomeIcon fx:id="iicon3" fill="#090948" iconName="CAR" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon4" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon4" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon4" fill="WHITE" iconName="REDDIT" size="55">
+                        <FontAwesomeIcon fx:id="iicon4" fill="#090948" iconName="REDDIT" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon5" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon5" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon5" fill="WHITE" iconName="ANGELLIST" size="60">
+                        <FontAwesomeIcon fx:id="iicon5" fill="#090948" iconName="ANGELLIST" size="60">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
@@ -181,45 +181,45 @@
             </HBox>
             <HBox prefHeight="80.0" prefWidth="200.0">
                <children>
-                  <VBox fx:id="icon6" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon6" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon6" fill="WHITE" iconName="BICYCLE" size="55">
+                        <FontAwesomeIcon fx:id="iicon6" fill="#090948" iconName="BICYCLE" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon7" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon7" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon7" fill="WHITE" iconName="BIRTHDAY_CAKE" size="55">
+                        <FontAwesomeIcon fx:id="iicon7" fill="#090948" iconName="BIRTHDAY_CAKE" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon8" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon8" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon8" fill="WHITE" iconName="LAPTOP" size="55">
+                        <FontAwesomeIcon fx:id="iicon8" fill="#090948" iconName="LAPTOP" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon9" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon9" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon9" fill="WHITE" iconName="COFFEE" size="55">
+                        <FontAwesomeIcon fx:id="iicon9" fill="#090948" iconName="COFFEE" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </FontAwesomeIcon>
                      </children>
                   </VBox>
-                  <VBox fx:id="icon10" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                  <VBox fx:id="icon10" alignment="CENTER" minHeight="0.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                      <children>
-                        <FontAwesomeIcon fx:id="iicon10" fill="WHITE" iconName="CUTLERY" size="55">
+                        <FontAwesomeIcon fx:id="iicon10" fill="#090948" iconName="CUTLERY" size="55">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>

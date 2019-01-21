@@ -58,9 +58,9 @@
                               <Insets top="-8.0" />
                            </HBox.margin>
                         </Label>
-                        <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0" style="-fx-background-color: #090948;">
+                        <VBox alignment="CENTER" minHeight="80.0" minWidth="80.0" prefHeight="200.0" prefWidth="70.0">
                            <children>
-                              <FontAwesomeIcon fx:id="icon" fill="WHITE" iconName="ANGELLIST" size="60">
+                              <FontAwesomeIcon fx:id="icon" fill="#090948" iconName="ANGELLIST" size="60">
                                  <VBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </VBox.margin>

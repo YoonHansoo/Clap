@@ -230,35 +230,35 @@ public class InsertRecommendAlbumController implements Initializable {
 	
 	
 	public void exit1() {
-		icon1.setStyle("-fx-background-color: #090948");
+		icon1.setStyle("-fx-background-color: white");
 	}
 	public void exit2() {
-		icon2.setStyle("-fx-background-color: #090948");
+		icon2.setStyle("-fx-background-color: white");
 	}
 	public void exit3() {
-		icon3.setStyle("-fx-background-color: #090948");
+		icon3.setStyle("-fx-background-color: white");
 	}
 	public void exit4() {
-		icon4.setStyle("-fx-background-color: #090948");
+		icon4.setStyle("-fx-background-color: white");
 	}
 	public void exit5() {
-		icon5.setStyle("-fx-background-color: #090948");
+		icon5.setStyle("-fx-background-color: white");
 	}
 	
 	public void exit6() {
-		icon6.setStyle("-fx-background-color: #090948");
+		icon6.setStyle("-fx-background-color: white");
 	}
 	public void exit7() {
-		icon7.setStyle("-fx-background-color: #090948");
+		icon7.setStyle("-fx-background-color: white");
 	}
 	public void exit8() {
-		icon8.setStyle("-fx-background-color: #090948");
+		icon8.setStyle("-fx-background-color: white");
 	}
 	public void exit9() {
-		icon9.setStyle("-fx-background-color: #090948");
+		icon9.setStyle("-fx-background-color: white");
 	}
 	public void exit10() {
-		icon10.setStyle("-fx-background-color: #090948");
+		icon10.setStyle("-fx-background-color: white");
 	}
 	
 	
