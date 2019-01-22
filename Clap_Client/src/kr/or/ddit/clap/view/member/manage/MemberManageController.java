@@ -90,7 +90,7 @@ public class MemberManageController implements Initializable{
 			
 		col_MemImg.setCellValueFactory(param -> new SimpleObjectProperty<ImageView>(param.getValue().getValue().getImgView()));
 
-		col_MemdelTF.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_del_tf()));
+		col_MemdelTF.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_blacklist_tf()));
 
 		col_MemIndate
 				.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getMem_indate().substring(0, 10)));
@@ -110,15 +110,16 @@ public class MemberManageController implements Initializable{
 		}
 
 		for (int i = 0; i < memList.size(); i++) {
-			if(memList.get(i).getMem_del_tf().equals("f")) {
-				memList.get(i).setMem_del_tf("X");
+			if(memList.get(i).getMem_blacklist_tf().equals("f") || memList.get(i).getMem_blacklist_tf().equals("f  ")) {
+				memList.get(i).setMem_blacklist_tf("X");
 			}else {
-				memList.get(i).setMem_del_tf("O");
+				memList.get(i).setMem_blacklist_tf("O");
 			}
 		}
 		
 		for (int i = 0; i < memList.size(); i++) {
-			if(memList.get(i).getMem_blacklist_tf().equals("f  ") || memList.get(i).getMem_blacklist_tf().equals("f")) {
+			if(memList.get(i).getMem_blacklist_tf().equals("f  ") || memList.get(i).getMem_blacklist_tf().equals("f")
+					|| memList.get(i).getMem_blacklist_tf().equals("X")) {
 				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\userf.png");
 			}else {
 				memList.get(i).setMem_image("file:\\\\Sem-pc\\공유폴더\\Clap\\img\\userimg\\usert.png");
