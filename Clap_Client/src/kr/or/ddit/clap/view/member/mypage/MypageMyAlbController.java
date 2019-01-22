@@ -50,7 +50,6 @@ public class MypageMyAlbController implements Initializable{
 	String myAlbNo;
 	private ObservableList<MyAlbumVO> myAlbList, currentsingerList;
 	@FXML JFXCheckBox chbox_main;
-	@FXML Label la_Muscount;
 	
 	public void setcontroller(MypageController mypc) {
 		this.mypc=mypc;
@@ -58,7 +57,6 @@ public class MypageMyAlbController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		la_Muscount.setVisible(false);
 		
 		try {
 			reg = LocateRegistry.getRegistry("localhost", 8888);
